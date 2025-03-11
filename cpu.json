@@ -1,0 +1,646 @@
+{
+    "questions": [
+        {
+            "question": "Was ist die Hauptfunktion eines PC-Gehäuses? 🏠",
+            "options": ["Nur zur Dekoration", "Schutz vor äußeren Einflüssen und Aufnahme der Komponenten", "Nur zur Kühlung", "Nur zum Transport"],
+            "correct": 1,
+            "hint": "Es dient nicht nur einem ästhetischen Zweck, sondern hat auch praktische Funktionen."
+        },
+        {
+            "question": "Welche Schutzart wird durch IP65 beschrieben? 🛡️",
+            "options": ["Wasserdicht", "Staubdicht und Schutz gegen Strahlwasser", "Nur spritzwassergeschützt", "Wasserdicht und feuerfest"],
+            "correct": 1,
+            "hint": "Die erste Ziffer 6 steht für komplett staubdicht."
+        },
+        {
+            "question": "Was ist ein anderer Begriff für den Hauptprozessor? 🖥️",
+            "options": ["Chipsatz", "Hilfsprozessor", "CPU", "Mainboard"],
+            "correct": 2,
+            "hint": "Denk an die englische Abkürzung für Central Processing Unit."
+        },
+        {
+            "question": "Wo sind Nebenprozessoren typischerweise zu finden? 🔍",
+            "options": ["Im Sockel", "Auf dem Mainboard verteilt", "Nur in der Peripherie", "Außerhalb des Computers"],
+            "correct": 1,
+            "hint": "Sie sind fest mit der Hauptplatine verbunden."
+        },
+        {
+            "question": "Was ist die Hauptaufgabe des Hauptprozessors? 🧠",
+            "options": ["Nur Datenübertragung", "Nur Peripheriegeräte steuern", "Rechen- und Steueroperationen", "Nur Energieversorgung"],
+            "correct": 2,
+            "hint": "Er ist das 'Gehirn' des Computers und führt Berechnungen aus."
+        },
+        {
+            "question": "Welche Funktion übernehmen Nebenprozessoren? 🔧",
+            "options": ["Sie ersetzen den Hauptprozessor", "Sie unterstützen den Hauptprozessor", "Sie arbeiten unabhängig vom Hauptprozessor", "Sie haben keine spezifische Funktion"],
+            "correct": 1,
+            "hint": "Sie helfen dem Hauptprozessor bei bestimmten Aufgaben."
+        },
+        {
+            "question": "In welcher Einheit wird die Taktfrequenz moderner Prozessoren typischerweise angegeben? ⏱️",
+            "options": ["MHz", "kHz", "GHz", "Hz"],
+            "correct": 2,
+            "hint": "Die Einheit steht für Gigahertz."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung RISC bei Prozessoren? 💻",
+            "options": ["Random Instruction Set Computing", "Reduced Instruction Set Computing", "Rich Instruction Set Computing", "Registered Instruction Set Computing"],
+            "correct": 1,
+            "hint": "Es handelt sich um eine Architektur mit reduziertem Befehlssatz."
+        },
+        {
+            "question": "Woraus bestehen moderne Prozessoren hauptsächlich? 🔬",
+            "options": ["Kupferdrähten", "Transistoren als integrierte Schaltkreise", "Glasfasern", "Magneten"],
+            "correct": 1,
+            "hint": "Sie bestehen aus vielen winzigen Schaltern."
+        },
+        {
+            "question": "Welche Busverbindung kann zwischen Prozessor und anderen Komponenten bestehen? 🔌",
+            "options": ["Nur USB", "Nur HDMI", "FSB, HT oder QPI", "Nur VGA"],
+            "correct": 2,
+            "hint": "Es gibt verschiedene Arten von Busverbindungen."
+        },
+        {
+            "question": "Was bewirkt die Turbo Boost Technology von Intel? 🚀",
+            "options": ["Senkt die Frequenz zur Energieeinsparung", "Übertaktet je nach Bedarf einzelne oder alle Kerne", "Schaltet Kerne ab", "Erhöht nur die Spannung"],
+            "correct": 1,
+            "hint": "Sie erhöht die Leistung des Prozessors bei Bedarf."
+        },
+        {
+            "question": "Wie kann man die Taktfrequenz des Prozessors unter Windows 10 anzeigen? 🖥️",
+            "options": ["Nur über externe Tools", "Nicht möglich", "Über System oder Task-Manager", "Nur über BIOS"],
+            "correct": 2,
+            "hint": "Der Task-Manager zeigt diese Information an."
+        },
+        {
+            "question": "Welches Tool wird im Text als Beispiel für die Anzeige der CPU-Informationen genannt? 🔍",
+            "options": ["CPU-Z", "Core Temp", "HWMonitor", "Process Explorer"],
+            "correct": 0,
+            "hint": "Es ist ein bekanntes Tool zur Anzeige von CPU-Informationen."
+        },
+        {
+            "question": "Was bedeutet 'Multi-Core' bei Prozessoren? 💻",
+            "options": ["Mehrere Threads pro Kern", "Mehrere vollständige Kerne in einer CPU", "Nur höhere Taktfrequenz", "Nur bessere Kühlung"],
+            "correct": 1,
+            "hint": "Es handelt sich um mehrere Kerne in einem Prozessor."
+        },
+        {
+            "question": "Was ist ein 'Quad-Core' Prozessor? 🧩",
+            "options": ["Ein Prozessor mit 2 Kernen", "Ein Prozessor mit 4 Kernen", "Ein Prozessor mit 8 Kernen", "Ein Prozessor mit 16 Threads"],
+            "correct": 1,
+            "hint": "Quad bedeutet vier."
+        },
+        {
+            "question": "Was ist das Ziel der Multi-Core-Architektur? ⚡",
+            "options": ["Nur Energieeinsparung", "Nur bessere Grafik", "Vervielfachung der Rechenleistung", "Nur Kompatibilität"],
+            "correct": 2,
+            "hint": "Mehr Kerne bedeuten mehr Rechenleistung."
+        },
+        {
+            "question": "Was bedeutet 'Thread' im Kontext von Prozessoren? 🧵",
+            "options": ["Nur Software-Programme", "Kühlsystem", "Prozessor-Fäden zur Bearbeitung von Aufgaben", "Verbindungskabel"],
+            "correct": 2,
+            "hint": "Ein Thread ist ein Ausführungsstrang eines Programms."
+        },
+        {
+            "question": "Was ermöglicht 'Multi-Threading'? ⚙️",
+            "options": ["Mehrere Kerne in einem Prozessor", "Mehrere Threads werden von einem Kern fast gleichzeitig abgearbeitet", "Nur höhere Taktung", "Nur bessere Grafik"],
+            "correct": 1,
+            "hint": "Ein Kern kann mehrere Threads gleichzeitig bearbeiten."
+        },
+        {
+            "question": "Was ist 'Übertakten' bei Prozessoren? ⏱️",
+            "options": ["Erhöhung der Taktfrequenz über die Herstellervorgaben hinaus", "Automatische Taktreduzierung", "Deaktivierung von Kernen", "Standard-Einstellung vom Hersteller"],
+            "correct": 0,
+            "hint": "Es bedeutet, den Prozessor schneller laufen zu lassen als vorgesehen."
+        },
+        {
+            "question": "Welcher Begriff beschreibt einen Prozessor mit 8 Kernen? 🔢",
+            "options": ["Dual-Core", "Quad-Core", "Hexa-Core", "Octa-Core"],
+            "correct": 3,
+            "hint": "Octa bedeutet acht."
+        },
+        {
+            "question": "Wie funktioniert Intels Turbo Boost Technology? 🔄",
+            "options": ["Manuelles Übertakten durch den Benutzer", "Automatisches Übertakten je nach Bedarf", "Permanentes Übertakten", "Deaktivierung von Kernen"],
+            "correct": 1,
+            "hint": "Die Technologie passt die Leistung automatisch an."
+        },
+        {
+            "question": "Was ist der Hauptvorteil von Multi-Core-Prozessoren? 💪",
+            "options": ["Geringerer Stromverbrauch", "Höhere Taktfrequenz", "Parallele Verarbeitung mehrerer Aufgaben", "Nur geringere Wärmeentwicklung"],
+            "correct": 2,
+            "hint": "Mehr Kerne können mehr Aufgaben gleichzeitig bearbeiten."
+        },
+        {
+            "question": "Welche Beziehung besteht zwischen Kernen und Threads bei modernen Prozessoren? 🔄",
+            "options": ["Ein Kern kann nur einen Thread verarbeiten", "Ein Kern kann mehrere Threads verarbeiten", "Threads sind unabhängig von Kernen", "Kerne und Threads sind dasselbe"],
+            "correct": 1,
+            "hint": "Ein Kern kann mehrere Threads gleichzeitig bearbeiten."
+        },
+        {
+            "question": "Was bedeutet 'Triple-Core' bei Prozessoren? 🧮",
+            "options": ["Ein Prozessor mit 2 Kernen", "Ein Prozessor mit 3 Kernen", "Ein Prozessor mit 4 Kernen", "Ein Prozessor mit 6 Kernen"],
+            "correct": 1,
+            "hint": "Triple bedeutet drei."
+        },
+        {
+            "question": "In welchem Betriebssystembereich kann man bei Windows 10 die CPU-Informationen einsehen? 🖥️",
+            "options": ["Nur im BIOS", "Systemsteuerung und Registry", "System oder Task-Manager", "Nur über Drittanbieter-Software"],
+            "correct": 2,
+            "hint": "Der Task-Manager zeigt diese Information an."
+        },
+        {
+            "question": "Mit welchem Tool kann man unter anderem Kerne und Threads eines Prozessors anzeigen? 🔍",
+            "options": ["Task-Manager", "Explorer", "CPU-Z", "Word"],
+            "correct": 2,
+            "hint": "Es ist ein bekanntes Tool zur Anzeige von CPU-Informationen."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung CISC? 💻",
+            "options": ["Core Instruction Set Computer", "Complex Instruction Set Computer", "Central Instruction Set Computer", "Computing Instruction Set Computer"],
+            "correct": 1,
+            "hint": "Es handelt sich um eine Architektur mit komplexem Befehlssatz."
+        },
+        {
+            "question": "Welcher der folgenden Prozessoren verwendet typischerweise CISC-Architektur? 🖥️",
+            "options": ["PowerPC", "Sun UltraSparc", "Intel Pentium", "ARM"],
+            "correct": 2,
+            "hint": "Es ist ein bekannter Prozessor von Intel."
+        },
+        {
+            "question": "Was ist ein Hauptmerkmal der CISC-Architektur? ⚙️",
+            "options": ["Nur wenige, optimierte Befehle", "Befehle benötigen immer nur einen Taktzyklus", "Viele Befehle, die fast alle Aufgaben abdecken können", "Kein hardwarebasiertes Multithreading"],
+            "correct": 2,
+            "hint": "Die Architektur hat viele Befehle."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung RISC? 🔄",
+            "options": ["Reduced Instruction Set Computer", "Rapid Instruction Set Computer", "Real Instruction Set Computer", "Reliable Instruction Set Computer"],
+            "correct": 0,
+            "hint": "Es handelt sich um eine Architektur mit reduziertem Befehlssatz."
+        },
+        {
+            "question": "Welcher Prozessor-Typ verwendet typischerweise RISC-Architektur? 🔧",
+            "options": ["Intel x86", "AMD Ryzen", "PowerPC", "Cyrix"],
+            "correct": 2,
+            "hint": "Es ist ein bekannter Prozessor von IBM."
+        },
+        {
+            "question": "Wie viele Taktzyklen benötigen RISC-Befehle in der Regel? ⏱️",
+            "options": ["Einen", "Zwei", "Drei", "Vier oder mehr"],
+            "correct": 0,
+            "hint": "Die Befehle sind sehr effizient."
+        },
+        {
+            "question": "Was sind 64-bit-Prozessoren? 💻",
+            "options": ["Doppelwort-basiert", "Einwort-basiert", "Vierfachwort-basiert", "Halbwort-basiert"],
+            "correct": 2,
+            "hint": "Sie können größere Datenmengen verarbeiten."
+        },
+        {
+            "question": "Welcher Befehlssatz wird bei AMD 64-bit-Prozessoren verwendet? 🔧",
+            "options": ["x64-Befehlssatz", "AMD64-Befehlssatz", "x86-Befehlssatz", "x32-Befehlssatz"],
+            "correct": 1,
+            "hint": "Es ist ein spezieller Befehlssatz von AMD."
+        },
+        {
+            "question": "Wie viel Speicher kann mit 32 Adressleitungen maximal adressiert werden? 🧮",
+            "options": ["4 GiB", "16 MiB", "1 MiB", "64 KiB"],
+            "correct": 0,
+            "hint": "Es sind 4 Gigabyte."
+        },
+        {
+            "question": "Was beschreibt die Strukturgröße in der Halbleitertechnik? 🔍",
+            "options": ["Die Größe des Prozessors", "Die Kantenlänge der bestimmenden Plotter-Einheit", "Die Anzahl der Transistoren", "Die Gehäuseform"],
+            "correct": 1,
+            "hint": "Es handelt sich um die Größe der kleinsten Strukturen."
+        },
+        {
+            "question": "Wie viele Adresskombinationen sind mit 20 Adressleitungen möglich? 🔢",
+            "options": ["65.536", "1.048.576", "16.777.216", "4.294.967.296"],
+            "correct": 1,
+            "hint": "Es sind über eine Million."
+        },
+        {
+            "question": "Welche Speichergröße entspricht 2^16 Adressen? 💾",
+            "options": ["1 MiB", "16 MiB", "4 GiB", "64 KiB"],
+            "correct": 3,
+            "hint": "Es sind 64 Kilobyte."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung DIP bei Prozessor-Gehäuseformen? 📦",
+            "options": ["Digital Interface Package", "Dual In-line Package", "Direct Integrated Processor", "Double Integrated Package"],
+            "correct": 1,
+            "hint": "Es handelt sich um eine Gehäuseform mit zwei parallelen Reihen von Pins."
+        },
+        {
+            "question": "Welches ist KEIN Einflussfaktor auf die Strukturgröße eines Prozessors? 🏭",
+            "options": ["Verwendete Lithographie", "Halbleiterprozess", "Transistordesign", "Anzahl der Kerne"],
+            "correct": 3,
+            "hint": "Die Anzahl der Kerne hat keinen direkten Einfluss auf die Strukturgröße."
+        },
+        {
+            "question": "Was bedeutet LGA in Bezug auf Prozessor-Pins? 📌",
+            "options": ["Light Grid Array", "Large Grid Array", "Land Grid Array", "Linear Grid Array"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine Gehäuseform mit Kontaktflächen anstelle von Pins."
+        },
+        {
+            "question": "Was ist ein wesentlicher Vorteil einer kleineren Strukturgröße bei Prozessoren? ⚡",
+            "options": ["Größeres Gehäuse", "Höherer Energieverbrauch", "Effizientere Leistung", "Weniger Transistoren"],
+            "correct": 2,
+            "hint": "Kleinere Strukturen führen zu effizienterer Leistung."
+        },
+        {
+            "question": "Welche Aussage zur Adressbusbreite ist korrekt? 🧠",
+            "options": ["Sie hat keinen Einfluss auf adressierbaren Speicher", "Mehr als 4 GB lassen sich mit 32 bit nicht adressieren", "16 Adressleitungen erlauben 1 MiB Speicher", "20 Adressleitungen erlauben 4 GiB Speicher"],
+            "correct": 1,
+            "hint": "32 bit können maximal 4 GB adressieren."
+        },
+        {
+            "question": "Was charakterisiert ein BGA (Ball Grid Array)? 🔄",
+            "options": ["Kontaktstifte zum Stecken", "Kugelgitter-Rasterfeld zum Verlöten", "Kontaktflächen-Rasterfeld für Federkontakte", "Flache Anschlüsse an den Seiten"],
+            "correct": 1,
+            "hint": "Es handelt sich um eine Gehäuseform mit Lötbällen."
+        },
+        {
+            "question": "Ab welchem Modell führte Intel 64-bit-Prozessoren ein? 🖥️",
+            "options": ["Pentium 2", "Pentium 3", "Pentium 4 (Sockel 775)", "Core i"],
+            "correct": 2,
+            "hint": "Es war der Pentium 4."
+        },
+        {
+            "question": "Wie viele Adressen können mit 24 Adressleitungen angesprochen werden? 📊",
+            "options": ["1.048.576", "4.294.967.296", "65.536", "16.777.216"],
+            "correct": 3,
+            "hint": "Es sind über 16 Millionen."
+        },
+        {
+            "question": "Was ist ein PGA bei Prozessoren? 🔌",
+            "options": ["Program Grid Array", "Pin Grid Array", "Processor Graphical Array", "Portable Grid Access"],
+            "correct": 1,
+            "hint": "Es handelt sich um eine Gehäuseform mit Pins."
+        },
+        {
+            "question": "Was ist ein ZIF-Sockel? 🔌",
+            "options": ["Ein Sockel mit hohem Kraftaufwand", "Ein Zero Insertion Force Sockel", "Ein Sockel ohne Pins", "Ein verlöteter Sockel"],
+            "correct": 1,
+            "hint": "Es handelt sich um einen Sockel, der keinen Kraftaufwand erfordert."
+        },
+        {
+            "question": "Welches Problem kann bei CPUs mit Pins auftreten? 📌",
+            "options": ["Antenneneffekt", "Zu hohe Wärmeleitfähigkeit", "Zu geringe Stromaufnahme", "Zu wenig Kontaktfläche"],
+            "correct": 0,
+            "hint": "Die Pins können als Antennen wirken."
+        },
+        {
+            "question": "Was ist ein Vorteil von sockelbaren gegenüber verlöteten Prozessoren? 🔄",
+            "options": ["Geringere Kosten", "Höhere Leistung", "Schnelle Austauschbarkeit", "Bessere Wärmeableitung"],
+            "correct": 2,
+            "hint": "Sockelbare Prozessoren können leicht ausgetauscht werden."
+        },
+        {
+            "question": "Was kann passieren, wenn eine CPU mit montierten Kühler unsachgemäß transportiert wird? 💥",
+            "options": ["Kühler kann abfallen", "Pins können verbogen werden", "Überhitzung", "Datenverlust"],
+            "correct": 1,
+            "hint": "Die Pins sind empfindlich und können leicht verbogen werden."
+        },
+        {
+            "question": "Wofür steht die Abkürzung LGA bei Prozessoren? 🧩",
+            "options": ["Low Grid Array", "Large Grid Array", "Land Grid Array", "Linear Grid Array"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine Gehäuseform mit Kontaktflächen anstelle von Pins."
+        },
+        {
+            "question": "Welches Material wird bei hochwertigen CPU-Sockeln zur Verbesserung der Kontakte verwendet? ✨",
+            "options": ["Silber", "Kupfer", "Gold", "Aluminium"],
+            "correct": 2,
+            "hint": "Gold wird wegen seiner guten Leitfähigkeit verwendet."
+        },
+        {
+            "question": "Wozu dient die Virtualisierungsfähigkeit moderner Prozessoren? 💻",
+            "options": ["Zur Reduzierung des Stromverbrauchs", "Zum gleichzeitigen Betrieb mehrerer Betriebssysteme", "Zur automatischen Übertaktung", "Zur Erhöhung der Cache-Größe"],
+            "correct": 1,
+            "hint": "Virtualisierung ermöglicht den Betrieb mehrerer Betriebssysteme."
+        },
+        {
+            "question": "Wo muss die Virtualisierungsfunktion typischerweise aktiviert werden? ⚙️",
+            "options": ["Im Betriebssystem", "Im BIOS/UEFI", "In der Virtualisierungssoftware", "In den Prozessortreibern"],
+            "correct": 1,
+            "hint": "Die Funktion muss im BIOS/UEFI aktiviert werden."
+        },
+        {
+            "question": "Was ist eine Folge der hohen Verlustleistung eines Prozessors? 🔥",
+            "options": ["Erhöhte Betriebstemperatur", "Verlängerte Lebensdauer", "Niedrigere Taktfrequenz", "Bessere Virtualisierungsleistung"],
+            "correct": 0,
+            "hint": "Hohe Verlustleistung führt zu höherer Temperatur."
+        },
+        {
+            "question": "Welche Maßnahme kann die Verlustleistung eines Prozessors reduzieren? ⚡",
+            "options": ["Erhöhung der Taktfrequenz", "Verringerung der Anzahl der Kerne", "Senkung der Versorgungsspannung", "Erhöhung der Cache-Größe"],
+            "correct": 2,
+            "hint": "Niedrigere Spannung führt zu geringerer Verlustleistung."
+        },
+        {
+            "question": "Warum werden Prozessoren in mehrere Kerne aufgeteilt? 🧠",
+            "options": ["Nur zur Leistungssteigerung", "Nur zur Kostensenkung", "Nur für bessere Virtualisierung", "Unter anderem zur optimalen Wärmeverteilung"],
+            "correct": 3,
+            "hint": "Mehrere Kerne verteilen die Wärme besser."
+        },
+        {
+            "question": "Was ist eine Voraussetzung für die Installation moderner Virtualisierungssoftware? 🛠️",
+            "options": ["Wasserkühlung", "Nutzbare Virtualisierungsfunktionen im Prozessor", "Mindestens 8 Prozessorkerne", "Übertaktungsfähigkeit"],
+            "correct": 1,
+            "hint": "Der Prozessor muss Virtualisierungsfunktionen unterstützen."
+        },
+        {
+            "question": "Was zeigt der Windows Task-Manager bezüglich Virtualisierung an? 📊",
+            "options": ["Anzahl möglicher virtueller Maschinen", "Virtualisierung aktiviert/deaktiviert", "Virtualisierungsgeschwindigkeit", "Virtualisierungskosten"],
+            "correct": 1,
+            "hint": "Der Task-Manager zeigt an, ob Virtualisierung aktiviert ist."
+        },
+        {
+            "question": "Welches Risiko besteht bei Überhitzung eines Prozessors? ⚠️",
+            "options": ["Datenverlust", "Akkuschaden", "Fehlfunktionen oder Defekte", "Erhöhter Stromverbrauch"],
+            "correct": 2,
+            "hint": "Überhitzung kann zu Fehlfunktionen führen."
+        },
+        {
+            "question": "In welchem Teil des Computers wird der Prozessor eingesetzt? 🖥️",
+            "options": ["Sockel auf dem Mainboard", "Erweiterungsslot", "Netzteil", "Peripheriegerät"],
+            "correct": 0,
+            "hint": "Der Prozessor wird in den Sockel auf dem Mainboard eingesetzt."
+        },
+        {
+            "question": "Was ist eine wichtige Maßnahme zur Wärmeableitung bei Prozessoren? 🌡️",
+            "options": ["Prozessor häufig ausschalten", "Wärmeleitpaste zwischen Prozessor und Kühler verwenden", "Gehäuse offen lassen", "Lüfter entfernen"],
+            "correct": 1,
+            "hint": "Wärmeleitpaste verbessert die Wärmeableitung."
+        },
+        {
+            "question": "Wie kann man die Temperatur eines Prozessors überwachen? 🔍",
+            "options": ["Nur durch Anfassen des Gehäuses", "Mit einem Temperaturfühler oder Tools wie HWMonitor", "Nur durch Beobachtung der Leistung", "Temperaturmessung ist nicht möglich"],
+            "correct": 1,
+            "hint": "Es gibt spezielle Tools zur Temperaturüberwachung."
+        },
+        {
+            "question": "Was verbindet bei älteren Chipsätzen die CPU mit der Northbridge? 🔄",
+            "options": ["USB", "Bei Intel der Front Side Bus oder bei AMD Hyper Transport", "SATA", "PCI Express"],
+            "correct": 1,
+            "hint": "Es handelt sich um spezielle Busverbindungen."
+        },
+        {
+            "question": "Welche Funktion hat der Chipsatz auf einem Mainboard? 🖥️",
+            "options": ["Er ersetzt den Hauptprozessor", "Er steuert die Kommunikation zwischen CPU und anderen Komponenten", "Er dient nur zur Kühlung", "Er hat keine wichtige Funktion"],
+            "correct": 1,
+            "hint": "Der Chipsatz steuert die Kommunikation zwischen den Komponenten."
+        },
+        {
+            "question": "Was bedeutet PCH in Bezug auf moderne Intel-Chipsätze? 🔧",
+            "options": ["Platform Controller Hub", "Primary CPU Handler", "Processor Cooling Hardware", "Performance Computing Host"],
+            "correct": 0,
+            "hint": "Es handelt sich um den Platform Controller Hub."
+        },
+        {
+            "question": "Welches Bussystem wird von AMD für die Kommunikation verwendet? 🔌",
+            "options": ["Quick Path Interconnect", "Front Side Bus", "Hyper Transport", "Universal Serial Bus"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine spezielle Busverbindung von AMD."
+        },
+        {
+            "question": "Was ist ein Trend bei der Entwicklung von Prozessoren und Chipsätzen? 💻",
+            "options": ["Reduzierung der Funktionen", "Mehr separate Chips", "Höhere Integrationsrate mit mehr Funktionen in einem Chip", "Weniger Kommunikation mit der Peripherie"],
+            "correct": 2,
+            "hint": "Mehr Funktionen werden in einem Chip integriert."
+        },
+        {
+            "question": "Was war traditionell in der Northbridge eines Chipsatzes integriert? 🧩",
+            "options": ["USB-Controller", "SATA-Controller", "Speichercontroller", "Audio-Controller"],
+            "correct": 2,
+            "hint": "Der Speichercontroller war in der Northbridge integriert."
+        },
+        {
+            "question": "Welches Bussystem wurde von Intel als Nachfolger des Front Side Bus eingeführt? 🚀",
+            "options": ["Hyper Transport", "SATA Express", "Quick Path Interconnect", "PCI Express"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine spezielle Busverbindung von Intel."
+        },
+        {
+            "question": "Wodurch wird die Leistungsfähigkeit eines Mainboards hauptsächlich bestimmt? ⚡",
+            "options": ["Nur durch die Grafikkarte", "Durch den Hauptprozessor und den Chipsatz", "Nur durch die Anzahl der USB-Anschlüsse", "Nur durch den Arbeitsspeicher"],
+            "correct": 1,
+            "hint": "Der Hauptprozessor und der Chipsatz bestimmen die Leistungsfähigkeit."
+        },
+        {
+            "question": "Welche Komponente wurde im Laufe der Zeit in den Hauptprozessor integriert? 🧮",
+            "options": ["Festplatte", "Mathematischer Coprozessor (FPU)", "Netzteil", "Tastatur-Controller"],
+            "correct": 1,
+            "hint": "Der mathematische Coprozessor wurde integriert."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung MMU bei Prozessoren? 🧠",
+            "options": ["Multiple Monitor Unit", "Memory Management Unit", "Main Motherboard Utility", "Maximum Memory Usage"],
+            "correct": 1,
+            "hint": "Es handelt sich um die Memory Management Unit."
+        },
+        {
+            "question": "Was kann bei modernen CPUs direkt im Hauptprozessor integriert sein? 🎮",
+            "options": ["Soundkarte", "Netzwerkkarte", "Grafikprozessor", "Festplattencontroller"],
+            "correct": 2,
+            "hint": "Der Grafikprozessor kann integriert sein."
+        },
+        {
+            "question": "Welcher dieser Cache-Typen befindet sich typischerweise im Hauptprozessor? 💾",
+            "options": ["RAM-Cache", "L1-Cache", "Festplatten-Cache", "BIOS-Cache"],
+            "correct": 1,
+            "hint": "Der L1-Cache befindet sich im Hauptprozessor."
+        },
+        {
+            "question": "Was ist ein wichtiger Aspekt bei der Prozessorkühlung? ❄️",
+            "options": ["Eine optimale Kühltechnologie verwenden", "Den Prozessor regelmäßig ausschalten", "Die Temperatur ignorieren", "Wärmeleitpaste vermeiden"],
+            "correct": 0,
+            "hint": "Eine gute Kühltechnologie ist wichtig."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung GPU? 🖥️",
+            "options": ["General Processing Unit", "Graphics Processing Unit", "Global Performance Unit", "Graphic Printer Unit"],
+            "correct": 1,
+            "hint": "Diese Einheit ist speziell für die Verarbeitung von Grafiken zuständig."
+        },
+        {
+            "question": "Welche Aufgabe hat ein Grafikprozessor? 🎮",
+            "options": ["Berechnung und Ausgabe von Grafiken", "Steuerung des Arbeitsspeichers", "Steuerung der Festplatte", "Regelung der Stromversorgung"],
+            "correct": 0,
+            "hint": "Er ist für die Berechnung und Ausgabe von Grafiken zuständig."
+        },
+        {
+            "question": "Was ist ein IGP? 💻",
+            "options": ["Internet Gateway Protocol", "Integrated Graphics Processor", "Input Graphics Port", "Internal Graphics Platform"],
+            "correct": 1,
+            "hint": "Es handelt sich um einen integrierten Grafikprozessor."
+        },
+        {
+            "question": "Welche Technologie ermöglicht die Nutzung mehrerer Nvidia-Grafikkarten gleichzeitig? 🔗",
+            "options": ["CrossFire", "GPU Fusion", "SLI (Scalable Link Interface)", "Multi-GPU Link"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine Technologie von Nvidia."
+        },
+        {
+            "question": "Wo kann ein Grafikprozessor NICHT vorkommen? 🧩",
+            "options": ["Integriert in der CPU", "Auf einer Grafikkarte im PCIe-Slot", "Als Bestandteil des Arbeitsspeichers", "Integriert auf dem Mainboard"],
+            "correct": 2,
+            "hint": "Der Arbeitsspeicher enthält keinen Grafikprozessor."
+        },
+        {
+            "question": "Was bedeutet 'dedizierter Videospeicher'? 💾",
+            "options": ["Speicher, der ausschließlich für die Grafikkarte reserviert ist", "Speicher, der vom Betriebssystem genutzt wird", "Ein besonders schneller Hauptspeicher", "Ein spezieller Cache des Prozessors"],
+            "correct": 0,
+            "hint": "Der Speicher ist ausschließlich für die Grafikkarte reserviert."
+        },
+        {
+            "question": "Welche Technologie ermöglicht die Nutzung mehrerer AMD/ATI-Grafikkarten gleichzeitig? 🔄",
+            "options": ["Multi-Link", "SLI", "CrossFire", "Dual-GPU"],
+            "correct": 2,
+            "hint": "Es handelt sich um eine Technologie von AMD/ATI."
+        },
+        {
+            "question": "Worauf hat die Wahl eines bestimmten Chipsatzes großen Einfluss? ⚙️",
+            "options": ["Nur auf die Anzahl der USB-Anschlüsse", "Nur auf die Netzwerkgeschwindigkeit", "Auf die Features des gesamten IT-Systems", "Nur auf die Lautstärke des Systems"],
+            "correct": 2,
+            "hint": "Der Chipsatz beeinflusst die Features des gesamten Systems."
+        },
+        {
+            "question": "Warum benötigen leistungsstärkere Grafikkarten eine stärkere Kühlung? 🌡️",
+            "options": ["Wegen der höheren Taktfrequenz", "Wegen der größeren Abmessungen", "Wegen der höheren Verlustleistung", "Wegen des zusätzlichen Speichers"],
+            "correct": 2,
+            "hint": "Leistungsstärkere Grafikkarten erzeugen mehr Wärme."
+        },
+        {
+            "question": "Welche Komponenten können in einer modernen CPU integriert sein? 🔧",
+            "options": ["Nur Grafikprozessor", "Grafikprozessor und Teile der Northbridge", "Nur Soundprozessor", "Nur RAID-Controller"],
+            "correct": 1,
+            "hint": "Moderne CPUs können Grafikprozessoren und Teile der Northbridge enthalten."
+        },
+        {
+            "question": "Woher beziehen integrierte Grafikprozessoren (IGPs) ihren Speicher? 🔄",
+            "options": ["Sie haben immer eigenen dedizierten Speicher", "Sie nutzen den Arbeitsspeicher (RAM) des Systems", "Sie nutzen nur den Cache der CPU", "Sie nutzen nur den Festplattenspeicher"],
+            "correct": 1,
+            "hint": "IGPs nutzen den Arbeitsspeicher des Systems."
+        },
+        {
+            "question": "Was bezeichnet man oft auch als 'Controller'? 🎛️",
+            "options": ["Hauptprozessoren", "Nebenprozessoren", "Grafikkarten", "Arbeitsspeicher"],
+            "correct": 1,
+            "hint": "Nebenprozessoren werden oft als Controller bezeichnet."
+        },
+        {
+            "question": "Was kann NICHT zu den Aufgaben von Nebenprozessoren gehören? ❌",
+            "options": ["Grafikverarbeitung", "Soundverarbeitung", "Betriebssystemverwaltung", "RAID-Funktionalitäten"],
+            "correct": 2,
+            "hint": "Die Betriebssystemverwaltung gehört nicht zu den Aufgaben von Nebenprozessoren."
+        },
+        {
+            "question": "Über welchen Anschluss kann eine externe Grafikkarte NICHT mit dem Mainboard verbunden werden? 🔌",
+            "options": ["PCIe", "USB", "SATA", "AGP"],
+            "correct": 2,
+            "hint": "SATA ist kein Anschluss für Grafikkarten."
+        },
+        {
+            "question": "Was passiert, wenn im BIOS die Einstellung 'Auto' für die GPU-Nutzung gewählt wird? 🖥️",
+            "options": ["Nur die dedizierte Grafikkarte wird genutzt", "Nur der integrierte Grafikprozessor wird genutzt", "Beide GPUs können gleichzeitig genutzt werden", "Das System wählt zufällig eine GPU aus"],
+            "correct": 2,
+            "hint": "Das System kann beide GPUs gleichzeitig nutzen."
+        },
+        {
+            "question": "Wofür ist ein Soundprozessor zuständig? 🔊",
+            "options": ["Nur für Tonwiedergabe", "Für Aufzeichnung, Synthese, Mischung, Bearbeitung und Wiedergabe von Tonsignalen", "Nur für Netzwerkverbindungen", "Nur für Datenspeicherung"],
+            "correct": 1,
+            "hint": "Der Soundprozessor ist für die Verarbeitung von Tonsignalen zuständig."
+        },
+        {
+            "question": "In welchen Varianten kann ein Soundprozessor vorkommen? 🎵",
+            "options": ["Nur als separate Karte", "Nur als onboard-Lösung", "Als onboard-Lösung, PCI/PCIe-Karte oder USB-Gerät", "Nur als externes Gerät"],
+            "correct": 2,
+            "hint": "Soundprozessoren können in verschiedenen Varianten vorkommen."
+        },
+        {
+            "question": "Wofür ist ein Netzwerkprozessor verantwortlich? 🌐",
+            "options": ["Für die Grafikdarstellung", "Für die Tonwiedergabe", "Für die Realisierung einer Netzwerkverbindung", "Für die Datenspeicherung"],
+            "correct": 2,
+            "hint": "Der Netzwerkprozessor ist für die Netzwerkverbindung zuständig."
+        },
+        {
+            "question": "Welche Anschlussart wird typischerweise für Netzwerkverbindungen verwendet? 🔌",
+            "options": ["RJ-45", "USB", "HDMI", "DisplayPort"],
+            "correct": 0,
+            "hint": "RJ-45 ist der typische Anschluss für Netzwerkverbindungen."
+        },
+        {
+            "question": "In welchen Varianten kann ein Netzwerkprozessor vorkommen? 💻",
+            "options": ["Nur als externe Lösung", "Als onboard-Lösung oder als Erweiterungskarte", "Nur als USB-Gerät", "Nur als Bluetooth-Modul"],
+            "correct": 1,
+            "hint": "Netzwerkprozessoren können onboard oder als Erweiterungskarte vorkommen."
+        },
+        {
+            "question": "Was ist die Hauptaufgabe eines RAID-Prozessors? 💾",
+            "options": ["Grafikberechnung", "Tonverarbeitung", "Netzwerkkommunikation", "Aufteilung von Daten auf Massenspeichern"],
+            "correct": 3,
+            "hint": "Der RAID-Prozessor ist für die Datenaufteilung zuständig."
+        },
+        {
+            "question": "In welcher Form kann ein RAID-Prozessor implementiert sein? 🔧",
+            "options": ["Nur als separate Karte", "Als onboard-Lösung oder als Erweiterungskarte", "Nur als externes Gerät", "Nur als Cloud-Dienst"],
+            "correct": 1,
+            "hint": "RAID-Prozessoren können onboard oder als Erweiterungskarte vorkommen."
+        },
+        {
+            "question": "Welcher Bus kann für eine Soundkarte verwendet werden? 🎧",
+            "options": ["Nur USB", "Nur PCI", "ISA, PCI oder PCIe", "Nur HDMI"],
+            "correct": 2,
+            "hint": "Soundkarten können verschiedene Busse verwenden."
+        },
+        {
+            "question": "Wo kann ein Netzwerkprozessor auf einem Mainboard integriert sein? 🖥️",
+            "options": ["In der Northbridge", "In der Southbridge", "Im Hauptprozessor", "Im RAM-Controller"],
+            "correct": 1,
+            "hint": "Der Netzwerkprozessor kann in der Southbridge integriert sein."
+        },
+        {
+            "question": "Welche Geräte werden hauptsächlich an einen RAID-Prozessor angeschlossen? 💽",
+            "options": ["Monitore", "Tastaturen", "Massenspeicher (HDDs, SSDs)", "Drucker"],
+            "correct": 2,
+            "hint": "Massenspeicher werden an den RAID-Prozessor angeschlossen."
+        },
+        {
+            "question": "Wie viele Varianten von Sound-Prozessoren werden im Text beschrieben? 🔢",
+            "options": ["2", "3", "4", "5"],
+            "correct": 1,
+            "hint": "Es werden drei Varianten beschrieben."
+        },
+        {
+            "question": "Welcher Anschlusstyp wurde früher für Netzwerkverbindungen verwendet? 📡",
+            "options": ["SATA", "VGA", "BNC", "USB-A"],
+            "correct": 2,
+            "hint": "BNC wurde früher für Netzwerkverbindungen verwendet."
+        },
+        {
+            "question": "Welche Komponente kann einen integrierten Soundprozessor haben? 📱",
+            "options": ["CPU", "RAM", "Mainboard", "Netzteil"],
+            "correct": 2,
+            "hint": "Das Mainboard kann einen integrierten Soundprozessor haben."
+        },
+        {
+            "question": "Welcher dieser Anschlüsse ist NICHT typisch für Soundprozessoren? 🎚️",
+            "options": ["Kopfhörerausgang", "Mikrofoneingang", "Line-In", "RJ-45"],
+            "correct": 3,
+            "hint": "RJ-45 ist kein typischer Anschluss für Soundprozessoren."
+        },
+        {
+            "question": "Was ist ein typisches Merkmal eines RAID-Systems? 🔐",
+            "options": ["Höhere Soundqualität", "Bessere Netzwerkleistung", "Datensicherheit oder schnellerer Zugriff auf Daten", "Verbesserte Grafikleistung"],
+            "correct": 2,
+            "hint": "RAID-Systeme bieten Datensicherheit oder schnelleren Zugriff auf Daten."
+        }
+    ]
+}

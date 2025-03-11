@@ -7,147 +7,330 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="fixed-header">
-        <div class="header-container">
-            <div class="level-info">Maurice´s-Learning-Game Level: <span id="level">1</span> 🌟</div>
-            <div class="streak-counter">
-                <span id="streak-text">Aktuelle Serie: 0</span>
-                <span class="streak-flame" id="streak-flame">🔥</span>
+    <!-- Quiz Selection Menu -->
+    <div id="quiz-selection-menu" class="quiz-selection-menu">
+        <h2>🎮 Wähle dein Quiz</h2>
+        <div id="quiz-categories" class="quiz-categories">
+            <!-- Wird dynamisch gefüllt -->
+        </div>
+    </div>
+
+    <div id="quiz-content" style="display: none;">
+        <div class="fixed-header">
+            <div class="header-container">
+                <div class="level-info">Maurice´s-Learning-Game Level: <span id="level">1</span> 🌟</div>
+                <div class="streak-counter">
+                    <span id="streak-text">Aktuelle Serie: 0</span>
+                    <span class="streak-flame" id="streak-flame">🔥</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-label" id="progress-label">0%</div>
+                </div>
+                <div id="feedback-message"></div>
             </div>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-                <div class="progress-label" id="progress-label">0%</div>
+        </div>
+        
+        <div class="controls">
+            <button onclick="backToMenu()" class="back-button">↩️ Zurück zum Menü</button>
+            <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
+            <button onclick="newQuiz()">🔄 Neues Quiz</button>
+            <button onclick="toggleStats()">📊 Statistiken</button>
+            <button onclick="toggleTimerMode()" id="timer-toggle">⏱️ Zeitmodus</button>
+        </div>
+        <h1>💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
+        
+        <!-- Timer Container -->
+        <div class="timer-container" id="timer-container" style="display: none;">
+            <div class="timer-bar" id="timer-bar"></div>
+            <div class="time-bonus-indicator" id="time-bonus">+5 XP</div>
+            <div class="timer-mode-badge">⏱️ ZEITMODUS</div>
+        </div>
+        
+        <!-- Hinweis-System -->
+        <div class="hint-container">
+            <div class="hint-coins">
+                <span class="hint-coins-icon">🪙</span>
+                <span id="hint-coins-count">0</span> Münzen
             </div>
-            <div id="feedback-message"></div>
+            <div class="hint-buttons">
+                <button class="hint-button" onclick="buyPowerUp('removeWrong')">
+                    <span class="hint-button-icon">❌</span> 2 Falsche entfernen (10 🪙)
+                </button>
+                <button class="hint-button" onclick="buyPowerUp('showHint')">
+                    <span class="hint-button-icon">💡</span> Hinweis zeigen (5 🪙)
+                </button>
+                <button class="hint-button" onclick="buyPowerUp('extraTime')">
+                    <span class="hint-button-icon">⏱️</span> Extra Zeit (8 🪙)
+                </button>
+            </div>
         </div>
+        
+        <!-- Power-Ups -->
+        <div class="power-ups">
+            <div class="power-up" onclick="usePowerUp('removeWrong')">
+                <span class="power-up-icon">❌</span> 2 Falsche
+                <span class="power-up-count" id="removeWrong-count">0</span>
+            </div>
+            <div class="power-up" onclick="usePowerUp('showHint')">
+                <span class="power-up-icon">💡</span> Hinweis
+                <span class="power-up-count" id="showHint-count">0</span>
+            </div>
+            <div class="power-up" onclick="usePowerUp('extraTime')">
+                <span class="power-up-icon">⏱️</span> Extra Zeit
+                <span class="power-up-count" id="extraTime-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Tägliche Herausforderung -->
+        <div class="daily-challenge" id="daily-challenge">
+            <h3>Tägliche Herausforderung</h3>
+            <p id="daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
+            <div class="daily-challenge-status" id="daily-challenge-status">0/5 geschafft</div>
+            <div class="daily-challenge-reward" id="daily-challenge-reward">Belohnung: 50 XP</div>
+        </div>
+        
+        <!-- Login Streak -->
+        <div class="login-streak" id="login-streak">
+            <!-- Wird dynamisch mit JavaScript gefüllt -->
+        </div>
+        
+        <div id="quiz-container"></div>
+        
+        <div class="score-container">
+            <div class="score" id="score">Punktzahl: 0 Punkte 📊</div>
+            <div id="xp-display">XP: 0/100</div>
+        </div>
+        
+        <div class="total-xp">Gesamt-XP: <span id="total-xp">0</span></div>
+        
+        <!-- Fortschrittspfad -->
+        <div class="progress-path">
+            <h3>Dein Lernfortschritt 📚</h3>
+            <div class="progress-path-line">
+                <div class="progress-path-fill" id="progress-path-fill"></div>
+                <div class="progress-milestone" style="left: 10%" id="milestone-1" title="Anfänger">🥉</div>
+                <div class="progress-milestone" style="left: 30%" id="milestone-2" title="Fortgeschritten">🥈</div>
+                <div class="progress-milestone" style="left: 60%" id="milestone-3" title="Profi">🥇</div>
+                <div class="progress-milestone" style="left: 90%" id="milestone-4" title="Meister">👑</div>
+            </div>
+            <div id="path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
+        </div>
+        
+        <div class="badge-container" id="badge-container">
+            <div class="badge" id="badge-beginner">
+                <div class="badge-icon">🥉</div>
+                <div class="badge-name">Anfänger (100 XP)</div>
+            </div>
+            <div class="badge" id="badge-intermediate">
+                <div class="badge-icon">🥈</div>
+                <div class="badge-name">Fortgeschritten (350 XP)</div>
+            </div>
+            <div class="badge" id="badge-advanced">
+                <div class="badge-icon">🥇</div>
+                <div class="badge-name">Profi (750 XP)</div>
+            </div>
+            <div class="badge" id="badge-master">
+                <div class="badge-icon">👑</div>
+                <div class="badge-name">Meister (1500 XP)</div>
+            </div>
+        </div>
+        
+        <div class="stats-container hidden" id="stats-container">
+            <h2>Deine Statistiken 📈</h2>
+            <p>Gespielte Quizze: <span id="total-quizzes">0</span></p>
+            <p>Korrekte Antworten: <span id="total-correct">0</span></p>
+            <p>Durchschnittliche Punktzahl: <span id="average-score">0</span></p>
+            <p>Längste Streak: <span id="best-streak">0</span></p>
+            <p>Verdiente Badges: <span id="earned-badges">0</span>/4</p>
+        </div>
+
+        <!-- Achievement popup -->
+        <div class="achievement-popup" id="achievement-popup"></div>
+            <h2 id="achievement-title">Achievement Unlocked!</h2>
+            <div class="badge-icon" id="achievement-icon">🏆</div>
+            <p id="achievement-description">Du hast etwas Großartiges erreicht!</p>
+            <button onclick="closeAchievementPopup()">Super!</button>
+        </div>
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Bonus-Popup -->
+        <div class="bonus-popup" id="bonus-popup"></div>
     </div>
 
-    <div class="controls">
-        <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
-        <button onclick="newQuiz()">🔄 Neues Quiz</button>
-        <button onclick="toggleStats()">📊 Statistiken</button>
-        <button onclick="toggleTimerMode()" id="timer-toggle">⏱️ Zeitmodus</button>
-    </div>
-    <h1>💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
-    
-    <!-- Timer Container -->
-    <div class="timer-container" id="timer-container" style="display: none;">
-        <div class="timer-bar" id="timer-bar"></div>
-        <div class="time-bonus-indicator" id="time-bonus">+5 XP</div>
-        <div class="timer-mode-badge">⏱️ ZEITMODUS</div>
-    </div>
-    
-    <!-- Hinweis-System -->
-    <div class="hint-container">
-        <div class="hint-coins">
-            <span class="hint-coins-icon">🪙</span>
-            <span id="hint-coins-count">0</span> Münzen
-        </div>
-        <div class="hint-buttons">
-            <button class="hint-button" onclick="buyPowerUp('removeWrong')">
-                <span class="hint-button-icon">❌</span> 2 Falsche entfernen (10 🪙)
-            </button>
-            <button class="hint-button" onclick="buyPowerUp('showHint')">
-                <span class="hint-button-icon">💡</span> Hinweis zeigen (5 🪙)
-            </button>
-            <button class="hint-button" onclick="buyPowerUp('extraTime')">
-                <span class="hint-button-icon">⏱️</span> Extra Zeit (8 🪙)
-            </button>
-        </div>
-    </div>
-    
-    <!-- Power-Ups -->
-    <div class="power-ups">
-        <div class="power-up" onclick="usePowerUp('removeWrong')">
-            <span class="power-up-icon">❌</span> 2 Falsche
-            <span class="power-up-count" id="removeWrong-count">0</span>
-        </div>
-        <div class="power-up" onclick="usePowerUp('showHint')">
-            <span class="power-up-icon">💡</span> Hinweis
-            <span class="power-up-count" id="showHint-count">0</span>
-        </div>
-        <div class="power-up" onclick="usePowerUp('extraTime')">
-            <span class="power-up-icon">⏱️</span> Extra Zeit
-            <span class="power-up-count" id="extraTime-count">0</span>
-        </div>
-    </div>
-    
-    <!-- Tägliche Herausforderung -->
-    <div class="daily-challenge" id="daily-challenge">
-        <h3>Tägliche Herausforderung</h3>
-        <p id="daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
-        <div class="daily-challenge-status" id="daily-challenge-status">0/5 geschafft</div>
-        <div class="daily-challenge-reward" id="daily-challenge-reward">Belohnung: 50 XP</div>
-    </div>
-    
-    <!-- Login Streak -->
-    <div class="login-streak" id="login-streak">
-        <!-- Wird dynamisch mit JavaScript gefüllt -->
-    </div>
-    
-    <div id="quiz-container"></div>
-    
-    <div class="score-container">
-        <div class="score" id="score">Punktzahl: 0 Punkte 📊</div>
-        <div id="xp-display">XP: 0/100</div>
-    </div>
-    
-    <div class="total-xp">Gesamt-XP: <span id="total-xp">0</span></div>
-    
-    <!-- Fortschrittspfad -->
-    <div class="progress-path">
-        <h3>Dein Lernfortschritt 📚</h3>
-        <div class="progress-path-line">
-            <div class="progress-path-fill" id="progress-path-fill"></div>
-            <div class="progress-milestone" style="left: 10%" id="milestone-1" title="Anfänger">🥉</div>
-            <div class="progress-milestone" style="left: 30%" id="milestone-2" title="Fortgeschritten">🥈</div>
-            <div class="progress-milestone" style="left: 60%" id="milestone-3" title="Profi">🥇</div>
-            <div class="progress-milestone" style="left: 90%" id="milestone-4" title="Meister">👑</div>
-        </div>
-        <div id="path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
-    </div>
-    
-    <div class="badge-container" id="badge-container">
-        <div class="badge" id="badge-beginner">
-            <div class="badge-icon">🥉</div>
-            <div class="badge-name">Anfänger (100 XP)</div>
-        </div>
-        <div class="badge" id="badge-intermediate">
-            <div class="badge-icon">🥈</div>
-            <div class="badge-name">Fortgeschritten (350 XP)</div>
-        </div>
-        <div class="badge" id="badge-advanced">
-            <div class="badge-icon">🥇</div>
-            <div class="badge-name">Profi (750 XP)</div>
-        </div>
-        <div class="badge" id="badge-master">
-            <div class="badge-icon">👑</div>
-            <div class="badge-name">Meister (1500 XP)</div>
-        </div>
-    </div>
-    
-    <div class="stats-container hidden" id="stats-container">
-        <h2>Deine Statistiken 📈</h2>
-        <p>Gespielte Quizze: <span id="total-quizzes">0</span></p>
-        <p>Korrekte Antworten: <span id="total-correct">0</span></p>
-        <p>Durchschnittliche Punktzahl: <span id="average-score">0</span></p>
-        <p>Längste Streak: <span id="best-streak">0</span></p>
-        <p>Verdiente Badges: <span id="earned-badges">0</span>/4</p>
-    </div>
+    <style>
+        .quiz-selection-menu {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
 
-    <!-- Achievement popup -->
-    <div class="achievement-popup" id="achievement-popup">
-        <h2 id="achievement-title">Achievement Unlocked!</h2>
-        <div class="badge-icon" id="achievement-icon">🏆</div>
-        <p id="achievement-description">Du hast etwas Großartiges erreicht!</p>
-        <button onclick="closeAchievementPopup()">Super!</button>
-    </div>
-    <div class="overlay" id="overlay"></div>
+        .quiz-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
 
-    <!-- Bonus-Popup -->
-    <div class="bonus-popup" id="bonus-popup"></div>
+        .quiz-category {
+            background: var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .quiz-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .quiz-category h3 {
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-category p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .back-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
 
     <script>
+        // Verfügbare Quiz-Kategorien
+        const quizCategories = [
+            {
+                id: 'cpu',
+                name: 'CPU Quiz',
+                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+                file: 'questions.json'
+            },
+            {
+                id: 'mb',
+                name: 'MainBoard Quiz',
+                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+                file: 'mainboard.json'
+            },
+            {
+                id: 'gw',
+                name: 'Elektrogrundlagen Quiz',
+                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+                file: 'grundwissen.json'
+            },
+            {
+                id: 'mix',
+                name: 'Gemischtes Quiz',
+                description: 'Eine Mischung aus allen verfügbaren Fragen',
+                isMixed: true
+            }
+        ];
+
+        let allQuestions = []; // Speichert alle Fragen aus allen JSONs
+        let currentCategoryId = null;
+
+        // Funktion zum Laden aller Fragen aus allen JSON-Dateien
+        async function loadAllQuestions() {
+            try {
+                // Lade zunächst alle nicht-gemischten Kategorien
+                for (const category of quizCategories) {
+                    if (!category.isMixed) {
+                        const response = await fetch(category.file);
+                        if (!response.ok) {
+                            throw new Error(`Fehler beim Laden von ${category.file}`);
+                        }
+                        const data = await response.json();
+                        // Speichere die Kategorie-ID bei jeder Frage
+                        const questionsWithCategory = data.questions.map(q => ({...q, categoryId: category.id}));
+                        allQuestions = allQuestions.concat(questionsWithCategory);
+                    }
+                }
+            } catch (error) {
+                console.error('Fehler beim Laden der Fragen:', error);
+                showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
+            }
+        }
+
+        // Zeige das Auswahlmenü
+        function showQuizMenu() {
+            document.getElementById('quiz-selection-menu').style.display = 'block';
+            document.getElementById('quiz-content').style.display = 'none';
+            
+            // Erstelle die Kategorie-Karten
+            const categoriesContainer = document.getElementById('quiz-categories');
+            categoriesContainer.innerHTML = quizCategories.map(category => `
+                <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
+                    <h3>${category.name}</h3>
+                    <p>${category.description}</p>
+                </div>
+            `).join('');
+        }
+
+        // Starte ein spezifisches Quiz
+        async function startQuizCategory(categoryId) {
+            currentCategoryId = categoryId;
+            const category = quizCategories.find(c => c.id === categoryId);
+            
+            try {
+                if (category.isMixed) {
+                    // Für gemischtes Quiz, verwende alle geladenen Fragen
+                    questions = [...allQuestions];
+                } else {
+                    // Für spezifische Kategorie, lade nur diese Fragen
+                    const response = await fetch(category.file);
+                    if (!response.ok) {
+                        throw new Error(`Fehler beim Laden von ${category.file}`);
+                    }
+                    const data = await response.json();
+                    questions = data.questions;
+                }
+                
+                document.getElementById('quiz-selection-menu').style.display = 'none';
+                document.getElementById('quiz-content').style.display = 'block';
+                
+                loadSavedData();
+                newQuiz();
+            } catch (error) {
+                console.error('Fehler beim Laden der Fragen:', error);
+                showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
+            }
+        }
+
+        // Zurück zum Menü
+        function backToMenu() {
+            showQuizMenu();
+        }
+
+        // Zeige Fehlermeldung
+        function showError(message) {
+            document.getElementById('quiz-container').innerHTML = 
+                `<div class="error-message">${message}</div>`;
+        }
+
+        // Initialisierung
+        async function init() {
+            await loadAllQuestions(); // Lade zuerst alle Fragen
+            showQuizMenu(); // Zeige dann das Menü
+        }
+
+        // Starte die Anwendung
+        init();
+
         // Fragen-Array wird durch asynchrones Laden ersetzt
         let questions = [];
         

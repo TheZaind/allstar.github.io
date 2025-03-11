@@ -1,0 +1,114 @@
+{
+    "questions": [
+        {
+            "question": "Was ist der Hauptzweck eines Mainboards? 🖥️",
+            "options": [
+                "Die Verbindung und Kommunikation zwischen allen Hardwarekomponenten",
+                "Nur die Stromversorgung der Komponenten",
+                "Ausschließlich die CPU zu kühlen",
+                "Nur USB-Ports bereitzustellen"
+            ],
+            "correct": 0,
+            "hint": "Es ist das zentrale Verbindungselement eines Computers."
+        },
+        {
+            "question": "Was ist ein BIOS/UEFI? ⚙️",
+            "options": [
+                "Ein Betriebssystem",
+                "Ein Grundprogramm im ROM des Mainboards",
+                "Ein Grafiktreiber",
+                "Ein Antivirenprogramm"
+            ],
+            "correct": 1,
+            "hint": "Es wird beim Bootvorgang als Erstes geladen und initialisiert die Hardware."
+        },
+        {
+            "question": "Welche Komponente ist NICHT auf einem modernen Mainboard zu finden? 🔍",
+            "options": [
+                "Northbridge",
+                "CPU-Sockel",
+                "RAM-Slots",
+                "SATA-Anschlüsse"
+            ],
+            "correct": 0,
+            "hint": "Diese Komponente wurde in moderne CPUs integriert und ist nicht mehr auf dem Mainboard zu finden."
+        },
+        {
+            "question": "Was ist ein wichtiger Bestandteil des Chipsets auf einem Mainboard? 🧩",
+            "options": [
+                "Der Bildschirm",
+                "Die Southbridge/PCH",
+                "Die Tastatur",
+                "Der Drucker"
+            ],
+            "correct": 1,
+            "hint": "Dieser Teil des Chipsets steuert verschiedene I/O-Funktionen."
+        },
+        {
+            "question": "Welche Anschlüsse befinden sich typischerweise auf einem modernen Mainboard? 🔌",
+            "options": [
+                "Nur USB-Anschlüsse",
+                "Nur HDMI-Anschlüsse",
+                "USB, PCIe, SATA, RAM-Slots und mehr",
+                "Ausschließlich Netzwerkanschlüsse"
+            ],
+            "correct": 2,
+            "hint": "Ein modernes Mainboard bietet verschiedene Anschlussmöglichkeiten für unterschiedliche Komponenten."
+        },
+        {
+            "question": "Was ist ein wichtiges Merkmal des ATX-Formfaktors? 📏",
+            "options": [
+                "Er ist nur für Laptops geeignet",
+                "Er definiert standardisierte Größen und Montagepunkte",
+                "Er wird nur bei Servern verwendet",
+                "Er ist veraltet und wird nicht mehr verwendet"
+            ],
+            "correct": 1,
+            "hint": "Der ATX-Standard ermöglicht die Kompatibilität zwischen verschiedenen Komponenten."
+        },
+        {
+            "question": "Welche Funktion hat der CPU-Sockel auf dem Mainboard? 🔧",
+            "options": [
+                "Nur zur Dekoration",
+                "Mechanische und elektrische Verbindung zur CPU",
+                "Nur zur Kühlung",
+                "Speicherung von Daten"
+            ],
+            "correct": 1,
+            "hint": "Der Sockel stellt die Verbindung zwischen Mainboard und Prozessor her."
+        },
+        {
+            "question": "Was sind PCIe-Slots auf dem Mainboard? 🎮",
+            "options": [
+                "Nur für USB-Sticks",
+                "Anschlüsse für Erweiterungskarten wie Grafikkarten",
+                "Ausschließlich für Festplatten",
+                "Nur für Arbeitsspeicher"
+            ],
+            "correct": 1,
+            "hint": "PCIe-Slots dienen zur Erweiterung des Systems mit zusätzlichen Komponenten."
+        },
+        {
+            "question": "Welche Rolle spielt das CMOS auf dem Mainboard? ⚡",
+            "options": [
+                "Nur Stromversorgung",
+                "Speicherung von BIOS-Einstellungen",
+                "Grafikanzeige",
+                "Internetverbindung"
+            ],
+            "correct": 1,
+            "hint": "Das CMOS speichert wichtige Systemeinstellungen auch ohne Stromversorgung."
+        },
+        {
+            "question": "Was ist ein wichtiges Merkmal moderner Mainboard-BIOS/UEFI? 🖱️",
+            "options": [
+                "Keine Mausunterstützung",
+                "Grafische Benutzeroberfläche und Maussteuerung",
+                "Nur Tastatursteuerung",
+                "Keine Einstellungsmöglichkeiten"
+            ],
+            "correct": 1,
+            "hint": "Moderne BIOS/UEFI-Systeme bieten eine benutzerfreundliche Oberfläche."
+        }
+    ]
+}

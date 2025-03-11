@@ -1,0 +1,1533 @@
+{
+    "questions": [
+        {
+            "question": "Was ist die Hauptfunktion eines PC-Gehäuses? 🏠",
+            "options": [
+                "Nur zur Dekoration",
+                "Schutz vor äußeren Einflüssen und Aufnahme der Komponenten",
+                "Nur zur Kühlung",
+                "Nur zum Transport"
+            ],
+            "correct": 1,
+            "hint": "Es schützt die internen Komponenten und bietet Platz für deren Montage."
+        },
+        {
+            "question": "Welche Schutzart wird durch IP65 beschrieben? 🛡️",
+            "options": [
+                "Wasserdicht",
+                "Staubdicht und Schutz gegen Strahlwasser",
+                "Nur spritzwassergeschützt",
+                "Wasserdicht und feuerfest"
+            ],
+            "correct": 1,
+            "hint": "IP65 bietet Schutz gegen Staub und Strahlwasser aus beliebigem Winkel."
+        },
+        {
+            "question": "Was bedeutet die erste Ziffer in der IP-Schutzart? 🔢",
+            "options": [
+                "Schutz vor Wasser",
+                "Schutz vor Feuer",
+                "Schutz vor Berührung und Fremdkörpern",
+                "Schutz vor Hitze"
+            ],
+            "correct": 2,
+            "hint": "Die erste Ziffer beschreibt den Schutz gegen feste Fremdkörper."
+        },
+        {
+            "question": "Welche Bauform ist typisch für Server? 📦",
+            "options": [
+                "Big Tower",
+                "Rack-Mount",
+                "Mini Tower",
+                "Desktop Case"
+            ],
+            "correct": 1,
+            "hint": "Server werden oft in Racks montiert, um Platz zu sparen und die Kühlung zu optimieren."
+        },
+        {
+            "question": "Was ist ein häufiges Problem bei der PC-Kühlung? 🌡️",
+            "options": [
+                "Zu viele Lüfter",
+                "Zu niedrige Temperaturen",
+                "Staubablagerungen",
+                "Zu große Gehäuse"
+            ],
+            "correct": 2,
+            "hint": "Staub kann die Effizienz der Kühlung erheblich beeinträchtigen."
+        },
+        {
+            "question": "Wie viele Pole hat ein PWM-Lüfteranschluss? 🔌",
+            "options": [
+                "2 Pole",
+                "3 Pole",
+                "4 Pole",
+                "5 Pole"
+            ],
+            "correct": 2,
+            "hint": "PWM-Lüfteranschlüsse haben in der Regel 4 Pole."
+        },
+        {
+            "question": "Was ist eine Heatpipe? 🌡️",
+            "options": [
+                "Ein Wärmeübertrager",
+                "Ein Lüfter",
+                "Ein Netzteil",
+                "Ein USB-Anschluss"
+            ],
+            "correct": 0,
+            "hint": "Heatpipes werden verwendet, um Wärme effizient von einer Stelle zur anderen zu transportieren."
+        },
+        {
+            "question": "Welche Bauform war als 'Pizza box' bekannt? 🍕",
+            "options": [
+                "Dell Desktop",
+                "Macintosh LC II",
+                "IBM Tower",
+                "Gaming PC"
+            ],
+            "correct": 1,
+            "hint": "Diese Bauform war flach und breit, ähnlich einer Pizzaschachtel."
+        },
+        {
+            "question": "Was ist Case-Modding? 🎨",
+            "options": [
+                "Gehäusereparatur",
+                "Softwareoptimierung",
+                "Individuelle Gehäusegestaltung",
+                "Lüftereinbau"
+            ],
+            "correct": 2,
+            "hint": "Case-Modding bezieht sich auf die individuelle Gestaltung und Modifikation von PC-Gehäusen."
+        },
+        {
+            "question": "Welche Alternative gibt es zur Luftkühlung? ",
+            "options": [
+                "Keine",
+                "Nur Passivkühlung",
+                "Wasserkühlung",
+                "Nur Heatpipes"
+            ],
+            "correct": 2,
+            "hint": "Wasserkühlung ist eine effektive Alternative zur Luftkühlung."
+        },
+        {
+            "question": "Was bedeutet BTX bei Gehäusen? 🔄",
+            "options": [
+                "Basic Tower Extension",
+                "Balanced Technology Extended",
+                "Better Thermal Extension",
+                "Basic Thermal Exchange"
+            ],
+            "correct": 1,
+            "hint": "BTX ist ein Formfaktor, der entwickelt wurde, um die Kühlung und den Luftstrom zu verbessern."
+        },
+        {
+            "question": "Welche Funktion hat ein Tachosignal beim Lüfter? 📊",
+            "options": [
+                "Stromversorgung",
+                "Drehzahlmessung",
+                "Temperaturmessung",
+                "Lüftersteuerung"
+            ],
+            "correct": 1,
+            "hint": "Das Tachosignal wird verwendet, um die Drehzahl des Lüfters zu überwachen."
+        },
+        {
+            "question": "Was ist PWM bei Lüftern? ⚡",
+            "options": [
+                "Power Wattage Management",
+                "Permanent Water Movement",
+                "Pulse Width Modulation",
+                "Performance Water Management"
+            ],
+            "correct": 2,
+            "hint": "PWM steht für Pulsweitenmodulation und wird zur Steuerung der Lüftergeschwindigkeit verwendet."
+        },
+        {
+            "question": "Welchen Vorteil bietet ein Industrie-PC-Gehäuse? 🏭",
+            "options": [
+                "Besseres Design",
+                "Höherer Schutz vor Umwelteinflüssen",
+                "Niedrigerer Preis",
+                "Geringeres Gewicht"
+            ],
+            "correct": 1,
+            "hint": "Industrie-PC-Gehäuse sind robust und bieten Schutz vor Staub, Feuchtigkeit und anderen Umwelteinflüssen."
+        },
+        {
+            "question": "Was bedeutet die zweite Ziffer der IP-Schutzart? 💧",
+            "options": [
+                "Schutz vor Staub",
+                "Schutz vor Feuer",
+                "Schutz vor Wasser",
+                "Schutz vor Stößen"
+            ],
+            "correct": 2,
+            "hint": "Die zweite Ziffer beschreibt den Schutz gegen Wasser."
+        },
+        {
+            "question": "Welches Material wird häufig für Heatpipes verwendet? 🔧",
+            "options": [
+                "Aluminium",
+                "Plastik",
+                "Kupfer",
+                "Holz"
+            ],
+            "correct": 2,
+            "hint": "Kupfer wird wegen seiner hohen Wärmeleitfähigkeit häufig für Heatpipes verwendet."
+        },
+        {
+            "question": "Was ist ein wichtiges Auswahlkriterium für ein Gehäuse? 📏",
+            "options": [
+                "Nur die Farbe",
+                "Die Größe und der Formfaktor",
+                "Nur der Preis",
+                "Nur das Gewicht"
+            ],
+            "correct": 1,
+            "hint": "Die Größe und der Formfaktor bestimmen, welche Komponenten in das Gehäuse passen."
+        },
+        {
+            "question": "Was ist ein Mini Tower? 🏢",
+            "options": [
+                "Ein Server-Gehäuse",
+                "Eine kompakte PC-Gehäuseform",
+                "Ein Laptop",
+                "Ein Tablet"
+            ],
+            "correct": 1,
+            "hint": "Ein Mini Tower ist eine kleinere Version eines Standard-PC-Gehäuses."
+        },
+        {
+            "question": "Welche Art von Kühlung ist am wartungsärmsten? ❄️",
+            "options": [
+                "Wasserkühlung",
+                "Luftkühlung mit vielen Lüftern",
+                "Passive Kühlung",
+                "Öl-Kühlung"
+            ],
+            "correct": 2,
+            "hint": "Passive Kühlung hat keine beweglichen Teile und erfordert daher weniger Wartung."
+        },
+        {
+            "question": "Was ist die Hauptfunktion eines PC-Gehäuses? 🏠",
+            "options": [
+                "Schutz vor äußeren Einflüssen und Aufnahme der Komponenten",
+                "Nur zur Dekoration",
+                "Nur zur Kühlung",
+                "Nur zum Transport"
+            ],
+            "correct": 0,
+            "hint": "Es schützt die internen Komponenten und bietet Platz für deren Montage."
+        },
+        {
+            "question": "Welche Schutzart wird durch IP65 beschrieben? 🛡️",
+            "options": [
+                "Wasserdicht",
+                "Staubdicht und Schutz gegen Strahlwasser",
+                "Nur spritzwassergeschützt",
+                "Wasserdicht und feuerfest"
+            ],
+            "correct": 1,
+            "hint": "IP65 bietet Schutz gegen Staub und Strahlwasser aus beliebigem Winkel."
+        },
+        {
+            "question": "Was bedeutet die erste Ziffer in der IP-Schutzart? 🔢",
+            "options": [
+                "Schutz vor Wasser",
+                "Schutz vor Feuer",
+                "Schutz vor Berührung und Fremdkörpern",
+                "Schutz vor Hitze"
+            ],
+            "correct": 2,
+            "hint": "Die erste Ziffer beschreibt den Schutz gegen feste Fremdkörper."
+        },
+        {
+            "question": "Was ist der beste Kühlungsansatz für staubige Umgebungen? 🌪️",
+            "options": [
+                "Viele kleine Lüfter",
+                "Keine Lüfter",
+                "Wasserkühlung",
+                "Passivkühlung mit Heatpipes"
+            ],
+            "correct": 3,
+            "hint": "Passivkühlung mit Heatpipes ist in staubigen Umgebungen am effektivsten."
+        },
+        {
+            "question": "Welche Bauform ist typisch für Server? 📦",
+            "options": [
+                "Mini Tower",
+                "Rack-Mount",
+                "Desktop Case",
+                "Cube"
+            ],
+            "correct": 1,
+            "hint": "Server werden oft in Racks montiert, um Platz zu sparen und die Kühlung zu optimieren."
+        },
+        {
+            "question": "Welches Kühlkonzept benötigt die meiste Wartung? ⚙️",
+            "options": [
+                "Wasserkühlung",
+                "Passivkühlung",
+                "Luftkühlung",
+                "Heatpipes"
+            ],
+            "correct": 0,
+            "hint": "Wasserkühlung erfordert regelmäßige Wartung, um Lecks und Verunreinigungen zu vermeiden."
+        },
+        {
+            "question": "Was ist eine typische Eigenschaft von Industrie-PCs? 🏭",
+            "options": [
+                "Besonders schönes Design",
+                "Günstiger Preis",
+                "Hoher Schutz gegen Umwelteinflüsse",
+                "Maximale Leistung"
+            ],
+            "correct": 2,
+            "hint": "Industrie-PCs sind robust und bieten Schutz vor Staub, Feuchtigkeit und anderen Umwelteinflüssen."
+        },
+        {
+            "question": "Wie viele Pole hat ein PWM-Lüfteranschluss? 🔌",
+            "options": [
+                "2 Pole",
+                "3 Pole",
+                "4 Pole",
+                "5 Pole"
+            ],
+            "correct": 2,
+            "hint": "PWM-Lüfteranschlüsse haben in der Regel 4 Pole."
+        },
+        {
+            "question": "Was ist der Hauptvorteil von Heatpipes? 🌡️",
+            "options": [
+                "Hohe Wärmestromdichte auf kleiner Fläche",
+                "Günstiger Preis",
+                "Einfache Wartung",
+                "Geringes Gewicht"
+            ],
+            "correct": 0,
+            "hint": "Heatpipes können große Mengen an Wärme effizient transportieren."
+        },
+        {
+            "question": "Welche Gehäuseform wurde als 'Pizza box' bezeichnet? 🍕",
+            "options": [
+                "Dell Desktop",
+                "Apple iMac",
+                "Macintosh LC II",
+                "IBM Tower"
+            ],
+            "correct": 2,
+            "hint": "Diese Bauform war flach und breit, ähnlich einer Pizzaschachtel."
+        },
+        {
+            "question": "Was kennzeichnet Case-Modding? 🎨",
+            "options": [
+                "Standardgehäuse",
+                "Günstige Produktion",
+                "Individuelle Gestaltung",
+                "Maximale Kühlung"
+            ],
+            "correct": 2,
+            "hint": "Case-Modding bezieht sich auf die individuelle Gestaltung und Modifikation von PC-Gehäusen."
+        },
+        {
+            "question": "Welches Kühlmedium wird NICHT in PCs verwendet? 💧",
+            "options": [
+                "Wasser",
+                "Öl",
+                "Stickstoff",
+                "Quecksilber"
+            ],
+            "correct": 3,
+            "hint": "Quecksilber wird aufgrund seiner Toxizität und Gefährlichkeit nicht verwendet."
+        },
+        {
+            "question": "Was bedeutet BTX bei Gehäusen? 🔄",
+            "options": [
+                "Basic Tower Extension",
+                "Balanced Technology Extended",
+                "Better Thermal Exchange",
+                "Basic Thermal Extension"
+            ],
+            "correct": 1,
+            "hint": "BTX ist ein Formfaktor, der entwickelt wurde, um die Kühlung und den Luftstrom zu verbessern."
+        },
+        {
+            "question": "Wozu dient das Tachosignal beim Lüfter? 📊",
+            "options": [
+                "Zur Stromversorgung",
+                "Zur Drehzahlmessung",
+                "Zur Temperaturmessung",
+                "Zur Lüftersteuerung"
+            ],
+            "correct": 1,
+            "hint": "Das Tachosignal wird verwendet, um die Drehzahl des Lüfters zu überwachen."
+        },
+        {
+            "question": "Was ist die häufigste Ursache für Überhitzung? 🔥",
+            "options": [
+                "Verstaubte Lüfter",
+                "Zu große Gehäuse",
+                "Zu viele Lüfter",
+                "Zu dicke Wände"
+            ],
+            "correct": 0,
+            "hint": "Staub kann die Effizienz der Kühlung erheblich beeinträchtigen."
+        },
+        {
+            "question": "Welche IP-Schutzart bietet den höchsten Wasserschutz? 💦",
+            "options": [
+                "IP54",
+                "IP65",
+                "IP67",
+                "IP68"
+            ],
+            "correct": 3,
+            "hint": "IP68 bietet den höchsten Schutz gegen Wasser und ermöglicht sogar das Eintauchen in Wasser."
+        },
+        {
+            "question": "Was ist ein Nachteil von Wasserkühlung? 🚰",
+            "options": [
+                "Zu laut",
+                "Wartungsaufwändig",
+                "Zu schwer",
+                "Zu ineffizient"
+            ],
+            "correct": 1,
+            "hint": "Wasserkühlung erfordert regelmäßige Wartung, um Lecks und Verunreinigungen zu vermeiden."
+        },
+        {
+            "question": "Welches Material wird häufig für Heatpipes verwendet? 🔧",
+            "options": [
+                "Aluminium",
+                "Plastik",
+                "Kupfer",
+                "Eisen"
+            ],
+            "correct": 2,
+            "hint": "Kupfer wird wegen seiner hohen Wärmeleitfähigkeit häufig für Heatpipes verwendet."
+        },
+        {
+            "question": "Was schützt am besten vor elektromagnetischen Störungen? 📡",
+            "options": [
+                "Plastikgehäuse",
+                "Holzgehäuse",
+                "Aluminiumgehäuse",
+                "Metallgehäuse mit Abschirmung"
+            ],
+            "correct": 3,
+            "hint": "Metallgehäuse mit Abschirmung bieten den besten Schutz vor elektromagnetischen Störungen."
+        },
+        {
+            "question": "Welche Bauform eignet sich am besten für Mobilität? 📱",
+            "options": [
+                "Mini Tower",
+                "Big Tower",
+                "Desktop Case",
+                "Cube"
+            ],
+            "correct": 0,
+            "hint": "Mini Tower sind kompakt und leicht zu transportieren."
+        },
+        {
+            "question": "Was ist KEIN typisches Auswahlkriterium für ein Gehäuse? 📋",
+            "options": [
+                "Größe",
+                "Farbe",
+                "Markenname",
+                "Herstellungsland"
+            ],
+            "correct": 3,
+            "hint": "Das Herstellungsland ist normalerweise kein entscheidendes Kriterium bei der Auswahl eines Gehäuses."
+        },
+        {
+            "question": "Welcher Lüfteranschluss bietet die meisten Funktionen? 🔌",
+            "options": [
+                "2-polig",
+                "3-polig",
+                "4-polig mit PWM",
+                "5-polig"
+            ],
+            "correct": 2,
+            "hint": "4-polige Anschlüsse mit PWM bieten die meisten Steuerungsmöglichkeiten."
+        },
+        {
+            "question": "Was ist der Hauptvorteil eines Big Tower Gehäuses? 🏢",
+            "options": [
+                "Mehr Platz für Komponenten",
+                "Bessere Kühlung",
+                "Günstigerer Preis",
+                "Leichterer Transport"
+            ],
+            "correct": 0,
+            "hint": "Big Tower bieten viel Platz für zusätzliche Komponenten und bessere Kühlmöglichkeiten."
+        },
+        {
+            "question": "Welche Kühlung ist am leisesten? 🤫",
+            "options": [
+                "Viele kleine Lüfter",
+                "Wenige große Lüfter",
+                "Wasserkühlung",
+                "Passive Kühlung"
+            ],
+            "correct": 3,
+            "hint": "Passive Kühlung hat keine beweglichen Teile und ist daher sehr leise."
+        },
+        {
+            "question": "Was bedeutet 'X' in einer IP-Schutzart (z.B. IPX4)? ❓",
+            "options": [
+                "Extra Schutz",
+                "Keine Angabe",
+                "Maximaler Schutz",
+                "Kein Schutz"
+            ],
+            "correct": 1,
+            "hint": "Das 'X' bedeutet, dass keine Angabe für diesen Schutzgrad gemacht wurde."
+        },
+        {
+            "question": "Wozu dient ein Staubfilter im Gehäuse? 🌪️",
+            "options": [
+                "Zur Schalldämmung",
+                "Zum Schutz vor Staub",
+                "Zur Luftführung",
+                "Zur Dekoration"
+            ],
+            "correct": 1,
+            "hint": "Staubfilter verhindern, dass Staub in das Gehäuse eindringt und die Komponenten verschmutzt."
+        },
+        {
+            "question": "Was ist ein typisches Merkmal von Gaming-Gehäusen? 🎮",
+            "options": [
+                "Besonders klein",
+                "RGB-Beleuchtung",
+                "Keine Lüfter",
+                "Nur schwarze Farbe"
+            ],
+            "correct": 1,
+            "hint": "Gaming-Gehäuse sind oft mit RGB-Beleuchtung ausgestattet."
+        },
+        {
+            "question": "Welches Material eignet sich NICHT für ein PC-Gehäuse? 🏗️",
+            "options": [
+                "Aluminium",
+                "Kunststoff",
+                "Pappe",
+                "Gehärtetes Glas"
+            ],
+            "correct": 2,
+            "hint": "Pappe ist nicht stabil genug für ein PC-Gehäuse."
+        },
+        {
+            "question": "Welche Kühlung eignet sich am besten für übertaktete CPUs? ⚡",
+            "options": [
+                "Passive Kühlung",
+                "Kleine Lüfter",
+                "Heatpipes",
+                "Wasserkühlung"
+            ],
+            "correct": 3,
+            "hint": "Wasserkühlung bietet die beste Leistung für übertaktete CPUs."
+        },
+        {
+            "question": "Was ist die Hauptaufgabe eines Computernetzteils? ⚡",
+            "options": [
+                "Nur Kühlung der Komponenten",
+                "Versorgung aller Verbraucher mit benötigter Energie",
+                "Nur Spannungsregulierung",
+                "Nur Stromverteilung"
+            ],
+            "correct": 1,
+            "hint": "Das Netzteil versorgt alle Komponenten des Computers mit der benötigten Energie."
+        },
+        {
+            "question": "Welche Schutzschaltung verhindert Überspannung? 🔌",
+            "options": [
+                "UVP",
+                "OCP",
+                "OVP",
+                "SCP"
+            ],
+            "correct": 2,
+            "hint": "OVP schützt vor Überspannung."
+        },
+        {
+            "question": "Was bedeutet PSU? 💡",
+            "options": [
+                "Power Safety Unit",
+                "Power Supply Unit",
+                "Power System Upgrade",
+                "Power Service Utility"
+            ],
+            "correct": 1,
+            "hint": "PSU steht für Power Supply Unit."
+        },
+        {
+            "question": "Welche Effizienz-Zertifizierung ist die höchste? ⭐",
+            "options": [
+                "80 PLUS Bronze",
+                "80 PLUS Gold",
+                "80 PLUS Platinum",
+                "80 PLUS Titanium"
+            ],
+            "correct": 3,
+            "hint": "80 PLUS Titanium ist die höchste Effizienz-Zertifizierung."
+        },
+        {
+            "question": "Was ist ein Vorteil des 12V-Konzepts? 🔋",
+            "options": [
+                "Höhere Leistung",
+                "Effizientere Spannungswandlung",
+                "Mehr Anschlüsse",
+                "Günstigere Produktion"
+            ],
+            "correct": 1,
+            "hint": "Das 12V-Konzept ermöglicht eine effizientere Spannungswandlung."
+        },
+        {
+            "question": "Welcher Formfaktor ist am weitesten verbreitet? 📏",
+            "options": [
+                "SFX",
+                "ATX",
+                "TFX",
+                "Flex-ATX"
+            ],
+            "correct": 1,
+            "hint": "ATX ist der am weitesten verbreitete Formfaktor."
+        },
+        {
+            "question": "Was bedeutet PFC? 🔄",
+            "options": [
+                "Power Factor Correction",
+                "Power Frequency Control",
+                "Power Flow Control",
+                "Power Fitting Correction"
+            ],
+            "correct": 0,
+            "hint": "PFC steht für Power Factor Correction."
+        },
+        {
+            "question": "Welche Spannung wird in Europa dem Netzteil zugeführt? ⚡",
+            "options": [
+                "110V",
+                "230V",
+                "400V",
+                "12V"
+            ],
+            "correct": 1,
+            "hint": "In Europa beträgt die Netzspannung 230V."
+        },
+        {
+            "question": "Welche Schutzklasse haben Notebook-Netzteile primärseitig? 🛡️",
+            "options": [
+                "Schutzklasse I",
+                "Schutzklasse II",
+                "Schutzklasse III",
+                "Schutzklasse IV"
+            ],
+            "correct": 1,
+            "hint": "Notebook-Netzteile haben primärseitig die Schutzklasse II."
+        },
+        {
+            "question": "Was ist ein 'Multi-Rail' Netzteil? 💪",
+            "options": [
+                "Mehrere Netzteile in einem",
+                "Aufgeteilte 12V-Leitungen",
+                "Multiple Spannungen",
+                "Mehrere Kühlsysteme"
+            ],
+            "correct": 1,
+            "hint": "Ein Multi-Rail Netzteil hat aufgeteilte 12V-Leitungen."
+        },
+        {
+            "question": "Welche Mindestlast benötigen ATX 2.4 Netzteile? 🔌",
+            "options": [
+                "0.5A",
+                "0.05A",
+                "1.0A",
+                "0.1A"
+            ],
+            "correct": 1,
+            "hint": "ATX 2.4 Netzteile benötigen eine Mindestlast von 0.05A."
+        },
+        {
+            "question": "Was bedeutet '80 PLUS'? ⭐",
+            "options": [
+                "80W Zusatzleistung",
+                "80% Effizienz bei allen Lasten",
+                "80% Effizienz bei mindestens 50% Last",
+                "80°C Temperaturtoleranz"
+            ],
+            "correct": 2,
+            "hint": "80 PLUS bedeutet, dass das Netzteil bei mindestens 50% Last eine Effizienz von 80% erreicht."
+        },
+        {
+            "question": "Was ist ein Vorteil redundanter Netzteile? 🔄",
+            "options": [
+                "Höhere Leistung",
+                "Bessere Kühlung",
+                "Ausfallsicherheit",
+                "Geringerer Stromverbrauch"
+            ],
+            "correct": 2,
+            "hint": "Redundante Netzteile bieten eine höhere Ausfallsicherheit."
+        },
+        {
+            "question": "Welche maximale Leistung liefert ein PCIe 6-Pin Anschluss? ⚡",
+            "options": [
+                "75W",
+                "150W",
+                "300W",
+                "450W"
+            ],
+            "correct": 0,
+            "hint": "Ein PCIe 6-Pin Anschluss liefert maximal 75W."
+        },
+        {
+            "question": "Was bedeutet 'ErP'? 🌍",
+            "options": [
+                "Extended Power",
+                "Energy-related Products",
+                "Enhanced Power Rating",
+                "Efficient Power Resource"
+            ],
+            "correct": 1,
+            "hint": "ErP steht für Energy-related Products."
+        },
+        {
+            "question": "Welche Funktion hat der Power Good Pin? 📊",
+            "options": [
+                "Stromversorgung",
+                "Spannungsüberwachung",
+                "Stabilitätssignal",
+                "Temperaturmessung"
+            ],
+            "correct": 2,
+            "hint": "Der Power Good Pin sendet ein Signal, wenn die Spannungen stabil sind."
+        },
+        {
+            "question": "Welche Spannung führt +5VSB im Standby? 🔋",
+            "options": [
+                "12V",
+                "5V",
+                "3.3V",
+                "0V"
+            ],
+            "correct": 1,
+            "hint": "+5VSB führt im Standby 5V."
+        },
+        {
+            "question": "Was ist ein Vorteil der aktiven PFC (power factor correction)? ⚡",
+            "options": [
+                "Bessere Kühlung",
+                "Höherer Wirkungsgrad",
+                "Mehr Anschlüsse",
+                "Geringere Kosten"
+            ],
+            "correct": 1,
+            "hint": "Aktive PFC bietet einen höheren Wirkungsgrad."
+        },
+        {
+            "question": "Welche Effizienz fordert 80 PLUS Gold bei 50% Last? 📊",
+            "options": [
+                "88%",
+                "90%",
+                "92%",
+                "94%"
+            ],
+            "correct": 2,
+            "hint": "80 PLUS Gold fordert eine Effizienz von 92% bei 50% Last."
+        },
+        {
+            "question": "Welche Schutzschaltung verhindert Überhitzung? 🌡️",
+            "options": [
+                "OCP",
+                "OTP",
+                "UVP",
+                "SCP"
+            ],
+            "correct": 1,
+            "hint": "OTP schützt vor Überhitzung."
+        },
+        {
+            "question": "Was bedeutet 'Single-Rail'? 💡",
+            "options": [
+                "Einzelne Spannungsschiene",
+                "Einzelner Lüfter",
+                "Einzelner Anschluss",
+                "Einzelne Sicherung"
+            ],
+            "correct": 0,
+            "hint": "Single-Rail bedeutet, dass das Netzteil eine einzelne Spannungsschiene hat."
+        },
+        {
+            "question": "Welche ATX-Version führte den 24-Pin Anschluss ein? 📌",
+            "options": [
+                "ATX 2.0",
+                "ATX 2.1",
+                "ATX 2.2",
+                "ATX 2.3"
+            ],
+            "correct": 2,
+            "hint": "ATX 2.2 führte den 24-Pin Anschluss ein."
+        },
+        {
+            "question": "Was ist 'Sleeving' bei Netzteilen? 🎨",
+            "options": [
+                "Kabelummantelung",
+                "Gehäusebeschichtung",
+                "Lüftersteuerung",
+                "Spannungsregulierung"
+            ],
+            "correct": 0,
+            "hint": "Sleeving bezieht sich auf die Ummantelung der Kabel."
+        },
+        {
+            "question": "Welche Spannung ist für SATA-Laufwerke ab Version 3.2 weggefallen? ⚡",
+            "options": [
+                "12V",
+                "5V",
+                "3.3V",
+                "7V"
+            ],
+            "correct": 2,
+            "hint": "Die 3.3V Spannung ist für SATA-Laufwerke ab Version 3.2 weggefallen."
+        },
+        {
+            "question": "Was bedeutet 'Hot Swap' bei Netzteilen? 🔄",
+            "options": [
+                "Schnelle Kühlung",
+                "Austausch im Betrieb",
+                "Hohe Temperaturtoleranz",
+                "Schnelles Einschalten"
+            ],
+            "correct": 1,
+            "hint": "Hot Swap bedeutet, dass das Netzteil im Betrieb ausgetauscht werden kann."
+        },
+        {
+            "question": "Welche Mindestanforderung hat ErP2014 bei 50% Last? 📊",
+            "options": [
+                "80%",
+                "82%",
+                "85%",
+                "87%"
+            ],
+            "correct": 2,
+            "hint": "ErP2014 fordert eine Effizienz von 85% bei 50% Last."
+        },
+        {
+            "question": "Welche Funktion hat ein Varistor im Netzteil? ⚡",
+            "options": [
+                "Überspannungsschutz",
+                "Strommessung",
+                "Frequenzregulierung",
+                "Spannungsstabilisierung"
+            ],
+            "correct": 0,
+            "hint": "Ein Varistor schützt vor Überspannung."
+        },
+        {
+            "question": "Was ist ein typisches Merkmal von Server-Netzteilen? 🖥️",
+            "options": [
+                "Viel Case-Modding",
+                "Redundanz",
+                "Niedrige Effizienz",
+                "Wenige Schutzschaltungen"
+            ],
+            "correct": 1,
+            "hint": "Server-Netzteile sind oft redundant ausgelegt."
+        },
+        {
+            "question": "Welche Art von Stecker wird für 230V-Anschlüsse verwendet? 🔌",
+            "options": [
+                "Molex",
+                "SATA",
+                "Kaltgerätestecker",
+                "Berg"
+            ],
+            "correct": 2,
+            "hint": "Für 230V-Anschlüsse wird der Kaltgerätestecker verwendet."
+        },
+        {
+            "question": "Was bedeutet 'full range' bei Netzteilen? 🌍",
+            "options": [
+                "Maximale Kühlung",
+                "Volle Leistung",
+                "Alle Spannungen",
+                "Weltweite Verwendung"
+            ],
+            "correct": 3,
+            "hint": "Full range bedeutet, dass das Netzteil weltweit verwendet werden kann."
+        },
+        {
+            "question": "Welche maximale Temperatur haben Kaltgerätestecker? 🌡️",
+            "options": [
+                "70°C",
+                "100°C",
+                "120°C",
+                "155°C"
+            ],
+            "correct": 0,
+            "hint": "Kaltgerätestecker haben eine maximale Temperatur von 70°C."
+        },
+        {
+            "question": "Was ist der Vorteil eines digitalen Sicherungschips? 🔒",
+            "options": [
+                "Günstiger",
+                "Schnellere Reaktion",
+                "Höhere Leistung",
+                "Bessere Kühlung"
+            ],
+            "correct": 1,
+            "hint": "Digitale Sicherungschips reagieren schneller auf Fehler."
+        },
+        {
+            "question": "Welche Spannung wird für PCIe-Grafikkarten benötigt? ⚡",
+            "options": [
+                "3.3V",
+                "5V",
+                "12V",
+                "24V"
+            ],
+            "correct": 2,
+            "hint": "PCIe-Grafikkarten benötigen 12V."
+        },
+        {
+            "question": "Was ist ein Merkmal von Semi-Passiv-Netzteilen? 🌬️",
+            "options": [
+                "Mehrere Lüfter",
+                "Permanente Lüftung",
+                "Kein Lüfter",
+                "Lüfter nur bei Bedarf"
+            ],
+            "correct": 3,
+            "hint": "Semi-Passiv-Netzteile haben Lüfter, die nur bei Bedarf laufen."
+        },
+        {
+            "question": "Welche Schutzklasse haben PC-Netzteile primärseitig? 🛡️",
+            "options": [
+                "Schutzklasse I",
+                "Schutzklasse II",
+                "Schutzklasse III",
+                "Schutzklasse IV"
+            ],
+            "correct": 0,
+            "hint": "PC-Netzteile haben primärseitig die Schutzklasse I."
+        },
+        {
+            "question": "Was bedeutet 'ATX' bei Netzteilen? 📝",
+            "options": [
+                "Advanced Thermal Exchange",
+                "Advanced Technology Extended",
+                "Advanced Thermal Extension",
+                "Advanced Technology Exchange"
+            ],
+            "correct": 1,
+            "hint": "ATX steht für Advanced Technology Extended."
+        },
+        {
+            "question": "Welche Funktion hat die Schmelzsicherung? 🔥",
+            "options": [
+                "Überspannungsschutz",
+                "Temperaturschutz",
+                "Kurzschlussschutz",
+                "Überstromschutz"
+            ],
+            "correct": 2,
+            "hint": "Die Schmelzsicherung schützt vor Kurzschlüssen."
+        },
+        {
+            "question": "Was ist ein Merkmal des 'Zerhacker'-Prinzips? ⚡",
+            "options": [
+                "Mehr Verlustleistung",
+                "Größerer Trafo",
+                "Niedrigere Spannung",
+                "Höhere Frequenz"
+            ],
+            "correct": 3,
+            "hint": "Das 'Zerhacker'-Prinzip arbeitet mit höheren Frequenzen."
+        },
+        {
+            "question": "Welche Mindestlast benötigen die meisten ATX-Netzteile unter ATX 2.4? 🔌",
+            "options": [
+                "0.5A",
+                "0.3A",
+                "0.1A",
+                "0.7A"
+            ],
+            "correct": 0,
+            "hint": "Die meisten ATX-Netzteile unter ATX 2.4 benötigen eine Mindestlast von 0.5A."
+        },
+        {
+            "question": "Was ist ein Vorteil der passiven PFC? 💰",
+            "options": [
+                "Höhere Effizienz",
+                "Geringere Kosten",
+                "Bessere Kühlung",
+                "Mehr Leistung"
+            ],
+            "correct": 1,
+            "hint": "Passive PFC ist kostengünstiger."
+        },
+        {
+            "question": "Welche Generation von Intel-CPUs führte zu Änderungen in ATX 2.4? 💻",
+            "options": [
+                "Ivy Bridge",
+                "Sandy Bridge",
+                "Haswell",
+                "Skylake"
+            ],
+            "correct": 2,
+            "hint": "Die Haswell-Generation führte zu Änderungen in ATX 2.4."
+        },
+        {
+            "question": "Was ist der maximal erlaubte Standby-Verbrauch nach ErP2014? ⚡",
+            "options": [
+                "0.3 Watt",
+                "0.7 Watt",
+                "1.0 Watt",
+                "0.5 Watt"
+            ],
+            "correct": 3,
+            "hint": "Der maximal erlaubte Standby-Verbrauch nach ErP2014 beträgt 0.5 Watt."
+        },
+        {
+            "question": "Welche Farbe hat typischerweise die 12V-Leitung? 🎨",
+            "options": [
+                "Gelb",
+                "Rot",
+                "Schwarz",
+                "Orange"
+            ],
+            "correct": 0,
+            "hint": "Die 12V-Leitung ist typischerweise gelb."
+        },
+        {
+            "question": "Was bedeutet 'SCP' bei Schutzschaltungen? 🛡️",
+            "options": [
+                "System Control Protection",
+                "Short Circuit Protection",
+                "Safety Control Protocol",
+                "System Current Protection"
+            ],
+            "correct": 1,
+            "hint": "SCP steht für Short Circuit Protection."
+        },
+        {
+            "question": "Welche Spezifikation erhöhte den Wirkungsgrad auf 80%? 📊",
+            "options": [
+                "ATX 2.0",
+                "ATX 2.1",
+                "ATX 2.2",
+                "ATX 2.3"
+            ],
+            "correct": 2,
+            "hint": "ATX 2.2 erhöhte den Wirkungsgrad auf 80%."
+        },
+        {
+            "question": "Was ist der Powerfaktor-Mindestwert nach ErP2014 bei Volllast? ⚡",
+            "options": [
+                "0.7",
+                "0.8",
+                "1.0",
+                "0.9"
+            ],
+            "correct": 3,
+            "hint": "Der Powerfaktor-Mindestwert nach ErP2014 bei Volllast beträgt 0.9."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung OCP bei Netzteilen? 🔌",
+            "options": [
+                "Over Current Protection",
+                "Over Circuit Protection",
+                "Optimized Current Protocol",
+                "Output Control Protection"
+            ],
+            "correct": 0,
+            "hint": "OCP steht für Over Current Protection."
+        },
+        {
+            "question": "Welche Schutzschaltung verhindert Schäden durch zu hohe Gesamtleistung? ⚡",
+            "options": [
+                "Kurzschlussschutz",
+                "Überleistungsschutz",
+                "Überspannungsschutz",
+                "Überstromschutz"
+            ],
+            "correct": 1,
+            "hint": "Überleistungsschutz verhindert Schäden durch zu hohe Gesamtleistung."
+        },
+        {
+            "question": "Was ist die deutsche Bezeichnung für UVP? 🔋",
+            "options": [
+                "Übervoltsicherung",
+                "Unterspannungsschutz",
+                "Umspannungsvorrichtung",
+                "Übervoltsperrer"
+            ],
+            "correct": 1,
+            "hint": "UVP steht für Unterspannungsschutz."
+        },
+        {
+            "question": "Welche Schutzschaltung reagiert auf zu niedrige Spannungswerte? 📉",
+            "options": [
+                "OVP",
+                "OCP",
+                "UVP",
+                "SCP"
+            ],
+            "correct": 2,
+            "hint": "UVP reagiert auf zu niedrige Spannungswerte."
+        },
+        {
+            "question": "Was ist die Hauptaufgabe des Kurzschlussschutzes (SCP)? ⚠️",
+            "options": [
+                "Spannungsregulierung",
+                "Stromregulierung",
+                "Leistungsbegrenzung",
+                "Sofortige Abschaltung"
+            ],
+            "correct": 3,
+            "hint": "Die Hauptaufgabe des Kurzschlussschutzes ist die sofortige Abschaltung."
+        },
+        {
+            "question": "Welche Schutzschaltung verhindert Schäden durch zu hohe Stromstärken? 🛡️",
+            "options": [
+                "OCP",
+                "OVP",
+                "UVP",
+                "SCP"
+            ],
+            "correct": 0,
+            "hint": "OCP schützt vor zu hohen Stromstärken."
+        },
+        {
+            "question": "Was bedeutet OPP? 💪",
+            "options": [
+                "Output Power Protocol",
+                "Over Power Protection",
+                "Optimized Power Performance",
+                "Operating Power Protection"
+            ],
+            "correct": 1,
+            "hint": "OPP steht für Over Power Protection."
+        },
+        {
+            "question": "Welche Schutzschaltung greift bei zu hoher Spannung ein? ⚡",
+            "options": [
+                "UVP",
+                "SCP",
+                "OVP",
+                "OCP"
+            ],
+            "correct": 2,
+            "hint": "OVP greift bei zu hoher Spannung ein."
+        },
+        {
+            "question": "Was ist der Hauptzweck dieser Schutzschaltungen? 🎯",
+            "options": [
+                "Kostenreduktion",
+                "Energieeinsparung",
+                "Geräuschminimierung",
+                "Verlängerung der Lebensdauer"
+            ],
+            "correct": 3,
+            "hint": "Der Hauptzweck dieser Schutzschaltungen ist die Verlängerung der Lebensdauer."
+        },
+        {
+            "question": "Welche Schutzschaltung ist für die Spannung zuständig? 🔌",
+            "options": [
+                "OVP und UVP",
+                "OCP und SCP",
+                "OPP und OCP",
+                "SCP und OPP"
+            ],
+            "correct": 0,
+            "hint": "OVP und UVP sind für die Spannung zuständig."
+        },
+        {
+            "question": "Was schützt vor gefährlich niedrigen Spannungswerten? ⚡",
+            "options": [
+                "OCP",
+                "UVP",
+                "OVP",
+                "SCP"
+            ],
+            "correct": 1,
+            "hint": "UVP schützt vor gefährlich niedrigen Spannungswerten."
+        },
+        {
+            "question": "Bei welchem Problem schaltet OVP das Netzteil ab? 🛑",
+            "options": [
+                "Niedrige Stromstärke",
+                "Hohe Stromstärke",
+                "Hohe Spannung",
+                "Kurzschluss"
+            ],
+            "correct": 2,
+            "hint": "OVP schaltet das Netzteil bei hoher Spannung ab."
+        },
+        {
+            "question": "Welche Schutzschaltung verhindert Systeminstabilität? 💻",
+            "options": [
+                "SCP",
+                "OCP",
+                "OPP",
+                "UVP"
+            ],
+            "correct": 3,
+            "hint": "UVP verhindert Systeminstabilität."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung SCP? 🔌",
+            "options": [
+                "Short Circuit Protection",
+                "System Control Protocol",
+                "Safety Current Protection",
+                "Surge Control Protection"
+            ],
+            "correct": 0,
+            "hint": "SCP steht für Short Circuit Protection."
+        },
+        {
+            "question": "Welcher Schutzmechanismus ist für die Gesamtleistung zuständig? ⚡",
+            "options": [
+                "UVP",
+                "OPP",
+                "OCP",
+                "SCP"
+            ],
+            "correct": 1,
+            "hint": "OPP ist für die Gesamtleistung zuständig."
+        },
+        {
+            "question": "Was passiert mit dem elektrischen Widerstand eines Kaltleiters (NTC) bei steigender Temperatur? 🌡️",
+            "options": [
+                "Er steigt an",
+                "Er sinkt",
+                "Er bleibt konstant",
+                "Er schwankt zufällig"
+            ],
+            "correct": 1,
+            "hint": "Der Widerstand eines Kaltleiters sinkt bei steigender Temperatur."
+        },
+        {
+            "question": "Welche Spannung ist in deutschen Haushalten üblich? ⚡",
+            "options": [
+                "110V",
+                "230V",
+                "400V",
+                "1000V"
+            ],
+            "correct": 1,
+            "hint": "In deutschen Haushalten beträgt die Spannung 230V."
+        },
+        {
+            "question": "Was ist die Einheit für die elektrische Leistung? 💪",
+            "options": [
+                "Ampere",
+                "Volt",
+                "Watt",
+                "Ohm"
+            ],
+            "correct": 2,
+            "hint": "Die Einheit für die elektrische Leistung ist Watt."
+        },
+        {
+            "question": "Wie wird der elektrische Widerstand gemessen? 📏",
+            "options": [
+                "Parallel zur Spannung",
+                "In Reihe zum Strom",
+                "Egal wie",
+                "Mit einem Ohmmeter"
+            ],
+            "correct": 3,
+            "hint": "Der elektrische Widerstand wird mit einem Ohmmeter gemessen."
+        },
+        {
+            "question": "Was zeigt ein Oszilloskop an? 📊",
+            "options": [
+                "Nur Spannung",
+                "Spannungsverlauf über die Zeit",
+                "Nur Strom",
+                "Nur Frequenz"
+            ],
+            "correct": 1,
+            "hint": "Ein Oszilloskop zeigt den Spannungsverlauf über die Zeit an."
+        },
+        {
+            "question": "Was bedeutet die Abkürzung AC? ⚡",
+            "options": [
+                "Wechselstrom",
+                "Gleichstrom",
+                "Konstantstrom",
+                "Alternativstrom"
+            ],
+            "correct": 0,
+            "hint": "AC steht für Wechselstrom."
+        },
+        {
+            "question": "Wie hoch ist die Netzfrequenz in Deutschland? 🔄",
+            "options": [
+                "60 Hz",
+                "50 Hz",
+                "40 Hz",
+                "100 Hz"
+            ],
+            "correct": 1,
+            "hint": "Die Netzfrequenz in Deutschland beträgt 50 Hz."
+        },
+        {
+            "question": "Was schützt vor Überstrom? 🛡️",
+            "options": [
+                "Transformator",
+                "Sicherung",
+                "Kondensator",
+                "Widerstand"
+            ],
+            "correct": 1,
+            "hint": "Eine Sicherung schützt vor Überstrom."
+        },
+        {
+            "question": "Was ist die Grundeinheit des elektrischen Stroms? ⚡",
+            "options": [
+                "Volt",
+                "Watt",
+                "Ampere",
+                "Ohm"
+            ],
+            "correct": 2,
+            "hint": "Die Grundeinheit des elektrischen Stroms ist Ampere."
+        },
+        {
+            "question": "Welches Messgerät misst die elektrische Spannung? 📈",
+            "options": [
+                "Amperemeter",
+                "Voltmeter",
+                "Wattmeter",
+                "Ohmmeter"
+            ],
+            "correct": 1,
+            "hint": "Ein Voltmeter misst die elektrische Spannung."
+        },
+        {
+            "question": "Wie funktioniert ein Leitungsschutzschalter? 🔌",
+            "options": [
+                "Thermisch-magnetisch",
+                "Nur thermisch",
+                "Nur magnetisch",
+                "Elektrostatisch"
+            ],
+            "correct": 0,
+            "hint": "Ein Leitungsschutzschalter funktioniert thermisch-magnetisch."
+        },
+        {
+            "question": "Was ist der Unterschied zwischen Leiter und Isolator? 🔍",
+            "options": [
+                "Keine Unterschiede",
+                "Anzahl der Protonen",
+                "Anzahl der freien Elektronen",
+                "Farbe des Materials"
+            ],
+            "correct": 2,
+            "hint": "Der Unterschied liegt in der Anzahl der freien Elektronen."
+        },
+        {
+            "question": "Welche Einheit hat der elektrische Widerstand? 🎯",
+            "options": [
+                "Volt",
+                "Ampere",
+                "Watt",
+                "Ohm"
+            ],
+            "correct": 3,
+            "hint": "Die Einheit des elektrischen Widerstands ist Ohm."
+        },
+        {
+            "question": "Was passiert bei einem Kurzschluss? ⚠️",
+            "options": [
+                "Spannung steigt stark",
+                "Strom wird sehr groß",
+                "Widerstand erhöht sich",
+                "Leistung wird null"
+            ],
+            "correct": 1,
+            "hint": "Bei einem Kurzschluss wird der Strom sehr groß."
+        },
+        {
+            "question": "Wozu dient ein Transformator? 🔄",
+            "options": [
+                "Stromerzeugung",
+                "Spannungsumwandlung",
+                "Widerstandsmessung",
+                "Strommessung"
+            ],
+            "correct": 1,
+            "hint": "Ein Transformator dient zur Spannungsumwandlung."
+        },
+        {
+            "question": "Bei Heißleitern sinkt der elektrische Widerstand mit steigender Temperatur. 🔥",
+            "options": [
+                "Wahr",
+                "Falsch",
+                "Manchmal",
+                "Kommt auf das Material an"
+            ],
+            "correct": 0,
+            "hint": "Bei Heißleitern sinkt der Widerstand mit steigender Temperatur."
+        },
+        {
+            "question": "Ein Spannungsmesser wird immer parallel zum Verbraucher angeschlossen. ⚡",
+            "options": [
+                "Falsch",
+                "Wahr",
+                "Kann sein",
+                "Nur bei Gleichstrom"
+            ],
+            "correct": 1,
+            "hint": "Ein Spannungsmesser wird immer parallel zum Verbraucher angeschlossen."
+        },
+        {
+            "question": "Die elektrische Leistung wird in _____ gemessen. 🔋",
+            "options": [
+                "Ampere",
+                "Volt",
+                "Watt",
+                "Ohm"
+            ],
+            "correct": 2,
+            "hint": "Die elektrische Leistung wird in Watt gemessen."
+        },
+        {
+            "question": "Ein Ohmmeter misst den elektrischen.... 📏",
+            "options": [
+                "Strom",
+                "Spannung",
+                "Widerstand",
+                "Leistung"
+            ],
+            "correct": 2,
+            "hint": "Ein Ohmmeter misst den elektrischen Widerstand."
+        },
+        {
+            "question": "Welches Formelzeichen steht für die elektrische Stromstärke? ⚡",
+            "options": [
+                "I",
+                "U",
+                "R",
+                "P"
+            ],
+            "correct": 0,
+            "hint": "Das Formelzeichen für die elektrische Stromstärke ist I."
+        },
+        {
+            "question": "Die Periodendauer einer Sinusschwingung ist der Kehrwert der Frequenz. ⏱️",
+            "options": [
+                "Wahr",
+                "Falsch",
+                "Kommt auf die Amplitude an",
+                "Unabhängig von der Frequenz"
+            ],
+            "correct": 0,
+            "hint": "Die Periodendauer ist der Kehrwert der Frequenz."
+        },
+        {
+            "question": "Ein Transformator wandelt was um..? 🔄",
+            "options": [
+                "Widerstand",
+                "Strom",
+                "Spannung",
+                "Leistung"
+            ],
+            "correct": 2,
+            "hint": "Ein Transformator wandelt Spannung um."
+        },
+        {
+            "question": "Ein Leitungsschutzschalter unterbricht den Stromkreis bei Überstrom. 🚨",
+            "options": [
+                "Wahr",
+                "Falsch",
+                "Manchmal",
+                "Nur bei Kurzschluss"
+            ],
+            "correct": 0,
+            "hint": "Ein Leitungsschutzschalter unterbricht den Stromkreis bei Überstrom."
+        },
+        {
+            "question": "Die Einheit der elektrischen Spannung ist ...? 🔌",
+            "options": [
+                "Ampere",
+                "Watt",
+                "Ohm",
+                "Volt"
+            ],
+            "correct": 3,
+            "hint": "Die Einheit der elektrischen Spannung ist Volt."
+        },
+        {
+            "question": "Ein Energiezähler misst den Energieverbrauch (meistens) in ...? 💡",
+            "options": [
+                "A",
+                "V",
+                "W",
+                "kWh"
+            ],
+            "correct": 3,
+            "hint": "Ein Energiezähler misst den Energieverbrauch in kWh."
+        },
+        {
+            "question": "Der elektrische Widerstand wird mit dem Ohmmeter gemessen. 📏",
+            "options": [
+                "Nein Amperemeter",
+                "Nein Strommeter",
+                "Nein Zollstock",
+                "Ja"
+            ],
+            "correct": 3,
+            "hint": "Der elektrische Widerstand wird mit dem Ohmmeter gemessen."
+        },
+        {
+            "question": "Ein elektrischer Leiter leitet den Strom besser, wenn er kühler ist. ❄️",
+            "options": [
+                "Wahr",
+                "Falsch",
+                "Keine Auswirkung",
+                "Nur bei Wechselstrom"
+            ],
+            "correct": 0,
+            "hint": "Ein elektrischer Leiter leitet den Strom besser, wenn er kühler ist."
+        },
+        {
+            "question": "Das Multimeter kann mehrere elektrische Größen messen. 🛠️",
+            "options": [
+                "Nur Spannung",
+                "Nur Strom",
+                "Spannung und Strom",
+                "Nur Widerstand"
+            ],
+            "correct": 2,
+            "hint": "Das Multimeter kann Spannung und Strom messen."
+        },
+        {
+            "question": "Die Netzspannung in Europa beträgt üblicherweise 230 V. 🇪🇺",
+            "options": [
+                "110 V",
+                "230 V",
+                "400 V",
+                "1000 V"
+            ],
+            "correct": 1,
+            "hint": "Die Netzspannung in Europa beträgt 230 V."
+        },
+        {
+            "question": "Ein Kurzschluss führt zu einem sehr hohen Stromfluss. ⚠️",
+            "options": [
+                "Wahr",
+                "Falsch",
+                "Unbedeutend",
+                "Langsam ansteigend"
+            ],
+            "correct": 0,
+            "hint": "Ein Kurzschluss führt zu einem sehr hohen Stromfluss."
+        }
+    ]
+}
