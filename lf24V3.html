@@ -89,10 +89,10 @@
                     <div class="progress-label" id="progress-label">0%</div>
                 </div>
             </div>
-            <div id="feedback-message"></div>
+            <div id="feedback-message" style="margin-top: 2px;"></div>
         </div>
 
-        <div class="timer-container" id="timer-container" style="display: none;">
+        <div class="timer-container" id="timer-container" style="display: none; margin-top: 0; margin-bottom: 5px;">
             <div class="timer-bar" id="timer-bar"></div>
             <div class="time-bonus-indicator" id="time-bonus">+5 XP</div>
             <div class="timer-mode-badge">⏱️ ZEITMODUS</div>
@@ -185,6 +185,7 @@
         <div class="achievement-popup" id="achievement-popup">
             <h2 id="achievement-title">Achievement Unlocked!</h2>
             <div class="badge-icon" id="achievement-icon">🏆</div>
+            <div id="achievement-description"></div>
             <button onclick="closeAchievementPopup()">Ok</button>
         </div>
         <div class="overlay" id="overlay"></div>
@@ -497,21 +498,42 @@
             darkMode = data.darkMode ?? true;
             hintCoins = data.hintCoins || 0;
             
-            // Update UI with loaded data
-            document.getElementById('total-xp').textContent = totalXP;
-            document.getElementById('level').textContent = level;
-            document.getElementById('menu-level').textContent = level;
-            document.getElementById('menu-total-xp').textContent = totalXP;
-            updateStreak(false);
-            updateProgressBar();
-            updateLevel();
-            updateHintSystem();
+            // Safely update UI elements if they exist
+            const updateElementText = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = value;
+            };
             
-            // Load power-ups
+            // Update UI with loaded data
+            updateElementText('total-xp', totalXP);
+            updateElementText('level', level);
+            updateElementText('menu-level', level);
+            updateElementText('menu-total-xp', totalXP);
+            
+            // Only call these UI update functions if necessary elements exist
+            try {
+                const streakText = document.getElementById('streak-text');
+                if (streakText) updateStreak(false);
+                
+                const progressBar = document.getElementById('progress-bar');
+                if (progressBar) updateProgressBar();
+                
+                const levelElement = document.getElementById('level');
+                if (levelElement) updateLevel();
+                
+                const hintCoinsCount = document.getElementById('hint-coins-count');
+                if (hintCoinsCount) updateHintSystem();
+                
+                updateProgressPath();
+            } catch (e) {
+                console.log('Some UI elements are not available yet:', e);
+            }
+            
+            // Load power-ups if they exist
             if (data.powerUps) {
-                document.getElementById('removeWrong-count').textContent = data.powerUps.removeWrong || 0;
-                document.getElementById('showHint-count').textContent = data.powerUps.showHint || 0;
-                document.getElementById('extraTime-count').textContent = data.powerUps.extraTime || 0;
+                updateElementText('removeWrong-count', data.powerUps.removeWrong || 0);
+                updateElementText('showHint-count', data.powerUps.showHint || 0);
+                updateElementText('extraTime-count', data.powerUps.extraTime || 0);
             }
         }
     }
