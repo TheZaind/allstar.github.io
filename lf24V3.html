@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div id="quiz-content" style="display: none;">
+    <div class="quiz-content">
         <div class="controls">
             <button onclick="backToMenu()" class="back-button">↩️ Zurück zum Menü</button>
             <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
@@ -71,26 +71,24 @@
         <div class="fixed-header">
             <div class="header-container">
                 <h1 class="quiz-title">💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
-                <div class="stats-row">
-                    <div class="level-info">Level: <span id="level">1</span> 🌟</div>
-                    <div class="stats-group">
-                        <div class="streak-counter">
-                            <span id="streak-text">Aktuelle Serie: 0</span>
-                            <span class="streak-flame" id="streak-flame">🔥</span>
+                <div id="game-status" class="game-status">
+                    <div class="game-stats">
+                        <div class="stat-row">
+                            <div class="stat-item">Level: <span id="level">1</span> 🌟</div>
+                            <div class="stat-item">Aktuelle Serie: <span id="streak-text">0</span> 🔥</div>
+                            <div class="stat-item">Punktzahl: <span id="score">0</span> Punkte 📊</div>
                         </div>
-                        <div class="score-display">
-                            <div class="score" id="score">Punktzahl: 0 Punkte 📊</div>
-                            <div id="xp-display">XP: 0/100</div>
+                        <div class="stat-row">
+                            <div class="stat-item">XP: <span id="xp-display">0/100</span></div>
+                            <div class="stat-item">Progress: <span id="progress-label">0%</span></div>
+                            <div class="stat-item current-badge-container">
+                                <span id="current-badge" class="current-badge"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="progress-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                    <div class="progress-label" id="progress-label">0%</div>
+                    <div id="feedback-result" class="feedback-result"></div>
                 </div>
             </div>
-            <div id="feedback-message" style="margin-top: 2px;"></div>
         </div>
 
         <div class="timer-container" id="timer-container" style="display: none; margin-top: 0; margin-bottom: 5px;">
@@ -794,7 +792,45 @@
         }
     }
 
-    // Verbesserte Antwortprüfung mit Animation
+    // Entferne doppelte Definitionen und behalte nur diese Version
+    function showFeedback(message, isSuccess) {
+        const feedbackResult = document.getElementById('feedback-result');
+        if (feedbackResult) {
+            feedbackResult.textContent = message;
+            feedbackResult.className = `feedback-result ${isSuccess ? 'feedback-success' : 'feedback-error'}`;
+        }
+        updateGameStatus();
+    }
+
+    // Konsolidierte Version der updateGameStatus Funktion
+    function updateGameStatus() {
+        const feedbackMessage = document.getElementById('feedback-message');
+        const currentBadge = getCurrentBadge();
+        
+        if (feedbackMessage) {
+            feedbackMessage.innerHTML = `
+                <div class="feedback-stats">
+                    <div class="feedback-stat">Level: ${level} 🌟</div>
+                    <div class="feedback-stat">Aktuelle Serie: ${currentStreak} 🔥</div>
+                    <div class="feedback-stat">Punktzahl: ${score} Punkte 📊</div>
+                    <div class="feedback-stat">XP: ${totalXP % 100}/100 (${100 - (totalXP % 100)} bis Level ${level + 1})</div>
+                    <div class="feedback-stat">${Math.round((score / (currentQuestions.length || 1)) * 100)}%</div>
+                </div>
+                <div class="feedback-result" id="feedback-result"></div>
+                ${currentBadge ? `<div class="current-badge">${currentBadge}</div>` : ''}
+            `;
+        }
+    }
+
+    function getCurrentBadge() {
+        if (totalXP >= 1500) return '👑';
+        if (totalXP >= 750) return '🥇';
+        if (totalXP >= 350) return '🥈';
+        if (totalXP >= 100) return '🥉';
+        return '';
+    }
+
+    // Konsolidierte Version der checkAnswer Funktion
     function checkAnswer(questionIndex, selectedOption) {
         if (answeredQuestions.has(questionIndex)) return;
         
@@ -804,53 +840,45 @@
         const isCorrect = selectedOption === question.randomizedCorrect;
         const options = document.querySelectorAll('.option');
         
-        // Deaktiviere alle Optionen während der Animation
-        options.forEach(option => {
-            option.style.pointerEvents = 'none';
-        });
+        options.forEach(option => option.style.pointerEvents = 'none');
         
-        // Markiere die ausgewählte Option
+        // Markiere ausgewählte und korrekte Antworten
         if (options[selectedOption]) {
             options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
         }
         
+        // Zeige korrekte Antwort bei falscher Auswahl
         if (!isCorrect && options[question.randomizedCorrect]) {
-            // Zeige die richtige Antwort
             setTimeout(() => {
                 options[question.randomizedCorrect].classList.add('correct');
             }, 300);
         }
 
-        // Speichere die Antwort und aktualisiere Statistiken
+        // Update Spielstatus
         question.lastSelected = selectedOption;
         answeredQuestions.add(questionIndex);
         totalQuestions++;
 
-        // Stoppe Timer wenn aktiv
         if (timerInterval) {
             clearInterval(timerInterval);
         }
 
-        // Verarbeite das Ergebnis
         processAnswer(isCorrect);
         
-        // Aktiviere den "Weiter"-Button
+        // Navigation
         const nextButton = document.getElementById('next-question');
         if (nextButton) {
             nextButton.disabled = currentQuestionIndex === currentQuestions.length - 1;
         }
-            
-        // Automatisch zur nächsten Frage nach Verzögerung
-        if (currentQuestionIndex < currentQuestions.length - 1) {
-            setTimeout(() => {
+        
+        // Automatische Weiterleitung
+        setTimeout(() => {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
                 nextQuestion();
-            }, 1500);
-        } else if (currentQuestionIndex === currentQuestions.length - 1) {
-            // Quiz abgeschlossen
-            setTimeout(() => {
+            } else {
                 showQuizSummary();
-            }, 1500);
-        }
+            }
+        }, 1500);
     }
 
     // neue Funktion für die Quiz-Zusammenfassung
