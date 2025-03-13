@@ -1055,7 +1055,12 @@
 
     function updateProgressPath() {
         const pathProgress = (totalXP / 1500) * 100;
-        document.getElementById('progress-path-fill').style.width = `${Math.min(100, pathProgress)}%`;
+        
+        // Safely update progress-path-fill
+        const progressPathFill = document.getElementById('progress-path-fill');
+        if (progressPathFill) {
+            progressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
+        }
         
         const milestones = [
             { xp: 100, id: 'milestone-1' },

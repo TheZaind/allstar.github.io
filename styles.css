@@ -67,7 +67,7 @@ body {
     right: 0;
     background-color: var(--bg-color);
     z-index: 1000;
-    padding: 15px;
+    padding: 15px 15px 10px 15px;
     box-shadow: var(--shadow-md);
     transition: var(--transition-standard);
     border-bottom: 1px solid var(--border-color);
@@ -469,7 +469,7 @@ button:hover {
     width: 100%;
     background-color: var(--border-color);
     border-radius: 20px;
-    margin: 10px 0 5px 0; /* Verringere den unteren Rand von 10px auf 5px */
+    margin: 10px 0 10px 0;
     position: relative;
     overflow: hidden;
     height: 20px;
@@ -585,15 +585,9 @@ button:hover {
     to { transform: scale(1.25); }
 }
 
-#feedback-message {
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: var(--border-radius);
-    text-align: center;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: fadeInDown 0.5s ease;
+.feedback-message {
+    margin: 0;
+    padding: 5px 0;
 }
 
 @keyframes fadeInDown {
@@ -930,10 +924,10 @@ button:hover {
     background-color: var(--border-color);
     border-radius: 20px;
     overflow: hidden;
-    margin: 5px 0; /* Verringere Abstand von 15px auf 5px */
+    margin: 0 0 10px 0;
     position: relative;
-    width: 100%; /* Stellt sicher, dass der Container die volle Breite einnimmt */
-    display: block; /* Stellt sicher, dass der Container als Block-Element angezeigt wird */
+    width: 100%;
+    display: block;
 }
 
 .timer-bar {
@@ -1213,7 +1207,7 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    margin: 1rem 0;
+    margin: 1rem 0 10px 0;
 }
 
 .quiz-title {
