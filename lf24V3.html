@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <!-- Quiz Selection Menu -->
@@ -121,16 +121,6 @@
             <!-- Verbesserte Feedback-Anzeige -->
             <div class="feedback-container">
                 <div id="feedback-message" class="feedback-message"></div>
-                <div class="feedback-details">
-                    <div class="feedback-stats">
-                        <div class="stats-item">
-                            <span id="feedback-xp">+0</span> XP
-                        </div>
-                        <div class="stats-item">
-                            <span id="feedback-streak">0</span>x Streak
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -194,1019 +184,261 @@
         <div class="bonus-popup" id="bonus-popup"></div>
     </div>
 
-    <script>
-    // Theme toggle functionality
-    let darkMode = localStorage.getItem('darkMode') === 'true';
-
-    function toggleTheme() {
-        darkMode = !darkMode;
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-        localStorage.setItem('darkMode', darkMode);
-    }
-
-    // Game data saving and loading
-    function saveGameData() {
-        const gameData = {
-            totalXP,
-            level,
-            currentStreak,
-            bestStreak,
-            totalCorrect,
-            totalQuestions,
-            totalQuizzes,
-            darkMode,
-            badges: {}
-        };
-        
-        localStorage.setItem('quizGameData', JSON.stringify(gameData));
-    }
-
-    function loadSavedData() {
-        const savedData = localStorage.getItem('quizGameData');
-        if (savedData) {
-            const data = JSON.parse(savedData);
-            totalXP = data.totalXP || 0;
-            level = data.level || 1;
-            currentStreak = data.currentStreak || 0;
-            bestStreak = data.bestStreak || 0;
-            totalCorrect = data.totalCorrect || 0;
-            totalQuestions = data.totalQuestions || 0;
-            totalQuizzes = data.totalQuizzes || 0;
-            darkMode = data.darkMode ?? true;
-            
-            const updateElementText = (id, value) => {
-                const element = document.getElementById(id);
-                if (element) element.textContent = value;
-            };
-            
-            updateElementText('total-xp', totalXP);
-            updateElementText('level', level);
-            updateElementText('menu-level', level);
-            updateElementText('menu-total-xp', totalXP);
-            
-            try {
-                const streakText = document.getElementById('streak-text');
-                if (streakText) updateStreak(false);
-                
-                const progressBar = document.getElementById('progress-bar');
-                if (progressBar) updateProgressBar();
-                
-                const levelElement = document.getElementById('level');
-                if (levelElement) updateLevel();
-                
-                updateProgressPath();
-            } catch (e) {
-                console.log('Some UI elements are not available yet:', e);
-            }
-        }
-    }
-
-    // Initialize theme on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-        loadSavedData();
-    });
-    
-    // Verfügbare Quiz-Kategorien und globale Variablen
-    let questions = []; // Global questions array
-    let currentQuestionIndex = 0;
-    let answeredQuestions = new Set();
-    
-    // Quiz-Kategorien
-    const quizCategories = [
-        {
-            id: 'cpu',
-            name: 'CPU Quiz',
-            description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
-            icon: '💻',
-            file: 'cpu.json'
-        },
-        {
-            id: 'mb',
-            name: 'MainBoard Quiz',
-            description: 'Teste dein Wissen über Hauptplatinen, Komponenten und ihre Funktionen',
-            icon: '🔌',
-            file: 'mainboard.json'
-        },
-        {
-            id: 'gw',
-            name: 'Elektrogrundlagen Quiz',
-            description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
-            icon: '⚡',
-            file: 'grundwissen.json'
-        },
-        {
-            id: 'mix',
-            name: 'Gemischtes Quiz',
-            description: 'Eine herausfordernde Mischung aus allen Kategorien für echte Profis',
-            icon: '🔄',
-            file: null // Spezialfall für gemischtes Quiz
-        }
-    ];
-
-    // Initialisierung
-    document.addEventListener('DOMContentLoaded', async function() {
-        // Set initial theme
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-        
-        // Load saved data
-        loadSavedData();
-        
-        // Show quiz selection menu
-        showQuizMenu();
-        
-        // Initialize quiz categories
-        await initializeQuizCategories();
-    });
-
-    // Initialize quiz categories
-    async function initializeQuizCategories() {
-        const categoriesContainer = document.getElementById('quiz-categories');
-        categoriesContainer.innerHTML = quizCategories.map(category => `
-            <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
-                <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
-                <p>${category.description}</p>
-                <div class="category-stats">
-                    <div class="category-stat">
-                        <span>🎮</span> 0x gespielt
-                    </div>
-                    <div class="category-stat">
-                        <span>🏅</span> Highscore: 0/20
-                    </div>
-                </div>
-                <div class="category-progress"></div>
-            </div>
-        `).join('');
-    }
-
-    // Start specific quiz category
-    async function startQuizCategory(categoryId) {
-        try {
-            const category = quizCategories.find(c => c.id === categoryId);
-            if (!category) throw new Error('Kategorie nicht gefunden');
-
-            if (category.id === 'mix') {
-                // Lade alle Quizfragen von allen Kategorien
-                questions = [];
-                for (const cat of quizCategories) {
-                    if (cat.id !== 'mix' && cat.file) {
-                        const response = await fetch(cat.file);
-                        if (response.ok) {
-                            const data = await response.json();
-                            // Füge Kategorie-Info zu jeder Frage hinzu
-                            const questionsWithCategory = data.questions.map(q => ({
-                                ...q,
-                                categoryId: cat.id,
-                                categoryName: cat.name
-                            }));
-                            questions.push(...questionsWithCategory);
-                        }
-                    }
-                }
-            } else {
-                const response = await fetch(category.file);
-                if (!response.ok) throw new Error(`Fehler beim Laden von ${category.file}`);
-
-                const data = await response.json();
-                questions = data.questions.map(q => ({
-                    ...q,
-                    categoryId: category.id,
-                    categoryName: category.name
-                }));
-            }
-
-            // Hide menu and show quiz
-            document.getElementById('quiz-selection-menu').style.display = 'none';
-            document.getElementById('quiz-content').style.display = 'block';
-
-            // Start new quiz
-            createQuiz();
-        } catch (error) {
-            console.error('Fehler beim Laden der Fragen:', error);
-            showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
-        }
-    }
-
-    function createQuiz() {
-        currentQuestionIndex = 0;
-        answeredQuestions.clear();
-        currentQuestions = selectRandomQuestions();
-        score = 0;
-        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
-        updateProgressBar();
-        displayCurrentQuestion();
-        
-        // Update total questions display
-        document.getElementById('total-questions').textContent = currentQuestions.length;
-    }
-
-    // Show quiz menu
-    function showQuizMenu() {
-        document.getElementById('quiz-selection-menu').style.display = 'block';
-        document.getElementById('quiz-content').style.display = 'none';
-    }
-
-    // Fragen laden und Quiz initialisieren
-    let currentQuestions = [];
-    let score = 0;
-    let timerActive = false;
-    let timerInterval;
-    let maxTime = 30; // Sekunden pro Frage
-    let timeRemaining;
-
-    // Wähle zufällige Fragen für das Quiz
-    function selectRandomQuestions(amount = 20) {
-        let availableQuestions = [...questions];
-        let selectedQuestions = [];
-        
-        while (selectedQuestions.length < amount && availableQuestions.length > 0) {
-            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-            selectedQuestions.push(availableQuestions[randomIndex]);
-            availableQuestions.splice(randomIndex, 1);
-        }
-        
-        return selectedQuestions;
-    }
-
-    // Lade die Fragen beim Start
-    async function loadQuestions() {
-        try {
-            const response = await fetch('cpu.json');
-            if (!response.ok) {
-                throw new Error('Fehler beim Laden der Fragen');
-            }
-            const data = await response.json();
-            questions = data.questions;
-            loadSavedData();
-            createQuiz();
-        } catch (error) {
-            console.error('Fehler beim Laden der Fragen:', error);
-            document.getElementById('quiz-container').innerHTML = 
-                '<div class="error-message">Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.</div>';
-        }
-    }
-
-    // Neues Quiz starten
-    function newQuiz() {
-        currentQuestions = selectRandomQuestions();
-        currentQuestionIndex = 0;
-        answeredQuestions.clear();
-        score = 0;
-        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
-        updateProgressBar();
-        displayCurrentQuestion();
-        
-        // Update total questions display
-        document.getElementById('total-questions').textContent = currentQuestions.length;
-    }
-
-    // Verbesserte Navigation zwischen den Fragen
-    function displayCurrentQuestion() {
-        const container = document.getElementById('current-question');
-        const question = currentQuestions[currentQuestionIndex];
-        
-        // Füge Slide-Out Animation hinzu
-        container.classList.add('slide-out');
-        
-        setTimeout(() => {
-            // Update question number and category
-            document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
-            
-            if (question.categoryId) {
-                document.getElementById('current-category').textContent = 
-                    quizCategories.find(c => c.id === question.categoryId)?.name || 'Allgemein';
-            }
-
-            // Randomize options with animation delay
-            const originalCorrectIndex = question.correct;
-            const optionsCopy = [...question.options];
-            const randomizedOptions = [];
-            const optionMapping = [];
-            
-            while (optionsCopy.length > 0) {
-                const randIndex = Math.floor(Math.random() * optionsCopy.length);
-                const originalIndex = question.options.indexOf(optionsCopy[randIndex]);
-                randomizedOptions.push(optionsCopy[randIndex]);
-                optionMapping.push(originalIndex);
-                optionsCopy.splice(randIndex, 1);
-            }
-            
-            const newCorrectIndex = optionMapping.indexOf(originalCorrectIndex);
-            currentQuestions[currentQuestionIndex].randomizedCorrect = newCorrectIndex;
-
-            // Create options with staggered animation
-            container.innerHTML = `
-                <div class="question-text">${question.question}</div>
-                <div class="options-container">
-                    ${randomizedOptions.map((option, index) => `
-                        <div class="option" 
-                            style="--animation-order: ${index}"
-                            ${answeredQuestions.has(currentQuestionIndex) ? 
-                                `class="option ${index === question.randomizedCorrect ? 'correct' : 
-                                (index === question.lastSelected ? 'incorrect' : '')}"` : ''} 
-                            onclick="checkAnswer(${currentQuestionIndex}, ${index})"
-                            ${answeredQuestions.has(currentQuestionIndex) ? 'style="pointer-events: none;"' : ''}>
-                            ${option}
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-
-            // Füge Slide-In Animation hinzu
-            container.classList.remove('slide-out');
-            container.classList.add('slide-in');
-            
-            // Entferne Animations-Klassen nach Abschluss
-            setTimeout(() => {
-                container.classList.remove('slide-in');
-            }, 500);
-
-        }, 300); // Warte auf Slide-Out Animation
-
-        // Update navigation buttons
-        document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
-        document.getElementById('next-question').disabled = 
-            currentQuestionIndex === currentQuestions.length - 1 || 
-            !answeredQuestions.has(currentQuestionIndex);
-        
-        // Start timer if active
-        if (timerActive) {
-            startQuestionTimer();
-        }
-    }
-
-    // Verbesserte Antwortprüfung mit Animation
-    function checkAnswer(questionIndex, selectedOption) {
-        if (answeredQuestions.has(questionIndex)) return;
-        
-        const question = currentQuestions[questionIndex];
-        const isCorrect = selectedOption === question.randomizedCorrect;
-        const options = document.querySelectorAll('.option');
-        
-        options.forEach(option => {
-            option.style.pointerEvents = 'none';
-        });
-        
-        options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
-        
-        if (!isCorrect) {
-            setTimeout(() => {
-                options[question.randomizedCorrect].classList.add('correct');
-            }, 300);
-        }
-
-        question.lastSelected = selectedOption;
-        answeredQuestions.add(questionIndex);
-        totalQuestions++;
-        
-        clearInterval(timerInterval);
-        
-        processAnswer(isCorrect);
-        
-        document.getElementById('next-question').disabled = 
-            currentQuestionIndex === currentQuestions.length - 1;
-            
-        if (currentQuestionIndex < currentQuestions.length - 1) {
-            setTimeout(() => {
-                nextQuestion();
-            }, 1500);
-        } else if (currentQuestionIndex === currentQuestions.length - 1) {
-            setTimeout(() => {
-                showQuizSummary();
-            }, 1500);
-        }
-    }
-
-    function processAnswer(isCorrect) {
-        if (isCorrect) {
-            score++;
-            totalCorrect++;
-            
-            const basePoints = 5;
-            const streakBonus = currentStreak > 0 ? Math.min(5, currentStreak) : 0;
-            const levelBonus = Math.floor(level / 2);
-            let timeBonus = 0;
-            
-            if (timerActive && timeRemaining > 0) {
-                timeBonus = Math.ceil(timeRemaining / maxTime * 5);
-            }
-            
-            const xpGained = basePoints + streakBonus + levelBonus + timeBonus;
-            xp += xpGained;
-            totalXP += xpGained;
-            
-            updateUI(xpGained, streakBonus, timeBonus);
-        } else {
-            showFeedback(getRandomFeedback(false), false);
-        }
-        
-        updateStreak(isCorrect);
-        saveGameData();
-        updateStats();
-    }
-
-    function updateUI(xpGained, streakBonus, timeBonus) {
-        const scoreElement = document.getElementById('score');
-        if (scoreElement) {
-            scoreElement.textContent = `Punktzahl: ${score} Punkte 📊`;
-            scoreElement.classList.add('pop-animation');
-            setTimeout(() => {
-                scoreElement.classList.remove('pop-animation');
-            }, 500);
-        }
-        
-        const totalXpElement = document.getElementById('total-xp');
-        if (totalXpElement) {
-            totalXpElement.textContent = totalXP;
-        }
-        
-        updateProgressBar();
-        updateLevel();
-        updateProgressPath();
-        
-        let feedbackText = getRandomFeedback(true, xpGained);
-        if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
-        if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
-
-        showFeedback(feedbackText, true);
-    }
-
-    // Hilfsfunktionen
-    function updateProgressBar() {
-        const progress = Math.round((score / currentQuestions.length) * 100);
-        document.getElementById('progress-bar').style.width = `${progress}%` ;
-        document.getElementById('progress-label').textContent = `${progress}%`;
-    }
-
-    function updateStreak(isCorrect) {
-        if (isCorrect) {
-            currentStreak++;
-            if (currentStreak > bestStreak) {
-                bestStreak = currentStreak;
-            }
-        } else {
-            currentStreak = 0;
-        }
-        
-        document.getElementById('streak-text').textContent = `Aktuelle Serie: ${currentStreak}`;
-        const streakFlame = document.getElementById('streak-flame');
-        
-        if (currentStreak > 0) {
-            streakFlame.classList.add('active');
-        } else {
-            streakFlame.classList.remove('active');
-        }
-    }
-
-    function updateLevel() {
-        const newLevel = Math.floor(totalXP / 100) + 1;
-        if (newLevel !== level) {
-            level = newLevel;
-            document.getElementById('level').textContent = level;
-            showAchievement('Neues Level!', `Level ${level} erreicht! 🎉`, '🌟');
-        }
-        
-        const xpToNextLevel = (level * 100) - totalXP;
-        document.getElementById('xp-display').textContent = 
-            `XP: ${totalXP % 100}/100 (${xpToNextLevel} bis Level ${level + 1})`;
-    }
-
-    function updateProgressPath() {
-        const pathProgress = (totalXP / 1500) * 100;
-        
-        // Safely update progress-path-fill
-        const progressPathFill = document.getElementById('progress-path-fill');
-        if (progressPathFill) {
-            progressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
-        }
-        
-        const milestones = [
-            { xp: 100, id: 'milestone-1' },
-            { xp: 350, id: 'milestone-2' },
-            { xp: 750, id: 'milestone-3' },
-            { xp: 1500, id: 'milestone-4' }
-        ];
-        
-        milestones.forEach(milestone => {
-            const element = document.getElementById(milestone.id);
-            if (totalXP >= milestone.xp) {
-                element.classList.add('completed');
-            } else if (totalXP >= milestone.xp * 0.8) {
-                element.classList.add('active');
-            }
-        });
-    }
-
-    function updateStats() {
-        document.getElementById('total-quizzes').textContent = totalQuizzes;
-        document.getElementById('total-correct').textContent = totalCorrect;
-        document.getElementById('average-score').textContent = 
-            totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) + '%' : '0%';
-        document.getElementById('best-streak').textContent = bestStreak;
-    }
-
-    function showFeedback(message, isSuccess) {
-        const feedbackEl = document.getElementById('feedback-message');
-        feedbackEl.textContent = message;
-        feedbackEl.className = isSuccess ? 'feedback-success' : 'feedback-error';
-        feedbackEl.style.opacity = '1';
-        
-        setTimeout(() => {
-            feedbackEl.style.opacity = '0';
-        }, 3000);
-    }
-
-    function getRandomFeedback(isCorrect, xpGained = 0) {
-        const correctFeedback = [
-            `Super! +${xpGained} XP 🌟`,
-            `Richtig! +${xpGained} XP ✨`,
-            `Gut gemacht! +${xpGained} XP 🎯`,
-            `Perfekt! +${xpGained} XP 💫`,
-            `Ausgezeichnet! +${xpGained} XP 🏆`
-        ];
-        
-        const incorrectFeedback = [
-            'Leider falsch! Weiter so! 💪',
-            'Nicht ganz richtig! Nächste Chance! 🎯',
-            'Fast! Probier\'s nochmal! 📚',
-            'Nicht aufgeben! 💫',
-            'Du schaffst das! 🌟'
-        ];
-        
-        const feedbackArray = isCorrect ? correctFeedback : incorrectFeedback;
-        return feedbackArray[Math.floor(Math.random() * feedbackArray.length)];
-    }
-
-    function showAchievement(title, description, icon) {
-        const popup = document.getElementById('achievement-popup');
-        const overlay = document.getElementById('overlay');
-        
-        document.getElementById('achievement-title').textContent = title;
-        document.getElementById('achievement-description').textContent = description;
-        document.getElementById('achievement-icon').textContent = icon;
-        
-        popup.classList.add('show');
-        overlay.classList.add('show');
-        
-        // Optional: Konfetti-Animation
-        if (typeof confetti === 'function') {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        }
-    }
-
-    function closeAchievementPopup() {
-        const popup = document.getElementById('achievement-popup');
-        const overlay = document.getElementById('overlay');
-        
-        popup.classList.remove('show');
-        overlay.classList.remove('show');
-    }
-
-    function toggleStats() {
-        const statsContainer = document.getElementById('stats-container');
-        statsContainer.classList.toggle('hidden');
-    }
-
-    function showSettings() {
-        alert('Einstellungen werden bald verfügbar sein!');
-    }
-
-    function showError(message) {
-        const container = document.getElementById('current-question');
-        container.innerHTML = `<div class="error-message">${message}</div>`;
-    }
-
-    // Verbesserte Antwortprüfung mit Animation
-    function checkAnswer(questionIndex, selectedOption) {
-        if (answeredQuestions.has(questionIndex)) return;
-        
-        const question = currentQuestions[questionIndex];
-        const isCorrect = selectedOption === question.randomizedCorrect;
-        const options = document.querySelectorAll('.option');
-        
-        options.forEach(option => {
-            option.style.pointerEvents = 'none';
-        });
-        
-        options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
-        
-        if (!isCorrect) {
-            setTimeout(() => {
-                options[question.randomizedCorrect].classList.add('correct');
-            }, 300);
-        }
-
-        question.lastSelected = selectedOption;
-        answeredQuestions.add(questionIndex);
-        totalQuestions++;
-
-        clearInterval(timerInterval);
-
-        processAnswer(isCorrect);
-        
-        document.getElementById('next-question').disabled = 
-            currentQuestionIndex === currentQuestions.length - 1;
-            
-        if (currentQuestionIndex < currentQuestions.length - 1) {
-            setTimeout(() => {
-                nextQuestion();
-            }, 1500);
-        } else if (currentQuestionIndex === currentQuestions.length - 1) {
-            setTimeout(() => {
-                showQuizSummary();
-            }, 1500);
-        }
-    }
-
-    // neue Funktion für die Quiz-Zusammenfassung
-    function showQuizSummary() {
-        const container = document.getElementById('current-question');
-        const correctAnswers = Array.from(answeredQuestions).filter(
-            index => currentQuestions[index].lastSelected === currentQuestions[index].randomizedCorrect
-        ).length;
-        
-        container.innerHTML = `
-            <div class="quiz-summary">
-                <h2>Quiz abgeschlossen! 🎉</h2>
-                <div class="summary-stats">
-                    <div class="summary-stat">
-                        <span class="stat-value">${correctAnswers}/${currentQuestions.length}</span>
-                        <span class="stat-label">Richtige Antworten</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="stat-value">${Math.round((correctAnswers/currentQuestions.length) * 100)}%</span>
-                        <span class="stat-label">Erfolgsquote</span>
-                    </div>
-                    <div class="summary-stat">
-                        <span class="stat-value">+${totalXP}</span>
-                        <span class="stat-label">Gewonnene XP</span>
-                    </div>
-                </div>
-                <button onclick="newQuiz()" class="retry-button">🔄 Neues Quiz starten</button>
-            </div>
-        `;
-    }
-
-    // Verbesserte Navigation
-    function nextQuestion() {
-        if (currentQuestionIndex < currentQuestions.length - 1) {
-            currentQuestionIndex++;
-            displayCurrentQuestion();
-        }
-    }
-
-    function previousQuestion() {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            displayCurrentQuestion();
-        }
-    }
-
-    function backToMenu() {
-        // Reset quiz state
-        currentQuestions = [];
-        currentQuestionIndex = 0;
-        answeredQuestions.clear();
-        score = 0;
-        
-        // Clear timer if active
-        // Hide quiz content and show menu
-        document.getElementById('quiz-content').style.display = 'none';
-        document.getElementById('quiz-selection-menu').style.display = 'block';
-        
-        // Save current game state
-        saveGameData();
-    }
-    
-    // Fehlerbehebung
-    function checkForBadges() {
-        const badgeCriteria = [
-            { id: 'badge-beginner', xp: 100, name: 'Anfänger' },
-            { id: 'badge-intermediate', xp: 350, name: 'Fortgeschritten' },
-            { id: 'badge-advanced', xp: 750, name: 'Profi' },
-            { id: 'badge-master', xp: 1500, name: 'Meister' }
-        ];
-        
-        let earnedBadges = 0;
-        badgeCriteria.forEach(badge => {
-            const badgeElement = document.getElementById(badge.id);
-            if (badgeElement && totalXP >= badge.xp) {
-                if (!badgeElement.classList.contains('earned')) {
-                    badgeElement.classList.add('earned');
-                    showAchievement('Neues Abzeichen!', `Du hast das ${badge.name}-Abzeichen verdient!`, badge.id === 'badge-master' ? '👑' : (badge.id === 'badge-advanced' ? '🥇' : (badge.id === 'badge-intermediate' ? '🥈' : '🥉')));
-
-                }
-                earnedBadges++;
-            }
-        });
-        
-        // Aktualisiere auch die Badges im Hauptmenü
-        const mainProgressPathFill = document.getElementById('main-progress-path-fill');
-       
-        // PvS
-        const pathProgress = (totalXP / 1500) * 100;
-        const mainMilestones = [
-            { xp: 100, id: 'main-milestone-1' },
-            { xp: 350, id: 'main-milestone-2' },
-            { xp: 750, id: 'main-milestone-3' },
-            { xp: 1500, id: 'main-milestone-4' }
-        ];
-        
-        mainMilestones.forEach(milestone => {
-            const element = document.getElementById(milestone.id);
-            if (element) {
-                if (totalXP >= milestone.xp) {
-                    element.classList.add('completed');
-                } else if (totalXP >= milestone.xp * 0.8) {
-                    element.classList.add('active');
-                }
-            }
-        });
-    
-
-    // Messwerte aktualisieren
-    const earnedBadgesElement = document.getElementById('earned-badges');
-    if (earnedBadgesElement) {
-        earnedBadgesElement.textContent = earnedBadges;
-    }
-    
-    const menuBadgesElement = document.getElementById('menu-badges');
-    if (menuBadgesElement) {
-        menuBadgesElement.textContent = `${earnedBadges}/4`;
-    }
-    }
-
-    // Update der Menüauswahl
-    const categoriesContainer = document.getElementById('quiz-categories');
-    categoriesContainer.innerHTML = quizCategories.map(category => `
-        <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
-            <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
-            <p>${category.description}</p>
-            <div class="category-stats">
-                <div class="category-stat">
-                    <span>🎮</span> 0x gespielt
-                </div>
-                <div class="category-stat">
-                    <span>🏅</span> Highscore: 0/20
-                </div>
-            </div>
-            <div class="category-progress"></div>
-        </div>
-        
-    `
-    ).join('');
-
-    </script>
-</body>
-</html>
-<style>
-    .minmax-length {
-        min-height: 660px;
-    }
-    .quiz-selection-menu {
-        max-width: 900px;
-        margin: 2rem auto;
-        padding: 2rem;
-        text-align: center;
-        background-color: var(--container-bg);
-        border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        animation: fadeIn 1s;
-    }
-
-    .main-title {
-        margin-bottom: 0.5rem;
-        font-size: 2.5rem;
-        color: var(--primary-color);
-    }
-
-    .main-subtitle {
-        color: var(--secondary-color);
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-    }
-
-    .user-stats-summary {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 2rem;
-        padding: 1rem;
-        background-color: var(--bg-color);
-        border-radius: 8px;
-        animation: fadeIn 1s;
-    }
-
-    .stats-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stats-icon {
-        font-size: 1.5rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .stats-value {
-        font-weight: bold;
-        color: var(--primary-color);
-    }
-
-    .stats-label {
-        font-size: 0.8rem;
-        color: var(--secondary-color);
-    }
-
-    .daily-challenge-status, .total-xp {
-        color: var(--primary-color);
-    }
-
-    .quiz-categories {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-        animation: fadeIn 1.2s;
-    }
-
-    .quiz-category {
-        background: var(--container-bg);
-        border: 2px solid var(--border-color);
-        padding: 1.5rem;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .quiz-category:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        border-color: var(--primary-color);
-    }
-
-    .quiz-category h3 {
-        margin: 0;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-        font-size: 1.4rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .quiz-category-icon {
-        font-size: 1.6rem;
-    }
-
-    .quiz-category p {
-        margin: 0;
-        font-size: 0.95rem;
-        opacity: 0.9;
-        line-height: 1.5;
-    }
-
-    .category-stats {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--border-color);
-        font-size: 0.9rem;
-    }
-
-    .category-stat {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-    }
-
-    .category-progress {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%; /* Wird dynamisch gesetzt */
-        height: 4px;
-        background-color: var(--primary-color);
-        transition: width 0.6s linear;
-    }
-    
-    #single-question-container {
-        margin: 0 auto;
-        padding: 2rem;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-md);
-        max-width: 800px;
-    }
-
-    .menu-footer {
-        margin-top: 3rem;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .theme-btn, .settings-btn {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .theme-btn:hover, .settings-btn:hover {
-        background-color: var(--primary-color);
-        color: white;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @media (max-width: 768px) {
+    <style>
         .quiz-selection-menu {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .main-title {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .main-subtitle {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .user-stats-summary {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            animation: slideIn 0.6s ease;
+        }
+
+        .stats-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stats-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .stats-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stats-label {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+
+        .daily-challenge-status, .total-xp {
+            color: var(--primary-color);
+        }
+
+        .quiz-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .quiz-category {
+            background: var(--container-bg);
+            border: 2px solid var(--border-color);
             padding: 1.5rem;
-            margin: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .quiz-category h3 {
+            margin: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quiz-category-icon {
+            font-size: 1.6rem;
+        }
+
+        .quiz-category p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .category-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .category-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .category-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%; /* Wird dynamisch gesetzt */
+            height: 4px;
+            background-color: var(--primary-color);
+            transition: width 0.6s ease;
         }
         
-        .user-stats-summary {
+        #single-question-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-footer {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
             gap: 1rem;
         }
-        
-        .main-title {
-            font-size: 2rem;
+
+        .theme-btn, .settings-btn {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-btn:hover, .settings-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .quiz-selection-menu {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .user-stats-summary {
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .quiz-categories {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .quiz-categories {
-            grid-template-columns: 1fr;
+        .single-question-container {
+            background-color: var(--container-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
         }
-    }
-    
-    .single-question-container {
-        background-color: var(--container-bg);
-        padding: 2rem;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-md);
-        margin: 2rem auto;
-        max-width: 800px;
-        position: relative;
-    }
 
-    .question-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--border-color);
-    }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .question-progress {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: var(--primary-color);
-    }
+        .question-progress {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
 
-    .current-question {
-        margin: 2rem 0;
-    }
+        .question-category {
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
 
-    .question-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--border-color);
-    }
+        .current-question {
+            margin: 2rem 0;
+        }
 
-</style>
+        .question-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        #prev-question, #next-question {
+            min-width: 150px;
+        }
+
+        #prev-question:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+    </style>
 
     <script>
     // Theme toggle functionality
@@ -1229,7 +461,7 @@
             totalQuestions,
             totalQuizzes,
             darkMode,
-            badges: {}
+            badges: {} // Add your badges here
         };
         
         localStorage.setItem('quizGameData', JSON.stringify(gameData));
@@ -1248,16 +480,19 @@
             totalQuizzes = data.totalQuizzes || 0;
             darkMode = data.darkMode ?? true;
             
+            // Safely update UI elements if they exist
             const updateElementText = (id, value) => {
                 const element = document.getElementById(id);
                 if (element) element.textContent = value;
             };
             
+            // Update UI with loaded data
             updateElementText('total-xp', totalXP);
             updateElementText('level', level);
             updateElementText('menu-level', level);
             updateElementText('menu-total-xp', totalXP);
             
+            // Only call these UI update functions if necessary elements exist
             try {
                 const streakText = document.getElementById('streak-text');
                 if (streakText) updateStreak(false);
@@ -1270,7 +505,7 @@
                 
                 updateProgressPath();
             } catch (e) {
-                console.log('Some UI elements are not available yet:', e);
+                console.error('Some UI elements are not available yet:', e);
             }
         }
     }
@@ -1532,9 +767,7 @@
                         </div>
                     `).join('')}
 
-                    ${question.lastSelected !== undefined ? optionsCopy.forEach((opt) => {
-                        if (opt === question.options[question.lastSelected].option) return false;
-                    }) : experience(sидоted);}
+
                 </div>
             `;
 
@@ -1548,7 +781,6 @@
             }, 500);
 
         }, 300); // Warte auf Slide-Out Animation
-
 
         // Update navigation buttons
         document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
@@ -1567,18 +799,22 @@
         if (answeredQuestions.has(questionIndex)) return;
         
         const question = currentQuestions[questionIndex];
+        if (!question) return;
+        
         const isCorrect = selectedOption === question.randomizedCorrect;
         const options = document.querySelectorAll('.option');
-
+        
         // Deaktiviere alle Optionen während der Animation
         options.forEach(option => {
             option.style.pointerEvents = 'none';
         });
         
         // Markiere die ausgewählte Option
-        options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
+        if (options[selectedOption]) {
+            options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
+        }
         
-        if (!isCorrect) {
+        if (!isCorrect && options[question.randomizedCorrect]) {
             // Zeige die richtige Antwort
             setTimeout(() => {
                 options[question.randomizedCorrect].classList.add('correct');
@@ -1590,15 +826,19 @@
         answeredQuestions.add(questionIndex);
         totalQuestions++;
 
-        // Stoppe Timer
-        clearInterval(timerInterval);
+        // Stoppe Timer wenn aktiv
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
 
         // Verarbeite das Ergebnis
         processAnswer(isCorrect);
         
         // Aktiviere den "Weiter"-Button
-        document.getElementById('next-question').disabled = 
-            currentQuestionIndex === currentQuestions.length - 1;
+        const nextButton = document.getElementById('next-question');
+        if (nextButton) {
+            nextButton.disabled = currentQuestionIndex === currentQuestions.length - 1;
+        }
             
         // Automatisch zur nächsten Frage nach Verzögerung
         if (currentQuestionIndex < currentQuestions.length - 1) {
@@ -1665,6 +905,13 @@
         score = 0;
         
         // Clear timer if active
+        if (timerActive) {
+            clearInterval(timerInterval);
+            timerActive = false;
+            document.getElementById('timer-container').style.display = 'none';
+            document.getElementById('timer-toggle').style.backgroundColor = 'var(--primary-color)';
+        }
+        
         // Hide quiz content and show menu
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('quiz-selection-menu').style.display = 'block';
@@ -1672,42 +919,164 @@
         // Save current game state
         saveGameData();
     }
-
-    // UI camiebz cambiado
-    // UI-Updates in separate Funktion ausgelagert
-    function updateUI(xpGained, streakBonus, timeBonus, coinsEarned) {
-        // Score-Element aktualisieren
-        const scoreElement = document.getElementById('score');
-        if (scoreElement) {
-            scoreElement.textContent = `Punktzahl: ${score} Punkte 📊`;
-            scoreElement.classList.add('pop-animation');
-            setTimeout(() => {
-                scoreElement.classList.remove('pop-animation');
-            }, 500);
+    
+    // Verarbeitung der Antwort in separate Funktion ausgelagert
+    function processAnswer(isCorrect) {
+        if (isCorrect) {
+            score++;
+            totalCorrect++;
+            
+            const basePoints = 5;
+            const streakBonus = currentStreak > 0 ? Math.min(5, currentStreak) : 0;
+            const levelBonus = Math.floor(level / 2);
+            
+            let timeBonus = 0;
+            if (timerActive && timeRemaining > 0) {
+                timeBonus = Math.ceil(timeRemaining / maxTime * 5);
+            }
+            
+            const xpGained = basePoints + streakBonus + levelBonus + timeBonus;
+            xp += xpGained;
+            totalXP += xpGained;
+            
+            updateUI(xpGained, streakBonus, timeBonus);
+            updateDailyChallenge('correct_answer');
+            checkForBadges();
+        } else {
+            showFeedback(getRandomFeedback(false), false);
         }
         
-        // Total XP aktualisieren
-        const totalXpElement = document.getElementById('total-xp');
-        if (totalXpElement) {
-            totalXpElement.textContent = totalXP;
-        }
-        
-        // Aktualisiere alle anderen Elemente
-        updateProgressBar();
-        updateLevel();
-        updateHintSystem();
-        updateProgressPath();
-        
-        // Feedback anzeigen
-        let feedbackText = getRandomFeedback(true, xpGained);
-        if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
-        if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
-        feedbackText += ` (+${coinsEarned} 🪙)`;
-
-        showFeedback(feedbackText, true);
+        updateStreak(isCorrect);
+        updateDailyChallenge('streak_update');
+        saveGameData();
+        updateStats();
     }
 
-    // Rückmeldungen
+    // Verbesserte Update-Funktion
+    function updateUI(xpGained, streakBonus = 0, timeBonus = 0) {
+        try {
+            const scoreElement = document.getElementById('score');
+            if (scoreElement) {
+                scoreElement.textContent = `Punktzahl: ${score} Punkte 📊`;
+                scoreElement.classList.add('pop-animation');
+                setTimeout(() => {
+                    scoreElement.classList.remove('pop-animation');
+                }, 500);
+            }
+            
+            const totalXpElement = document.getElementById('total-xp');
+            if (totalXpElement) {
+                totalXpElement.textContent = totalXP;
+            }
+            
+            updateProgressBar();
+            updateLevel();
+            updateProgressPath();
+            
+            let feedbackText = getRandomFeedback(true, xpGained);
+            if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
+            if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
+            
+            showFeedback(feedbackText, true);
+        } catch (error) {
+            console.error('Fehler beim UI Update:', error);
+        }
+    }
+
+    // Verbesserte Progress-Update-Funktion
+    function updateProgressBar() {
+        try {
+            const progressBar = document.getElementById('progress-bar');
+            const progressLabel = document.getElementById('progress-label');
+            
+            if (progressBar && progressLabel) {
+                const progress = Math.round((score / (currentQuestions.length || 1)) * 100);
+                progressBar.style.width = `${progress}%`;
+                progressLabel.textContent = `${progress}%`;
+            }
+        } catch (error) {
+            console.error('Fehler beim Progress-Update:', error);
+        }
+    }
+
+    // Verbesserte Streak-Update-Funktion
+    function updateStreak(isCorrect) {
+        try {
+            if (isCorrect) {
+                currentStreak++;
+                if (currentStreak > bestStreak) {
+                    bestStreak = currentStreak;
+                }
+            } else {
+                currentStreak = 0;
+            }
+            
+            const streakText = document.getElementById('streak-text');
+            const streakFlame = document.getElementById('streak-flame');
+            
+            if (streakText) {
+                streakText.textContent = `Aktuelle Serie: ${currentStreak}`;
+            }
+            
+            if (streakFlame) {
+                if (currentStreak > 0) {
+                    streakFlame.classList.add('active');
+                } else {
+                    streakFlame.classList.remove('active');
+                }
+            }
+        } catch (error) {
+            console.error('Fehler beim Streak-Update:', error);
+        }
+    }
+
+    function updateLevel() {
+        const newLevel = Math.floor(totalXP / 100) + 1;
+        if (newLevel !== level) {
+            level = newLevel;
+            document.getElementById('level').textContent = level;
+            showAchievement('Neues Level!', `Level ${level} erreicht! 🎉`, '🌟');
+        }
+        
+        const xpToNextLevel = (level * 100) - totalXP;
+        document.getElementById('xp-display').textContent =
+            `XP: ${totalXP % 100}/100 (${xpToNextLevel} bis Level ${level + 1})`;
+    }
+
+    function updateProgressPath() {
+        const pathProgress = (totalXP / 1500) * 100;
+        
+        // Safely update progress-path-fill
+        const progressPathFill = document.getElementById('progress-path-fill');
+        if (progressPathFill) {
+            progressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
+        }
+        
+        const milestones = [
+            { xp: 100, id: 'milestone-1' },
+            { xp: 350, id: 'milestone-2' },
+            { xp: 750, id: 'milestone-3' },
+            { xp: 1500, id: 'milestone-4' }
+        ];
+        
+        milestones.forEach(milestone => {
+            const element = document.getElementById(milestone.id);
+            if (totalXP >= milestone.xp) {
+                element.classList.add('completed');
+            } else if (totalXP >= milestone.xp * 0.8) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    function updateStats() {
+        document.getElementById('total-quizzes').textContent = totalQuizzes;
+        document.getElementById('total-correct').textContent = totalCorrect;
+        document.getElementById('average-score').textContent =
+            totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) + '%' : '0%';
+        document.getElementById('best-streak').textContent = bestStreak;
+    }
+
     function showFeedback(message, isSuccess) {
         const feedbackEl = document.getElementById('feedback-message');
         feedbackEl.textContent = message;
@@ -1719,21 +1088,20 @@
         }, 3000);
     }
 
-    // Zufällige Rückmeldungen
     function getRandomFeedback(isCorrect, xpGained = 0) {
         const correctFeedback = [
             `Super! +${xpGained} XP 🌟`,
             `Richtig! +${xpGained} XP ✨`,
-            `Gut - gemacht! +${xpGained} XP 🎯`,
+            `Gut gemacht! +${xpGained} XP 🎯`,
             `Perfekt! +${xpGained} XP 💫`,
-            `Unwiderstehlich! +${xpGained} XP 🏆`
+            `Ausgezeichnet! +${xpGained} XP 🏆`
         ];
         
         const incorrectFeedback = [
-            'Es tut mir leid, Sie sind falsch! Starker Wille! 💪',
-            'Es ist nicht wahr! Nächste Gelegenheit! 🎯',
+            'Leider falsch! Weiter so! 💪',
+            'Nicht ganz richtig! Nächste Chance! 🎯',
             'Fast! Probier\'s nochmal! 📚',
-            'Bleib stark! 💫',
+            'Nicht aufgeben! 💫',
             'Du schaffst das! 🌟'
         ];
         
@@ -1741,7 +1109,6 @@
         return feedbackArray[Math.floor(Math.random() * feedbackArray.length)];
     }
 
-    // Abzeichen
     function showAchievement(title, description, icon) {
         const popup = document.getElementById('achievement-popup');
         const overlay = document.getElementById('overlay');
@@ -1785,14 +1152,125 @@
         container.innerHTML = `<div class="error-message">${message}</div>`;
     }
 
-    // Call to action
-    function checkCourses() {
-        alert('Aktuelle Kurse sind nicht verfügbar 🔥');
+    function updateDailyChallenge(action) {
+        // Implementierung der täglichen Herausforderungen hier
+        // Wird später hinzugefügt
     }
 
-    // Snippet for Test button
-    async function testCourses() {
-        const test = await QuizEvent.create({name: 'kurs-button', pass: 'none'}, '32380856', 1);
-        alert(1);
+    // Füge die verbesserte checkForBadges-Funktion hinzu
+function checkForBadges() {
+    const badgeCriteria = [
+        { id: 'badge-beginner', xp: 100, name: 'Anfänger' },
+        { id: 'badge-intermediate', xp: 350, name: 'Fortgeschritten' },
+        { id: 'badge-advanced', xp: 750, name: 'Profi' },
+        { id: 'badge-master', xp: 1500, name: 'Meister' }
+    ];
+    
+    let earnedBadges = 0;
+    badgeCriteria.forEach(badge => {
+        const badgeElement = document.getElementById(badge.id);
+        if (badgeElement && totalXP >= badge.xp) {
+            if (!badgeElement.classList.contains('earned')) {
+                badgeElement.classList.add('earned');
+                showAchievement('Neues Abzeichen!', `Du hast das ${badge.name}-Abzeichen verdient!`, badge.id === 'badge-master' ? '👑' : (badge.id === 'badge-advanced' ? '🥇' : (badge.id === 'badge-intermediate' ? '🥈' : '🥉')));
+            }
+            earnedBadges++;
+        }
+    });
+    
+    // Aktualisiere auch die Badges im Hauptmenü
+    const mainProgressPathFill = document.getElementById('main-progress-path-fill');
+    if (mainProgressPathFill) {
+        const pathProgress = (totalXP / 1500) * 100;
+        mainProgressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
+        
+        const mainMilestones = [
+            { xp: 100, id: 'main-milestone-1' },
+            { xp: 350, id: 'main-milestone-2' },
+            { xp: 750, id: 'main-milestone-3' },
+            { xp: 1500, id: 'main-milestone-4' }
+        ];
+        
+        mainMilestones.forEach(milestone => {
+            const element = document.getElementById(milestone.id);
+            if (totalXP >= milestone.xp) {
+                element.classList.add('completed');
+            } else if (totalXP >= milestone.xp * 0.8) {
+                element.classList.add('active');
+            }
+        });
     }
+    
+    // Aktualisiere Badges-Anzeige
+    const earnedBadgesElement = document.getElementById('earned-badges');
+    if (earnedBadgesElement) {
+        earnedBadgesElement.textContent = `${earnedBadges}/4`;
+    }
+    
+    const menuBadgesElement = document.getElementById('menu-badges');
+    if (menuBadgesElement) {
+        menuBadgesElement.textContent = `${earnedBadges}/4`;
+    }
+}
+
+    // Rest of your existing code...
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set initial theme
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        
+        // Load questions and start quiz
+        loadQuestions();
+    });
     </script>
+</body>
+</html>
+<style>
+    .quiz-summary {
+        text-align: center;
+        padding: 2rem;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .quiz-summary h2 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+
+    .summary-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .summary-stat {
+        background: var(--container-bg);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+    }
+
+    .retry-button {
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        width: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>
