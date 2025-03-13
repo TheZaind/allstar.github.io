@@ -64,10 +64,7 @@
                     <div class="status-item">Level: <span id="level">1</span> 🌟</div>
                     <div class="status-item">Serie: <span id="streak-text">0</span> 🔥</div>
                     <div class="status-item">Punkte: <span id="score">0</span> 📊</div>
-                </div>
-                <div class="status-row">
                     <div class="status-item">XP: <span id="xp-display">0/100</span></div>
-                    <div id="current-badge" class="current-badge"></div>
                 </div>
             </div>
             <div id="feedback-message" class="feedback-message"></div>
@@ -496,10 +493,7 @@
         if (isCorrect) {
             score++;
             totalCorrect++;
-            currentStreak++;
-            if (currentStreak > bestStreak) {
-                bestStreak = currentStreak;
-            }
+            updateStreak(true);
             
             // XP Berechnung
             const basePoints = 10;
@@ -512,7 +506,7 @@
             // Feedback anzeigen
             showFeedback(`Richtig! +${xpGained} XP${streakBonus > 0 ? ` (${streakBonus} Streak Bonus)` : ''}${timeBonus > 0 ? ` (${timeBonus} Zeit Bonus)` : ''}`, true);
         } else {
-            currentStreak = 0;
+            updateStreak(false);
             showFeedback('Leider falsch! Weiter so! 💪', false);
         }
 
