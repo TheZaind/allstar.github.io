@@ -647,10 +647,22 @@
         document.getElementById('total-questions').textContent = currentQuestions.length;
     }
 
-    // Show quiz menu
+    // Show quiz menu with null checks
     function showQuizMenu() {
-        document.getElementById('quiz-selection-menu').style.display = 'block';
-        document.getElementById('quiz-content').style.display = 'none';
+        const menuElement = document.getElementById('quiz-selection-menu');
+        const contentElement = document.getElementById('quiz-content');
+        
+        if (menuElement) {
+            menuElement.style.display = 'block';
+        } else {
+            console.warn('quiz-selection-menu element not found');
+        }
+        
+        if (contentElement) {
+            contentElement.style.display = 'none';
+        } else {
+            console.warn('quiz-content element not found');
+        }
     }
 
     // Fragen laden und Quiz initialisieren
@@ -936,13 +948,33 @@
         if (timerActive) {
             clearInterval(timerInterval);
             timerActive = false;
-            document.getElementById('timer-container').style.display = 'none';
-            document.getElementById('timer-toggle').style.backgroundColor = 'var(--primary-color)';
+            const timerContainer = document.getElementById('timer-container');
+            const timerToggle = document.getElementById('timer-toggle');
+            
+            if (timerContainer) {
+                timerContainer.style.display = 'none';
+            }
+            
+            if (timerToggle) {
+                timerToggle.style.backgroundColor = 'var(--primary-color)';
+            }
         }
         
-        // Hide quiz content and show menu
-        document.getElementById('quiz-content').style.display = 'none';
-        document.getElementById('quiz-selection-menu').style.display = 'block';
+        // Hide quiz content and show menu with null checks
+        const contentElement = document.getElementById('quiz-content');
+        const menuElement = document.getElementById('quiz-selection-menu');
+        
+        if (contentElement) {
+            contentElement.style.display = 'none';
+        } else {
+            console.warn('quiz-content element not found');
+        }
+        
+        if (menuElement) {
+            menuElement.style.display = 'block';
+        } else {
+            console.warn('quiz-selection-menu element not found');
+        }
         
         // Save current game state
         saveGameData();
