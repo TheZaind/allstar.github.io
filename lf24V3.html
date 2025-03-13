@@ -41,21 +41,6 @@
     </div>
 
     <div id="quiz-content" style="display: none;">
-        <div class="fixed-header">
-            <div class="header-container">
-                <div class="level-info">Maurice´s-Learning-Game Level: <span id="level">1</span> 🌟</div>
-                <div class="streak-counter">
-                    <span id="streak-text">Aktuelle Serie: 0</span>
-                    <span class="streak-flame" id="streak-flame">🔥</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                    <div class="progress-label" id="progress-label">0%</div>
-                </div>
-                <div id="feedback-message"></div>
-            </div>
-        </div>
-        
         <div class="controls">
             <button onclick="backToMenu()" class="back-button">↩️ Zurück zum Menü</button>
             <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
@@ -63,16 +48,72 @@
             <button onclick="toggleStats()">📊 Statistiken</button>
             <button onclick="toggleTimerMode()" id="timer-toggle">⏱️ Zeitmodus</button>
         </div>
-        <h1>💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
-        
-        <!-- Timer Container -->
+
+        <div class="fixed-header">
+            <div class="header-container">
+                <h1 class="quiz-title">💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
+                <div class="level-info">Level: <span id="level">1</span> 🌟</div>
+                
+                <div class="quiz-stats">
+                    <div class="streak-counter">
+                        <span id="streak-text">Aktuelle Serie: 0</span>
+                        <span class="streak-flame" id="streak-flame">🔥</span>
+                    </div>
+                    <div class="score-display">
+                        <div class="score" id="score">Punktzahl: 0 Punkte 📊</div>
+                        <div id="xp-display">XP: 0/100</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-label" id="progress-label">0%</div>
+                </div>
+            </div>
+            <div id="feedback-message"></div>
+        </div>
+
         <div class="timer-container" id="timer-container" style="display: none;">
             <div class="timer-bar" id="timer-bar"></div>
             <div class="time-bonus-indicator" id="time-bonus">+5 XP</div>
             <div class="timer-mode-badge">⏱️ ZEITMODUS</div>
         </div>
-        
-        <!-- Hinweis-System -->
+
+        <div id="single-question-container" class="single-question-container">
+            <div class="question-header">
+                <div class="question-progress">
+                    Frage <span id="current-question-number">1</span> von <span id="total-questions">20</span>
+                </div>
+                <div class="question-category" id="question-category">
+                    Kategorie: <span id="current-category">CPU</span>
+                </div>
+            </div>
+
+            <div class="question-power-ups">
+                <div class="power-up" onclick="usePowerUp('removeWrong')">
+                    <span class="power-up-icon">❌</span> 2 Falsche
+                    <span class="power-up-count" id="removeWrong-count">0</span>
+                </div>
+                <div class="power-up" onclick="usePowerUp('showHint')">
+                    <span class="power-up-icon">💡</span> Hinweis
+                    <span class="power-up-count" id="showHint-count">0</span>
+                </div>
+                <div class="power-up" onclick="usePowerUp('extraTime')">
+                    <span class="power-up-icon">⏱️</span> Extra Zeit
+                    <span class="power-up-count" id="extraTime-count">0</span>
+                </div>
+            </div>
+
+            <div id="current-question" class="current-question">
+                <!-- Current question will be inserted here -->
+            </div>
+
+            <div class="question-navigation">
+                <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
+                <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
+            </div>
+        </div>
+
         <div class="hint-container">
             <div class="hint-coins">
                 <span class="hint-coins-icon">🪙</span>
@@ -90,58 +131,34 @@
                 </button>
             </div>
         </div>
-        
-        <!-- Power-Ups -->
-        <div class="power-ups">
-            <div class="power-up" onclick="usePowerUp('removeWrong')">
-                <span class="power-up-icon">❌</span> 2 Falsche
-                <span class="power-up-count" id="removeWrong-count">0</span>
+
+        <div class="game-progress">
+            <div class="daily-challenge" id="daily-challenge">
+                <h3>Tägliche Herausforderung</h3>
+                <p id="daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
+                <div class="daily-challenge-status" id="daily-challenge-status">0/5 geschafft</div>
+                <div class="daily-challenge-reward" id="daily-challenge-reward">Belohnung: 50 XP</div>
             </div>
-            <div class="power-up" onclick="usePowerUp('showHint')">
-                <span class="power-up-icon">💡</span> Hinweis
-                <span class="power-up-count" id="showHint-count">0</span>
+            
+            <div class="login-streak" id="login-streak">
+                <!-- Wird dynamisch mit JavaScript gefüllt -->
             </div>
-            <div class="power-up" onclick="usePowerUp('extraTime')">
-                <span class="power-up-icon">⏱️</span> Extra Zeit
-                <span class="power-up-count" id="extraTime-count">0</span>
+            
+            <div class="total-xp">Gesamt-XP: <span id="total-xp">0</span></div>
+            
+            <div class="progress-path">
+                <h3>Dein Lernfortschritt 📚</h3>
+                <div class="progress-path-line">
+                    <div class="progress-path-fill" id="progress-path-fill"></div>
+                    <div class="progress-milestone" style="left: 10%" id="milestone-1" title="Anfänger">🥉</div>
+                    <div class="progress-milestone" style="left: 30%" id="milestone-2" title="Fortgeschritten">🥈</div>
+                    <div class="progress-milestone" style="left: 60%" id="milestone-3" title="Profi">🥇</div>
+                    <div class="progress-milestone" style="left: 90%" id="milestone-4" title="Meister">👑</div>
+                </div>
+                <div id="path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
             </div>
         </div>
-        
-        <!-- Tägliche Herausforderung -->
-        <div class="daily-challenge" id="daily-challenge">
-            <h3>Tägliche Herausforderung</h3>
-            <p id="daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
-            <div class="daily-challenge-status" id="daily-challenge-status">0/5 geschafft</div>
-            <div class="daily-challenge-reward" id="daily-challenge-reward">Belohnung: 50 XP</div>
-        </div>
-        
-        <!-- Login Streak -->
-        <div class="login-streak" id="login-streak">
-            <!-- Wird dynamisch mit JavaScript gefüllt -->
-        </div>
-        
-        <div id="quiz-container"></div>
-        
-        <div class="score-container">
-            <div class="score" id="score">Punktzahl: 0 Punkte 📊</div>
-            <div id="xp-display">XP: 0/100</div>
-        </div>
-        
-        <div class="total-xp">Gesamt-XP: <span id="total-xp">0</span></div>
-        
-        <!-- Fortschrittspfad -->
-        <div class="progress-path">
-            <h3>Dein Lernfortschritt 📚</h3>
-            <div class="progress-path-line">
-                <div class="progress-path-fill" id="progress-path-fill"></div>
-                <div class="progress-milestone" style="left: 10%" id="milestone-1" title="Anfänger">🥉</div>
-                <div class="progress-milestone" style="left: 30%" id="milestone-2" title="Fortgeschritten">🥈</div>
-                <div class="progress-milestone" style="left: 60%" id="milestone-3" title="Profi">🥇</div>
-                <div class="progress-milestone" style="left: 90%" id="milestone-4" title="Meister">👑</div>
-            </div>
-            <div id="path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
-        </div>
-        
+
         <div class="badge-container" id="badge-container">
             <div class="badge" id="badge-beginner">
                 <div class="badge-icon">🥉</div>
@@ -374,1353 +391,356 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .single-question-container {
+            background-color: var(--container-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-progress {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .question-category {
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .current-question {
+            margin: 2rem 0;
+        }
+
+        .question-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        #prev-question, #next-question {
+            min-width: 150px;
+        }
+
+        #prev-question:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
     </style>
 
     <script>
-        // Verfügbare Quiz-Kategorien
-        const quizCategories = [
-            {
-                id: 'cpu',
-                name: 'CPU Quiz',
-                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
-                icon: '💻',
-                file: 'cpu.json'
-            },
-            {
-                id: 'mb',
-                name: 'MainBoard Quiz',
-                description: 'Teste dein Wissen über Hauptplatinen, Komponenten und ihre Funktionen',
-                icon: '🔌',
-                file: 'mainboard.json'
-            },
-            {
-                id: 'gw',
-                name: 'Elektrogrundlagen Quiz',
-                description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
-                icon: '⚡',
-                file: 'grundwissen.json'
-            },
-            {
-                id: 'mix',
-                name: 'Gemischtes Quiz',
-                description: 'Eine herausfordernde Mischung aus allen Themenbereichen für echte Profis',
-                icon: '🔄',
-                isMixed: true
+        // Neue Variablen für das Single-Question-System
+        let currentQuestionIndex = 0;
+        let answeredQuestions = new Set();
+
+    function createQuiz() {
+        currentQuestions = selectRandomQuestions();
+        currentQuestionIndex = 0;
+        answeredQuestions.clear();
+        score = 0;
+        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
+        updateProgressBar();
+        displayCurrentQuestion();
+        
+        // Update total questions display
+        document.getElementById('total-questions').textContent = currentQuestions.length;
+    }
+
+    // Verbesserte Navigation zwischen den Fragen
+    function displayCurrentQuestion() {
+        const container = document.getElementById('current-question');
+        const question = currentQuestions[currentQuestionIndex];
+        
+        // Füge Slide-Out Animation hinzu
+        container.classList.add('slide-out');
+        
+        setTimeout(() => {
+            // Update question number and category
+            document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
+            
+            if (question.categoryId) {
+                document.getElementById('current-category').textContent = 
+                    quizCategories.find(c => c.id === question.categoryId)?.name || 'Allgemein';
             }
-        ];
 
-        // Kategorie-Statistiken (werden später aus localStorage geladen)
-        let categoryStats = {
-            cpu: { played: 0, highscore: 0, completed: false },
-            mb: { played: 0, highscore: 0, completed: false },
-            gw: { played: 0, highscore: 0, completed: false },
-            mix: { played: 0, highscore: 0, completed: false }
-        };
-
-        let allQuestions = []; // Speichert alle Fragen aus allen JSONs
-        let currentCategoryId = null;
-
-        // Funktion zum Laden aller Fragen aus allen JSON-Dateien
-        async function loadAllQuestions() {
-            try {
-                // Lade zunächst alle nicht-gemischten Kategorien
-                for (const category of quizCategories) {
-                    if (!category.isMixed) {
-                        const response = await fetch(category.file);
-                        if (!response.ok) {
-                            throw new Error(`Fehler beim Laden von ${category.file}`);
-                        }
-                        const data = await response.json();
-                        // Speichere die Kategorie-ID bei jeder Frage
-                        const questionsWithCategory = data.questions.map(q => ({...q, categoryId: category.id}));
-                        allQuestions = allQuestions.concat(questionsWithCategory);
-                    }
-                }
-            } catch (error) {
-                console.error('Fehler beim Laden der Fragen:', error);
-                showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
+            // Randomize options with animation delay
+            const originalCorrectIndex = question.correct;
+            const optionsCopy = [...question.options];
+            const randomizedOptions = [];
+            const optionMapping = [];
+            
+            while (optionsCopy.length > 0) {
+                const randIndex = Math.floor(Math.random() * optionsCopy.length);
+                const originalIndex = question.options.indexOf(optionsCopy[randIndex]);
+                randomizedOptions.push(optionsCopy[randIndex]);
+                optionMapping.push(originalIndex);
+                optionsCopy.splice(randIndex, 1);
             }
-        }
+            
+            const newCorrectIndex = optionMapping.indexOf(originalCorrectIndex);
+            currentQuestions[currentQuestionIndex].randomizedCorrect = newCorrectIndex;
 
-        // Zeige das Auswahlmenü mit erweiterten Informationen
-        function showQuizMenu() {
-            document.getElementById('quiz-selection-menu').style.display = 'block';
-            document.getElementById('quiz-content').style.display = 'none';
-            
-            // Kategorie-Statistiken aus dem Storage laden
-            loadCategoryStats();
-            
-            // Allgemeine Statistiken im Menü anzeigen
-            document.getElementById('menu-total-xp').textContent = totalXP || '0';
-            document.getElementById('menu-level').textContent = level || '1';
-            
-            // Anzahl der erreichten Badges anzeigen
-            const earnedBadges = badges ? Object.values(badges).filter(val => val).length : 0;
-            document.getElementById('menu-badges').textContent = `${earnedBadges}/4`;
-            
-            // Erstelle die Kategorie-Karten mit erweiterten Informationen
-            const categoriesContainer = document.getElementById('quiz-categories');
-            categoriesContainer.innerHTML = quizCategories.map(category => {
-                const stats = categoryStats[category.id];
-                let progress = 0;
-                
-                if (stats.played > 0) {
-                    progress = Math.min(100, Math.round((stats.highscore / 20) * 100));
-                }
-                
-                return `
-                    <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
-                        <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
-                        <p>${category.description}</p>
-                        <div class="category-stats">
-                            <div class="category-stat">
-                                <span>🎮</span> ${stats.played}x gespielt
-                            </div>
-                            <div class="category-stat">
-                                <span>🏅</span> Highscore: ${stats.highscore}/20
-                            </div>
-                            ${stats.completed ? '<div class="category-stat"><span>✅</span> Abgeschlossen</div>' : ''}
+            // Create options with staggered animation
+            container.innerHTML = `
+                <div class="question-text">${question.question}</div>
+                <div class="options-container">
+                    ${randomizedOptions.map((option, index) => `
+                        <div class="option" 
+                            style="--animation-order: ${index}"
+                            ${answeredQuestions.has(currentQuestionIndex) ? 
+                                `class="option ${index === question.randomizedCorrect ? 'correct' : 
+                                (index === question.lastSelected ? 'incorrect' : '')}"` : ''}
+                            onclick="checkAnswer(${currentQuestionIndex}, ${index})"
+                            ${answeredQuestions.has(currentQuestionIndex) ? 'style="pointer-events: none;"' : ''}>
+                            ${option}
                         </div>
-                        <div class="category-progress" style="width: ${progress}%"></div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        // Laden der Kategorie-Statistiken
-        function loadCategoryStats() {
-            const savedStats = localStorage.getItem('quizCategoryStats');
-            if (savedStats) {
-                categoryStats = JSON.parse(savedStats);
-            }
+                    `).join('')}
+                </div>
+            `;
+
+            // Füge Slide-In Animation hinzu
+            container.classList.remove('slide-out');
+            container.classList.add('slide-in');
             
-            // Stelle sicher, dass alle Kategorien existieren
-            quizCategories.forEach(category => {
-                if (!categoryStats[category.id]) {
-                    categoryStats[category.id] = { played: 0, highscore: 0, completed: false };
-                }
-            });
-        }
-        
-        // Speichern der Kategorie-Statistiken
-        function saveCategoryStats() {
-            localStorage.setItem('quizCategoryStats', JSON.stringify(categoryStats));
-        }
-
-        // Starte ein spezifisches Quiz
-        async function startQuizCategory(categoryId) {
-            currentCategoryId = categoryId;
-            const category = quizCategories.find(c => c.id === categoryId);
-            
-            try {
-                if (category.isMixed) {
-                    // Für gemischtes Quiz, verwende alle geladenen Fragen
-                    questions = [...allQuestions];
-                } else {
-                    // Für spezifische Kategorie, lade nur diese Fragen
-                    const response = await fetch(category.file);
-                    if (!response.ok) {
-                        throw new Error(`Fehler beim Laden von ${category.file}`);
-                    }
-                    const data = await response.json();
-                    questions = data.questions;
-                }
-                
-                // Aktualisiere die Spielstatistiken für diese Kategorie
-                categoryStats[categoryId].played++;
-                saveCategoryStats();
-                
-                document.getElementById('quiz-selection-menu').style.display = 'none';
-                document.getElementById('quiz-content').style.display = 'block';
-                
-                loadSavedData();
-                newQuiz();
-            } catch (error) {
-                console.error('Fehler beim Laden der Fragen:', error);
-                showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
-            }
-        }
-
-        // Zurück zum Menü
-        function backToMenu() {
-            // Highscore für aktuelle Kategorie aktualisieren, wenn nötig
-            if (currentCategoryId && score > (categoryStats[currentCategoryId].highscore || 0)) {
-                categoryStats[currentCategoryId].highscore = score;
-                if (score >= 20) {
-                    categoryStats[currentCategoryId].completed = true;
-                }
-                saveCategoryStats();
-            }
-            
-            showQuizMenu();
-        }
-
-        // Einfaches Settings-Popup anzeigen
-        function showSettings() {
-            alert("Einstellungen werden in einer zukünftigen Version verfügbar sein!");
-        }
-
-        // Zeige Fehlermeldung
-        function showError(message) {
-            document.getElementById('quiz-container').innerHTML = 
-                `<div class="error-message">${message}</div>`;
-        }
-
-        // Initialisierung
-        async function init() {
-            await loadAllQuestions(); // Lade zuerst alle Fragen
-            showQuizMenu(); // Zeige dann das Menü
-        }
-
-        // Starte die Anwendung
-        init();
-
-        // Fragen-Array wird durch asynchrones Laden ersetzt
-        let questions = [];
-        
-        // Lade die Fragen beim Start
-        async function loadQuestions() {
-            try {
-                const response = await fetch('questions.json');
-                if (!response.ok) {
-                    throw new Error('Fehler beim Laden der Fragen');
-                }
-                const data = await response.json();
-                questions = data.questions;
-                // Starte das Quiz erst nach dem Laden der Fragen
-                loadSavedData();
-                newQuiz();
-            } catch (error) {
-                console.error('Fehler beim Laden der Fragen:', error);
-                document.getElementById('quiz-container').innerHTML = 
-                    '<div class="error-message">Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.</div>';
-            }
-        }
-
-        // Game state
-        let currentQuestions = [];
-        let score = 0;
-        let xp = 0;
-        let totalXP = 0;
-        let level = 1;
-        let darkMode = true;
-        let currentStreak = 0;
-        let bestStreak = 0;
-        let totalCorrect = 0;
-        let totalQuestions = 0;
-        let totalQuizzes = 0;
-        let badges = {
-            beginner: false,  // 100 XP
-            intermediate: false,  // 350 XP
-            advanced: false,  // 750 XP
-            master: false     // 1500 XP
-        };
-        
-        // Hinweis-System und Power-Ups
-        let hintCoins = 0;
-        let powerUps = {
-            removeWrong: 0,
-            showHint: 0,
-            extraTime: 0
-        };
-        let currentQuestionIndex = -1; // Aktuell ausgewählte Frage für Power-Ups
-        let powerUpPrices = {
-            removeWrong: 10,
-            showHint: 5,
-            extraTime: 8
-        };
-        
-        // Neue Gamification-Features
-        let dailyChallenge = {
-            type: 'answer5',
-            progress: 0,
-            target: 5,
-            completed: false,
-            reward: 50,
-            lastReset: null
-        };
-        
-        let loginStreak = {
-            currentStreak: 0,
-            lastLogin: null,
-            rewards: [5, 10, 15, 20, 25, 30, 50]
-        };
-        
-        // Cache für gestellte Fragen
-        let recentlyAskedQuestions = [];
-        const MAX_CACHE_SIZE = 10; // Speichert die letzten 10 Fragen
-        
-        // Feedback-Variationen
-        const successFeedbacks = [
-            "Großartig! +{xp} XP!",
-            "Sehr gut! +{xp} XP!",
-            "Korrekt! +{xp} XP!",
-            "Hervorragend! +{xp} XP!",
-            "Das stimmt! +{xp} XP!",
-            "Richtig! +{xp} XP!",
-            "Du bist auf dem richtigen Weg! +{xp} XP!",
-            "Perfekt! +{xp} XP!",
-            "Gut gemacht! +{xp} XP!"
-        ];
-
-        const errorFeedbacks = [
-            "Das war leider falsch. Versuche es weiter!",
-            "Nicht ganz richtig. Probiere die nächste Frage!",
-            "Falsche Antwort, aber kein Problem!",
-            "Das ist nicht die richtige Antwort. Weiter geht's!",
-            "Leider nicht korrekt. Du schaffst das!",
-            "Nicht richtig, aber lass dich nicht entmutigen!"
-        ];
-
-        // Load saved data if available
-        function loadSavedData() {
-            const savedData = localStorage.getItem('hardwareQuizData');
-            if (savedData) {
-                const data = JSON.parse(savedData);
-                level = data.level || 1;
-                xp = data.xp || 0;
-                totalXP = data.totalXP || 0;
-                totalCorrect = data.totalCorrect || 0;
-                totalQuestions = data.totalQuestions || 0;
-                totalQuizzes = data.totalQuizzes || 0;
-                bestStreak = data.bestStreak || 0;
-                badges = data.badges || {
-                    beginner: false,
-                    intermediate: false,
-                    advanced: false,
-                    master: false
-                };
-                darkMode = data.darkMode !== undefined ? data.darkMode : true;
-                recentlyAskedQuestions = data.recentlyAskedQuestions || [];
-                
-                // Lade gespeicherte Gamification-Daten
-                dailyChallenge = data.dailyChallenge || dailyChallenge;
-                loginStreak = data.loginStreak || loginStreak;
-                
-                // Lade Hinweis-System Daten
-                hintCoins = data.hintCoins || 0;
-                powerUps = data.powerUps || {
-                    removeWrong: 0,
-                    showHint: 0,
-                    extraTime: 0
-                };
-                
-                updateLevel();
-                updateBadges();
-                updateStats();
-                updateHintSystem();
-                document.getElementById('total-xp').textContent = totalXP;
-                
-                // Überprüfe und aktualisiere die tägliche Herausforderung
-                checkDailyReset();
-                updateDailyChallengeUI();
-                
-                // Überprüfe und aktualisiere Login-Streak
-                checkLoginStreak();
-                updateLoginStreakUI();
-                
-                // Timer-Modus
-                if (data.timerActive) {
-                    timerActive = data.timerActive;
-                    toggleTimerMode();
-                }
-                
-                updateProgressPath();
-            }
-        }
-
-        // Save game data
-        function saveGameData() {
-            const gameData = {
-                level,
-                xp,
-                totalXP,
-                totalCorrect,
-                totalQuestions,
-                totalQuizzes,
-                bestStreak,
-                badges,
-                darkMode,
-                recentlyAskedQuestions,
-                dailyChallenge,
-                loginStreak,
-                hintCoins,
-                powerUps,
-                timerActive
-            };
-            localStorage.setItem('hardwareQuizData', JSON.stringify(gameData));
-        }
-
-        // Update Hinweis-System UI
-        function updateHintSystem() {
-            document.getElementById('hint-coins-count').textContent = hintCoins;
-            document.getElementById('removeWrong-count').textContent = powerUps.removeWrong;
-            document.getElementById('showHint-count').textContent = powerUps.showHint;
-            document.getElementById('extraTime-count').textContent = powerUps.extraTime;
-        }
-
-        // Power-Ups kaufen
-        function buyPowerUp(type) {
-            const price = powerUpPrices[type];
-            if (hintCoins >= price) {
-                hintCoins -= price;
-                powerUps[type]++;
-                
-                showBonusPopup(`${type} Power-Up erhalten! 🎁`);
-                updateHintSystem();
-                saveGameData();
-            } else {
-                showBonusPopup('Nicht genug Münzen! 💸');
-            }
-        }
-
-        // Power-Ups verwenden
-        function usePowerUp(type) {
-            if (powerUps[type] <= 0) {
-                showBonusPopup('Du hast kein Power-Up dieser Art! 🚫');
-                return;
-            }
-            
-            // Finde die aktuelle Frage
-            if (currentQuestionIndex === -1) {
-                // Suche nach der ersten unbeantworteten Frage
-                const questionContainers = document.querySelectorAll('.question-container');
-                for (let i = 0; i < questionContainers.length; i++) {
-                    const options = questionContainers[i].querySelectorAll('.option');
-                    let answered = false;
-                    options.forEach(option => {
-                        if (option.classList.contains('correct') || option.classList.contains('incorrect')) {
-                            answered = true;
-                        }
-                    });
-                    
-                    if (!answered) {
-                        currentQuestionIndex = i;
-                        break;
-                    }
-                }
-            }
-            
-            if (currentQuestionIndex === -1) {
-                showBonusPopup('Keine unbeantwortete Frage gefunden! 🤔');
-                return;
-            }
-            
-            const question = currentQuestions[currentQuestionIndex];
-            const questionContainer = document.getElementById(`question-${currentQuestionIndex}`);
-            
-            switch(type) {
-                case 'removeWrong':
-                    // Entferne zwei falsche Antworten
-                    const options = questionContainer.querySelectorAll('.option');
-                    const correctIndex = question.randomizedCorrect;
-                    
-                    // Sammle Indizes aller falschen Antworten
-                    const wrongIndices = [];
-                    for (let i = 0; i < options.length; i++) {
-                        if (i !== correctIndex) {
-                            wrongIndices.push(i);
-                        }
-                    }
-                    
-                    // Mische die falschen Antworten und wähle zwei aus
-                    shuffleArray(wrongIndices);
-                    const toRemove = wrongIndices.slice(0, 2);
-                    
-                    // Entferne die ausgewählten falschen Antworten
-                    toRemove.forEach(index => {
-                        options[index].style.opacity = '0.3';
-                        options[index].style.pointerEvents = 'none';
-                    });
-                    
-                    showBonusPopup('2 falsche Antworten entfernt! 🎯');
-                    break;
-                    
-                case 'showHint':
-                    // Zeige einen Hinweis für die Frage
-                    if (!question.hint) {
-                        showBonusPopup('Kein Hinweis verfügbar! 😕');
-                        return;
-                    }
-                    
-                    // Erstelle Hinweis-Element
-                    const hintElement = document.createElement('div');
-                    hintElement.className = 'hint-message';
-                    hintElement.innerHTML = `<strong>Hinweis:</strong> ${question.hint}`;
-                    
-                    // Füge Hinweis zur Frage hinzu
-                    const questionTitle = questionContainer.querySelector('h3');
-                    questionTitle.insertAdjacentElement('afterend', hintElement);
-                    
-                    showBonusPopup('Hinweis angezeigt! 💡');
-                    break;
-                    
-                case 'extraTime':
-                    // Bei Timer-Modus wird extra Zeit hinzugefügt
-                    if (timerActive) {
-                        timeRemaining += 15; // 15 Sekunden extra
-                        updateTimer();
-                        showBonusPopup('15 Sekunden extra Zeit! ⏱️');
-                    } else {
-                        showBonusPopup('Zeitmodus ist nicht aktiv! ⏱️');
-                        return;
-                    }
-                    break;
-            }
-            
-            // Power-Up verbrauchen
-            powerUps[type]--;
-            updateHintSystem();
-            saveGameData();
-        }
-
-        // Bonus-Popup anzeigen
-        function showBonusPopup(message) {
-            const popup = document.getElementById('bonus-popup');
-            popup.textContent = message;
-            popup.style.opacity = '1';
-            
+            // Entferne Animations-Klassen nach Abschluss
             setTimeout(() => {
-                popup.style.opacity = '0';
-            }, 2000);
+                container.classList.remove('slide-in');
+            }, 500);
+
+        }, 300); // Warte auf Slide-Out Animation
+
+        // Update navigation buttons
+        document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+        document.getElementById('next-question').disabled = 
+            currentQuestionIndex === currentQuestions.length - 1 || 
+            !answeredQuestions.has(currentQuestionIndex);
+        
+        // Start timer if active
+        if (timerActive) {
+            startQuestionTimer();
         }
+    }
 
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            darkMode = false;
-        }
-
-        function initTheme() {
-            document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-            document.querySelector('.fixed-header').style.backgroundColor = 
-                darkMode ? 'var(--bg-color)' : 'var(--bg-color)';
-        }
-
-        function toggleTheme() {
-            darkMode = !darkMode;
-            document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-            document.querySelector('.fixed-header').style.backgroundColor = 
-                darkMode ? 'var(--bg-color)' : 'var(--bg-color)';
-            saveGameData();
-        }
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function selectRandomQuestions() {
-            let availableQuestions = [...questions];
-            
-            // Filtere kürzlich gestellte Fragen heraus, wenn möglich
-            if (recentlyAskedQuestions.length > 0 && availableQuestions.length > recentlyAskedQuestions.length) {
-                availableQuestions = availableQuestions.filter(q => 
-                    !recentlyAskedQuestions.some(rq => rq.question === q.question)
-                );
-            }
-            
-            const shuffled = shuffleArray(availableQuestions);
-            const selected = shuffled.slice(0, 20);
-            
-            // Aktualisiere den Fragen-Cache
-            selected.forEach(q => {
-                // Füge die Frage zum Cache hinzu
-                recentlyAskedQuestions.push(q);
-                
-                // Halte die Größe des Caches unter Kontrolle
-                if (recentlyAskedQuestions.length > MAX_CACHE_SIZE) {
-                    recentlyAskedQuestions.shift();
-                }
-            });
-            
-            return selected;
-        }
-
-        function celebrateSuccess() {
-            const duration = 3 * 1000;
-            const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            const interval = setInterval(function() {
-                const timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
-                const particleCount = 50 * (timeLeft / duration);
-                confetti({
-                    ...defaults,
-                    particleCount,
-                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-                });
-                confetti({
-                    ...defaults,
-                    particleCount,
-                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-                });
-            }, 250);
-        }
-
-        function showAchievementPopup(title, icon, description) {
-            document.getElementById('achievement-title').textContent = title;
-            document.getElementById('achievement-icon').textContent = icon;
-            document.getElementById('achievement-description').textContent = description;
-            
-            document.getElementById('achievement-popup').classList.add('show');
-            document.getElementById('overlay').classList.add('show');
-            
-            celebrateSuccess();
-        }
-
-        function closeAchievementPopup() {
-            document.getElementById('achievement-popup').classList.remove('show');
-            document.getElementById('overlay').classList.remove('show');
-        }
-
-        function updateProgressBar() {
-            const percent = Math.min(100, Math.round((score / 20) * 100));
-            document.getElementById('progress-bar').style.width = `${percent}%`;
-            document.getElementById('progress-label').textContent = `${percent}%`;
-        }
-
-        function updateStreak(isCorrect) {
-            if (isCorrect) {
-                currentStreak++;
-                document.getElementById('streak-flame').classList.add('active');
-            } else {
-                currentStreak = 0;
-                document.getElementById('streak-flame').classList.remove('active');
-            }
-            
-            if (currentStreak > bestStreak) {
-                bestStreak = currentStreak;
-            }
-            
-            document.getElementById('streak-text').textContent = `Aktuelle Serie: ${currentStreak}`;
-        }
-
-        function updateLevel() {
-            const xpNeeded = level * 100; // Konsistente XP-Berechnung mit 100 XP pro Level
-            
-            if (xp >= xpNeeded && level < 10) {
-                xp -= xpNeeded;
-                level++;
-                celebrateSuccess();
-                showFeedback(`🎉 Glückwunsch! Du hast Level ${level} erreicht!`, true);
-            }
-            
-            document.getElementById('level').textContent = level;
-            document.getElementById('xp-display').textContent = `XP: ${xp}/${level * 100}`;
-        }
-
-        function checkForBadges() {
-            // Speichere bisherigen Badge-Status
-            const previousBadges = {...badges};
-            const unlockedBadges = [];
-            
-            // Überprüfe alle Badges gleichzeitig
-            if (totalXP >= 100 && !badges.beginner) {
-                badges.beginner = true;
-                unlockedBadges.push({
-                    title: "Anfänger Badge freigeschaltet!",
-                    icon: "🥉",
-                    description: "Du hast 100 XP gesammelt!"
-                });
-            }
-            
-            if (totalXP >= 350 && !badges.intermediate) {
-                badges.intermediate = true;
-                unlockedBadges.push({
-                    title: "Fortgeschrittener Badge freigeschaltet!",
-                    icon: "🥈",
-                    description: "Du hast 350 XP gesammelt!"
-                });
-            }
-            
-            if (totalXP >= 750 && !badges.advanced) {
-                badges.advanced = true;
-                unlockedBadges.push({
-                    title: "Profi Badge freigeschaltet!",
-                    icon: "🥇",
-                    description: "Du hast 750 XP gesammelt!"
-                });
-            }
-            
-            if (totalXP >= 1500 && !badges.master) {
-                badges.master = true;
-                unlockedBadges.push({
-                    title: "Meister Badge freigeschaltet!",
-                    icon: "👑",
-                    description: "Du hast 1500 XP gesammelt!"
-                });
-            }
-            
-            // Zeige alle freigeschalteten Badges nacheinander an
-            if (unlockedBadges.length > 0) {
-                // Zeige den ersten Badge sofort an
-                const firstBadge = unlockedBadges[0];
-                showAchievementPopup(firstBadge.title, firstBadge.icon, firstBadge.description);
-                
-                // Zeige weitere Badges nacheinander an, wenn der vorherige geschlossen wird
-                let currentBadgeIndex = 1;
-                
-                if (unlockedBadges.length > 1) {
-                    const showNextBadge = () => {
-                        if (currentBadgeIndex < unlockedBadges.length) {
-                            const nextBadge = unlockedBadges[currentBadgeIndex];
-                            showAchievementPopup(nextBadge.title, nextBadge.icon, nextBadge.description);
-                            currentBadgeIndex++;
-                        }
-                    };
-                    
-                    // Überwache das Schließen des Achievement-Popups
-                    document.getElementById('achievement-popup').addEventListener('transitionend', (e) => {
-                        if (e.propertyName === 'opacity' && !document.getElementById('achievement-popup').classList.contains('show')) {
-                            // Verzögere leicht, damit der nächste Badge nicht sofort erscheint
-                            setTimeout(showNextBadge, 500);
-                        }
-                    });
-                }
-            }
-            
-            // Wenn sich Badge-Status geändert hat, aktualisiere die Anzeige
-            if (JSON.stringify(previousBadges) !== JSON.stringify(badges)) {
-                updateBadges();
-                updateProgressPath(); // Aktualisiere den Fortschrittspfad
-            }
-        }
-
-        function updateBadges() {
-            if (badges.beginner) {
-                document.getElementById('badge-beginner').classList.add('earned');
-            }
-            if (badges.intermediate) {
-                document.getElementById('badge-intermediate').classList.add('earned');
-            }
-            if (badges.advanced) {
-                document.getElementById('badge-advanced').classList.add('earned');
-            }
-            if (badges.master) {
-                document.getElementById('badge-master').classList.add('earned');
-            }
-            
-            // Count earned badges
-            const earnedCount = Object.values(badges).filter(value => value).length;
-            document.getElementById('earned-badges').textContent = earnedCount;
-        }
-
-        function updateStats() {
-            document.getElementById('total-quizzes').textContent = totalQuizzes;
-            document.getElementById('total-correct').textContent = totalCorrect;
-            document.getElementById('best-streak').textContent = bestStreak;
-            
-            const averageScore = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) / 10 : 0;
-            document.getElementById('average-score').textContent = averageScore;
-        }
-
-        function showFeedback(message, isSuccess) {
-            const feedbackElement = document.getElementById('feedback-message');
-            feedbackElement.textContent = message;
-            feedbackElement.className = '';
-            feedbackElement.classList.add(isSuccess ? 'feedback-success' : 'feedback-error');
-            feedbackElement.style.opacity = 1;
-            
+    // Verbesserte Antwortprüfung mit Animation
+    function checkAnswer(questionIndex, selectedOption) {
+        if (answeredQuestions.has(questionIndex)) return;
+        
+        const question = currentQuestions[questionIndex];
+        const isCorrect = selectedOption === question.randomizedCorrect;
+        const options = document.querySelectorAll('.option');
+        
+        // Deaktiviere alle Optionen während der Animation
+        options.forEach(option => {
+            option.style.pointerEvents = 'none';
+        });
+        
+        // Markiere die ausgewählte Option
+        options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
+        
+        if (!isCorrect) {
+            // Zeige die richtige Antwort
             setTimeout(() => {
-                feedbackElement.style.opacity = 0;
-            }, 3000);
+                options[question.randomizedCorrect].classList.add('correct');
+            }, 300);
         }
 
-        function getRandomFeedback(isSuccess, xpGained) {
-            if (isSuccess) {
-                const randomIndex = Math.floor(Math.random() * successFeedbacks.length);
-                return successFeedbacks[randomIndex].replace('{xp}', xpGained);
-            } else {
-                const randomIndex = Math.floor(Math.random() * errorFeedbacks.length);
-                return errorFeedbacks[randomIndex];
-            }
-        }
+        // Speichere die Antwort und aktualisiere Statistiken
+        question.lastSelected = selectedOption;
+        answeredQuestions.add(questionIndex);
+        totalQuestions++;
 
-        function toggleStats() {
-            const statsContainer = document.getElementById('stats-container');
-            statsContainer.classList.toggle('hidden');
-        }
+        // Stoppe Timer
+        clearInterval(timerInterval);
 
-        // Überprüfe, ob ein neuer Tag begonnen hat und setze die tägliche Herausforderung zurück
-        function checkDailyReset() {
-            const now = new Date();
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-            
-            if (!dailyChallenge.lastReset || dailyChallenge.lastReset < today) {
-                // Ein neuer Tag hat begonnen, setze die Herausforderung zurück
-                dailyChallenge.lastReset = today;
-                dailyChallenge.completed = false;
-                dailyChallenge.progress = 0;
-                
-                // Wähle eine neue Herausforderung
-                const challenges = ['answer5', 'streak3', 'complete1'];
-                dailyChallenge.type = challenges[Math.floor(Math.random() * challenges.length)];
-                
-                switch (dailyChallenge.type) {
-                    case 'answer5':
-                        dailyChallenge.target = 5;
-                        dailyChallenge.reward = 50;
-                        break;
-                    case 'streak3':
-                        dailyChallenge.target = 3;
-                        dailyChallenge.reward = 30;
-                        break;
-                    case 'complete1':
-                        dailyChallenge.target = 1;
-                        dailyChallenge.reward = 100;
-                        break;
-                }
-                
-                saveGameData();
-            }
-        }
+        // Verarbeite das Ergebnis
+        processAnswer(isCorrect, questionIndex);
         
-        // Aktualisiere die UI für die tägliche Herausforderung
-        function updateDailyChallengeUI() {
-            const descElement = document.getElementById('daily-challenge-desc');
-            const statusElement = document.getElementById('daily-challenge-status');
-            const rewardElement = document.getElementById('daily-challenge-reward');
+        // Aktiviere den "Weiter"-Button
+        document.getElementById('next-question').disabled = 
+            currentQuestionIndex === currentQuestions.length - 1;
             
-            let desc = '';
-            switch (dailyChallenge.type) {
-                case 'answer5':
-                    desc = 'Beantworte 5 Fragen richtig in einem Quiz';
-                    break;
-                case 'streak3':
-                    desc = 'Erreiche eine Serie von 3 richtigen Antworten';
-                    break;
-                case 'complete1':
-                    desc = 'Schließe ein Quiz vollständig ab';
-                    break;
-            }
-            
-            descElement.textContent = desc;
-            statusElement.textContent = `${dailyChallenge.progress}/${dailyChallenge.target} geschafft`;
-            rewardElement.textContent = `Belohnung: ${dailyChallenge.reward} XP`;
-            
-            const challengeContainer = document.getElementById('daily-challenge');
-            if (dailyChallenge.completed) {
-                challengeContainer.classList.add('completed');
-                statusElement.textContent = 'Abgeschlossen! 🎉';
-            } else {
-                challengeContainer.classList.remove('completed');
-            }
-        }
-        
-        // Überprüfe und aktualisiere Login-Streak
-        function checkLoginStreak() {
-            const now = new Date();
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-            
-            if (!loginStreak.lastLogin) {
-                // Erster Login überhaupt
-                loginStreak.lastLogin = today;
-                loginStreak.currentStreak = 1;
-            } else if (loginStreak.lastLogin < today) {
-                const yesterday = new Date(today);
-                yesterday.setDate(yesterday.getDate() - 1);
-                yesterday.setHours(0, 0, 0, 0);
-                
-                if (loginStreak.lastLogin >= yesterday.getTime()) {
-                    // Login an aufeinanderfolgenden Tagen
-                    loginStreak.currentStreak++;
-                    loginStreak.lastLogin = today;
-                    
-                    // Belohnung für Login-Streak
-                    const dayIndex = Math.min(loginStreak.currentStreak - 1, loginStreak.rewards.length - 1);
-                    const reward = loginStreak.rewards[dayIndex];
-                    
-                    xp += reward;
-                    totalXP += reward;
-                    showFeedback(`🔥 ${loginStreak.currentStreak} Tage in Folge! +${reward} XP`, true);
-                    
-                    updateLevel();
-                    document.getElementById('total-xp').textContent = totalXP;
-                } else {
-                    // Streak unterbrochen
-                    loginStreak.currentStreak = 1;
-                    loginStreak.lastLogin = today;
-                }
-            }
-            
-            saveGameData();
-        }
-        
-        // Aktualisiere Login-Streak UI
-        function updateLoginStreakUI() {
-            const container = document.getElementById('login-streak');
-            container.innerHTML = '';
-            
-            // Zeige bis zu 7 Tage an
-            const daysToShow = 7;
-            
-            for (let i = 0; i < daysToShow; i++) {
-                const dayDiv = document.createElement('div');
-                dayDiv.className = 'login-day';
-                
-                const dayCircle = document.createElement('div');
-                dayCircle.className = 'login-day-circle';
-                
-                // Aktive Tage markieren
-                if (i < loginStreak.currentStreak) {
-                    dayCircle.classList.add('active');
-                }
-                
-                // Heute markieren
-                if (i === loginStreak.currentStreak - 1) {
-                    dayCircle.classList.add('today');
-                }
-                
-                dayCircle.textContent = (i + 1).toString();
-                
-                const dayText = document.createElement('div');
-                dayText.className = 'login-day-text';
-                dayText.textContent = `Tag ${i + 1}`;
-                
-                // Belohnungsanzeige
-                if (i < loginStreak.rewards.length) {
-                    const rewardBadge = document.createElement('div');
-                    rewardBadge.className = 'login-day-reward';
-                    rewardBadge.textContent = loginStreak.rewards[i];
-                    dayDiv.appendChild(rewardBadge);
-                }
-                
-                dayDiv.appendChild(dayCircle);
-                dayDiv.appendChild(dayText);
-                container.appendChild(dayDiv);
-            }
-        }
-        
-        // Aktualisiere den Fortschritt der täglichen Herausforderung
-        function updateDailyChallenge(type) {
-            if (dailyChallenge.completed) return;
-            
-            switch (dailyChallenge.type) {
-                case 'answer5':
-                    if (type === 'correct_answer') {
-                        dailyChallenge.progress++;
-                    }
-                    break;
-                case 'streak3':
-                    if (type === 'streak_update' && currentStreak > dailyChallenge.progress) {
-                        dailyChallenge.progress = currentStreak;
-                    }
-                    break;
-                case 'complete1':
-                    if (type === 'quiz_complete') {
-                        dailyChallenge.progress++;
-                    }
-                    break;
-            }
-            
-            if (dailyChallenge.progress >= dailyChallenge.target) {
-                dailyChallenge.completed = true;
-                xp += dailyChallenge.reward;
-                totalXP += dailyChallenge.reward;
-                
-                setTimeout(() => {
-                    showAchievementPopup('Tägliche Herausforderung abgeschlossen!', '🏆', `Du hast ${dailyChallenge.reward} XP erhalten!`);
-                    updateLevel();
-                    document.getElementById('total-xp').textContent = totalXP;
-                }, 1000);
-            }
-            
-            updateDailyChallengeUI();
-            saveGameData();
-        }
-
-        // Timer-Modus
-        let timerActive = false;
-        let timeRemaining = 0;
-        let maxTime = 0;
-        let timerInterval = null;
-        
-        // Timer einschalten/ausschalten
-        function toggleTimerMode() {
-            timerActive = !timerActive;
-            const timerContainer = document.getElementById('timer-container');
-            const timerToggleBtn = document.getElementById('timer-toggle');
-            
-            if (timerActive) {
-                timerContainer.style.display = 'block';
-                timerToggleBtn.textContent = '⏱️ Zeitmodus (AN)';
-                timerToggleBtn.style.backgroundColor = 'var(--time-color)';
-                
-                // Starte den Timer für die aktuelle Frage
-                startQuestionTimer();
-            } else {
-                timerContainer.style.display = 'none';
-                timerToggleBtn.textContent = '⏱️ Zeitmodus';
-                timerToggleBtn.style.backgroundColor = 'var(--primary-color)';
-                
-                // Stoppe den Timer
-                clearInterval(timerInterval);
-            }
-            
-            saveGameData();
-        }
-        
-        // Timer für aktuelle Frage starten
-        function startQuestionTimer() {
-            if (!timerActive) return;
-            
-            // Stoppe vorherigen Timer
-            clearInterval(timerInterval);
-            
-            // Setze Timer je nach Schwierigkeit der Frage
-            // Zwischen 15 und 30 Sekunden, abhängig von der Fragelänge und Optionslänge
-            const currentQuestion = currentQuestions[currentQuestionIndex];
-            
-            if (!currentQuestion) return; // Keine aktuelle Frage
-            
-            const questionLength = currentQuestion.question.length;
-            const optionsLength = currentQuestion.options.reduce((sum, opt) => sum + opt.length, 0);
-            
-            // Zeitberechnung: Basiszeit + Bonus für längere Fragen/Optionen
-            maxTime = 15 + Math.min(15, Math.floor((questionLength + optionsLength) / 20));
-            timeRemaining = maxTime;
-            
-            updateTimer();
-            
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                updateTimer();
-                
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    
-                    // Automatisch eine falsche Antwort auswählen
-                    const questionContainer = document.getElementById(`question-${currentQuestionIndex}`);
-                    const options = questionContainer.querySelectorAll('.option');
-                    
-                    // Finde eine falsche Option
-                    let wrongOptionIndex = 0;
-                    if (wrongOptionIndex === currentQuestion.randomizedCorrect) {
-                        wrongOptionIndex = 1; // Wähle stattdessen die zweite Option
-                    }
-                    
-                    // Simuliere Klick auf falsche Option
-                    setTimeout(() => {
-                        checkAnswer(currentQuestionIndex, wrongOptionIndex);
-                        showBonusPopup('Zeit abgelaufen! ⌛');
-                        
-                        // Finde die nächste unbeantwortete Frage
-                        findNextUnansweredQuestion();
-                    }, 500);
-                }
-            }, 1000);
-        }
-        
-        // Timer-Balken aktualisieren
-        function updateTimer() {
-            const timerBar = document.getElementById('timer-bar');
-            const percent = (timeRemaining / maxTime) * 100;
-            timerBar.style.width = `${percent}%`;
-            
-            // Farbe ändern, je nach verbleibender Zeit
-            if (percent > 50) {
-                timerBar.style.backgroundColor = 'var(--success-color)';
-            } else if (percent > 20) {
-                timerBar.style.backgroundColor = 'var(--gold-color)';
-            } else {
-                timerBar.style.backgroundColor = 'var(--danger-color)';
-            }
-        }
-        
-        // Finde die nächste unbeantwortete Frage
-        function findNextUnansweredQuestion() {
-            const questionContainers = document.querySelectorAll('.question-container');
-            
-            for (let i = 0; i < questionContainers.length; i++) {
-                const options = questionContainers[i].querySelectorAll('.option');
-                let answered = false;
-                
-                options.forEach(option => {
-                    if (option.classList.contains('correct') || option.classList.contains('incorrect')) {
-                        answered = true;
-                    }
-                });
-                
-                if (!answered) {
-                    currentQuestionIndex = i;
-                    startQuestionTimer();
-                    return;
-                }
-            }
-            
-            // Keine unbeantwortete Frage gefunden
-            currentQuestionIndex = -1;
-        }
-        
-        // Zeige Zeitbonus
-        function showTimeBonus(bonusXp) {
-            const bonusElement = document.getElementById('time-bonus');
-            bonusElement.textContent = `+${bonusXp} XP`;
-            bonusElement.classList.add('show');
-            
+        // Automatisch zur nächsten Frage nach Verzögerung
+        if (currentQuestionIndex < currentQuestions.length - 1) {
             setTimeout(() => {
-                bonusElement.classList.remove('show');
+                nextQuestion();
+            }, 1500);
+        } else if (currentQuestionIndex === currentQuestions.length - 1) {
+            // Quiz abgeschlossen
+            setTimeout(() => {
+                showQuizSummary();
             }, 1500);
         }
+    }
 
-        function checkAnswer(questionIndex, selectedOption) {
-            currentQuestionIndex = questionIndex; // Setze aktuelle Frage für Power-Ups
-            
-            const question = currentQuestions[questionIndex];
-            const options = document.querySelectorAll(`#question-${questionIndex} .option`);
-            const isCorrect = selectedOption === question.randomizedCorrect;
-            
-            totalQuestions++;
-
-            // Stoppe Timer
-            clearInterval(timerInterval);
-
-            options.forEach((option, index) => {
-                if (index === question.randomizedCorrect) {
-                    option.classList.add('correct');
-                }
-                if (index === selectedOption && index !== question.randomizedCorrect) {
-                    option.classList.add('incorrect');
-                }
-            });
-
-            if (isCorrect) {
-                score++;
-                totalCorrect++;
-                
-                // Base points
-                const basePoints = 5;
-                
-                // Bonus points for streak
-                const streakBonus = currentStreak > 0 ? Math.min(5, currentStreak) : 0;
-                
-                // Level bonus
-                const levelBonus = Math.floor(level / 2);
-                
-                // Zeitbonus, wenn Timer aktiv
-                let timeBonus = 0;
-                if (timerActive && timeRemaining > 0) {
-                    timeBonus = Math.ceil(timeRemaining / maxTime * 5); // Max 5 XP Bonus für schnelle Antworten
-                    showTimeBonus(timeBonus);
-                }
-                
-                // Calculate total XP gained
-                const xpGained = basePoints + streakBonus + levelBonus + timeBonus;
-                xp += xpGained;
-                totalXP += xpGained;
-                
-                // Gewähre Münzen für richtige Antworten
-                const coinsEarned = 1 + Math.floor(level / 3); // Mehr Münzen mit höherem Level
-                hintCoins += coinsEarned;
-                
-                document.getElementById('score').textContent = `Punktzahl: ${score} Punkte 📊`;
-                document.getElementById('total-xp').textContent = totalXP;
-                updateProgressBar();
-                updateLevel();
-                updateHintSystem();
-                updateProgressPath(); // Aktualisiere den Fortschrittspfad
-                
-                // Verwende abwechslungsreiche Feedback-Nachrichten
-                let feedbackText = getRandomFeedback(true, xpGained);
-                if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
-                if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
-                feedbackText += ` (+${coinsEarned} 🪙)`;
-                
-                showFeedback(feedbackText, true);
-                
-                document.getElementById('score').classList.add('pop-animation');
-                setTimeout(() => {
-                    document.getElementById('score').classList.remove('pop-animation');
-                }, 500);
-
-                if (score === 20) {
-                    celebrateSuccess();
-                    totalQuizzes++;
-                    
-                    // Bonus Münzen für vollständiges Quiz
-                    const bonusCoins = 10;
-                    hintCoins += bonusCoins;
-                    updateHintSystem();
-                    
-                    // Update tägliche Herausforderung für abgeschlossenes Quiz
-                    updateDailyChallenge('quiz_complete');
-                    
-                    setTimeout(() => {
-                        alert(`🎉 Perfekt! Du hast alle Fragen richtig beantwortet! +${bonusCoins} Bonus-Münzen! 🏆`);
-                    }, 500);
-                }
-                
-                // Aktualisiere tägliche Herausforderung
-                updateDailyChallenge('correct_answer');
-                
-                // Check for badge unlocks based on total XP
-                checkForBadges();
-            } else {
-                // Verwende abwechslungsreiche Fehler-Feedback-Nachrichten
-                showFeedback(getRandomFeedback(false), false);
-            }
-            
-            updateStreak(isCorrect);
-            // Aktualisiere die Streak-Herausforderung wenn nötig
-            updateDailyChallenge('streak_update');
-            
-            saveGameData();
-            updateStats();
-
-            options.forEach(option => {
-                option.style.pointerEvents = 'none';
-            });
-            
-            // Finde die nächste unbeantwortete Frage und starte Timer für diese (wenn Timer-Modus aktiv)
-            if (timerActive) {
-                setTimeout(() => {
-                    findNextUnansweredQuestion();
-                }, 1000);
-            }
-        }
-
-        function createQuiz() {
-            const container = document.getElementById('quiz-container');
-            container.innerHTML = '';
-            score = 0;
-            document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
-            updateProgressBar();
-
-            currentQuestions.forEach((question, questionIndex) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question-container';
-                questionDiv.id = `question-${questionIndex}`;
-
-                // Randomize options but keep track of correct answer
-                const originalCorrectIndex = question.correct;
-                const optionsCopy = [...question.options];
-                const randomizedOptions = [];
-                const optionMapping = []; // Maps new indices to original indices
-                
-                // Randomly select options until none remain
-                while (optionsCopy.length > 0) {
-                    const randIndex = Math.floor(Math.random() * optionsCopy.length);
-                    const originalIndex = question.options.indexOf(optionsCopy[randIndex]);
-                    randomizedOptions.push(optionsCopy[randIndex]);
-                    optionMapping.push(originalIndex);
-                    optionsCopy.splice(randIndex, 1);
-                }
-                
-                // Find new position of correct answer
-                const newCorrectIndex = optionMapping.indexOf(originalCorrectIndex);
-                
-                // Store the new correct index in the current question object
-                currentQuestions[questionIndex].randomizedCorrect = newCorrectIndex;
-
-                questionDiv.innerHTML = `
-                    <h3>Frage ${questionIndex + 1}</h3>
-                    <p>${question.question}</p>
-                    ${randomizedOptions.map((option, index) => `
-                        <div class="option" onclick="checkAnswer(${questionIndex}, ${index})">${option}</div>
-                    `).join('')}
-                `;
-
-                container.appendChild(questionDiv);
-            });
-            
-            // Bei Timer-Modus, automatisch mit der ersten Frage beginnen
-            if (timerActive) {
-                currentQuestionIndex = 0;
-                setTimeout(() => {
-                    startQuestionTimer();
-                }, 500);
-            }
-        }
-
-        function newQuiz() {
-            currentQuestions = selectRandomQuestions();
-            createQuiz();
-            currentStreak = 0;
-            document.getElementById('streak-text').textContent = `Aktuelle Serie: ${currentStreak}`;
-            document.getElementById('streak-flame').classList.remove('active');
-        }
-
-        // Fix header on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.fixed-header');
-            header.style.backgroundColor = darkMode ? 'var(--bg-color)' : 'var(--bg-color)';
-        });
-
-        // Initialize the game
-        initTheme();
-        // loadSavedData und newQuiz werden jetzt erst nach dem Laden der Fragen aufgerufen
-        loadQuestions();
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            darkMode = event.matches;
-            document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-            document.querySelector('.fixed-header').style.backgroundColor = 
-                darkMode ? 'var(--bg-color)' : 'var(--bg-color)';
-            saveGameData();
-        });
+    // Neue Funktion für die Quiz-Zusammenfassung
+    function showQuizSummary() {
+        const container = document.getElementById('current-question');
+        const correctAnswers = Array.from(answeredQuestions).filter(
+            index => currentQuestions[index].lastSelected === currentQuestions[index].randomizedCorrect
+        ).length;
         
-        // Aktualisiere den Fortschrittspfad basierend auf totalXP
-        function updateProgressPath() {
-            const xpNeededForMaster = 1500;
-            const progressPercent = Math.min(100, (totalXP / xpNeededForMaster) * 100);
+        container.innerHTML = `
+            <div class="quiz-summary">
+                <h2>Quiz abgeschlossen! 🎉</h2>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <span class="stat-value">${correctAnswers}/${currentQuestions.length}</span>
+                        <span class="stat-label">Richtige Antworten</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-value">${Math.round((correctAnswers/currentQuestions.length) * 100)}%</span>
+                        <span class="stat-label">Erfolgsquote</span>
+                    </div>
+                    <div class="summary-stat">
+                        <span class="stat-value">+${totalXP}</span>
+                        <span class="stat-label">Gewonnene XP</span>
+                    </div>
+                </div>
+                <button onclick="newQuiz()" class="retry-button">🔄 Neues Quiz starten</button>
+            </div>
+        `;
+    }
+
+    // Verbesserte Navigation
+    function nextQuestion() {
+        if (currentQuestionIndex < currentQuestions.length - 1) {
+            currentQuestionIndex++;
+            displayCurrentQuestion();
+        }
+    }
+
+    function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            displayCurrentQuestion();
+        }
+    }
+    
+    // Verarbeitung der Antwort in separate Funktion ausgelagert
+    function processAnswer(isCorrect, questionIndex) {
+        if (isCorrect) {
+            score++;
+            totalCorrect++;
             
-            document.getElementById('progress-path-fill').style.width = `${progressPercent}%`;
+            const basePoints = 5;
+            const streakBonus = currentStreak > 0 ? Math.min(5, currentStreak) : 0;
+            const levelBonus = Math.floor(level / 2);
             
-            // Aktualisiere die Meilensteine
-            const milestone1 = document.getElementById('milestone-1');
-            const milestone2 = document.getElementById('milestone-2');
-            const milestone3 = document.getElementById('milestone-3');
-            const milestone4 = document.getElementById('milestone-4');
-            
-            // Setze alle Meilensteine zurück
-            milestone1.classList.remove('active', 'completed');
-            milestone2.classList.remove('active', 'completed');
-            milestone3.classList.remove('active', 'completed');
-            milestone4.classList.remove('active', 'completed');
-            
-            // Status-Nachricht aktualisieren
-            let pathStatus = '';
-            
-            // Meilensteine basierend auf erreichtem Fortschritt aktivieren
-            if (totalXP >= 1500) {
-                milestone1.classList.add('completed');
-                milestone2.classList.add('completed');
-                milestone3.classList.add('completed');
-                milestone4.classList.add('completed');
-                pathStatus = '🎓 Gratulation! Du hast den Meister-Level erreicht!';
-            } else if (totalXP >= 750) {
-                milestone1.classList.add('completed');
-                milestone2.classList.add('completed');
-                milestone3.classList.add('completed');
-                milestone4.classList.add('active');
-                pathStatus = `🥇 Du bist ein Profi! Noch ${1500 - totalXP} XP bis zum Meister-Level.`;
-            } else if (totalXP >= 350) {
-                milestone1.classList.add('completed');
-                milestone2.classList.add('completed');
-                milestone3.classList.add('active');
-                pathStatus = `🥈 Du bist fortgeschritten! Noch ${750 - totalXP} XP bis zum Profi-Level.`;
-            } else if (totalXP >= 100) {
-                milestone1.classList.add('completed');
-                milestone2.classList.add('active');
-                pathStatus = `🥉 Du bist über den Anfänger-Level hinaus! Noch ${350 - totalXP} XP bis zum Fortgeschrittenen-Level.`;
-            } else {
-                milestone1.classList.add('active');
-                pathStatus = `🌱 Du bist am Beginn deiner Lernreise! Noch ${100 - totalXP} XP bis zum Anfänger-Level.`;
+            let timeBonus = 0;
+            if (timerActive && timeRemaining > 0) {
+                timeBonus = Math.ceil(timeRemaining / maxTime * 5);
+                showTimeBonus(timeBonus);
             }
             
-            document.getElementById('path-status').textContent = pathStatus;
+            const xpGained = basePoints + streakBonus + levelBonus + timeBonus;
+            xp += xpGained;
+            totalXP += xpGained;
+            
+            const coinsEarned = 1 + Math.floor(level / 3);
+            hintCoins += coinsEarned;
+            
+            updateUI(xpGained, streakBonus, timeBonus, coinsEarned);
+            updateDailyChallenge('correct_answer');
+            checkForBadges();
+        } else {
+            showFeedback(getRandomFeedback(false), false);
         }
+        
+        updateStreak(isCorrect);
+        updateDailyChallenge('streak_update');
+        saveGameData();
+        updateStats();
+    }
+    
+    // UI-Updates in separate Funktion ausgelagert
+    function updateUI(xpGained, streakBonus, timeBonus, coinsEarned) {
+        document.getElementById('score').textContent = `Punktzahl: ${score} Punkte 📊`;
+        document.getElementById('total-xp').textContent = totalXP;
+        updateProgressBar();
+        updateLevel();
+        updateHintSystem();
+        updateProgressPath();
+        
+        let feedbackText = getRandomFeedback(true, xpGained);
+        if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
+        if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
+        feedbackText += ` (+${coinsEarned} 🪙)`;
+        
+        showFeedback(feedbackText, true);
+        
+        document.getElementById('score').classList.add('pop-animation');
+        setTimeout(() => {
+            document.getElementById('score').classList.remove('pop-animation');
+        }, 500);
+    }
+
     </script>
 </body>
 </html>
+
+<style>
+    .quiz-summary {
+        text-align: center;
+        padding: 2rem;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .quiz-summary h2 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+
+    .summary-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .summary-stat {
+        background: var(--container-bg);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+    }
+
+    .retry-button {
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        width: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+</style>
