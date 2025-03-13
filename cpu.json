@@ -641,6 +641,350 @@
             "options": ["Höhere Soundqualität", "Bessere Netzwerkleistung", "Datensicherheit oder schnellerer Zugriff auf Daten", "Verbesserte Grafikleistung"],
             "correct": 2,
             "hint": "RAID-Systeme bieten Datensicherheit oder schnelleren Zugriff auf Daten."
-        }
-    ]
+        },
+
+            {
+              "question": "Was ist ein anderer Begriff für den Hauptprozessor? 🖥️",
+              "options": ["Northbridge", "Chipsatz", "CPU", "Southbridge"],
+              "correct": 2,
+              "hint": "Denk an die englische Abkürzung für Central Processing Unit."
+            },
+            {
+              "question": "Welche Rolle spielt der Hauptprozessor in einem IT-System? 🧠",
+              "options": ["Gehirn des Systems", "Stromversorgung", "Datenspeicherung", "Bildschirmausgabe"],
+              "correct": 0,
+              "hint": "Er übernimmt fast sämtliche Rechen- und Steueroperationen."
+            },
+            {
+              "question": "Wo sind Nebenprozessoren typischerweise zu finden? 🔍",
+              "options": ["Im Netzteil", "In externen Geräten", "Auf der Grafikkarte", "Über das Mainboard verteilt"],
+              "correct": 3,
+              "hint": "Sie sind an verschiedenen Stellen auf der Hauptplatine angebracht."
+            },
+            {
+              "question": "Was ist die Hauptaufgabe von Nebenprozessoren? 🤝",
+              "options": ["Starten des Systems", "Unterstützung des Hauptprozessors", "Stromversorgung regeln", "Betriebssystem bereitstellen"],
+              "correct": 1,
+              "hint": "Sie helfen dem Hauptprozessor bei seiner Arbeit und übernehmen spezielle Aufgaben."
+            },
+            {
+              "question": "Woraus bestehen moderne Prozessoren? 🔬",
+              "options": ["Kupferdrähten", "Millionen von Transistoren", "Einzelnen Chips", "Glasfasern"],
+              "correct": 1,
+              "hint": "Sie werden als integrierte Schaltkreise (IC) hergestellt."
+            },
+            {
+              "question": "Was bedeutet die Taktfrequenz eines Prozessors? ⏱️",
+              "options": ["Anzahl der Kerne", "Rechengeschwindigkeit", "Speicherkapazität", "Stromverbrauch"],
+              "correct": 1,
+              "hint": "Sie wird in GHz gemessen und gibt an, wie schnell der Prozessor arbeitet."
+            },
+            {
+              "question": "Was ist ein Prozessorkern? 💻",
+              "options": ["Ein Teil des Kühlers", "Eine unabhängige Recheneinheit", "Ein Speicherbereich", "Eine Anschlussart"],
+              "correct": 1,
+              "hint": "Mehrere davon können in einem Prozessor vorhanden sein und die Rechenleistung erhöhen."
+            },
+            {
+              "question": "Was ist Multi-Threading? 🧵",
+              "options": ["Mehrere Prozessoren in einem System", "Mehrere Threads pro Prozessorkern", "Mehrere Kühlsysteme", "Mehrere Betriebssysteme"],
+              "correct": 1,
+              "hint": "Es ermöglicht die (fast) gleichzeitige Abarbeitung mehrerer Prozesse."
+            },
+            {
+              "question": "Was ist CISC? 🔄",
+              "options": ["Computer Integrated System Control", "Complex Instruction Set Computer", "Central Information System Chip", "Core Integrated System Controller"],
+              "correct": 1,
+              "hint": "Eine Prozessor-Architektur mit einem umfassenden und komplexen Befehlssatz."
+            },
+            {
+              "question": "Was ist RISC? 🚀",
+              "options": ["Regional Integrated System Computer", "Reduced Instruction Set Computer", "Reliable Information System Chip", "Rapid Integrated System Controller"],
+              "correct": 1,
+              "hint": "Eine Prozessor-Architektur mit kleinem und effizientem Befehlssatz."
+            },
+            {
+              "question": "Was ist ein Register im Prozessor? 📋",
+              "options": ["Ein Speicherbereich für temporäre Daten", "Ein Kühlsystem", "Ein Anschluss für externe Geräte", "Ein Sicherheitssystem"],
+              "correct": 0,
+              "hint": "Es dient zum Zwischenspeichern von Befehlen, Speicheradressen und Rechenoperanden."
+            },
+            {
+              "question": "Was ist ein Prozessor-Cache? 💾",
+              "options": ["Ein sehr langsamer Speicher", "Ein Backup-System", "Ein Puffer zwischen schnellen und langsamen Komponenten", "Ein Fehlerkorrekturmechanismus"],
+              "correct": 2,
+              "hint": "Er liegt zwischen den schnellen Registern und dem langsameren RAM."
+            },
+            {
+              "question": "Was unterscheidet L1-, L2- und L3-Cache? 🗂️",
+              "options": ["Geschwindigkeit und Größe", "Nur die Farbe", "Hersteller", "Temperatur"],
+              "correct": 0,
+              "hint": "L1 ist am schnellsten aber am kleinsten, L3 ist am größten aber am langsamsten."
+            },
+            {
+              "question": "Was bedeutet die Verarbeitungsbreite eines Prozessors? 📏",
+              "options": ["Physische Größe des Chips", "Anzahl der Anschlüsse", "Anzahl der gleichzeitig verarbeitbaren Bits", "Geschwindigkeit der Datenübertragung"],
+              "correct": 2,
+              "hint": "Sie wird auch als Wortbreite oder bit-Architektur bezeichnet."
+            },
+            {
+              "question": "Welche Grenze gibt es bei einer 32-bit-Adressbusbreite? 🚧",
+              "options": ["Maximal 32 Anwendungen gleichzeitig", "Maximal 32 Kerne", "Maximal 4 GB adressierbarer Speicher", "Maximal 32 Anschlüsse"],
+              "correct": 2,
+              "hint": "2^32 Adressen ergeben 4.294.967.296 Bytes = 4 GB."
+            },
+            {
+              "question": "Was beschreibt die Strukturgröße bei Prozessoren? 📐",
+              "options": ["Physische Größe des Chips", "Kantenlänge der bestimmenden Plotter-Einheit", "Anzahl der Anschlüsse", "Ausmaße des Kühlers"],
+              "correct": 1,
+              "hint": "Sie wird in Nanometern (nm) angegeben und bestimmt wichtige Eigenschaften des Halbleiterprozesses."
+            },
+            {
+              "question": "Was ist ein PGA-Gehäuse bei Prozessoren? 📌",
+              "options": ["Professional Graphics Adapter", "Pin Grid Array", "Personal Graphics Accelerator", "Processor Graphics Architecture"],
+              "correct": 1,
+              "hint": "Es ist ein Gehäuse mit Kontaktstiften in einem Rasterfeld."
+            },
+            {
+              "question": "Was ist ein BGA-Gehäuse bei Prozessoren? 🔘",
+              "options": ["Basic Graphics Adapter", "Ball Grid Array", "Broad Graphics Accelerator", "Bridge Graphics Architecture"],
+              "correct": 1,
+              "hint": "Es ist ein Gehäuse mit Lotperlen in einem Rasterfeld zum Verlöten."
+            },
+            {
+              "question": "Was ist ein LGA-Gehäuse bei Prozessoren? 🔲",
+              "options": ["Limited Graphics Adapter", "Land Grid Array", "Linear Graphics Accelerator", "Layered Graphics Architecture"],
+              "correct": 1,
+              "hint": "Es ist ein Gehäuse mit Kontaktflächen in einem Rasterfeld für Sockel mit Federkontakten."
+            },
+            {
+              "question": "Was bedeutet der Begriff ZIF-Sockel? 🔌",
+              "options": ["Zero Insertion Force", "Zone Integrated Function", "Zero Integration Failure", "Zone Insertion Format"],
+              "correct": 0,
+              "hint": "Es ist ein Nullkraftsockel, der das Einsetzen des Prozessors ohne Kraftaufwand ermöglicht."
+            },
+            {
+              "question": "Was ist Virtualisierung auf Prozessorebene? 🖥️",
+              "options": ["Die Erstellung virtueller Prozessoren", "Die Fähigkeit, mehrere Betriebssysteme gleichzeitig zu unterstützen", "Die Simulation von Prozessorleistung", "Die Möglichkeit, Prozessoren zu teilen"],
+              "correct": 1,
+              "hint": "Sie ermöglicht den Umgang mit privilegierten Anfragen aus mehreren gleichzeitig aktiven Betriebssystemen."
+            },
+            {
+              "question": "Warum ist die Kühlung von Prozessoren wichtig? 🌡️",
+              "options": ["Um Geräusche zu reduzieren", "Um die Lebensdauer zu erhöhen", "Wegen der Verlustleistung und resultierenden Wärme", "Um die Taktrate zu steigern"],
+              "correct": 2,
+              "hint": "Hohe Temperaturen können zu Fehlfunktionen oder Defekten führen."
+            },
+            {
+              "question": "Was ist die Aufgabe von Wärmeleitpaste? 🧴",
+              "options": ["Kühlung des Prozessors", "Bessere Wärmeübertragung zwischen Prozessor und Kühler", "Schmierung des Sockels", "Schutz vor Staub"],
+              "correct": 1,
+              "hint": "Sie verbessert den Wärmeübergang zwischen den Komponenten."
+            },
+            {
+              "question": "Was ist ein Chipsatz? 🧩",
+              "options": ["Ein Set von Prozessoren", "Eine Gruppe von Nebenprozessoren", "Ein Kühlsystem", "Ein Speichermodul"],
+              "correct": 1,
+              "hint": "Er steuert die Kommunikation zwischen Prozessor, Mainboard und Peripherie."
+            },
+            {
+              "question": "Was war die Northbridge? 🌉",
+              "options": ["Ein Anschluss für nördliche Regionen", "Ein Teil des Chipsatzes für schnelle Verbindungen", "Ein Kühlsystem", "Ein Netzwerkprotokoll"],
+              "correct": 1,
+              "hint": "Sie war für die Verbindung zwischen CPU, RAM und Grafikkarte zuständig."
+            },
+            {
+              "question": "Was war die Southbridge? 🌉",
+              "options": ["Ein Anschluss für südliche Regionen", "Ein Teil des Chipsatzes für langsamere Verbindungen", "Ein Kühlsystem", "Ein Netzwerkprotokoll"],
+              "correct": 1,
+              "hint": "Sie war für die Verbindung zu langsameren Komponenten wie USB und Festplatten zuständig."
+            },
+            {
+              "question": "Was ist eine GPU? 🎮",
+              "options": ["General Processing Unit", "Graphics Processing Unit", "Global Processor Upgrade", "Gigabyte Processing Unit"],
+              "correct": 1,
+              "hint": "Sie ist für die Berechnung und Ausgabe von Grafiken zuständig."
+            },
+            {
+              "question": "Was ist ein dedizierter Videospeicher? 🖼️",
+              "options": ["Ein separater Speicher für Grafikkarten", "Ein Teil des Arbeitsspeichers", "Ein Speicher für Videos", "Ein Prozessor für Video-Bearbeitung"],
+              "correct": 0,
+              "hint": "Er ist speziell für Grafikdaten vorgesehen und befindet sich auf der Grafikkarte."
+            },
+            {
+              "question": "Was ist ein Soundprozessor? 🔊",
+              "options": ["Ein Lautsprecher", "Ein Verstärker", "Ein Prozessor für Tonverarbeitung", "Ein Mikrofon"],
+              "correct": 2,
+              "hint": "Er ist für die Aufzeichnung, Synthese, Mischung, Bearbeitung und Wiedergabe von Tonsignalen zuständig."
+            },
+            {
+              "question": "Was ist ein Netzwerkprozessor? 🌐",
+              "options": ["Ein Router", "Ein Prozessor für Netzwerkverbindungen", "Ein Modem", "Ein Switch"],
+              "correct": 1,
+              "hint": "Er ist für die Realisierung einer Netzwerkverbindung und die Kommunikation im Netzwerk zuständig."
+            },
+            {
+                "question": "Welchen Vorteil bietet ein Multi-Core-Prozessor im Vergleich zu einem Single-Core-Prozessor mit höherer Taktfrequenz? 🔄",
+                "options": ["Geringere Wärmeentwicklung bei gleicher Leistung", "Besseres Multitasking durch parallele Verarbeitung", "Höhere maximale Taktfrequenz", "Niedrigere Herstellungskosten"],
+                "correct": 1,
+                "hint": "Denke darüber nach, wie mehrere unabhängige Recheneinheiten gleichzeitig arbeiten können."
+              },
+              {
+                "question": "Welches Problem löst die Integration eines Memory Controllers direkt in die CPU? 🧩",
+                "options": ["Reduziert die Latenz bei Speicherzugriffen", "Erhöht die maximale RAM-Kapazität", "Verbessert die Grafikkartenkommunikation", "Ermöglicht höhere CPU-Temperaturen"],
+                "correct": 0,
+                "hint": "Es geht um die Kommunikationswege zwischen Prozessor und Arbeitsspeicher."
+              },
+              {
+                "question": "Was ist der Unterschied zwischen einem physischen Kern und einem logischen Kern (Thread)? 💡",
+                "options": ["Physische Kerne sind schneller", "Physische Kerne sind hardware-basiert, logische Kerne sind virtuell", "Physische Kerne verbrauchen weniger Strom", "Logische Kerne arbeiten mit höherer Präzision"],
+                "correct": 1,
+                "hint": "Ein physischer Kern kann durch bestimmte Technologien mehrere Threads gleichzeitig verarbeiten."
+              },
+              {
+                "question": "Welche Konsequenz hat eine kleinere Strukturgröße (z.B. von 14nm auf 7nm) für die Prozessorleistung? ⚡",
+                "options": ["Nur erhöhte Produktionskosten", "Nur verbesserte Grafikanzeige", "Mehr Transistoren, geringerer Stromverbrauch, höhere Leistung", "Geringere maximale Taktfrequenz"],
+                "correct": 2,
+                "hint": "Kleinere Strukturen erlauben mehr Komponenten auf gleicher Fläche und kürzere Signalwege."
+              },
+              {
+                "question": "Was ist der wesentliche Vorteil der RISC-Architektur gegenüber CISC? 🚀",
+                "options": ["Höhere Komplexität", "Besseres Multitasking", "Effizienzoptimierung durch einfachere Befehle", "Mehr Befehle für spezielle Aufgaben"],
+                "correct": 2,
+                "hint": "RISC konzentriert sich auf hochoptimierte, einfache Befehle, die schnell ausgeführt werden können."
+              },
+              {
+                "question": "Wie wirkt sich die Cache-Hierarchie (L1, L2, L3) auf die Prozessorleistung aus? 🗂️",
+                "options": ["Sie ist nur für Notfälle relevant", "Sie ermöglicht schnelleren Zugriff auf häufig verwendete Daten", "Sie erhöht nur die Zuverlässigkeit", "Sie dient nur zur Datensicherung"],
+                "correct": 1,
+                "hint": "Der Cache fungiert als Puffer zwischen schnellen und langsamen Komponenten."
+              },
+              {
+                "question": "In welchem Verhältnis stehen Prozessor-Register und Cache zueinander? ⚖️",
+                "options": ["Register sind langsamer aber größer", "Register sind schneller aber kleiner", "Register und Cache haben die gleiche Geschwindigkeit", "Register und Cache haben die gleiche Kapazität"],
+                "correct": 1,
+                "hint": "Beide dienen als Speicher, unterscheiden sich aber in Geschwindigkeit und Kapazität."
+              },
+              {
+                "question": "Was passiert bei einem Cache-Miss? 🎯",
+                "options": ["Der Prozessor ignoriert die fehlenden Daten", "Die Daten werden aus dem langsameren Speicher nachgeladen", "Der Cache wird komplett geleert", "Der Prozessor schaltet auf einen niedrigeren Takt"],
+                "correct": 1,
+                "hint": "Der Prozessor muss die Daten von woanders holen, wenn sie nicht im Cache sind."
+              },
+              {
+                "question": "Warum integrieren moderne CPUs zunehmend GPUs direkt auf dem Chip (APU/IGP)? 🔄",
+                "options": ["Nur um Kosten zu sparen", "Geringere Leistungsaufnahme und bessere Integration", "Um dedizierte GPUs zu ersetzen", "Um die CPU-Temperatur zu erhöhen"],
+                "correct": 1,
+                "hint": "Es geht um Effizienz und Systemintegration für bestimmte Anwendungsfälle."
+              },
+              {
+                "question": "Was bewirkt die Virtualisierungsfähigkeit eines Prozessors auf Systemebene? 🖥️",
+                "options": ["Beschleunigt nur Grafikberechnungen", "Ermöglicht effiziente Ausführung mehrerer isolierter Betriebssysteme", "Reduziert nur den Stromverbrauch", "Erlaubt nur schnelleren Speicherzugriff"],
+                "correct": 1,
+                "hint": "Hardware-Unterstützung für Virtualisierung ermöglicht bestimmte Privilegien für virtuelle Maschinen."
+              },
+              {
+                "question": "Wie beeinflusst die Busbreite zwischen CPU und RAM die Systemleistung? 🔌",
+                "options": ["Nur die Geschwindigkeit ist relevant, nicht die Breite", "Breitere Busse ermöglichen höheren Datendurchsatz", "Nur die RAM-Menge ist relevant", "Schmale Busse sind immer schneller"],
+                "correct": 1,
+                "hint": "Die Busbreite bestimmt, wie viele Daten pro Taktzyklus übertragen werden können."
+              },
+              {
+                "question": "Warum wurde der traditionelle Front Side Bus (FSB) durch neuere Technologien wie QPI/UPI ersetzt? 🛣️",
+                "options": ["FSBs waren zu teuer", "FSBs wurden ein Flaschenhals für die Systemleistung", "FSBs verbrauchten zu viel Strom", "FSBs waren physisch zu groß"],
+                "correct": 1,
+                "hint": "Der geteilte Bus wurde mit steigenden Anforderungen zum limitierenden Faktor."
+              },
+              {
+                "question": "Welche Rolle spielt der Pipeline-Mechanismus in modernen CPUs? 📋",
+                "options": ["Er verbindet nur mehrere CPUs", "Er ermöglicht die parallele Verarbeitung von Befehlsphasen", "Er dient nur zur Kühlung", "Er ist ein reiner Sicherheitsmechanismus"],
+                "correct": 1,
+                "hint": "Befehle durchlaufen verschiedene Verarbeitungsstufen, die parallel arbeiten können."
+              },
+              {
+                "question": "Was beschreibt die IPC (Instructions Per Cycle) eines Prozessors? ⏱️",
+                "options": ["Die Anzahl der Kerne", "Die Anzahl der Befehle, die pro Taktzyklus ausgeführt werden können", "Die Taktfrequenz", "Die Speichermenge"],
+                "correct": 1,
+                "hint": "Diese Kennzahl ist neben der Taktfrequenz entscheidend für die CPU-Leistung."
+              },
+              {
+                "question": "Welche Funktion erfüllt die Memory Management Unit (MMU) in einem Prozessor? 🧠",
+                "options": ["Sie reguliert nur den Stromverbrauch", "Sie übersetzt virtuelle in physische Speicheradressen", "Sie ist für die Grafikanzeige zuständig", "Sie steuert nur die Lüftergeschwindigkeit"],
+                "correct": 1,
+                "hint": "Sie ist wichtig für das Speichermanagement und die Speichersicherheit."
+              },
+              {
+                "question": "Warum verwendet man bei hochleistungsfähigen CPUs häufig Flüssigmetall anstelle normaler Wärmeleitpaste? 🌡️",
+                "options": ["Es ist günstiger", "Es hat eine deutlich höhere Wärmeleitfähigkeit", "Es ist leichter aufzutragen", "Es hält länger"],
+                "correct": 1,
+                "hint": "Die thermischen Eigenschaften unterscheiden sich erheblich."
+              },
+              {
+                "question": "Was ist Branch Prediction und warum ist es wichtig für moderne CPUs? 🔮",
+                "options": ["Eine Marketing-Strategie", "Eine Technik zur Vorhersage von Programmverzweigungen für schnellere Ausführung", "Ein Übertaktungsverfahren", "Ein Energiesparmodus"],
+                "correct": 1,
+                "hint": "Es hilft, die CPU-Pipeline effizient zu nutzen, indem mögliche Ausführungspfade vorhergesagt werden."
+              },
+              {
+                "question": "Warum kann eine 32-bit-CPU nur maximal 4 GB RAM adressieren? 📏",
+                "options": ["Aufgrund von Stromlimitierungen", "Durch physische Einschränkungen", "Wegen der mathematischen Begrenzung von 2^32 adressierbaren Bytes", "Aus Kompatibilitätsgründen"],
+                "correct": 2,
+                "hint": "Es handelt sich um eine mathematische Begrenzung der adressierbaren Speicherzellen."
+              },
+              {
+                "question": "Welches Problem lösen moderne Erweiterungen wie PAE (Physical Address Extension)? 🔓",
+                "options": ["Grafikprobleme", "Die 4-GB-Speichergrenze bei 32-bit-Systemen", "Überhitzung", "Kompatibilitätsprobleme mit alter Software"],
+                "correct": 1,
+                "hint": "Sie erweitern die Adressierungsfähigkeiten über eine bestimmte Grenze hinaus."
+              },
+              {
+                "question": "Warum werden L1-Caches typischerweise in Instruktions- und Datencaches unterteilt? 🧩",
+                "options": ["Nur aus historischen Gründen", "Für bessere Organisation", "Für parallelen Zugriff auf Befehle und Daten", "Um Strom zu sparen"],
+                "correct": 2,
+                "hint": "Diese Trennung ermöglicht bestimmte Optimierungen in der Prozessorarchitektur."
+              },
+              {
+                "question": "Welche spezifische Aufgabe übernimmt ein spezialisierter Netzwerkprozessor (NPU) gegenüber der CPU? 🌐",
+                "options": ["Nur Grafikanzeige", "Optimierte Verarbeitung von Netzwerkpaketen und -protokollen", "Nur Audiobearbeitung", "Nur Wärmeregulierung"],
+                "correct": 1,
+                "hint": "Es geht um die spezialisierte Verarbeitung bestimmter Datentypen und -protokolle."
+              },
+              {
+                "question": "Was ist der Unterschied zwischen Hyperthreading und physischen Kernen? 🧵",
+                "options": ["Kein Unterschied", "Hyperthreading nutzt ungenutzte Ressourcen eines physischen Kerns", "Hyperthreading ist immer schneller", "Physische Kerne verbrauchen weniger Strom"],
+                "correct": 1,
+                "hint": "Es handelt sich um eine Technik zur besseren Auslastung vorhandener Ressourcen."
+              },
+              {
+                "question": "Wie funktioniert der Turbo Boost von Intel-Prozessoren? ⚡",
+                "options": ["Erhöht permanent die Leistung", "Übertaktet automatisch einzelne Kerne bei Bedarf", "Verbessert nur die Grafik", "Reduziert nur die Temperatur"],
+                "correct": 1,
+                "hint": "Es ist ein dynamischer Mechanismus, der die Leistung unter bestimmten Bedingungen erhöht."
+              },
+              {
+                "question": "Welche Auswirkung hat die Sockelkompatibilität auf das System-Upgrade? 🔄",
+                "options": ["Keine, alle CPUs passen in alle Sockel", "Ein neuer Sockel erfordert oft ein neues Mainboard", "Betrifft nur die Kühlung", "Beeinflusst nur die Grafik"],
+                "correct": 1,
+                "hint": "Die physische und elektrische Kompatibilität zwischen CPU und Mainboard ist entscheidend."
+              },
+              {
+                "question": "Welchen Vorteil bietet das Konzept eines SoC (System on a Chip) gegenüber separaten Komponenten? 🧩",
+                "options": ["Immer höhere Leistung", "Integration und Effizienz durch Kombination mehrerer Funktionen", "Nur niedrigere Kosten", "Nur bessere Kühlung"],
+                "correct": 1,
+                "hint": "Es geht um die Zusammenführung von Komponenten, die traditionell getrennt waren."
+              },
+              {
+                "question": "Welche Funktion hat ein RAID-Prozessor im System? 💾",
+                "options": ["Nur Geschwindigkeitsoptimierung", "Verwaltung und Steuerung von RAID-Festplattensystemen", "Nur Grafikberechnung", "Nur Audiobearbeitung"],
+                "correct": 1,
+                "hint": "Er kümmert sich um die Aufteilung von Daten auf mehrere Speichermedien."
+              },
+              {
+                "question": "Was ist der Unterschied zwischen einem onboard-Grafikprozessor und einer dedizierten GPU? 🎮",
+                "options": ["Kein funktionaler Unterschied", "Dedizierte GPUs haben eigenen Speicher und höhere Leistung", "Onboard-GPUs sind immer schneller", "Nur der Preis unterscheidet sich"],
+                "correct": 1,
+                "hint": "Es geht um Ressourcennutzung, Speicherzugriff und Leistungspotenzial."
+              }
+            
+        ]
 }

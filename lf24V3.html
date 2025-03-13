@@ -29,6 +29,25 @@
                 <span class="stats-label">Level</span>
             </div>
         </div>
+        
+        <div class="daily-challenge" id="main-daily-challenge">
+            <h3>Tägliche Herausforderung</h3>
+            <p id="main-daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
+            <div class="daily-challenge-status" id="main-daily-challenge-status">0/5 geschafft</div>
+            <div class="daily-challenge-reward" id="main-daily-challenge-reward">Belohnung: 50 XP</div>
+        </div>
+        
+        <div class="progress-path">
+            <h3>Dein Lernfortschritt 📚</h3>
+            <div class="progress-path-line">
+                <div class="progress-path-fill" id="main-progress-path-fill"></div>
+                <div class="progress-milestone" style="left: 10%" id="main-milestone-1" title="Anfänger">🥉</div>
+                <div class="progress-milestone" style="left: 30%" id="main-milestone-2" title="Fortgeschritten">🥈</div>
+                <div class="progress-milestone" style="left: 60%" id="main-milestone-3" title="Profi">🥇</div>
+                <div class="progress-milestone" style="left: 90%" id="main-milestone-4" title="Meister">👑</div>
+            </div>
+            <div id="main-path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
+        </div>
 
         <div id="quiz-categories" class="quiz-categories">
             <!-- Wird dynamisch gefüllt -->
@@ -133,51 +152,26 @@
         </div>
 
         <div class="game-progress">
-            <div class="daily-challenge" id="daily-challenge">
-                <h3>Tägliche Herausforderung</h3>
-                <p id="daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
-                <div class="daily-challenge-status" id="daily-challenge-status">0/5 geschafft</div>
-                <div class="daily-challenge-reward" id="daily-challenge-reward">Belohnung: 50 XP</div>
-            </div>
-            
-            <div class="login-streak" id="login-streak">
-                <!-- Wird dynamisch mit JavaScript gefüllt -->
-            </div>
-            
-            <div class="total-xp">Gesamt-XP: <span id="total-xp">0</span></div>
-            
-            <div class="progress-path">
-                <h3>Dein Lernfortschritt 📚</h3>
-                <div class="progress-path-line">
-                    <div class="progress-path-fill" id="progress-path-fill"></div>
-                    <div class="progress-milestone" style="left: 10%" id="milestone-1" title="Anfänger">🥉</div>
-                    <div class="progress-milestone" style="left: 30%" id="milestone-2" title="Fortgeschritten">🥈</div>
-                    <div class="progress-milestone" style="left: 60%" id="milestone-3" title="Profi">🥇</div>
-                    <div class="progress-milestone" style="left: 90%" id="milestone-4" title="Meister">👑</div>
+            <div class="badge-container" id="badge-container">
+                <div class="badge" id="badge-beginner">
+                    <div class="badge-icon">🥉</div>
+                    <div class="badge-name">Anfänger (100 XP)</div>
                 </div>
-                <div id="path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
+                <div class="badge" id="badge-intermediate">
+                    <div class="badge-icon">🥈</div>
+                    <div class="badge-name">Fortgeschritten (350 XP)</div>
+                </div>
+                <div class="badge" id="badge-advanced">
+                    <div class="badge-icon">🥇</div>
+                    <div class="badge-name">Profi (750 XP)</div>
+                </div>
+                <div class="badge" id="badge-master">
+                    <div class="badge-icon">👑</div>
+                    <div class="badge-name">Meister (1500 XP)</div>
+                </div>
             </div>
         </div>
 
-        <div class="badge-container" id="badge-container">
-            <div class="badge" id="badge-beginner">
-                <div class="badge-icon">🥉</div>
-                <div class="badge-name">Anfänger (100 XP)</div>
-            </div>
-            <div class="badge" id="badge-intermediate">
-                <div class="badge-icon">🥈</div>
-                <div class="badge-name">Fortgeschritten (350 XP)</div>
-            </div>
-            <div class="badge" id="badge-advanced">
-                <div class="badge-icon">🥇</div>
-                <div class="badge-name">Profi (750 XP)</div>
-            </div>
-            <div class="badge" id="badge-master">
-                <div class="badge-icon">👑</div>
-                <div class="badge-name">Meister (1500 XP)</div>
-            </div>
-        </div>
-        
         <div class="stats-container hidden" id="stats-container">
             <h2>Deine Statistiken 📈</h2>
             <p>Gespielte Quizze: <span id="total-quizzes">0</span></p>
@@ -257,6 +251,11 @@
             color: var(--secondary-color);
         }
 
+
+        .daily-challenge-status, .total-xp {
+            color: var(--primary-color);
+        }
+
         .quiz-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -326,6 +325,13 @@
             height: 4px;
             background-color: var(--primary-color);
             transition: width 0.6s ease;
+        }
+        
+        #single-question-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
         }
 
         .menu-footer {
@@ -544,6 +550,13 @@
             description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
             icon: '⚡',
             file: 'grundwissen.json'
+        },
+        {
+            id: 'mix',
+            name: 'Gemischtes Quiz',
+            description: 'Eine herausfordernde Mischung aus allen Kategorien für echte Profis',
+            icon: '🔄',
+            file: null // Spezialfall für gemischtes Quiz
         }
     ];
 
@@ -588,11 +601,35 @@
             const category = quizCategories.find(c => c.id === categoryId);
             if (!category) throw new Error('Kategorie nicht gefunden');
 
-            const response = await fetch(category.file);
-            if (!response.ok) throw new Error(`Fehler beim Laden von ${category.file}`);
+            if (category.id === 'mix') {
+                // Lade alle Quizfragen von allen Kategorien
+                questions = [];
+                for (const cat of quizCategories) {
+                    if (cat.id !== 'mix' && cat.file) {
+                        const response = await fetch(cat.file);
+                        if (response.ok) {
+                            const data = await response.json();
+                            // Füge Kategorie-Info zu jeder Frage hinzu
+                            const questionsWithCategory = data.questions.map(q => ({
+                                ...q,
+                                categoryId: cat.id,
+                                categoryName: cat.name
+                            }));
+                            questions.push(...questionsWithCategory);
+                        }
+                    }
+                }
+            } else {
+                const response = await fetch(category.file);
+                if (!response.ok) throw new Error(`Fehler beim Laden von ${category.file}`);
 
-            const data = await response.json();
-            questions = data.questions;
+                const data = await response.json();
+                questions = data.questions.map(q => ({
+                    ...q,
+                    categoryId: category.id,
+                    categoryName: category.name
+                }));
+            }
 
             // Hide menu and show quiz
             document.getElementById('quiz-selection-menu').style.display = 'none';
@@ -1079,6 +1116,10 @@
         statsContainer.classList.toggle('hidden');
     }
 
+    function showSettings() {
+        alert('Einstellungen werden bald verfügbar sein!');
+    }
+
     function showError(message) {
         const container = document.getElementById('current-question');
         container.innerHTML = `<div class="error-message">${message}</div>`;
@@ -1230,6 +1271,69 @@
         }, 1500);
     }
 
+    // Füge die fehlende checkForBadges-Funktion hinzu
+function checkForBadges() {
+    const badgeCriteria = [
+        { id: 'badge-beginner', xp: 100, name: 'Anfänger' },
+        { id: 'badge-intermediate', xp: 350, name: 'Fortgeschritten' },
+        { id: 'badge-advanced', xp: 750, name: 'Profi' },
+        { id: 'badge-master', xp: 1500, name: 'Meister' }
+    ];
+    
+    let earnedBadges = 0;
+    badgeCriteria.forEach(badge => {
+        const badgeElement = document.getElementById(badge.id);
+        if (badgeElement && totalXP >= badge.xp) {
+            if (!badgeElement.classList.contains('earned')) {
+                badgeElement.classList.add('earned');
+                showAchievement('Neues Abzeichen!', `Du hast das ${badge.name}-Abzeichen verdient!`, badge.id === 'badge-master' ? '👑' : (badge.id === 'badge-advanced' ? '🥇' : (badge.id === 'badge-intermediate' ? '🥈' : '🥉')));
+            }
+            earnedBadges++;
+        }
+    });
+    
+    // Aktualisiere auch die Badges im Hauptmenü
+    const mainProgressPathFill = document.getElementById('main-progress-path-fill');
+    if (mainProgressPathFill) {
+        const pathProgress = (totalXP / 1500) * 100;
+        mainProgressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
+        
+        const mainMilestones = [
+            { xp: 100, id: 'main-milestone-1' },
+            { xp: 350, id: 'main-milestone-2' },
+            { xp: 750, id: 'main-milestone-3' },
+            { xp: 1500, id: 'main-milestone-4' }
+        ];
+        
+        mainMilestones.forEach(milestone => {
+            const element = document.getElementById(milestone.id);
+            if (element) {
+                if (totalXP >= milestone.xp) {
+                    element.classList.add('completed');
+                } else if (totalXP >= milestone.xp * 0.8) {
+                    element.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Aktualisiere Badges-Anzeige
+    const earnedBadgesElement = document.getElementById('earned-badges');
+    if (earnedBadgesElement) {
+        earnedBadgesElement.textContent = earnedBadges;
+    }
+    
+    const menuBadgesElement = document.getElementById('menu-badges');
+    if (menuBadgesElement) {
+        menuBadgesElement.textContent = `${earnedBadges}/4`;
+    }
+}
+
+// Aktualisiere die showSettings-Funktion
+function showSettings() {
+    alert('Einstellungen werden bald verfügbar sein!');
+}
+    
     // Rest of your existing code...
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -1242,7 +1346,6 @@
     </script>
 </body>
 </html>
-
 <style>
     .quiz-summary {
         text-align: center;

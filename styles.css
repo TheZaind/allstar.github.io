@@ -50,6 +50,16 @@ body {
     line-height: 1.6;
 }
 
+.single-question-container {
+    background-color: var(--container-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin: 1rem auto; /* Hier wurde von 2rem auf 1rem reduziert */
+    max-width: 800px;
+    position: relative;
+}
+
 .fixed-header {
     position: fixed;
     top: 0;
@@ -459,7 +469,7 @@ button:hover {
     width: 100%;
     background-color: var(--border-color);
     border-radius: 20px;
-    margin: 10px 0;
+    margin: 10px 0 5px 0; /* Verringere den unteren Rand von 10px auf 5px */
     position: relative;
     overflow: hidden;
     height: 20px;
@@ -920,7 +930,7 @@ button:hover {
     background-color: var(--border-color);
     border-radius: 20px;
     overflow: hidden;
-    margin: 15px 0;
+    margin: 5px 0; /* Verringere Abstand von 15px auf 5px */
     position: relative;
     width: 100%; /* Stellt sicher, dass der Container die volle Breite einnimmt */
     display: block; /* Stellt sicher, dass der Container als Block-Element angezeigt wird */
