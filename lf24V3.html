@@ -3,440 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Quiz</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-    <!-- Quiz Selection Menu -->
     <div id="quiz-selection-menu" class="quiz-selection-menu">
         <h1 class="main-title">🎮 Maurice's Learning Game</h1>
         <p class="main-subtitle">Wähle ein Quiz-Thema und verbessere dein Wissen</p>
         
-        <div class="user-stats-summary">
-            <div class="stats-item">
-                <span class="stats-icon">⭐</span>
-                <span class="stats-value" id="menu-total-xp">0</span>
-                <span class="stats-label">Gesamt-XP</span>
+        <!-- Game Stats im Hauptmenü -->
+        <div class="main-menu-stats">
+            <div class="stats-header">
+                <h2>Deine Statistiken 📈</h2>
             </div>
-            <div class="stats-item">
-                <span class="stats-icon">🏆</span>
-                <span class="stats-value" id="menu-badges">0/4</span>
-                <span class="stats-label">Badges</span>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-quizzes">0</div>
+                    <div class="stat-label">Gespielte Quizze</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-correct">0</div>
+                    <div class="stat-label">Korrekte Antworten</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="average-score">0%</div>
+                    <div class="stat-label">Durchschnittliche Punktzahl</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="best-streak">0</div>
+                    <div class="stat-label">Längste Streak</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="earned-badges">0/4</div>
+                    <div class="stat-label">Verdiente Badges</div>
+                </div>
             </div>
-            <div class="stats-item">
-                <span class="stats-icon">📊</span>
-                <span class="stats-value" id="menu-level">1</span>
-                <span class="stats-label">Level</span>
+            <div class="current-badge-display">
+                <div class="badge-status">Aktuelles Badge:</div>
+                <div id="menu-current-badge" class="menu-badge"></div>
             </div>
         </div>
         
-        <div class="daily-challenge" id="main-daily-challenge">
-            <h3>Tägliche Herausforderung</h3>
-            <p id="main-daily-challenge-desc">Beantworte 5 Fragen richtig in einem Quiz</p>
-            <div class="daily-challenge-status" id="main-daily-challenge-status">0/5 geschafft</div>
-            <div class="daily-challenge-reward" id="main-daily-challenge-reward">Belohnung: 50 XP</div>
-        </div>
-        
-        <div class="progress-path">
-            <h3>Dein Lernfortschritt 📚</h3>
-            <div class="progress-path-line">
-                <div class="progress-path-fill" id="main-progress-path-fill"></div>
-                <div class="progress-milestone" style="left: 10%" id="main-milestone-1" title="Anfänger">🥉</div>
-                <div class="progress-milestone" style="left: 30%" id="main-milestone-2" title="Fortgeschritten">🥈</div>
-                <div class="progress-milestone" style="left: 60%" id="main-milestone-3" title="Profi">🥇</div>
-                <div class="progress-milestone" style="left: 90%" id="main-milestone-4" title="Meister">👑</div>
-            </div>
-            <div id="main-path-status" class="path-status">Sammle XP, um auf deinem Lernpfad voranzuschreiten!</div>
-        </div>
-
         <div id="quiz-categories" class="quiz-categories">
             <!-- Wird dynamisch gefüllt -->
         </div>
-        
-        <div class="menu-footer">
-            <button onclick="toggleTheme()" id="theme-toggle-menu" class="theme-btn">🌓 Dark/Light</button>
-            <button onclick="showSettings()" class="settings-btn">⚙️ Einstellungen</button>
-        </div>
     </div>
 
-    <div class="quiz-content">
+    <div id="quiz-content" class="quiz-content">
         <div class="controls">
             <button onclick="backToMenu()" class="back-button">↩️ Zurück zum Menü</button>
             <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
             <button onclick="newQuiz()">🔄 neues Quiz</button>
-            <button onclick="toggleStats()">📊 Statistiken</button>
             <button onclick="toggleTimerMode()" id="timer-toggle">⏱️ Zeitmodus</button>
         </div>
 
-        <div class="fixed-header">
-            <div class="header-container">
-                <h1 class="quiz-title">💻 Hardware Quiz - Maurice Fragt dich! 💁🏻‍♂️</h1>
-                <div id="game-status" class="game-status">
-                    <div class="game-stats">
-                        <div class="stat-row">
-                            <div class="stat-item">Level: <span id="level">1</span> 🌟</div>
-                            <div class="stat-item">Aktuelle Serie: <span id="streak-text">0</span> 🔥</div>
-                            <div class="stat-item">Punktzahl: <span id="score">0</span> Punkte 📊</div>
-                        </div>
-                        <div class="stat-row">
-                            <div class="stat-item">XP: <span id="xp-display">0/100</span></div>
-                            <div class="stat-item">Progress: <span id="progress-label">0%</span></div>
-                            <div class="stat-item current-badge-container">
-                                <span id="current-badge" class="current-badge"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="feedback-result" class="feedback-result"></div>
+        <div class="game-status">
+            <div class="status-content">
+                <div class="status-row">
+                    <div class="status-item">Level: <span id="level">1</span> 🌟</div>
+                    <div class="status-item">Serie: <span id="streak-text">0</span> 🔥</div>
+                    <div class="status-item">Punkte: <span id="score">0</span> 📊</div>
+                </div>
+                <div class="status-row">
+                    <div class="status-item">XP: <span id="xp-display">0/100</span></div>
+                    <div id="current-badge" class="current-badge"></div>
                 </div>
             </div>
+            <div id="feedback-message" class="feedback-message"></div>
         </div>
 
-        <div class="timer-container" id="timer-container" style="display: none; margin-top: 0; margin-bottom: 5px;">
-            <div class="timer-bar" id="timer-bar"></div>
-            <div class="time-bonus-indicator" id="time-bonus">+5 XP</div>
-            <div class="timer-mode-badge">⏱️ ZEITMODUS</div>
+        <div id="timer-container" class="timer-container">
+            <div id="timer-bar" class="timer-bar"></div>
         </div>
 
         <div id="single-question-container" class="single-question-container">
             <div class="question-header">
                 <div class="question-progress">
-                    Frage <span id="current-question-number">1</span> von <span id="total-questions">20</span>
+                    Frage <span id="current-question-number">1</span> von <span id="total-questions">10</span>
                 </div>
-                <div class="question-category" id="question-category">
+                <div class="question-category">
                     Kategorie: <span id="current-category">CPU</span>
                 </div>
             </div>
 
             <div id="current-question" class="current-question">
-                <!-- Current question will be inserted here -->
+                <!-- Wird dynamisch gefüllt -->
             </div>
 
             <div class="question-navigation">
                 <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
             </div>
-
-            <!-- Verbesserte Feedback-Anzeige -->
-            <div class="feedback-container">
-                <div id="feedback-message" class="feedback-message"></div>
-            </div>
         </div>
-
-        <div class="stats-container">
-            <div class="badge-container">
-                <div class="badge" id="badge-beginner">
-                    <div class="badge-icon">🥉</div>
-                    <div class="badge-name">Anfänger (100 XP)</div>
-                </div>
-                <div class="badge" id="badge-intermediate">
-                    <div class="badge-icon">🥈</div>
-                    <div class="badge-name">Fortgeschritten (350 XP)</div>
-                </div>
-                <div class="badge" id="badge-advanced">
-                    <div class="badge-icon">🥇</div>
-                    <div class="badge-name">Profi (750 XP)</div>
-                </div>
-                <div class="badge" id="badge-master">
-                    <div class="badge-icon">👑</div>
-                    <div class="badge-name">Meister (1500 XP)</div>
-                </div>
-            </div>
-
-            <div class="stats-summary">
-                <h2>Deine Statistiken 📈</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value" id="total-quizzes">0</div>
-                        <div class="stat-label">Gespielte Quizze</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="total-correct">0</div>
-                        <div class="stat-label">Korrekte Antworten</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="average-score">0%</div>
-                        <div class="stat-label">Durchschnittliche Punktzahl</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="best-streak">0</div>
-                        <div class="stat-label">Längste Streak</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="earned-badges">0/4</div>
-                        <div class="stat-label">Verdiente Badges</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Achievement popup -->
-        <div class="achievement-popup" id="achievement-popup">
-            <h2 id="achievement-title">Achievement Unlocked!</h2>
-            <div class="badge-icon" id="achievement-icon">🏆</div>
-            <div id="achievement-description"></div>
-            <button onclick="closeAchievementPopup()">Ok</button>
-        </div>
-        <div class="overlay" id="overlay"></div>
-
-        <!-- Bonus-Popup -->
-        <div class="bonus-popup" id="bonus-popup"></div>
     </div>
 
-    <style>
-        .quiz-selection-menu {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            text-align: center;
-            background-color: var(--container-bg);
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .main-title {
-            margin-bottom: 0.5rem;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            animation: fadeIn 0.8s ease;
-        }
-
-        .main-subtitle {
-            color: var(--secondary-color);
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-
-        .user-stats-summary {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background-color: var(--bg-color);
-            border-radius: 8px;
-            animation: slideIn 0.6s ease;
-        }
-
-        .stats-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stats-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .stats-value {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .stats-label {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
-
-
-        .daily-challenge-status, .total-xp {
-            color: var(--primary-color);
-        }
-
-        .quiz-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            animation: fadeIn 1s ease;
-        }
-
-        .quiz-category {
-            background: var(--container-bg);
-            border: 2px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quiz-category:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            border-color: var(--primary-color);
-        }
-
-        .quiz-category h3 {
-            margin: 0;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .quiz-category-icon {
-            font-size: 1.6rem;
-        }
-
-        .quiz-category p {
-            margin: 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        .category-stats {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-        }
-
-        .category-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .category-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%; /* Wird dynamisch gesetzt */
-            height: 4px;
-            background-color: var(--primary-color);
-            transition: width 0.6s ease;
-        }
-        
-        #single-question-container {
-            margin: 2rem auto;
-            max-width: 800px;
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-        }
-
-        .menu-footer {
-            margin-top: 3rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .theme-btn, .settings-btn {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 0.7rem 1.2rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .theme-btn:hover, .settings-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @media (max-width: 768px) {
-            .quiz-selection-menu {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-            
-            .user-stats-summary {
-                gap: 1rem;
-            }
-            
-            .main-title {
-                font-size: 2rem;
-            }
-            
-            .quiz-categories {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .single-question-container {
-            background-color: var(--container-bg);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            margin: 2rem auto;
-            max-width: 800px;
-            position: relative;
-        }
-
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .question-progress {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .question-category {
-            font-size: 1rem;
-            color: var(--secondary-color);
-        }
-
-        .current-question {
-            margin: 2rem 0;
-        }
-
-        .question-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        #prev-question, #next-question {
-            min-width: 150px;
-        }
-
-        #prev-question:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-    </style>
+    <div id="achievement-popup" class="achievement-popup">
+        <h2 id="achievement-title">Achievement Unlocked!</h2>
+        <div id="achievement-icon" class="badge-icon">🏆</div>
+        <div id="achievement-description"></div>
+        <button onclick="closeAchievementPopup()">Ok</button>
+    </div>
+    <div id="overlay" class="overlay"></div>
 
     <script>
     // Theme toggle functionality
@@ -556,9 +224,6 @@
         // Set initial theme
         document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
         
-        // Load saved data
-        loadSavedData();
-        
         // Show quiz selection menu
         showQuizMenu();
         
@@ -566,72 +231,30 @@
         await initializeQuizCategories();
     });
 
-    // Initialize quiz categories
+    // Start попытка
+    async function startQuizCategory(categoryId) {
+        const menuElement = document.getElementById('quiz-selection-menu');
+        const contentElement = document.getElementById('quiz-content');
+        
+        if (menuElement && contentElement) {
+            menuElement.style.display = 'none';
+            contentElement.style.display = 'block';
+            
+            // Rest der Funktion...
+            loadQuestions(categoryId);
+        }
+    }
+
+    // Quiz-Kategorien initialisieren
     async function initializeQuizCategories() {
         const categoriesContainer = document.getElementById('quiz-categories');
         categoriesContainer.innerHTML = quizCategories.map(category => `
             <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
                 <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
                 <p>${category.description}</p>
-                <div class="category-stats">
-                    <div class="category-stat">
-                        <span>🎮</span> 0x gespielt
-                    </div>
-                    <div class="category-stat">
-                        <span>🏅</span> Highscore: 0/20
-                    </div>
-                </div>
                 <div class="category-progress"></div>
             </div>
         `).join('');
-    }
-
-    // Start specific quiz category
-    async function startQuizCategory(categoryId) {
-        try {
-            const category = quizCategories.find(c => c.id === categoryId);
-            if (!category) throw new Error('Kategorie nicht gefunden');
-
-            if (category.id === 'mix') {
-                // Lade alle Quizfragen von allen Kategorien
-                questions = [];
-                for (const cat of quizCategories) {
-                    if (cat.id !== 'mix' && cat.file) {
-                        const response = await fetch(cat.file);
-                        if (response.ok) {
-                            const data = await response.json();
-                            // Füge Kategorie-Info zu jeder Frage hinzu
-                            const questionsWithCategory = data.questions.map(q => ({
-                                ...q,
-                                categoryId: cat.id,
-                                categoryName: cat.name
-                            }));
-                            questions.push(...questionsWithCategory);
-                        }
-                    }
-                }
-            } else {
-                const response = await fetch(category.file);
-                if (!response.ok) throw new Error(`Fehler beim Laden von ${category.file}`);
-
-                const data = await response.json();
-                questions = data.questions.map(q => ({
-                    ...q,
-                    categoryId: category.id,
-                    categoryName: category.name
-                }));
-            }
-
-            // Hide menu and show quiz
-            document.getElementById('quiz-selection-menu').style.display = 'none';
-            document.getElementById('quiz-content').style.display = 'block';
-
-            // Start new quiz
-            createQuiz();
-        } catch (error) {
-            console.error('Fehler beim Laden der Fragen:', error);
-            showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
-        }
     }
 
     function createQuiz() {
@@ -647,27 +270,19 @@
         document.getElementById('total-questions').textContent = currentQuestions.length;
     }
 
-    // Show quiz menu with null checks
+    // Show quiz menu
     function showQuizMenu() {
         const menuElement = document.getElementById('quiz-selection-menu');
         const contentElement = document.getElementById('quiz-content');
         
-        if (menuElement) {
+        if (menuElement && contentElement) {
             menuElement.style.display = 'block';
-        } else {
-            console.warn('quiz-selection-menu element not found');
-        }
-        
-        if (contentElement) {
             contentElement.style.display = 'none';
-        } else {
-            console.warn('quiz-content element not found');
         }
     }
 
     // Fragen laden und Quiz initialisieren
     let currentQuestions = [];
-    let score = 0;
     let xp = 0;
     let totalXP = 0;
     let level = 1;
@@ -677,43 +292,110 @@
     let totalQuestions = 0;
     let totalQuizzes = 0;
     let timerActive = false;
-    let timerInterval;
+    let timerInterval = null;
     let maxTime = 30; // Sekunden pro Frage
-    let timeRemaining;
+    let timeRemaining = maxTime;
 
-    // Wähle zufällige Fragen für das Quiz
-    function selectRandomQuestions(amount = 20) {
-        let availableQuestions = [...questions];
-        let selectedQuestions = [];
+    function toggleTimerMode() {
+        timerActive = !timerActive;
+        const timerContainer = document.getElementById('timer-container');
+        const timerToggle = document.getElementById('timer-toggle');
         
-        while (selectedQuestions.length < amount && availableQuestions.length > 0) {
-            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-            selectedQuestions.push(availableQuestions[randomIndex]);
-            availableQuestions.splice(randomIndex, 1);
+        if (!timerContainer || !timerToggle) return;
+        
+        if (timerActive) {
+            timerContainer.style.display = 'block';
+            timerToggle.style.backgroundColor = 'var(--error-color)';
+            startQuestionTimer();
+        } else {
+            timerContainer.style.display = 'none';
+            timerToggle.style.backgroundColor = 'var(--primary-color)';
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
         }
-        
-        return selectedQuestions;
     }
 
-    // Lade die Fragen beim Start
-    async function loadQuestions() {
+    function startQuestionTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+        }
+        
+        const timerBar = document.getElementById('timer-bar');
+        if (!timerBar) return;
+        
+        timeRemaining = maxTime;
+        timerBar.style.width = '100%';
+        
+        timerInterval = setInterval(() => {
+            timeRemaining--;
+            if (timerBar) {
+                timerBar.style.width = `${(timeRemaining / maxTime) * 100}%`;
+            }
+            
+            if (timeRemaining <= 0) { 
+                clearInterval(timerInterval); 
+                timerInterval = null;
+                // Automatisch zur nächsten Frage, wenn keine Antwort ausgewählt wurde 
+                if (!answeredQuestions.has(currentQuestionIndex)) {  
+                    checkAnswer(currentQuestionIndex, -1);  
+                } 
+            }
+        }, 1000);
+    }
+
+    async function loadQuestions(categoryId) {
         try {
-            const response = await fetch('cpu.json');
+            let fileName;
+            switch(categoryId) {
+                case 'cpu':
+                    fileName = 'cpu.json';
+                    break;
+                case 'mb':
+                    fileName = 'mainboard.json';
+                    break;
+                case 'gw':
+                    fileName = 'grundwissen.json';
+                    break;
+                case 'mix':
+                    // Mische Fragen aus allen Kategorien
+                    const allQuestions = [];
+                    for (const file of ['cpu.json', 'mainboard.json', 'grundwissen.json']) {
+                        try {
+                            const response = await fetch(file);
+                            if (response.ok) {
+                                const data = await response.json();
+                                allQuestions.push(...data.questions);
+                            }
+                        } catch (e) {
+                            console.warn(`Konnte ${file} nicht laden:`, e);
+                        }
+                    }
+                    questions = allQuestions;
+                    createQuiz();
+                    return;
+                default:
+                    fileName = 'cpu.json';
+            }
+            
+            const response = await fetch(fileName);
             if (!response.ok) {
-                throw new Error('Fehler beim Laden der Fragen');
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
             questions = data.questions;
-            loadSavedData();
             createQuiz();
         } catch (error) {
             console.error('Fehler beim Laden der Fragen:', error);
-            document.getElementById('quiz-container').innerHTML = 
-                '<div class="error-message">Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.</div>';
+            const container = document.getElementById('current-question');
+            if (container) {
+                container.innerHTML = '<div class="error-message">Fehler beim Laden der Fragen. Bitte versuche es später erneut.</div>';
+            }
         }
     }
 
-    // Neues Quiz starten
+    // neues Quiz starten
     function newQuiz() {
         currentQuestions = selectRandomQuestions();
         currentQuestionIndex = 0;
@@ -736,56 +418,28 @@
         container.classList.add('slide-out');
         
         setTimeout(() => {
-            // Update question number and category
+            // Update question number
             document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
-            
-            if (question.categoryId) {
-                document.getElementById('current-category').textContent = 
-                    quizCategories.find(c => c.id === question.categoryId)?.name || 'Allgemein';
-            }
 
-            // Randomize options with animation delay
-            const originalCorrectIndex = question.correct;
-            const optionsCopy = [...question.options];
+            // Randomize options
+            const correctOptionIndex = question.correct;
             const randomizedOptions = [];
-            const optionMapping = [];
-            
-            while (optionsCopy.length > 0) {
-                const randIndex = Math.floor(Math.random() * optionsCopy.length);
-                const originalIndex = question.options.indexOf(optionsCopy[randIndex]);
-                randomizedOptions.push(optionsCopy[randIndex]);
-                optionMapping.push(originalIndex);
-                optionsCopy.splice(randIndex, 1);
-            }
-            
-            const newCorrectIndex = optionMapping.indexOf(originalCorrectIndex);
-            currentQuestions[currentQuestionIndex].randomizedCorrect = newCorrectIndex;
+            const options = [...question.options];
+            options.sort(() => Math.random() - 0.5);
+            randomizedOptions.push(...options);
 
             // Create options with staggered animation
             container.innerHTML = `
                 <div class="question-text">${question.question}</div>
-                <div class="options-container">
+                <div class="question-options">
                     ${randomizedOptions.map((option, index) => `
-                        <div class="option" 
-                            style="--animation-order: ${index}"
-                            ${answeredQuestions.has(currentQuestionIndex) ? 
-                                `class="option ${index === question.randomizedCorrect ? 'correct' : 
-                                (index === question.lastSelected ? 'incorrect' : '')}"` : ''} 
-                            onclick="checkAnswer(${currentQuestionIndex}, ${index})"
-                            ${answeredQuestions.has(currentQuestionIndex) ? 'style="pointer-events: none;"' : ''}>
-                            ${option}
-                        </div>
+                        <div class="option" onclick="checkAnswer(${currentQuestionIndex}, ${index})">${option}</div>
                     `).join('')}
-
-
                 </div>
             `;
-
             // Füge Slide-In Animation hinzu
             container.classList.remove('slide-out');
             container.classList.add('slide-in');
-            
-            // Entferne Animations-Klassen nach Abschluss
             setTimeout(() => {
                 container.classList.remove('slide-in');
             }, 500);
@@ -798,131 +452,223 @@
             currentQuestionIndex === currentQuestions.length - 1 || 
             !answeredQuestions.has(currentQuestionIndex);
         
-        // Start timer if active
+        // Start timer if aktiv
         if (timerActive) {
             startQuestionTimer();
         }
     }
 
-    // Entferne doppelte Definitionen und behalte nur diese Version
-    function showFeedback(message, isSuccess) {
-        const feedbackResult = document.getElementById('feedback-result');
-        if (feedbackResult) {
-            feedbackResult.textContent = message;
-            feedbackResult.className = `feedback-result ${isSuccess ? 'feedback-success' : 'feedback-error'}`;
-        }
-        updateGameStatus();
-    }
-
-    // Konsolidierte Version der updateGameStatus Funktion
-    function updateGameStatus() {
-        const feedbackMessage = document.getElementById('feedback-message');
-        const currentBadge = getCurrentBadge();
-        
-        if (feedbackMessage) {
-            feedbackMessage.innerHTML = `
-                <div class="feedback-stats">
-                    <div class="feedback-stat">Level: ${level} 🌟</div>
-                    <div class="feedback-stat">Aktuelle Serie: ${currentStreak} 🔥</div>
-                    <div class="feedback-stat">Punktzahl: ${score} Punkte 📊</div>
-                    <div class="feedback-stat">XP: ${totalXP % 100}/100 (${100 - (totalXP % 100)} bis Level ${level + 1})</div>
-                    <div class="feedback-stat">${Math.round((score / (currentQuestions.length || 1)) * 100)}%</div>
-                </div>
-                <div class="feedback-result" id="feedback-result"></div>
-                ${currentBadge ? `<div class="current-badge">${currentBadge}</div>` : ''}
-            `;
-        }
-    }
-
-    function getCurrentBadge() {
-        if (totalXP >= 1500) return '👑';
-        if (totalXP >= 750) return '🥇';
-        if (totalXP >= 350) return '🥈';
-        if (totalXP >= 100) return '🥉';
-        return '';
-    }
-
-    // Konsolidierte Version der checkAnswer Funktion
+    // Konsolidierte Version der [checkAnswer] Funktion
     function checkAnswer(questionIndex, selectedOption) {
         if (answeredQuestions.has(questionIndex)) return;
         
         const question = currentQuestions[questionIndex];
         if (!question) return;
         
-        const isCorrect = selectedOption === question.randomizedCorrect;
         const options = document.querySelectorAll('.option');
+        const isCorrect = selectedOption === question.correct;
         
+        // Deaktiviere alle Optionen
         options.forEach(option => option.style.pointerEvents = 'none');
         
-        // Markiere ausgewählte und korrekte Antworten
+        // Markiere ausgewählte Antwort
         if (options[selectedOption]) {
             options[selectedOption].classList.add(isCorrect ? 'correct' : 'incorrect');
         }
         
         // Zeige korrekte Antwort bei falscher Auswahl
-        if (!isCorrect && options[question.randomizedCorrect]) {
+        if (!isCorrect && options[question.correct]) {
             setTimeout(() => {
-                options[question.randomizedCorrect].classList.add('correct');
+                options[question.correct].classList.add('correct');
             }, 300);
         }
 
         // Update Spielstatus
-        question.lastSelected = selectedOption;
         answeredQuestions.add(questionIndex);
         totalQuestions++;
 
         if (timerInterval) {
             clearInterval(timerInterval);
+            timerInterval = null;
         }
 
-        processAnswer(isCorrect);
+        // Verarbeite das Ergebnis
+        if (isCorrect) {
+            score++;
+            totalCorrect++;
+            currentStreak++;
+            if (currentStreak > bestStreak) {
+                bestStreak = currentStreak;
+            }
+            
+            // XP Berechnung
+            const basePoints = 10;
+            const streakBonus = Math.min(5, currentStreak);
+            const timeBonus = timerActive ? Math.ceil((timeRemaining / maxTime) * 5) : 0;
+            
+            const xpGained = basePoints + streakBonus + timeBonus;
+            totalXP += xpGained;
+            
+            // Feedback anzeigen
+            showFeedback(`Richtig! +${xpGained} XP${streakBonus > 0 ? ` (${streakBonus} Streak Bonus)` : ''}${timeBonus > 0 ? ` (${timeBonus} Zeit Bonus)` : ''}`, true);
+        } else {
+            currentStreak = 0;
+            showFeedback('Leider falsch! Weiter so! 💪', false);
+        }
+
+        // Update UI
+        updateGameStatus();
+        saveGameData();
         
         // Navigation
         const nextButton = document.getElementById('next-question');
         if (nextButton) {
             nextButton.disabled = currentQuestionIndex === currentQuestions.length - 1;
         }
-        
-        // Automatische Weiterleitung
-        setTimeout(() => {
-            if (currentQuestionIndex < currentQuestions.length - 1) {
-                nextQuestion();
-            } else {
-                showQuizSummary();
-            }
-        }, 1500);
+
+        // Automatische Weiterleitung nach Verzögerung
+        if (currentQuestionIndex < currentQuestions.length - 1) {
+            setTimeout(nextQuestion, 1500);
+        } else {
+            setTimeout(showQuizSummary, 1500);
+        }
     }
 
-    // neue Funktion für die Quiz-Zusammenfassung
     function showQuizSummary() {
         const container = document.getElementById('current-question');
-        const correctAnswers = Array.from(answeredQuestions).filter(
-            index => currentQuestions[index].lastSelected === currentQuestions[index].randomizedCorrect
+        if (!container) return;
+        
+        const correctAnswers = Array.from(answeredQuestions).filter(index => 
+            currentQuestions[index].lastSelected === currentQuestions[index].correct
         ).length;
+        
+        const percentage = Math.round((correctAnswers / currentQuestions.length) * 100);
         
         container.innerHTML = `
             <div class="quiz-summary">
                 <h2>Quiz abgeschlossen! 🎉</h2>
                 <div class="summary-stats">
                     <div class="summary-stat">
-                        <span class="stat-value">${correctAnswers}/${currentQuestions.length}</span>
-                        <span class="stat-label">Richtige Antworten</span>
+                        <div class="stat-value">${correctAnswers}/${currentQuestions.length}</div>
+                        <div class="stat-label">Richtige Antworten</div>
                     </div>
                     <div class="summary-stat">
-                        <span class="stat-value">${Math.round((correctAnswers/currentQuestions.length) * 100)}%</span>
-                        <span class="stat-label">Erfolgsquote</span>
+                        <div class="stat-value">${percentage}%</div>
+                        <div class="stat-label">Genauigkeit</div>
                     </div>
                     <div class="summary-stat">
-                        <span class="stat-value">+${totalXP}</span>
-                        <span class="stat-label">Gewonnene XP</span>
+                        <div class="stat-value">${totalXP}</div>
+                        <div class="stat-label">Gesamt XP</div>
                     </div>
                 </div>
-                <button onclick="newQuiz()" class="retry-button">🔄 Neues Quiz starten</button>
+                <button onclick="newQuiz()" class="retry-button">🔄 Noch einmal versuchen</button>
+                <button onclick="backToMenu()" class="menu-button">↩️ Zurück zum Menü</button>
             </div>
         `;
+
+        // Speichere den Fortschritt
+        totalQuizzes++;
+        saveGameData();
+        
+        // Zeige Achievement wenn Genauigkeit hoch ist
+        if (percentage >= 90) {
+            showAchievement('Perfektionist! 🏆', 'Du hast über 90% richtig beantwortet!');
+        }
     }
 
-    // Verbesserte Navigation
+    // Entferne doppelte Event Listener
+    document.addEventListener('DOMContentLoaded', async function() {
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        loadSavedData();
+        await initializeQuizCategories();
+        showQuizMenu();
+    });
+
+    // Update UI
+    function updateGameStatus() {
+        // Update Level und XP-Anzeige
+        const levelElement = document.getElementById('level');
+        const xpDisplay = document.getElementById('xp-display');
+        const streakText = document.getElementById('streak-text');
+        const scoreElement = document.getElementById('score');
+        const currentBadgeElement = document.getElementById('current-badge');
+        
+        if (levelElement) levelElement.textContent = level;
+        if (xpDisplay) xpDisplay.textContent = `${totalXP % 100}/100 (${100 - (totalXP % 100)} bis Level ${level + 1})`;
+        if (streakText) streakText.textContent = currentStreak;
+        if (scoreElement) scoreElement.textContent = `${score}`;
+        
+        // Update aktuelles Badge
+        if (currentBadgeElement) {
+            if (totalXP >= 1500) currentBadgeElement.textContent = '👑';
+            else if (totalXP >= 750) currentBadgeElement.textContent = '🥇';
+            else if (totalXP >= 350) currentBadgeElement.textContent = '🥈';
+            else if (totalXP >= 100) currentBadgeElement.textContent = '🥉';
+            else currentBadgeElement.textContent = '';
+        }
+    }
+
+    function backToMenu() {
+        // Reset quiz state
+        currentQuestions = [];
+        currentQuestionIndex = 0;
+        answeredQuestions.clear();
+        score = 0;
+        
+        // Clear timer if active
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        
+        const timerContainer = document.getElementById('timer-container');
+        const timerToggle = document.getElementById('timer-toggle');
+        if (timerContainer) timerContainer.style.display = 'none';
+        if (timerToggle) timerToggle.style.backgroundColor = 'var(--primary-color)';
+        
+        // Reset timer state
+        timerActive = false;
+        
+        // Hide quiz content and show menu
+        const contentElement = document.getElementById('quiz-content');
+        const menuElement = document.getElementById('quiz-selection-menu');
+        
+        if (contentElement) contentElement.style.display = 'none';
+        if (menuElement) menuElement.style.display = 'block';
+        
+        // Save current game state
+        saveGameData();
+    }
+
+    function showFeedback(message, isSuccess) {
+        const feedbackMessage = document.getElementById('feedback-message');
+        if (!feedbackMessage) return;
+        
+        feedbackMessage.textContent = message;
+        feedbackMessage.className = `feedback-message ${isSuccess ? 'feedback-success' : 'feedback-error'}`;
+        
+        // Animation Effect
+        feedbackMessage.style.animation = 'none';
+        feedbackMessage.offsetHeight; // Trigger reflow
+        feedbackMessage.style.animation = `${isSuccess ? 'successPulse' : 'errorShake'} 0.5s ease`;
+    }
+
+    function selectRandomQuestions(amount = 10) {
+        if (!questions || !questions.length) return [];
+        
+        const shuffled = [...questions].sort(() => Math.random() - 0.5);
+        return shuffled.slice(0, Math.min(amount, questions.length));
+    }
+
+    function updateLevel() {
+        level = Math.floor(totalXP / 100) + 1;
+        const levelElement = document.getElementById('level');
+        const menuLevelElement = document.getElementById('menu-level');
+        
+        if (levelElement) levelElement.textContent = level;
+        if (menuLevelElement) menuLevelElement.textContent = level;
+    }
+
     function nextQuestion() {
         if (currentQuestionIndex < currentQuestions.length - 1) {
             currentQuestionIndex++;
@@ -937,400 +683,111 @@
         }
     }
 
-    function backToMenu() {
-        // Reset quiz state
-        currentQuestions = [];
-        currentQuestionIndex = 0;
-        answeredQuestions.clear();
-        score = 0;
-        
-        // Clear timer if active
-        if (timerActive) {
-            clearInterval(timerInterval);
-            timerActive = false;
-            const timerContainer = document.getElementById('timer-container');
-            const timerToggle = document.getElementById('timer-toggle');
-            
-            if (timerContainer) {
-                timerContainer.style.display = 'none';
-            }
-            
-            if (timerToggle) {
-                timerToggle.style.backgroundColor = 'var(--primary-color)';
-            }
-        }
-        
-        // Hide quiz content and show menu with null checks
-        const contentElement = document.getElementById('quiz-content');
-        const menuElement = document.getElementById('quiz-selection-menu');
-        
-        if (contentElement) {
-            contentElement.style.display = 'none';
-        } else {
-            console.warn('quiz-content element not found');
-        }
-        
-        if (menuElement) {
-            menuElement.style.display = 'block';
-        } else {
-            console.warn('quiz-selection-menu element not found');
-        }
-        
-        // Save current game state
-        saveGameData();
-    }
-    
-    // Verarbeitung der Antwort in separate Funktion ausgelagert
-    function processAnswer(isCorrect) {
-        if (isCorrect) {
-            score++;
-            totalCorrect++;
-            
-            const basePoints = 5;
-            const streakBonus = currentStreak > 0 ? Math.min(5, currentStreak) : 0;
-            const levelBonus = Math.floor(level / 2);
-            
-            let timeBonus = 0;
-            if (timerActive && timeRemaining > 0) {
-                timeBonus = Math.ceil(timeRemaining / maxTime * 5);
-            }
-            
-            const xpGained = basePoints + streakBonus + levelBonus + timeBonus;
-            xp += xpGained;
-            totalXP += xpGained;
-            
-            updateUI(xpGained, streakBonus, timeBonus);
-            updateDailyChallenge('correct_answer');
-            checkForBadges();
-        } else {
-            showFeedback(getRandomFeedback(false), false);
-        }
-        
-        updateStreak(isCorrect);
-        updateDailyChallenge('streak_update');
-        saveGameData();
-        updateStats();
-    }
-
-    // Verbesserte Update-Funktion
-    function updateUI(xpGained, streakBonus = 0, timeBonus = 0) {
-        try {
-            const scoreElement = document.getElementById('score');
-            if (scoreElement) {
-                scoreElement.textContent = `Punktzahl: ${score} Punkte 📊`;
-                scoreElement.classList.add('pop-animation');
-                setTimeout(() => {
-                    scoreElement.classList.remove('pop-animation');
-                }, 500);
-            }
-            
-            const totalXpElement = document.getElementById('total-xp');
-            if (totalXpElement) {
-                totalXpElement.textContent = totalXP;
-            }
-            
-            updateProgressBar();
-            updateLevel();
-            updateProgressPath();
-            
-            let feedbackText = getRandomFeedback(true, xpGained);
-            if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
-            if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
-            
-            showFeedback(feedbackText, true);
-        } catch (error) {
-            console.error('Fehler beim UI Update:', error);
-        }
-    }
-
-    // Verbesserte Progress-Update-Funktion
     function updateProgressBar() {
-        try {
-            const progressBar = document.getElementById('progress-bar');
-            const progressLabel = document.getElementById('progress-label');
-            
-            if (progressBar && progressLabel) {
-                const progress = Math.round((score / (currentQuestions.length || 1)) * 100);
-                progressBar.style.width = `${progress}%`;
-                progressLabel.textContent = `${progress}%`;
-            }
-        } catch (error) {
-            console.error('Fehler beim Progress-Update:', error);
+        const progressBar = document.querySelector('.progress-bar');
+        if (progressBar) {
+            const progress = Math.round((score / (currentQuestions.length || 1)) * 100);
+            progressBar.style.width = `${progress}%`;
         }
+        updateMainMenuStats();
     }
 
-    // Verbesserte Streak-Update-Funktion
-    function updateStreak(isCorrect) {
-        try {
-            if (isCorrect) {
-                currentStreak++;
-                if (currentStreak > bestStreak) {
-                    bestStreak = currentStreak;
-                }
-            } else {
-                currentStreak = 0;
-            }
-            
-            const streakText = document.getElementById('streak-text');
-            const streakFlame = document.getElementById('streak-flame');
-            
-            if (streakText) {
-                streakText.textContent = `Aktuelle Serie: ${currentStreak}`;
-            }
-            
-            if (streakFlame) {
-                if (currentStreak > 0) {
-                    streakFlame.classList.add('active');
-                } else {
-                    streakFlame.classList.remove('active');
-                }
-            }
-        } catch (error) {
-            console.error('Fehler beim Streak-Update:', error);
-        }
-    }
-
-    function updateLevel() {
-        const newLevel = Math.floor(totalXP / 100) + 1;
-        if (newLevel !== level) {
-            level = newLevel;
-            document.getElementById('level').textContent = level;
-            showAchievement('Neues Level!', `Level ${level} erreicht! 🎉`, '🌟');
-        }
-        
-        const xpToNextLevel = (level * 100) - totalXP;
-        document.getElementById('xp-display').textContent =
-            `XP: ${totalXP % 100}/100 (${xpToNextLevel} bis Level ${level + 1})`;
-    }
-
-    function updateProgressPath() {
-        const pathProgress = (totalXP / 1500) * 100;
-        
-        // Safely update progress-path-fill
-        const progressPathFill = document.getElementById('progress-path-fill');
-        if (progressPathFill) {
-            progressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
-        }
-        
-        const milestones = [
-            { xp: 100, id: 'milestone-1' },
-            { xp: 350, id: 'milestone-2' },
-            { xp: 750, id: 'milestone-3' },
-            { xp: 1500, id: 'milestone-4' }
-        ];
-        
-        milestones.forEach(milestone => {
-            const element = document.getElementById(milestone.id);
-            if (totalXP >= milestone.xp) {
-                element.classList.add('completed');
-            } else if (totalXP >= milestone.xp * 0.8) {
-                element.classList.add('active');
-            }
-        });
-    }
-
-    function updateStats() {
-        document.getElementById('total-quizzes').textContent = totalQuizzes;
-        document.getElementById('total-correct').textContent = totalCorrect;
-        document.getElementById('average-score').textContent =
-            totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) + '%' : '0%';
-        document.getElementById('best-streak').textContent = bestStreak;
-    }
-
-    function showFeedback(message, isSuccess) {
-        const feedbackEl = document.getElementById('feedback-message');
-        feedbackEl.textContent = message;
-        feedbackEl.className = isSuccess ? 'feedback-success' : 'feedback-error';
-        feedbackEl.style.opacity = '1';
-        
-        setTimeout(() => {
-            feedbackEl.style.opacity = '0';
-        }, 3000);
-    }
-
-    function getRandomFeedback(isCorrect, xpGained = 0) {
-        const correctFeedback = [
-            `Super! +${xpGained} XP 🌟`,
-            `Richtig! +${xpGained} XP ✨`,
-            `Gut gemacht! +${xpGained} XP 🎯`,
-            `Perfekt! +${xpGained} XP 💫`,
-            `Ausgezeichnet! +${xpGained} XP 🏆`
-        ];
-        
-        const incorrectFeedback = [
-            'Leider falsch! Weiter so! 💪',
-            'Nicht ganz richtig! Nächste Chance! 🎯',
-            'Fast! Probier\'s nochmal! 📚',
-            'Nicht aufgeben! 💫',
-            'Du schaffst das! 🌟'
-        ];
-        
-        const feedbackArray = isCorrect ? correctFeedback : incorrectFeedback;
-        return feedbackArray[Math.floor(Math.random() * feedbackArray.length)];
-    }
-
-    function showAchievement(title, description, icon) {
-        const popup = document.getElementById('achievement-popup');
+    function showAchievement(title, description, icon = '🏆') {
+        const achievementPopup = document.getElementById('achievement-popup');
         const overlay = document.getElementById('overlay');
+        const achievementTitle = document.getElementById('achievement-title');
+        const achievementIcon = document.getElementById('achievement-icon');
+        const achievementDescription = document.getElementById('achievement-description');
         
-        document.getElementById('achievement-title').textContent = title;
-        document.getElementById('achievement-description').textContent = description;
-        document.getElementById('achievement-icon').textContent = icon;
-        
-        popup.classList.add('show');
-        overlay.classList.add('show');
-        
-        // Optional: Konfetti-Animation
-        if (typeof confetti === 'function') {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
+        if (achievementPopup && overlay && achievementTitle && achievementIcon && achievementDescription) {
+            achievementTitle.textContent = title;
+            achievementIcon.textContent = icon;
+            achievementDescription.textContent = description;
+            
+            achievementPopup.classList.add('show');
+            overlay.classList.add('show');
+            
+            // Optional: Konfetti-Effekt
+            if (window.confetti) {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
         }
     }
 
     function closeAchievementPopup() {
-        const popup = document.getElementById('achievement-popup');
+        const achievementPopup = document.getElementById('achievement-popup');
         const overlay = document.getElementById('overlay');
         
-        popup.classList.remove('show');
-        overlay.classList.remove('show');
-    }
-
-    function toggleStats() {
-        const statsContainer = document.getElementById('stats-container');
-        statsContainer.classList.toggle('hidden');
-    }
-
-    function showSettings() {
-        alert('Einstellungen werden bald verfügbar sein!');
-    }
-
-    function showError(message) {
-        const container = document.getElementById('current-question');
-        container.innerHTML = `<div class="error-message">${message}</div>`;
-    }
-
-    function updateDailyChallenge(action) {
-        // Implementierung der täglichen Herausforderungen hier
-        // Wird später hinzugefügt
-    }
-
-    // Füge die verbesserte checkForBadges-Funktion hinzu
-function checkForBadges() {
-    const badgeCriteria = [
-        { id: 'badge-beginner', xp: 100, name: 'Anfänger' },
-        { id: 'badge-intermediate', xp: 350, name: 'Fortgeschritten' },
-        { id: 'badge-advanced', xp: 750, name: 'Profi' },
-        { id: 'badge-master', xp: 1500, name: 'Meister' }
-    ];
-    
-    let earnedBadges = 0;
-    badgeCriteria.forEach(badge => {
-        const badgeElement = document.getElementById(badge.id);
-        if (badgeElement && totalXP >= badge.xp) {
-            if (!badgeElement.classList.contains('earned')) {
-                badgeElement.classList.add('earned');
-                showAchievement('Neues Abzeichen!', `Du hast das ${badge.name}-Abzeichen verdient!`, badge.id === 'badge-master' ? '👑' : (badge.id === 'badge-advanced' ? '🥇' : (badge.id === 'badge-intermediate' ? '🥈' : '🥉')));
-            }
-            earnedBadges++;
+        if (achievementPopup && overlay) {
+            achievementPopup.classList.remove('show');
+            overlay.classList.remove('show');
         }
-    });
-    
-    // Aktualisiere auch die Badges im Hauptmenü
-    const mainProgressPathFill = document.getElementById('main-progress-path-fill');
-    if (mainProgressPathFill) {
-        const pathProgress = (totalXP / 1500) * 100;
-        mainProgressPathFill.style.width = `${Math.min(100, pathProgress)}%`;
-        
-        const mainMilestones = [
-            { xp: 100, id: 'main-milestone-1' },
-            { xp: 350, id: 'main-milestone-2' },
-            { xp: 750, id: 'main-milestone-3' },
-            { xp: 1500, id: 'main-milestone-4' }
-        ];
-        
-        mainMilestones.forEach(milestone => {
-            const element = document.getElementById(milestone.id);
-            if (totalXP >= milestone.xp) {
-                element.classList.add('completed');
-            } else if (totalXP >= milestone.xp * 0.8) {
-                element.classList.add('active');
-            }
-        });
     }
-    
-    // Aktualisiere Badges-Anzeige
-    const earnedBadgesElement = document.getElementById('earned-badges');
-    if (earnedBadgesElement) {
-        earnedBadgesElement.textContent = `${earnedBadges}/4`;
-    }
-    
-    const menuBadgesElement = document.getElementById('menu-badges');
-    if (menuBadgesElement) {
-        menuBadgesElement.textContent = `${earnedBadges}/4`;
-    }
-}
 
-    // Rest of your existing code...
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set initial theme
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    function updateMainMenuStats() {
+        // Update total quizzes
+        const totalQuizzesElement = document.getElementById('total-quizzes');
+        if (totalQuizzesElement) {
+            totalQuizzesElement.textContent = totalQuizzes;
+        }
         
-        // Load questions and start quiz
-        loadQuestions();
-    });
+        // Update correct answers
+        const totalCorrectElement = document.getElementById('total-correct');
+        if (totalCorrectElement) {
+            totalCorrectElement.textContent = totalCorrect;
+        }
+        
+        // Update average score
+        const averageScoreElement = document.getElementById('average-score');
+        if (averageScoreElement) {
+            const averageScore = Math.round((totalCorrect / (totalQuestions || 1)) * 100);
+            averageScoreElement.textContent = `${averageScore}%`;
+        }
+        
+        // Update best streak
+        const bestStreakElement = document.getElementById('best-streak');
+        if (bestStreakElement) {
+            bestStreakElement.textContent = bestStreak;
+        }
+        
+        // Update earned badges
+        const earnedBadgesElement = document.getElementById('earned-badges');
+        if (earnedBadgesElement) {
+            let earnedCount = 0;
+            if (totalXP >= 100) earnedCount++;
+            if (totalXP >= 350) earnedCount++;
+            if (totalXP >= 750) earnedCount++;
+            if (totalXP >= 1500) earnedCount++;
+            earnedBadgesElement.textContent = `${earnedCount}/4`;
+        }
+        
+        // Update current badge in menu
+        const menuCurrentBadge = document.getElementById('menu-current-badge');
+        if (menuCurrentBadge) {
+            if (totalXP >= 1500) menuCurrentBadge.textContent = '👑';
+            else if (totalXP >= 750) menuCurrentBadge.textContent = '🥇';
+            else if (totalXP >= 350) menuCurrentBadge.textContent = '🥈';
+            else if (totalXP >= 100) menuCurrentBadge.textContent = '🥉';
+            else menuCurrentBadge.textContent = '';
+        }
+    }
+
+    function newQuiz() {
+        currentQuestions = selectRandomQuestions();
+        currentQuestionIndex = 0;
+        answeredQuestions.clear();
+        score = 0;
+        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
+        updateProgressBar();
+        displayCurrentQuestion();
+        
+        // Update total questions display
+        document.getElementById('total-questions').textContent = currentQuestions.length;
+    }
     </script>
 </body>
 </html>
-<style>
-    .quiz-summary {
-        text-align: center;
-        padding: 2rem;
-        animation: fadeIn 0.5s ease;
-    }
-
-    .quiz-summary h2 {
-        color: var(--primary-color);
-        margin-bottom: 2rem;
-    }
-
-    .summary-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-        margin: 2rem 0;
-    }
-
-    .summary-stat {
-        background: var(--container-bg);
-        padding: 1.5rem;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-sm);
-    }
-
-    .stat-value {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: var(--primary-color);
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-        font-size: 0.9rem;
-        color: var(--secondary-color);
-    }
-
-    .retry-button {
-        margin-top: 2rem;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        width: auto;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-</style>
