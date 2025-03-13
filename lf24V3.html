@@ -117,39 +117,82 @@
                 <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
                 
                 <div class="question-power-ups">
-                    <div class="power-up" onclick="usePowerUp('removeWrong')">
-                        <span class="power-up-icon">❌</span> 2 Falsche
-                        <span class="power-up-count" id="removeWrong-count">0</span>
+                    <div class="power-up-wrapper">
+                        <div class="power-up" onclick="usePowerUp('removeWrong')">
+                            <span class="power-up-icon">❌</span> 2 Falsche
+                            <span class="power-up-count" id="removeWrong-count">0</span>
+                        </div>
+                        <div class="power-up-tooltip">Entfernt 2 falsche Antworten</div>
                     </div>
-                    <div class="power-up" onclick="usePowerUp('showHint')">
-                        <span class="power-up-icon">💡</span> Hinweis
-                        <span class="power-up-count" id="showHint-count">0</span>
+                    <div class="power-up-wrapper">
+                        <div class="power-up" onclick="usePowerUp('showHint')">
+                            <span class="power-up-icon">💡</span> Hinweis
+                            <span class="power-up-count" id="showHint-count">0</span>
+                        </div>
+                        <div class="power-up-tooltip">Zeigt einen hilfreichen Tipp</div>
                     </div>
-                    <div class="power-up" onclick="usePowerUp('extraTime')">
-                        <span class="power-up-icon">⏱️</span> Extra Zeit
-                        <span class="power-up-count" id="extraTime-count">0</span>
+                    <div class="power-up-wrapper">
+                        <div class="power-up" onclick="usePowerUp('extraTime')">
+                            <span class="power-up-icon">⏱️</span> Extra Zeit
+                            <span class="power-up-count" id="extraTime-count">0</span>
+                        </div>
+                        <div class="power-up-tooltip">+15 Sekunden Zusatzzeit</div>
                     </div>
                 </div>
                 
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
             </div>
+
+            <!-- Verbesserte Feedback-Anzeige -->
+            <div class="feedback-container">
+                <div id="feedback-message" class="feedback-message"></div>
+                <div class="feedback-details">
+                    <div class="feedback-stats">
+                        <div class="stats-item">
+                            <span id="feedback-xp">+0</span> XP
+                        </div>
+                        <div class="stats-item">
+                            <span id="feedback-streak">0</span>x Streak
+                        </div>
+                        <div class="stats-item">
+                            <span id="feedback-coins">+0</span> 🪙
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- Verbesserte Hinweis-Anzeige -->
         <div class="hint-container">
-            <div class="hint-coins">
-                <span class="hint-coins-icon">🪙</span>
-                <span id="hint-coins-count">0</span> Münzen
+            <div class="hint-header">
+                <div class="hint-coins">
+                    <span class="hint-coins-icon">🪙</span>
+                    <span id="hint-coins-count">0</span> Münzen
+                </div>
+                <div class="hint-info">Nutze deine Münzen für Power-Ups!</div>
             </div>
             <div class="hint-buttons">
-                <button class="hint-button" onclick="buyPowerUp('removeWrong')">
-                    <span class="hint-button-icon">❌</span> 2 Falsche entfernen (10 🪙)
-                </button>
-                <button class="hint-button" onclick="buyPowerUp('showHint')">
-                    <span class="hint-button-icon">💡</span> Hinweis zeigen (5 🪙)
-                </button>
-                <button class="hint-button" onclick="buyPowerUp('extraTime')">
-                    <span class="hint-button-icon">⏱️</span> Extra Zeit (8 🪙)
-                </button>
+                <div class="hint-button-wrapper">
+                    <button class="hint-button" onclick="buyPowerUp('removeWrong')">
+                        <span class="hint-button-icon">❌</span> 2 Falsche entfernen
+                        <span class="hint-cost">10 🪙</span>
+                    </button>
+                    <div class="hint-button-tooltip">Entfernt zwei falsche Antwortmöglichkeiten</div>
+                </div>
+                <div class="hint-button-wrapper">
+                    <button class="hint-button" onclick="buyPowerUp('showHint')">
+                        <span class="hint-button-icon">💡</span> Hinweis zeigen
+                        <span class="hint-cost">5 🪙</span>
+                    </button>
+                    <div class="hint-button-tooltip">Zeigt einen hilfreichen Tipp zur aktuellen Frage</div>
+                </div>
+                <div class="hint-button-wrapper">
+                    <button class="hint-button" onclick="buyPowerUp('extraTime')">
+                        <span class="hint-button-icon">⏱️</span> Extra Zeit
+                        <span class="hint-cost">8 🪙</span>
+                    </button>
+                    <div class="hint-button-tooltip">Fügt 15 Sekunden zur verbleibenden Zeit hinzu</div>
+                </div>
             </div>
         </div>
 
@@ -163,7 +206,7 @@
                     <div class="badge-icon">🥈</div>
                     <div class="badge-name">Fortgeschritten (350 XP)</div>
                 </div>
-                <div class="badge" id="badge-advanced">
+                <div class="badge" id="badge-advanced"></div>
                     <div class="badge-icon">🥇</div>
                     <div class="badge-name">Profi (750 XP)</div>
                 </div>
