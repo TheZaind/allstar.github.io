@@ -196,8 +196,8 @@
             </div>
         </div>
 
-        <div class="game-progress">
-            <div class="badge-container" id="badge-container">
+        <div class="stats-container">
+            <div class="badge-container">
                 <div class="badge" id="badge-beginner">
                     <div class="badge-icon">🥉</div>
                     <div class="badge-name">Anfänger (100 XP)</div>
@@ -206,7 +206,7 @@
                     <div class="badge-icon">🥈</div>
                     <div class="badge-name">Fortgeschritten (350 XP)</div>
                 </div>
-                <div class="badge" id="badge-advanced"></div>
+                <div class="badge" id="badge-advanced">
                     <div class="badge-icon">🥇</div>
                     <div class="badge-name">Profi (750 XP)</div>
                 </div>
@@ -215,15 +215,32 @@
                     <div class="badge-name">Meister (1500 XP)</div>
                 </div>
             </div>
-        </div>
 
-        <div class="stats-container hidden" id="stats-container">
-            <h2>Deine Statistiken 📈</h2>
-            <p>Gespielte Quizze: <span id="total-quizzes">0</span></p>
-            <p>Korrekte Antworten: <span id="total-correct">0</span></p>
-            <p>Durchschnittliche Punktzahl: <span id="average-score">0</span></p>
-            <p>Längste Streak: <span id="best-streak">0</span></p>
-            <p>Verdiente Badges: <span id="earned-badges">0</span>/4</p>
+            <div class="stats-summary">
+                <h2>Deine Statistiken 📈</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="total-quizzes">0</div>
+                        <div class="stat-label">Gespielte Quizze</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="total-correct">0</div>
+                        <div class="stat-label">Korrekte Antworten</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="average-score">0%</div>
+                        <div class="stat-label">Durchschnittliche Punktzahl</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="best-streak">0</div>
+                        <div class="stat-label">Längste Streak</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="earned-badges">0/4</div>
+                        <div class="stat-label">Verdiente Badges</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Achievement popup -->
