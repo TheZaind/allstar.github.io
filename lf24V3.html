@@ -9,9 +9,34 @@
 <body>
     <!-- Quiz Selection Menu -->
     <div id="quiz-selection-menu" class="quiz-selection-menu">
-        <h2>🎮 Wähle dein Quiz</h2>
+        <h1 class="main-title">🎮 Maurice's Learning Game</h1>
+        <p class="main-subtitle">Wähle ein Quiz-Thema und verbessere dein Wissen</p>
+        
+        <div class="user-stats-summary">
+            <div class="stats-item">
+                <span class="stats-icon">⭐</span>
+                <span class="stats-value" id="menu-total-xp">0</span>
+                <span class="stats-label">Gesamt-XP</span>
+            </div>
+            <div class="stats-item">
+                <span class="stats-icon">🏆</span>
+                <span class="stats-value" id="menu-badges">0/4</span>
+                <span class="stats-label">Badges</span>
+            </div>
+            <div class="stats-item">
+                <span class="stats-icon">📊</span>
+                <span class="stats-value" id="menu-level">1</span>
+                <span class="stats-label">Level</span>
+            </div>
+        </div>
+
         <div id="quiz-categories" class="quiz-categories">
             <!-- Wird dynamisch gefüllt -->
+        </div>
+        
+        <div class="menu-footer">
+            <button onclick="toggleTheme()" id="theme-toggle-menu" class="theme-btn">🌓 Dark/Light</button>
+            <button onclick="showSettings()" class="settings-btn">⚙️ Einstellungen</button>
         </div>
     </div>
 
@@ -160,55 +185,194 @@
 
     <style>
         .quiz-selection-menu {
-            max-width: 800px;
+            max-width: 900px;
             margin: 2rem auto;
             padding: 2rem;
             text-align: center;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .main-title {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .main-subtitle {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .user-stats-summary {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            animation: slideIn 0.6s ease;
+        }
+
+        .stats-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stats-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .stats-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stats-label {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
         }
 
         .quiz-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
+            animation: fadeIn 1s ease;
         }
 
         .quiz-category {
-            background: var(--primary-color);
+            background: var(--container-bg);
+            border: 2px solid var(--border-color);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .quiz-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
         }
 
         .quiz-category h3 {
             margin: 0;
             margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quiz-category-icon {
+            font-size: 1.6rem;
         }
 
         .quiz-category p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0.9;
+            line-height: 1.5;
         }
 
-        .back-button {
+        .category-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .category-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .category-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%; /* Wird dynamisch gesetzt */
+            height: 4px;
+            background-color: var(--primary-color);
+            transition: width 0.6s ease;
+        }
+
+        .menu-footer {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .theme-btn, .settings-btn {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.7rem 1.2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-btn:hover, .settings-btn:hover {
             background-color: var(--primary-color);
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
         }
 
-        .back-button:hover {
-            background-color: var(--secondary-color);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .quiz-selection-menu {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .user-stats-summary {
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .quiz-categories {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 
@@ -219,27 +383,39 @@
                 id: 'cpu',
                 name: 'CPU Quiz',
                 description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
-                file: 'questions.json'
+                icon: '💻',
+                file: 'cpu.json'
             },
             {
                 id: 'mb',
                 name: 'MainBoard Quiz',
-                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+                description: 'Teste dein Wissen über Hauptplatinen, Komponenten und ihre Funktionen',
+                icon: '🔌',
                 file: 'mainboard.json'
             },
             {
                 id: 'gw',
                 name: 'Elektrogrundlagen Quiz',
-                description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+                description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
+                icon: '⚡',
                 file: 'grundwissen.json'
             },
             {
                 id: 'mix',
                 name: 'Gemischtes Quiz',
-                description: 'Eine Mischung aus allen verfügbaren Fragen',
+                description: 'Eine herausfordernde Mischung aus allen Themenbereichen für echte Profis',
+                icon: '🔄',
                 isMixed: true
             }
         ];
+
+        // Kategorie-Statistiken (werden später aus localStorage geladen)
+        let categoryStats = {
+            cpu: { played: 0, highscore: 0, completed: false },
+            mb: { played: 0, highscore: 0, completed: false },
+            gw: { played: 0, highscore: 0, completed: false },
+            mix: { played: 0, highscore: 0, completed: false }
+        };
 
         let allQuestions = []; // Speichert alle Fragen aus allen JSONs
         let currentCategoryId = null;
@@ -266,19 +442,69 @@
             }
         }
 
-        // Zeige das Auswahlmenü
+        // Zeige das Auswahlmenü mit erweiterten Informationen
         function showQuizMenu() {
             document.getElementById('quiz-selection-menu').style.display = 'block';
             document.getElementById('quiz-content').style.display = 'none';
             
-            // Erstelle die Kategorie-Karten
+            // Kategorie-Statistiken aus dem Storage laden
+            loadCategoryStats();
+            
+            // Allgemeine Statistiken im Menü anzeigen
+            document.getElementById('menu-total-xp').textContent = totalXP || '0';
+            document.getElementById('menu-level').textContent = level || '1';
+            
+            // Anzahl der erreichten Badges anzeigen
+            const earnedBadges = badges ? Object.values(badges).filter(val => val).length : 0;
+            document.getElementById('menu-badges').textContent = `${earnedBadges}/4`;
+            
+            // Erstelle die Kategorie-Karten mit erweiterten Informationen
             const categoriesContainer = document.getElementById('quiz-categories');
-            categoriesContainer.innerHTML = quizCategories.map(category => `
-                <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
-                    <h3>${category.name}</h3>
-                    <p>${category.description}</p>
-                </div>
-            `).join('');
+            categoriesContainer.innerHTML = quizCategories.map(category => {
+                const stats = categoryStats[category.id];
+                let progress = 0;
+                
+                if (stats.played > 0) {
+                    progress = Math.min(100, Math.round((stats.highscore / 20) * 100));
+                }
+                
+                return `
+                    <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
+                        <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
+                        <p>${category.description}</p>
+                        <div class="category-stats">
+                            <div class="category-stat">
+                                <span>🎮</span> ${stats.played}x gespielt
+                            </div>
+                            <div class="category-stat">
+                                <span>🏅</span> Highscore: ${stats.highscore}/20
+                            </div>
+                            ${stats.completed ? '<div class="category-stat"><span>✅</span> Abgeschlossen</div>' : ''}
+                        </div>
+                        <div class="category-progress" style="width: ${progress}%"></div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Laden der Kategorie-Statistiken
+        function loadCategoryStats() {
+            const savedStats = localStorage.getItem('quizCategoryStats');
+            if (savedStats) {
+                categoryStats = JSON.parse(savedStats);
+            }
+            
+            // Stelle sicher, dass alle Kategorien existieren
+            quizCategories.forEach(category => {
+                if (!categoryStats[category.id]) {
+                    categoryStats[category.id] = { played: 0, highscore: 0, completed: false };
+                }
+            });
+        }
+        
+        // Speichern der Kategorie-Statistiken
+        function saveCategoryStats() {
+            localStorage.setItem('quizCategoryStats', JSON.stringify(categoryStats));
         }
 
         // Starte ein spezifisches Quiz
@@ -300,6 +526,10 @@
                     questions = data.questions;
                 }
                 
+                // Aktualisiere die Spielstatistiken für diese Kategorie
+                categoryStats[categoryId].played++;
+                saveCategoryStats();
+                
                 document.getElementById('quiz-selection-menu').style.display = 'none';
                 document.getElementById('quiz-content').style.display = 'block';
                 
@@ -313,7 +543,21 @@
 
         // Zurück zum Menü
         function backToMenu() {
+            // Highscore für aktuelle Kategorie aktualisieren, wenn nötig
+            if (currentCategoryId && score > (categoryStats[currentCategoryId].highscore || 0)) {
+                categoryStats[currentCategoryId].highscore = score;
+                if (score >= 20) {
+                    categoryStats[currentCategoryId].completed = true;
+                }
+                saveCategoryStats();
+            }
+            
             showQuizMenu();
+        }
+
+        // Einfaches Settings-Popup anzeigen
+        function showSettings() {
+            alert("Einstellungen werden in einer zukünftigen Version verfügbar sein!");
         }
 
         // Zeige Fehlermeldung
