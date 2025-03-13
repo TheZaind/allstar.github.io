@@ -446,11 +446,235 @@
     </style>
 
     <script>
-        // Neue Variablen für das Single-Question-System
-        let currentQuestionIndex = 0;
-        let answeredQuestions = new Set();
+    // Theme toggle functionality
+    let darkMode = localStorage.getItem('darkMode') === 'true';
+
+    function toggleTheme() {
+        darkMode = !darkMode;
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        localStorage.setItem('darkMode', darkMode);
+    }
+
+    // Game data saving and loading
+    function saveGameData() {
+        const gameData = {
+            totalXP,
+            level,
+            currentStreak,
+            bestStreak,
+            totalCorrect,
+            totalQuestions,
+            totalQuizzes,
+            darkMode,
+            badges: {}, // Add your badges here
+            hintCoins,
+            powerUps: {
+                removeWrong: document.getElementById('removeWrong-count').textContent,
+                showHint: document.getElementById('showHint-count').textContent,
+                extraTime: document.getElementById('extraTime-count').textContent
+            }
+        };
+        
+        localStorage.setItem('quizGameData', JSON.stringify(gameData));
+    }
+
+    function loadSavedData() {
+        const savedData = localStorage.getItem('quizGameData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            totalXP = data.totalXP || 0;
+            level = data.level || 1;
+            currentStreak = data.currentStreak || 0;
+            bestStreak = data.bestStreak || 0;
+            totalCorrect = data.totalCorrect || 0;
+            totalQuestions = data.totalQuestions || 0;
+            totalQuizzes = data.totalQuizzes || 0;
+            darkMode = data.darkMode ?? true;
+            hintCoins = data.hintCoins || 0;
+            
+            // Update UI with loaded data
+            document.getElementById('total-xp').textContent = totalXP;
+            document.getElementById('level').textContent = level;
+            document.getElementById('menu-level').textContent = level;
+            document.getElementById('menu-total-xp').textContent = totalXP;
+            updateStreak(false);
+            updateProgressBar();
+            updateLevel();
+            updateHintSystem();
+            
+            // Load power-ups
+            if (data.powerUps) {
+                document.getElementById('removeWrong-count').textContent = data.powerUps.removeWrong || 0;
+                document.getElementById('showHint-count').textContent = data.powerUps.showHint || 0;
+                document.getElementById('extraTime-count').textContent = data.powerUps.extraTime || 0;
+            }
+        }
+    }
+
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        loadSavedData();
+    });
+    
+    // Verfügbare Quiz-Kategorien und globale Variablen
+    let questions = []; // Global questions array
+    let currentQuestionIndex = 0;
+    let answeredQuestions = new Set();
+    
+    // Quiz-Kategorien
+    const quizCategories = [
+        {
+            id: 'cpu',
+            name: 'CPU Quiz',
+            description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
+            icon: '💻',
+            file: 'cpu.json'
+        },
+        {
+            id: 'mb',
+            name: 'MainBoard Quiz',
+            description: 'Teste dein Wissen über Hauptplatinen, Komponenten und ihre Funktionen',
+            icon: '🔌',
+            file: 'mainboard.json'
+        },
+        {
+            id: 'gw',
+            name: 'Elektrogrundlagen Quiz',
+            description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
+            icon: '⚡',
+            file: 'grundwissen.json'
+        }
+    ];
+
+    // Initialisierung
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Set initial theme
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        
+        // Load saved data
+        loadSavedData();
+        
+        // Show quiz selection menu
+        showQuizMenu();
+        
+        // Initialize quiz categories
+        await initializeQuizCategories();
+    });
+
+    // Initialize quiz categories
+    async function initializeQuizCategories() {
+        const categoriesContainer = document.getElementById('quiz-categories');
+        categoriesContainer.innerHTML = quizCategories.map(category => `
+            <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
+                <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
+                <p>${category.description}</p>
+                <div class="category-stats">
+                    <div class="category-stat">
+                        <span>🎮</span> 0x gespielt
+                    </div>
+                    <div class="category-stat">
+                        <span>🏅</span> Highscore: 0/20
+                    </div>
+                </div>
+                <div class="category-progress"></div>
+            </div>
+        `).join('');
+    }
+
+    // Start specific quiz category
+    async function startQuizCategory(categoryId) {
+        try {
+            const category = quizCategories.find(c => c.id === categoryId);
+            if (!category) throw new Error('Kategorie nicht gefunden');
+
+            const response = await fetch(category.file);
+            if (!response.ok) throw new Error(`Fehler beim Laden von ${category.file}`);
+
+            const data = await response.json();
+            questions = data.questions;
+
+            // Hide menu and show quiz
+            document.getElementById('quiz-selection-menu').style.display = 'none';
+            document.getElementById('quiz-content').style.display = 'block';
+
+            // Start new quiz
+            createQuiz();
+        } catch (error) {
+            console.error('Fehler beim Laden der Fragen:', error);
+            showError('Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.');
+        }
+    }
 
     function createQuiz() {
+        currentQuestionIndex = 0;
+        answeredQuestions.clear();
+        currentQuestions = selectRandomQuestions();
+        score = 0;
+        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
+        updateProgressBar();
+        displayCurrentQuestion();
+        
+        // Update total questions display
+        document.getElementById('total-questions').textContent = currentQuestions.length;
+    }
+
+    // Show quiz menu
+    function showQuizMenu() {
+        document.getElementById('quiz-selection-menu').style.display = 'block';
+        document.getElementById('quiz-content').style.display = 'none';
+    }
+
+    // Fragen laden und Quiz initialisieren
+    let currentQuestions = [];
+    let score = 0;
+    let xp = 0;
+    let totalXP = 0;
+    let level = 1;
+    let currentStreak = 0;
+    let bestStreak = 0;
+    let totalCorrect = 0;
+    let totalQuestions = 0;
+    let totalQuizzes = 0;
+    let timerActive = false;
+    let timerInterval;
+    let maxTime = 30; // Sekunden pro Frage
+    let timeRemaining;
+
+    // Wähle zufällige Fragen für das Quiz
+    function selectRandomQuestions(amount = 20) {
+        let availableQuestions = [...questions];
+        let selectedQuestions = [];
+        
+        while (selectedQuestions.length < amount && availableQuestions.length > 0) {
+            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+            selectedQuestions.push(availableQuestions[randomIndex]);
+            availableQuestions.splice(randomIndex, 1);
+        }
+        
+        return selectedQuestions;
+    }
+
+    // Lade die Fragen beim Start
+    async function loadQuestions() {
+        try {
+            const response = await fetch('cpu.json');
+            if (!response.ok) {
+                throw new Error('Fehler beim Laden der Fragen');
+            }
+            const data = await response.json();
+            questions = data.questions;
+            loadSavedData();
+            createQuiz();
+        } catch (error) {
+            console.error('Fehler beim Laden der Fragen:', error);
+            document.getElementById('quiz-container').innerHTML = 
+                '<div class="error-message">Fehler beim Laden der Fragen. Bitte aktualisiere die Seite.</div>';
+        }
+    }
+
+    // Neues Quiz starten
+    function newQuiz() {
         currentQuestions = selectRandomQuestions();
         currentQuestionIndex = 0;
         answeredQuestions.clear();
@@ -506,12 +730,14 @@
                             style="--animation-order: ${index}"
                             ${answeredQuestions.has(currentQuestionIndex) ? 
                                 `class="option ${index === question.randomizedCorrect ? 'correct' : 
-                                (index === question.lastSelected ? 'incorrect' : '')}"` : ''}
+                                (index === question.lastSelected ? 'incorrect' : '')}"` : ''} 
                             onclick="checkAnswer(${currentQuestionIndex}, ${index})"
                             ${answeredQuestions.has(currentQuestionIndex) ? 'style="pointer-events: none;"' : ''}>
                             ${option}
                         </div>
                     `).join('')}
+
+
                 </div>
             `;
 
@@ -589,7 +815,7 @@
         }
     }
 
-    // Neue Funktion für die Quiz-Zusammenfassung
+    // neue Funktion für die Quiz-Zusammenfassung
     function showQuizSummary() {
         const container = document.getElementById('current-question');
         const correctAnswers = Array.from(answeredQuestions).filter(
@@ -631,6 +857,29 @@
             currentQuestionIndex--;
             displayCurrentQuestion();
         }
+    }
+
+    function backToMenu() {
+        // Reset quiz state
+        currentQuestions = [];
+        currentQuestionIndex = 0;
+        answeredQuestions.clear();
+        score = 0;
+        
+        // Clear timer if active
+        if (timerActive) {
+            clearInterval(timerInterval);
+            timerActive = false;
+            document.getElementById('timer-container').style.display = 'none';
+            document.getElementById('timer-toggle').style.backgroundColor = 'var(--primary-color)';
+        }
+        
+        // Hide quiz content and show menu
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('quiz-selection-menu').style.display = 'block';
+        
+        // Save current game state
+        saveGameData();
     }
     
     // Verarbeitung der Antwort in separate Funktion ausgelagert
@@ -691,6 +940,305 @@
         }, 500);
     }
 
+    // Hilfsfunktionen
+    function updateProgressBar() {
+        const progress = Math.round((score / currentQuestions.length) * 100);
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-label').textContent = `${progress}%`;
+    }
+
+    function updateStreak(isCorrect) {
+        if (isCorrect) {
+            currentStreak++;
+            if (currentStreak > bestStreak) {
+                bestStreak = currentStreak;
+            }
+        } else {
+            currentStreak = 0;
+        }
+        
+        document.getElementById('streak-text').textContent = `Aktuelle Serie: ${currentStreak}`;
+        const streakFlame = document.getElementById('streak-flame');
+        
+        if (currentStreak > 0) {
+            streakFlame.classList.add('active');
+        } else {
+            streakFlame.classList.remove('active');
+        }
+    }
+
+    function updateLevel() {
+        const newLevel = Math.floor(totalXP / 100) + 1;
+        if (newLevel !== level) {
+            level = newLevel;
+            document.getElementById('level').textContent = level;
+            showAchievement('Neues Level!', `Level ${level} erreicht! 🎉`, '🌟');
+        }
+        
+        const xpToNextLevel = (level * 100) - totalXP;
+        document.getElementById('xp-display').textContent = 
+            `XP: ${totalXP % 100}/100 (${xpToNextLevel} bis Level ${level + 1})`;
+    }
+
+    function updateHintSystem() {
+        document.getElementById('hint-coins-count').textContent = hintCoins;
+    }
+
+    function updateProgressPath() {
+        const pathProgress = (totalXP / 1500) * 100;
+        document.getElementById('progress-path-fill').style.width = `${Math.min(100, pathProgress)}%`;
+        
+        const milestones = [
+            { xp: 100, id: 'milestone-1' },
+            { xp: 350, id: 'milestone-2' },
+            { xp: 750, id: 'milestone-3' },
+            { xp: 1500, id: 'milestone-4' }
+        ];
+        
+        milestones.forEach(milestone => {
+            const element = document.getElementById(milestone.id);
+            if (totalXP >= milestone.xp) {
+                element.classList.add('completed');
+            } else if (totalXP >= milestone.xp * 0.8) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    function updateStats() {
+        document.getElementById('total-quizzes').textContent = totalQuizzes;
+        document.getElementById('total-correct').textContent = totalCorrect;
+        document.getElementById('average-score').textContent = 
+            totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) + '%' : '0%';
+        document.getElementById('best-streak').textContent = bestStreak;
+    }
+
+    function showFeedback(message, isSuccess) {
+        const feedbackEl = document.getElementById('feedback-message');
+        feedbackEl.textContent = message;
+        feedbackEl.className = isSuccess ? 'feedback-success' : 'feedback-error';
+        feedbackEl.style.opacity = '1';
+        
+        setTimeout(() => {
+            feedbackEl.style.opacity = '0';
+        }, 3000);
+    }
+
+    function getRandomFeedback(isCorrect, xpGained = 0) {
+        const correctFeedback = [
+            `Super! +${xpGained} XP 🌟`,
+            `Richtig! +${xpGained} XP ✨`,
+            `Gut gemacht! +${xpGained} XP 🎯`,
+            `Perfekt! +${xpGained} XP 💫`,
+            `Ausgezeichnet! +${xpGained} XP 🏆`
+        ];
+        
+        const incorrectFeedback = [
+            'Leider falsch! Weiter so! 💪',
+            'Nicht ganz richtig! Nächste Chance! 🎯',
+            'Fast! Probier\'s nochmal! 📚',
+            'Nicht aufgeben! 💫',
+            'Du schaffst das! 🌟'
+        ];
+        
+        const feedbackArray = isCorrect ? correctFeedback : incorrectFeedback;
+        return feedbackArray[Math.floor(Math.random() * feedbackArray.length)];
+    }
+
+    function showAchievement(title, description, icon) {
+        const popup = document.getElementById('achievement-popup');
+        const overlay = document.getElementById('overlay');
+        
+        document.getElementById('achievement-title').textContent = title;
+        document.getElementById('achievement-description').textContent = description;
+        document.getElementById('achievement-icon').textContent = icon;
+        
+        popup.classList.add('show');
+        overlay.classList.add('show');
+        
+        // Optional: Konfetti-Animation
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    }
+
+    function closeAchievementPopup() {
+        const popup = document.getElementById('achievement-popup');
+        const overlay = document.getElementById('overlay');
+        
+        popup.classList.remove('show');
+        overlay.classList.remove('show');
+    }
+
+    function toggleStats() {
+        const statsContainer = document.getElementById('stats-container');
+        statsContainer.classList.toggle('hidden');
+    }
+
+    function showError(message) {
+        const container = document.getElementById('current-question');
+        container.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+
+    function updateDailyChallenge(action) {
+        // Implementierung der täglichen Herausforderungen hier
+        // Wird später hinzugefügt
+    }
+
+    let hintCoins = 0; // Initialisiere Hint-Münzen
+
+    function buyPowerUp(type) {
+        const costs = {
+            removeWrong: 10,
+            showHint: 5,
+            extraTime: 8
+        };
+        
+        if (hintCoins >= costs[type]) {
+            hintCoins -= costs[type];
+            const count = parseInt(document.getElementById(`${type}-count`).textContent);
+            document.getElementById(`${type}-count`).textContent = count + 1;
+            updateHintSystem();
+            showFeedback(`Power-Up gekauft! (-${costs[type]} 🪙)`, true);
+            saveGameData();
+        } else {
+            showFeedback('Nicht genug Münzen! 💰', false);
+        }
+    }
+
+    function usePowerUp(type) {
+        const count = parseInt(document.getElementById(`${type}-count`).textContent);
+        if (count > 0) {
+            document.getElementById(`${type}-count`).textContent = count - 1;
+            
+            switch(type) {
+                case 'removeWrong':
+                    removeWrongAnswers();
+                    break;
+                case 'showHint':
+                    showCurrentHint();
+                    break;
+                case 'extraTime':
+                    addExtraTime();
+                    break;
+            }
+            
+            saveGameData();
+        } else {
+            showFeedback('Keine Power-Ups verfügbar! 🚫', false);
+        }
+    }
+
+    function removeWrongAnswers() {
+        const currentQuestion = currentQuestions[currentQuestionIndex];
+        const options = document.querySelectorAll('.option');
+        let removedCount = 0;
+        
+        options.forEach((option, index) => {
+            if (index !== currentQuestion.randomizedCorrect && removedCount < 2) {
+                option.style.opacity = '0.3';
+                option.style.pointerEvents = 'none';
+                removedCount++;
+            }
+        });
+        
+        showFeedback('2 falsche Antworten entfernt! 🎯', true);
+    }
+
+    function showCurrentHint() {
+        const currentQuestion = currentQuestions[currentQuestionIndex];
+        if (currentQuestion.hint) {
+            showFeedback(`Hinweis: ${currentQuestion.hint} 💡`, true);
+        } else {
+            showFeedback('Kein Hinweis verfügbar! 🤔', false);
+        }
+    }
+
+    function addExtraTime() {
+        if (timerActive) {
+            timeRemaining += 15;
+            showFeedback('+15 Sekunden! ⏱️', true);
+        } else {
+            showFeedback('Timer nicht aktiv! ⏱️', false);
+        }
+    }
+
+    function toggleTimerMode() {
+        timerActive = !timerActive;
+        const timerContainer = document.getElementById('timer-container');
+        const timerButton = document.getElementById('timer-toggle');
+        
+        if (timerActive) {
+            timerContainer.style.display = 'block';
+            timerButton.style.backgroundColor = 'var(--time-color)';
+            startQuestionTimer();
+        } else {
+            timerContainer.style.display = 'none';
+            timerButton.style.backgroundColor = 'var(--primary-color)';
+            clearInterval(timerInterval);
+        }
+    }
+
+    function startQuestionTimer() {
+        clearInterval(timerInterval);
+        timeRemaining = maxTime;
+        
+        const timerBar = document.getElementById('timer-bar');
+        timerBar.style.width = '100%';
+        
+        timerInterval = setInterval(() => {
+            timeRemaining--;
+            const percentage = (timeRemaining / maxTime) * 100;
+            timerBar.style.width = `${percentage}%`;
+            
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                handleTimeUp();
+            }
+        }, 1000);
+    }
+
+    function handleTimeUp() {
+        const currentQuestion = currentQuestions[currentQuestionIndex];
+        const options = document.querySelectorAll('.option');
+        
+        options.forEach(option => {
+            option.style.pointerEvents = 'none';
+        });
+        
+        showFeedback('Zeit abgelaufen! ⏰', false);
+        options[currentQuestion.randomizedCorrect].classList.add('correct');
+        
+        setTimeout(() => {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                nextQuestion();
+            }
+        }, 1500);
+    }
+
+    function showTimeBonus(bonus) {
+        const bonusIndicator = document.getElementById('time-bonus');
+        bonusIndicator.textContent = `+${bonus} XP`;
+        bonusIndicator.classList.add('show');
+        
+        setTimeout(() => {
+            bonusIndicator.classList.remove('show');
+        }, 1500);
+    }
+
+    // Rest of your existing code...
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set initial theme
+        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+        
+        // Load questions and start quiz
+        loadQuestions();
+    });
     </script>
 </body>
 </html>
