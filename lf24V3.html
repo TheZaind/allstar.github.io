@@ -570,6 +570,44 @@
         }
     }
 
+    function updateStreak(isCorrect) {
+        const streakText = document.getElementById('streak-text');
+        const streakItem = document.querySelector('.status-item:nth-child(2)');
+        
+        if (isCorrect) {
+            currentStreak++;
+            if (currentStreak > bestStreak) {
+                bestStreak = currentStreak;
+                // Zeige Achievement für neue Beststreak
+                if (bestStreak >= 5) {
+                    showAchievement('Streak Master! 🔥', `Neue Beststreak: ${bestStreak}!`);
+                }
+            }
+        } else {
+            if (currentStreak >= 3) {
+                showFeedback(`Streak von ${currentStreak} beendet!`, false);
+            }
+            currentStreak = 0;
+        }
+        
+        if (streakText) {
+            streakText.textContent = currentStreak;
+        }
+        
+        // Visuelles Feedback für aktive Streak
+        if (streakItem) {
+            if (currentStreak > 0) {
+                streakItem.classList.add('active-streak');
+            } else {
+                streakItem.classList.remove('active-streak');
+            }
+        }
+        
+        // Speichere den aktuellen Spielstand
+        saveGameData();
+        updateGameStatus();
+    }
+
     // Entferne doppelte Event Listener
     document.addEventListener('DOMContentLoaded', async function() {
         document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
