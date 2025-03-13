@@ -63,7 +63,7 @@
         <div class="controls">
             <button onclick="backToMenu()" class="back-button">↩️ Zurück zum Menü</button>
             <button onclick="toggleTheme()" id="theme-toggle">🌓 Dark/Light Mode</button>
-            <button onclick="newQuiz()">🔄 Neues Quiz</button>
+            <button onclick="newQuiz()">🔄 neues Quiz</button>
             <button onclick="toggleStats()">📊 Statistiken</button>
             <button onclick="toggleTimerMode()" id="timer-toggle">⏱️ Zeitmodus</button>
         </div>
@@ -182,11 +182,10 @@
         </div>
 
         <!-- Achievement popup -->
-        <div class="achievement-popup" id="achievement-popup"></div>
+        <div class="achievement-popup" id="achievement-popup">
             <h2 id="achievement-title">Achievement Unlocked!</h2>
             <div class="badge-icon" id="achievement-icon">🏆</div>
-            <p id="achievement-description">Du hast etwas Großartiges erreicht!</p>
-            <button onclick="closeAchievementPopup()">Super!</button>
+            <button onclick="closeAchievementPopup()">Ok</button>
         </div>
         <div class="overlay" id="overlay"></div>
 
@@ -957,24 +956,35 @@
     
     // UI-Updates in separate Funktion ausgelagert
     function updateUI(xpGained, streakBonus, timeBonus, coinsEarned) {
-        document.getElementById('score').textContent = `Punktzahl: ${score} Punkte 📊`;
-        document.getElementById('total-xp').textContent = totalXP;
+        // Score-Element aktualisieren
+        const scoreElement = document.getElementById('score');
+        if (scoreElement) {
+            scoreElement.textContent = `Punktzahl: ${score} Punkte 📊`;
+            scoreElement.classList.add('pop-animation');
+            setTimeout(() => {
+                scoreElement.classList.remove('pop-animation');
+            }, 500);
+        }
+        
+        // Total XP aktualisieren
+        const totalXpElement = document.getElementById('total-xp');
+        if (totalXpElement) {
+            totalXpElement.textContent = totalXP;
+        }
+        
+        // Aktualisiere alle anderen Elemente
         updateProgressBar();
         updateLevel();
         updateHintSystem();
         updateProgressPath();
         
+        // Feedback anzeigen
         let feedbackText = getRandomFeedback(true, xpGained);
         if (streakBonus > 0) feedbackText += ` (+${streakBonus} Streak Bonus)`;
         if (timeBonus > 0) feedbackText += ` (+${timeBonus} Zeit Bonus)`;
         feedbackText += ` (+${coinsEarned} 🪙)`;
         
         showFeedback(feedbackText, true);
-        
-        document.getElementById('score').classList.add('pop-animation');
-        setTimeout(() => {
-            document.getElementById('score').classList.remove('pop-animation');
-        }, 500);
     }
 
     // Hilfsfunktionen
