@@ -154,7 +154,7 @@ body {
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var (--text-secondary);
 }
 
 .current-badge-display {
@@ -183,11 +183,14 @@ body {
     padding: 1rem;
 }
 
-/* Controls Bar */
-.controls {
+/* Controls Container */
+.controls-container {
+    margin-bottom: 1.5rem;
+}
+
+.desktop-controls {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
     gap: 0.5rem;
     background-color: var(--surface-color);
     padding: 1rem;
@@ -215,12 +218,48 @@ body {
     display: none; /* Standard ausgeblendet */
 }
 
+/* Mobile Controls und Status */
+.mobile-controls-status {
+    display: none; /* Standard versteckt */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface-color);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 0.5rem;
+}
+
+.mobile-status {
+    margin-bottom: 0.5rem;
+}
+
+.mobile-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.mobile-controls button {
+    border-radius: var(--border-radius);
+    height: 50px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Game Status */
-.game-status {
+.game-status-container {
+    margin-bottom: 1.5rem;
+}
+
+.desktop-status {
     background: var(--surface-color);
     border-radius: var(--border-radius);
     padding: 1.5rem;
-    margin-bottom: 2rem;
     box-shadow: var(--shadow-md);
 }
 
@@ -232,58 +271,16 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-.status-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Status Item Verbesserungen für Mobile */
-.status-item {
-    background: var(--background-color);
-    padding: 1rem;
-    border-radius: var(--border-radius);
+/* Feedback Message - bleibt immer oben */
+.feedback-message {
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
     box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.status-item:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.status-label {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.3rem;
-}
-
-.status-value {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.status-value span {
-    color: var(--primary-color);
-    margin-right: 0.3rem;
-}
-
-.status-item.active-streak {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-color);
-    animation: streakPulse 2s infinite;
+    z-index: 90; /* Stellen Sie sicher, dass es über dem Content liegt */
 }
 
 /* Enhanced Question Container */
@@ -634,31 +631,16 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .controls {
-        flex-direction: row; /* Row beibehalten */
-        justify-content: space-around;
-        flex-wrap: wrap;
+    .desktop-controls {
+        display: none; /* Standard Controls ausblenden */
     }
     
-    .controls button {
-        width: auto;
-        padding: 0.8rem;
-        font-size: 1.2rem; /* Größere Emojis */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .desktop-status {
+        display: none; /* Standard Status ausblenden */
     }
     
-    .btn-text {
-        display: none; /* Text ausblenden auf Mobilgeräten */
-    }
-    
-    .btn-emoji {
-        display: inline; /* Emoji einblenden */
-    }
-    
-    .status-row {
-        grid-template-columns: repeat(2, 1fr);
+    .mobile-controls-status {
+        display: block; /* Mobile Controls anzeigen */
     }
     
     .quiz-categories {
@@ -669,6 +651,7 @@ body {
     .single-question-container {
         padding: 1rem;
         margin: 1rem;
+        margin-bottom: 5rem; /* Platz für mobile Controls unten */
     }
     
     .question-header {
@@ -698,11 +681,17 @@ body {
     .status-value {
         font-size: 1.2rem;
     }
+    
+    /* Quiz Content Padding unten hinzufügen für mobile Controls */
+    .quiz-content {
+        padding-bottom: 120px;
+    }
 }
 
 @media (max-width: 480px) {
-    .controls button {
-        padding: 0.6rem;
+    .mobile-controls button {
+        height: 45px;
+        font-size: 1.2rem;
     }
     
     .quiz-categories {
@@ -710,7 +699,7 @@ body {
     }
     
     .status-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 Status nebeneinander */
     }
     
     .status-content {
@@ -723,6 +712,11 @@ body {
     
     .stats-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 Stats nebeneinander bei sehr kleinen Geräten */
+    }
+    
+    /* Padding für mehr Platz bei sehr kleinen Geräten */
+    .quiz-content {
+        padding-bottom: 150px;
     }
 }
 

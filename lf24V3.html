@@ -51,43 +51,50 @@
     </div>
 
     <div id="quiz-content" class="quiz-content">
-        <div class="controls">
-            <button onclick="backToMenu()" class="back-button">
-                <span class="btn-emoji">↩️</span><span class="btn-text">↩️ Zurück zum Menü</span>
-            </button>
-            <button onclick="toggleTheme()" id="theme-toggle">
-                <span class="btn-emoji">🌓</span><span class="btn-text">🌓 Dark/Light Mode</span>
-            </button>
-            <button onclick="newQuiz()">
-                <span class="btn-emoji">🔄</span><span class="btn-text">🔄 neues Quiz</span>
-            </button>
-            <button onclick="toggleTimerMode()" id="timer-toggle">
-                <span class="btn-emoji">⏱️</span><span class="btn-text">⏱️ Zeitmodus</span>
-            </button>
+        <!-- Controls und Status werden in eigene Container verschoben für mobile Anzeige -->
+        <div class="controls-container">
+            <div class="controls desktop-controls">
+                <button onclick="backToMenu()" class="back-button">
+                    <span class="btn-emoji">↩️</span><span class="btn-text">↩️ Zurück zum Menü</span>
+                </button>
+                <button onclick="toggleTheme()" id="theme-toggle">
+                    <span class="btn-emoji">🌓</span><span class="btn-text">🌓 Dark/Light Mode</span>
+                </button>
+                <button onclick="newQuiz()">
+                    <span class="btn-emoji">🔄</span><span class="btn-text">🔄 neues Quiz</span>
+                </button>
+                <button onclick="toggleTimerMode()" id="timer-toggle">
+                    <span class="btn-emoji">⏱️</span><span class="btn-text">⏱️ Zeitmodus</span>
+                </button>
+            </div>
         </div>
 
-        <div class="game-status">
-            <div class="status-content">
-                <div class="status-row">
-                    <div class="status-item">
-                        <div class="status-label">Level:</div>
-                        <div class="status-value"><span id="level">1</span> 🌟</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">Serie:</div>
-                        <div class="status-value"><span id="streak-text">0</span> 🔥</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">Punkte:</div>
-                        <div class="status-value"><span id="score">0</span> 📊</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">XP:</div>
-                        <div class="status-value"><span id="xp-display">0/100</span></div>
+        <!-- Feedback-Nachricht bleibt immer oben -->
+        <div id="feedback-message" class="feedback-message"></div>
+
+        <div class="game-status-container">
+            <div class="game-status desktop-status">
+                <div class="status-content">
+                    <div class="status-row">
+                        <div class="status-item">
+                            <div class="status-label">Level:</div>
+                            <div class="status-value"><span id="level">1</span> 🌟</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">Serie:</div>
+                            <div class="status-value"><span id="streak-text">0</span> 🔥</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">Punkte:</div>
+                            <div class="status-value"><span id="score">0</span> 📊</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">XP:</div>
+                            <div class="status-value"><span id="xp-display">0/100</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id="feedback-message" class="feedback-message"></div>
         </div>
 
         <div id="timer-container" class="timer-container">
@@ -111,6 +118,47 @@
             <div class="question-navigation">
                 <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
+            </div>
+        </div>
+        
+        <!-- Mobile Controls und Status - werden nur auf mobilen Geräten angezeigt -->
+        <div class="mobile-controls-status">
+            <div class="game-status mobile-status">
+                <div class="status-content">
+                    <div class="status-row">
+                        <div class="status-item">
+                            <div class="status-label">Level:</div>
+                            <div class="status-value"><span id="level-mobile">1</span> 🌟</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">Serie:</div>
+                            <div class="status-value"><span id="streak-text-mobile">0</span> 🔥</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">Punkte:</div>
+                            <div class="status-value"><span id="score-mobile">0</span> 📊</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-label">XP:</div>
+                            <div class="status-value"><span id="xp-display-mobile">0/100</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls mobile-controls">
+                <button onclick="backToMenu()" class="back-button">
+                    <span class="btn-emoji">↩️</span>
+                </button>
+                <button onclick="toggleTheme()" id="theme-toggle-mobile">
+                    <span class="btn-emoji">🌓</span>
+                </button>
+                <button onclick="newQuiz()">
+                    <span class="btn-emoji">🔄</span>
+                </button>
+                <button onclick="toggleTimerMode()" id="timer-toggle-mobile">
+                    <span class="btn-emoji">⏱️</span>
+                </button>
             </div>
         </div>
     </div>
@@ -317,16 +365,19 @@
         timerActive = !timerActive;
         const timerContainer = document.getElementById('timer-container');
         const timerToggle = document.getElementById('timer-toggle');
+        const timerToggleMobile = document.getElementById('timer-toggle-mobile');
         
         if (!timerContainer || !timerToggle) return;
         
         if (timerActive) {
             timerContainer.style.display = 'block';
             timerToggle.style.backgroundColor = 'var(--error-color)';
+            timerToggleMobile.style.backgroundColor = 'var(--error-color)';
             startQuestionTimer();
         } else {
             timerContainer.style.display = 'none';
             timerToggle.style.backgroundColor = 'var(--primary-color)';
+            timerToggleMobile.style.backgroundColor = 'var(--primary-color)';
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
@@ -592,6 +643,7 @@
 
     function updateStreak(isCorrect) {
         const streakText = document.getElementById('streak-text');
+        const streakTextMobile = document.getElementById('streak-text-mobile');
         const streakItem = document.querySelector('.status-item:nth-child(2)');
         
         if (isCorrect) {
@@ -612,6 +664,9 @@
         
         if (streakText) {
             streakText.textContent = currentStreak;
+        }
+        if (streakTextMobile) {
+            streakTextMobile.textContent = currentStreak;
         }
         
         // Visuelles Feedback für aktive Streak
@@ -640,15 +695,26 @@
     function updateGameStatus() {
         // Update Level und XP-Anzeige
         const levelElement = document.getElementById('level');
+        const levelMobileElement = document.getElementById('level-mobile');
         const xpDisplay = document.getElementById('xp-display');
+        const xpDisplayMobile = document.getElementById('xp-display-mobile');
         const streakText = document.getElementById('streak-text');
+        const streakTextMobile = document.getElementById('streak-text-mobile');
         const scoreElement = document.getElementById('score');
+        const scoreMobileElement = document.getElementById('score-mobile');
         const currentBadgeElement = document.getElementById('current-badge');
         
         if (levelElement) levelElement.textContent = level;
+        if (levelMobileElement) levelMobileElement.textContent = level;
+        
         if (xpDisplay) xpDisplay.textContent = `${totalXP % 100}/100 (${100 - (totalXP % 100)} bis Level ${level + 1})`;
+        if (xpDisplayMobile) xpDisplayMobile.textContent = `${totalXP % 100}/100`;
+        
         if (streakText) streakText.textContent = currentStreak;
+        if (streakTextMobile) streakTextMobile.textContent = currentStreak;
+        
         if (scoreElement) scoreElement.textContent = `${score}`;
+        if (scoreMobileElement) scoreMobileElement.textContent = `${score}`;
         
         // Update aktuelles Badge
         if (currentBadgeElement) {
@@ -675,8 +741,10 @@
         
         const timerContainer = document.getElementById('timer-container');
         const timerToggle = document.getElementById('timer-toggle');
+        const timerToggleMobile = document.getElementById('timer-toggle-mobile');
         if (timerContainer) timerContainer.style.display = 'none';
         if (timerToggle) timerToggle.style.backgroundColor = 'var(--primary-color)';
+        if (timerToggleMobile) timerToggleMobile.style.backgroundColor = 'var(--primary-color)';
         
         // Reset timer state
         timerActive = false;
