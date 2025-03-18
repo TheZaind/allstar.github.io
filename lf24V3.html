@@ -149,6 +149,97 @@
         .flashcard-active .question-navigation {
             display: none;
         }
+
+        /* Styling für die Flashcard-Controls außerhalb des Containers */
+        .flashcard-controls-outside {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: var(--container-bg, #fff);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        
+        .flashcard-button {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 1.1em;
+        }
+        
+        .correct-button {
+            background-color: var(--success-color, #28a745);
+            color: white;
+        }
+        
+        .correct-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .incorrect-button {
+            background-color: var(--error-color, #dc3545);
+            color: white;
+        }
+        
+        .incorrect-button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+        
+        /* Animations für Light und Dark Mode */
+        body:not([data-theme="dark"]) .flashcard.correct .card-face {
+            animation: lightGreenFlash 0.6s;
+        }
+        
+        body:not([data-theme="dark"]) .flashcard.incorrect .card-face {
+            animation: lightRedFlash 0.6s;
+        }
+        
+        body[data-theme="dark"] .flashcard.correct .card-face {
+            animation: darkGreenFlash 0.6s;
+        }
+        
+        body[data-theme="dark"] .flashcard.incorrect .card-face {
+            animation: darkRedFlash 0.6s;
+        }
+        
+        /* Light Mode Animationen */
+        @keyframes lightGreenFlash {
+            0% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
+            50% { background: linear-gradient(135deg, #a3e4a3 0%, #7fd77f 100%); }
+            100% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
+        }
+        
+        @keyframes lightRedFlash {
+            0% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
+            50% { background: linear-gradient(135deg, #f5a6a6 0%, #e67a7a 100%); }
+            100% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
+        }
+        
+        /* Dark Mode Animationen */
+        @keyframes darkGreenFlash {
+            0% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+            50% { background: linear-gradient(135deg, #2d5a2d 0%, #1e3e1e 100%); }
+            100% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+        }
+        
+        @keyframes darkRedFlash {
+            0% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+            50% { background: linear-gradient(135deg, #5a2d2d 0%, #3e1e1e 100%); }
+            100% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+        }
+        
+        /* Verstecke die Navigationsschaltflächen bei Karteikarten */
+        .flashcard-active .question-navigation {
+            display: none !important; /* Force hide */
+        }
     </style>
 </head>
 <body>
