@@ -1,0 +1,114 @@
+{
+  "questions": [
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "Berg, FDD",
+      "imageUrl": "https://i.ibb.co/W442fkWN/1.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "Molex, PATA",
+      "imageUrl": "https://i.ibb.co/tMwR2JSY/Screenshot-2025-02-17-150223.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "SATA",
+      "imageUrl": "https://i.ibb.co/b54vwrWs/Screenshot-2025-02-17-150324.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "PCIe (6+2/6)",
+      "imageUrl": "https://i.ibb.co/HDbcfmv7/Screenshot-2025-02-17-150401.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "EPS12V",
+      "imageUrl": "https://i.ibb.co/C3x7ynmK/Screenshot-2025-02-17-150517.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "ATX12V",
+      "imageUrl": "https://i.ibb.co/4ZjXwy8m/Screenshot-2025-02-17-150637.png"
+    },
+    {
+      "question": "Was ist das für ein Stecker?",
+      "answer": "AT-Main Power(Motherboard)",
+      "imageUrl": "https://i.ibb.co/21kVZFWZ/Screenshot-2025-02-17-150721.png"
+    },
+    {
+      "question": "Wie viele Pins hat dieser Stecker?",
+      "answer": "4",
+      "imageUrl": "https://i.ibb.co/W442fkWN/1.png"
+    },
+    {
+      "question": "Wie viele Pins hat dieser Stecker?",
+      "answer": "4",
+      "imageUrl": "https://i.ibb.co/tMwR2JSY/Screenshot-2025-02-17-150223.png"
+    },
+    {
+      "question": "Wie viele Pins hat dieser Stecker?",
+      "answer": "5",
+      "imageUrl": "https://i.ibb.co/b54vwrWs/Screenshot-2025-02-17-150324.png"
+    },
+    {
+      "question": "Wie viele Pins hat dieser Stecker?",
+      "answer": "8",
+      "imageUrl": "https://i.ibb.co/C3x7ynmK/Screenshot-2025-02-17-150517.png"
+    },
+    {
+      "question": "Wie viele Pins hat dieser Stecker?",
+      "answer": "20+4",
+      "imageUrl": "https://i.ibb.co/21kVZFWZ/Screenshot-2025-02-17-150721.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "FDD Cardreader",
+      "imageUrl": "https://i.ibb.co/W442fkWN/1.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "HDD, ODD, Lüfter",
+      "imageUrl": "https://i.ibb.co/tMwR2JSY/Screenshot-2025-02-17-150223.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "HDD, SSD; ODD",
+      "imageUrl": "https://i.ibb.co/b54vwrWs/Screenshot-2025-02-17-150324.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "PCIe für GPUs",
+      "imageUrl": "https://i.ibb.co/HDbcfmv7/Screenshot-2025-02-17-150401.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "Mainboard(CPU)",
+      "imageUrl": "https://i.ibb.co/C3x7ynmK/Screenshot-2025-02-17-150517.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "Mainboard(CPU)",
+      "imageUrl": "https://i.ibb.co/4ZjXwy8m/Screenshot-2025-02-17-150637.png"
+    },
+    {
+      "question": "Für was wird dieser Stecker genutzt?",
+      "answer": "Mainboard",
+      "imageUrl": "https://i.ibb.co/21kVZFWZ/Screenshot-2025-02-17-150721.png"
+    },
+    {
+      "question": "Was für ein USV-Typ ist das? ",
+      "answer": "VFD",
+      "imageUrl": "https://i.ibb.co/CKjVCd5k/1.png"
+    },
+    {
+      "question": "Was für ein USV-Typ ist das?",
+      "answer": "Typ VI",
+      "imageUrl": "https://i.ibb.co/hRPhq1Jn/2.png"
+    },
+    {
+      "question": "Was für ein USV-Typ ist das?",
+      "answer": "Typ VFI",
+      "imageUrl": "https://i.ibb.co/BH4J1g4r/3.png"
+    }
+  ]
+}

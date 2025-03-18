@@ -6,6 +6,111 @@
     <title>CPU Quiz</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Flashcard specific styles */
+        .flashcard {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 15px;
+            background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%));
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        .card-image {
+            max-width: 85%;
+            max-height: 180px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            object-fit: contain;
+        }
+        
+        .card-face h3 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .card-hint {
+            margin-top: 15px;
+            font-style: italic;
+            opacity: 0.7;
+        }
+        
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px auto;
+        }
+        
+        .flashcard-button {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .correct-button {
+            background-color: var(--success-color, #28a745);
+            color: white;
+        }
+        
+        .incorrect-button {
+            background-color: var(--error-color, #dc3545);
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes greenFlash {
+            0% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+            50% { background: linear-gradient(135deg, #a3e4a3 0%, #7fd77f 100%); }
+            100% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+        }
+        
+        @keyframes redFlash {
+            0% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+            50% { background: linear-gradient(135deg, #f5a6a6 0%, #e67a7a 100%); }
+            100% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+        }
+        
+        .flashcard.correct .card-face {
+            animation: greenFlash 0.6s;
+        }
+        
+        .flashcard.incorrect .card-face {
+            animation: redFlash 0.6s;
+        }
+    </style>
 </head>
 <body>
     <div id="quiz-selection-menu" class="quiz-selection-menu">
@@ -51,50 +156,43 @@
     </div>
 
     <div id="quiz-content" class="quiz-content">
-        <!-- Controls und Status werden in eigene Container verschoben für mobile Anzeige -->
-        <div class="controls-container">
-            <div class="controls desktop-controls">
-                <button onclick="backToMenu()" class="back-button">
-                    <span class="btn-emoji">↩️</span><span class="btn-text">↩️ Zurück zum Menü</span>
-                </button>
-                <button onclick="toggleTheme()" id="theme-toggle">
-                    <span class="btn-emoji">🌓</span><span class="btn-text">🌓 Dark/Light Mode</span>
-                </button>
-                <button onclick="newQuiz()">
-                    <span class="btn-emoji">🔄</span><span class="btn-text">🔄 neues Quiz</span>
-                </button>
-                <button onclick="toggleTimerMode()" id="timer-toggle">
-                    <span class="btn-emoji">⏱️</span><span class="btn-text">⏱️ Zeitmodus</span>
-                </button>
-            </div>
+        <div class="controls">
+            <button onclick="backToMenu()" class="back-button">
+                <span class="btn-emoji">↩️</span><span class="btn-text">↩️ Zurück zum Menü</span>
+            </button>
+            <button onclick="toggleTheme()" id="theme-toggle">
+                <span class="btn-emoji">🌓</span><span class="btn-text">🌓 Dark/Light Mode</span>
+            </button>
+            <button onclick="newQuiz()">
+                <span class="btn-emoji">🔄</span><span class="btn-text">🔄 neues Quiz</span>
+            </button>
+            <button onclick="toggleTimerMode()" id="timer-toggle">
+                <span class="btn-emoji">⏱️</span><span class="btn-text">⏱️ Zeitmodus</span>
+            </button>
         </div>
 
-        <!-- Feedback-Nachricht bleibt immer oben -->
-        <div id="feedback-message" class="feedback-message"></div>
-
-        <div class="game-status-container">
-            <div class="game-status desktop-status">
-                <div class="status-content">
-                    <div class="status-row">
-                        <div class="status-item">
-                            <div class="status-label">Level:</div>
-                            <div class="status-value"><span id="level">1</span> 🌟</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">Serie:</div>
-                            <div class="status-value"><span id="streak-text">0</span> 🔥</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">Punkte:</div>
-                            <div class="status-value"><span id="score">0</span> 📊</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">XP:</div>
-                            <div class="status-value"><span id="xp-display">0/100</span></div>
-                        </div>
+        <div class="game-status">
+            <div class="status-content">
+                <div class="status-row">
+                    <div class="status-item">
+                        <div class="status-label">Level:</div>
+                        <div class="status-value"><span id="level">1</span> 🌟</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Serie:</div>
+                        <div class="status-value"><span id="streak-text">0</span> 🔥</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Punkte:</div>
+                        <div class="status-value"><span id="score">0</span> 📊</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">XP:</div>
+                        <div class="status-value"><span id="xp-display">0/100</span></div>
                     </div>
                 </div>
             </div>
+            <div id="feedback-message" class="feedback-message"></div>
         </div>
 
         <div id="timer-container" class="timer-container">
@@ -118,47 +216,6 @@
             <div class="question-navigation">
                 <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
-            </div>
-        </div>
-        
-        <!-- Mobile Controls und Status - werden nur auf mobilen Geräten angezeigt -->
-        <div class="mobile-controls-status">
-            <div class="game-status mobile-status">
-                <div class="status-content">
-                    <div class="status-row">
-                        <div class="status-item">
-                            <div class="status-label">Level:</div>
-                            <div class="status-value"><span id="level-mobile">1</span> 🌟</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">Serie:</div>
-                            <div class="status-value"><span id="streak-text-mobile">0</span> 🔥</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">Punkte:</div>
-                            <div class="status-value"><span id="score-mobile">0</span> 📊</div>
-                        </div>
-                        <div class="status-item">
-                            <div class="status-label">XP:</div>
-                            <div class="status-value"><span id="xp-display-mobile">0/100</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="controls mobile-controls">
-                <button onclick="backToMenu()" class="back-button">
-                    <span class="btn-emoji">↩️</span>
-                </button>
-                <button onclick="toggleTheme()" id="theme-toggle-mobile">
-                    <span class="btn-emoji">🌓</span>
-                </button>
-                <button onclick="newQuiz()">
-                    <span class="btn-emoji">🔄</span>
-                </button>
-                <button onclick="toggleTimerMode()" id="timer-toggle-mobile">
-                    <span class="btn-emoji">⏱️</span>
-                </button>
             </div>
         </div>
     </div>
@@ -276,6 +333,13 @@
             file: 'grundwissen.json'
         },
         {
+            id: 'flashcards',
+            name: 'Karteikarten Quiz',
+            description: 'Lerne mit Karteikarten wichtige Hardware-Komponenten zu erkennen',
+            icon: '📚',
+            file: 'flashcards.json'
+        },
+        {
             id: 'mix',
             name: 'Gemischtes Quiz',
             description: 'Eine herausfordernde Mischung aus allen Kategorien für echte Profis',
@@ -365,19 +429,16 @@
         timerActive = !timerActive;
         const timerContainer = document.getElementById('timer-container');
         const timerToggle = document.getElementById('timer-toggle');
-        const timerToggleMobile = document.getElementById('timer-toggle-mobile');
         
         if (!timerContainer || !timerToggle) return;
         
         if (timerActive) {
             timerContainer.style.display = 'block';
             timerToggle.style.backgroundColor = 'var(--error-color)';
-            timerToggleMobile.style.backgroundColor = 'var(--error-color)';
             startQuestionTimer();
         } else {
             timerContainer.style.display = 'none';
             timerToggle.style.backgroundColor = 'var(--primary-color)';
-            timerToggleMobile.style.backgroundColor = 'var(--primary-color)';
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
@@ -426,10 +487,13 @@
                 case 'gw':
                     fileName = 'grundwissen.json';
                     break;
+                case 'flashcards':
+                    fileName = 'flashcards.json';
+                    break;
                 case 'mix':
                     // Mische Fragen aus allen Kategorien
                     const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'grundwissen.json']) {
+                    for (const file of ['cpu.json', 'mainboard.json', 'grundwissen.json', 'flashcards.json']) {
                         try {
                             const response = await fetch(file);
                             if (response.ok) {
@@ -481,6 +545,7 @@
     function displayCurrentQuestion() {
         const container = document.getElementById('current-question');
         const question = currentQuestions[currentQuestionIndex];
+        const isFlashcard = question.hasOwnProperty('answer'); // Prüfen, ob es eine Karteikarte ist
         
         // Füge Slide-Out Animation hinzu
         container.classList.add('slide-out');
@@ -489,22 +554,44 @@
             // Update question number
             document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
 
-            // Randomize options
-            const correctOptionIndex = question.correct;
-            const randomizedOptions = [];
-            const options = [...question.options];
-            options.sort(() => Math.random() - 0.5);
-            randomizedOptions.push(...options);
+            // Darstellung abhängig vom Fragetyp (Normales Quiz oder Flashcard)
+            if (isFlashcard) {
+                // Flashcard-Darstellung
+                container.innerHTML = `
+                    <div class="flashcard" onclick="flipCard(${currentQuestionIndex})">
+                        <div class="card-face card-front">
+                            ${question.imageUrl ? `<img src="${question.imageUrl}" alt="Kartenabbildung" class="card-image">` : ''}
+                            <h3>${question.question}</h3>
+                            <div class="card-hint">Klicke, um die Antwort zu sehen</div>
+                        </div>
+                        <div class="card-face card-back">
+                            <h3>${question.answer}</h3>
+                        </div>
+                    </div>
+                    <div class="flashcard-controls">
+                        <button onclick="markFlashcardCorrect(${currentQuestionIndex})" class="flashcard-button correct-button">✅ Richtig</button>
+                        <button onclick="markFlashcardIncorrect(${currentQuestionIndex})" class="flashcard-button incorrect-button">❌ Falsch</button>
+                    </div>
+                `;
+            } else {
+                // Normales Multiple-Choice-Quiz
+                const correctOptionIndex = question.correct;
+                const randomizedOptions = [];
+                const options = [...question.options];
+                options.sort(() => Math.random() - 0.5);
+                randomizedOptions.push(...options);
 
-            // Create options with staggered animation
-            container.innerHTML = `
-                <div class="question-text">${question.question}</div>
-                <div class="question-options">
-                    ${randomizedOptions.map((option, index) => `
-                        <div class="option" onclick="checkAnswer(${currentQuestionIndex}, ${index})">${option}</div>
-                    `).join('')}
-                </div>
-            `;
+                // Create options with staggered animation
+                container.innerHTML = `
+                    <div class="question-text">${question.question}</div>
+                    <div class="question-options">
+                        ${randomizedOptions.map((option, index) => `
+                            <div class="option" onclick="checkAnswer(${currentQuestionIndex}, ${index})">${option}</div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
             // Füge Slide-In Animation hinzu
             container.classList.remove('slide-out');
             container.classList.add('slide-in');
@@ -643,7 +730,6 @@
 
     function updateStreak(isCorrect) {
         const streakText = document.getElementById('streak-text');
-        const streakTextMobile = document.getElementById('streak-text-mobile');
         const streakItem = document.querySelector('.status-item:nth-child(2)');
         
         if (isCorrect) {
@@ -664,9 +750,6 @@
         
         if (streakText) {
             streakText.textContent = currentStreak;
-        }
-        if (streakTextMobile) {
-            streakTextMobile.textContent = currentStreak;
         }
         
         // Visuelles Feedback für aktive Streak
@@ -695,26 +778,15 @@
     function updateGameStatus() {
         // Update Level und XP-Anzeige
         const levelElement = document.getElementById('level');
-        const levelMobileElement = document.getElementById('level-mobile');
         const xpDisplay = document.getElementById('xp-display');
-        const xpDisplayMobile = document.getElementById('xp-display-mobile');
         const streakText = document.getElementById('streak-text');
-        const streakTextMobile = document.getElementById('streak-text-mobile');
         const scoreElement = document.getElementById('score');
-        const scoreMobileElement = document.getElementById('score-mobile');
         const currentBadgeElement = document.getElementById('current-badge');
         
         if (levelElement) levelElement.textContent = level;
-        if (levelMobileElement) levelMobileElement.textContent = level;
-        
         if (xpDisplay) xpDisplay.textContent = `${totalXP % 100}/100 (${100 - (totalXP % 100)} bis Level ${level + 1})`;
-        if (xpDisplayMobile) xpDisplayMobile.textContent = `${totalXP % 100}/100`;
-        
         if (streakText) streakText.textContent = currentStreak;
-        if (streakTextMobile) streakTextMobile.textContent = currentStreak;
-        
         if (scoreElement) scoreElement.textContent = `${score}`;
-        if (scoreMobileElement) scoreMobileElement.textContent = `${score}`;
         
         // Update aktuelles Badge
         if (currentBadgeElement) {
@@ -741,10 +813,8 @@
         
         const timerContainer = document.getElementById('timer-container');
         const timerToggle = document.getElementById('timer-toggle');
-        const timerToggleMobile = document.getElementById('timer-toggle-mobile');
         if (timerContainer) timerContainer.style.display = 'none';
         if (timerToggle) timerToggle.style.backgroundColor = 'var(--primary-color)';
-        if (timerToggleMobile) timerToggleMobile.style.backgroundColor = 'var(--primary-color)';
         
         // Reset timer state
         timerActive = false;
@@ -907,6 +977,106 @@
         
         // Update total questions display
         document.getElementById('total-questions').textContent = currentQuestions.length;
+    }
+
+    // Flashcard-spezifische Funktionen
+    function flipCard(questionIndex) {
+        const flashcardEl = document.querySelector('.flashcard');
+        if (flashcardEl) {
+            flashcardEl.classList.toggle('flipped');
+        }
+    }
+    
+    function markFlashcardCorrect(questionIndex) {
+        if (answeredQuestions.has(questionIndex)) return;
+        
+        const flashcardEl = document.querySelector('.flashcard');
+        if (!flashcardEl) return;
+        
+        // Add "correct" class to the flashcard
+        flashcardEl.classList.add('correct');
+        
+        // Update game states
+        answeredQuestions.add(questionIndex);
+        score++;
+        totalQuestions++;
+        totalCorrect++;
+        updateStreak(true);
+        
+        // XP calculation
+        const basePoints = 10;
+        const streakBonus = Math.min(5, currentStreak);
+        const timeBonus = timerActive ? Math.ceil((timeRemaining / maxTime) * 5) : 0;
+        
+        const xpGained = basePoints + streakBonus + timeBonus;
+        totalXP += xpGained;
+        
+        // Feedback
+        showFeedback(`Richtig! +${xpGained} XP${streakBonus > 0 ? ` (${streakBonus} Streak Bonus)` : ''}${timeBonus > 0 ? ` (${timeBonus} Zeit Bonus)` : ''}`, true);
+        
+        // Clear timer if active
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        
+        // Update UI
+        updateGameStatus();
+        saveGameData();
+        
+        // Enable next button
+        const nextButton = document.getElementById('next-question');
+        if (nextButton) {
+            nextButton.disabled = currentQuestionIndex === currentQuestions.length - 1;
+        }
+        
+        // Automatic redirect after delay
+        if (currentQuestionIndex < currentQuestions.length - 1) {
+            setTimeout(nextQuestion, 1500);
+        } else {
+            setTimeout(showQuizSummary, 1500);
+        }
+    }
+    
+    function markFlashcardIncorrect(questionIndex) {
+        if (answeredQuestions.has(questionIndex)) return;
+        
+        const flashcardEl = document.querySelector('.flashcard');
+        if (!flashcardEl) return;
+        
+        // Add "incorrect" class to the flashcard
+        flashcardEl.classList.add('incorrect');
+        
+        // Update game states
+        answeredQuestions.add(questionIndex);
+        totalQuestions++;
+        updateStreak(false);
+        
+        // Feedback
+        showFeedback('Weiter üben! 💪', false);
+        
+        // Clear timer if active
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        
+        // Update UI
+        updateGameStatus();
+        saveGameData();
+        
+        // Enable next button
+        const nextButton = document.getElementById('next-question');
+        if (nextButton) {
+            nextButton.disabled = currentQuestionIndex === currentQuestions.length - 1;
+        }
+        
+        // Automatic redirect after delay
+        if (currentQuestionIndex < currentQuestions.length - 1) {
+            setTimeout(nextQuestion, 1500);
+        } else {
+            setTimeout(showQuizSummary, 1500);
+        }
     }
     </script>
 </body>
