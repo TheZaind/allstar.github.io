@@ -269,7 +269,7 @@
 
     <script>
     // Theme toggle functionality
-    let darkMode = localStorage.getItem('darkMode') === 'true';
+    let darkMode = localStorage.getItem('darkMode') !== 'false'; // Standardmäßig aktiviert, es sei denn explizit deaktiviert
 
     function toggleTheme() {
         darkMode = !darkMode;
