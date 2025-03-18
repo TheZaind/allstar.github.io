@@ -472,30 +472,6 @@
             </button>
         </div>
 
-        <div class="game-status">
-            <div class="status-content">
-                <div class="status-row">
-                    <div class="status-item">
-                        <div class="status-label">Level:</div>
-                        <div class="status-value"><span id="level">1</span> 🌟</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">Serie:</div>
-                        <div class="status-value"><span id="streak-text">0</span> 🔥</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">Punkte:</div>
-                        <div class="status-value"><span id="score">0</span> 📊</div>
-                    </div>
-                    <div class="status-item">
-                        <div class="status-label">XP:</div>
-                        <div class="status-value"><span id="xp-display">0/100</span></div>
-                    </div>
-                </div>
-            </div>
-            <div id="feedback-message" class="feedback-message"></div>
-        </div>
-
         <div id="timer-container" class="timer-container">
             <div id="timer-bar" class="timer-bar"></div>
         </div>
@@ -518,6 +494,31 @@
                 <button id="prev-question" onclick="previousQuestion()" disabled>⬅️ Vorherige Frage</button>
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
             </div>
+        </div>
+        
+        <!-- Moved the game-status div to appear after the single-question-container -->
+        <div class="game-status">
+            <div class="status-content">
+                <div class="status-row">
+                    <div class="status-item">
+                        <div class="status-label">Level:</div>
+                        <div class="status-value"><span id="level">1</span> 🌟</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Serie:</div>
+                        <div class="status-value"><span id="streak-text">0</span> 🔥</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Punkte:</div>
+                        <div class="status-value"><span id="score">0</span> 📊</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">XP:</div>
+                        <div class="status-value"><span id="xp-display">0/100</span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="feedback-message" class="feedback-message"></div>
         </div>
     </div>
 
