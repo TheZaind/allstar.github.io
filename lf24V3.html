@@ -42,6 +42,29 @@
                 padding: 12px 0;
                 min-height: 50px; /* Better touch target */
             }
+            
+            /* Reorder quiz content on mobile - move game status below question container */
+            .quiz-content {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .game-status {
+                order: 2; /* Move below question container */
+                margin-top: 20px;
+            }
+            
+            #single-question-container {
+                order: 1;
+            }
+            
+            #timer-container {
+                order: 0; /* Keep timer at the top */
+            }
+            
+            .controls {
+                order: -1; /* Keep controls at the very top */
+            }
         }
         
         @media (max-width: 480px) {
@@ -61,6 +84,16 @@
             .flashcard-controls-outside {
                 flex-direction: row; /* Keep side by side for better UX */
                 padding: 8px;
+            }
+            
+            /* Further optimize game status on smaller screens */
+            .game-status .status-content {
+                padding: 8px;
+            }
+            
+            .status-item {
+                font-size: 0.9em;
+                padding: 6px;
             }
         }
         
