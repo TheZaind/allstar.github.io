@@ -162,6 +162,16 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             max-width: 600px;
         }
+
+        /* Dark Mode für Flashcard-Controls */
+        body[data-theme="dark"] .flashcard-controls-outside {
+            background-color: #2d2d2d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        body:not([data-theme="dark"]) .flashcard-controls-outside {
+            background-color: #fff;
+        }
         
         .flashcard-button {
             padding: 12px 25px;
@@ -731,8 +741,23 @@
                 const correctOptionIndex = question.correct;
                 const randomizedOptions = [];
                 const options = [...question.options];
+                
+                // Erstelle eine Zuordnungstabelle zwischen ursprünglichen und gemischten Indices
+                const optionIndexMap = {};
+                const originalOptions = [...question.options];
+                
+                // Mische die Optionen
                 options.sort(() => Math.random() - 0.5);
                 randomizedOptions.push(...options);
+                
+                // Erstelle die Zuordnungstabelle
+                randomizedOptions.forEach((option, newIndex) => {
+                    const originalIndex = originalOptions.indexOf(option);
+                    optionIndexMap[newIndex] = originalIndex;
+                });
+                
+                // Speichere die Zuordnungstabelle in der Frage
+                question.optionIndexMap = optionIndexMap;
 
                 // Create options with staggered animation
                 container.innerHTML = `
@@ -784,7 +809,13 @@
         if (!question) return;
         
         const options = document.querySelectorAll('.option');
-        const isCorrect = selectedOption === question.correct;
+        
+        // Verwende die Zuordnungstabelle, um den ursprünglichen Index zu ermitteln
+        const originalSelectedIndex = question.optionIndexMap ? question.optionIndexMap[selectedOption] : selectedOption;
+        const isCorrect = originalSelectedIndex === question.correct;
+        
+        // Speichere die ausgewählte Option
+        question.lastSelected = originalSelectedIndex;
         
         // Deaktiviere alle Optionen
         options.forEach(option => option.style.pointerEvents = 'none');
@@ -795,10 +826,23 @@
         }
         
         // Zeige korrekte Antwort bei falscher Auswahl
-        if (!isCorrect && options[question.correct]) {
-            setTimeout(() => {
-                options[question.correct].classList.add('correct');
-            }, 300);
+        if (!isCorrect) {
+            // Finde den neuen Index der korrekten Antwort basierend auf der Zuordnungstabelle
+            let correctDisplayIndex = selectedOption; // Fallback
+            if (question.optionIndexMap) {
+                for (const [newIndex, originalIndex] of Object.entries(question.optionIndexMap)) {
+                    if (parseInt(originalIndex) === question.correct) {
+                        correctDisplayIndex = parseInt(newIndex);
+                        break;
+                    }
+                }
+            }
+            
+            if (options[correctDisplayIndex]) {
+                setTimeout(() => {
+                    options[correctDisplayIndex].classList.add('correct');
+                }, 300);
+            }
         }
 
         // Update Spielstatus
