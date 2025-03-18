@@ -617,11 +617,10 @@
                         <button onclick="markFlashcardCorrect(${currentQuestionIndex})" class="flashcard-button correct-button">✅ Richtig</button>
                         <button onclick="markFlashcardIncorrect(${currentQuestionIndex})" class="flashcard-button incorrect-button">❌ Falsch</button>
                     </div>
-                    <div class="flashcard-navigation">
-                        <button onclick="previousQuestion()" ${currentQuestionIndex === 0 ? 'disabled' : ''}>⬅️ Vorherige Karte</button>
-                        <button onclick="nextQuestion()" disabled>Nächste Karte ➡️</button>
-                    </div>
                 `;
+                
+                // Aktiviere die Flashcard-Klasse am Container, um Navigationselemente zu verstecken
+                container.parentElement.classList.add('flashcard-active');
             } else {
                 // Normales Multiple-Choice-Quiz
                 const correctOptionIndex = question.correct;
@@ -639,6 +638,9 @@
                         `).join('')}
                     </div>
                 `;
+                
+                // Entferne die Flashcard-Klasse
+                container.parentElement.classList.remove('flashcard-active');
             }
             
             // Füge Slide-In Animation hinzu
