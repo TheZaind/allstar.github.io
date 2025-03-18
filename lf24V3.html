@@ -35,9 +35,20 @@
             padding: 30px;
             border: 1px solid var(--border-color, #ddd);
             border-radius: 15px;
-            background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%));
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             transition: all 0.3s;
+        }
+        
+        /* Hintergrundfarben für Light und Dark Mode */
+        body:not([data-theme="dark"]) .card-face {
+            background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%);
+            color: #333;
+        }
+        
+        body[data-theme="dark"] .card-face {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+            color: #fff;
+            border-color: #444;
         }
         
         .card-back {
@@ -78,6 +89,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
+            border: none;
         }
         
         .correct-button {
@@ -90,25 +102,52 @@
             color: white;
         }
         
-        /* Animations */
-        @keyframes greenFlash {
-            0% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+        /* Animations für Light und Dark Mode */
+        body:not([data-theme="dark"]) .flashcard.correct .card-face {
+            animation: lightGreenFlash 0.6s;
+        }
+        
+        body:not([data-theme="dark"]) .flashcard.incorrect .card-face {
+            animation: lightRedFlash 0.6s;
+        }
+        
+        body[data-theme="dark"] .flashcard.correct .card-face {
+            animation: darkGreenFlash 0.6s;
+        }
+        
+        body[data-theme="dark"] .flashcard.incorrect .card-face {
+            animation: darkRedFlash 0.6s;
+        }
+        
+        /* Light Mode Animationen */
+        @keyframes lightGreenFlash {
+            0% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
             50% { background: linear-gradient(135deg, #a3e4a3 0%, #7fd77f 100%); }
-            100% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+            100% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
         }
         
-        @keyframes redFlash {
-            0% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+        @keyframes lightRedFlash {
+            0% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
             50% { background: linear-gradient(135deg, #f5a6a6 0%, #e67a7a 100%); }
-            100% { background: var(--card-gradient, linear-gradient(135deg, #fff 0%, #f9f9f9 100%)); }
+            100% { background: linear-gradient(135deg, #fff 0%, #f9f9f9 100%); }
         }
         
-        .flashcard.correct .card-face {
-            animation: greenFlash 0.6s;
+        /* Dark Mode Animationen */
+        @keyframes darkGreenFlash {
+            0% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+            50% { background: linear-gradient(135deg, #2d5a2d 0%, #1e3e1e 100%); }
+            100% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
         }
         
-        .flashcard.incorrect .card-face {
-            animation: redFlash 0.6s;
+        @keyframes darkRedFlash {
+            0% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+            50% { background: linear-gradient(135deg, #5a2d2d 0%, #3e1e1e 100%); }
+            100% { background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%); }
+        }
+        
+        /* Verstecke die Navigationsschaltflächen bei Karteikarten */
+        .flashcard-active .question-navigation {
+            display: none;
         }
     </style>
 </head>
@@ -550,6 +589,12 @@
         // Füge Slide-Out Animation hinzu
         container.classList.add('slide-out');
         
+        // Navigation entsprechend dem Fragetyp anzeigen/verstecken
+        const navigationElement = document.querySelector('.question-navigation');
+        if (navigationElement) {
+            navigationElement.style.display = isFlashcard ? 'none' : 'flex';
+        }
+        
         setTimeout(() => {
             // Update question number
             document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
@@ -571,6 +616,10 @@
                     <div class="flashcard-controls">
                         <button onclick="markFlashcardCorrect(${currentQuestionIndex})" class="flashcard-button correct-button">✅ Richtig</button>
                         <button onclick="markFlashcardIncorrect(${currentQuestionIndex})" class="flashcard-button incorrect-button">❌ Falsch</button>
+                    </div>
+                    <div class="flashcard-navigation">
+                        <button onclick="previousQuestion()" ${currentQuestionIndex === 0 ? 'disabled' : ''}>⬅️ Vorherige Karte</button>
+                        <button onclick="nextQuestion()" disabled>Nächste Karte ➡️</button>
                     </div>
                 `;
             } else {
@@ -601,11 +650,13 @@
 
         }, 300); // Warte auf Slide-Out Animation
 
-        // Update navigation buttons
-        document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
-        document.getElementById('next-question').disabled = 
-            currentQuestionIndex === currentQuestions.length - 1 || 
-            !answeredQuestions.has(currentQuestionIndex);
+        // Update navigation buttons für normale Fragen
+        if (!isFlashcard) {
+            document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-question').disabled = 
+                currentQuestionIndex === currentQuestions.length - 1 || 
+                !answeredQuestions.has(currentQuestionIndex);
+        }
         
         // Start timer if aktiv
         if (timerActive) {
@@ -963,6 +1014,20 @@
             else if (totalXP >= 350) menuCurrentBadge.textContent = '🥈';
             else if (totalXP >= 100) menuCurrentBadge.textContent = '🥉';
             else menuCurrentBadge.textContent = '';
+        }
+    }
+
+    // Hinzufügen der fehlenden updateProgressPath Funktion
+    function updateProgressPath() {
+        // Diese Funktion aktualisiert den visuellen Fortschritt, falls benötigt
+        // Da sie im ursprünglichen Code aufgerufen aber nicht definiert war
+        const currentXP = totalXP % 100;
+        const progressPercent = Math.round((currentXP / 100) * 100);
+        
+        // Falls ein Fortschrittsbalken existiert, aktualisieren wir diesen
+        const progressBar = document.querySelector('.progress-bar');
+        if (progressBar) {
+            progressBar.style.width = `${progressPercent}%`;
         }
     }
 
