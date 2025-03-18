@@ -269,7 +269,7 @@
 
     <script>
     // Theme toggle functionality
-    let darkMode = localStorage.getItem('darkMode') !== 'false'; // Standardmäßig aktiviert, es sei denn explizit deaktiviert
+    let darkMode = localStorage.getItem('darkMode') !== 'false'; // Standardmäßig aktiviert, außer wenn explizit deaktiviert
 
     function toggleTheme() {
         darkMode = !darkMode;
@@ -592,13 +592,13 @@
         // Navigation entsprechend dem Fragetyp anzeigen/verstecken
         const navigationElement = document.querySelector('.question-navigation');
         if (navigationElement) {
-            navigationElement.style.display = isFlashcard ? 'none' : 'flex';
+            navigationElement.style.display = 'none'; // Immer ausblenden für mehr Konsistenz
         }
         
-        // Entferne alte Flashcard-Controls falls vorhanden
-        const oldFlashcardControls = document.querySelector('.flashcard-controls');
-        if (oldFlashcardControls) {
-            oldFlashcardControls.remove();
+        // Flashcard-Controls außerhalb der Karte entfernen, falls vorhanden
+        const existingFlashcardControls = document.querySelector('.flashcard-controls-outside');
+        if (existingFlashcardControls) {
+            existingFlashcardControls.remove();
         }
         
         setTimeout(() => {
@@ -607,7 +607,7 @@
 
             // Darstellung abhängig vom Fragetyp (Normales Quiz oder Flashcard)
             if (isFlashcard) {
-                // Flashcard-Darstellung
+                // Flashcard-Darstellung - ohne Flashcard-Controls innerhalb
                 container.innerHTML = `
                     <div class="flashcard" onclick="flipCard(${currentQuestionIndex})">
                         <div class="card-face card-front">
@@ -621,17 +621,19 @@
                     </div>
                 `;
                 
-                // Füge Flashcard-Controls außerhalb des current-question Divs hinzu
-                const singleQuestionContainer = document.getElementById('single-question-container');
+                // Füge Flashcard-Controls außerhalb des Containers hinzu
                 const flashcardControls = document.createElement('div');
-                flashcardControls.className = 'flashcard-controls';
+                flashcardControls.className = 'flashcard-controls-outside';
                 flashcardControls.innerHTML = `
                     <button onclick="markFlashcardCorrect(${currentQuestionIndex})" class="flashcard-button correct-button">✅ Richtig</button>
                     <button onclick="markFlashcardIncorrect(${currentQuestionIndex})" class="flashcard-button incorrect-button">❌ Falsch</button>
                 `;
-                singleQuestionContainer.appendChild(flashcardControls);
                 
-                // Aktiviere die Flashcard-Klasse am Container, um Navigationselemente zu verstecken
+                // Füge die Controls nach dem single-question-container ein
+                const questionContainer = document.getElementById('single-question-container');
+                questionContainer.parentNode.insertBefore(flashcardControls, questionContainer.nextSibling);
+                
+                // Aktiviere die Flashcard-Klasse am Container
                 container.parentElement.classList.add('flashcard-active');
             } else {
                 // Normales Multiple-Choice-Quiz
@@ -653,6 +655,11 @@
                 
                 // Entferne die Flashcard-Klasse
                 container.parentElement.classList.remove('flashcard-active');
+                
+                // Zeige die normalen Navigationselemente für Multiple-Choice-Fragen
+                if (navigationElement) {
+                    navigationElement.style.display = 'flex';
+                }
             }
             
             // Füge Slide-In Animation hinzu
