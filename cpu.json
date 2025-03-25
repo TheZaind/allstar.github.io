@@ -984,7 +984,599 @@
                 "options": ["Kein funktionaler Unterschied", "Dedizierte GPUs haben eigenen Speicher und höhere Leistung", "Onboard-GPUs sind immer schneller", "Nur der Preis unterscheidet sich"],
                 "correct": 1,
                 "hint": "Es geht um Ressourcennutzung, Speicherzugriff und Leistungspotenzial."
-              }
-            
+              },{
+                "question": "Du baust einen Computer zusammen und möchtest den Prozessor einsetzen. Welche Vorsichtsmaßnahme ist besonders wichtig, um Beschädigungen zu vermeiden? 🛠️",
+                "options": [
+                    "Den Prozessor mit Handschuhen anfassen",
+                    "Einen Zero Insertion Force (ZIF) Sockel verwenden",
+                    "Den Prozessor mit Klebeband fixieren",
+                    "Den Prozessor vorher abkühlen"
+                ],
+                "correct": 1,
+                "hint": "ZIF-Sockel ermöglichen das Einsetzen des Prozessors ohne Kraftaufwendung und minimieren Beschädigungsrisiken."
+            },
+            {
+                "question": "Welche Herausforderung entsteht, wenn ein Prozessor unsachgemäß vom Sockel entfernt wird? 📌",
+                "options": [
+                    "Der Prozessor wird sofort unbrauchbar",
+                    "Mögliche Beschädigung der Pins durch den 'Antenneneffekt'",
+                    "Das Mainboard schmilzt",
+                    "Der Arbeitsspeicher wird gelöscht"
+                ],
+                "correct": 1,
+                "hint": "Die Pins können durch falsches Herausziehen verbogen werden, was als 'Antenneneffekt' bezeichnet wird."
+            },
+            {
+                "question": "Ein Unternehmen möchte die Zuverlässigkeit seiner Computersysteme verbessern. Welche Technologie könnte dabei helfen? 🔧",
+                "options": [
+                    "Goldplattierte CPU-Sockel",
+                    "Zusätzliche Lüfter installieren",
+                    "Teurere Prozessoren kaufen",
+                    "Regelmäßige Softwareupdates"
+                ],
+                "correct": 0,
+                "hint": "Goldplattierte Sockel verbessern die Kontaktzuverlässigkeit und reduzieren Korrosionsrisiken."
+            },
+            {
+                "question": "Du entwickelst ein Computersystem für ressourcenintensive Anwendungen. Welche Strategie zur Reduzierung der Verlustleistung wäre am effektivsten? 🌡️",
+                "options": [
+                    "Mehr Lüfter hinzufügen",
+                    "Kühlere Umgebungstemperatur wählen",
+                    "Versorgungsspannung senken und Prozessorkerne aufteilen",
+                    "Häufigere Systemneustarts durchführen"
+                ],
+                "correct": 2,
+                "hint": "Die Reduzierung der Versorgungsspannung und die Aufteilung in mehrere Prozessorkerne kann die Verlustleistung minimieren."
+            },
+            {
+                "question": "In einem Virtualisierungsszenario - welche Hardwarefunktion wird entscheidend? 🖥️",
+                "options": [
+                    "Externe Netzwerkschnittstelle",
+                    "Integrierte Virtualisierungsfunktionen der CPU",
+                    "Zusätzlicher Arbeitsspeicher",
+                    "Schnelle Festplatte"
+                ],
+                "correct": 1,
+                "hint": "Moderne Prozessoren haben spezielle Funktionen, um mehrere Betriebssysteme gleichzeitig zu unterstützen."
+            },
+            {
+                "question": "Wie entwickelte sich die Kommunikation zwischen CPU und anderen Systemkomponenten im Laufe der Zeit? 🔗",
+                "options": [
+                    "Kommunikation blieb unverändert",
+                    "Übergang von separaten Chips zu integrierten Funktionen",
+                    "Nur Erweiterung der Bussysteme",
+                    "Vollständige Trennung der Komponenten"
+                ],
+                "correct": 1,
+                "hint": "Frühere Northbridge und Southbridge wurden zunehmend in die CPU integriert."
+            },
+            {
+                "question": "Du planst einen Multimedia-Computer. Welche Nebenprozessoren sind besonders wichtig? 🎮",
+                "options": [
+                    "Nur Netzwerkprozessor",
+                    "Grafikprozessor und Soundprozessor",
+                    "RAID-Prozessor",
+                    "Ausschließlich Hauptprozessor"
+                ],
+                "correct": 1,
+                "hint": "Für Multimedia-Anwendungen sind besonders Grafik- und Soundverarbeitung entscheidend."
+            },
+            {
+                "question": "Welche Entwicklung zeigt sich bei der Integration von Grafikfunktionen? 🖼️",
+                "options": [
+                    "Grafikkarten werden komplett überflüssig",
+                    "Grafiklösungen können integriert, auf Erweiterungskarten oder per USB vorkommen",
+                    "Nur externe Grafikkarten sind möglich",
+                    "Grafische Darstellung wird unwichtig"
+                ],
+                "correct": 1,
+                "hint": "Moderne Systeme bieten flexible Grafikintegrationsmöglichkeiten."
+            },
+            {
+                "question": "Ein Entwickler möchte ein energieeffizientes Computersystem entwerfen. Welche Aspekte sind zu berücksichtigen? ⚡",
+                "options": [
+                    "Nur die Prozessorleistung maximieren",
+                    "Verlustleistung minimieren und Wärmequellen verteilen",
+                    "Möglichst viele Lüfter einbauen",
+                    "Teurere Komponenten verwenden"
+                ],
+                "correct": 1,
+                "hint": "Energieeffizienz erreicht man durch intelligente Wärmeverteilung und Spannungsoptimierung."
+            },
+            {
+                "question": "Welche Entwicklung zeigt sich bei der Kommunikation zwischen CPU und anderen Komponenten? 📡",
+                "options": [
+                    "Kommunikation wurde komplizierter",
+                    "Übergang von separaten Bussystemen zu integrierten Verbindungen",
+                    "Keine wesentlichen Veränderungen",
+                    "Vollständige Trennung der Komponenten"
+                ],
+                "correct": 1,
+                "hint": "Frühere Bussysteme wie FSB wurden durch integrierte Verbindungstechnologien ersetzt."
+            },
+            {
+                "question": "Du entwickelst ein Systemdesign für professionelle Videobearbeitung. Welche Grafikkomponente wäre am sinnvollsten? 🎥",
+                "options": [
+                    "Integrierte Grafiklösung",
+                    "Dedizierte Grafikkarte mit eigenem Videospeicher",
+                    "USB-Grafiklösung",
+                    "Ausschließlich CPU-Grafikeinheit"
+                ],
+                "correct": 1,
+                "hint": "Professionelle Anwendungen benötigen leistungsfähige Grafikkarten mit eigenem Speicher."
+            },
+            {
+                "question": "Welche Technologie ermöglicht die Nutzung mehrerer Grafikkarten? 🖥️",
+                "options": [
+                    "Einfaches Nebeneinanderstellen",
+                    "Multi-GPU-Technologien wie Crossfire",
+                    "Nur durch Mainboard-Erweiterungen",
+                    "Ausschließlich durch Softwarelösungen"
+                ],
+                "correct": 1,
+                "hint": "Spezielle Technologien ermöglichen die parallele Nutzung mehrerer Grafikkarten."
+            },
+            {
+                "question": "Ein Systemadministrator möchte die Datensicherheit verbessern. Welche Nebenprozessor-Funktion könnte hilfreich sein? 💾",
+                "options": [
+                    "Soundprozessor",
+                    "RAID-Prozessor zur Datenverteilung",
+                    "Netzwerkprozessor",
+                    "Grafikprozessor"
+                ],
+                "correct": 1,
+                "hint": "RAID-Prozessoren ermöglichen die Verteilung und Spiegelung von Daten auf Massenspeichern."
+            },
+            {
+                "question": "Welche Entwicklung zeigt sich bei der Integration von Nebenprozessoren? 🧩",
+                "options": [
+                    "Zunehmende Spezialisierung",
+                    "Konzentration von Funktionen in weniger Chips",
+                    "Vollständige Trennung der Funktionen",
+                    "Rückkehr zu älteren Technologien"
+                ],
+                "correct": 1,
+                "hint": "Moderne Systeme integrieren immer mehr Funktionen in weniger Komponenten."
+            },
+            {
+                "question": "Du planst einen Server für Netzwerkanwendungen. Welche Komponente ist besonders wichtig? 🌐",
+                "options": [
+                    "Grafikprozessor",
+                    "Soundprozessor",
+                    "Netzwerkprozessor",
+                    "RAID-Prozessor"
+                ],
+                "correct": 2,
+                "hint": "Netzwerkprozessoren sind entscheidend für die Kommunikation und Netzwerkverbindungen."
+            },
+            {
+                "question": "Welche Schnittstellen sind typisch für moderne Soundprozessoren? 🎧",
+                "options": [
+                    "Nur interne Verbindungen",
+                    "Verschiedene Audioanschlüsse für Ein- und Ausgabe",
+                    "Ausschließlich USB-Anschlüsse",
+                    "Nur digitale Schnittstellen"
+                ],
+                "correct": 1,
+                "hint": "Soundprozessoren bieten multiple Schnittstellen für verschiedene Audio-Ein- und Ausgabegeräte."
+            },
+            {
+                "question": "Ein Entwickler möchte die Effizienz eines Computersystems maximieren. Welche Aspekte sind zu berücksichtigen? 🔬",
+                "options": [
+                    "Nur Hauptprozessor optimieren",
+                    "Integration und Kommunikation aller Nebenprozessoren",
+                    "Ausschließlich Arbeitsspeicher erweitern",
+                    "Teurere Komponenten kaufen"
+                ],
+                "correct": 1,
+                "hint": "Die Gesamteffizienz hängt von der optimalen Integration und Kommunikation aller Systemkomponenten ab."
+            },
+            {
+                "question": "Welche Technologie ermöglicht die gleichzeitige Nutzung mehrerer Betriebssysteme? 💻",
+                "options": [
+                    "Mehr Arbeitsspeicher",
+                    "Integrierte CPU-Virtualisierungsfunktionen",
+                    "Schnellere Festplatte",
+                    "Bessere Kühlung"
+                ],
+                "correct": 1,
+                "hint": "Moderne Prozessoren haben spezielle Funktionen zur Unterstützung von Virtualisierung."
+            },
+            {
+                "question": "Wie entwickelten sich Grafikkomponenten in Computersystemen? 🖼️",
+                "options": [
+                    "Unverändert geblieben",
+                    "Von separaten Chips zu integrierten und erweiterbaren Lösungen",
+                    "Vollständige Ablösung durch Software",
+                    "Nur externe Lösungen"
+                ],
+                "correct": 1,
+                "hint": "Grafikkomponenten entwickelten sich von separaten Chips zu integrierten und erweiterbaren Lösungen."
+            },
+            {
+                "question": "Ein Unternehmen plant die Erweiterung seiner Computersysteme. Welche Aspekte sind bei Prozessoren wichtig? 🏢",
+                "options": [
+                    "Nur Taktfrequenz betrachten",
+                    "Virtualisierungsfähigkeiten, Energieeffizienz und Erweiterbarkeit",
+                    "Ausschließlich Preis vergleichen",
+                    "Nur Herstellermarke beachten"
+                ],
+                "correct": 1,
+                "hint": "Moderne Prozessorauswahl berücksichtigt mehrere Aspekte wie Virtualisierung und Energieeffizienz."
+            },
+            {
+                "question": "Welche Entwicklung zeigt sich bei Prozessor-Sockettypen? 🔌",
+                "options": [
+                    "Keine Veränderungen",
+                    "Übergang zu Zero Insertion Force (ZIF) Sockeln",
+                    "Vollständige Verlötung",
+                    "Rückkehr zu älteren Sockeltypen"
+                ],
+                "correct": 1,
+                "hint": "ZIF-Sockel ermöglichen einfaches und schonendes Einsetzen von Prozessoren."
+            },
+            {
+                "question": "Du entwickelst ein Multimedia-Arbeitssystem. Welche Grafikintegrationsmöglichkeiten existieren? 🎨",
+                "options": [
+                    "Nur externe Grafikkarten",
+                    "Onboard, auf Erweiterungskarten oder per USB",
+                    "Ausschließlich integrierte Grafiklösungen",
+                    "Nur PCIe-Grafikkarten"
+                ],
+                "correct": 1,
+                "hint": "Moderne Systeme bieten vielfältige Grafikintegrationsmöglichkeiten."
+            },
+            {
+                "question": "Welche Aspekte sind bei der Wahl eines Netzwerkprozessors wichtig? 🌍",
+                "options": [
+                    "Nur Übertragungsgeschwindigkeit",
+                    "Kommunikationsfähigkeiten und Schnittstellenoptionen",
+                    "Ausschließlich Preis",
+                    "Nur Markenname"
+                ],
+                "correct": 1,
+                "hint": "Netzwerkprozessoren unterscheiden sich in Kommunikationsfähigkeiten und Schnittstellenoptionen."
+            },
+            {
+                "question": "Ein Entwickler möchte die Datensicherheit verbessern. Welche Nebenprozessor-Funktion ist hilfreich? 💾",
+                "options": [
+                    "Soundprozessor",
+                    "RAID-Prozessor zur Datenverteilung",
+                    "Grafikprozessor",
+                    "Netzwerkprozessor"
+                ],
+                "correct": 1,
+                "hint": "RAID-Prozessoren ermöglichen die Verteilung und Spiegelung von Daten auf Massenspeichern."
+            },
+            {
+                "question": "Welche Aspekte sind bei der Kühlung von Prozessoren entscheidend? 🌡️",
+                "options": [
+                    "Nur Luftzirkulation",
+                    "Verlustleistung, Wärmeverteilung und Kühlungsmethoden",
+                    "Ausschließlich Lüftergröße",
+                    "Nur Prozessortemperatur"
+                ],
+                "correct": 1,
+                "hint": "Effektive Kühlung berücksichtigt Verlustleistung, Wärmeverteilung und verschiedene Kühlungsmethoden."
+            },
+            {
+                "question": "Du planst ein leistungsfähiges Grafiksystem. Welche Videospeicher-Strategie wäre sinnvoll? 🖥️",
+                "options": [
+                    "Nur Systemspeicher nutzen",
+                    "Dedizierten Videospeicher verwenden",
+                    "Ausschließlich integrierte Grafiklösung",
+                    "Kleinsten verfügbaren Speicher wählen"
+                ],
+                "correct": 1,
+                "hint": "Dedizierter Videospeicher bietet bessere Leistung für grafikintensive Anwendungen."
+            },
+            {
+                "question": "Welche Entwicklung zeigt sich bei Bussystemen zwischen CPU und anderen Komponenten? 🔗",
+                "options": [
+                    "Keine Veränderungen",
+                    "Übergang zu integrierten, schnelleren Verbindungen",
+                    "Vollständige Trennung der Komponenten",
+                    "Rückkehr zu älteren Technologien"
+                ],
+                "correct": 1,
+                "hint": "Moderne Systeme nutzen integrierte, schnellere Verbindungstechnologien anstelle separater Bussysteme."
+            },{
+              "question": "Du baust einen Zeitrechner und hast nur 4-Bit-Komponenten zur Verfügung. Wie viele unterschiedliche Zahlenwerte kannst du mit deinem Prozessor darstellen? 🧮",
+              "options": [
+                  "16 verschiedene Werte",
+                  "8 verschiedene Werte",
+                  "32 verschiedene Werte",
+                  "64 verschiedene Werte"
+              ],
+              "correct": 0,
+              "hint": "Berechne 2^4, um die maximale Anzahl der darstellbaren Werte zu finden."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor und möchtest die Leistung maximieren. Welche Strategie würdest du bei der Befehlssatz-Architektur wählen? 🚀",
+              "options": [
+                  "Viele komplexe Befehle mit umfassender Funktionalität",
+                  "Eine kleine Anzahl hochoptimierter, häufig verwendeter Befehle",
+                  "Zufällig verteilte Befehlssätze",
+                  "Nur Befehle, die mehr als zwei Taktzyklen benötigen"
+              ],
+              "correct": 1,
+              "hint": "Die Effizienz liegt in der Optimierung weniger, aber häufig genutzter Befehle."
+          },
+          {
+              "question": "Dein Prozessor hat 20 Adressleitungen. Wie viel Arbeitsspeicher kannst du maximal adressieren? 🧠",
+              "options": [
+                  "64 KiB",
+                  "1 MiB",
+                  "4 GiB",
+                  "16 MiB"
+              ],
+              "correct": 1,
+              "hint": "Berechne 2^20, um die maximale Adressierbarkeit zu bestimmen."
+          },
+          {
+              "question": "Du möchtest die Rechenleistung deines Prozessors verbessern. Welche Strategie bietet den größten Leistungssprung? 🔬",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Hinzufügen von Rechenkernen",
+                  "Vergrößerung des L1-Caches",
+                  "Änderung der Herstellungsarchitektur"
+              ],
+              "correct": 1,
+              "hint": "Mehrere Kerne ermöglichen parallele Verarbeitung von Aufgaben."
+          },
+          {
+              "question": "Welche Entwicklung ermöglichte die Erhöhung der Transistorenzahl in Prozessoren? 📈",
+              "options": [
+                  "Vergrößerung der Prozessorgröße",
+                  "Reduzierung der Strukturgröße durch Lithographie",
+                  "Erhöhung der Betriebsspannung",
+                  "Verringerung der Cachegröße"
+              ],
+              "correct": 1,
+              "hint": "Kleinere Strukturgrößen bedeuten mehr Transistoren auf gleicher Fläche."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für eingebettete Systeme. Welche Befehlssatz-Architektur wäre am effizientesten? 🤖",
+              "options": [
+                  "Sehr umfangreicher Befehlssatz mit vielen Spezialfunktionen",
+                  "Reduzierter Befehlssatz mit optimierten Standardbefehlen",
+                  "Befehlssatz mit zufällig verteilten Funktionen",
+                  "Befehlssatz, der nur komplexe Befehle enthält"
+              ],
+              "correct": 1,
+              "hint": "Eingebettete Systeme profitieren von effizienten, schnell ausführbaren Befehlen."
+          },
+          {
+              "question": "Wie würdest du die Leistung eines Prozessors mit Multi-Threading verbessern? 🔀",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Hinzufügen von Threads pro Kern",
+                  "Verkleinerung des Caches",
+                  "Reduzierung der Adressbusbreite"
+              ],
+              "correct": 1,
+              "hint": "Mehr Threads pro Kern ermöglichen parallele Aufgabenausführung."
+          },
+          {
+              "question": "Du planst einen Prozessor für wissenschaftliche Berechnungen. Welche Architektur wäre am geeignetsten? 🔬",
+              "options": [
+                  "Viele langsame Kerne",
+                  "Wenige sehr schnelle Kerne",
+                  "Maximale Anzahl von Threads pro Kern",
+                  "Sehr komplexer Befehlssatz"
+              ],
+              "correct": 2,
+              "hint": "Wissenschaftliche Berechnungen profitieren von paralleler Verarbeitung."
+          },
+          {
+              "question": "Welche Entwicklung ermöglichte den Übergang von 32-Bit zu 64-Bit-Prozessoren? 🖥️",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Verkleinerung der Strukturgröße",
+                  "Erweiterung des Adressbusses",
+                  "Reduzierung der Cachegröße"
+              ],
+              "correct": 2,
+              "hint": "Der erweiterte Adressbus ermöglicht die Adressierung größerer Speichermengen."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für mobile Geräte. Welche Eigenschaft ist am wichtigsten? 🔋",
+              "options": [
+                  "Maximale Rechenleistung",
+                  "Geringe Verlustleistung",
+                  "Maximale Anzahl von Kernen",
+                  "Größter Cache"
+              ],
+              "correct": 1,
+              "hint": "Mobile Geräte benötigen energieeffiziente Prozessoren für längere Akkulaufzeit."
+          },
+          {
+              "question": "Wie würdest du die Speicherzugriffs-Geschwindigkeit eines Prozessors verbessern? 💨",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Vergrößerung des Caches",
+                  "Hinzufügen von Rechenkernen",
+                  "Verkleinerung des Adressbusses"
+              ],
+              "correct": 1,
+              "hint": "Ein größerer Cache reduziert die Zugriffszeit auf häufig benötigte Daten."
+          },
+          {
+              "question": "Du hast einen Prozessor mit 16 Adressleitungen. Wie viel Speicher kannst du maximal adressieren? 🧮",
+              "options": [
+                  "64 KiB",
+                  "1 MiB",
+                  "4 GiB",
+                  "16 MiB"
+              ],
+              "correct": 0,
+              "hint": "Berechne 2^16, um die maximale Adressierbarkeit zu bestimmen."
+          },
+          {
+              "question": "Welche Entwicklung ermöglichte die Steigerung der Prozessorleistung über Taktfrequenzerhöhungen hinaus? 🚀",
+              "options": [
+                  "Erhöhung der Betriebsspannung",
+                  "Hinzufügen von Rechenkernen",
+                  "Verkleinerung des Caches",
+                  "Reduzierung der Adressbusbreite"
+              ],
+              "correct": 1,
+              "hint": "Mehrere Kerne ermöglichen parallele Verarbeitung von Aufgaben."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für Grafikberechnungen. Welche Architektur wäre am effektivsten? 🎨",
+              "options": [
+                  "Wenige sehr schnelle Kerne",
+                  "Maximale Anzahl von Threads pro Kern",
+                  "Sehr komplexer Befehlssatz",
+                  "Minimaler Cache"
+              ],
+              "correct": 1,
+              "hint": "Grafikberechnungen profitieren von paralleler Verarbeitung durch viele Threads."
+          },
+          {
+              "question": "Wie beeinflusst die Strukturgröße die Prozessorleistung? 🔬",
+              "options": [
+                  "Größere Strukturen erhöhen die Leistung",
+                  "Kleinere Strukturen ermöglichen mehr Transistoren",
+                  "Strukturgröße hat keinen Einfluss",
+                  "Nur große Strukturen sind effizient"
+              ],
+              "correct": 1,
+              "hint": "Kleinere Strukturen erlauben mehr Transistoren bei gleicher Chipfläche."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für Echtzeit-Steuerungssysteme. Welche Eigenschaft ist entscheidend? ⏱️",
+              "options": [
+                  "Maximale Rechenleistung",
+                  "Vorhersagbare Ausführungszeiten",
+                  "Maximale Anzahl von Kernen",
+                  "Größter Cache"
+              ],
+              "correct": 1,
+              "hint": "Echtzeit-Systeme benötigen konsistente und vorhersagbare Verarbeitungszeiten."
+          },
+          {
+              "question": "Welche Strategie verbessert die Prozessorleistung durch Caching? 💾",
+              "options": [
+                  "Verkleinerung des Caches",
+                  "Verteilung des Caches auf alle Kerne",
+                  "Zentralisierung des Caches",
+                  "Eliminierung des Caches"
+              ],
+              "correct": 1,
+              "hint": "Verteilte Caches pro Kern reduzieren Zugriffslatenzen."
+          },
+          {
+              "question": "Du möchtest die Energieeffizienz deines Prozessors verbessern. Welche Technik hilft? 🔋",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Dynamische Taktanpassung",
+                  "Hinzufügen von Rechenkernen",
+                  "Vergrößerung des Caches"
+              ],
+              "correct": 1,
+              "hint": "Dynamische Taktanpassung reduziert den Energieverbrauch bei geringer Auslastung."
+          },
+          {
+              "question": "Welche Entwicklung ermöglichte komplexere Berechnungen in Prozessoren? 🧠",
+              "options": [
+                  "Erhöhung der Betriebsspannung",
+                  "Erweiterung des Registersatzes",
+                  "Verkleinerung des Adressbusses",
+                  "Reduzierung der Cachegröße"
+              ],
+              "correct": 1,
+              "hint": "Mehr und größere Register ermöglichen komplexere Berechnungen."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für Kryptografie. Welche Architektur wäre am geeignetsten? 🔐",
+              "options": [
+                  "Maximale Anzahl von Threads",
+                  "Spezielle Verschlüsselungsbefehle",
+                  "Sehr großer Cache",
+                  "Maximale Taktfrequenz"
+              ],
+              "correct": 1,
+              "hint": "Spezialisierte Befehle beschleunigen kryptografische Berechnungen."
+          },
+          {
+              "question": "Wie würdest du die Prozessorleistung für Multimedia-Anwendungen optimieren? 🎬",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Spezielle Multimedia-Befehle",
+                  "Maximale Anzahl von Kernen",
+                  "Verkleinerung des Caches"
+              ],
+              "correct": 1,
+              "hint": "Spezielle Befehle können Multimedia-Operationen beschleunigen."
+          },
+          {
+              "question": "Du planst einen Prozessor für Serveranwendungen. Welche Eigenschaft ist am wichtigsten? 🖥️",
+              "options": [
+                  "Maximale Taktfrequenz",
+                  "Hohe Anzahl von Rechenkernen",
+                  "Minimaler Cache",
+                  "Geringe Betriebsspannung"
+              ],
+              "correct": 1,
+              "hint": "Server profitieren von paralleler Verarbeitung durch viele Kerne."
+          },
+          {
+              "question": "Welche Entwicklung verbesserte die Prozessorleistung durch Befehlsoptimierung? 🚀",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Pipeline-Technologie",
+                  "Vergrößerung des Caches",
+                  "Reduzierung der Adressbusbreite"
+              ],
+              "correct": 1,
+              "hint": "Pipeline-Technologie ermöglicht die parallele Verarbeitung von Befehlsteilen."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für mobile Sensornetzwerke. Welche Eigenschaft ist entscheidend? 📡",
+              "options": [
+                  "Maximale Rechenleistung",
+                  "Sehr geringe Energieaufnahme",
+                  "Maximale Anzahl von Kernen",
+                  "Größter Cache"
+              ],
+              "correct": 1,
+              "hint": "Sensornetzwerke benötigen extrem energieeffiziente Prozessoren."
+          },
+          {
+              "question": "Wie würdest du die Speicherzugriffs-Performance verbessern? 💨",
+              "options": [
+                  "Erhöhung der Taktfrequenz",
+                  "Mehrere Speicherhierarchieebenen",
+                  "Hinzufügen von Rechenkernen",
+                  "Verkleinerung des Adressbusses"
+              ],
+              "correct": 1,
+              "hint": "Mehrstufige Speicherhierarchie reduziert Zugriffszeiten."
+          },
+          {
+              "question": "Du entwickelst einen Prozessor für Spiele-Anwendungen. Welche Eigenschaft ist am wichtigsten? 🎮",
+              "options": [
+                  "Maximale Anzahl von Kernen",
+                  "Hohe Einzelkern-Leistung",
+                  "Minimaler Cache",
+                  "Geringe Betriebsspannung"
+              ],
+              "correct": 1,
+              "hint": "Spieleanwendungen profitieren oft von hoher Leistung einzelner Kerne."
+          },
+          {
+              "question": "Welche Entwicklung ermöglichte komplexere Prozessorarchitekturen? 🔬",
+              "options": [
+                  "Erhöhung der Betriebsspannung",
+                  "Reduzierung der Strukturgröße",
+                  "Verkleinerung des Adressbusses",
+                  "Minimierung des Caches"
+              ],
+              "correct": 1,
+              "hint": "Kleinere Strukturgrößen ermöglichen komplexere Schaltkreise."
+          }
+        
         ]
 }

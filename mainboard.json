@@ -109,6 +109,894 @@
             ],
             "correct": 1,
             "hint": "Moderne BIOS/UEFI-Systeme bieten eine benutzerfreundliche Oberfläche."
-        }
+        },{
+            "question": "Was ist die primäre Funktion der Leiterbahnen auf einem Mainboard? 🔌",
+            "options": [
+                "Dekorative Gestaltung der Platine",
+                "Verbindung und Kommunikation elektronischer Bauteile",
+                "Erhöhung der Mainboard-Stabilität",
+                "Wärmeisolation der Komponenten"
+            ],
+            "correct": 1,
+            "hint": "Leiterbahnen ermöglichen die Signalübertragung zwischen verschiedenen Komponenten."
+        },
+        {
+            "question": "Welche Herausforderung entsteht durch dünne Leiterbahnen auf Mainboards? 🌡️",
+            "options": [
+                "Erhöhte Signalgeschwindigkeit",
+                "Verbesserte Stromverteilung",
+                "Stärkere Erwärmung durch hohe Stromdichte",
+                "Einfachere Herstellung der Platine"
+            ],
+            "correct": 2,
+            "hint": "Dünne Leiterbahnen führen zu einer höheren Stromdichte, was eine stärkere Erwärmung verursacht."
+        },
+        {
+            "question": "Welche Komponenten sind typischerweise auf einem Mainboard zu finden? 🖥️",
+            "options": [
+                "Nur CPU und RAM",
+                "Prozessorsockel, Chipsatz, ROM-Chip, Steckplätze",
+                "Grafikkarte und Soundkarte",
+                "Externe Festplatten und Netzteile"
+            ],
+            "correct": 1,
+            "hint": "Ein Mainboard enthält verschiedene integrierte Komponenten zur Systemsteuerung."
+        },
+        {
+            "question": "Was ist die Funktion des ROM-Chips auf einem Mainboard? ⚙️",
+            "options": [
+                "Speichern von Nutzerdaten",
+                "Berechnung komplexer Algorithmen",
+                "Speichern des BIOS/UEFI",
+                "Grafische Darstellung von Systeminfos"
+            ],
+            "correct": 2,
+            "hint": "Der ROM-Chip speichert das BIOS/UEFI, welches beim Systemstart grundlegende Hardwarefunktionen initialisiert."
+        },
+        {
+            "question": "Welche Herausforderung muss bei der Mainboard-Konstruktion berücksichtigt werden? 📡",
+            "options": [
+                "Maximale Dehnbarkeit der Platine",
+                "Vermeidung von elektromagnetischen Interferenzen",
+                "Erhöhung der Geräuschintensität",
+                "Reduzierung der Leitungsquerschnitte"
+            ],
+            "correct": 1,
+            "hint": "Elektromagnetische Interferenzen können die Funktionalität empfindlicher Komponenten beeinträchtigen."
+        },
+        {
+            "question": "Woraus besteht die Grundlage eines Mainboards? 🧱",
+            "options": [
+                "Metallplatten",
+                "Glasfasermaterial",
+                "Trägerplatte aus Kunstharz",
+                "Keramische Beschichtung"
+            ],
+            "correct": 2,
+            "hint": "Die Trägerplatte bildet die Basis, auf der elektronische Bauteile angeordnet und verbunden werden."
+        },
+        {
+            "question": "Was kennzeichnet die Leiterbahnen auf modernen Mainboards? 🔬",
+            "options": [
+                "Einzelne Kupferschicht",
+                "Mehrlagige Konstruktion mit dünnen Kupfer- oder Silberschichten",
+                "Massive Metallverbindungen",
+                "Vollständig isolierte Leitungen"
+            ],
+            "correct": 1,
+            "hint": "Moderne Mainboards nutzen mehrschichtige Leiterbahnen für kompakte und effiziente Signalübertragung."
+        },
+        {
+            "question": "Welche Aufgabe erfüllt die Stützbatterie auf dem Mainboard? 🕰️",
+            "options": [
+                "Stromversorgung der CPU",
+                "Backup für Festplattendaten",
+                "Unterstützung der Systemuhr und BIOS-Einstellungen",
+                "Aktivierung des Kühlsystems"
+            ],
+            "correct": 2,
+            "hint": "Die Stützbatterie ermöglicht das Speichern von BIOS-Einstellungen und die Funktion der Systemuhr auch bei ausgeschaltetem Computer."
+        },
+        {
+            "question": "Warum sind Prozessorsockel wichtig für Mainboards? 🔧",
+            "options": [
+                "Sie dienen als Dekoration",
+                "Sie ermöglichen den Austausch des Prozessors",
+                "Sie reduzieren die Mainboard-Größe",
+                "Sie verbessern die Kühlung"
+            ],
+            "correct": 1,
+            "hint": "Prozessorsockel erlauben den Austausch oder Upgrade des Hauptprozessors ohne das gesamte Mainboard zu ersetzen."
+        },
+        {
+            "question": "Welche Komponenten können typischerweise auf dem Backpanel eines Mainboards gefunden werden? 🔌",
+            "options": [
+                "Interne Kühlsysteme",
+                "Erweiterungskarten",
+                "Externe Anschlüsse und Schnittstellen",
+                "Prozessorkühler"
+            ],
+            "correct": 2,
+            "hint": "Das Backpanel bietet Anschlüsse für externe Geräte und Schnittstellen wie USB, HDMI, Netzwerk."
+    },
+            {
+                "question": "Was versteht man unter dem Begriff 'Stromdichte' bei Mainboard-Leiterbahnen? 🔋",
+                "options": [
+                    "Die Anzahl der Stromquellen auf dem Mainboard",
+                    "Die Konzentration von Elektronen pro Querschnittsfläche der Leiterbahn",
+                    "Die Gesamtleistungsaufnahme des Mainboards",
+                    "Die Isolationsfähigkeit der Leiterbahnen"
+                ],
+                "correct": 1,
+                "hint": "Stromdichte beschreibt, wie viele Elektronen einen bestimmten Leiterbahnquerschnitt durchfließen."
+            },
+            {
+                "question": "Welche Herausforderung stellt die mehrlagige Konstruktion von Mainboard-Leiterbahnen dar? 🏗️",
+                "options": [
+                    "Erhöhte Signalübertragungsgeschwindigkeit",
+                    "Verbesserte Wärmeableitung",
+                    "Geringe mechanische Belastbarkeit der dünnen Kupfer- oder Silberschichten",
+                    "Einfachere Herstellungsprozesse"
+                ],
+                "correct": 2,
+                "hint": "Die dünnen Schichten benötigen besondere Sorgfalt beim Einbau und Handling."
+            },
+            {
+                "question": "Welche Strategie hilft bei der Reduzierung von elektromagnetischen Interferenzen (EMI) auf Mainboards? 📡",
+                "options": [
+                    "Erhöhung der Leiterbahnbreite",
+                    "Trennung und Abschirmung sensibler Komponenten",
+                    "Erhöhung der Taktfrequenz",
+                    "Verwendung von Plastikgehäusen"
+                ],
+                "correct": 1,
+                "hint": "Durch räumliche Trennung und gezielte Abschirmung können störende Interferenzen minimiert werden."
+            },
+            {
+                "question": "Warum sind Kühlsysteme auf Mainboards wichtig? 🌡️",
+                "options": [
+                    "Sie verbessern das Design des Mainboards",
+                    "Sie reduzieren die Stromaufnahme der Komponenten",
+                    "Sie verhindern Überhitzung und Leistungsabfall kritischer Komponenten",
+                    "Sie erhöhen die WLAN-Signalstärke"
+                ],
+                "correct": 2,
+                "hint": "Kühlsysteme wie Kühlkörper und Heatpipes verhindern Leistungseinbußen durch Wärmeentwicklung."
+            },
+            {
+                "question": "Welche Funktion erfüllen VRMs (Voltage Regulator Modules) auf einem Mainboard? ⚡",
+                "options": [
+                    "Sie steuern die Lüftergeschwindigkeit",
+                    "Sie regulieren die Spannungsversorgung für verschiedene Komponenten",
+                    "Sie dienen als Speichererweiterung",
+                    "Sie kontrollieren die Netzwerkverbindungen"
+                ],
+                "correct": 1,
+                "hint": "VRMs wandeln die Hauptspannung in die benötigten Spannungslevel für verschiedene Komponenten um."
+            },
+            {
+                "question": "Welche Herausforderung besteht bei der Entwicklung von Mainboards für verschiedene Gerätetypen? 🖥️",
+                "options": [
+                    "Identische Mainboards für alle Gerätetypen",
+                    "Entwicklung spezifischer Mainboard-Varianten für verschiedene Einsatzbereiche",
+                    "Vollständige Standardisierung aller Komponenten",
+                    "Reduzierung der Anschlussmöglichkeiten"
+                ],
+                "correct": 1,
+                "hint": "Verschiedene Gerätetypen wie Server, Desktop-PCs oder mobile Geräte erfordern unterschiedliche Mainboard-Designs."
+            },
+            {
+                "question": "Welche Rolle spielen Quarze auf einem Mainboard? ⏰",
+                "options": [
+                    "Sie dienen als Wärmequelle",
+                    "Sie erzeugen elektrische Spannungen",
+                    "Sie generieren präzise Taktsignale für Systemkomponenten",
+                    "Sie speichern Nutzerdaten"
+                ],
+                "correct": 2,
+                "hint": "Quarze erzeugen stabile Frequenzen zur Synchronisation verschiedener Systemkomponenten."
+            },
+            {
+                "question": "Was bedeutet die Verwendung mehrerer Kupferschichten bei Mainboard-Leiterbahnen? 🔬",
+                "options": [
+                    "Erhöhung der Systemgeschwindigkeit",
+                    "Kompaktere Leiterplattengestaltung bei begrenztem Platz",
+                    "Ausschließlich Verbesserung der Wärmeableitung",
+                    "Reduzierung der Produktionskosten"
+                ],
+                "correct": 1,
+                "hint": "Mehrlagige Leiterbahnen ermöglichen komplexere Verbindungen auf kleinerem Raum."
+            },
+            {
+                "question": "Welche Aufgabe erfüllen Header auf einem Mainboard? 🔌",
+                "options": [
+                    "Sie sind reine Dekoration",
+                    "Sie ermöglichen den Anschluss interner Komponenten und Erweiterungen",
+                    "Sie ersetzen externe Anschlüsse",
+                    "Sie dienen zur Kühlung der Komponenten"
+                ],
+                "correct": 1,
+                "hint": "Header sind Anschlüsse zum Verbinden interner Komponenten wie Lüfter, Sensoren oder zusätzlicher Schnittstellen."
+            },
+            {
+                "question": "Welche Auswirkung hat eine hohe Stromdichte auf Mainboard-Leiterbahnen? 🔥",
+                "options": [
+                    "Verbesserte Signalübertragung",
+                    "Keine nennenswerten Auswirkungen",
+                    "Verstärkte Erwärmung der Leiterbahnen",
+                    "Erhöhung der Signalgeschwindigkeit"
+                ],
+                "correct": 2,
+                "hint": "Hohe Stromdichte führt zu verstärkter Wärmeentwicklung, was die Leistung und Zuverlässigkeit beeinträchtigen kann."
+            },
+            {
+                "question": "Welche Funktion erfüllen Jumper auf einem Mainboard? 🧩",
+                "options": [
+                    "Sie dienen als mechanische Verbindungselemente",
+                    "Sie steuern die Lüftergeschwindigkeit",
+                    "Sie ermöglichen die Konfiguration von Hardwareeinstellungen",
+                    "Sie sind reine Dekoration"
+                ],
+                "correct": 2,
+                "hint": "Jumper ermöglichen die manuelle Konfiguration von Hardwareeinstellungen wie Taktraten oder Spannungen."
+            }, {
+                "question": "Welche Funktion haben die unterschiedlich gefärbten RAM-Steckplätze? 🧩",
+                "options": [
+                    "Sie dienen nur zur Dekoration",
+                    "Die Farben zeigen Kanäle für einen mehrkanaligen Speicherzugriff",
+                    "Sie markieren verschiedene Speichergeschwindigkeiten",
+                    "Sie kennzeichnen unterschiedliche RAM-Typen"
+                ],
+                "correct": 1,
+                "hint": "Beim Dual-Channel-Modus ermöglichen gleichfarbige Steckplätze einen schnelleren Datenaustausch."
+            },
+            {
+                "question": "Welche Anschlüsse findest du typischerweise am Backpanel eines Mainboards? 🔌",
+                "options": [
+                    "Ausschließlich USB-Anschlüsse",
+                    "Netzwerk-, Audio- und verschiedene USB-Anschlüsse",
+                    "Nur Stromversorgungsanschlüsse",
+                    "Ausschließlich Erweiterungskarten-Steckplätze"
+                ],
+                "correct": 1,
+                "hint": "Das Backpanel bietet Anschlüsse für Peripheriegeräte wie Maus, Tastatur, Netzwerk und Audio."
+            },
+            {
+                "question": "Was charakterisiert einen Formfaktor bei Mainboards? 📏",
+                "options": [
+                    "Ausschließlich die Farbe des Mainboards",
+                    "Die Größe, Lage von Bauteilen und Befestigungslöcher",
+                    "Nur die Anzahl der Erweiterungssteckplätze",
+                    "Die Geschwindigkeit der Datenübertragung"
+                ],
+                "correct": 1,
+                "hint": "Der Formfaktor bestimmt wichtige physische Eigenschaften wie Größe und Montagepunkte."
+            },
+            {
+                "question": "Was ist der Unterschied zwischen SATA II- und SATA III-Anschlüssen? 💾",
+                "options": [
+                    "SATA III-Anschlüsse sind in der Regel rot markiert",
+                    "Sie unterscheiden sich in der Übertragungsgeschwindigkeit",
+                    "SATA II-Anschlüsse sind nur für optische Laufwerke",
+                    "Es gibt keinen funktionalen Unterschied"
+                ],
+                "correct": 1,
+                "hint": "SATA III-Anschlüsse bieten eine höhere Datenübertragungsrate im Vergleich zu SATA II."
+            },
+            {
+                "question": "Welche Herausforderung besteht bei einem Tablet-PC-Mainboard mit verlöteten Komponenten? 🔧",
+                "options": [
+                    "Die Stromversorgung ist komplizierter",
+                    "Es ist schwieriger, Komponenten auszutauschen oder zu erweitern",
+                    "Die Kühlung funktioniert anders",
+                    "Es hat weniger Anschlüsse"
+                ],
+                "correct": 1,
+                "hint": "Verlötete Komponenten schränken die Austauschbarkeit von Prozessor und Arbeitsspeicher ein."
+            },
+            {
+                "question": "Welche Komponenten sind oft direkt auf dem Mainboard integriert? 🧠",
+                "options": [
+                    "Grafikkarten und Prozessoren",
+                    "Netzwerk- und Soundchips",
+                    "Festplatten und Arbeitsspeicher",
+                    "Lüfter und Kühlsysteme"
+                ],
+                "correct": 1,
+                "hint": "Moderne Mainboards haben integrierte Chips für Netzwerk und Audio."
+            },
+            {
+                "question": "Wozu dienen Steckplätze auf dem Mainboard heute hauptsächlich? 🔬",
+                "options": [
+                    "Für alle möglichen Erweiterungskarten",
+                    "Für leistungsfähige Grafikkarten, RAID-Controller oder Soundkarten",
+                    "Für zusätzliche Festplatten",
+                    "Für die Stromverteilung"
+                ],
+                "correct": 1,
+                "hint": "Moderne Mainboards haben viele Funktionen bereits integriert, sodass Steckplätze für spezielle Erweiterungen genutzt werden."
+            },
+            {
+                "question": "Was bedeutet der Begriff 'proprietär' bei einem Mainboard? 🏭",
+                "options": [
+                    "Es ist besonders schnell",
+                    "Es ist schwer durch ein ähnliches Mainboard zu ersetzen",
+                    "Es wurde in Eigenproduktion hergestellt",
+                    "Es hat besondere Sicherheitsfunktionen"
+                ],
+                "correct": 1,
+                "hint": "Proprietäre Mainboards sind oft so spezifisch, dass sie nicht einfach ausgetauscht werden können."
+            },
+            {
+                "question": "Welche Speichertypen werden von aktuellen Mainboards erwartet? 💻",
+                "options": [
+                    "DDR2-Speicher",
+                    "DDR3-Speicher",
+                    "DDR4-Speicher",
+                    "SDRAM-Speicher"
+                ],
+                "correct": 2,
+                "hint": "Moderne Mainboards sind auf DDR4-Arbeitsspeicher ausgelegt."
+            },
+            {
+                "question": "Was definiert der Formfaktor bei der Energieversorgung? ⚡",
+                "options": [
+                    "Die Akkukapazität",
+                    "Die Ladegeschwindigkeit",
+                    "Standards bei der Energieversorgung",
+                    "Die Anzahl der Stromanschlüsse"
+                ],
+                "correct": 2,
+                "hint": "Der Formfaktor legt Standards für die Energieversorgung des Mainboards fest."
+            },{
+                "question": "Welche Kriterien sind bei der Auswahl eines Mainboards am wichtigsten? 🤔",
+                "options": [
+                    "Nur das Design und die Farbe",
+                    "Größe, Befestigungsmöglichkeiten, Ausstattung und Kompatibilität",
+                    "Ausschließlich der Preis",
+                    "Die Anzahl der USB-Anschlüsse"
+                ],
+                "correct": 1,
+                "hint": "Ein Mainboard muss viele technische Aspekte erfüllen, um optimal zu funktionieren."
+            },
+            {
+                "question": "Was bedeutet der Formfaktor eines Mainboards? 📏",
+                "options": [
+                    "Die Rechengeschwindigkeit des Prozessors",
+                    "Standardisierte Größe und Montagepunkte für Computergehäuse",
+                    "Die Anzahl der Erweiterungssteckplätze",
+                    "Die Kühlungseigenschaften des Mainboards"
+                ],
+                "correct": 1,
+                "hint": "Der Formfaktor definiert die physischen Abmessungen und Montagepunkte."
+            },
+            {
+                "question": "Welche Komponente muss beim Mainboard-Kauf unbedingt beachtet werden? 🔌",
+                "options": [
+                    "Die Farbe des Mainboards",
+                    "Der Prozessorsockel und seine Kompatibilität",
+                    "Die Anzahl der Lüfteranschlüsse",
+                    "Das Gewicht des Mainboards"
+                ],
+                "correct": 1,
+                "hint": "Der Prozessorsockel muss exakt zum verwendeten Prozessor passen."
+            },
+            {
+                "question": "Was gehört zu den wichtigen internen Anschlüssen eines Mainboards? 🖥️",
+                "options": [
+                    "Externe Monitoreingänge",
+                    "Steckplätze für Erweiterungskarten, Bussysteme und Schnittstellen",
+                    "WLAN-Antennen",
+                    "Externe Soundausgänge"
+                ],
+                "correct": 1,
+                "hint": "Interne Anschlüsse ermöglichen die Erweiterung und Anbindung verschiedener Komponenten."
+            },
+            {
+                "question": "Welche Speichertypen kann ein Mainboard unterstützen? 💾",
+                "options": [
+                    "Ausschließlich SSD-Speicher",
+                    "Verschiedene DDR-Generationen mit unterschiedlichen Taktraten",
+                    "Nur Festplattenspeicher",
+                    "Ausschließlich Cloud-Speicher"
+                ],
+                "correct": 1,
+                "hint": "Mainboards unterstützen unterschiedliche Speichertypen mit verschiedenen Geschwindigkeiten."
+            },
+            {
+                "question": "Was versteht man unter dem Chipsatz eines Mainboards? 🧩",
+                "options": [
+                    "Ein Kühlsystem für den Prozessor",
+                    "Die zentrale Steuereinheit für Datenkommunikation und Hardwarefunktionen",
+                    "Ein Grafikprozessor",
+                    "Ein Netzwerkcontroller"
+                ],
+                "correct": 1,
+                "hint": "Der Chipsatz koordiniert die Kommunikation zwischen verschiedenen Hardwarekomponenten."
+            },
+            {
+                "question": "Welche Aspekte sind für die Kühlungsmöglichkeiten auf einem Mainboard wichtig? 🌡️",
+                "options": [
+                    "Nur die Anzahl der Lüfteranschlüsse",
+                    "Platz für Kühlkörper, Lüfteranschlüsse und Wärmeableitung",
+                    "Die Farbe der Kühlrippen",
+                    "Ausschließlich die Größe der Kühlkörper"
+                ],
+                "correct": 1,
+                "hint": "Gute Kühlung verhindert Überhitzung und garantiert Systemstabilität."
+            },
+            {
+                "question": "Was sollte man bei den externen Anschlüssen (Backpanel) beachten? 🔗",
+                "options": [
+                    "Nur die Anzahl der USB-Ports",
+                    "Standard und Vielfalt der Bussysteme und Schnittstellen",
+                    "Das Design des Anschlussbereichs",
+                    "Die Farbe der Anschlüsse"
+                ],
+                "correct": 1,
+                "hint": "Externe Anschlüsse bestimmen die Anschlussmöglichkeiten für verschiedene Geräte."
+            },
+            {
+                "question": "Welche Informationen sind für die Mainboard-Auswahl entscheidend? 📋",
+                "options": [
+                    "Nur der Kaufpreis",
+                    "Prozessorkompatibilität, Speicherunterstützung, Erweiterungsmöglichkeiten",
+                    "Die Marke des Mainboards",
+                    "Die Anzahl der Lüfter"
+                ],
+                "correct": 1,
+                "hint": "Eine umfassende Kompatibilität ist wichtiger als einzelne Merkmale."
+            },
+            {
+                "question": "Was bedeutet ECC bei Arbeitsspeicher? 🛡️",
+                "options": [
+                    "Eine Kühlungstechnologie",
+                    "Error Checking and Correction - Fehlererkennung und -korrektur",
+                    "Eine Übertragungsgeschwindigkeit",
+                    "Ein Stromversorgungsstandard"
+                ],
+                "correct": 1,
+                "hint": "ECC-Speicher kann Fehler automatisch erkennen und korrigieren."
+            },
+            {
+                "question": "Welche Faktoren beeinflussen die Auswahl der Mainboard-Größe? 📐",
+                "options": [
+                    "Nur das Computergehäuse",
+                    "Gehäusegröße, Erweiterungsbedarf, Kühlungsmöglichkeiten",
+                    "Die Prozessorleistung",
+                    "Die Anzahl der Festplatten"
+                ],
+                "correct": 1,
+                "hint": "Die Mainboardgröße muss zum Gehäuse und den Erweiterungsanforderungen passen."
+            },
+            {
+                "question": "Was ist der Unterschied zwischen Buffered und Unbuffered Memory? 💻",
+                "options": [
+                    "Buffered Memory ist schneller",
+                    "Buffered Memory hat einen Puffer für Datentransfers, Unbuffered nicht",
+                    "Es gibt keinen Unterschied",
+                    "Unbuffered Memory ist besser für Server"
+                ],
+                "correct": 1,
+                "hint": "Buffered Memory verwendet einen Puffer zur Signalstabilisierung."
+            },
+            {
+                "question": "Welche Aspekte sind bei der WLAN-Integration wichtig? 📡",
+                "options": [
+                    "Nur die Signalstärke",
+                    "Integrierte Antennen, Übertragungsstandards, Kompatibilität",
+                    "Die Größe der WLAN-Antenne",
+                    "Ausschließlich die Übertragungsgeschwindigkeit"
+                ],
+                "correct": 1,
+                "hint": "WLAN-Integration erfordert mehr als nur eine gute Signalstärke."
+            },
+            {
+                "question": "Was charakterisiert einen modernen Mainboard-Chipsatz? 🔬",
+                "options": [
+                    "Nur die Anzahl der Anschlüsse",
+                    "Integration von Northbridge-Funktionen, Unterstützung aktueller Standards",
+                    "Die Kühlkörpergröße",
+                    "Die Marke des Chipsatzes"
+                ],
+                "correct": 1,
+                "hint": "Moderne Chipsätze integrieren viele Funktionen direkt und unterstützen aktuelle Technologien."
+            },
+            {
+                "question": "Welche Rolle spielen Header auf einem Mainboard? 🔧",
+                "options": [
+                    "Nur zur Dekoration",
+                    "Zusätzliche Anschlussmöglichkeiten für interne Komponenten",
+                    "Zur Kühlung des Mainboards",
+                    "Ausschließlich für WLAN-Verbindungen"
+                ],
+                "correct": 1,
+                "hint": "Header ermöglichen den Anschluss zusätzlicher interner Komponenten."
+            },
+            {
+                "question": "Was ist beim Stromversorgungsdesign eines Mainboards zu beachten? ⚡",
+                "options": [
+                    "Nur die Anzahl der Stromanschlüsse",
+                    "Stabilität, Effizienz, Kompatibilität mit Prozessor und Erweiterungskarten",
+                    "Die Farbe der Stromkabel",
+                    "Das Gewicht der Stromversorgungskomponenten"
+                ],
+                "correct": 1,
+                "hint": "Eine stabile Stromversorgung ist entscheidend für die Systemleistung."
+            },
+            {
+                "question": "Welche Bedeutung haben PCIe-Steckplätze? 🖥️",
+                "options": [
+                    "Nur für Grafikkarten",
+                    "Erweiterung und Anbindung verschiedener Hardwarekomponenten",
+                    "Ausschließlich für Netzwerkkarten",
+                    "Zur Kühlung des Systems"
+                ],
+                "correct": 1,
+                "hint": "PCIe-Steckplätze ermöglichen den Anschluss verschiedener Erweiterungskarten."
+            },
+            {
+                "question": "Was unterscheidet Server-Mainboards von Standard-Mainboards? 🖲️",
+                "options": [
+                    "Nur die Größe",
+                    "Mehr Prozessorsockel, ECC-Speicherunterstützung, robustere Komponenten",
+                    "Ausschließlich mehr Anschlüsse",
+                    "Höhere Taktfrequenzen"
+                ],
+                "correct": 1,
+                "hint": "Server-Mainboards sind auf Stabilität, Zuverlässigkeit und Erweiterbarkeit ausgelegt."
+            },
+            {
+                "question": "Welche Bedeutung haben DIMM-Slots? 💾",
+                "options": [
+                    "Nur zur Dekoration",
+                    "Aufnahme und Anbindung von Arbeitsspeichermodulen",
+                    "Zur Kühlung des Mainboards",
+                    "Ausschließlich für Festplattenspeicher"
+                ],
+                "correct": 1,
+                "hint": "DIMM-Slots sind die Steckplätze für Arbeitsspeichermodule."
+            },
+            {
+                "question": "Was charakterisiert einen modernen Mainboard-Sockel? 🔌",
+                "options": [
+                    "Nur die Anzahl der Kontakte",
+                    "Kompatibilität, Stromversorgung, Signalübertragung für den Prozessor",
+                    "Die Farbe des Sockels",
+                    "Ausschließlich die Größe"
+                ],
+                "correct": 1,
+                "hint": "Der Sockel ermöglicht die präzise Anbindung und Versorgung des Prozessors."
+            },
+            {
+                "question": "Welche Rolle spielen Southbridge/PCH auf modernen Mainboards? 🧭",
+                "options": [
+                    "Nur zur Kühlung",
+                    "Steuerung von I/O-Funktionen, Schnittstellen und Peripheriegeräten",
+                    "Ausschließlich für Netzwerkverbindungen",
+                    "Zur Stromversorgung"
+                ],
+                "correct": 1,
+                "hint": "Southbridge/PCH koordinieren die Kommunikation mit verschiedenen Peripheriegeräten."
+            },
+            {
+                "question": "Was bedeutet der Begriff 'Overclocking' im Zusammenhang mit Mainboards? ⏫",
+                "options": [
+                    "Nur die Verwendung schnellerer Speicher",
+                    "Erhöhung der Prozessor- oder Speicherleistung über die Herstellerangaben hinaus",
+                    "Ausschließlich die Verwendung von mehreren Grafikkarten",
+                    "Die Nutzung von externen Taktsignalen"
+                ],
+                "correct": 1,
+                "hint": "Overclocking erhöht die Leistung von Prozessor oder Speicher über die Herstellerangaben hinaus."
+            },
+            {
+                "question": "Du baust einen Computer und hast verschiedene Mainboards mit unterschiedlichen Formfaktoren. Welche Herausforderung könntest du dabei haben? 🧩",
+                "options": [
+                    "Befestigungslöcher stimmen nicht überein, was den Einbau kompliziert macht",
+                    "Die Mainboards haben alle genau die gleichen Anschlüsse",
+                    "Formfaktoren beeinflussen die Leistung des Computers nicht",
+                    "Alle Mainboards passen problemlos in jedes Gehäuse"
+                ],
+                "correct": 0,
+                "hint": "Der Formfaktor bestimmt Größe, Lage von Bauteilen und Befestigungslöcher."
+            },
+            {
+                "question": "Ein Mainboard hat zwei RAM-Steckplätze in verschiedenen Farben (schwarz und rot). Was deutet dies an? 🔌",
+                "options": [
+                    "Es handelt sich um verschiedene RAM-Generationen",
+                    "Die Farben zeigen einen möglichen Dual-Channel-Modus",
+                    "Rot bedeutet schnellere Steckplätze",
+                    "Die Farben haben keine technische Bedeutung"
+                ],
+                "correct": 1,
+                "hint": "Farbcodierte Steckplätze können auf Konfigurationsmöglichkeiten für Arbeitsspeicher hinweisen."
+            },
+            {
+                "question": "Du hast ein Mainboard mit verschiedenen SATA-Anschlüssen. Was unterscheidet sie? 💾",
+                "options": [
+                    "Die Farbe zeigt unterschiedliche Geschwindigkeiten an",
+                    "Rote Anschlüsse sind nur für SSDs geeignet",
+                    "Schwarze Anschlüsse sind langsamer als rote",
+                    "Die Farbe hat keine technische Bedeutung"
+                ],
+                "correct": 0,
+                "hint": "Farbcodierte Anschlüsse können auf technische Unterschiede wie Geschwindigkeit hinweisen."
+            },
+            {
+                "question": "Welche Herausforderung besteht bei der Stromführung auf Mainboards? ⚡",
+                "options": [
+                    "Zu viel Strom macht Leitungen unbrauchbar",
+                    "Dünne Leitungen führen zu hoher Stromdichte und Erwärmung",
+                    "Strom kann Mainboards nicht beschädigen",
+                    "Leiterbahndicke spielt keine Rolle"
+                ],
+                "correct": 1,
+                "hint": "Die Stromdichte in dünnen Leitungen kann zu starker Erwärmung führen."
+            },
+            {
+                "question": "Was ist eine Herausforderung bei elektronischen Komponenten auf Mainboards? 📡",
+                "options": [
+                    "Komponenten können sich gegenseitig elektrisch nicht beeinflussen",
+                    "Elektromagnetische Interferenz kann empfindliche Bauteile stören",
+                    "Alle Komponenten arbeiten perfekt nebeneinander",
+                    "Störungen sind irrelevant für die Mainboard-Funktion"
+                ],
+                "correct": 1,
+                "hint": "Elektronische Komponenten können sich gegenseitig durch Abstrahlung beeinflussen."
+            },
+            {
+                "question": "Du planst, eine Erweiterungskarte einzubauen. Welche Überlegungen sind wichtig? 🖥️",
+                "options": [
+                    "Nur die Größe der Karte ist entscheidend",
+                    "Kompatibilität des Steckplatzes und verfügbare Schnittstellen",
+                    "Die Farbe der Karte ist ausschlaggebend",
+                    "Erweiterungskarten passen immer überall"
+                ],
+                "correct": 1,
+                "hint": "Steckplätze und Schnittstellen müssen zueinander passen."
+            },
+            {
+                "question": "Was könnte ein Problem bei einem Tablet-PC-Mainboard sein? 📱",
+                "options": [
+                    "Es ist zu klein für Erweiterungen",
+                    "Proprietäre Ausführung mit verlöteten Komponenten",
+                    "Es hat zu viele Anschlüsse",
+                    "Tablet-PCs haben keine Mainboards"
+                ],
+                "correct": 1,
+                "hint": "Verlötete Komponenten schränken Austausch- und Erweiterbarkeit ein."
+            },
+            {
+                "question": "Welche Funktion erfüllt der ROM-Chip auf einem Mainboard? 🔧",
+                "options": [
+                    "Speichern von Nutzerdaten",
+                    "Speichern des BIOS/UEFI",
+                    "Berechnen von Grafikleitungen",
+                    "Steuern der Kühlsysteme"
+                ],
+                "correct": 1,
+                "hint": "Der ROM-Chip enthält das Grundprogramm zur Systeminitialisierung."
+            },
+            {
+                "question": "Welche Aspekte sind bei der Mainboard-Auswahl zu berücksichtigen? 🤔",
+                "options": [
+                    "Nur die Prozessorkompatibilität",
+                    "Formfaktor, Prozessorsockel, Anschlüsse, Erweiterungsmöglichkeiten",
+                    "Die Gehäusefarbe",
+                    "Ausschließlich der Preis"
+                ],
+                "correct": 1,
+                "hint": "Eine umfassende Auswahl berücksichtigt viele technische Aspekte."
+            },
+            {
+                "question": "Was passiert, wenn Mainboard-Leiterbahnen mechanisch zu stark belastet werden? 💥",
+                "options": [
+                    "Nichts Besonderes",
+                    "Die Leiterbahnen können beschädigt werden",
+                    "Sie werden automatisch stärker",
+                    "Der Computer wird schneller"
+                ],
+                "correct": 1,
+                "hint": "Mehrlagige Leiterbahnen aus dünnen Kupfer- oder Silberschichten sind mechanisch empfindlich."
+            },
+            {
+                "question": "Welche Komponenten findest du typischerweise auf einem Mainboard? 🧰",
+                "options": [
+                    "Nur Prozessorsockel und RAM-Slots",
+                    "Sockel, Chipsatz, Anschlüsse, Kühlkörper, Spannungsregler",
+                    "Nur Grafikkarten-Anschlüsse",
+                    "Ausschließlich Netzteile"
+                ],
+                "correct": 1,
+                "hint": "Ein Mainboard enthält verschiedene aktive und passive Komponenten."
+            },
+            {
+                "question": "Du siehst zwei Mainboards mit unterschiedlichen Prozessorsockeln. Was bedeutet das? 🔍",
+                "options": [
+                    "Die Mainboards sind identisch",
+                    "Verschiedene Sockel sind für unterschiedliche Prozessoren",
+                    "Die Sockelfarbe bestimmt die Leistung",
+                    "Sockelunterschiede spielen keine Rolle"
+                ],
+                "correct": 1,
+                "hint": "Prozessorsockel werden von Herstellern spezifisch für bestimmte Prozessortypen entwickelt."
+            },
+            {
+                "question": "Welche Probleme können bei der Stromversorgung von Mainboards auftreten? ⚡",
+                "options": [
+                    "Strom hat keinen Einfluss auf Mainboards",
+                    "Unzureichende Stromversorgung kann zu Instabilität führen",
+                    "Mehr Strom verbessert immer die Leistung",
+                    "Stromversorgung ist vollkommen irrelevant"
+                ],
+                "correct": 1,
+                "hint": "Die Stromversorgung ist kritisch für die Stabilität und Funktion des Systems."
+            },
+            {
+                "question": "Was bedeutet ein mehrkanaliger Speicherzugriff? 🚀",
+                "options": [
+                    "Mehr RAM bedeutet automatisch schnellere Übertragung",
+                    "Mehrere Speicherkanäle können Daten parallel übertragen",
+                    "Nur Farbe der RAM-Slots ist entscheidend",
+                    "Mehrkanalige Systeme sind langsamer"
+                ],
+                "correct": 1,
+                "hint": "Mehrkanalige Speicherkonfigurationen ermöglichen parallele Datenübertragung."
+            },
+            {
+                "question": "Welche Aspekte der Elektronik sind auf Mainboards wichtig? 🔬",
+                "options": [
+                    "Nur die Größe der Komponenten",
+                    "Stromdichte, elektromagnetische Interferenz, Wärmemanagement",
+                    "Die Anzahl der Anschlüsse",
+                    "Farbe der Leiterbahnen"
+                ],
+                "correct": 1,
+                "hint": "Elektronische Eigenschaften wie Stromdurchführung und Störungsanfälligkeit sind kritisch."
+            },
+            {
+                "question": "Was charakterisiert den Backpanel eines Mainboards? 🔌",
+                "options": [
+                    "Er enthält keine wichtigen Anschlüsse",
+                    "Externe Schnittstellen für Peripheriegeräte",
+                    "Nur für die Stromversorgung zuständig",
+                    "Ausschließlich für Netzwerkanschlüsse"
+                ],
+                "correct": 1,
+                "hint": "Der Backpanel bietet verschiedene externe Anschlüsse für Peripheriegeräte."
+            },
+            {
+                "question": "Welche Herausforderung besteht bei der Kühlung von Mainboard-Komponenten? 🌡️",
+                "options": [
+                    "Kühlung ist nicht notwendig",
+                    "Wärmeableitung und Vermeidung von Hotspots",
+                    "Nur CPU muss gekühlt werden",
+                    "Mainboards erzeugen keine Wärme"
+                ],
+                "correct": 1,
+                "hint": "Wärmemanagement ist wichtig, um Leistung und Zuverlässigkeit zu gewährleisten."
+            },
+            {
+                "question": "Was bedeutet der Begriff 'proprietäre Ausführung' bei Mainboards? 🏭",
+                "options": [
+                    "Alle Mainboards sind identisch",
+                    "Herstellerspezifische, nicht standardisierte Konstruktion",
+                    "Nur große Hersteller produzieren Mainboards",
+                    "Proprietär bedeutet besonders gut"
+                ],
+                "correct": 1,
+                "hint": "Proprietäre Systeme sind spezifisch für einen Hersteller und oft schwer austauschbar."
+            },
+            {
+                "question": "Welche Funktion erfüllen Spannungsregler (VRMs) auf einem Mainboard? ⚡",
+                "options": [
+                    "Sie erzeugen Strom aus dem Nichts",
+                    "Stabilisieren und regulieren der Stromversorgung",
+                    "Nur für die Beleuchtung zuständig",
+                    "VRMs haben keine wichtige Funktion"
+                ],
+                "correct": 1,
+                "hint": "Spannungsregler sorgen für eine stabile und korrekte Stromversorgung der Komponenten."
+            },
+            {
+                "question": "Was unterscheidet SATA II von SATA III? 💾",
+                "options": [
+                    "Nur die Farbe der Anschlüsse",
+                    "Unterschiedliche Übertragungsgeschwindigkeiten",
+                    "SATA III ist veraltet",
+                    "Keine Unterschiede vorhanden"
+                ],
+                "correct": 1,
+                "hint": "SATA-Versionen unterscheiden sich in ihren Datenübertragungsraten."
+            },
+            {
+                "question": "Welche Rolle spielen Header auf einem Mainboard? 🔧",
+                "options": [
+                    "Sie haben keine Funktion",
+                    "Interne Anschlüsse für verschiedene Komponenten",
+                    "Nur zur Dekoration",
+                    "Ausschließlich für Netzteile"
+                ],
+                "correct": 1,
+                "hint": "Header ermöglichen den Anschluss interner Komponenten wie Lüfter oder Sensoren."
+            },
+            {
+                "question": "Was ist die Herausforderung bei der elektromagnetischen Interferenz (EMI)? 📡",
+                "options": [
+                    "EMI existiert nicht",
+                    "Störungen zwischen elektronischen Komponenten vermeiden",
+                    "EMI verbessert die Systemleistung",
+                    "Nur bei alten Geräten relevant"
+                ],
+                "correct": 1,
+                "hint": "Elektronische Komponenten können sich gegenseitig durch Abstrahlung stören."
+            },
+            {
+                "question": "Welche Bedeutung haben Chipsätze auf modernen Mainboards? 🧩",
+                "options": [
+                    "Sie haben keine Funktion",
+                    "Steuern Kommunikation zwischen Prozessor und Peripherie",
+                    "Nur für die Kühlung zuständig",
+                    "Ausschließlich für Grafikberechnungen"
+                ],
+                "correct": 1,
+                "hint": "Chipsätze koordinieren die Kommunikation zwischen verschiedenen Systemkomponenten."
+            },
+            {
+                "question": "Was sind Herausforderungen bei der Mainboard-Entwicklung? 🛠️",
+                "options": [
+                    "Es gibt keine technischen Herausforderungen",
+                    "Miniaturisierung, Wärmemanagement, Interferenzvermeidung",
+                    "Nur Kostenreduktion",
+                    "Ausschließlich Designfragen"
+                ],
+                "correct": 1,
+                "hint": "Moderne Mainboard-Entwicklung erfordert Lösungen für komplexe technische Probleme."
+            },
+            {
+                "question": "Welche Rolle spielen Kondensatoren auf einem Mainboard? ⚡",
+                "options": [
+                    "Sie haben keine Funktion",
+                    "Speichern und stabilisieren elektrische Ladung",
+                    "Nur zur Dekoration",
+                    "Ausschließlich für Kühlung"
+                ],
+                "correct": 1,
+                "hint": "Kondensatoren helfen bei der Stabilisierung der Stromversorgung und Filterung von Störsignalen."
+            },
+            {
+                "question": "Was bedeutet die Stützbatterie auf einem Mainboard? 🔋",
+                "options": [
+                    "Zum Betrieb des gesamten Computers",
+                    "Für BIOS-Einstellungen und Systemuhr",
+                    "Nur für mobile Geräte",
+                    "Hat keine Funktion"
+                ],
+                "correct": 1,
+                "hint": "Die Stützbatterie erhält BIOS-Einstellungen und die Systemuhr auch bei ausgeschaltetem Computer."
+            },
+            {
+                "question": "Welche Aspekte sind bei der Auswahl von Erweiterungskarten zu beachten? 🖥️",
+                "options": [
+                    "Nur die Größe der Karte",
+                    "Kompatibilität des Steckplatzes, Schnittstellen, Leistungsbedarf",
+                    "Die Farbe der Karte",
+                    "Erweiterungskarten passen überall"
+                ],
+                "correct": 1,
+                "hint": "Kompatibilität von Steckplätzen, Schnittstellen und Stromversorgung sind entscheidend."
+            },
+            {
+                "question": "Was macht Mainboards für verschiedene Gerätetypen unterschiedlich? 🔍",
+                "options": [
+                    "Alle Mainboards sind gleich",
+                    "Anpassung an Formfaktor, Leistungsbedarf, Einbauraum",
+                    "Nur die Farbe variiert",
+                    "Keine Unterschiede vorhanden"
+                ],
+                "correct": 1,
+                "hint": "Mainboards werden speziell für verschiedene Gerätetypen wie Desktop-PCs, Laptops oder Server entwickelt."
+            }
     ]
 }
