@@ -428,17 +428,6 @@
                 "hint": "Proprietäre Mainboards sind oft so spezifisch, dass sie nicht einfach ausgetauscht werden können."
             },
             {
-                "question": "Welche Speichertypen werden von aktuellen Mainboards erwartet? 💻",
-                "options": [
-                    "DDR2-Speicher",
-                    "DDR3-Speicher",
-                    "DDR4-Speicher",
-                    "SDRAM-Speicher"
-                ],
-                "correct": 2,
-                "hint": "Moderne Mainboards sind auf DDR4-Arbeitsspeicher ausgelegt."
-            },
-            {
                 "question": "Was definiert der Formfaktor bei der Energieversorgung? ⚡",
                 "options": [
                     "Die Akkukapazität",
