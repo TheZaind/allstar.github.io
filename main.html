@@ -899,14 +899,19 @@
             currentCategory = categoryId;
             
             if (menuElement && contentElement) {
-                // Show loading state
-                menuElement.style.opacity = '0';
+                // Add hidden class to menu
+                menuElement.classList.add('hidden');
                 await new Promise(r => setTimeout(r, 300));
                 menuElement.style.display = 'none';
                 
-                contentElement.appendChild(loadingIndicator);
+                // Prepare content for transition
                 contentElement.style.display = 'block';
-                contentElement.style.opacity = '0';
+                contentElement.classList.add('hidden');
+                contentElement.appendChild(loadingIndicator);
+                
+                // Small delay for smooth transition
+                await new Promise(r => setTimeout(r, 50));
+                contentElement.classList.remove('hidden');
                 
                 // Update category display with animation
                 const categoryDisplay = document.getElementById('current-category');
@@ -1582,23 +1587,22 @@
         const menuElement = document.getElementById('quiz-selection-menu');
         
         if (contentElement && menuElement) {
-            // Fade out quiz content
-            contentElement.style.opacity = '0';
-            await new Promise(r => setTimeout(r, 300));
-            contentElement.style.display = 'none';
+            // Add hidden class to quiz content
+            contentElement.classList.add('hidden');
             
             // Update menu stats before showing
             updateMainMenuStats();
             
-            // Show and fade in menu
+            // Prepare menu for transition
             menuElement.style.display = 'block';
-            menuElement.style.opacity = '0';
-            await new Promise(r => setTimeout(r, 50));
-            menuElement.style.opacity = '1';
+            menuElement.classList.add('hidden');
             
-            // Reset all transitions
-            contentElement.style.transition = 'opacity 0.3s ease';
-            menuElement.style.transition = 'opacity 0.3s ease';
+            await new Promise(r => setTimeout(r, 300));
+            contentElement.style.display = 'none';
+            
+            // Small delay to ensure proper transition
+            await new Promise(r => setTimeout(r, 50));
+            menuElement.classList.remove('hidden');
         }
         
         // Save and sync game state
