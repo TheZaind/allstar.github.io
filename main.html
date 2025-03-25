@@ -462,10 +462,26 @@
             }
         }
         
-        /* Smooth transitions */
+        /* Menu and content transitions */
         .quiz-selection-menu,
         .quiz-content {
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            background-color: var(--background-color, #fff);
+            transform-origin: center;
+            will-change: opacity, transform;
+            backface-visibility: hidden;
+        }
+        
+        body[data-theme="dark"] .quiz-selection-menu,
+        body[data-theme="dark"] .quiz-content {
+            background-color: var(--background-color-dark, #1a1a1a);
+        }
+
+        .quiz-selection-menu.hidden,
+        .quiz-content.hidden {
+            opacity: 0;
+            transform: scale(0.98);
+            pointer-events: none;
         }
         
         /* Timer and Streak animations */
@@ -837,11 +853,20 @@
         // Set initial theme
         document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
         
-        // Show quiz selection menu
-        showQuizMenu();
-        
-        // Initialize quiz categories
+        // Initialize quiz categories first
         await initializeQuizCategories();
+        
+        // Then show menu with transitions
+        const menuElement = document.getElementById('quiz-selection-menu');
+        const contentElement = document.getElementById('quiz-content');
+        
+        if (menuElement && contentElement) {
+            contentElement.classList.add('hidden');
+            menuElement.classList.remove('hidden');
+        }
+        
+        // Show quiz selection menu
+        await showQuizMenu();
     });
 
     // Category transition handler
@@ -937,14 +962,35 @@
         document.getElementById('total-questions').textContent = currentQuestions.length;
     }
 
-    // Show quiz menu
-    function showQuizMenu() {
+    // Show quiz menu with smooth transitions
+    async function showQuizMenu() {
         const menuElement = document.getElementById('quiz-selection-menu');
         const contentElement = document.getElementById('quiz-content');
         
         if (menuElement && contentElement) {
+            // Update stats before transition
+            updateMainMenuStats();
+            
+            // Prepare elements for transition
+            contentElement.classList.add('hidden');
             menuElement.style.display = 'block';
-            contentElement.style.display = 'none';
+            
+            // Small delay to ensure display change is processed
+            await new Promise(r => setTimeout(r, 50));
+            
+            // Remove hidden class to trigger transition
+            menuElement.classList.remove('hidden');
+        }
+        
+        // Ensure quiz content is properly reset
+        if (contentElement) {
+            contentElement.style.opacity = '0';
+            const timerBar = document.getElementById('timer-bar');
+            if (timerBar) {
+                timerBar.style.width = '100%';
+                timerBar.style.backgroundColor = '';
+                timerBar.style.animation = '';
+            }
         }
     }
 
@@ -1510,7 +1556,7 @@
         }
     }
 
-    function backToMenu() {
+    async function backToMenu() {
         // Reset quiz state
         currentQuestions = [];
         currentQuestionIndex = 0;
@@ -1531,15 +1577,72 @@
         // Reset timer state
         timerActive = false;
         
-        // Hide quiz content and show menu
+        // Animated transition back to menu
         const contentElement = document.getElementById('quiz-content');
         const menuElement = document.getElementById('quiz-selection-menu');
         
-        if (contentElement) contentElement.style.display = 'none';
-        if (menuElement) menuElement.style.display = 'block';
+        if (contentElement && menuElement) {
+            // Fade out quiz content
+            contentElement.style.opacity = '0';
+            await new Promise(r => setTimeout(r, 300));
+            contentElement.style.display = 'none';
+            
+            // Update menu stats before showing
+            updateMainMenuStats();
+            
+            // Show and fade in menu
+            menuElement.style.display = 'block';
+            menuElement.style.opacity = '0';
+            await new Promise(r => setTimeout(r, 50));
+            menuElement.style.opacity = '1';
+            
+            // Reset all transitions
+            contentElement.style.transition = 'opacity 0.3s ease';
+            menuElement.style.transition = 'opacity 0.3s ease';
+        }
         
-        // Save current game state
+        // Save and sync game state
         saveGameData();
+        loadSavedData(); // This ensures all stats are in sync
+    }
+
+    function updateMainMenuStats() {
+        // Calculate accurate stats
+        const averageScore = totalQuestions > 0 
+            ? Math.round((totalCorrect / totalQuestions) * 100) 
+            : 0;
+        
+        // Update all menu stats elements
+        const updateElement = (id, value) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+        };
+        
+        updateElement('total-quizzes', totalQuizzes);
+        updateElement('total-correct', totalCorrect);
+        updateElement('average-score', `${averageScore}%`);
+        updateElement('best-streak', bestStreak);
+        
+        // Update badge display
+        const earnedBadgesElement = document.getElementById('earned-badges');
+        if (earnedBadgesElement) {
+            let earnedCount = 0;
+            if (totalXP >= 100) earnedCount++;
+            if (totalXP >= 350) earnedCount++;
+            if (totalXP >= 750) earnedCount++;
+            if (totalXP >= 1500) earnedCount++;
+            earnedBadgesElement.textContent = `${earnedCount}/4`;
+        }
+        
+        // Update current badge
+        const menuCurrentBadge = document.getElementById('menu-current-badge');
+        if (menuCurrentBadge) {
+            if (totalXP >= 1500) menuCurrentBadge.textContent = '👑';
+            else if (totalXP >= 750) menuCurrentBadge.textContent = '🥇';
+            else if (totalXP >= 350) menuCurrentBadge.textContent = '🥈';
+            else if (totalXP >= 100) menuCurrentBadge.textContent = '🥉';
+            else menuCurrentBadge.textContent = '';
+        }
     }
 
     function showFeedback(message, isSuccess) {
