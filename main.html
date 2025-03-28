@@ -826,6 +826,13 @@
             file: 'mainboard.json'
         },
         {
+            id: 'ram',
+            name: 'RAM Quiz',
+            description: 'Teste dein Wissen über Arbeitsspeicher und Speichertechnologien',
+            icon: '💾',
+            file: 'RAM.json'
+        },
+        {
             id: 'gw',
             name: 'Elektrogrundlagen Quiz',
             description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
@@ -1116,7 +1123,7 @@
                 case 'mix':
                     // Mische Fragen aus allen Kategorien
                     const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'grundwissen.json', 'flashcards.json']) {
+                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json']) {
                         try {
                             const response = await fetch(file);
                             if (response.ok) {
