@@ -12,14 +12,14 @@
       "options": ["DisplayPort ab Version 2", "Thunderbolt ab Version 3", "USB ab 3.0 mit Power Delivery", "Thunderbolt bis Version 2"],
       "correct": 1,
       "hint": "Die Abbildung zeigt typischerweise einen USB-C-Anschluss, der für Thunderbolt 3/4 verwendet wird.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/M5SWbFdM/q2.png"
     },
     {
       "question": "Beim Anschluss mit der Nummer 9 dieses Mainboard-Backpanels handelt es sich um die Schnittstelle HDMI.",
       "options": ["Wahr", "Falsch"],
       "correct": 1,
       "hint": "Die Abbildung des Backpanels muss geprüft werden. Oft ist Anschluss 9 ein USB- oder Netzwerkanschluss.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/4ZXWjbzv/q3.png"
     },
     {
       "question": "Eine RISC-CPU ist spezialisiert für bestimmte Anwendungsfälle, also kein 'Allrounder' namens CISC.",
@@ -47,14 +47,14 @@
       "options": ["Wahr", "Falsch"],
       "correct": 0,
       "hint": "Die Anzahl der PCIe-Slots muss auf der Abbildung geprüft werden.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/4ZXWjbzv/q3.png"
     },
     {
       "question": "Welchen CL-Wert hat dieses Speichermodul?",
       "options": ["18 ns", "43 Taktzyklen", "18 Taktzyklen", "2.666 Takte"],
       "correct": 2,
       "hint": "CL steht für CAS Latency und wird in Taktzyklen angegeben. Der Wert muss auf dem Modul abgelesen werden.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/Rp8DG7md/q8.png"
     },
     {
       "question": "Ein Speichermodul der 4. DDR-Generation hat einen Prefetch von 16. Es können also pro Takt 16 Daten übertragen werden, so genannte Transfers.",
@@ -68,7 +68,7 @@
       "options": ["267 MHz", "2.666 MHz", "21.300 MHz", "333 MHz"],
       "correct": 3,
       "hint": "Die Bezeichnung PC4-21300 (DDR4-2666) bedeutet einen I/O-Takt von 1333 MHz und einen Chiptakt von 333 MHz (bei QDR). Oder 2666 MT/s / 8 = 333 MHz.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/Rp8DG7md/q8.png"
     },
     {
       "question": "Die Intel Core i3, i5 und i7 sind multiprozessorfähig. Man kann also auch Mainboards kaufen, auf denen z. B. 2 dieser CPUs integriert werden können.",
@@ -82,7 +82,7 @@
       "options": ["VGA (oft auch als 'D-Sub' bezeichnet)", "DVI", "IEEE 1284 (auch als 'LPT' bekannt)", "RS-232 (neuerdings auch als 'EIA-232' bezeichnet)"],
       "correct": 0,
       "hint": "Die Abbildung des Backpanels muss geprüft werden. Anschluss 2 ist oft der blaue VGA-Anschluss.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/4ZXWjbzv/q3.png"
     },
     {
       "question": "'Multithreading' bei einer CPU bedeutet, dass pro CPU-Kern mehrere Tasks/Aufgaben/Prozesse (für den Anwender scheinbar) zeitgleich abgearbeitet werden können.",
@@ -124,7 +124,7 @@
       "options": ["digitales Bild und digitaler Ton", "digitales Bild und analoger Ton", "analoges Bild und digitaler Ton", "analoges Bild und analoger Ton"],
       "correct": 0,
       "hint": "Die Abbildung zeigt wahrscheinlich einen HDMI- oder DisplayPort-Stecker.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/PvsWkwnf/q18.png"
     },
     {
       "question": "Welcher Bus zählt nicht zu den 3 Bussen des IT-Systembusses?",
@@ -145,7 +145,7 @@
       "options": ["digitale Bild- und Tonsignale", "digitale Bildsignale", "analoge und digitale Bildsignale", "analoge Bildsignale"],
       "correct": 1,
       "hint": "Die Abbildung zeigt wahrscheinlich einen DVI-D oder DVI-I Anschluss. DVI-D überträgt nur digital.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/Ndmr5Dgw/q21.png"
     },
     {
       "question": "Wenn bei einer CPU die Anzahl der physischen Kerne der Anzahl der virtuellen Kerne entspricht, dann ist die CPU Multithreading-fähig.",
@@ -159,7 +159,7 @@
       "options": ["Wahr", "Falsch"],
       "correct": 1,
       "hint": "Die Abbildung zeigt wahrscheinlich eine digitale Schnittstelle wie HDMI, DisplayPort oder DVI.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/v6mVYCYw/q23.png"
     },
     {
       "question": "Was passiert, wenn man einen USB 2.0-Speicherstick an eine USB 3.0-Schnittstelle anschließt?",
@@ -180,7 +180,7 @@
       "options": ["Wahr", "Falsch"],
       "correct": 1,
       "hint": "'Registered' (oder RDIMM) bedeutet, dass ein Register-Chip auf dem Modul ist, der die Signallast reduziert (wichtig für Server).",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/4nRKtDdZ/q26.png"
     },
     {
       "question": "Bei 'artgleichen' Arbeitsspeichermodulen (z.B. 2 DDR3-1600-Modulen) ist das Modul performanter, dessen Latenz- und Timing-Werte kleiner sind.",
@@ -194,7 +194,7 @@
       "options": ["Wahr", "Falsch"],
       "correct": 0,
       "hint": "Die Abbildung muss geprüft werden. Anschluss 6 sind oft die analogen Klinkenbuchsen, Anschluss 3 könnte der optische S/PDIF-Ausgang sein.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/4ZXWjbzv/q3.png"
     },
     {
       "question": "Wenn es die CPU und das Mainboard unterstützen, dann ist es möglich, mit zwei 8-GB-Speichermodulen und einem 16-GB-Speichermodul derselben DDR-Generation einen Dual-Channel-Zugriff der CPU auf den Arbeitsspeicher zu ermöglichen.",
@@ -285,7 +285,7 @@
       "options": ["Das Reinstecken klappt, nun muss sie nur noch vom System erkannt werden.", "Geht gar nicht! Dort gehören nur x16-Erweiterungskarten rein.", "Passt zwar mechanisch rein, wird aber aufgrund der fehlenden 12 Lanes vom System generell nicht erkannt.", "Funktioniert alles auf Anhieb, Reinstecken und Loslegen. Das BIOS/UEFI erkennt die NVMe-SSD sofort und man diesen Datenträger ohne Probleme nutzen."],
       "correct": 0,
       "hint": "Mechanisch passen kürzere PCIe-Karten in längere Slots. Ob die Karte erkannt wird und funktioniert, hängt vom Mainboard/BIOS ab.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/nqDWYTQC/q41.png"
     },
     {
       "question": "Zwischen den Schnittstellen HDMI und DisplayPort reicht ein einfacher Adapter, da die Signale/Daten mit derselben Technologie (hier TMDS) aufbereitet sind.",
@@ -320,7 +320,7 @@
       "options": ["SATA", "PATA", "USB", "M.2"],
       "correct": 0,
       "hint": "Die Abbildung zeigt wahrscheinlich die L-förmigen SATA-Anschlüsse.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/67WMgtnh/q46.png"
     },
     {
       "question": "Eine aktuelle AMD-CPU passt auch auf einen aktuellen Intel-Sockel.",
