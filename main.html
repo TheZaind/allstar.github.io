@@ -1286,6 +1286,7 @@
                 // Create options with staggered animation
                 container.innerHTML = `
                     <div class="question-text">${question.question}</div>
+                    ${question.imageUrl ? `<img src="${question.imageUrl}" alt="Frage Bild" class="question-image">` : ''}
                     <div class="question-options">
                         ${randomizedOptions.map((option, index) => `
                             <div class="option" onclick="checkAnswer(${currentQuestionIndex}, ${index})">${option}</div>

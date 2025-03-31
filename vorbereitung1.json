@@ -390,14 +390,14 @@
       "options": ["optisches Audiosignal", "elektrisches Videosignal", "optisches Videosignal", "elektrisches Audiosignal"],
       "correct": 0,
       "hint": "S/PDIF (Sony/Philips Digital Interface) überträgt digitale Audiosignale, oft optisch (TOSLINK).",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/dyPwTW8/q56.png"
     },
     {
       "question": "Wie werden diese Steckplätze für Arbeitsspeichermodule auf einem aktuellen Mainboard bezeichnet?",
       "options": ["SIMM", "SDRAM", "DDR4", "DIMM"],
       "correct": 3,
       "hint": "Die langen Steckplätze für RAM auf Desktop-Mainboards sind DIMM-Slots (Dual In-line Memory Module). SIMM ist veraltet. SDRAM ist ein Typ, DDR4 eine Generation.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/q3F1n7sD/q57.png"
     },
     {
       "question": "Wie nennt man die Eigenschaft einer Geräteeinbindung, bei der auf redundante Hardwarekomponenten sofort umgeschaltet werden kann?",
@@ -425,7 +425,7 @@
       "options": ["2 USB 2.0-Schnittstellen am Frontpanel.", "1 USB 2.0-Schnittstelle am Backpanel.", "1 USB 3.0-Schnittstelle am Frontpanel.", "2 USB 3.0-Schnittstellen am Frontpanel."],
       "correct": 3,
       "hint": "Die Abbildung zeigt wahrscheinlich einen 19/20-Pin USB 3.0 Header, der zwei USB 3.0 Ports versorgt.",
-      "imageUrl": ""
+      "imageUrl": "https://i.ibb.co/Y7xTZTwC/q61.png"
     },
     {
       "question": "Welche Bustaktfrequenz hat eine SATA-Schnittstelle, die 3 Gbit/s brutto übertragen kann?",

@@ -508,6 +508,16 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+.question-image {
+    max-width: 80%; /* Begrenzt die Breite des Bildes */
+    max-height: 250px; /* Begrenzt die Höhe des Bildes */
+    margin: 15px auto; /* Zentriert das Bild und fügt Abstand hinzu */
+    display: block; /* Stellt sicher, dass margin auto funktioniert */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Leichter Schatten */
+    object-fit: contain; /* Stellt sicher, dass das Bild passt, ohne verzerrt zu werden */
+}
+
 /* Achievement Popup */
 .achievement-popup {
     position: fixed;
