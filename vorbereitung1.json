@@ -1,0 +1,438 @@
+{
+  "questions": [
+    {
+      "question": "Vier PC5-48000-Speichermodule werden im Quad-Channel-Modus betrieben. Wie hoch ist ihre theoretische Datenübertragungsrate in GByte/s?",
+      "options": ["48", "192.000", "96.000", "192"],
+      "correct": 3,
+      "hint": "PC5-48000 bedeutet 48000 MT/s. Quad-Channel vervierfacht die Bandbreite. 48000 MT/s * 8 Byte/Transfer * 4 Kanäle / 1000 = 1536 GByte/s. Moment, die Angabe 48000 ist die Modulbezeichnung, nicht die Transferrate. PC5-48000 entspricht DDR5-6000. Die Rate ist 6000 MT/s * 8 Byte/Transfer * 4 Kanäle / 1000 = 192 GByte/s.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Um welche Schnittstellen handelt es sich bei dieser Abbildung?",
+      "options": ["DisplayPort ab Version 2", "Thunderbolt ab Version 3", "USB ab 3.0 mit Power Delivery", "Thunderbolt bis Version 2"],
+      "correct": 1,
+      "hint": "Die Abbildung zeigt typischerweise einen USB-C-Anschluss, der für Thunderbolt 3/4 verwendet wird.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Beim Anschluss mit der Nummer 9 dieses Mainboard-Backpanels handelt es sich um die Schnittstelle HDMI.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Die Abbildung des Backpanels muss geprüft werden. Oft ist Anschluss 9 ein USB- oder Netzwerkanschluss.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine RISC-CPU ist spezialisiert für bestimmte Anwendungsfälle, also kein 'Allrounder' namens CISC.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "RISC steht für Reduced Instruction Set Computer, CISC für Complex Instruction Set Computer.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine serielle Schnittstelle schafft brutto eine Datenübertragungsrate von 6 Gbit/s. Sie benutzt den Leitungscode 8b10b. Wie hoch ist ihre Netto-Datenübertragungsrate in MByte/s?",
+      "options": ["4,8", "600", "6.000", "4.800"],
+      "correct": 1,
+      "hint": "Netto = Brutto * (8/10). 6 Gbit/s * 0.8 = 4.8 Gbit/s. Umrechnung in MByte/s: 4800 Mbit/s / 8 bit/Byte = 600 MByte/s.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Auf jedem Mainboard kann ich Arbeitsspeichermodule unterschiedlicher DDR-Generationen mischen.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Unterschiedliche DDR-Generationen haben unterschiedliche Kerben und sind nicht kompatibel.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Das abgebildete Mainboard verfügt über 3 PCIe-Slots.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Die Anzahl der PCIe-Slots muss auf der Abbildung geprüft werden.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welchen CL-Wert hat dieses Speichermodul?",
+      "options": ["18 ns", "43 Taktzyklen", "18 Taktzyklen", "2.666 Takte"],
+      "correct": 2,
+      "hint": "CL steht für CAS Latency und wird in Taktzyklen angegeben. Der Wert muss auf dem Modul abgelesen werden.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Ein Speichermodul der 4. DDR-Generation hat einen Prefetch von 16. Es können also pro Takt 16 Daten übertragen werden, so genannte Transfers.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "DDR4 hat einen Prefetch von 8n (8 Datenwörter pro Burst). DDR5 hat 16n.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Mit welcher Frequenz (Chiptakt, also der Takt, der von Außen an das Speichermodul angelegt wird) wird dieses Speichermodul betrieben?",
+      "options": ["267 MHz", "2.666 MHz", "21.300 MHz", "333 MHz"],
+      "correct": 3,
+      "hint": "Die Bezeichnung PC4-21300 (DDR4-2666) bedeutet einen I/O-Takt von 1333 MHz und einen Chiptakt von 333 MHz (bei QDR). Oder 2666 MT/s / 8 = 333 MHz.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Die Intel Core i3, i5 und i7 sind multiprozessorfähig. Man kann also auch Mainboards kaufen, auf denen z. B. 2 dieser CPUs integriert werden können.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Nur Xeon-Prozessoren von Intel sind typischerweise multiprozessorfähig.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Beim Anschluss 2 dieses Mainboard-Backpanels handelt es sich um die Schnittstelle:",
+      "options": ["VGA (oft auch als 'D-Sub' bezeichnet)", "DVI", "IEEE 1284 (auch als 'LPT' bekannt)", "RS-232 (neuerdings auch als 'EIA-232' bezeichnet)"],
+      "correct": 0,
+      "hint": "Die Abbildung des Backpanels muss geprüft werden. Anschluss 2 ist oft der blaue VGA-Anschluss.",
+      "imageUrl": ""
+    },
+    {
+      "question": "'Multithreading' bei einer CPU bedeutet, dass pro CPU-Kern mehrere Tasks/Aufgaben/Prozesse (für den Anwender scheinbar) zeitgleich abgearbeitet werden können.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Das ist die Definition von Multithreading (z.B. SMT bei Intel).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine CPU mit einem 32 bit breiten Adressbus kann 4.294.967.296 Speicherstellen ansprechen. Wenn jede dieser Speicherstellen 8 bit speichern kann, dann erreicht man eine maximale Speichergröße von 4 GiB.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "2^32 Adressen * 1 Byte/Adresse = 4.294.967.296 Bytes = 4 GiB.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Was bedeutet der Begriff 'PGA' in Bezug auf eine CPU?",
+      "options": ["Bei dieser Kontaktart ist die CPU direkt mit dem Mainboard verlötet.", "Die Kontakte der CPU bestehen aus Kontaktflächen.", "Dieses Kürzel bezeichnet doch etwas ganz anderes als die Kontaktart einer CPU. Es handelt sich hierbei um die Angabe einer PixelAuflösung (Power Graphic Array).", "Die Anschlüsse der CPU bestehen aus Drahtstücken."],
+      "correct": 3,
+      "hint": "PGA steht für Pin Grid Array.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine Intel-CPU wird mit einem Basistakt von 2,4 GHz angegeben. Das Mainboard verfügt über einen Grundtakt von 200 MHz. Welcher Core-Multiplier (Multiplikator) muss im BIOS/UEFI eingestellt werden?",
+      "options": ["24", "120", "200", "12"],
+      "correct": 3,
+      "hint": "CPU-Takt = Grundtakt * Multiplikator. 2400 MHz / 200 MHz = 12.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Zu einem aktuellen Intel-Chipsatz gehören neben dem PCH auch oft noch einzelne Controller. Welche Aufgabe/Funktionalität wird heutzutage nicht mehr vom Chipsatz organisiert?",
+      "options": ["Sound-Ausgabe", "RAID-Funktionalität", "Netzwerkzugriff", "Arbeitsspeichermanagement"],
+      "correct": 3,
+      "hint": "Der Speichercontroller (IMC) ist heutzutage in der CPU integriert.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Was kann die Schnittstelle übertragen, zu der dieser Stecker gehört?",
+      "options": ["digitales Bild und digitaler Ton", "digitales Bild und analoger Ton", "analoges Bild und digitaler Ton", "analoges Bild und analoger Ton"],
+      "correct": 0,
+      "hint": "Die Abbildung zeigt wahrscheinlich einen HDMI- oder DisplayPort-Stecker.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welcher Bus zählt nicht zu den 3 Bussen des IT-Systembusses?",
+      "options": ["Datenbus", "Steuerbus", "Taktbus", "Adressbus"],
+      "correct": 2,
+      "hint": "Der Systembus besteht aus Adressbus, Datenbus und Steuerbus.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Der Cache in einer CPU (egal, welcher Level) steht immer allen Kernen gleichzeitig zur Verfügung. Die Belegung erfolgt nach der Methode: 'Wer zuerst kommt, mahlt zuerst.'",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "L1- und L2-Cache sind oft kernspezifisch, L3 wird geteilt. Die Belegung ist komplexer.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Diese Schnittstelle überträgt...",
+      "options": ["digitale Bild- und Tonsignale", "digitale Bildsignale", "analoge und digitale Bildsignale", "analoge Bildsignale"],
+      "correct": 1,
+      "hint": "Die Abbildung zeigt wahrscheinlich einen DVI-D oder DVI-I Anschluss. DVI-D überträgt nur digital.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wenn bei einer CPU die Anzahl der physischen Kerne der Anzahl der virtuellen Kerne entspricht, dann ist die CPU Multithreading-fähig.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Multithreading bedeutet, dass es mehr virtuelle als physische Kerne gibt (z.B. 4 Kerne, 8 Threads).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Über diese Schnittstelle werden analoge Bild- und Videosignale übertragen.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Die Abbildung zeigt wahrscheinlich eine digitale Schnittstelle wie HDMI, DisplayPort oder DVI.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Was passiert, wenn man einen USB 2.0-Speicherstick an eine USB 3.0-Schnittstelle anschließt?",
+      "options": ["Der USB 2.0-Speicherstick kann nun mit 5 Gbit/s gelesen/beschrieben werden, dank USB 3.0.", "Der Strom von USB 3.0 reicht für den alten USB 2.0-Speicherstick nicht aus.", "Der USB 2.0-Speicherstick kann nur mit seiner maximalen Geschwindigkeit betrieben werden.", "Der USB 2.0-Speicherstick wird an dieser Schnittstelle nicht erkannt."],
+      "correct": 2,
+      "hint": "USB ist abwärtskompatibel, aber die Geschwindigkeit wird durch das langsamere Gerät begrenzt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Die ALU ist Bestandteil des Rechenwerks. Sie ist verantwortlich für die Ganzzahl- und die Fließkommazahlenberechnung.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Die ALU (Arithmetic Logic Unit) berechnet Ganzzahlen, die FPU (Floating Point Unit) Fließkommazahlen.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Bei 'Registered'-RAM handelt es sich um bei der JEDEC-registrierte Speichermodule. Sie sind also geprüft und registriert und können problemlos eingesetzt werden.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "'Registered' (oder RDIMM) bedeutet, dass ein Register-Chip auf dem Modul ist, der die Signallast reduziert (wichtig für Server).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Bei 'artgleichen' Arbeitsspeichermodulen (z.B. 2 DDR3-1600-Modulen) ist das Modul performanter, dessen Latenz- und Timing-Werte kleiner sind.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Kleinere Latenzwerte (z.B. CL) bedeuten schnellere Zugriffszeiten.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Die Anschlüsse 3 und 6 dieses Mainboard-Backpanels sind für Audio-Signale zuständig. Über die Anschlüsse 6 werden analoge AudioSignale ein- bzw. ausgegeben. Am Anschluss 3 werden digitale Audio-Signale ausgegeben. Um dieses Signal zu einer Musikanlage 'zu transportieren', benötigt man allerdings ein Kabel mit einem LWL (Lichtwellenleiter) und den entsprechenden Steckern.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Die Abbildung muss geprüft werden. Anschluss 6 sind oft die analogen Klinkenbuchsen, Anschluss 3 könnte der optische S/PDIF-Ausgang sein.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wenn es die CPU und das Mainboard unterstützen, dann ist es möglich, mit zwei 8-GB-Speichermodulen und einem 16-GB-Speichermodul derselben DDR-Generation einen Dual-Channel-Zugriff der CPU auf den Arbeitsspeicher zu ermöglichen.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Moderne Speichercontroller unterstützen oft 'Flex Mode', der auch bei ungleichen Modulgrößen Dual-Channel (zumindest teilweise) ermöglicht (z.B. 2x8GB im Dual Channel, die restlichen 8GB des 16GB-Moduls im Single Channel).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Auf einer PCIe-Grafikkarte befinden sich zumeist einige GB an Videospeicher (VRAM). Hierbei spricht man vom dedizierten Videospeicher.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Dedizierter Speicher ist Speicher, der nur für einen bestimmten Zweck (hier Grafik) reserviert ist.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Aussage zu den Halbleiterspeichern trifft zu?",
+      "options": ["Ein ROM ist in seiner Urform wiederbeschreibbar.", "RAM kann die Daten auch ohne Versorgungsspannung dauerhaft speichern, er ist ein so genannter Festwertspeicher.", "ROM verliert seine Informationen, sobald man ihn von seiner Versorgungsspannung trennt.", "In einen RAM kann man nicht nur Daten herauslesen, sondern auch Daten hineinschreiben."],
+      "correct": 3,
+      "hint": "RAM (Random Access Memory) ist flüchtig und beschreibbar. ROM (Read Only Memory) ist nicht-flüchtig und (ursprünglich) nur lesbar.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wofür steht die Angabe TDP bei einer CPU?",
+      "options": ["Verarbeitungsleistung", "TDP ist keine Angabe für CPUs, sondern für den Arbeitsspeicher", "Verlustleistung", "Leistung, die nur beim Übertakten der CPU entsteht"],
+      "correct": 2,
+      "hint": "TDP steht für Thermal Design Power und gibt die maximale Wärmeabgabe an, für die das Kühlsystem ausgelegt sein muss.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Aussage zur Datenübertragungsrichtung von Schnittstellen trifft nicht zu?",
+      "options": ["Bei Simplex-Betrieb ist die Datenübertragung immer nur in eine Richtung möglich. Der Sender kann nicht zum Empfänger werden und umgekehrt.", "Halbduplex-Betrieb erlaubt eine gleichzeitige Datenübertragung in beide Richtungen.", "Bei Vollduplex-Betrieb können die Kommunikationspartner gleichzeitig sowohl Sender, als auch Empfänger sein.", "Bei Halb- und Vollduplex-Betrieb spricht man auch von einer Bi-direktionalen Datenübertragung."],
+      "correct": 1,
+      "hint": "Halbduplex erlaubt Übertragung in beide Richtungen, aber nicht gleichzeitig.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Bei Intel werden CPUs, deren Multiplikator (Core-Multiplier) nicht zum Übertakten freigegeben ist, mit einem 'K' in der Bezeichnung gekennzeichnet. Beispiel i5-2400K",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Das 'K' kennzeichnet CPUs mit freiem Multiplikator, die zum Übertakten gedacht sind.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Aussage trifft nicht auf die Weiterentwicklung der DDR-Speichergenerationen zu?",
+      "options": ["Die Speichermodule können höher getaktet werden und erreichen dadurch auch höhere Datenübertragungsraten.", "Der Prefetch hat sich von Generation zu Generation verdoppelt.", "Die Betriebsspannung ist niedriger geworden, somit verbraucht das Modul weniger Energie und produziert weniger Verlustleistung.", "Es können mehr bit in einem Speicherchip gespeichert werden, dadurch erreicht man eine höhere Speicherkapazität je Speichermodul."],
+      "correct": 1,
+      "hint": "Der Prefetch war bei DDR1=2n, DDR2=4n, DDR3=8n, DDR4=8n, DDR5=16n. Er hat sich nicht immer verdoppelt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Schnittstelle überträgt seine Daten bit-parallel?",
+      "options": ["SATA", "PCI", "Ethernet (RJ-45)", "USB"],
+      "correct": 1,
+      "hint": "PCI (Peripheral Component Interconnect) ist ein paralleler Bus. SATA, Ethernet und USB sind seriell.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wie lautet die neue Abkürzung für die Anbindung von IDE/EIDE-Festplatten, nachdem der Standard SATA eingeführt wurde?",
+      "options": ["SATA", "PATA", "EIDE", "ATAPI"],
+      "correct": 1,
+      "hint": "IDE/EIDE wurde nachträglich PATA (Parallel ATA) genannt, um es von SATA (Serial ATA) zu unterscheiden.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine Multicore-CPU kann mehr Aufgaben gleichzeitig erledigen als eine Singlecore-CPU.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Mehr Kerne ermöglichen echte Parallelverarbeitung.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welcher Fakt ist bei der Auswahl eines Mainboards im Zusammenhang mit einem Computergehäuse besonders wichtig?",
+      "options": ["Die Anzahl der auf dem Mainboard vorhandenen SATA-Schnittstellen.", "Der Typ des Prozessor-Sockels.", "Das Vorhandensein eines TPM-Headers.", "Der Formfaktor, z.B. ATX."],
+      "correct": 3,
+      "hint": "Der Formfaktor (ATX, mATX, ITX etc.) bestimmt, ob das Mainboard physisch in das Gehäuse passt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Aussage zum Bus zwischen CPU und Arbeitsspeicher trifft nicht zu?",
+      "options": ["Bei Quad Channel beträgt die Busbreite 32 Byte.", "Der Bus kann mehrkanalig sein, heutzutage sind es 2 oder 4 Kanäle.", "Die Busbreite beträgt bei Single Channel 64 bit.", "Bei Dual Channel werden 2 x 8 bit, also 16 bit übertragen."],
+      "correct": 3,
+      "hint": "Ein Kanal hat 64 bit (8 Byte). Dual Channel hat 2x64 bit = 128 bit (16 Byte). Quad Channel hat 4x64 bit = 256 bit (32 Byte).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Sie wollen eine PCIe x4-Erweiterungskarte mit einer M.2-SSD (NVMe) in einen noch freien (vollwertigen) PCIe x16-Slot eines schon etwas älteren Mainboards stecken. Welche Aussage trifft zu?",
+      "options": ["Das Reinstecken klappt, nun muss sie nur noch vom System erkannt werden.", "Geht gar nicht! Dort gehören nur x16-Erweiterungskarten rein.", "Passt zwar mechanisch rein, wird aber aufgrund der fehlenden 12 Lanes vom System generell nicht erkannt.", "Funktioniert alles auf Anhieb, Reinstecken und Loslegen. Das BIOS/UEFI erkennt die NVMe-SSD sofort und man diesen Datenträger ohne Probleme nutzen."],
+      "correct": 0,
+      "hint": "Mechanisch passen kürzere PCIe-Karten in längere Slots. Ob die Karte erkannt wird und funktioniert, hängt vom Mainboard/BIOS ab.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Zwischen den Schnittstellen HDMI und DisplayPort reicht ein einfacher Adapter, da die Signale/Daten mit derselben Technologie (hier TMDS) aufbereitet sind.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "HDMI verwendet TMDS, DisplayPort verwendet eine andere Technologie (Packet-based). Adapter benötigen oft aktive Konverter.",
+      "imageUrl": ""
+    },
+    {
+      "question": "In welcher Hardwarekomponente wird man nie eine GPU vorfinden, egal wie alt das IT-System ist?",
+      "options": ["PCIe-Grafikkarte", "Northbridge", "CPU", "Southbridge"],
+      "correct": 3,
+      "hint": "GPUs waren/sind in CPUs, Northbridges (früher) oder auf dedizierten Karten, aber nicht in der Southbridge.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Bei dem abgebildeten Speichermodul handelt es sich um die Bauform SO-DIMM. Diese Bauform wird hauptsächlich auf StandardMainboards, z.B. mit dem Formfaktor ATX, eingesetzt.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "SO-DIMM (Small Outline DIMM) wird hauptsächlich in Laptops und kompakten Systemen verwendet, nicht auf Standard-ATX-Mainboards (dort DIMM).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Die Halbleitertechnologie 'SRAM' benötigt immer einen Refresh, um ihren Speicherinhalt aufzufrischen. Dadurch ist sie langsamer als 'DRAM' und kann z.B. nicht als Cache in einer CPU eingesetzt werden.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "DRAM (Dynamic RAM) benötigt Refresh. SRAM (Static RAM) benötigt keinen Refresh, ist schneller, teurer und wird als Cache verwendet.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Um welche Schnittstelle handelt es sich, wenn Sie diese auf einem Mainboard vorfinden?",
+      "options": ["SATA", "PATA", "USB", "M.2"],
+      "correct": 0,
+      "hint": "Die Abbildung zeigt wahrscheinlich die L-förmigen SATA-Anschlüsse.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Eine aktuelle AMD-CPU passt auch auf einen aktuellen Intel-Sockel.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "AMD und Intel verwenden unterschiedliche, inkompatible Sockel.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Komponente/Funktionalität wurde bei älteren IT-Systemen an die Northbridge angebunden. Heutzutage übernimmt diese Anbindung die CPU.",
+      "options": ["Audio", "USB", "Grafik", "BIOS/UEFI"],
+      "correct": 2,
+      "hint": "Der Speichercontroller und oft auch die Anbindung für die primäre Grafikkarte (AGP/PCIe) waren in der Northbridge und sind nun in der CPU.",
+      "imageUrl": ""
+    },
+    {
+      "question": "USB 2.0 ist noch halbduplex, ab USB 3.0 ist eine vollduplexe Datenübertragung möglich.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "USB 3.0 führte zusätzliche Datenleitungen für Vollduplex ein.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Auf einem Mainboard (egal, um welches IT-System es sich auch handelt) kann es generell immer nur einen CPU-Sockel geben.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Server- und Workstation-Mainboards haben oft zwei oder mehr CPU-Sockel.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Aussage rund um den Arbeitsspeicher trifft zu?",
+      "options": ["Im SPD-Chip auf dem Speichermodul sind die Werte (z.B. Latenzen) vom Hersteller so abgespeichert, dass immer der schnellste Zugriff auf die Module ermöglicht wird, der generell möglich ist.", "Mit ECC-Speichermodulen ist es möglich, 1-Bit-Fehler zu korrigieren, erkannt werden mit dieser Methode 1-Bit- und sogar 2-Bit-Fehler.", "Speichermodule mit den Angaben „unregistered“ oder „unbuffered“ ermöglichen sehr schnelle Zugriffszeiten und werden deshalb nur bei Servern eingesetzt.", "Speichermodule mit ECC sind für den Einsatz im normalen PC optimiert, damit z.B. die Büroanwendungen „sicher“ laufen."],
+      "correct": 1,
+      "hint": "SPD enthält Standardtimings, XMP/EXPO schnellere Profile. ECC (Error Correcting Code) kann 1-Bit-Fehler korrigieren und 2-Bit-Fehler erkennen (SECDED). Unbuffered/Unregistered ist Standard-RAM. ECC wird hauptsächlich in Servern/Workstations eingesetzt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Ein DDR2-SDRAM-Speichermodul wird mit einem Chiptakt (die Frequenz, die von Außen an das Speichermodul angelegt wird) von 200 MHz betrieben. Wie hoch ist seine Datenübertragungsrate?",
+      "options": ["3.200 MB/s", "6.400 Mb/s", "12.800 MB/s", "6.400 MB/s"],
+      "correct": 0,
+      "hint": "DDR2: Chiptakt * 2 (DDR) * 2 (Prefetch 4n -> 4 Daten/Chiptakt) * 8 Byte (Busbreite) = Datenrate. 200 MHz * 2 * 2 * 8 Byte = 3200 MB/s. Oder: I/O-Takt = 2 * Chiptakt = 400 MHz. Effektiver Takt = 2 * I/O-Takt = 800 MHz (DDR2-800). Datenrate = Effektiver Takt * 8 Byte = 800 * 8 = 6400 MB/s. Moment, die Formel ist: Chiptakt * Datenrate pro Takt * Busbreite. DDR2 hat 4 Daten pro Chiptakt. 200 MHz * 4 * 8 Byte = 6400 MB/s. Nein, die erste Formel war richtig: Chiptakt * 2 (I/O-Takt) * 8 Byte = 200 * 2 * 8 = 3200 MB/s. DDR2-400 wäre das.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Vorgehensweise bei der zielgerichteten Auswahl eines Mainboards ist empfehlenswert?",
+      "options": ["Mainboard bei ebay ersteigern und dann analysieren, was man damit machen kann", "Gehäuse inkl. Netzteil kaufen, zum Gehäuse und zum Netzteil passendes Mainboard heraussuchen", "Mainboard nach Aussehen heraussuchen, CPU-Sockel analysieren, CPU auswählen", "CPU bestimmen, Mainboard anhand des CPU-Sockels und des dazu passenden Chipsatzes heraussuchen"],
+      "correct": 3,
+      "hint": "Zuerst die CPU wählen, dann ein Mainboard mit passendem Sockel und Chipsatz.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Speicherhierarchie-Reihenfolge eines IT-Systems ist richtig? Hinweis: Der schnellste Speicher steht rechts.",
+      "options": ["Arbeitsspeicher --> Massenspeicher --> CPU-Register", "Massenspeicher --> CPU-Register --> Arbeitsspeicher --> CPU-Cache", "CPU-Cache --> Massenspeicher --> Arbeitsspeicher", "Massenspeicher --> Arbeitsspeicher --> CPU-Cache --> CPU-Register"],
+      "correct": 3,
+      "hint": "Von langsam/groß nach schnell/klein: Massenspeicher (HDD/SSD), Arbeitsspeicher (RAM), CPU-Cache (L3, L2, L1), CPU-Register.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Bei der Arbeitsspeicher-Technologie 'Dual Channel' verdoppelt sich der Chiptakt, also die Frequenz, die von Außen an das Speichermodul angelegt wird.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 1,
+      "hint": "Dual Channel verdoppelt die Anzahl der Kommunikationskanäle (Busbreite), nicht den Takt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Was für ein Signal kommt aus der mit SPDIF gekennzeichneten Schnittstelle heraus?",
+      "options": ["optisches Audiosignal", "elektrisches Videosignal", "optisches Videosignal", "elektrisches Audiosignal"],
+      "correct": 0,
+      "hint": "S/PDIF (Sony/Philips Digital Interface) überträgt digitale Audiosignale, oft optisch (TOSLINK).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wie werden diese Steckplätze für Arbeitsspeichermodule auf einem aktuellen Mainboard bezeichnet?",
+      "options": ["SIMM", "SDRAM", "DDR4", "DIMM"],
+      "correct": 3,
+      "hint": "Die langen Steckplätze für RAM auf Desktop-Mainboards sind DIMM-Slots (Dual In-line Memory Module). SIMM ist veraltet. SDRAM ist ein Typ, DDR4 eine Generation.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wie nennt man die Eigenschaft einer Geräteeinbindung, bei der auf redundante Hardwarekomponenten sofort umgeschaltet werden kann?",
+      "options": ["Hot-Plug", "Hot-Swap", "Hot-Add", "Hot-Switch"],
+      "correct": 3,
+      "hint": "Hot-Switch bezieht sich auf das Umschalten auf redundante Komponenten im laufenden Betrieb.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Wie hoch ist die Datentransferrate in MT/s, wenn der Bus mit 400 MHz getaktet ist, 8 Transfers pro Takt schafft und 32 bit breit ist?",
+      "options": ["1600", "3200", "6400", "12800"],
+      "correct": 1,
+      "hint": "Die Transferrate (MT/s) ist Taktfrequenz * Transfers pro Takt. 400 MHz * 8 = 3200 MT/s. Die Busbreite ist für die Datenrate in MB/s relevant, nicht für MT/s.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Der Standard USB 3.2 Generation 1 ist auch nur der Standard 3.0 mit 5 Gbit/s.",
+      "options": ["Wahr", "Falsch"],
+      "correct": 0,
+      "hint": "Die USB-Namensgebung wurde mehrfach geändert. USB 3.0 wurde zu USB 3.1 Gen 1 und dann zu USB 3.2 Gen 1 (alle 5 Gbit/s).",
+      "imageUrl": ""
+    },
+    {
+      "question": "Was kann man über diesem Header, eingelötet auf einem Mainboard, maximal realisieren?",
+      "options": ["2 USB 2.0-Schnittstellen am Frontpanel.", "1 USB 2.0-Schnittstelle am Backpanel.", "1 USB 3.0-Schnittstelle am Frontpanel.", "2 USB 3.0-Schnittstellen am Frontpanel."],
+      "correct": 3,
+      "hint": "Die Abbildung zeigt wahrscheinlich einen 19/20-Pin USB 3.0 Header, der zwei USB 3.0 Ports versorgt.",
+      "imageUrl": ""
+    },
+    {
+      "question": "Welche Bustaktfrequenz hat eine SATA-Schnittstelle, die 3 Gbit/s brutto übertragen kann?",
+      "options": ["3.000 MHz", "300 MHz", "3.000 GHz", "1,5 GHz"],
+      "correct": 0,
+      "hint": "SATA II (3 Gbit/s) arbeitet mit einem Takt von 3 GHz. SATA I (1.5 Gbit/s) mit 1.5 GHz, SATA III (6 Gbit/s) mit 6 GHz.",
+      "imageUrl": ""
+    }
+  ]
+}
