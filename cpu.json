@@ -1292,17 +1292,6 @@
               "hint": "Berechne 2^4, um die maximale Anzahl der darstellbaren Werte zu finden."
           },
           {
-              "question": "Du entwickelst einen Prozessor und möchtest die Leistung maximieren. Welche Strategie würdest du bei der Befehlssatz-Architektur wählen? 🚀",
-              "options": [
-                  "Viele komplexe Befehle mit umfassender Funktionalität",
-                  "Eine kleine Anzahl hochoptimierter, häufig verwendeter Befehle",
-                  "Zufällig verteilte Befehlssätze",
-                  "Nur Befehle, die mehr als zwei Taktzyklen benötigen"
-              ],
-              "correct": 1,
-              "hint": "Die Effizienz liegt in der Optimierung weniger, aber häufig genutzter Befehle."
-          },
-          {
               "question": "Dein Prozessor hat 20 Adressleitungen. Wie viel Arbeitsspeicher kannst du maximal adressieren? 🧠",
               "options": [
                   "64 KiB",
