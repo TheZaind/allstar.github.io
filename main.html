@@ -484,7 +484,7 @@
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            z-index: 1000;
+            z-index: 1001; /* Ensure popup is above overlay */
             max-width: 80%;
             width: auto;
             text-align: left;
@@ -645,43 +645,21 @@
             gap: 8px;
         }
 
-        .explanation-popup .copy-button {
-            background-color: var(--secondary-color, #6c757d);
-        }
-
-        .explanation-popup button:hover {
+        .explanation-popup .close-button:hover {
+            background-color: var(--primary-color-dark);
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .explanation-popup .close-button:hover {
-            background-color: var(--primary-color-dark);
-        }
-
-        .explanation-popup .copy-button:hover {
-            background-color: var(--secondary-color-dark, #5a6268);
-        }
-
-        .explanation-popup button:focus {
+        .explanation-popup .close-button:focus {
             outline: none;
             border-color: var(--primary-color-dark);
             box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3);
         }
 
-        .explanation-popup button:active {
+        .explanation-popup .close-button:active {
             transform: translateY(0);
             box-shadow: none;
-        }
-
-        /* Success/error states for copy button */
-        .explanation-popup .copy-button.success {
-            background-color: var(--success-color);
-            pointer-events: none;
-        }
-
-        .explanation-popup .copy-button.error {
-            background-color: var(--error-color);
-            pointer-events: none;
         }
 
         /* Mobile tap state animation */
@@ -802,9 +780,10 @@
             border-top: 1px solid var(--border-color, #ddd);
         }
         
+        /* Center the close button */
         .explanation-controls {
             display: flex;
-            gap: 10px;
+            justify-content: center; /* Center the single button */
         }
 
         /* Loading indicator styles */
