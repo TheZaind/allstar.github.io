@@ -6,6 +6,8 @@
     <title>CPU Quiz</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.9/purify.min.js"></script>
     <style>
         /* Flashcard specific styles */
         .flashcard {
@@ -503,9 +505,109 @@
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             z-index: 999;
             display: none;
             animation: fadeIn 0.2s ease;
+        }
+
+        /* Markdown styles */
+        .explanation-content {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .explanation-content h1,
+        .explanation-content h2,
+        .explanation-content h3,
+        .explanation-content h4 {
+            margin-top: 0.8em;
+            margin-bottom: 0.4em;
+            color: var(--text-color);
+        }
+
+        .explanation-content p {
+            margin-bottom: 1em;
+        }
+
+        .explanation-content ul,
+        .explanation-content ol {
+            margin-left: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .explanation-content code {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        body[data-theme="dark"] .explanation-content code {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .explanation-content pre {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1em;
+        }
+
+        body[data-theme="dark"] .explanation-content pre {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+        }
+
+        .explanation-content pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+        }
+
+        .explanation-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1em;
+            margin-left: 0;
+            margin-bottom: 1em;
+            color: var(--text-color-secondary, #666);
+        }
+
+        .explanation-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1em 0;
+        }
+
+        .explanation-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .explanation-content a:hover {
+            text-decoration: underline;
+        }
+
+        .explanation-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1em;
+        }
+
+        .explanation-content th,
+        .explanation-content td {
+            padding: 0.5em;
+            border: 1px solid var(--border-color, #ddd);
+        }
+
+        .explanation-content th {
+            background-color: rgba(0, 0, 0, 0.05);
         }
 
         .overlay.show {
@@ -524,7 +626,8 @@
             color: var(--text-color);
         }
 
-        .explanation-popup button {
+        .explanation-popup .close-button,
+        .explanation-popup .copy-button {
             padding: 10px 20px;
             border: 2px solid transparent;
             background-color: var(--primary-color);
@@ -535,12 +638,28 @@
             font-size: 1em;
             position: relative;
             overflow: hidden;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .explanation-popup .copy-button {
+            background-color: var(--secondary-color, #6c757d);
         }
 
         .explanation-popup button:hover {
-            background-color: var(--primary-color-dark);
             transform: translateY(-2px);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .explanation-popup .close-button:hover {
+            background-color: var(--primary-color-dark);
+        }
+
+        .explanation-popup .copy-button:hover {
+            background-color: var(--secondary-color-dark, #5a6268);
         }
 
         .explanation-popup button:focus {
@@ -552,6 +671,17 @@
         .explanation-popup button:active {
             transform: translateY(0);
             box-shadow: none;
+        }
+
+        /* Success/error states for copy button */
+        .explanation-popup .copy-button.success {
+            background-color: var(--success-color);
+            pointer-events: none;
+        }
+
+        .explanation-popup .copy-button.error {
+            background-color: var(--error-color);
+            pointer-events: none;
         }
 
         /* Mobile tap state animation */
@@ -621,6 +751,60 @@
         .explanation-button:not(:disabled):hover {
             background-color: var(--primary-color-dark);
             transform: translateY(-2px);
+        }
+
+        /* Code syntax highlighting for light and dark mode */
+        .code-block {
+            border: 1px solid var(--border-color, #ddd);
+            margin-bottom: 1em;
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 0;
+            right: 10px;
+            padding: 2px 6px;
+            font-size: 0.8em;
+            color: var(--text-color-secondary);
+            opacity: 0.7;
+        }
+
+        /* Improved code block styles */
+        .explanation-content pre {
+            background: var(--container-bg, #f5f5f5);
+            padding: 2em 1em 1em;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1em 0;
+            border: 1px solid var(--border-color, #ddd);
+            position: relative;
+        }
+        
+        body[data-theme="dark"] .explanation-content pre {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .explanation-content pre code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.4;
+            tab-size: 4;
+        }
+        
+        /* Improved explanation popup navigation */
+        .explanation-content-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+        
+        .explanation-controls {
+            display: flex;
+            gap: 10px;
         }
 
         /* Loading indicator styles */
@@ -831,11 +1015,21 @@
                  aria-modal="true"
                  aria-hidden="true">
                 <h3 id="explanation-title">Erklärung</h3>
-                <p id="explanation-text" role="document"></p>
-                <button onclick="closeExplanation()"
-                        aria-label="Dialog schließen">
-                    Schließen
-                </button>
+                <div id="explanation-text" class="explanation-content" role="document"></div>
+                <div class="explanation-content-footer">
+                    <div class="explanation-controls">
+                        <button onclick="closeExplanation()" 
+                                class="close-button"
+                                aria-label="Dialog schließen">
+                            Schließen
+                        </button>
+                        <button onclick="copyExplanation()" 
+                                class="copy-button"
+                                aria-label="Erklärung kopieren">
+                            📋 Kopieren
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -2175,9 +2369,13 @@
         const closeButton = popup?.querySelector('button');
         if (!popup || !explanationText || !overlay || !closeButton) return;
         
-        // Set content and show dialog
-        explanationText.textContent = question.explain;
+        // Parse markdown and set content
+        const htmlContent = marked.parse(question.explain || '');
+        explanationText.innerHTML = DOMPurify.sanitize(htmlContent);
+        
+        // Show dialog with proper z-index
         popup.style.display = 'block';
+        popup.style.zIndex = '1001';
         overlay.classList.add('show');
         
         // Update ARIA attributes
@@ -2212,7 +2410,14 @@
             } else if (e.key === 'Tab') {
                 // Trap focus within popup
                 e.preventDefault();
-                closeButton.focus();
+                const focusableElements = popup.querySelectorAll('button');
+                const currentIndex = Array.from(focusableElements).indexOf(document.activeElement);
+                const nextIndex = (currentIndex + (e.shiftKey ? -1 : 1) + focusableElements.length) % focusableElements.length;
+                focusableElements[nextIndex].focus();
+            } else if (e.key === 'c' && e.ctrlKey) {
+                // Support keyboard shortcut for copy
+                e.preventDefault();
+                copyExplanation();
             }
         };
         
@@ -2222,6 +2427,55 @@
         popup.cleanupListeners = () => {
             popup.removeEventListener('keydown', handleKeydown);
         };
+    }
+
+    function copyExplanation() {
+        const explanationText = document.getElementById('explanation-text');
+        const copyButton = document.querySelector('.copy-button');
+        
+        if (!explanationText || !copyButton) return;
+        
+        try {
+            // Get text content without HTML tags and normalize whitespace
+            const textToCopy = explanationText.innerText
+                .replace(/\s+/g, ' ')
+                .trim();
+                
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Success feedback
+                copyButton.classList.add('success');
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '✅ Kopiert!';
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    copyButton.classList.remove('success');
+                    copyButton.textContent = originalText;
+                }, 2000);
+                
+                // Announce to screen readers
+                const liveRegion = document.createElement('div');
+                liveRegion.setAttribute('aria-live', 'polite');
+                liveRegion.setAttribute('class', 'sr-only');
+                liveRegion.textContent = 'Erklärung wurde in die Zwischenablage kopiert';
+                document.body.appendChild(liveRegion);
+                
+                setTimeout(() => liveRegion.remove(), 1000);
+            }).catch(err => {
+                console.error('Failed to copy text:', err);
+                // Error feedback
+                copyButton.classList.add('error');
+                copyButton.textContent = '❌ Fehler beim Kopieren';
+                
+                setTimeout(() => {
+                    copyButton.classList.remove('error');
+                    copyButton.textContent = '📋 Kopieren';
+                }, 2000);
+            });
+        } catch (err) {
+            console.error('Copy functionality not supported:', err);
+            showFeedback('Kopieren wird von deinem Browser nicht unterstützt', false);
+        }
     }
 
     function closeExplanation() {
