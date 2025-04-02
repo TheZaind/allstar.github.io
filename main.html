@@ -1151,6 +1151,54 @@
 
     function toggleTimerMode() {
     }
+
+    function displayCurrentQuestion() {
+        if (currentQuestionIndex < 0 || currentQuestionIndex >= currentQuestions.length) {
+            return;
+        }
+        
+        const question = currentQuestions[currentQuestionIndex];
+        const questionContainer = document.getElementById('current-question');
+        
+        // Update question number
+        document.getElementById('current-question-number').textContent = currentQuestionIndex + 1;
+        
+        // Generate HTML for the question
+        let questionHTML = '';
+        
+        if (question.type === 'flashcard') {
+            // Flashcard-spezifisches Rendering
+            // ...existing flashcard code...
+        } else {
+            // Standard question rendering
+            questionHTML = `
+                <div class="question-text">${question.question}</div>
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option${answeredQuestions.has(currentQuestionIndex) ? ' answered' : ''}" data-index="${index}" onclick="selectOption(${index})">
+                            <div class="option-marker">${String.fromCharCode(65 + index)}</div>
+                            <div class="option-text">${option}</div>
+                            ${answeredQuestions.has(currentQuestionIndex) ? (index === question.correct ? '<div class="option-result correct">✓</div>' : (index === question.userAnswer ? '<div class="option-result incorrect">✗</div>' : '')) : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        questionContainer.innerHTML = questionHTML;
+        
+        // Update the disabled state of navigation buttons
+        document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+        document.getElementById('next-question').disabled = currentQuestionIndex === currentQuestions.length - 1;
+        
+        // Update explanation button state
+        updateExplanationButton();
+        
+        // Reset timer if active
+        if (timerActive) {
+            resetTimer();
+        }
+    }
     </script>
 </body>
 </html>
