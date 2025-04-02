@@ -625,7 +625,7 @@ body {
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* Overlay */
+/* Overlay mit integriertem Blur */
 .overlay {
     display: none;
     position: fixed;
@@ -633,9 +633,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     z-index: 999;
-    backdrop-filter: blur(3px);
 }
 
 .overlay.show {
