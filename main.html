@@ -985,30 +985,35 @@
                 <button id="next-question" onclick="nextQuestion()">Nächste Frage ➡️</button>
             </div>
 
-            <!-- Explanation Popup -->
-            <div id="explanation-popup" 
-                 class="explanation-popup" 
-                 style="display: none;"
-                 role="dialog"
-                 aria-labelledby="explanation-title"
-                 aria-modal="true"
-                 aria-hidden="true">
-                <h3 id="explanation-title">Erklärung</h3>
-                <div id="explanation-text" class="explanation-content" role="document"></div>
-                <div class="explanation-content-footer">
-                    <div class="explanation-controls">
-                        <button onclick="closeExplanation()" 
-                                class="close-button"
-                                aria-label="Dialog schließen">
-                            Schließen
-                        </button>
-                        <button onclick="copyExplanation()" 
-                                class="copy-button"
-                                aria-label="Erklärung kopieren">
-                            📋 Kopieren
-                        </button>
+            <!-- Popup Container -->
+            <div id="popup-container">
+                <!-- Explanation Popup -->
+                <div id="explanation-popup" 
+                     class="explanation-popup" 
+                     style="display: none;"
+                     role="dialog"
+                     aria-labelledby="explanation-title"
+                     aria-modal="true"
+                     aria-hidden="true">
+                    <h3 id="explanation-title">Erklärung</h3>
+                    <div id="explanation-text" class="explanation-content" role="document"></div>
+                    <div class="explanation-content-footer">
+                        <div class="explanation-controls">
+                            <button onclick="closeExplanation()" 
+                                    class="close-button"
+                                    aria-label="Dialog schließen">
+                                Schließen
+                            </button>
+                            <button onclick="copyExplanation()" 
+                                    class="copy-button"
+                                    aria-label="Erklärung kopieren">
+                                📋 Kopieren
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <!-- Blur Overlay -->
+                <div id="blur-overlay" class="blur-overlay"></div>
             </div>
         </div>
         
@@ -2342,20 +2347,22 @@
         const question = currentQuestions[currentQuestionIndex];
         if (!question || !question.explain) return;
         
+        const popupContainer = document.getElementById('popup-container');
         const popup = document.getElementById('explanation-popup');
-        const overlay = document.getElementById('overlay');
+        const blurOverlay = document.getElementById('blur-overlay');
         const explanationText = document.getElementById('explanation-text');
-        const closeButton = popup?.querySelector('button');
-        if (!popup || !explanationText || !overlay || !closeButton) return;
+        const closeButton = popup?.querySelector('.close-button');
+        
+        if (!popup || !explanationText || !blurOverlay || !closeButton || !popupContainer) return;
         
         // Parse markdown and set content
         const htmlContent = marked.parse(question.explain || '');
         explanationText.innerHTML = DOMPurify.sanitize(htmlContent);
         
-        // Show dialog with proper z-index
+        // Show container and elements
+        popupContainer.classList.add('show');
         popup.style.display = 'block';
-        popup.style.zIndex = '1001';
-        overlay.classList.add('show');
+        blurOverlay.classList.add('show');
         
         // Update ARIA attributes
         popup.setAttribute('aria-hidden', 'false');
@@ -2458,10 +2465,11 @@
     }
 
     function closeExplanation() {
+        const popupContainer = document.getElementById('popup-container');
         const popup = document.getElementById('explanation-popup');
-        const overlay = document.getElementById('overlay');
+        const blurOverlay = document.getElementById('blur-overlay');
         
-        if (popup && overlay) {
+        if (popup && blurOverlay && popupContainer) {
             // Cleanup event listeners
             if (popup.cleanupListeners) {
                 popup.cleanupListeners();
@@ -2472,8 +2480,10 @@
             popup.setAttribute('aria-hidden', 'true');
             document.body.setAttribute('aria-hidden', 'false');
             
+            // Remove show classes
             popup.classList.remove('show');
-            overlay.classList.remove('show');
+            blurOverlay.classList.remove('show');
+            popupContainer.classList.remove('show');
             
             // Return focus and announce closure
             const explanationButton = document.getElementById('explanation-button');
@@ -2489,7 +2499,7 @@
                 setTimeout(() => liveRegion.remove(), 1000);
             }
             
-            // Hide completely after animation
+            // Hide popup after animation
             setTimeout(() => {
                 popup.style.display = 'none';
             }, 300);
