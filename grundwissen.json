@@ -9,7 +9,7 @@
                 "Nur zum Transport"
             ],
             "correct": 1,
-            "hint": "Es schützt die internen Komponenten und bietet Platz für deren Montage."
+            "explain": "Es schützt die internen Komponenten und bietet Platz für deren Montage."
         },
         {
             "question": "Welche Schutzart wird durch IP65 beschrieben? 🛡️",
@@ -20,7 +20,7 @@
                 "Wasserdicht und feuerfest"
             ],
             "correct": 1,
-            "hint": "IP65 bietet Schutz gegen Staub und Strahlwasser aus beliebigem Winkel."
+            "explain": "IP65 bietet Schutz gegen Staub und Strahlwasser aus beliebigem Winkel."
         },
         {
             "question": "Was bedeutet die erste Ziffer in der IP-Schutzart? 🔢",
@@ -31,7 +31,7 @@
                 "Schutz vor Hitze"
             ],
             "correct": 2,
-            "hint": "Die erste Ziffer beschreibt den Schutz gegen feste Fremdkörper."
+            "explain": "Die erste Ziffer beschreibt den Schutz gegen feste Fremdkörper."
         },
         {
             "question": "Welche Bauform ist typisch für Server? 📦",
@@ -42,7 +42,7 @@
                 "Desktop Case"
             ],
             "correct": 1,
-            "hint": "Server werden oft in Racks montiert, um Platz zu sparen und die Kühlung zu optimieren."
+            "explain": "Server werden oft in Racks montiert, um Platz zu sparen und die Kühlung zu optimieren."
         },
         {
             "question": "Was ist ein häufiges Problem bei der PC-Kühlung? 🌡️",
@@ -53,7 +53,7 @@
                 "Zu große Gehäuse"
             ],
             "correct": 2,
-            "hint": "Staub kann die Effizienz der Kühlung erheblich beeinträchtigen."
+            "explain": "Staub kann die Effizienz der Kühlung erheblich beeinträchtigen."
         },
         {
             "question": "Wie viele Pole hat ein PWM-Lüfteranschluss? 🔌",
@@ -64,7 +64,7 @@
                 "5 Pole"
             ],
             "correct": 2,
-            "hint": "PWM-Lüfteranschlüsse haben in der Regel 4 Pole."
+            "explain": "PWM-Lüfteranschlüsse haben in der Regel 4 Pole. PWM steht für Pulse Width Modulation - eine Technik zur Steuerung der Lüftergeschwindigkeit."
         },
         {
             "question": "Was ist eine Heatpipe? 🌡️",
@@ -75,7 +75,7 @@
                 "Ein USB-Anschluss"
             ],
             "correct": 0,
-            "hint": "Heatpipes werden verwendet, um Wärme effizient von einer Stelle zur anderen zu transportieren."
+            "explain": "Heatpipes sind Wärmeüberträger, die durch ein spezielles Verdampfungs-/Kondensationssystem sehr effizient Wärme von der heißen zur kühleren Stelle transportieren."
         },
         {
             "question": "Welche Bauform war als 'Pizza box' bekannt? 🍕",
@@ -86,7 +86,7 @@
                 "Gaming PC"
             ],
             "correct": 1,
-            "hint": "Diese Bauform war flach und breit, ähnlich einer Pizzaschachtel."
+            "explain": "Diese flache, breite Bauform war in den frühen 90er Jahren bei Apple beliebt. Der Name kam von der Ähnlichkeit mit einer Pizzaschachtel."
         },
         {
             "question": "Was ist Case-Modding? 🎨",
@@ -97,7 +97,7 @@
                 "Lüftereinbau"
             ],
             "correct": 2,
-            "hint": "Case-Modding bezieht sich auf die individuelle Gestaltung und Modifikation von PC-Gehäusen."
+            "explain": "Case-Modding ist das kreative Anpassen und Gestalten von PC-Gehäusen, z.B. durch LED-Beleuchtung, Fenster, Lackierung oder custom Kühlsysteme."
         },
         {
             "question": "Welche Alternative gibt es zur Luftkühlung? ",
@@ -108,7 +108,7 @@
                 "Nur Heatpipes"
             ],
             "correct": 2,
-            "hint": "Wasserkühlung ist eine effektive Alternative zur Luftkühlung."
+            "explain": "Wasserkühlung nutzt Wasser als Kühlmedium, das Wärme besser transportiert als Luft. Sie ist effizienter aber wartungsintensiver als Luftkühlung."
         },
         {
             "question": "Was bedeutet BTX bei Gehäusen? 🔄",
