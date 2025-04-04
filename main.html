@@ -1245,6 +1245,13 @@
             file: 'grundwissen.json'
         },
         {
+            id: 'pm',
+            name: 'Projektmanagement Quiz',
+            description: 'Teste dein Wissen über klassisches Projektmanagement',
+            icon: '📊',
+            file: 'klassisches_projectmanagment.json'
+        },
+        {
             id: 'flashcards',
             name: 'Karteikarten Quiz',
             description: 'Lerne mit Karteikarten wichtige Hardware-Komponenten zu erkennen',
@@ -1532,6 +1539,9 @@
                 case 'gw':
                     fileName = 'grundwissen.json';
                     break;
+                case 'pm':
+                    fileName = 'klassisches_projectmanagment.json';
+                    break;
                 case 'flashcards':
                     fileName = 'flashcards.json';
                     break;
@@ -1541,7 +1551,7 @@
                 case 'mix':
                     // Mische Fragen aus allen Kategorien
                     const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json']) {
+                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json']) {
                         try {
                             const response = await fetch(file);
                             if (response.ok) {
