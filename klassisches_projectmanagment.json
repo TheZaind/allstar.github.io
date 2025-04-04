@@ -1,5 +1,6 @@
-[
-    {
+{
+    "questions": [
+        {
         "question": "Was ist KEINE typische Eigenschaft eines Projekts?",
         "options": [
             "Es ist eine Routineaufgabe",
@@ -1902,4 +1903,5 @@
         "correct": 1,
         "explain": "Diese Aussage ist **falsch**. Der PSP zeigt die **hierarchische Gliederung** der Arbeit ('Was ist zu tun?'), nicht die zeitliche oder logische Ablaufsequenz ('Wann und in welcher Reihenfolge?').\n\n- **PSP:** Stellt dar, **WAS** im Projekt zu tun ist, zerlegt in Teilprojekte, Teilaufgaben und Arbeitspakete. Er beantwortet die Frage nach dem Projektumfang (Scope).\n- **Netzplan/Gantt:** Diese Werkzeuge zeigen die **logischen Abhängigkeiten** (Netzplan) und die **zeitliche Abfolge** (Netzplan berechnet Zeitpunkte, Gantt visualisiert sie) der Vorgänge (die oft den Arbeitspaketen entsprechen). Sie beantworten die Frage nach dem Ablauf."
     }
-]
+    ]
+}
