@@ -388,6 +388,310 @@
                         ],
                         "correct": 1,
                         "explain": "Ein Metropolitan Area Network (MAN) kennzeichnet sich dadurch, dass es **mehrere LANs innerhalb einer Stadt** verbindet. Die charakteristischen Merkmale eines MAN sind:\n\n- Geografische Ausdehnung über eine Stadt oder einen Ballungsraum (typischerweise 5-50 km)\n- Verbindung mehrerer lokaler Netzwerke (LANs) zu einem größeren Netzwerk\n- Ermöglicht mehreren Standorten den Zugriff auf dasselbe Netzwerk\n- Kann sowohl kabelgebunden (oft über Glasfaser) als auch drahtlos implementiert werden\n\nEin MAN stellt somit eine Mittelform zwischen einem LAN (Local Area Network), das typischerweise auf ein Gebäude oder einen Campus beschränkt ist, und einem WAN (Wide Area Network) dar, das geografisch weit entfernte Standorte verbindet. MANs werden häufig von Organisationen genutzt, die mehrere Niederlassungen innerhalb einer Stadt haben, oder von städtischen Verwaltungen für die Vernetzung kommunaler Einrichtungen.\n\nDie anderen Optionen sind nicht korrekt: MANs sind nicht auf Rechenzentren beschränkt, verwenden sowohl kabelgebundene als auch drahtlose Technologien und haben keine feste Teilnehmerbegrenzung."
-        }
-    ]
+        },
+        [
+            {
+                "question": "Ein Unternehmen plant die Vernetzung mehrerer Standorte innerhalb einer Stadt. Welcher Netzwerktyp ist hierfür am besten geeignet?",
+                "options": [
+                    "MAN (Metropolitan Area Network)",
+                    "LAN (Local Area Network)",
+                    "WAN (Wide Area Network)",
+                    "CAN (Campus Area Network)"
+                ],
+                "correct": 0,
+                "explain": "Ein **MAN (Metropolitan Area Network)** ist speziell für die Vernetzung innerhalb einer Stadt konzipiert. Es erlaubt den Zusammenschluss mehrerer LANs und ermöglicht verschiedenen Standorten den Zugriff auf dasselbe Netzwerk. MANs können sowohl kabelgebunden (oft mit Glasfaserkabeln) als auch drahtlos (WLAN) realisiert werden. Sie überbrücken größere Distanzen als LANs, sind aber geografisch begrenzter als WANs."
+            },
+            {
+                "question": "Eine Hochschule möchte ihre verschiedenen Fakultätsgebäude vernetzen, die alle auf demselben Gelände liegen. Welches Netzwerk ist hier die passende Wahl?",
+                "options": [
+                    "WAN (Wide Area Network)",
+                    "GAN (Global Area Network)",
+                    "CAN (Campus Area Network)",
+                    "PAN (Personal Area Network)"
+                ],
+                "correct": 2,
+                "explain": "Ein **CAN (Campus Area Network)** ist optimal für die Vernetzung mehrerer Gebäude innerhalb einer Organisation wie einer Hochschule. Es handelt sich um einen Zusammenschluss mehrerer LANs, der geografisch begrenzter ist als ein MAN. CANs nutzen typischerweise sowohl kabelgebundene als auch drahtlose Technologien, wobei Glasfaserkabel häufig für die Hauptverbindungen zwischen den Gebäuden verwendet werden. Dies ermöglicht allen Standorten der Organisation den Zugriff auf dieselben Netzwerkressourcen."
+            },
+            {
+                "question": "Ein multinationales Unternehmen benötigt eine Netzwerklösung, die Büros auf verschiedenen Kontinenten verbindet. Welcher Netzwerktyp wird hier primär eingesetzt?",
+                "options": [
+                    "CAN (Campus Area Network)",
+                    "MAN (Metropolitan Area Network)",
+                    "WAN (Wide Area Network)",
+                    "LAN (Local Area Network)"
+                ],
+                "correct": 2,
+                "explain": "Ein **WAN (Wide Area Network)** ist die ideale Lösung für multinationale Unternehmen, da es geografisch unbeschränkt ist und jeden Ort der Welt anbinden kann. WANs werden typischerweise von Internet Service Providers (ISPs) verwaltet und ermöglichen den Zusammenschluss mehrerer LANs über große Entfernungen hinweg. Sie bilden das Rückgrat für die Netzwerke global agierender Organisationen und ermöglichen den standortunabhängigen Datenaustausch."
+            },
+            {
+                "question": "Das Internet als Ganzes ist ein Beispiel für welchen Netzwerktyp?",
+                "options": [
+                    "WAN (Wide Area Network)",
+                    "GAN (Global Area Network)",
+                    "MAN (Metropolitan Area Network)",
+                    "Extranet"
+                ],
+                "correct": 1,
+                "explain": "Das Internet ist das klassische Beispiel für ein **GAN (Global Area Network)**. Ein GAN ist ein globales Netzwerk mit weltweiter Ausdehnung, das mehrere WANs umfasst oder verknüpft. Es stellt die größtmögliche Netzwerkstruktur dar und ermöglicht die weltweite Kommunikation und den Datenaustausch. Das Internet als weltumspannendes Netz, das praktisch jeden Punkt der Erde erreichen kann, verkörpert perfekt das Konzept eines GAN."
+            },
+            {
+                "question": "Eine Modehandelskette möchte ihren Zulieferern Zugriff auf bestimmte Unternehmensdaten gewähren. Welche Netzwerklösung ist dafür konzipiert?",
+                "options": [
+                    "Intranet",
+                    "Internet",
+                    "Extranet",
+                    "MAN (Metropolitan Area Network)"
+                ],
+                "correct": 2,
+                "explain": "Ein **Extranet** ist genau für diesen Anwendungsfall konzipiert. Es bietet Personen, die für eine andere Organisation arbeiten (wie Zulieferer, Partner oder bestimmte Kunden), einen sicheren und kontrollierten Zugang zu spezifischen Unternehmensdaten. Typische Anwendungsbeispiele sind die Kommunikation in Lieferketten oder Terminbuchungssysteme. Im Gegensatz zum Intranet, das nur für interne Mitarbeiter zugänglich ist, öffnet das Extranet kontrolliert Teile des Unternehmensnetzwerks für ausgewählte externe Nutzer."
+            },
+            {
+                "question": "Welche der folgenden Aussagen zum Intranet ist korrekt?",
+                "options": [
+                    "Ein Intranet ist grundsätzlich für jeden zugänglich, der über eine Internetverbindung verfügt",
+                    "Ein Intranet verbindet ausschließlich LANs innerhalb eines Gebäudes",
+                    "Ein Intranet ist nur für Mitglieder oder autorisierte Personen einer Organisation zugänglich",
+                    "Ein Intranet und ein Extranet sind technisch identisch"
+                ],
+                "correct": 2,
+                "explain": "Ein **Intranet** ist ein Netzwerk, das LANs und WANs einer Organisation verbindet und ausschließlich für Mitglieder, Mitarbeiter oder bestimmte Personen mit entsprechender Autorisierung zugänglich ist. Es dient als private, organisationsinterne Kommunikationsplattform und Informationssystem. Im Gegensatz zum öffentlichen Internet ist der Zugriff streng kontrolliert und von außen abgeschirmt. Anders als ein reines LAN kann ein Intranet auch geografisch getrennte Standorte einer Organisation umfassen."
+            },
+            {
+                "question": "Unternehmen mit hohen Anforderungen an gleichmäßige Upload- und Download-Geschwindigkeiten nutzen häufig welche DSL-Variante?",
+                "options": [
+                    "ADSL (Asymmetric Digital Subscriber Line)",
+                    "VDSL (Very High Speed Digital Subscriber Line)",
+                    "SDSL (Symmetric Digital Subscriber Line)",
+                    "HDSL (High-Bit-Rate Digital Subscriber Line)"
+                ],
+                "correct": 2,
+                "explain": "**SDSL (Symmetric Digital Subscriber Line)** ist die DSL-Variante, die für Unternehmen mit gleichmäßigen Anforderungen an Upload- und Download-Geschwindigkeiten optimal ist. Im Gegensatz zu ADSL, das für Privathaushalte konzipiert ist und deutlich höhere Download- als Upload-Raten bietet, ermöglicht SDSL symmetrische Geschwindigkeiten in beide Richtungen. Dies ist besonders wichtig für Unternehmen, die große Datenmengen nicht nur empfangen, sondern auch versenden müssen, etwa für Cloud-Services, Video-Konferenzen, VoIP-Telefonie oder Hosting von Unternehmensanwendungen."
+            },
+            {
+                "question": "Metro Ethernet als Unternehmensinternetverbindung ist auch bekannt als:",
+                "options": [
+                    "Urban DSL",
+                    "City Network",
+                    "Ethernet WAN",
+                    "Metropolitan DSL"
+                ],
+                "correct": 2,
+                "explain": "**Metro Ethernet** ist auch als **Ethernet WAN** bekannt. Diese Technologie erweitert die aus LANs bekannte Ethernet-Zugriffstechnologie in das Wide Area Network (WAN). Es handelt sich um eine leistungsstarke Lösung für Unternehmen, die die Vorteile und Einfachheit von Ethernet-Technologien für die Weitverkehrsvernetzung nutzen möchten. Metro Ethernet bietet typischerweise hohe Bandbreiten und ist besonders in städtischen Gebieten verbreitet, wo die entsprechende Infrastruktur vorhanden ist."
+            },
+            {
+                "question": "Das Konzept der Fehlertoleranz in Netzwerken bedeutet, dass:",
+                "options": [
+                    "Fehler im Netzwerk vollständig vermieden werden können",
+                    "das Netzwerk trotz Ausfalls einzelner Komponenten weiter funktionieren kann",
+                    "Anwender Fehler im Netzwerk nicht bemerken",
+                    "Fehler automatisch repariert werden"
+                ],
+                "correct": 1,
+                "explain": "**Fehlertoleranz** in Netzwerken bedeutet, dass das Netzwerk trotz des Ausfalls einzelner Komponenten oder Verbindungen weiterhin funktionsfähig bleibt. Dies wird typischerweise durch Redundanz erreicht – alternative Pfade, Backup-Systeme und doppelt ausgelegte kritische Komponenten. Ziel ist nicht die vollständige Vermeidung von Fehlern (was praktisch unmöglich ist), sondern die Aufrechterhaltung des Betriebs trotz Fehlern. Ein fehlertolerantes Netzwerk kann automatisch auf Ausfälle reagieren und den Datenverkehr umleiten, ohne dass es zu einem kompletten Systemausfall kommt."
+            },
+            {
+                "question": "In einem medizinischen Notfallzentrum muss sichergestellt werden, dass Notrufe immer prioritär behandelt werden. Welches Merkmal zuverlässiger Netzwerke ist hier besonders wichtig?",
+                "options": [
+                    "Skalierbarkeit",
+                    "Fehlertoleranz",
+                    "Quality of Service (QoS)",
+                    "Sicherheit"
+                ],
+                "correct": 2,
+                "explain": "**Quality of Service (QoS)** ist hier das entscheidende Merkmal. QoS-Mechanismen ermöglichen die Priorisierung bestimmter Datenströme im Netzwerk. In einem medizinischen Notfallzentrum ist es essentiell, dass zeitkritische Kommunikation wie Notrufe Vorrang vor weniger wichtigem Datenverkehr erhält. QoS sorgt dafür, dass bei begrenzter Bandbreite die wichtigsten Dienste zuverlässig funktionieren, indem ihnen Ressourcen garantiert zugeteilt werden. Dies kann über Priorisierung bestimmter IP-Adressen, Ports oder Protokolle erfolgen und ist entscheidend für Anwendungen, bei denen Verzögerungen oder Paketverluste kritische Folgen haben könnten."
+            },
+            {
+                "question": "Ein wachsendes Unternehmen plant sein Netzwerk für die nächsten Jahre. Welches Merkmal sollte besonders berücksichtigt werden?",
+                "options": [
+                    "Skalierbarkeit",
+                    "Quality of Service",
+                    "Deterministisches Verhalten",
+                    "Statische Adressierung"
+                ],
+                "correct": 0,
+                "explain": "**Skalierbarkeit** ist für wachsende Unternehmen das entscheidende Merkmal bei der Netzwerkplanung. Ein skalierbares Netzwerk kann problemlos erweitert werden, um mehr Benutzer, Geräte und höhere Datenmengen zu bewältigen, ohne dass grundlegende Änderungen an der Architektur notwendig werden. Dies umfasst sowohl die horizontale Skalierung (mehr Geräte) als auch die vertikale Skalierung (höhere Leistungsfähigkeit). Eine vorausschauende Planung mit Skalierbarkeit im Fokus vermeidet kostspielige komplette Neugestaltungen des Netzwerks bei Unternehmenswachstum und ermöglicht eine schrittweise Anpassung an steigende Anforderungen."
+            },
+            {
+                "question": "Ein GAN (Global Area Network) verbindet typischerweise mehrere:",
+                "options": [
+                    "LANs (Local Area Networks)",
+                    "MANs (Metropolitan Area Networks)",
+                    "WANs (Wide Area Networks)",
+                    "CANs (Campus Area Networks)"
+                ],
+                "correct": 2,
+                "explain": "Ein **GAN (Global Area Network)** verbindet typischerweise mehrere **WANs (Wide Area Networks)**. Als globales Netzwerk mit weltweiter Ausdehnung stellt das GAN die höchste Hierarchieebene in der Netzwerktopologie dar. Es umfasst oder verknüpft mehrere WANs, die ihrerseits bereits große geografische Gebiete abdecken. Das Internet als bekanntestes Beispiel eines GAN verbindet zahlreiche WANs weltweit zu einem umfassenden globalen Netzwerk, das praktisch jeden Punkt der Erde erreichen kann."
+            },
+            {
+                "question": "Ein Intranet kann niemals über geografisch getrennte Standorte hinweg existieren.",
+                "options": ["Wahr", "Falsch"],
+                "correct": 1,
+                "explain": "Diese Aussage ist **falsch**. Ein Intranet bezeichnet explizit eine Verbindung von LANs und WANs, die zu einer Organisation gehören – kann also durchaus geografisch getrennte Standorte umfassen. Es ist ein privates Netzwerk, das für die interne Kommunikation und den Informationsaustausch innerhalb einer Organisation konzipiert ist, unabhängig von der geografischen Verteilung dieser Organisation. Große Unternehmen mit mehreren Standorten nutzen häufig ein unternehmensweites Intranet, das alle ihre Büros und Einrichtungen weltweit verbindet, dabei aber durch Sicherheitsmaßnahmen vom öffentlichen Internet abgeschirmt bleibt."
+            },
+            {
+                "question": "Ein Metro Ethernet nutzt die gleiche grundlegende Technologie wie ein typisches LAN, erweitert diese aber auf ein größeres geografisches Gebiet.",
+                "options": ["Wahr", "Falsch"],
+                "correct": 0,
+                "explain": "Diese Aussage ist **wahr**. Metro Ethernet erweitert tatsächlich die aus LANs bekannte Ethernet-Technologie auf ein größeres geografisches Gebiet. Es ist auch als Ethernet WAN bekannt und überträgt die Vorteile von Ethernet (einfache Konfiguration, Kompatibilität, hohe Geschwindigkeiten) auf Weitverkehrsnetze. Diese Lösung ermöglicht es Unternehmen, die vertraute und weit verbreitete Ethernet-Technologie auch für die Verbindung zwischen verschiedenen Standorten innerhalb einer Stadt oder Region zu nutzen, anstatt auf völlig andere WAN-Technologien umsteigen zu müssen."
+            },
+            {
+                "question": "Ein Extranet ist grundsätzlich weniger sicher als ein Intranet, da es externen Zugriff erlaubt.",
+                "options": ["Wahr", "Falsch"],
+                "correct": 1,
+                "explain": "Diese Aussage ist **falsch**. Ein Extranet ist nicht grundsätzlich weniger sicher als ein Intranet, sondern setzt lediglich andere Sicherheitskonzepte um. Während ein Extranet zwar selektiven externen Zugriff für bestimmte autorisierte Partner oder Kunden erlaubt, verfügt es über spezifische Sicherheitsmaßnahmen wie strenge Authentifizierung, Verschlüsselung, Zugriffskontrollen und Firewalls, die genau regulieren, wer auf welche Daten zugreifen kann. Der Zugang wird sorgfältig kontrolliert und überwacht. Ein gut konzipiertes Extranet kann daher genauso sicher sein wie ein Intranet – mit dem Unterschied, dass es gezielt bestimmte Ressourcen für ausgewählte externe Nutzer freigibt."
+            },
+            {
+                "question": "SDSL (Symmetric Digital Subscriber Line) bietet grundsätzlich höhere maximale Geschwindigkeiten als ADSL (Asymmetric Digital Subscriber Line).",
+                "options": ["Wahr", "Falsch"],
+                "correct": 1,
+                "explain": "Diese Aussage ist **falsch**. SDSL (Symmetric Digital Subscriber Line) bietet nicht grundsätzlich höhere maximale Geschwindigkeiten als ADSL (Asymmetric Digital Subscriber Line). Der Hauptunterschied liegt in der Symmetrie: SDSL bietet identische Upload- und Download-Geschwindigkeiten, während ADSL typischerweise höhere Download- als Upload-Raten ermöglicht. In der Praxis sind die maximalen Download-Geschwindigkeiten von ADSL-Varianten (insbesondere ADSL2+) oft höher als die von SDSL. SDSL wird vor allem wegen der gleichmäßigen Geschwindigkeiten in beide Richtungen für Unternehmensanwendungen gewählt, nicht wegen höherer Maximalgeschwindigkeiten."
+            },
+            {
+                "question": "Für ein fehlertolerantes Netzwerk ist Redundanz bei kritischen Komponenten unerlässlich.",
+                "options": ["Wahr", "Falsch"],
+                "correct": 0,
+                "explain": "Diese Aussage ist **wahr**. Redundanz ist ein zentrales Konzept für fehlertolerante Netzwerke. Durch die mehrfache Auslegung kritischer Komponenten (wie Router, Switches, Verbindungswege, Stromversorgung) wird sichergestellt, dass der Ausfall einzelner Elemente nicht zum Totalausfall des Systems führt. Redundante Systeme können automatisch einspringen, wenn Primärsysteme versagen. Dies kann durch redundante Hardware, alternative Kommunikationspfade, Backup-Server oder gespiegelte Datenspeicher realisiert werden. In hochverfügbaren Netzwerken werden oft Konzepte wie N+1 oder sogar N+N Redundanz umgesetzt, wobei N die benötigte Anzahl von Komponenten für den Normalbetrieb darstellt und die zusätzlichen Komponenten als Backup dienen."
+            },
+                {
+                  "question": "Welches Ziel der Fehlertoleranz in Netzwerken ist besonders wichtig, um die Ausfallzeit bei Störungen zu minimieren?",
+                  "options": [
+                    "Schnelle Wiederherstellung",
+                    "Erhöhte Bandbreite",
+                    "Maximale Übertragungsgeschwindigkeit",
+                    "Größere Speicherkapazität"
+                  ],
+                  "correct": 0,
+                  "explain": "Die **schnelle Wiederherstellung** ist ein zentrales Element der Fehlertoleranz in Netzwerken. Während alle Maßnahmen zur Fehlertoleranz darauf abzielen, die Verfügbarkeit zu maximieren, spielt die Geschwindigkeit der Wiederherstellung nach einem Ausfall oder einer Störung eine besondere Rolle, da sie direkt die Ausfallzeit (Downtime) beeinflusst. Je schneller ein System nach einem Problem wieder funktionsfähig ist, desto geringer sind die negativen Auswirkungen auf Benutzer und Geschäftsprozesse."
+                },
+                {
+                  "question": "Ein Netzwerkadministrator möchte die Fehlertoleranz eines Unternehmensnetzwerks verbessern. Welche Maßnahme trägt am direktesten zur Erhöhung der Pfadredundanz bei?",
+                  "options": [
+                    "Installation einer stärkeren Firewall",
+                    "Implementierung mehrerer unabhängiger Verbindungswege zwischen kritischen Netzwerkknoten",
+                    "Erhöhung der Bandbreite aller Verbindungen",
+                    "Aktualisierung der Antivirus-Software auf allen Endgeräten"
+                  ],
+                  "correct": 1,
+                  "explain": "Die **Implementierung mehrerer unabhängiger Verbindungswege zwischen kritischen Netzwerkknoten** ist die direkteste Methode zur Erhöhung der Pfadredundanz. Diese Maßnahme stellt sicher, dass bei Ausfall eines Verbindungswegs alternative Routen für die Datenübertragung zur Verfügung stehen. Pfadredundanz bedeutet, dass Datenpakete über verschiedene Wege ihr Ziel erreichen können, was die Wahrscheinlichkeit eines vollständigen Kommunikationsausfalls deutlich reduziert. Die anderen genannten Optionen können zwar die allgemeine Netzwerksicherheit oder -leistung verbessern, tragen aber nicht direkt zur Pfadredundanz bei."
+                },
+                {
+                  "question": "In einem wachsenden Unternehmen muss das Netzwerk regelmäßig erweitert werden. Welcher Aspekt ist für eine gute Skalierbarkeit am wichtigsten?",
+                  "options": [
+                    "Maximale Bandbreite bei der Erstinstallation",
+                    "Einsatz proprietärer Technologien eines einzelnen Herstellers",
+                    "Einhaltung von Standards und Protokollen",
+                    "Minimierung der Anzahl von Netzwerkgeräten"
+                  ],
+                  "correct": 2,
+                  "explain": "Die **Einhaltung von Standards und Protokollen** ist für die Skalierbarkeit eines Netzwerks entscheidend. Standardisierte Komponenten und Protokolle ermöglichen eine problemlose Integration neuer Geräte und Dienste, unabhängig vom Hersteller. Dies verhindert technische Inkompatibilitäten und vermeidet das sogenannte Vendor Lock-in, bei dem man an einen bestimmten Anbieter gebunden ist. Standards wie TCP/IP, IEEE 802.3 (Ethernet) oder IEEE 802.11 (WLAN) stellen sicher, dass neue Komponenten nahtlos mit der bestehenden Infrastruktur zusammenarbeiten können, was die Flexibilität bei Erweiterungen erhöht und gleichzeitig die Kosten senkt."
+                },
+                {
+                  "question": "Eine Firma stellt fest, dass ihre VoIP-Telefonate trotz ausreichender Gesamtbandbreite manchmal abgehackt klingen, besonders wenn gleichzeitig große Software-Updates laufen. Welcher Netzwerkaspekt sollte optimiert werden?",
+                  "options": [
+                    "Firewall-Konfiguration",
+                    "Quality of Service (QoS)",
+                    "Netzwerktopologie",
+                    "Verschlüsselungsalgorithmen"
+                  ],
+                  "correct": 1,
+                  "explain": "In dieser Situation sollte die **Quality of Service (QoS)** optimiert werden. QoS ermöglicht die Priorisierung bestimmter Datenverkehrsarten im Netzwerk. VoIP (Voice over IP) ist besonders empfindlich gegenüber Verzögerungen und Jitter, da diese die Sprachqualität merklich beeinträchtigen. Durch die Implementierung oder Optimierung von QoS-Richtlinien kann sichergestellt werden, dass VoIP-Pakete vorrangig behandelt werden, selbst wenn gleichzeitig bandbreitenintensive Aufgaben wie Software-Updates durchgeführt werden. So können Echtzeitanwendungen wie Telefonie zuverlässig funktionieren, ohne dass die Gesamtbandbreite erhöht werden muss."
+                },
+                {
+                  "question": "Die CIA-Triade ist ein grundlegendes Konzept der Informationssicherheit. Wofür steht das Akronym CIA in diesem Zusammenhang?",
+                  "options": [
+                    "Computer Interface Authentication",
+                    "Confidentiality, Integrity, Availability",
+                    "Critical Infrastructure Access",
+                    "Control, Identification, Authorization"
+                  ],
+                  "correct": 1,
+                  "explain": "Die **CIA-Triade** steht für **Confidentiality (Vertraulichkeit), Integrity (Integrität) und Availability (Verfügbarkeit)**. Diese drei Prinzipien bilden die Grundpfeiler der Informationssicherheit:\n\n- **Vertraulichkeit**: Sicherstellung, dass Informationen nur für autorisierte Personen zugänglich sind\n- **Integrität**: Gewährleistung, dass Daten vollständig, korrekt und unverändert bleiben\n- **Verfügbarkeit**: Sicherstellung, dass Systeme und Daten bei Bedarf zuverlässig zur Verfügung stehen\n\nDiese drei Schutzziele müssen bei der Gestaltung sicherer Informationssysteme ausgewogen berücksichtigt werden."
+                },
+                {
+                  "question": "Ein Zero-Day-Angriff unterscheidet sich von anderen Cyberangriffen hauptsächlich dadurch, dass...",
+                  "options": [
+                    "er keine Schadsoftware verwendet",
+                    "er ausschließlich auf mobile Geräte abzielt",
+                    "er eine Schwachstelle ausnutzt, für die noch kein Patch existiert",
+                    "er nur genau 24 Stunden lang durchgeführt wird"
+                  ],
+                  "correct": 2,
+                  "explain": "Ein **Zero-Day-Angriff** nutzt eine **bisher unbekannte oder nicht gepatchte Schwachstelle** aus. Der Begriff Zero-Day bezieht sich auf die Tatsache, dass Entwickler oder Hersteller null Tage Zeit hatten, um einen Fix zu entwickeln, da die Schwachstelle zuvor nicht bekannt war oder nicht öffentlich gemeldet wurde. Diese Art von Angriffen ist besonders gefährlich, weil:\n\n1. Standardsicherheitsmaßnahmen wie Antivirensoftware oder Firewalls oft nicht davor schützen können\n2. Selbst aktualisierte Systeme angreifbar sind\n3. Die Angriffe oft erst erkannt werden, nachdem Schaden entstanden ist\n\nDie Abwehr solcher Angriffe erfordert mehrstufige Sicherheitskonzepte, verhaltensbasierte Erkennung und schnelle Reaktionsfähigkeit."
+                },
+                {
+                  "question": "In einer Netzwerkinfrastruktur ist die Unterscheidung zwischen Sicherheit der Netzwerkinfrastruktur und Informationssicherheit eine etablierte Praxis.",
+                  "options": ["Wahr", "Falsch"],
+                  "correct": 0,
+                  "explain": "Diese Aussage ist **wahr**. In der Netzwerksicherheit werden tatsächlich zwei Hauptaspekte unterschieden:\n\n1. **Sicherheit der Netzwerkinfrastruktur**: Bezieht sich auf den Schutz der physischen und logischen Komponenten des Netzwerks selbst, wie Router, Switches, Kabel und Netzwerkprotokolle. Dies umfasst Maßnahmen wie physische Zugangskontrolle zu Serverräumen, Schutz vor DoS-Angriffen oder die sichere Konfiguration von Netzwerkgeräten.\n\n2. **Informationssicherheit**: Konzentriert sich auf den Schutz der Daten, die im Netzwerk gespeichert, verarbeitet und übertragen werden. Hier geht es um die Umsetzung der CIA-Triade (Vertraulichkeit, Integrität, Verfügbarkeit).\n\nBeide Aspekte sind eng miteinander verknüpft, erfordern jedoch unterschiedliche Schutzmaßnahmen und werden daher in der Praxis oft getrennt betrachtet."
+                },
+                {
+                  "question": "BYOD bezieht sich auf einen aktuellen Trend im Bereich der Netzwerke. Was bedeutet dieses Akronym?",
+                  "options": [
+                    "Build Your Own Database",
+                    "Bring Your Own Device",
+                    "Backup Your Office Data",
+                    "Business Yield On Demand"
+                  ],
+                  "correct": 1,
+                  "explain": "**BYOD** steht für **Bring Your Own Device** und bezeichnet den Trend, dass Mitarbeiter ihre privaten Endgeräte (Smartphones, Tablets, Laptops) für berufliche Zwecke und den Zugriff auf Unternehmensressourcen nutzen.\n\nDieser Trend bringt mehrere Herausforderungen für Netzwerkadministratoren mit sich:\n\n- **Sicherheitsrisiken**: Unterschiedliche Betriebssysteme und Sicherheitsstände der Geräte\n- **Zugriffsmanagement**: Sichere Integration privater Geräte ins Unternehmensnetzwerk\n- **Datenschutz**: Balance zwischen Kontrolle über Unternehmensdaten und Privatsphäre der Nutzer\n- **Support**: Unterstützung einer Vielzahl verschiedener Geräte und Konfigurationen\n\nOrganisationen implementieren daher oft spezielle BYOD-Richtlinien und -Lösungen wie Mobile Device Management (MDM), um diese Herausforderungen zu bewältigen."
+                },
+                {
+                  "question": "Welche der folgenden Bedrohungen ist charakterisiert durch den Versuch, ein System durch Überflutung mit Anfragen zu überlasten?",
+                  "options": [
+                    "Spyware",
+                    "Identitätsdiebstahl",
+                    "Zero-Day-Angriff",
+                    "Denial of Service (DoS) Angriff"
+                  ],
+                  "correct": 3,
+                  "explain": "Ein **Denial of Service (DoS) Angriff** ist durch die Überflutung eines Systems mit Anfragen charakterisiert, mit dem Ziel, es zu überlasten und die Verfügbarkeit für legitime Nutzer zu beeinträchtigen. Bei der fortgeschritteneren Variante, dem Distributed Denial of Service (DDoS), werden diese Anfragen von vielen verschiedenen, oft kompromittierten Geräten (Botnetze) gleichzeitig gesendet.\n\nDoS-Angriffe zielen auf das \"Availability\"-Element der CIA-Triade ab und können verschiedene Formen annehmen:\n\n- **Volumetrische Angriffe**: Überlasten der Netzwerkbandbreite\n- **Protokollangriffe**: Ausnutzen von Schwachstellen in Netzwerkprotokollen\n- **Anwendungsschichtangriffe**: Gezieltes Überlasten spezifischer Anwendungsfunktionen\n\nIm Gegensatz dazu zielen Spyware auf das Ausspähen von Informationen, Identitätsdiebstahl auf die Übernahme digitaler Identitäten und Zero-Day-Angriffe auf das Ausnutzen unbekannter Schwachstellen ab."
+                },
+                {
+                  "question": "In modernen Netzwerken ist Skalierbarkeit ausschließlich durch den Einsatz proprietärer Technologien eines einzelnen Herstellers zu erreichen.",
+                  "options": ["Wahr", "Falsch"],
+                  "correct": 1,
+                  "explain": "Diese Aussage ist **falsch**. Gerade das Gegenteil ist der Fall: Eine gute Skalierbarkeit wird in modernen Netzwerken vor allem durch die **Einhaltung von Standards und Protokollen** erreicht, nicht durch proprietäre Technologien eines einzelnen Herstellers.\n\nStandards und offene Protokolle ermöglichen:\n\n- **Interoperabilität**: Geräte verschiedener Hersteller können problemlos zusammenarbeiten\n- **Flexibilität**: Neue Komponenten können je nach Bedarf hinzugefügt werden\n- **Vermeidung von Vendor Lock-in**: Keine Abhängigkeit von einem einzelnen Anbieter\n- **Kosteneffizienz**: Wettbewerb zwischen verschiedenen Anbietern führt zu besseren Preisen\n\nProprietäre Lösungen eines einzelnen Herstellers führen dagegen oft zu Kompatibilitätsproblemen und erschweren die Erweiterung des Netzwerks mit Komponenten anderer Hersteller."
+                },
+                {
+                  "question": "Ein Systemadministrator möchte den Traffic im Netzwerk überwachen und verdächtige Aktivitäten automatisch blockieren. Welche Sicherheitslösung sollte implementiert werden?",
+                  "options": [
+                    "Virtual Private Network (VPN)",
+                    "Intrusion Prevention System (IPS)",
+                    "Antivirus-Software",
+                    "Zugriffskontrollliste (ACL)"
+                  ],
+                  "correct": 1,
+                  "explain": "Ein **Intrusion Prevention System (IPS)** ist die passende Lösung für die beschriebene Anforderung. Ein IPS überwacht aktiv den Netzwerkverkehr, analysiert Protokolle und Verhaltensmuster, erkennt verdächtige Aktivitäten und kann automatisch Gegenmaßnahmen einleiten, um erkannte Bedrohungen zu blockieren.\n\nIm Vergleich dazu:\n- **VPN** dient der verschlüsselten Kommunikation über unsichere Netzwerke\n- **Antivirus-Software** schützt einzelne Geräte vor Schadsoftware, überwacht aber nicht den gesamten Netzwerkverkehr\n- **Zugriffskontrolllisten (ACLs)** definieren statische Regeln für erlaubten und verbotenen Verkehr, haben aber keine Erkennungsfunktionen für verdächtige Aktivitäten\n\nEin IPS kombiniert die Erkennungsfähigkeiten eines Intrusion Detection Systems (IDS) mit automatischen Abwehrmaßnahmen, was es zur idealen Lösung für die beschriebene Anforderung macht."
+                },
+                {
+                  "question": "Durch welche Eigenschaft unterscheidet sich ein Trojaner von anderen Schadprogrammen wie Viren und Würmern?",
+                  "options": [
+                    "Er kann sich nicht selbst verbreiten",
+                    "Er tarnt sich als nützliche Anwendung",
+                    "Er benötigt eine permanente Internetverbindung",
+                    "Er greift ausschließlich Netzwerkinfrastruktur an"
+                  ],
+                  "correct": 1,
+                  "explain": "**Trojaner** oder **Trojanische Pferde** unterscheiden sich von anderen Schadprogrammen hauptsächlich dadurch, dass sie sich als nützliche oder harmlose Anwendungen **tarnen**, um Benutzer zur Installation zu verleiten. Sie präsentieren sich oft als legitime Software, Spiele, Bildschirmschoner oder E-Mail-Anhänge.\n\nIm Vergleich dazu:\n\n- **Viren** fügen sich in bestehende Dateien ein und werden beim Ausführen dieser Dateien aktiviert\n- **Würmer** verbreiten sich selbstständig über Netzwerke, ohne Benutzerinteraktion zu benötigen\n\nTrojaner sind besonders gefährlich, weil sie durch Social Engineering die Schwachstelle \"Mensch\" ausnutzen und nach der Installation verschiedene schädliche Funktionen ausführen können, wie das Öffnen von Hintertüren, Datendiebstahl oder die Installation weiterer Schadsoftware."
+                },
+                {
+                  "question": "Welche der folgenden Technologien stellt einen sicheren, verschlüsselten Tunnel durch ein unsicheres Netzwerk bereit?",
+                  "options": [
+                    "Intrusion Prevention System (IPS)",
+                    "Zugriffskontrollliste (ACL)",
+                    "Virtual Private Network (VPN)",
+                    "Quality of Service (QoS)"
+                  ],
+                  "correct": 2,
+                  "explain": "Ein **Virtual Private Network (VPN)** stellt einen sicheren, verschlüsselten Tunnel durch ein unsicheres Netzwerk bereit. VPNs werden eingesetzt, um:\n\n- **Sichere Fernzugriffe** auf Unternehmensressourcen für Remote-Mitarbeiter zu ermöglichen\n- **Datenverkehr zu verschlüsseln**, sodass dieser auch in öffentlichen Netzen (wie WLAN-Hotspots) vor Abhören geschützt ist\n- **Standorte zu verbinden**, indem über das öffentliche Internet ein privates Netzwerk simuliert wird\n- In manchen Fällen die **Anonymität** zu erhöhen oder geografische Beschränkungen zu umgehen\n\nVPNs verwenden Verschlüsselungsprotokolle wie IPsec, SSL/TLS oder WireGuard, um die Vertraulichkeit und Integrität der übertragenen Daten sicherzustellen. Im Gegensatz dazu dienen IPS der Erkennung und Abwehr von Angriffen, ACLs der Zugriffssteuerung und QoS der Verkehrspriorisierung."
+                },
+                {
+                  "question": "Quality of Service (QoS) in Netzwerken dient hauptsächlich dazu, den Netzwerkverkehr nach seiner Wichtigkeit zu priorisieren.",
+                  "options": ["Wahr", "Falsch"],
+                  "correct": 0,
+                  "explain": "Diese Aussage ist **wahr**. Quality of Service (QoS) dient in der Tat hauptsächlich dazu, den Netzwerkverkehr nach seiner Wichtigkeit oder seinen Anforderungen zu priorisieren.\n\nQoS-Mechanismen ermöglichen es, bestimmten Anwendungen oder Diensten Vorrang zu geben, besonders wenn die Netzwerkressourcen begrenzt sind. Dies ist wichtig für:\n\n- **Echtzeitanwendungen** wie VoIP oder Videokonferenzen, die empfindlich auf Verzögerungen reagieren\n- **Kritische Geschäftsanwendungen**, die zuverlässig funktionieren müssen\n- **Effiziente Ressourcennutzung** durch Zuweisung der Bandbreite entsprechend der tatsächlichen Anforderungen verschiedener Anwendungen\n\nEin typisches Beispiel ist die Priorisierung von VoIP-Verkehr gegenüber großen Dateidownloads oder Software-Updates, um eine gute Sprachqualität zu gewährleisten, selbst wenn das Netzwerk stark ausgelastet ist."
+                }
+              ]
+            
+        ]
 }
