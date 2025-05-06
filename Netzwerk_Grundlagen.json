@@ -389,7 +389,6 @@
                         "correct": 1,
                         "explain": "Ein Metropolitan Area Network (MAN) kennzeichnet sich dadurch, dass es **mehrere LANs innerhalb einer Stadt** verbindet. Die charakteristischen Merkmale eines MAN sind:\n\n- Geografische Ausdehnung über eine Stadt oder einen Ballungsraum (typischerweise 5-50 km)\n- Verbindung mehrerer lokaler Netzwerke (LANs) zu einem größeren Netzwerk\n- Ermöglicht mehreren Standorten den Zugriff auf dasselbe Netzwerk\n- Kann sowohl kabelgebunden (oft über Glasfaser) als auch drahtlos implementiert werden\n\nEin MAN stellt somit eine Mittelform zwischen einem LAN (Local Area Network), das typischerweise auf ein Gebäude oder einen Campus beschränkt ist, und einem WAN (Wide Area Network) dar, das geografisch weit entfernte Standorte verbindet. MANs werden häufig von Organisationen genutzt, die mehrere Niederlassungen innerhalb einer Stadt haben, oder von städtischen Verwaltungen für die Vernetzung kommunaler Einrichtungen.\n\nDie anderen Optionen sind nicht korrekt: MANs sind nicht auf Rechenzentren beschränkt, verwenden sowohl kabelgebundene als auch drahtlose Technologien und haben keine feste Teilnehmerbegrenzung."
         },
-        [
             {
                 "question": "Ein Unternehmen plant die Vernetzung mehrerer Standorte innerhalb einer Stadt. Welcher Netzwerktyp ist hierfür am besten geeignet?",
                 "options": [
@@ -690,8 +689,446 @@
                   "options": ["Wahr", "Falsch"],
                   "correct": 0,
                   "explain": "Diese Aussage ist **wahr**. Quality of Service (QoS) dient in der Tat hauptsächlich dazu, den Netzwerkverkehr nach seiner Wichtigkeit oder seinen Anforderungen zu priorisieren.\n\nQoS-Mechanismen ermöglichen es, bestimmten Anwendungen oder Diensten Vorrang zu geben, besonders wenn die Netzwerkressourcen begrenzt sind. Dies ist wichtig für:\n\n- **Echtzeitanwendungen** wie VoIP oder Videokonferenzen, die empfindlich auf Verzögerungen reagieren\n- **Kritische Geschäftsanwendungen**, die zuverlässig funktionieren müssen\n- **Effiziente Ressourcennutzung** durch Zuweisung der Bandbreite entsprechend der tatsächlichen Anforderungen verschiedener Anwendungen\n\nEin typisches Beispiel ist die Priorisierung von VoIP-Verkehr gegenüber großen Dateidownloads oder Software-Updates, um eine gute Sprachqualität zu gewährleisten, selbst wenn das Netzwerk stark ausgelastet ist."
-                }
-              ]
-            
-        ]
+                },
+                    {
+                        "question": "Welche Eigenschaft ist typisch für wissenschaftliche Modelle? 🧪",
+                        "options": [
+                            "Abstraktion und Vereinfachung komplexer Systeme",
+                            "Vollständige Abbildung aller Aspekte der Realität",
+                            "Erstellung endgültiger und unveränderbarer Erklärungen",
+                            "Ersatz für praktische Experimente oder Beobachtungen"
+                        ],
+                        "correct": 0,
+                        "explain": "Wissenschaftliche Modelle sind **vereinfachte, abstrahierte Darstellungen der Realität**. Sie reduzieren komplexe Systeme auf ihre wesentlichen Eigenschaften, um sie verständlicher und analysierbar zu machen. Diese Abstraktion ist ein entscheidendes Merkmal wissenschaftlicher Modelle, da sie hilft, Komplexität zu bewältigen und Strukturen oder Zusammenhänge klarer erkennbar zu machen. Die anderen Optionen beschreiben gerade das, was wissenschaftliche Modelle explizit nicht leisten können oder sollen."
+                    },
+                    {
+                        "question": "Ein IT-Spezialist muss ein Netzwerkproblem diagnostizieren und verwendet dafür ein Schichtenmodell, um systematisch die Fehlerquelle zu isolieren. Welches Modell nutzt er dabei höchstwahrscheinlich?",
+                        "options": [
+                            "Von-Neumann-Modell",
+                            "OSI-Schichten-Modell",
+                            "Periodensystem der Elemente",
+                            "Wasserfall-Modell"
+                        ],
+                        "correct": 1,
+                        "explain": "Das **OSI-Schichten-Modell** ist das Standardreferenzmodell für Netzwerkkommunikation und wird in der IT-Branche häufig zur Diagnose von Netzwerkproblemen verwendet. Es teilt die Netzwerkkommunikation in sieben hierarchische Schichten auf, wodurch IT-Spezialisten systematisch von physischen Verbindungsproblemen (Schicht 1) bis hin zu Anwendungsproblemen (Schicht 7) vorgehen können. Diese strukturierte Herangehensweise ermöglicht es, komplexe Netzwerkprobleme methodisch einzugrenzen und zu lokalisieren."
+                    },
+                    {
+                        "question": "Die Von-Neumann-Architektur besteht aus vier grundlegenden Komponenten. Welche davon ist für die direkten Rechenoperationen zuständig?",
+                        "options": [
+                            "Memory (RAM/Arbeitsspeicher)",
+                            "BUS (Bussystem)",
+                            "ALU (Arithmetic Logic Unit)",
+                            "I/O Unit (Ein-/Ausgabewerk)"
+                        ],
+                        "correct": 2,
+                        "explain": "In der Von-Neumann-Architektur ist die **ALU (Arithmetic Logic Unit)** oder das Rechenwerk die Komponente, die für die direkten arithmetischen und logischen Operationen zuständig ist. Die ALU führt grundlegende mathematische Operationen (Addition, Subtraktion etc.) sowie logische Vergleiche (UND, ODER, NICHT etc.) durch. Das Memory/Speicherwerk dient zur Speicherung von Daten und Befehlen, das Bus-System zum Datentransport zwischen den Komponenten, und die I/O-Unit zur Kommunikation mit externen Geräten."
+                    },
+                    {
+                        "question": "Ein Softwareentwickler bemängelt, dass ein bestimmtes Modell keine ethischen Bewertungen von Algorithmen vornehmen kann. Diese Kritik ist:",
+                        "options": [
+                            "Berechtigt, da alle Modelle auch ethische Komponenten beinhalten sollten",
+                            "Ungerechtfertigt, da ethische Bewertungen grundsätzlich keine Modellierungsaufgabe sind",
+                            "Teilweise berechtigt, hängt aber von der spezifischen Implementierung ab",
+                            "Unbegründet, da wissenschaftliche Modelle generell keine Werturteile beinhalten"
+                        ],
+                        "correct": 3,
+                        "explain": "Diese Kritik ist unbegründet, da **wissenschaftliche Modelle generell keine Werturteile oder ethischen Bewertungen** beinhalten. Zu den grundlegenden Einschränkungen wissenschaftlicher Modelle gehört, dass sie neutral sind und keine normativen Aussagen treffen. Sie beschreiben, wie etwas funktioniert oder strukturiert ist, nicht aber, ob etwas gut oder schlecht, richtig oder falsch ist. Ethische Beurteilungen erfordern normative Frameworks, die außerhalb der deskriptiven Natur wissenschaftlicher Modelle liegen."
+                    },
+                    {
+                        "question": "Das Periodensystem der Elemente ist ein Beispiel für ein wissenschaftliches Modell, das nur bestimmte Eigenschaften von chemischen Elementen darstellt.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 0,
+                        "explain": "Diese Aussage ist **wahr**. Das Periodensystem der Elemente ist ein klassisches Beispiel für ein wissenschaftliches Modell, das durch gezielte Abstraktion Ordnung in die Vielfalt chemischer Elemente bringt. Es fokussiert sich auf ausgewählte Eigenschaften wie Ordnungszahl, Elektronenkonfiguration und chemisches Verhalten und lässt zahlreiche andere Aspekte der Elemente außer Acht. Trotz dieser Vereinfachung ist es außerordentlich nützlich und ermöglicht Vorhersagen über chemische Reaktivitäten und Eigenschaften, was den Wert gut konstruierter wissenschaftlicher Modelle demonstriert."
+                    },
+                    {
+                        "question": "Bei einem Computerproblem diagnostiziert ein Techniker: 'Die Hardware funktioniert einwandfrei, aber die Anwendung kommuniziert nicht korrekt mit dem Betriebssystem.' In welcher OSI-Schicht würde dieses Problem am ehesten angesiedelt sein?",
+                        "options": [
+                            "Physikalische Schicht (Layer 1)",
+                            "Netzwerkschicht (Layer 3)",
+                            "Transportschicht (Layer 4)",
+                            "Anwendungsschicht (Layer 7)"
+                        ],
+                        "correct": 3,
+                        "explain": "Das beschriebene Problem wäre am ehesten in der **Anwendungsschicht (Layer 7)** des OSI-Modells angesiedelt. Die Anwendungsschicht ist die oberste Schicht und umfasst die Kommunikation zwischen Anwendungssoftware und dem Betriebssystem. Wenn eine Anwendung nicht korrekt mit dem Betriebssystem kommuniziert, handelt es sich typischerweise um ein Problem auf dieser Ebene. Die unteren Schichten wie die physikalische Schicht (Hardwareverbindungen), die Netzwerkschicht (Routing) oder die Transportschicht (Ende-zu-Ende-Verbindungen) sind laut der Problembeschreibung nicht betroffen."
+                    },
+                    {
+                        "question": "Wissenschaftliche Modelle wie die Von-Neumann-Architektur ermöglichen eine vollständige Abbildung aller Aspekte moderner Computersysteme.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Eine grundlegende Einschränkung wissenschaftlicher Modelle ist, dass sie keine vollständige Abbildung der Realität liefern können oder sollen. Die Von-Neumann-Architektur beschreibt zwar grundlegende Komponenten von Computersystemen (ALU, Bus-System, Memory, I/O-Unit), erfasst aber bei weitem nicht alle Aspekte moderner Computer. Heutige Systeme haben zahlreiche zusätzliche Komponenten und Konzepte wie Multicore-Prozessoren, Caches verschiedener Ebenen, GPUs, spezialisierte Coprozessoren und verteilte Systeme, die über das ursprüngliche Von-Neumann-Modell hinausgehen."
+                    },
+                    {
+                        "question": "Ein Systemadministrator richtet ein neues Netzwerk ein und dokumentiert dabei präzise, welche Kommunikationsregeln auf jeder OSI-Schicht implementiert wurden. Was beschreibt er damit?",
+                        "options": [
+                            "Referenzmodelle",
+                            "Protokolle",
+                            "Wissenschaftliche Modelle",
+                            "Systemarchitektur"
+                        ],
+                        "correct": 1,
+                        "explain": "Der Systemadministrator dokumentiert in diesem Fall **Protokolle**. In der Netzwerktechnik sind Protokolle die konkreten Regeln und Standards, die festlegen, wie die Kommunikation auf einer bestimmten OSI-Schicht abläuft. Sie definieren das Format, die Reihenfolge und die Bedeutung von Nachrichten und Signalen sowie Verfahren zur Fehlerbehandlung. Während das OSI-Modell selbst ein Referenzmodell ist, sind die spezifischen Implementierungen wie TCP/IP, HTTP, FTP etc. die eigentlichen Protokolle, die die Kommunikation in der Praxis ermöglichen."
+                    },
+                    {
+                        "question": "Ein Netzwerktechniker muss entscheiden, welche Firewallregeln auf bestimmten Netzwerkschichten implementiert werden sollen. Er orientiert sich dabei an einem strukturierten Modell. Um welche Art von Modell handelt es sich hierbei?",
+                        "options": [
+                            "Protokoll",
+                            "Architektur",
+                            "Referenzmodell",
+                            "Algorithmus"
+                        ],
+                        "correct": 2,
+                        "explain": "Der Netzwerktechniker orientiert sich an einem **Referenzmodell**, höchstwahrscheinlich dem OSI-Schichtenmodell. Referenzmodelle in der Informatik sind abstrakte Frameworks, die zur Beschreibung, Standardisierung und zum Verständnis komplexer Systeme dienen. Im Netzwerkbereich helfen sie dabei, Netzwerkfunktionen in logische Schichten zu unterteilen, was die Implementierung, Fehlersuche und Wartung erleichtert. Das OSI-Modell mit seinen sieben Schichten ist das bekannteste Referenzmodell und dient als konzeptionelle Grundlage für viele Netzwerktechnologien und -entscheidungen, wie beispielsweise die Implementierung von Firewallregeln auf spezifischen Schichten."
+                    },
+                    {
+                        "question": "In der Praxis sind wissenschaftliche Modelle oft nützlich, weil sie:",
+                        "options": [
+                            "alle Ausnahmen und Spezialfälle berücksichtigen",
+                            "von ihrem ursprünglichen Kontext völlig unabhängig funktionieren",
+                            "komplexe Realitäten durch Vereinfachung verständlicher machen",
+                            "absolute und endgültige Erklärungen liefern"
+                        ],
+                        "correct": 2,
+                        "explain": "Wissenschaftliche Modelle sind in der Praxis nützlich, weil sie **komplexe Realitäten durch Vereinfachung verständlicher machen**. Durch gezielte Abstraktion und Fokussierung auf wesentliche Aspekte können Modelle komplexe Systeme und Zusammenhänge besser analysierbar, beschreibbar und kommunizierbar machen. Wie am Beispiel des Periodensystems zu sehen ist, kann ein Modell trotz seiner Vereinfachung (es berücksichtigt nur bestimmte Eigenschaften der chemischen Elemente) ein mächtiges Werkzeug in Forschung, Lehre und Anwendung sein. Die anderen Optionen beschreiben dagegen gerade das, was wissenschaftliche Modelle explizit nicht leisten können."
+                    }, 
+    {
+        "question": "In welchem Jahr begann die Entwicklung des OSI-Schichtenmodells?",
+        "options": [
+            "1977",
+            "1980",
+            "1984",
+            "1990"
+        ],
+        "correct": 0,
+        "explain": "Die Entwicklung des OSI-Schichtenmodells begann **1977**. Es wurde in den 1980er Jahren zu einem anerkannten Standard für Netzwerkprotokolle. Das Modell wurde entwickelt, um die Kommunikation in Netzwerken zwischen beliebigen Systemen zu verstehen, zu beschreiben und zu untersuchen."
+    },
+    {
+        "question": "Das OSI-Schichtenmodell dient ausschließlich der Beschreibung historischer Netzwerkprotokolle und hat keine Relevanz für moderne Netzwerke.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Das OSI-Schichtenmodell dient als Referenzmodell, um die Kommunikation in Netzwerken zwischen beliebigen Systemen zu verstehen, zu beschreiben und zu untersuchen. Es hilft auch dabei, Alternativen zu entwickeln. Das Modell ist zeitlos konzipiert und kann alle vorstellbaren Kommunikationsformen in Netzwerken beschreiben. Es ist bis heute ein wichtiges Werkzeug zum Verständnis von Netzwerkkommunikation, unabhängig davon, ob es sich um historische oder moderne Netzwerkprotokolle handelt."
+    },
+    {
+        "question": "Welche Schicht des OSI-Modells ist für die logische Adressierung und Wegewahl (Routing) verantwortlich?",
+        "options": [
+            "Transportschicht",
+            "Sicherungsschicht",
+            "Vermittlungsschicht",
+            "Sitzungsschicht"
+        ],
+        "correct": 2,
+        "explain": "Die **Vermittlungsschicht** (Layer 3) ist für die logische Adressierung (z.B. IP-Adressen) und die Wegewahl (Routing) verantwortlich. Sie leitet Datenpakete von der Quelle zum Ziel über mehrere Netzwerke hinweg und sorgt dafür, dass diese den optimalen Pfad zum Ziel finden. Zudem behandelt diese Schicht Probleme wie Netzüberlastung, Fragmentierung und Wiederzusammensetzung der Pakete. Typische Protokolle dieser Schicht sind IPv4/IPv6 zur Adressierung im Internet sowie OSPF und RIP als Routing-Protokolle."
+    },
+    {
+        "question": "TCP und UDP sind Beispiele für Protokolle der Vermittlungsschicht im OSI-Modell.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. TCP (Transmission Control Protocol) und UDP (User Datagram Protocol) sind Protokolle der **Transportschicht** (Layer 4) und nicht der Vermittlungsschicht (Layer 3). Die Transportschicht ist verantwortlich für die eigentliche Datenübertragung und regelt die Flusskontrolle, Fehlererkennung und gegebenenfalls Fehlerkorrektur. TCP wird für zuverlässige Kommunikation mit Fehlerkorrektur eingesetzt, während UDP für schnelle, verbindungslose Kommunikation verwendet wird."
+    },
+    {
+        "question": "Welche der folgenden Aufgaben übernimmt die Darstellungsschicht (Layer 6) im OSI-Modell?",
+        "options": [
+            "Wegewahl (Routing) von Datenpaketen",
+            "Kodierung, Komprimierung und Verschlüsselung von Daten",
+            "Authentifizierung von Kommunikationspartnern",
+            "Strukturierung von Daten in Frames"
+        ],
+        "correct": 1,
+        "explain": "Die **Darstellungsschicht** (Layer 6) bereitet Daten so auf, dass sie von der Anwendungsschicht verwendet werden können. Zu ihren Hauptaufgaben gehören die **Kodierung, Komprimierung und Verschlüsselung von Daten**. Ein klassisches Beispiel ist die Umwandlung von Schriftzeichen: Diese werden als Folge von Bits übertragen und müssen beim Kommunikationspartner wieder als lesbare Wörter dargestellt werden, wozu Zeichensätze wie ASCII, UTF-8 oder Unicode verwendet werden."
+    },
+    {
+        "question": "Die Anwendungsschicht (Layer 7) beinhaltet die eigentlichen Anwendungsprogramme wie Browser oder E-Mail-Clients.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die Anwendungsschicht (Layer 7) stellt den Anwendungen lediglich die Möglichkeit zur Datenübertragung zur Verfügung, enthält aber nicht die Anwendungen selbst. Die eigentlichen Anwendungsprogramme wie Browser oder E-Mail-Clients sind nicht Teil der Anwendungsschicht, sondern nutzen die Dienste dieser Schicht. Beispielsweise nutzt ein Mail-Programm die Protokolle SMTP, IMAP und POP3 (die zur Anwendungsschicht gehören), um Emails zu senden oder zu empfangen. Ein Browser verwendet HTTP, um Websites abzurufen oder Daten zu senden."
+    },
+    {
+        "question": "Welche Schicht ist für die Strukturierung von Daten in Frames und die Zugriffsregelung auf das physische Medium zuständig?",
+        "options": [
+            "Bitübertragungsschicht",
+            "Sicherungsschicht",
+            "Vermittlungsschicht",
+            "Transportschicht"
+        ],
+        "correct": 1,
+        "explain": "Die **Sicherungsschicht** (Layer 2) ist für die Strukturierung von Daten in Frames und die Zugriffsregelung auf das physische Medium zuständig. Sie sorgt für zuverlässige Datenübertragung innerhalb eines lokalen Netzwerksegments und ist verantwortlich für Fehlererkennung und -korrektur, Flusssteuerung und den Zugriff auf das physische Medium. Bekannte Protokolle und Standards dieser Schicht sind Ethernet, MAC (Media Access Control) und LLC (Logical Link Control)."
+    },
+    {
+        "question": "ICMP (Internet Control Message Protocol) ist ein Protokoll der Transportschicht im OSI-Modell.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. ICMP (Internet Control Message Protocol) ist ein Protokoll der **Vermittlungsschicht** (Layer 3) und nicht der Transportschicht (Layer 4). Es ist Bestandteil der IP-Protokolle und dient zur Übermittlung von Fehlermeldungen und Informationen innerhalb des Netzwerks. ICMP wird beispielsweise vom bekannten Diagnose-Tool Ping verwendet, um die Erreichbarkeit von Hosts zu überprüfen und Verbindungsprobleme zu identifizieren."
+    },
+    {
+        "question": "In welcher Schicht werden Daten in Segmente/Datagramme zerlegt, bevor sie weitergegeben werden?",
+        "options": [
+            "Sitzungsschicht",
+            "Darstellungsschicht",
+            "Vermittlungsschicht",
+            "Transportschicht"
+        ],
+        "correct": 3,
+        "explain": "In der **Transportschicht** (Layer 4) werden Daten in Segmente/Datagramme zerlegt, bevor sie weitergegeben werden. Diese Schicht ist verantwortlich für die Datenübertragung an sich und regelt die Flusskontrolle, Fehlererkennung und gegebenenfalls Fehlerkorrektur. Sie nimmt Daten von der Sitzungsschicht entgegen, zerlegt sie in handhabbare Einheiten (Segmente bei TCP oder Datagramme bei UDP) und übergibt diese dann an die darunterliegende Vermittlungsschicht."
+    },
+    {
+        "question": "Die Kommunikation im OSI-Modell erfolgt direkt zwischen gleichen Schichten der kommunizierenden Systeme.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Im OSI-Schichtenmodell kommunizieren die Systeme schichtweise miteinander - d.h. Schicht 7 auf einer Seite kommuniziert mit Schicht 7 auf der anderen Seite, Schicht 6 mit Schicht 6 usw. Diese logische horizontale Kommunikation zwischen gleichen Schichten wird durch Protokolle geregelt. Physisch fließen die Daten jedoch vertikal durch alle Schichten: Von der Anwendungsschicht (7) bis zur Bitübertragungsschicht (1) auf der Senderseite und dann von der Bitübertragungsschicht (1) bis zur Anwendungsschicht (7) auf der Empfängerseite."
+    },
+    {
+        "question": "Welches der folgenden Protokolle kann der Anwendungsschicht (Layer 7) zugeordnet werden?",
+        "options": [
+            "TCP",
+            "IPv6",
+            "Ethernet",
+            "HTTP"
+        ],
+        "correct": 3,
+        "explain": "**HTTP** (Hypertext Transfer Protocol) ist ein Protokoll der Anwendungsschicht (Layer 7). Es wird von Webbrowsern genutzt, um Websites abzurufen oder Daten zu senden. Die anderen genannten Protokolle gehören zu anderen Schichten: TCP (Transmission Control Protocol) gehört zur Transportschicht (Layer 4), IPv6 zur Vermittlungsschicht (Layer 3) und Ethernet zur Sicherungsschicht (Layer 2)."
+    },
+    {
+        "question": "Die Aufgaben der Sitzungsschicht werden in der modernen Praxis hauptsächlich von Protokollen anderer Schichten übernommen.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Die Aufgaben der Sitzungsschicht (Layer 5), wie das Öffnen, Verwalten und Schließen von Kommunikationssitzungen sowie die Authentifizierung von Kommunikationspartnern, werden in der heutigen Praxis hauptsächlich von Protokollen der Schichten 3 (Vermittlungsschicht) und 7 (Anwendungsschicht) übernommen. Ein Beispiel für eine verbleibende Anwendung der Sitzungsschicht ist der Aufbau und die Verwaltung von VPN-Verbindungen mit Hilfe von PPTP/L2TP (Point-to-Point Tunneling Protocol/Layer 2 Tunneling Protocol)."
+    },
+    {
+        "question": "Welche der folgenden Technologien ist ein Beispiel für einen Standard der Bitübertragungsschicht?",
+        "options": [
+            "HTTP",
+            "MAC",
+            "WLAN-Frequenzbänder",
+            "UDP"
+        ],
+        "correct": 2,
+        "explain": "**WLAN-Frequenzbänder** sind ein Beispiel für einen Standard der Bitübertragungsschicht (Layer 1). Die Bitübertragungsschicht ist verantwortlich für die physische Übertragung der Bits über das Übertragungsmedium. Andere Beispiele für Standards dieser Schicht sind Ethernet (100BASE-TX, 1000BASE-T), Glasfaser, Kupferkabel, USB und Bluetooth. Die anderen genannten Technologien gehören zu anderen Schichten: HTTP zur Anwendungsschicht (Layer 7), MAC zur Sicherungsschicht (Layer 2) und UDP zur Transportschicht (Layer 4)."
+    },
+    {
+        "question": "Im OSI-Modell geben höhere Schichten ihre Daten an niedrigere Schichten weiter, ohne diese in ein spezifisches Format zu bringen.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Im OSI-Schichtenmodell \"benutzen\" höhere Schichten die jeweils niedrigere Schicht, um Daten weiterzugeben. Dabei werden die Daten in ein Format gebracht, das die Weiterleitung ermöglicht. Dieser Prozess, bei dem jede Schicht ihre eigenen Header (und manchmal auch Trailer) zu den Daten hinzufügt, wird als Kapselung bezeichnet. Die Daten werden also auf dem Weg durch die Schichten nach unten immer wieder neu verpackt und auf dem Weg nach oben wieder entpackt."
+    },
+    {
+        "question": "Welche fundamentale Eigenschaft des OSI-Schichtenmodells ermöglicht es, neue Protokolle zu entwickeln, ohne das gesamte Kommunikationssystem zu ändern?",
+        "options": [
+            "Zentralisierte Kontrolle",
+            "Verschlüsselung auf allen Ebenen",
+            "Modularer Aufbau mit definierten Schnittstellen",
+            "Feste Bindung an bestimmte Hardware"
+        ],
+        "correct": 2,
+        "explain": "Der **modulare Aufbau mit definierten Schnittstellen** ist die fundamentale Eigenschaft des OSI-Schichtenmodells, die es ermöglicht, neue Protokolle zu entwickeln, ohne das gesamte Kommunikationssystem zu ändern. Das OSI-Modell teilt die Kommunikation in 7 Schichten auf und definiert für jede Schicht klare Aufgaben. Jede Schicht bietet der darüberliegenden Schicht bestimmte Dienste an und nutzt die Dienste der darunterliegenden Schicht. Durch diese klare Strukturierung können einzelne Schichten oder Protokolle innerhalb einer Schicht ausgetauscht oder aktualisiert werden, ohne dass die anderen Schichten davon betroffen sind, solange die Schnittstellen gleich bleiben."
+    },
+    {
+        "question": "USB und Bluetooth sind Beispiele für Standards der Anwendungsschicht, da sie direkt mit Benutzeranwendungen interagieren.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. USB (Universal Serial Bus) und Bluetooth sind Beispiele für Standards der **Bitübertragungsschicht** (Layer 1) und nicht der Anwendungsschicht (Layer 7). Die Bitübertragungsschicht ist für die physische Übertragung der Bits über das Übertragungsmedium zuständig. USB und Bluetooth definieren physische Verbindungen und Signalübertragungen zwischen Geräten. Obwohl Benutzer direkt mit USB-Geräten oder Bluetooth-Verbindungen interagieren können, handelt es sich bei der zugrundeliegenden Technologie um Standards der untersten OSI-Schicht."
+    },
+    {
+        "question": "Welches Protokoll gehört sowohl zur Vermittlungsschicht als auch zur Sicherungsschicht des OSI-Modells?",
+        "options": [
+            "HTTP",
+            "TCP",
+            "L2TP",
+            "IPv4"
+        ],
+        "correct": 2,
+        "explain": "**L2TP** (Layer 2 Tunneling Protocol) ist ein Protokoll, das Aspekte sowohl der Vermittlungsschicht (Layer 3) als auch der Sicherungsschicht (Layer 2) umfasst. Wie der Name schon andeutet, arbeitet es primär auf Layer 2, erstreckt sich aber in seiner Funktionalität auch auf höhere Schichten. L2TP wird häufig für den Aufbau und die Verwaltung von VPN-Verbindungen verwendet und ist ein gutes Beispiel dafür, dass nicht alle Protokolle eindeutig einer einzigen OSI-Schicht zugeordnet werden können. Die anderen genannten Protokolle gehören jeweils eindeutig zu einer Schicht: HTTP zur Anwendungsschicht (Layer 7), TCP zur Transportschicht (Layer 4) und IPv4 zur Vermittlungsschicht (Layer 3)."
+    },
+    {
+        "question": "Die Zeichensatzumwandlung (z.B. von ASCII zu UTF-8) geschieht im OSI-Modell auf der Anwendungsschicht, da sie direkt mit der Darstellung für den Benutzer zusammenhängt.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die Zeichensatzumwandlung (z.B. von ASCII zu UTF-8) geschieht im OSI-Modell auf der **Darstellungsschicht** (Layer 6) und nicht auf der Anwendungsschicht (Layer 7). Die Darstellungsschicht bereitet Daten so auf, dass sie von der Anwendungsschicht verwendet werden können. Zu ihren Aufgaben gehören die Kodierung, Komprimierung und Verschlüsselung von Daten. Bei der Übertragung von Schriftzeichen werden diese als Folge von Bits übertragen und müssen beim Kommunikationspartner wieder als lesbare Wörter dargestellt werden. Dafür werden Zeichensätze wie ASCII, UTF-8 oder Unicode verwendet, deren Umwandlung eine typische Aufgabe der Darstellungsschicht ist."
+    },
+    {
+        "question": "Welche Schicht des OSI-Modells ist hauptsächlich für die Authentifizierung von Kommunikationspartnern zuständig?",
+        "options": [
+            "Sicherungsschicht",
+            "Vermittlungsschicht",
+            "Sitzungsschicht",
+            "Anwendungsschicht"
+        ],
+        "correct": 2,
+        "explain": "Die **Sitzungsschicht** (Layer 5) ist hauptsächlich für die Authentifizierung von Kommunikationspartnern zuständig. Sie öffnet, verwaltet und schließt Kommunikationssitzungen (Sessions) und übernimmt die Authentifizierung der Kommunikationspartner. Allerdings ist anzumerken, dass in der heutigen Praxis viele Aufgaben der Sitzungsschicht von Protokollen der Schichten 3 (Vermittlungsschicht) und 7 (Anwendungsschicht) übernommen werden. Ein typisches Beispiel für eine Anwendung der Sitzungsschicht ist der Aufbau und die Verwaltung von VPN-Verbindungen mit Hilfe von PPTP/L2TP."
+    },
+    {
+        "question": "SMTP, IMAP und POP3 sind Protokolle, die der Transportschicht zugeordnet werden können.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. SMTP (Simple Mail Transfer Protocol), IMAP (Internet Message Access Protocol) und POP3 (Post Office Protocol Version 3) sind Protokolle der **Anwendungsschicht** (Layer 7) und nicht der Transportschicht (Layer 4). Diese Protokolle werden von Mail-Programmen genutzt, um Emails zu senden oder zu empfangen. Die Anwendungsschicht stellt den Anwendungen die Möglichkeit zur Datenübertragung zur Verfügung. Protokolle der Transportschicht wären dagegen beispielsweise TCP und UDP."
+    },
+        {
+            "question": "In welchem Jahr begann die Entwicklung des OSI-Schichtenmodells?",
+            "options": [
+                "1977",
+                "1980",
+                "1984",
+                "1990"
+            ],
+            "correct": 0,
+            "explain": "Die Entwicklung des OSI-Schichtenmodells begann **1977**. Es wurde in den 1980er Jahren zu einem anerkannten Standard für Netzwerkprotokolle. Das Modell wurde entwickelt, um die Kommunikation in Netzwerken zwischen beliebigen Systemen zu verstehen, zu beschreiben und zu untersuchen."
+        },
+        {
+            "question": "Das OSI-Schichtenmodell dient ausschließlich der Beschreibung historischer Netzwerkprotokolle und hat keine Relevanz für moderne Netzwerke.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. Das OSI-Schichtenmodell dient als Referenzmodell, um die Kommunikation in Netzwerken zwischen beliebigen Systemen zu verstehen, zu beschreiben und zu untersuchen. Es hilft auch dabei, Alternativen zu entwickeln. Das Modell ist zeitlos konzipiert und kann alle vorstellbaren Kommunikationsformen in Netzwerken beschreiben. Es ist bis heute ein wichtiges Werkzeug zum Verständnis von Netzwerkkommunikation, unabhängig davon, ob es sich um historische oder moderne Netzwerkprotokolle handelt."
+        },
+        {
+            "question": "Welche Schicht des OSI-Modells ist für die logische Adressierung und Wegewahl (Routing) verantwortlich?",
+            "options": [
+                "Transportschicht",
+                "Sicherungsschicht",
+                "Vermittlungsschicht",
+                "Sitzungsschicht"
+            ],
+            "correct": 2,
+            "explain": "Die **Vermittlungsschicht** (Layer 3) ist für die logische Adressierung (z.B. IP-Adressen) und die Wegewahl (Routing) verantwortlich. Sie leitet Datenpakete von der Quelle zum Ziel über mehrere Netzwerke hinweg und sorgt dafür, dass diese den optimalen Pfad zum Ziel finden. Zudem behandelt diese Schicht Probleme wie Netzüberlastung, Fragmentierung und Wiederzusammensetzung der Pakete. Typische Protokolle dieser Schicht sind IPv4/IPv6 zur Adressierung im Internet sowie OSPF und RIP als Routing-Protokolle."
+        },
+        {
+            "question": "TCP und UDP sind Beispiele für Protokolle der Vermittlungsschicht im OSI-Modell.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. TCP (Transmission Control Protocol) und UDP (User Datagram Protocol) sind Protokolle der **Transportschicht** (Layer 4) und nicht der Vermittlungsschicht (Layer 3). Die Transportschicht ist verantwortlich für die eigentliche Datenübertragung und regelt die Flusskontrolle, Fehlererkennung und gegebenenfalls Fehlerkorrektur. TCP wird für zuverlässige Kommunikation mit Fehlerkorrektur eingesetzt, während UDP für schnelle, verbindungslose Kommunikation verwendet wird."
+        },
+        {
+            "question": "Welche der folgenden Aufgaben übernimmt die Darstellungsschicht (Layer 6) im OSI-Modell?",
+            "options": [
+                "Wegewahl (Routing) von Datenpaketen",
+                "Kodierung, Komprimierung und Verschlüsselung von Daten",
+                "Authentifizierung von Kommunikationspartnern",
+                "Strukturierung von Daten in Frames"
+            ],
+            "correct": 1,
+            "explain": "Die **Darstellungsschicht** (Layer 6) bereitet Daten so auf, dass sie von der Anwendungsschicht verwendet werden können. Zu ihren Hauptaufgaben gehören die **Kodierung, Komprimierung und Verschlüsselung von Daten**. Ein klassisches Beispiel ist die Umwandlung von Schriftzeichen: Diese werden als Folge von Bits übertragen und müssen beim Kommunikationspartner wieder als lesbare Wörter dargestellt werden, wozu Zeichensätze wie ASCII, UTF-8 oder Unicode verwendet werden."
+        },
+        {
+            "question": "Die Anwendungsschicht (Layer 7) beinhaltet die eigentlichen Anwendungsprogramme wie Browser oder E-Mail-Clients.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. Die Anwendungsschicht (Layer 7) stellt den Anwendungen lediglich die Möglichkeit zur Datenübertragung zur Verfügung, enthält aber nicht die Anwendungen selbst. Die eigentlichen Anwendungsprogramme wie Browser oder E-Mail-Clients sind nicht Teil der Anwendungsschicht, sondern nutzen die Dienste dieser Schicht. Beispielsweise nutzt ein Mail-Programm die Protokolle SMTP, IMAP und POP3 (die zur Anwendungsschicht gehören), um Emails zu senden oder zu empfangen. Ein Browser verwendet HTTP, um Websites abzurufen oder Daten zu senden."
+        },
+        {
+            "question": "Welche Schicht ist für die Strukturierung von Daten in Frames und die Zugriffsregelung auf das physische Medium zuständig?",
+            "options": [
+                "Bitübertragungsschicht",
+                "Sicherungsschicht",
+                "Vermittlungsschicht",
+                "Transportschicht"
+            ],
+            "correct": 1,
+            "explain": "Die **Sicherungsschicht** (Layer 2) ist für die Strukturierung von Daten in Frames und die Zugriffsregelung auf das physische Medium zuständig. Sie sorgt für zuverlässige Datenübertragung innerhalb eines lokalen Netzwerksegments und ist verantwortlich für Fehlererkennung und -korrektur, Flusssteuerung und den Zugriff auf das physische Medium. Bekannte Protokolle und Standards dieser Schicht sind Ethernet, MAC (Media Access Control) und LLC (Logical Link Control)."
+        },
+        {
+            "question": "ICMP (Internet Control Message Protocol) ist ein Protokoll der Transportschicht im OSI-Modell.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. ICMP (Internet Control Message Protocol) ist ein Protokoll der **Vermittlungsschicht** (Layer 3) und nicht der Transportschicht (Layer 4). Es ist Bestandteil der IP-Protokolle und dient zur Übermittlung von Fehlermeldungen und Informationen innerhalb des Netzwerks. ICMP wird beispielsweise vom bekannten Diagnose-Tool Ping verwendet, um die Erreichbarkeit von Hosts zu überprüfen und Verbindungsprobleme zu identifizieren."
+        },
+        {
+            "question": "In welcher Schicht werden Daten in Segmente/Datagramme zerlegt, bevor sie weitergegeben werden?",
+            "options": [
+                "Sitzungsschicht",
+                "Darstellungsschicht",
+                "Vermittlungsschicht",
+                "Transportschicht"
+            ],
+            "correct": 3,
+            "explain": "In der **Transportschicht** (Layer 4) werden Daten in Segmente/Datagramme zerlegt, bevor sie weitergegeben werden. Diese Schicht ist verantwortlich für die Datenübertragung an sich und regelt die Flusskontrolle, Fehlererkennung und gegebenenfalls Fehlerkorrektur. Sie nimmt Daten von der Sitzungsschicht entgegen, zerlegt sie in handhabbare Einheiten (Segmente bei TCP oder Datagramme bei UDP) und übergibt diese dann an die darunterliegende Vermittlungsschicht."
+        },
+        {
+            "question": "Die Kommunikation im OSI-Modell erfolgt direkt zwischen gleichen Schichten der kommunizierenden Systeme.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 0,
+            "explain": "Diese Aussage ist **wahr**. Im OSI-Schichtenmodell kommunizieren die Systeme schichtweise miteinander - d.h. Schicht 7 auf einer Seite kommuniziert mit Schicht 7 auf der anderen Seite, Schicht 6 mit Schicht 6 usw. Diese logische horizontale Kommunikation zwischen gleichen Schichten wird durch Protokolle geregelt. Physisch fließen die Daten jedoch vertikal durch alle Schichten: Von der Anwendungsschicht (7) bis zur Bitübertragungsschicht (1) auf der Senderseite und dann von der Bitübertragungsschicht (1) bis zur Anwendungsschicht (7) auf der Empfängerseite."
+        },
+        {
+            "question": "Welches der folgenden Protokolle kann der Anwendungsschicht (Layer 7) zugeordnet werden?",
+            "options": [
+                "TCP",
+                "IPv6",
+                "Ethernet",
+                "HTTP"
+            ],
+            "correct": 3,
+            "explain": "**HTTP** (Hypertext Transfer Protocol) ist ein Protokoll der Anwendungsschicht (Layer 7). Es wird von Webbrowsern genutzt, um Websites abzurufen oder Daten zu senden. Die anderen genannten Protokolle gehören zu anderen Schichten: TCP (Transmission Control Protocol) gehört zur Transportschicht (Layer 4), IPv6 zur Vermittlungsschicht (Layer 3) und Ethernet zur Sicherungsschicht (Layer 2)."
+        },
+        {
+            "question": "Die Aufgaben der Sitzungsschicht werden in der modernen Praxis hauptsächlich von Protokollen anderer Schichten übernommen.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 0,
+            "explain": "Diese Aussage ist **wahr**. Die Aufgaben der Sitzungsschicht (Layer 5), wie das Öffnen, Verwalten und Schließen von Kommunikationssitzungen sowie die Authentifizierung von Kommunikationspartnern, werden in der heutigen Praxis hauptsächlich von Protokollen der Schichten 3 (Vermittlungsschicht) und 7 (Anwendungsschicht) übernommen. Ein Beispiel für eine verbleibende Anwendung der Sitzungsschicht ist der Aufbau und die Verwaltung von VPN-Verbindungen mit Hilfe von PPTP/L2TP (Point-to-Point Tunneling Protocol/Layer 2 Tunneling Protocol)."
+        },
+        {
+            "question": "Welche der folgenden Technologien ist ein Beispiel für einen Standard der Bitübertragungsschicht?",
+            "options": [
+                "HTTP",
+                "MAC",
+                "WLAN-Frequenzbänder",
+                "UDP"
+            ],
+            "correct": 2,
+            "explain": "**WLAN-Frequenzbänder** sind ein Beispiel für einen Standard der Bitübertragungsschicht (Layer 1). Die Bitübertragungsschicht ist verantwortlich für die physische Übertragung der Bits über das Übertragungsmedium. Andere Beispiele für Standards dieser Schicht sind Ethernet (100BASE-TX, 1000BASE-T), Glasfaser, Kupferkabel, USB und Bluetooth. Die anderen genannten Technologien gehören zu anderen Schichten: HTTP zur Anwendungsschicht (Layer 7), MAC zur Sicherungsschicht (Layer 2) und UDP zur Transportschicht (Layer 4)."
+        },
+        {
+            "question": "Im OSI-Modell geben höhere Schichten ihre Daten an niedrigere Schichten weiter, ohne diese in ein spezifisches Format zu bringen.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. Im OSI-Schichtenmodell \"benutzen\" höhere Schichten die jeweils niedrigere Schicht, um Daten weiterzugeben. Dabei werden die Daten in ein Format gebracht, das die Weiterleitung ermöglicht. Dieser Prozess, bei dem jede Schicht ihre eigenen Header (und manchmal auch Trailer) zu den Daten hinzufügt, wird als Kapselung bezeichnet. Die Daten werden also auf dem Weg durch die Schichten nach unten immer wieder neu verpackt und auf dem Weg nach oben wieder entpackt."
+        },
+        {
+            "question": "Welche fundamentale Eigenschaft des OSI-Schichtenmodells ermöglicht es, neue Protokolle zu entwickeln, ohne das gesamte Kommunikationssystem zu ändern?",
+            "options": [
+                "Zentralisierte Kontrolle",
+                "Verschlüsselung auf allen Ebenen",
+                "Modularer Aufbau mit definierten Schnittstellen",
+                "Feste Bindung an bestimmte Hardware"
+            ],
+            "correct": 2,
+            "explain": "Der **modulare Aufbau mit definierten Schnittstellen** ist die fundamentale Eigenschaft des OSI-Schichtenmodells, die es ermöglicht, neue Protokolle zu entwickeln, ohne das gesamte Kommunikationssystem zu ändern. Das OSI-Modell teilt die Kommunikation in 7 Schichten auf und definiert für jede Schicht klare Aufgaben. Jede Schicht bietet der darüberliegenden Schicht bestimmte Dienste an und nutzt die Dienste der darunterliegenden Schicht. Durch diese klare Strukturierung können einzelne Schichten oder Protokolle innerhalb einer Schicht ausgetauscht oder aktualisiert werden, ohne dass die anderen Schichten davon betroffen sind, solange die Schnittstellen gleich bleiben."
+        },
+        {
+            "question": "USB und Bluetooth sind Beispiele für Standards der Anwendungsschicht, da sie direkt mit Benutzeranwendungen interagieren.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. USB (Universal Serial Bus) und Bluetooth sind Beispiele für Standards der **Bitübertragungsschicht** (Layer 1) und nicht der Anwendungsschicht (Layer 7). Die Bitübertragungsschicht ist für die physische Übertragung der Bits über das Übertragungsmedium zuständig. USB und Bluetooth definieren physische Verbindungen und Signalübertragungen zwischen Geräten. Obwohl Benutzer direkt mit USB-Geräten oder Bluetooth-Verbindungen interagieren können, handelt es sich bei der zugrundeliegenden Technologie um Standards der untersten OSI-Schicht."
+        },
+        {
+            "question": "Welches Protokoll gehört sowohl zur Vermittlungsschicht als auch zur Sicherungsschicht des OSI-Modells?",
+            "options": [
+                "HTTP",
+                "TCP",
+                "L2TP",
+                "IPv4"
+            ],
+            "correct": 2,
+            "explain": "**L2TP** (Layer 2 Tunneling Protocol) ist ein Protokoll, das Aspekte sowohl der Vermittlungsschicht (Layer 3) als auch der Sicherungsschicht (Layer 2) umfasst. Wie der Name schon andeutet, arbeitet es primär auf Layer 2, erstreckt sich aber in seiner Funktionalität auch auf höhere Schichten. L2TP wird häufig für den Aufbau und die Verwaltung von VPN-Verbindungen verwendet und ist ein gutes Beispiel dafür, dass nicht alle Protokolle eindeutig einer einzigen OSI-Schicht zugeordnet werden können. Die anderen genannten Protokolle gehören jeweils eindeutig zu einer Schicht: HTTP zur Anwendungsschicht (Layer 7), TCP zur Transportschicht (Layer 4) und IPv4 zur Vermittlungsschicht (Layer 3)."
+        },
+        {
+            "question": "Die Zeichensatzumwandlung (z.B. von ASCII zu UTF-8) geschieht im OSI-Modell auf der Anwendungsschicht, da sie direkt mit der Darstellung für den Benutzer zusammenhängt.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. Die Zeichensatzumwandlung (z.B. von ASCII zu UTF-8) geschieht im OSI-Modell auf der **Darstellungsschicht** (Layer 6) und nicht auf der Anwendungsschicht (Layer 7). Die Darstellungsschicht bereitet Daten so auf, dass sie von der Anwendungsschicht verwendet werden können. Zu ihren Aufgaben gehören die Kodierung, Komprimierung und Verschlüsselung von Daten. Bei der Übertragung von Schriftzeichen werden diese als Folge von Bits übertragen und müssen beim Kommunikationspartner wieder als lesbare Wörter dargestellt werden. Dafür werden Zeichensätze wie ASCII, UTF-8 oder Unicode verwendet, deren Umwandlung eine typische Aufgabe der Darstellungsschicht ist."
+        },
+        {
+            "question": "Welche Schicht des OSI-Modells ist hauptsächlich für die Authentifizierung von Kommunikationspartnern zuständig?",
+            "options": [
+                "Sicherungsschicht",
+                "Vermittlungsschicht",
+                "Sitzungsschicht",
+                "Anwendungsschicht"
+            ],
+            "correct": 2,
+            "explain": "Die **Sitzungsschicht** (Layer 5) ist hauptsächlich für die Authentifizierung von Kommunikationspartnern zuständig. Sie öffnet, verwaltet und schließt Kommunikationssitzungen (Sessions) und übernimmt die Authentifizierung der Kommunikationspartner. Allerdings ist anzumerken, dass in der heutigen Praxis viele Aufgaben der Sitzungsschicht von Protokollen der Schichten 3 (Vermittlungsschicht) und 7 (Anwendungsschicht) übernommen werden. Ein typisches Beispiel für eine Anwendung der Sitzungsschicht ist der Aufbau und die Verwaltung von VPN-Verbindungen mit Hilfe von PPTP/L2TP."
+        },
+        {
+            "question": "SMTP, IMAP und POP3 sind Protokolle, die der Transportschicht zugeordnet werden können.",
+            "options": ["Wahr", "Falsch"],
+            "correct": 1,
+            "explain": "Diese Aussage ist **falsch**. SMTP (Simple Mail Transfer Protocol), IMAP (Internet Message Access Protocol) und POP3 (Post Office Protocol Version 3) sind Protokolle der **Anwendungsschicht** (Layer 7) und nicht der Transportschicht (Layer 4). Diese Protokolle werden von Mail-Programmen genutzt, um Emails zu senden oder zu empfangen. Die Anwendungsschicht stellt den Anwendungen die Möglichkeit zur Datenübertragung zur Verfügung. Protokolle der Transportschicht wären dagegen beispielsweise TCP und UDP."
+        }
+    ]        
 }
