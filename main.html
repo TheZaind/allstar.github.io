@@ -1245,6 +1245,13 @@
             file: 'grundwissen.json'
         },
         {
+            id: 'netzwerk',
+            name: 'Netzwerk Grundlagen Quiz',
+            description: 'Teste dein Wissen über Netzwerktechnologien und -protokolle',
+            icon: '🌐',
+            file: 'Netzwerk_Grundlagen.json'
+        },
+        {
             id: 'pm',
             name: 'Projektmanagement Quiz',
             description: 'Teste dein Wissen über klassisches Projektmanagement',
@@ -1539,6 +1546,9 @@
                 case 'gw':
                     fileName = 'grundwissen.json';
                     break;
+                case 'netzwerk':
+                    fileName = 'Netzwerk_Grundlagen.json';
+                    break;
                 case 'pm':
                     fileName = 'klassisches_projectmanagment.json';
                     break;
@@ -1551,7 +1561,7 @@
                 case 'mix':
                     // Mische Fragen aus allen Kategorien
                     const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json']) {
+                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json', 'Netzwerk_Grundlagen.json']) {
                         try {
                             const response = await fetch(file);
                             if (response.ok) {

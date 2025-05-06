@@ -1,0 +1,393 @@
+{
+    "questions": [
+                    {
+                        "question": "Welche Eigenschaft beschreibt einen Host in einem Netzwerk am besten?",
+                        "options": [
+                        "Ein Host ist immer ein Server, der Dienste anbietet",
+                        "Ein Host ist immer ein Client, der Dienste abruft",
+                        "Ein Host ist ein Gerät mit einer IP-Adresse zur Kommunikation im Netzwerk",
+                        "Ein Host ist eine passive Netzwerkkomponente, die Signale verstärkt"
+                        ],
+                        "correct": 2,
+                        "explain": "Ein **Host** ist definitionsgemäß ein Gerät, das mit einem Netzwerk verbunden ist und dem eine **IP-Adresse** zur Kommunikation zugewiesen wurde. Hosts werden auch als **Endgeräte** bezeichnet und können dabei sowohl die Rolle eines Clients als auch eines Servers einnehmen - sie sind aber nicht auf eine dieser Rollen beschränkt. Hosts sind aktive Teilnehmer der Netzwerkkommunikation und keine passiven Komponenten."
+                    },
+                    {
+                        "question": "In einer IT-Umgebung bezeichnet der Begriff 'Server' ausschließlich Hardware und niemals Software.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Der Begriff 'Server' wird sowohl für Hardware als auch für Software verwendet. In der Hardware-Bedeutung bezeichnet er spezielle Computer, die darauf ausgelegt sind, Dienste und Ressourcen für andere Geräte bereitzustellen. In der Software-Bedeutung bezeichnet er Programme, die bestimmte Dienste anbieten, wie beispielsweise Mail-Server-Software, Webserver-Software oder Datenbankserver-Software. Für die einzelnen Dienste ist dabei jeweils spezielle Software nötig, die auf der Server-Hardware läuft."
+                    },
+                    {
+                        "question": "Ein Netzwerkszenario, in dem ein Gerät gleichzeitig Dienste anbietet und nutzt, gehört typischerweise zu welchem Netzwerkmodell?",
+                        "options": [
+                        "Client-Server-Modell",
+                        "Peer-to-Peer-Modell",
+                        "Host-Client-Modell",
+                        "Terminal-Server-Modell"
+                        ],
+                        "correct": 1,
+                        "explain": "Das beschriebene Szenario entspricht dem **Peer-to-Peer-Modell**. In einem Peer-to-Peer-Netzwerk werden Geräte sowohl als Server als auch als Clients verwendet. Es gibt keine dedizierten Server, jedes Gerät kann gleichzeitig Dienste anbieten und Dienste anderer Geräte nutzen. Typische Beispiele sind Dateifreigaben im Heimnetzwerk, Distributed-Ledger-Technologien wie Blockchain und Filesharing-Anwendungen in dezentralen Netzen wie Bittorrent oder Gnutella."
+                    },
+                    {
+                        "question": "Ein IT-Administrator möchte sicherstellen, dass Netzwerkgeräte automatisch alternative Pfade für die Datenübertragung nutzen können, wenn eine Verbindung ausfällt. Welche Art von Netzwerkkomponente sollte er dafür konfigurieren?",
+                        "options": [
+                        "Passive Netzwerkkomponenten",
+                        "Virtuelle Netzwerkkomponenten",
+                        "End Devices",
+                        "Aktive Netzwerkkomponenten"
+                        ],
+                        "correct": 3,
+                        "explain": "Der Administrator sollte **aktive Netzwerkkomponenten** konfigurieren. Zu den Funktionen aktiver Netzwerkkomponenten (wie Router, Switches, Firewalls) gehört unter anderem die Weiterleitung von Daten auf alternativen Pfaden, wenn Verbindungsfehler auftreten. Diese Komponenten sammeln und werten Informationen über erreichbare Ziele aus, können bei Störungen alternative Routen nutzen und sind für die intelligente Weiterleitung von Daten im Netzwerk verantwortlich. Passive Komponenten wie Kabel und Stecker können keine eigenständigen Entscheidungen treffen, während Endgeräte in der Regel nur Sender oder Empfänger von Nachrichten sind."
+                    },
+                    {
+                        "question": "Was unterscheidet einen Client von einem Server im Netzwerk?",
+                        "options": [
+                        "Clients haben keine IP-Adressen, Server schon",
+                        "Clients rufen Informationen und Dienste ab, Server stellen diese bereit",
+                        "Clients können nur in lokalen Netzwerken, Server nur in globalen Netzwerken arbeiten",
+                        "Clients sind immer mobile Geräte, Server immer stationäre Geräte"
+                        ],
+                        "correct": 1,
+                        "explain": "Der wesentliche Unterschied ist, dass **Clients Informationen und Dienste von Servern abrufen und anzeigen**, während **Server Informationen und Dienste mit anderen Endgeräten teilen können**. Für die jeweiligen Dienste wird auf beiden Seiten spezielle Software benötigt - auf dem Client eine Client-Software (wie Webbrowser, E-Mail-Programme oder Messenger) und auf dem Server eine entsprechende Server-Software (wie Webserver, Mailserver usw.). Sowohl Clients als auch Server sind Endgeräte (Hosts) und verfügen über IP-Adressen. Die Unterscheidung hat nichts mit der Mobilität oder der Beschränkung auf lokale oder globale Netzwerke zu tun."
+                    },
+                    {
+                        "question": "Eine Blockchain ist ein typisches Beispiel für welche Netzwerkarchitektur?",
+                        "options": [
+                        "Client-Server-Modell",
+                        "Host-Modell",
+                        "Peer-to-Peer-Modell",
+                        "Firewall-Architektur"
+                        ],
+                        "correct": 2,
+                        "explain": "Eine Blockchain ist ein typisches Beispiel für das **Peer-to-Peer-Modell**. Bei einer Blockchain (auch als Distributed Ledger bezeichnet) arbeiten die beteiligten Systeme ohne zentrale Autorität und ohne dedizierte Server zusammen. Jeder Teilnehmer kann sowohl Dienste anbieten (z.B. die Validierung von Transaktionen oder die Bereitstellung einer Kopie der Blockchain) als auch Dienste nutzen (z.B. das Durchführen von Transaktionen). Diese dezentrale Struktur, bei der jeder Teilnehmer gleichberechtigt ist und sowohl Server- als auch Client-Funktionen übernehmen kann, ist ein Kernmerkmal von Peer-to-Peer-Netzwerken."
+                    },
+                    {
+                        "question": "Endgeräte in einem Netzwerk können in ihrer Kommunikation entweder die Rolle eines Clients oder eines Servers übernehmen.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 0,
+                        "explain": "Diese Aussage ist **wahr**. Hosts (Endgeräte) in einem Netzwerk können in der Kommunikation die Rollen von Clients und Servern einnehmen. Ein Host kann je nach Anwendungsfall und verwendeter Software als Client auftreten, wenn er Dienste von anderen Geräten abruft (z.B. beim Surfen im Internet oder Empfangen von E-Mails), oder als Server, wenn er selbst Dienste für andere Geräte bereitstellt (z.B. bei der Freigabe von Dateien oder dem Hosten einer Webseite). Diese Flexibilität ermöglicht vielfältige Kommunikationsszenarien in modernen Netzwerken."
+                    },
+                    {
+                        "question": "Welche der folgenden Komponenten zählt NICHT zu den aktiven Netzwerkkomponenten?",
+                        "options": [
+                        "Router",
+                        "Switch",
+                        "Firewall",
+                        "Netzwerkkabel"
+                        ],
+                        "correct": 3,
+                        "explain": "**Netzwerkkabel** zählen nicht zu den aktiven Netzwerkkomponenten, sondern zu den passiven Netzwerkkomponenten. Aktive Netzwerkkomponenten wie Router, Switches und Firewalls verbinden Endgeräte mit Netzwerken und treffen intelligente Entscheidungen über die Weiterleitung von Daten. Sie nutzen Absender- und Empfänger-Adressen sowie Netzwerkinformationen, um den Pfad der Nachrichten festzulegen. Passive Komponenten wie Kabel, Stecker und Patchfelder übertragen lediglich Signale, ohne diese aktiv zu verarbeiten oder intelligente Entscheidungen zu treffen."
+                    },
+                    {
+                        "question": "In einem Unternehmensnetzwerk werden Datenpakete aufgrund von Sicherheitseinstellungen zugelassen oder blockiert. Welche aktive Netzwerkkomponente ist dafür hauptsächlich verantwortlich?",
+                        "options": [
+                        "Mailserver",
+                        "Firewall",
+                        "Peer-to-Peer-Client",
+                        "Host-Controller"
+                        ],
+                        "correct": 1,
+                        "explain": "Für diese Aufgabe ist in erster Linie eine **Firewall** verantwortlich. Firewalls gehören zu den aktiven Netzwerkkomponenten und haben die Funktion, Datenverkehr je nach Sicherheitseinstellungen zuzulassen oder zu verweigern. Sie untersuchen den Datenverkehr anhand definierter Regeln und entscheiden, ob bestimmte Datenpakete passieren dürfen oder nicht. Firewalls sind damit ein entscheidendes Element der Netzwerksicherheit und dienen dem Schutz vor unberechtigtem Zugriff, Malware und anderen Bedrohungen."
+                    },
+                    {
+                        "question": "Wenn ein Netzwerktechniker von 'Intermediary Devices' spricht, bezieht er sich auf:",
+                        "options": [
+                        "Endgeräte wie PCs und Laptops",
+                        "Aktive Netzwerkkomponenten wie Router und Switches",
+                        "Cloud-basierte Dienste",
+                        "Software-Clients für die Netzwerkkommunikation"
+                        ],
+                        "correct": 1,
+                        "explain": "Wenn ein Netzwerktechniker von 'Intermediary Devices' spricht, bezieht er sich auf **aktive Netzwerkkomponenten** wie Router, Switches und Firewalls. Diese Geräte befinden sich zwischen den Endgeräten (End Devices) und sind für die Vermittlung der Kommunikation zuständig. Sie verbinden Endgeräte mit dem Netzwerk und leiten Nachrichten regelbasiert weiter. Im Gegensatz dazu sind Endgeräte (End Devices) wie Server und Clients die Quelle oder das Ziel der Kommunikation - also entweder Sender oder Empfänger von Nachrichten."
+                    },
+                    {
+                        "question": "Ein Webserver ist ein Beispiel für ein Endgerät, kann aber niemals als Client fungieren.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Ein Webserver ist zwar primär ein Beispiel für ein Endgerät, das als Server fungiert (indem es Webseiten und andere Ressourcen für Clients bereitstellt), jedoch kann er auch als Client auftreten. Beispielsweise kann ein Webserver als Client fungieren, wenn er Daten von einer Datenbank abruft, APIs anderer Dienste nutzt, Updates herunterlädt oder mit anderen Servern kommuniziert. Die Rollen 'Client' und 'Server' beschreiben funktionale Aspekte in einer bestimmten Kommunikationsbeziehung und sind nicht fest an ein bestimmtes Gerät gebunden."
+                    },
+                    {
+                        "question": "Was ist eine wesentliche Funktion aktiver Netzwerkkomponenten im Zusammenhang mit Netzwerkstörungen?",
+                        "options": [
+                        "Vollständige Vermeidung von Netzwerkstörungen",
+                        "Automatische Reparatur defekter Hardware",
+                        "Benachrichtigung anderer Geräte über Fehler und Störungen",
+                        "Erhöhung der Bandbreite bei Störungen"
+                        ],
+                        "correct": 2,
+                        "explain": "Eine wesentliche Funktion aktiver Netzwerkkomponenten im Zusammenhang mit Netzwerkstörungen ist die **Benachrichtigung anderer Geräte über Fehler und Störungen bei der Nachrichtenübertragung**. Aktive Netzwerkkomponenten wie Router können Protokolle wie ICMP nutzen, um Fehlerzustände zu melden und andere Netzwerkkomponenten darüber zu informieren. Zusätzlich können sie Daten auf alternativen Pfaden weiterleiten, wenn Verbindungsfehler auftreten. Sie können jedoch nicht automatisch Hardware reparieren und auch nicht alle Netzwerkstörungen vollständig vermeiden."
+                    },
+                    {
+                        "question": "Bei einer Dateifreigabe im Heimnetzwerk handelt es sich typischerweise um welche Netzwerkarchitektur?",
+                        "options": [
+                        "Client-Architektur",
+                        "Server-Architektur",
+                        "Peer-to-Peer-Architektur",
+                        "Host-Terminal-Architektur"
+                        ],
+                        "correct": 2,
+                        "explain": "Bei einer Dateifreigabe im Heimnetzwerk handelt es sich typischerweise um eine **Peer-to-Peer-Architektur**. In diesem Modell agieren die beteiligten Geräte sowohl als Server, die Dateien bereitstellen, als auch als Clients, die auf Dateien anderer Geräte zugreifen. Es gibt keine zentrale Server-Infrastruktur, und jedes Gerät kann gleichberechtigt am Netzwerk teilnehmen. Diese Architektur ist besonders in kleinen Netzwerken wie Heimnetzwerken verbreitet, da sie einfach zu realisieren ist und keine dedizierte Server-Hardware erfordert."
+                    },
+                    {
+                        "question": "Welche der folgenden Aussagen beschreibt am besten den Unterschied zwischen Endgeräten und aktiven Netzwerkkomponenten?",
+                        "options": [
+                        "Endgeräte haben keine IP-Adressen, aktive Netzwerkkomponenten schon",
+                        "Endgeräte sind mobile Geräte, aktive Netzwerkkomponenten sind stationär",
+                        "Endgeräte sind Sender oder Empfänger von Nachrichten, aktive Netzwerkkomponenten leiten Nachrichten weiter",
+                        "Endgeräte können nur im Internet arbeiten, aktive Netzwerkkomponenten nur in lokalen Netzwerken"
+                        ],
+                        "correct": 2,
+                        "explain": "Der Hauptunterschied besteht darin, dass **Endgeräte (End Devices) Sender oder Empfänger von Nachrichten** sind, während **aktive Netzwerkkomponenten (Intermediary Devices) Nachrichten weiterleiten**. Endgeräte wie Server und Clients haben IP-Adressen und sind die Quelle oder das Ziel der Kommunikation. Aktive Netzwerkkomponenten wie Router, Switches und Firewalls verbinden Endgeräte mit dem Netzwerk und leiten Nachrichten regelbasiert weiter. Die Unterscheidung hat nichts mit Mobilität zu tun oder damit, ob die Geräte im Internet oder nur in lokalen Netzwerken arbeiten können."
+                    },
+                    {
+                        "question": "Aktive Netzwerkkomponenten können Datensignale regenerieren und neu übertragen.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 0,
+                        "explain": "Diese Aussage ist **wahr**. Eine der wichtigen Funktionen von aktiven Netzwerkkomponenten ist die Regenerierung und Neuübertragung von Datensignalen. Wenn Signale über längere Strecken oder durch verschiedene Netzwerksegmente übertragen werden, können sie schwächer werden oder durch Störungen beeinträchtigt werden. Aktive Netzwerkkomponenten wie Repeater, Switches oder Router können diese Signale aufnehmen, verstärken oder neu erzeugen und dann weiterleiten. Dies verbessert die Reichweite und Zuverlässigkeit der Datenübertragung im Netzwerk."
+                    },
+                    {
+                        "question": "Ein Netzwerkadministrator richtet ein System ein, das E-Mails empfängt und für Benutzer bereitstellt. Welche Kombination von Netzwerkkomponenten wird hier benötigt?",
+                        "options": [
+                        "Ein Client und aktive Netzwerkkomponenten",
+                        "Ein Server und aktive Netzwerkkomponenten",
+                        "Ein Peer-to-Peer-Netzwerk ohne aktive Komponenten",
+                        "Nur passive Netzwerkkomponenten"
+                        ],
+                        "correct": 1,
+                        "explain": "Hier wird ein **E-Mail-Server und aktive Netzwerkkomponenten** benötigt. Der E-Mail-Server ist ein Beispiel für ein Endgerät, das als Server fungiert und den Dienst 'E-Mail-Empfang und -Bereitstellung' anbietet. Für diese Funktion ist spezielle Server-Software erforderlich (z.B. Exchange, Postfix). Damit Benutzer auf diesen Server zugreifen können, sind aktive Netzwerkkomponenten wie Router und Switches nötig, die die Verbindung zwischen den Clients (E-Mail-Programme der Benutzer) und dem Server herstellen und die Datenpakete entsprechend weiterleiten."
+                    },
+                    {
+                        "question": "Welche Eigenschaft ist typisch für die Kommunikation in einem Peer-to-Peer-Netzwerk?",
+                        "options": [
+                        "Hierarchische Struktur mit zentraler Verwaltung",
+                        "Kommunikation erfolgt immer über einen zentralen Server",
+                        "Jedes Gerät kann gleichzeitig als Server und Client fungieren",
+                        "Kommunikation ist nur zwischen gleichartigen Geräten möglich"
+                        ],
+                        "correct": 2,
+                        "explain": "Eine typische Eigenschaft für die Kommunikation in einem Peer-to-Peer-Netzwerk ist, dass **jedes Gerät gleichzeitig als Server und Client fungieren kann**. Im Gegensatz zum Client-Server-Modell gibt es keine dedizierten Server, sondern jeder Teilnehmer (Peer) kann sowohl Dienste anbieten als auch nutzen. Diese dezentrale Struktur ist charakteristisch für Peer-to-Peer-Netzwerke wie Dateifreigaben im Heimnetzwerk, Blockchain-Technologien oder Filesharing-Anwendungen wie Bittorrent. Es gibt keine hierarchische Struktur mit zentraler Verwaltung, und die Kommunikation muss nicht über einen zentralen Server laufen."
+                    },
+                    {
+                        "question": "Welche Funktion übernehmen aktive Netzwerkkomponenten bei der Übertragung von Daten mit unterschiedlichen Prioritäten?",
+                        "options": [
+                        "Sie ignorieren Prioritäten komplett",
+                        "Sie klassifizieren und leiten Nachrichten entsprechend ihrer Priorität weiter",
+                        "Sie übertragen nur Daten mit hoher Priorität",
+                        "Sie wandeln alle Daten in dieselbe Prioritätsklasse um"
+                        ],
+                        "correct": 1,
+                        "explain": "Aktive Netzwerkkomponenten **klassifizieren und leiten Nachrichten in Abhängigkeit von Prioritäten weiter**. Diese Funktion ist besonders wichtig für Quality-of-Service (QoS)-Management in Netzwerken. Bestimmte Datentypen wie Videostreaming oder VoIP-Telefonie benötigen eine höhere Priorität als beispielsweise E-Mail-Verkehr oder Datei-Downloads, um verzögerungsfrei zu funktionieren. Router und Switches mit QoS-Funktionalität können den Datenverkehr analysieren, nach definierten Regeln klassifizieren und entsprechend ihrer Priorität behandeln - etwa indem sie wichtigeren Datenverkehr bevorzugt weiterleiten."
+                    },
+                    {
+                        "question": "Ein NAS (Network Attached Storage) kann nur als Client in einem Netzwerk fungieren.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Ein NAS (Network Attached Storage) fungiert hauptsächlich als Server in einem Netzwerk, nicht als Client. Ein NAS ist ein spezialisierter Server, der Speicherplatz für andere Geräte im Netzwerk bereitstellt. Es bietet Dienste wie Dateifreigabe, Backup-Speicher oder Medienstreaming an und verhält sich damit wie ein klassischer Server. Andere Geräte im Netzwerk greifen als Clients auf das NAS zu, um Daten zu speichern oder abzurufen. Ein NAS kann in manchen Szenarien auch Client-Funktionen übernehmen (z.B. beim Herunterladen von Updates), aber seine primäre Rolle ist die eines Servers."
+                    },
+                    {
+                        "question": "Was ist die Hauptfunktion von aktiven Netzwerkkomponenten in Bezug auf den Datenpfad?",
+                        "options": [
+                        "Sie speichern dauerhaft alle übertragenen Daten",
+                        "Sie legen anhand von Absender- und Empfänger-Adressen den Pfad der Nachrichten fest",
+                        "Sie erstellen Sicherheitskopien aller übertragenen Daten",
+                        "Sie wandeln digitale in analoge Signale um"
+                        ],
+                        "correct": 1,
+                        "explain": "Die Hauptfunktion von aktiven Netzwerkkomponenten in Bezug auf den Datenpfad ist, dass sie **anhand von Absender- und Empfänger-Adressen und Netzwerkinformationen den Pfad der Nachrichten festlegen**. Router nutzen beispielsweise Routing-Tabellen, um zu entscheiden, über welchen Weg ein Datenpaket zum Ziel gelangen soll. Switches verwenden MAC-Adressen-Tabellen, um Frames an die richtigen Ports weiterzuleiten. Diese intelligente Weiterleitung von Daten unterscheidet aktive Netzwerkkomponenten von passiven Komponenten. Das dauerhafte Speichern von Daten, die Erstellung von Sicherheitskopien oder die Umwandlung von Signaltypen sind nicht ihre Hauptfunktionen."
+                    },
+                    {
+                        "question": "Wenn ein Webbrowser eine Webseite anzeigt, welche Rolle übernimmt er in der Netzwerkkommunikation?",
+                        "options": [
+                        "Server",
+                        "Router",
+                        "Client",
+                        "Peer"
+                        ],
+                        "correct": 2,
+                        "explain": "Wenn ein Webbrowser eine Webseite anzeigt, übernimmt er die Rolle eines **Clients** in der Netzwerkkommunikation. Ein Client ist ein Computer oder eine Software, die Informationen und Dienste von Servern abruft und anzeigt. Der Webbrowser sendet Anfragen an Webserver, um HTML-Seiten, Bilder, Scripts und andere Ressourcen abzurufen, und stellt diese dann für den Benutzer dar. Die Client-Software (in diesem Fall der Browser) ist speziell darauf ausgelegt, mit den entsprechenden Server-Diensten zu kommunizieren und deren Antworten zu interpretieren und anzuzeigen."
+                    },
+                    {
+                        "question": "Bei welchem Netzwerkmedium werden Daten als Lichtimpulse übertragen?",
+                        "options": [
+                          "Kupferkabel",
+                          "Lichtwellenleiter (Glasfaser)",
+                          "Drahtlose Übertragung",
+                          "UTP-Kabel"
+                        ],
+                        "correct": 1,
+                        "explain": "Bei **Lichtwellenleitern (Glasfaser)** werden Daten als Lichtimpulse übertragen. Dies ist ein wesentlicher Unterschied zu Kupferkabeln, bei denen die Datenübertragung durch elektrische Impulse erfolgt. Durch die Übertragung mittels Licht zeichnen sich Glasfasern durch mehrere Vorteile aus:\n\n- Höhere Übertragungsgeschwindigkeiten möglich (im Terabit-Bereich)\n- Größere Reichweite ohne Signalverstärkung\n- Immunität gegen elektromagnetische Störungen\n- Höhere Abhörsicherheit\n\nDrahtlose Übertragungen nutzen hingegen elektromagnetische Funkwellen, während UTP-Kabel (Unshielded Twisted Pair) eine Form von Kupferkabeln darstellen, die mit elektrischen Impulsen arbeiten."
+                      },
+                      {
+                        "question": "Ein Techniker erstellt ein Diagramm, das die genaue räumliche Anordnung der Geräte und deren physische Verbindungen zeigt. Welche Art von Netzwerkdarstellung wird hier erstellt?",
+                        "options": [
+                          "Logisches Topologiediagramm",
+                          "Virtuelles Netzwerkdiagramm",
+                          "Physisches Topologiediagramm",
+                          "IP-Adressplan"
+                        ],
+                        "correct": 2,
+                        "explain": "Der Techniker erstellt ein **physisches Topologiediagramm**. Dieses zeigt die tatsächliche räumliche Anordnung der Netzwerkkomponenten und deren physische Verkabelung bzw. Verbindung. Im Gegensatz dazu zeigt ein logisches Topologiediagramm den Datenfluss und die logischen Verbindungen zwischen den Geräten, unabhängig von deren physischer Platzierung.\n\nPhysische Topologiediagramme sind besonders wichtig für:\n\n- Installation und Wartung von Hardware\n- Fehlersuche bei Kabelbrüchen oder physischen Verbindungsproblemen\n- Planung von Erweiterungen der physischen Infrastruktur\n- Dokumentation der Gerätestandorte und Kabelwege\n\nIn einem physischen Diagramm sind Informationen wie Raumstandorte, Kabellängen und Gerätetypen enthalten, während diese Details in einem logischen Diagramm oft weggelassen werden."
+                      },
+                      {
+                        "question": "Elektromagnetische Funkwellen werden für die Datenübertragung in welchem Netzwerkmedium genutzt?",
+                        "options": [
+                          "Koaxialkabel",
+                          "Twisted-Pair-Kabel",
+                          "Kabellose Netzwerke",
+                          "Glasfaser"
+                        ],
+                        "correct": 2,
+                        "explain": "Elektromagnetische Funkwellen werden bei **kabellosen Netzwerken** für die Datenübertragung genutzt. Diese Form der Übertragung erfolgt drahtlos durch die Luft und ermöglicht dadurch hohe Flexibilität und Mobilität. Beispiele für kabellose Netzwerktechnologien sind:\n\n- WLAN (Wi-Fi): Für lokale drahtlose Netzwerke\n- Bluetooth: Für Verbindungen im Nahbereich\n- Mobilfunknetze (4G, 5G): Für mobile Breitbandverbindungen\n- Satellitenkommunikation: Für Verbindungen über sehr große Distanzen\n\nIm Gegensatz dazu verwenden Koaxial- und Twisted-Pair-Kabel elektrische Impulse zur Datenübertragung, während Glasfaserkabel Lichtimpulse nutzen. Die drahtlose Übertragung bietet den Vorteil der Mobilität, hat jedoch oft Nachteile wie geringere Sicherheit und stärkere Anfälligkeit für Störungen."
+                      },
+                      {
+                        "question": "Ein Netzwerkadministrator richtet ein neues Netzwerk ein und möchte eine Darstellung erstellen, die IP-Subnetze und Routing-Informationen zeigt, aber keine detaillierten Informationen über die tatsächliche physische Verkabelung enthält. Welche Art von Diagramm sollte erstellt werden?",
+                        "options": [
+                          "Physisches Topologiediagramm",
+                          "Logisches Topologiediagramm",
+                          "Geographisches Diagramm",
+                          "Hardware-Implementierungsdiagramm"
+                        ],
+                        "correct": 1,
+                        "explain": "Der Netzwerkadministrator sollte ein **logisches Topologiediagramm** erstellen. Dieses zeigt, wie Daten durch das Netzwerk fließen und visualisiert die logischen Verbindungen und Beziehungen zwischen Netzwerkkomponenten. Im Gegensatz zum physischen Topologiediagramm konzentriert sich das logische Diagramm auf:\n\n- IP-Adressbereiche und Subnetze\n- Routing-Informationen und -protokolle\n- VLANs und andere logische Netzwerksegmente\n- Datenfluss zwischen Netzwerkkomponenten\n\nWährend das physische Diagramm zeigt, wo sich die Geräte befinden und wie sie physisch verbunden sind, abstrahiert das logische Diagramm von diesen Details und fokussiert sich auf die funktionale Struktur des Netzwerks. Logische Diagramme sind besonders hilfreich bei der Fehlersuche in Routing- oder Adressierungsproblemen sowie bei der Planung von Netzwerkerweiterungen oder -änderungen."
+                      },
+                      {
+                        "question": "Welches Netzwerkmedium bietet die höchste Sicherheit gegen Abhören und elektromagnetische Störungen?",
+                        "options": [
+                          "Ungeschirmtes Twisted-Pair-Kabel (UTP)",
+                          "Koaxialkabel",
+                          "Drahtlose Übertragung",
+                          "Glasfaserkabel"
+                        ],
+                        "correct": 3,
+                        "explain": "**Glasfaserkabel** bieten die höchste Sicherheit gegen Abhören und elektromagnetische Störungen. Dies basiert auf mehreren technischen Eigenschaften:\n\n- Da Glasfasern Licht statt elektrischer Signale zur Datenübertragung nutzen, erzeugen sie keine elektromagnetische Strahlung, die abgefangen werden könnte\n- Das Anzapfen von Glasfasern ist technisch sehr anspruchsvoll und in der Regel leicht zu erkennen\n- Glasfasern sind immun gegen elektromagnetische Interferenzen (EMI) und Radiofrequenz-Interferenzen (RFI)\n- Sie sind nicht anfällig für Probleme wie Übersprechen zwischen Kabeln\n\nIm Vergleich dazu sind Kupferkabel (UTP, Koaxial) anfälliger für elektromagnetische Störungen und können leichter abgehört werden, da sie elektrische Signale übertragen, die ein messbares elektromagnetisches Feld erzeugen. Drahtlose Übertragungen sind am anfälligsten für Abhören, da die Signale frei durch den Raum propagieren und mit entsprechender Ausrüstung abgefangen werden können."
+                      },
+                      {
+                        "question": "In Netzwerktopologie-Diagrammen repräsentiert ein Cloud-Symbol typischerweise:",
+                        "options": [
+                          "Eine Gruppe von Servern in einem Rechenzentrum",
+                          "Ein externes oder unspezifiziertes Netzwerk (wie das Internet)",
+                          "Eine Wireless-Access-Point-Gruppe",
+                          "Einen virtuellen Server"
+                        ],
+                        "correct": 1,
+                        "explain": "In Netzwerktopologie-Diagrammen repräsentiert ein Cloud-Symbol typischerweise **ein externes oder unspezifiziertes Netzwerk**, wie das Internet oder ein WAN. Das Cloud-Symbol wird verwendet, um Netzwerkbereiche darzustellen, die:\n\n- Außerhalb der direkten Kontrolle der Organisation liegen\n- Deren interne Struktur für die Zwecke des Diagramms nicht relevant ist\n- Die als \"Black Box\" betrachtet werden können\n\nDas Symbol verdeutlicht, dass der genaue Pfad der Daten durch diesen Bereich nicht bekannt oder für das Verständnis des Diagramms nicht wichtig ist. Es dient als Abstraktion komplexer externer Netzwerke und fokussiert die Aufmerksamkeit auf die Bereiche des Netzwerks, die tatsächlich kontrolliert und verwaltet werden können. In modernen Diagrammen kann das Cloud-Symbol auch Cloud-Computing-Dienste repräsentieren, aber traditionell steht es für externe Netzwerke wie das Internet."
+                      },
+                      {
+                        "question": "Welches der folgenden Netzwerkmedien überträgt Daten als elektrische Impulse?",
+                        "options": [
+                          "Glasfaserkabel",
+                          "Drahtlose Übertragung",
+                          "Kupferkabel",
+                          "Infrarot-Übertragung"
+                        ],
+                        "correct": 2,
+                        "explain": "**Kupferkabel** übertragen Daten als elektrische Impulse. Dies ist ein fundamentales Merkmal aller kupferbasierten Netzwerkmedien wie:\n\n- Twisted-Pair-Kabel (UTP/STP): Verwendet in Ethernet-Netzwerken (Cat5e, Cat6, etc.)\n- Koaxialkabel: Historisch in älteren Ethernet-Varianten und heute noch in Kabel-TV-Netzen\n- Serielle Kupferkabel: Für verschiedene Legacy-Verbindungen\n\nDie Datenübertragung erfolgt dabei durch Modulation elektrischer Signale, die durch die Kupferleiter fließen. Im Gegensatz dazu nutzen Glasfaserkabel Lichtimpulse für die Datenübertragung, während drahtlose Übertragungen auf elektromagnetischen Funkwellen basieren. Infrarot-Übertragungen verwenden Licht im Infrarotspektrum und sind eine Form der drahtlosen Übertragung, die jedoch meist nur für Punkt-zu-Punkt-Verbindungen mit direkter Sichtlinie eingesetzt wird."
+                      },
+                      {
+                        "question": "Die Verwendung spezifischer Symbole in Netzwerkdiagrammen ist vollkommen standardisiert, sodass jedes Symbol weltweit einheitlich verwendet wird.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Obwohl es einige weithin akzeptierte Konventionen für Netzwerkdiagramm-Symbole gibt, existiert keine vollständig standardisierte und weltweit einheitliche Symbolsprache. Verschiedene Faktoren beeinflussen die verwendeten Symbole:\n\n- Unterschiedliche Hersteller (wie Cisco, Microsoft, IBM) haben ihre eigenen Symbol-Bibliotheken entwickelt\n- Verschiedene Diagramm-Standards und -Methodologien verwenden unterschiedliche Symbole\n- Software-Tools für Netzwerkdiagramme bringen oft ihre eigenen Symbol-Sets mit\n- Branchen und Organisationen haben teilweise ihre eigenen Standards entwickelt\n\nDennoch gibt es häufig verwendete Konventionen - beispielsweise werden Router oft als Boxen mit Pfeilen, Switches als rechteckige Boxen mit mehreren Anschlüssen und Server als Türme oder Racks dargestellt. Cloud-Symbole werden meist für externe Netzwerke verwendet. Bei der Erstellung von Netzwerkdiagrammen ist es wichtig, eine Legende bereitzustellen, die die verwendeten Symbole erklärt, um Missverständnisse zu vermeiden."
+                      },
+                      {
+                        "question": "Welcher Netzwerktyp wird typischerweise für die Verbindung von Geräten im persönlichen Umfeld einer Person verwendet, wie etwa eine Smartwatch mit einem Smartphone?",
+                        "options": [
+                          "LAN (Local Area Network)",
+                          "MAN (Metropolitan Area Network)",
+                          "PAN (Personal Area Network)",
+                          "WAN (Wide Area Network)"
+                        ],
+                        "correct": 2,
+                        "explain": "Für die Verbindung von Geräten im persönlichen Umfeld einer Person wird typischerweise ein **PAN (Personal Area Network)** verwendet. Ein PAN ist durch folgende Merkmale charakterisiert:\n\n- Sehr kurze Reichweite, typischerweise weniger als 10 Meter\n- Verbindet Geräte, die einer einzelnen Person gehören oder von ihr genutzt werden\n- Verwendet oftmals energiesparende Übertragungstechnologien\n- Typische Übertragungstechnologien sind Bluetooth, NFC (Near Field Communication), oder USB\n\nBeispiele für PAN-Anwendungen sind:\n- Verbindung zwischen Smartwatch und Smartphone\n- Kabellose Kopfhörer mit einem Mobilgerät\n- Fitness-Tracker, die mit einem Smartphone kommunizieren\n- Kontaktlose Zahlungssysteme via NFC\n\nIm Gegensatz dazu decken LANs einen größeren Bereich wie ein Gebäude oder einen Campus ab, MANs erstrecken sich über eine Stadt, und WANs verbinden geografisch weit entfernte Standorte."
+                      },
+                      {
+                        "question": "Ein IT-Netzwerktechniker erhält die Aufgabe, die Netzwerkinfrastruktur mehrerer Unternehmensstandorte innerhalb einer Stadt zu verbinden. Welcher Netzwerktyp eignet sich dafür am besten?",
+                        "options": [
+                          "LAN (Local Area Network)",
+                          "MAN (Metropolitan Area Network)",
+                          "PAN (Personal Area Network)",
+                          "GAN (Global Area Network)"
+                        ],
+                        "correct": 1,
+                        "explain": "Für die Verbindung mehrerer Unternehmensstandorte innerhalb einer Stadt eignet sich am besten ein **MAN (Metropolitan Area Network)**. Ein MAN ist speziell darauf ausgelegt, mehrere lokale Netzwerke (LANs) innerhalb einer Stadt oder eines Ballungsraums miteinander zu verbinden.\n\nCharakteristische Merkmale eines MAN sind:\n\n- Geografische Abdeckung einer Stadt oder eines Ballungsraums (typischerweise 5-50 km Durchmesser)\n- Verbindung mehrerer LANs zu einem größeren Netzwerk\n- Häufige Nutzung von Glasfaserkabeln für die Hauptverbindungsstrecken\n- Kann sowohl kabelgebunden als auch drahtlos (z.B. mit Richtfunk) realisiert werden\n- Ermöglicht höhere Bandbreiten als WAN-Verbindungen, aber typischerweise geringere als innerhalb eines LAN\n\nEin MAN erlaubt es verschiedenen Unternehmensstandorten innerhalb derselben Stadt, auf gemeinsame Ressourcen zuzugreifen und effizient zu kommunizieren, ohne auf teurere WAN-Technologien zurückgreifen zu müssen. Es ist die ideale Lösung für stadtweite Unternehmensnetze."
+                      },
+                      {
+                        "question": "Ein logisches Topologiediagramm zeigt primär, wie die Daten physisch durch das Netzwerk fließen und wo die Kabel verlegt sind.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Ein logisches Topologiediagramm zeigt **nicht** primär den physischen Datenfluss oder die Kabelverlegung, sondern stellt den logischen Fluss von Daten durch das Netzwerk dar. Es konzentriert sich auf:\n\n- Logische Verbindungen zwischen Netzwerkgeräten\n- IP-Adressbereiche und Subnetze\n- VLANs (Virtual Local Area Networks)\n- Routing-Domains und -Protokolle\n- Netzwerkzonen (z.B. DMZ, interne Netze, etc.)\n\nIm Gegensatz dazu würde ein physisches Topologiediagramm folgende Elemente darstellen:\n- Die tatsächliche räumliche Anordnung der Geräte\n- Physische Verkabelung und deren Verlegung\n- Hardware-Typen und -Spezifikationen\n- Physische Ports und Verbindungen\n\nEin logisches Diagramm abstrahiert von der physischen Implementierung und konzentriert sich auf die funktionale Struktur des Netzwerks. Es ermöglicht ein besseres Verständnis der Netzwerkarchitektur, des Datenflusses und der Kommunikationspfade, unabhängig von der tatsächlichen physischen Installation."
+                      },
+                      {
+                        "question": "Welche maximale Übertragungsreichweite kann man typischerweise mit einem Personal Area Network (PAN) erreichen?",
+                        "options": [
+                          "Bis zu 100 Meter",
+                          "Bis zu 10 Meter",
+                          "Bis zu 1 Kilometer",
+                          "Bis zu 50 Kilometer"
+                        ],
+                        "correct": 1,
+                        "explain": "Mit einem Personal Area Network (PAN) kann man typischerweise eine maximale Übertragungsreichweite von **bis zu 10 Metern** erreichen. Dies entspricht der charakteristischen Reichweite der meisten PAN-Technologien, insbesondere:\n\n- Bluetooth (klassisches): ca. 10 Meter bei Standardleistung\n- Bluetooth Low Energy (BLE): ca. 10 Meter, aber mit reduziertem Energieverbrauch\n- NFC (Near Field Communication): extreme Kurzreichweite von wenigen Zentimetern\n- Infrarot: typischerweise weniger als 1 Meter mit Sichtlinie\n- USB-Kabelverbindungen: in der Regel wenige Meter\n\nDiese begrenzte Reichweite ist für PANs charakteristisch, da sie für den persönlichen Gebrauch in unmittelbarer Nähe konzipiert sind - typischerweise für Geräte, die eine Person bei sich trägt oder in ihrem unmittelbaren Umfeld nutzt. Die kurze Reichweite bietet auch Vorteile hinsichtlich des Energieverbrauchs und reduziert potenzielle Störungen mit anderen Netzwerken."
+                      },
+                      {
+                        "question": "Ein Unternehmen nutzt für die standortübergreifende Kommunikation in einer Stadt hauptsächlich welches Übertragungsmedium bei einem MAN?",
+                        "options": [
+                          "Ungeschirmte Twisted-Pair-Kabel (UTP)",
+                          "Glasfaserkabel",
+                          "Bluetooth",
+                          "USB-Kabel"
+                        ],
+                        "correct": 1,
+                        "explain": "Für die standortübergreifende Kommunikation in einer Stadt (Metropolitan Area Network - MAN) nutzen Unternehmen hauptsächlich **Glasfaserkabel** als Übertragungsmedium. Glasfaser ist aus mehreren Gründen die bevorzugte Wahl für MANs:\n\n- **Hohe Bandbreite**: Glasfaser ermöglicht Übertragungsraten im Bereich von mehreren Gigabit bis Terabit pro Sekunde\n- **Große Reichweite**: Signale können über mehrere Kilometer ohne Verstärkung übertragen werden\n- **Geringe Latenz**: Schnelle Signalübertragung durch Lichtimpulse\n- **Störungsresistenz**: Immunität gegen elektromagnetische Interferenzen\n- **Sicherheit**: Schwieriger abzuhören als kupferbasierte Medien\n\nDie anderen Optionen sind für MANs ungeeignet: UTP-Kabel haben starke Reichweitenbegrenzungen (max. ca. 100m), Bluetooth ist eine PAN-Technologie mit sehr geringer Reichweite, und USB-Kabel sind für direkte Geräteanschlüsse konzipiert und nicht für Netzwerkinfrastrukturen über größere Distanzen."
+                      },
+                      {
+                        "question": "Welche der folgenden Aussagen zu Netzwerkmedien ist korrekt?",
+                        "options": [
+                          "Glasfaserkabel sind anfälliger für elektromagnetische Störungen als Kupferkabel",
+                          "Drahtlose Netzwerke nutzen elektrische Impulse zur Datenübertragung",
+                          "Kupferkabel bieten grundsätzlich immer höhere Übertragungsgeschwindigkeiten als Glasfaser",
+                          "Lichtwellenleiter verwenden Lichtimpulse zur Datenübertragung"
+                        ],
+                        "correct": 3,
+                        "explain": "Die korrekte Aussage ist: **Lichtwellenleiter verwenden Lichtimpulse zur Datenübertragung**. Lichtwellenleiter, auch bekannt als Glasfaserkabel, nutzen Licht im sichtbaren oder nahinfraroten Spektrum, um Daten zu übertragen. Die anderen Aussagen sind falsch:\n\n- Glasfaserkabel sind **nicht** anfälliger für elektromagnetische Störungen als Kupferkabel - im Gegenteil, sie sind praktisch immun gegen elektromagnetische Interferenzen, da sie Licht statt elektrischer Signale nutzen\n- Drahtlose Netzwerke nutzen elektromagnetische Funkwellen, nicht elektrische Impulse zur Datenübertragung\n- Kupferkabel bieten **nicht** grundsätzlich höhere Übertragungsgeschwindigkeiten als Glasfaser - tatsächlich ermöglichen moderne Glasfaserkabel deutlich höhere Bandbreiten als Kupferkabel (im Bereich von Terabit pro Sekunde)\n\nDie Verwendung von Lichtimpulsen macht Glasfaser zu einem leistungsstarken Übertragungsmedium mit hoher Bandbreite, großer Reichweite und Störungssicherheit."
+                      },
+                      {
+                        "question": "Für die Verbindung mehrerer Geräte innerhalb eines Gebäudes oder Campus wird typischerweise welcher Netzwerktyp eingesetzt?",
+                        "options": [
+                          "PAN (Personal Area Network)",
+                          "MAN (Metropolitan Area Network)",
+                          "LAN (Local Area Network)",
+                          "WAN (Wide Area Network)"
+                        ],
+                        "correct": 2,
+                        "explain": "Für die Verbindung mehrerer Geräte innerhalb eines Gebäudes oder Campus wird typischerweise ein **LAN (Local Area Network)** eingesetzt. LANs sind charakterisiert durch:\n\n- Begrenzte geografische Ausdehnung (typischerweise ein Gebäude, ein Stockwerk oder ein Campus)\n- Hohe Datenübertragungsraten (von 100 Mbit/s bis zu mehreren Gbit/s)\n- Geringe Latenzzeiten durch kurze Distanzen\n- Nutzung von Ethernet-Technologien (kabelgebunden) oder WLAN (drahtlos)\n- Direkte Kontrolle durch die Organisation über die gesamte Netzwerkinfrastruktur\n\nIm Vergleich dazu:\n- PANs verbinden nur Geräte im unmittelbaren persönlichen Umfeld (wenige Meter)\n- MANs erstrecken sich über das Gebiet einer Stadt und verbinden mehrere LANs\n- WANs verbinden geografisch weit entfernte Standorte, oft über öffentliche Infrastruktur\n\nLANs bilden die Grundlage der meisten Unternehmens- und Heimnetzwerke und ermöglichen die effiziente Kommunikation und Ressourcenteilung zwischen Geräten in räumlicher Nähe."
+                      },
+                      {
+                        "question": "Ein physisches Topologiediagramm und ein logisches Topologiediagramm desselben Netzwerks müssen immer identisch aussehen.",
+                        "options": ["Wahr", "Falsch"],
+                        "correct": 1,
+                        "explain": "Diese Aussage ist **falsch**. Ein physisches Topologiediagramm und ein logisches Topologiediagramm desselben Netzwerks sehen in der Regel deutlich unterschiedlich aus, da sie verschiedene Aspekte des Netzwerks visualisieren:\n\n**Physisches Topologiediagramm:**\n- Zeigt die tatsächliche räumliche Anordnung der Geräte\n- Stellt die physische Verkabelung und Verbindungen dar\n- Berücksichtigt Gebäudestrukturen, Räume und Entfernungen\n- Enthält Details zu Hardware-Modellen und physischen Ports\n\n**Logisches Topologiediagramm:**\n- Visualisiert den Datenfluss im Netzwerk\n- Zeigt IP-Subnetze, VLANs und Routing-Domains\n- Abstrahiert von der physischen Platzierung der Geräte\n- Stellt logische Verbindungen unabhängig von der physischen Verkabelung dar\n\nAls Beispiel: Ein Netzwerk mit einer physischen Stern-Topologie (alle Geräte mit Kabeln an einen zentralen Switch angeschlossen) könnte logisch als Bus-Topologie erscheinen, wenn alle Geräte im selben IP-Subnetz kommunizieren. Oder ein physisch verteiltes Netzwerk über mehrere Gebäude könnte in einem logischen Diagramm sehr einfach als hierarchische Struktur dargestellt werden, ohne die räumlichen Details."
+                      },
+                      {
+                        "question": "Welche der folgenden Technologien wird typischerweise NICHT in einem Personal Area Network (PAN) verwendet?",
+                        "options": [
+                          "Bluetooth",
+                          "NFC (Near Field Communication)",
+                          "USB",
+                          "Glasfaser"
+                        ],
+                        "correct": 3,
+                        "explain": "**Glasfaser** wird typischerweise NICHT in einem Personal Area Network (PAN) verwendet. Glasfaserkabel sind für PANs aus mehreren Gründen ungeeignet:\n\n- Sie sind nicht für die flexible, mobile Nutzung ausgelegt, die für PANs charakteristisch ist\n- Die Installation und Handhabung ist komplexer als bei den typischen PAN-Technologien\n- Die Kosten für Glasfaserkomponenten sind verhältnismäßig hoch für den persönlichen Gebrauch\n- Die hohen Bandbreiten und großen Reichweiten von Glasfaser werden in PANs typischerweise nicht benötigt\n\nDie anderen genannten Technologien sind dagegen typisch für PANs:\n- **Bluetooth**: Weitverbreiteter Standard für drahtlose Kommunikation über kurze Distanzen zwischen persönlichen Geräten\n- **NFC (Near Field Communication)**: Ermöglicht Kommunikation über sehr kurze Distanzen (wenige Zentimeter), z.B. für kontaktloses Bezahlen\n- **USB**: Kabelgebundene Verbindung für den direkten Anschluss von Peripheriegeräten an Computer oder mobile Geräte\n\nGlasfaser findet dagegen vorwiegend in LAN-, MAN- und WAN-Umgebungen Verwendung, wo hohe Bandbreiten und große Reichweiten erforderlich sind."
+                      },
+                      {
+                        "question": "Was kennzeichnet ein Metropolitan Area Network (MAN) gegenüber anderen Netzwerktypen?",
+                        "options": [
+                          "Es verbindet ausschließlich Server innerhalb eines Rechenzentrums",
+                          "Es umfasst mehrere LANs innerhalb einer Stadt",
+                          "Es verwendet nur drahtlose Übertragungstechnologien",
+                          "Es ist auf maximal 100 Teilnehmer beschränkt"
+                        ],
+                        "correct": 1,
+                        "explain": "Ein Metropolitan Area Network (MAN) kennzeichnet sich dadurch, dass es **mehrere LANs innerhalb einer Stadt** verbindet. Die charakteristischen Merkmale eines MAN sind:\n\n- Geografische Ausdehnung über eine Stadt oder einen Ballungsraum (typischerweise 5-50 km)\n- Verbindung mehrerer lokaler Netzwerke (LANs) zu einem größeren Netzwerk\n- Ermöglicht mehreren Standorten den Zugriff auf dasselbe Netzwerk\n- Kann sowohl kabelgebunden (oft über Glasfaser) als auch drahtlos implementiert werden\n\nEin MAN stellt somit eine Mittelform zwischen einem LAN (Local Area Network), das typischerweise auf ein Gebäude oder einen Campus beschränkt ist, und einem WAN (Wide Area Network) dar, das geografisch weit entfernte Standorte verbindet. MANs werden häufig von Organisationen genutzt, die mehrere Niederlassungen innerhalb einer Stadt haben, oder von städtischen Verwaltungen für die Vernetzung kommunaler Einrichtungen.\n\nDie anderen Optionen sind nicht korrekt: MANs sind nicht auf Rechenzentren beschränkt, verwenden sowohl kabelgebundene als auch drahtlose Technologien und haben keine feste Teilnehmerbegrenzung."
+        }
+    ]
+}
