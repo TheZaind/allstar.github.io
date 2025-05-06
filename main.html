@@ -1041,15 +1041,15 @@
             </div>
             <div id="feedback-message" class="feedback-message"></div>
         </div>
-    </div>
-
+    </div>    <div id="overlay" class="overlay"></div>
+    
+    <!-- Achievement Popup als separates Element -->
     <div id="achievement-popup" class="achievement-popup">
         <h2 id="achievement-title">Achievement Unlocked!</h2>
         <div id="achievement-icon" class="badge-icon">🏆</div>
         <div id="achievement-description"></div>
         <button onclick="closeAchievementPopup()">Ok</button>
     </div>
-    <div id="overlay" class="overlay"></div>
 
     <script>
     // Theme toggle functionality
@@ -2203,8 +2203,9 @@
             achievementIcon.textContent = icon;
             achievementDescription.textContent = description;
             
-            achievementPopup.classList.add('show');
+            overlay.style.display = "block"; // Stellen Sie sicher, dass das Overlay sichtbar ist
             overlay.classList.add('show');
+            achievementPopup.classList.add('show');
             
             // Optional: Konfetti-Effekt with reduced particles for performance
             if (window.confetti && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -2216,12 +2217,12 @@
                 });
             }
             
-            // Auto-close after 3 seconds
+            // Auto-close after 5 seconds (erhöht von 3 auf 5 Sekunden)
             setTimeout(() => {
                 closeAchievementPopup();
                 // Show next achievement in queue after a small delay
                 setTimeout(showNextAchievement, 500);
-            }, 3000);
+            }, 5000);
         }
     }
 
@@ -2232,6 +2233,11 @@
         if (achievementPopup && overlay) {
             achievementPopup.classList.remove('show');
             overlay.classList.remove('show');
+            
+            // Nach der Animation das Overlay auch ausblenden
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 500);
         }
     }
 
