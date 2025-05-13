@@ -1129,6 +1129,448 @@
             "options": ["Wahr", "Falsch"],
             "correct": 1,
             "explain": "Diese Aussage ist **falsch**. SMTP (Simple Mail Transfer Protocol), IMAP (Internet Message Access Protocol) und POP3 (Post Office Protocol Version 3) sind Protokolle der **Anwendungsschicht** (Layer 7) und nicht der Transportschicht (Layer 4). Diese Protokolle werden von Mail-Programmen genutzt, um Emails zu senden oder zu empfangen. Die Anwendungsschicht stellt den Anwendungen die Möglichkeit zur Datenübertragung zur Verfügung. Protokolle der Transportschicht wären dagegen beispielsweise TCP und UDP."
-        }
+        },{
+        "question": "Welche Schicht ist dafür verantwortlich, Daten von der ursprünglichen Quelle zum endgültigen Ziel zu übertragen, entweder im selben Netzwerk oder in ein Remote-Netzwerk?",
+        "options": [
+            "Sicherungsschicht",
+            "Vermittlungsschicht",
+            "Transportschicht",
+            "Anwendungsschicht"
+        ],
+        "correct": 1,
+        "explain": "Die **Vermittlungsschicht** (auch als Schicht 3 oder Netzwerkschicht bekannt) ist verantwortlich für die Zustellung des IP-Pakets von der ursprünglichen Quelle zum endgültigen Ziel, unabhängig davon, ob sich diese im selben Netzwerk oder in einem Remote-Netzwerk befinden. Die Vermittlungsschicht verwendet logische Adressen (IP-Adressen) für diesen Zweck. Im Gegensatz dazu ist die Sicherungsschicht (Schicht 2) nur für die Übertragung von Frames zwischen direkt verbundenen Geräten innerhalb desselben Netzwerks zuständig."
+    },
+    {
+        "question": "Welche Komponente einer IPv4-Adresse identifiziert ein bestimmtes Gerät innerhalb eines Netzwerks?",
+        "options": [
+            "Netzwerkkomponente",
+            "Präfix",
+            "Interface ID",
+            "Hostkomponente"
+        ],
+        "correct": 3,
+        "explain": "Die **Hostkomponente** einer IPv4-Adresse identifiziert ein bestimmtes Gerät innerhalb eines Netzwerks. Eine IPv4-Adresse besteht aus zwei Hauptteilen:\n\n1. Die **Netzwerkkomponente** - Der am weitesten links liegende Teil der Adresse, der anzeigt, zu welchem Netzwerk die IP-Adresse gehört. Alle Geräte im selben Netzwerk haben die gleiche Netzwerkkomponente.\n2. Die **Hostkomponente** - Der Rest der Adresse, der ein spezifisches Gerät im Netzwerk identifiziert. Diese Komponente muss für jedes Gerät im Netzwerk eindeutig sein.\n\nBei IPv6 werden diese Komponenten als Präfix (statt Netzwerkkomponente) und Interface ID (statt Hostkomponente) bezeichnet."
+    },
+    {
+        "question": "Wenn sich der Absender eines IP-Pakets in einem anderen Netzwerk als der Empfänger befindet, an welche physische Adresse wird der Frame der Sicherungsschicht gesendet?",
+        "options": [
+            "An die MAC-Adresse des Zielgeräts",
+            "An die MAC-Adresse des Standardgateways (Router)",
+            "An die Broadcast-MAC-Adresse",
+            "An die MAC-Adresse des DNS-Servers"
+        ],
+        "correct": 1,
+        "explain": "Wenn sich der Absender eines IP-Pakets in einem anderen Netzwerk als der Empfänger befindet, wird der Frame der Sicherungsschicht **an die MAC-Adresse des Standardgateways (Router)** gesendet. Da das Zielgerät nicht direkt im lokalen Netzwerk des Absenders erreichbar ist, muss der Frame zunächst an den Router (das Standardgateway) gesendet werden. Der Router ist dafür verantwortlich, das Paket weiterzuleiten, um es auf den richtigen Pfad zum endgültigen Ziel zu bringen. \n\nDie Quell-MAC-Adresse im Frame ist die des sendenden Geräts, und die Ziel-MAC-Adresse ist die der Ethernet-Schnittstelle des Routers, die mit demselben Netzwerk wie das sendende Gerät verbunden ist."
+    },
+    {
+        "question": "Eine IP-Adresse besteht aus zwei Teilen. Diese Teile werden bei IPv6 genannt:",
+        "options": [
+            "Netzwerk-ID und Host-ID",
+            "Präfix und Host-ID",
+            "Netzwerkkomponente und Interface ID",
+            "Präfix und Interface ID"
+        ],
+        "correct": 3,
+        "explain": "Bei IPv6 besteht eine Adresse aus dem **Präfix** und der **Interface ID**. \n\nDiese Begriffe unterscheiden sich von der Terminologie bei IPv4:\n\n- Was bei IPv4 als \"Netzwerkkomponente\" bezeichnet wird, heißt bei IPv6 \"Präfix\"\n- Was bei IPv4 als \"Hostkomponente\" bezeichnet wird, heißt bei IPv6 \"Interface ID\"\n\nDas Präfix identifiziert das Netzwerk, während die Interface ID ein bestimmtes Interface (Netzwerkschnittstelle) innerhalb dieses Netzwerks identifiziert. Die Präfixlänge bei IPv6 gibt an, wie viele Bits für den Netzwerkteil verwendet werden (ähnlich wie die Subnetzmaske bei IPv4)."
+    },
+    {
+        "question": "Was ändert sich NICHT, wenn ein IP-Paket von einem Router zum nächsten weitergeleitet wird?",
+        "options": [
+            "Die Quell-MAC-Adresse",
+            "Die Ziel-MAC-Adresse",
+            "Die Quell-IP-Adresse",
+            "Die physischen Übertragungsmedien"
+        ],
+        "correct": 2,
+        "explain": "Die **Quell-IP-Adresse** ändert sich nicht, wenn ein IP-Paket von einem Router zum nächsten weitergeleitet wird. Die IP-Adressen im Paket bleiben während der gesamten Übertragung vom Ursprung bis zum Ziel unverändert, da sie die ursprüngliche Quelle und das endgültige Ziel identifizieren.\n\nWas sich ändert:\n- Die **Quell-MAC-Adresse** ändert sich bei jedem Hop und wird zur MAC-Adresse der sendenden Netzwerkkarte des jeweiligen Routers.\n- Die **Ziel-MAC-Adresse** ändert sich ebenfalls bei jedem Hop und wird zur MAC-Adresse des nächsten Routers oder des endgültigen Ziels.\n- Die **physischen Übertragungsmedien** können sich ändern, wenn die Router über verschiedene Arten von Verbindungen miteinander kommunizieren."
+    },
+    {
+        "question": "Beim Routing eines Pakets durch verschiedene Netzwerke bleibt die Ziel-IP-Adresse immer unverändert.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Die Ziel-IP-Adresse eines IP-Pakets bleibt während des gesamten Routingprozesses unverändert, egal wie viele Netzwerke das Paket durchläuft. Die IP-Adressen (sowohl Quell- als auch Zieladresse) identifizieren die ursprüngliche Quelle und das endgültige Ziel des Pakets und werden während der gesamten Übertragung nicht verändert.\n\nWas sich bei jedem Hop ändert, sind die Adressen der Sicherungsschicht (MAC-Adressen). Jedes Mal, wenn ein Paket von einem Router zum nächsten weitergeleitet wird, werden neue Sicherungsschicht-Frame-Informationen hinzugefügt, mit den entsprechenden MAC-Adressen für das jeweilige Netzwerksegment."
+    },
+    {
+        "question": "Wenn zwei Geräte im selben IP-Netzwerk kommunizieren, was ist die Ziel-MAC-Adresse im Sicherungsschicht-Frame?",
+        "options": [
+            "Die MAC-Adresse des Standardgateways",
+            "Die MAC-Adresse des Zielgeräts",
+            "Eine Broadcast-MAC-Adresse",
+            "Die MAC-Adresse des Absenders"
+        ],
+        "correct": 1,
+        "explain": "Wenn zwei Geräte im selben IP-Netzwerk kommunizieren, ist die Ziel-MAC-Adresse im Sicherungsschicht-Frame die **MAC-Adresse des Zielgeräts**. Da sich beide Geräte im selben Netzwerk befinden, kann der Frame direkt vom Absender zum Empfänger übertragen werden, ohne dass ein Router (Standardgateway) zwischengeschaltet werden muss.\n\nIn diesem Szenario enthält der Ethernet-Frame:\n- Die Quell-MAC-Adresse des sendenden Geräts\n- Die Ziel-MAC-Adresse des empfangenden Geräts\n\nDies ermöglicht die direkte Übertragung des Frames von einer Netzwerkkarte zur anderen innerhalb desselben Netzwerks."
+    },
+    {
+        "question": "Welches Gerät wird benötigt, wenn ein Host mit einem Gerät in einem entfernten Netzwerk kommunizieren möchte?",
+        "options": [
+            "Switch",
+            "Hub",
+            "Router",
+            "Repeater"
+        ],
+        "correct": 2,
+        "explain": "Ein **Router** wird benötigt, wenn ein Host mit einem Gerät in einem entfernten Netzwerk kommunizieren möchte. Router arbeiten auf der Vermittlungsschicht (Schicht 3) und können Pakete zwischen verschiedenen Netzwerken weiterleiten, basierend auf den IP-Adressen.\n\nWenn sich Absender und Empfänger des IP-Pakets in unterschiedlichen Netzwerken befinden, wird der Ethernet-Frame zunächst an das Standardgateway (Router) gesendet. Der Router entscheidet dann, wohin das Paket als nächstes gesendet werden soll, um es seinem endgültigen Ziel näherzubringen.\n\nIm Gegensatz dazu arbeiten Switches, Hubs und Repeater auf niedrigeren Schichten und können keine Pakete zwischen verschiedenen IP-Netzwerken weiterleiten."
+    },
+    {
+        "question": "Die Subnetzmaske bei IPv4 und die Präfixlänge bei IPv6 haben die gleiche grundlegende Funktion.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Sowohl die Subnetzmaske bei IPv4 als auch die Präfixlänge bei IPv6 haben die gleiche grundlegende Funktion: Sie werden verwendet, um die Netzwerkkomponente einer IP-Adresse von der Hostkomponente zu unterscheiden.\n\nBei IPv4 wird die Subnetzmaske verwendet, um festzulegen, welcher Teil der IP-Adresse das Netzwerk identifiziert und welcher Teil den Host identifiziert. Die Subnetzmaske kann entweder als Dezimalzahl mit Punkten (z.B. 255.255.255.0) oder in CIDR-Notation (z.B. /24) dargestellt werden.\n\nBei IPv6 wird die Präfixlänge verwendet, um anzugeben, wie viele Bits des linken Teils der Adresse das Netzwerk identifizieren. Sie wird immer in CIDR-Notation angegeben (z.B. /64)."
+    },
+    {
+        "question": "Welche Adresse identifiziert das endgültige Ziel eines IP-Pakets, unabhängig davon, wie viele Router es passieren muss?",
+        "options": [
+            "Die Ziel-MAC-Adresse",
+            "Die Quell-IP-Adresse",
+            "Die Ziel-IP-Adresse",
+            "Die Netzwerkkomponente der IP-Adresse"
+        ],
+        "correct": 2,
+        "explain": "Die **Ziel-IP-Adresse** identifiziert das endgültige Ziel eines IP-Pakets, unabhängig davon, wie viele Router es passieren muss. Diese Adresse bleibt während der gesamten Übertragung unverändert und zeigt an, wohin das Paket letztendlich geliefert werden soll.\n\nIm Gegensatz dazu:\n- Die **Ziel-MAC-Adresse** ändert sich bei jedem Hop und identifiziert nur das nächste Gerät auf dem Pfad (entweder einen Router oder das endgültige Ziel, wenn es sich im selben Netzwerk befindet).\n- Die **Quell-IP-Adresse** identifiziert den ursprünglichen Absender des Pakets.\n- Die **Netzwerkkomponente der IP-Adresse** ist nur ein Teil der vollständigen IP-Adresse und identifiziert das Netzwerk, zu dem die Adresse gehört, nicht das spezifische Gerät."
+    },
+    {
+        "question": "Was geschieht mit dem Sicherungsschicht-Frame, wenn ein IP-Paket von einem Router zum nächsten weitergeleitet wird?",
+        "options": [
+            "Der Frame bleibt unverändert",
+            "Nur die MAC-Adressen im Frame werden aktualisiert",
+            "Der Frame wird entfernt und ein neuer Frame wird erstellt",
+            "Der Frame wird komprimiert, um die Übertragungseffizienz zu erhöhen"
+        ],
+        "correct": 2,
+        "explain": "Wenn ein IP-Paket von einem Router zum nächsten weitergeleitet wird, **wird der ursprüngliche Sicherungsschicht-Frame entfernt und ein neuer Frame wird erstellt**. \n\nDer Prozess läuft wie folgt ab:\n1. Der Router empfängt den Frame auf seiner Eingangsschnittstelle\n2. Der Router entfernt die Sicherungsschichtinformationen (entpackt das IP-Paket aus dem Frame)\n3. Der Router trifft eine Weiterleitungsentscheidung basierend auf der Ziel-IP-Adresse\n4. Der Router erstellt einen neuen Sicherungsschicht-Frame für die Ausgangsschnittstelle\n5. Die neue Quell-MAC-Adresse ist die der Ausgangsschnittstelle des Routers\n6. Die neue Ziel-MAC-Adresse ist die des nächsten Hops\n\nDieser Prozess wird als Entkapselung und Neukapselung bezeichnet. Das IP-Paket selbst (mit den ursprünglichen IP-Adressen) bleibt dabei unverändert."
+    },
+    {
+        "question": "Welche der folgenden Aussagen über MAC-Adressen ist korrekt?",
+        "options": [
+            "MAC-Adressen identifizieren das Netzwerk, zu dem ein Gerät gehört",
+            "MAC-Adressen ändern sich, wenn ein Gerät in ein anderes Netzwerk verschoben wird",
+            "MAC-Adressen sind logische Adressen der Vermittlungsschicht",
+            "MAC-Adressen sind physisch auf der Netzwerkkarte integriert"
+        ],
+        "correct": 3,
+        "explain": "**MAC-Adressen sind physisch auf der Netzwerkkarte integriert**. Sie sind eine Form der physischen Adressierung, die auf der Sicherungsschicht (Schicht 2) des OSI-Modells verwendet wird.\n\nWeitere Eigenschaften von MAC-Adressen:\n- Sie sind 48 Bit (6 Byte) lang und werden üblicherweise in hexadezimaler Notation dargestellt, z.B. AA-AA-AA-AA-AA-AA\n- Sie bestehen aus zwei Teilen: Dem Herstellercode (OUI - Organizationally Unique Identifier) und einer vom Hersteller zugewiesenen eindeutigen Seriennummer\n- Sie sind weltweit eindeutig für jede Netzwerkkarte\n- Sie werden für die Kommunikation zwischen Geräten im selben Netzwerk verwendet\n- Im Gegensatz zu IP-Adressen sind sie nicht hierarchisch strukturiert und können nicht für Routing zwischen verschiedenen Netzwerken verwendet werden"
+    },
+    {
+        "question": "MAC-Adressen werden hauptsächlich für die Kommunikation zwischen verschiedenen IP-Netzwerken verwendet.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. MAC-Adressen werden hauptsächlich für die Kommunikation innerhalb desselben IP-Netzwerks verwendet, nicht zwischen verschiedenen IP-Netzwerken.\n\nMAC-Adressen sind Sicherungsschichtadressen (Schicht 2), deren Zweck darin besteht, einen Frame der Sicherungsschicht von einer Netzwerkkarte zu einer anderen Netzwerkkarte **im selben Netzwerk** zu übermitteln. Sie haben nur lokale Bedeutung innerhalb eines Netzwerksegments.\n\nFür die Kommunikation zwischen verschiedenen IP-Netzwerken werden IP-Adressen verwendet, die auf der Vermittlungsschicht (Schicht 3) arbeiten. Router verwenden diese IP-Adressen, um Pakete zwischen unterschiedlichen Netzwerken weiterzuleiten."
+    },
+    {
+        "question": "Was passiert mit den IP-Adressen eines Pakets, wenn es von einem Router empfangen und weitergeleitet wird?",
+        "options": [
+            "Die Quell-IP-Adresse wird zur IP-Adresse des Routers geändert",
+            "Die Ziel-IP-Adresse wird zur IP-Adresse des nächsten Routers geändert",
+            "Beide IP-Adressen werden geändert",
+            "Beide IP-Adressen bleiben unverändert"
+        ],
+        "correct": 3,
+        "explain": "Wenn ein IP-Paket von einem Router empfangen und weitergeleitet wird, **bleiben beide IP-Adressen (Quell- und Ziel-IP-Adresse) unverändert**. Die IP-Adressen identifizieren die ursprüngliche Quelle und das endgültige Ziel des Pakets und werden während der gesamten Übertragung beibehalten.\n\nWas sich ändert, sind die Adressen der Sicherungsschicht (MAC-Adressen). Bei jedem Hop:\n1. Entfernt der Router den eingehenden Sicherungsschicht-Frame\n2. Überprüft der Router die Ziel-IP-Adresse und entscheidet, wohin das Paket als nächstes gehen soll\n3. Erstellt der Router einen neuen Sicherungsschicht-Frame mit:\n   - Seiner eigenen MAC-Adresse als Quell-MAC-Adresse\n   - Der MAC-Adresse des nächsten Hops als Ziel-MAC-Adresse\n\nDieser Prozess wiederholt sich bei jedem Router entlang des Pfads, während die IP-Adressen im Paket unverändert bleiben."
+    },
+    {
+        "question": "Wie erkennt ein Host, ob ein IP-Paket an ein Gerät im lokalen Netzwerk oder an ein Gerät in einem entfernten Netzwerk gesendet werden muss?",
+        "options": [
+            "Er vergleicht die Netzwerkkomponente der Ziel-IP-Adresse mit seiner eigenen",
+            "Er überprüft, ob er die MAC-Adresse des Zielgeräts kennt",
+            "Er sendet alle Pakete an das Standardgateway",
+            "Er überprüft die Time-to-Live (TTL) des Pakets"
+        ],
+        "correct": 0,
+        "explain": "Ein Host erkennt, ob ein IP-Paket an ein Gerät im lokalen Netzwerk oder an ein Gerät in einem entfernten Netzwerk gesendet werden muss, indem er **die Netzwerkkomponente der Ziel-IP-Adresse mit seiner eigenen vergleicht**.\n\nDer Prozess läuft wie folgt ab:\n1. Der Host extrahiert die Netzwerkkomponente seiner eigenen IP-Adresse unter Verwendung seiner Subnetzmaske\n2. Der Host extrahiert die Netzwerkkomponente der Ziel-IP-Adresse unter Verwendung derselben Subnetzmaske\n3. Der Host vergleicht die beiden Netzwerkkomponenten:\n   - Wenn sie identisch sind, befindet sich das Ziel im selben Netzwerk, und der Host kann direkt mit dem Zielgerät kommunizieren\n   - Wenn sie unterschiedlich sind, befindet sich das Ziel in einem entfernten Netzwerk, und der Host muss das Paket an sein Standardgateway (Router) senden\n\nDieser Vergleich der Netzwerkkomponenten ist entscheidend für die Weiterleitungsentscheidung und bestimmt, ob der Host die Ziel-MAC-Adresse des endgültigen Ziels oder die MAC-Adresse des Standardgateways verwendet."
+    },
+    {
+        "question": "In einem lokalen Netzwerk ist die IP-Adresse des Standardgateways nur auf dem Router konfiguriert.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die IP-Adresse des Standardgateways muss auf jedem Host im lokalen Netzwerk konfiguriert sein, nicht nur auf dem Router.\n\nJeder Host im lokalen Netzwerk benötigt die Konfiguration eines Standardgateways, damit er weiß, an welches Gerät (Router) er Pakete senden muss, die für entfernte Netzwerke bestimmt sind. Wenn ein Host ein Paket an ein Gerät in einem anderen Netzwerk senden möchte, sendet er den Frame mit dem gekapselten IP-Paket an die MAC-Adresse des Standardgateways.\n\nDer Router selbst benötigt normalerweise kein Standardgateway für jede seiner Schnittstellen, da er über Routing-Tabellen verfügt, die ihm mitteilen, wohin Pakete für verschiedene Netzwerke gesendet werden sollen."
+    },
+    {
+        "question": "Welche der folgenden Komponenten ist für das Routing von Paketen zwischen verschiedenen Netzwerken verantwortlich?",
+        "options": [
+            "Netzwerkkarte (NIC)",
+            "Switch",
+            "Router",
+            "Hub"
+        ],
+        "correct": 2,
+        "explain": "Der **Router** ist für das Routing von Paketen zwischen verschiedenen Netzwerken verantwortlich. Router arbeiten auf der Vermittlungsschicht (Schicht 3) des OSI-Modells und verwenden IP-Adressen, um Pakete vom Quellnetzwerk zum Zielnetzwerk zu leiten.\n\nEin Router:\n- Verbindet verschiedene IP-Netzwerke miteinander\n- Trifft Weiterleitungsentscheidungen basierend auf den Ziel-IP-Adressen der Pakete\n- Entfernt und erstellt neue Sicherungsschicht-Frames, wenn er Pakete von einem Netzwerk zum anderen weiterleitet\n- Verwaltet Routing-Tabellen, die angeben, wie Pakete zu verschiedenen Netzwerken weitergeleitet werden sollen\n- Fungiert als Standardgateway für Hosts in einem lokalen Netzwerk\n\nIm Gegensatz dazu arbeiten Switches auf der Sicherungsschicht (Schicht 2) und leiten Frames basierend auf MAC-Adressen innerhalb desselben Netzwerks weiter. Netzwerkkarten (NICs) sind Hardwarekomponenten, die die physische Verbindung eines Geräts mit dem Netzwerk ermöglichen. Hubs arbeiten auf der physischen Schicht (Schicht 1) und wiederholen einfach alle empfangenen Signale an alle angeschlossenen Ports."
+    },
+    {
+        "question": "Was geschieht, wenn ein Host ein Paket an ein Gerät in einem entfernten Netzwerk senden möchte, aber kein Standardgateway konfiguriert hat?",
+        "options": [
+            "Der Host sendet das Paket direkt an das Zielgerät",
+            "Der Host kann das Paket nicht senden",
+            "Der Host sendet eine Broadcast-Nachricht, um den Weg zum Ziel zu finden",
+            "Der Host leitet das Paket an einen anderen Host im lokalen Netzwerk weiter"
+        ],
+        "correct": 1,
+        "explain": "Wenn ein Host ein Paket an ein Gerät in einem entfernten Netzwerk senden möchte, aber kein Standardgateway konfiguriert hat, **kann der Host das Paket nicht senden**. \n\nDa sich das Zielgerät in einem anderen Netzwerk befindet, ist eine direkte Kommunikation nicht möglich. Der Host muss wissen, an welchen Router (Standardgateway) er das Paket senden soll, damit dieser es weiterleiten kann. Ohne diese Information hat der Host keine Möglichkeit zu wissen, wie er das Paket auf den richtigen Weg bringen kann.\n\nIn der Praxis wird in solchen Fällen das Paket verworfen, und abhängig vom Betriebssystem und der Anwendung könnte eine Fehlermeldung wie \"Netzwerk nicht erreichbar\" oder \"Kein Weg zum Host\" generiert werden."
+    },
+    {
+        "question": "Welche Komponente einer Netzwerkinfrastruktur hat mehrere MAC-Adressen, aber potenziell nur eine einzige IP-Adresse?",
+        "options": [
+            "Endgerät (Host)",
+            "Switch",
+            "Router",
+            "Hub"
+        ],
+        "correct": 2,
+        "explain": "Ein **Router** hat typischerweise mehrere MAC-Adressen (eine für jede Netzwerkschnittstelle), kann aber potenziell mit nur einer einzigen IP-Adresse betrieben werden (obwohl Router in der Praxis normalerweise mehrere IP-Adressen haben, eine für jede Schnittstelle).\n\nRouter verbinden verschiedene Netzwerke miteinander und benötigen für jede Schnittstelle, die mit einem Netzwerk verbunden ist, eine eigene MAC-Adresse. Jede dieser Schnittstellen kann ein eigenes Netzwerk mit einer anderen Netzwerkkomponente der IP-Adresse bedienen.\n\nIm Gegensatz dazu:\n- Endgeräte (Hosts) haben normalerweise eine MAC-Adresse und eine IP-Adresse (pro Netzwerkschnittstelle)\n- Switches arbeiten auf der Sicherungsschicht und verwenden MAC-Adressen, haben aber normalerweise keine IP-Adressen für ihre Switching-Funktionen (obwohl sie oft eine Management-IP-Adresse haben)\n- Hubs arbeiten auf der physischen Schicht und verwenden weder MAC- noch IP-Adressen für ihre Kernfunktionen"
+    },
+     {
+    "question": "Was ist der Hauptvorteil der Segmentierung von Nachrichten in Netzwerken?",
+    "options": [
+      "Verringerung der benötigten Bandbreite für Übertragungen",
+      "Ermöglichung des Multiplexings verschiedener Kommunikationen",
+      "Vereinfachung des Routingprozesses",
+      "Reduzierung der Anzahl benötigter Protokolle"
+    ],
+    "correct": 1,
+    "explain": "Die Segmentierung von Nachrichten bringt zwei wesentliche Vorteile mit sich, wobei das **Multiplexing** als Hauptvorteil hervorzuheben ist.\n\n- **Erhöhte Geschwindigkeit**: Durch die Aufteilung großer Datenströme in kleinere Pakete können diese effizienter übertragen werden, ohne Kommunikationsverbindungen zu blockieren.\n- **Multiplexing**: Die Segmentierung ermöglicht es, dass viele verschiedene Kommunikationen gleichzeitig über dasselbe Netzwerk verschachtelt werden können.\n- **Erhöhte Effizienz**: Bei Netzwerkfehlern muss nur das betroffene Segment neu übertragen werden, nicht der gesamte Datenstrom.\n\nDas Multiplexing ist dabei besonders wichtig, da es die gleichzeitige Nutzung von Netzwerkressourcen durch verschiedene Anwendungen und Benutzer ermöglicht."
+  },
+  {
+    "question": "Welches Protokoll ist primär für die Sequenzierung von Datensegmenten verantwortlich?",
+    "options": [
+      "IP",
+      "UDP",
+      "TCP",
+      "HTTP"
+    ],
+    "correct": 2,
+    "explain": "**TCP (Transmission Control Protocol)** ist für die Sequenzierung der einzelnen Segmente verantwortlich.\n\n- TCP sorgt dafür, dass jedes Segment mit einer Sequenznummer versehen wird, ähnlich wie Seitenzahlen in einem Brief.\n- Diese Sequenzierung ermöglicht es dem Empfänger, die Segmente in der richtigen Reihenfolge wieder zusammenzusetzen, auch wenn sie über verschiedene Pfade transportiert wurden oder in unterschiedlicher Reihenfolge ankommen.\n- Im Gegensatz dazu bietet UDP (User Datagram Protocol) keine Sequenzierung und keine Garantie für die Reihenfolge der ankommenden Pakete.\n- IP (Internet Protocol) ist für das Routing zuständig, während HTTP ein Anwendungsprotokoll ist, das auf TCP aufbaut."
+  },
+  {
+    "question": "Wenn der Transportheader in einer PDU UDP ist, wie wird diese PDU genannt?",
+    "options": [
+      "Frame",
+      "Paket",
+      "Segment",
+      "Datagramm"
+    ],
+    "correct": 3,
+    "explain": "Wenn der Transportheader in einer PDU UDP (User Datagram Protocol) ist, wird diese PDU als **Datagramm** bezeichnet.\n\n- Bei TCP spricht man von einem Segment auf der Transportschicht.\n- Bei UDP hingegen spricht man von einem Datagramm auf der Transportschicht.\n- Diese Unterscheidung ist wichtig für das Verständnis der Protokoll-Dateneinheiten (PDUs) in den verschiedenen Schichten des Netzwerkmodells:\n  - Anwendungsschicht: Daten\n  - Transportschicht: Segment (TCP) oder Datagramm (UDP)\n  - Vermittlungsschicht: Paket\n  - Sicherungsschicht: Frame\n  - Bitübertragungsschicht: Bits"
+  },
+  {
+    "question": "Der Prozess der Entkapselung (De-Encapsulation) findet auf dem Sender-Host statt, bevor die Daten über das Netzwerk gesendet werden.",
+    "options": [
+      "Wahr",
+      "Falsch"
+    ],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Die Entkapselung (De-Encapsulation) findet auf dem Empfängergerät statt, nicht auf dem Sender.\n\n- **Kapselung**: Beim Sender werden die Daten von der Anwendungsschicht nach unten durch den Protokollstapel verarbeitet, wobei jede Schicht ihre eigenen Header hinzufügt (Kapselung).\n- **Übertragung**: Die vollständig gekapselten Daten werden dann als Bits über das physische Medium übertragen.\n- **Entkapselung**: Beim Empfänger werden die Daten von unten nach oben durch den Protokollstapel verarbeitet, wobei jede Schicht die entsprechenden Header entfernt (Entkapselung).\n\nDie Entkapselung ist also der umgekehrte Prozess der Kapselung und findet auf dem Zielgerät statt, um die ursprünglichen Anwendungsdaten wiederherzustellen."
+  },
+  {
+    "question": "Was passiert bei der Netzwerkkommunikation, wenn ein einzelnes Segment aufgrund eines Netzwerkausfalls nicht beim Ziel ankommt?",
+    "options": [
+      "Die gesamte Nachricht muss neu übertragen werden",
+      "Der Empfänger rekonstruiert das fehlende Segment aus vorhandenen Daten",
+      "Nur das betroffene Segment muss erneut übertragen werden",
+      "Die Übertragung wird automatisch auf ein alternatives Protokoll umgeleitet"
+    ],
+    "correct": 2,
+    "explain": "Bei einem Netzwerkausfall, der dazu führt, dass ein einzelnes Segment nicht beim Ziel ankommt, **muss nur das betroffene Segment erneut übertragen werden**.\n\n- Dies ist einer der wesentlichen Vorteile der Segmentierung: Sie erhöht die Effizienz, indem bei Fehlern nicht der gesamte Datenstrom erneut gesendet werden muss.\n- Das System erkennt, welches spezifische Segment fehlt (durch Sequenznummern und Bestätigungsmechanismen), und fordert nur dieses zur erneuten Übertragung an.\n- Dieser Mechanismus ist besonders wichtig bei großen Datenübertragungen, wo eine komplette Neuübertragung erhebliche Ressourcen verschwenden würde.\n- Die Fehlerkorrektur und Wiederherstellung erfolgt meist auf Transportebene, insbesondere durch das TCP-Protokoll, das zuverlässige Übertragungen gewährleistet."
+  },
+      {
+        "question": "Welche Hauptfunktion erfüllen Netzwerkprotokolle in einem Computernetzwerk?",
+        "options": [
+            "Sie dienen ausschließlich der Datenverschlüsselung",
+            "Sie definieren ein gemeinsames Format und Regeln für den Nachrichtenaustausch",
+            "Sie sind nur für die physische Verbindung zwischen Geräten verantwortlich",
+            "Sie werden nur in lokalen Netzwerken verwendet"
+        ],
+        "correct": 1,
+        "explain": "Netzwerkprotokolle definieren ein **gemeinsames Format und einen Satz von Regeln** für den Austausch von Nachrichten zwischen Geräten. Sie stellen sicher, dass alle Endgeräte die gleichen Regeln befolgen, damit eine Kommunikation über ein Netzwerk möglich ist. Diese Protokolle werden in Software, Hardware oder in einer Kombination aus beidem implementiert und jedes hat seine eigene spezifische Funktion, Format und Kommunikationsregeln."
+    },
+    {
+        "question": "Welches Protokoll ist für die garantierte Zustellung von Datenpaketen und Flusssteuerung verantwortlich?",
+        "options": [
+            "HTTP",
+            "IP",
+            "Ethernet",
+            "TCP"
+        ],
+        "correct": 3,
+        "explain": "Das **Transmission Control Protocol (TCP)** ist für die zuverlässige Übertragung von Daten verantwortlich. Es bietet mehrere wichtige Funktionen:\n\n- **Garantierte Zustellung**: TCP stellt sicher, dass Datenpakete vollständig und korrekt ankommen\n- **Flusssteuerung**: TCP reguliert die Geschwindigkeit der Datenübertragung, damit kein Gerät überlastet wird\n- **Sequenzierung**: TCP nummeriert Datensegmente, damit sie am Ziel in der richtigen Reihenfolge zusammengesetzt werden können\n\nDiese Funktionen machen TCP zu einem zuverlässigen Protokoll für Anwendungen, bei denen eine fehlerfreie Datenübertragung wichtig ist."
+    },
+    {
+        "question": "Ein Student überlegt, welches Protokoll für die Übersetzung von Domainnamen in IP-Adressen zuständig ist. Um welches Protokoll handelt es sich?",
+        "options": [
+            "DNS",
+            "DHCP",
+            "HTTP",
+            "SSH"
+        ],
+        "correct": 0,
+        "explain": "Das **Domain Name System (DNS)** ist für die Übersetzung von menschenfreundlichen Domainnamen (wie www.beispiel.de) in IP-Adressen (wie 192.168.1.1) zuständig. DNS ist ein essentielles Diensterkennungsprotokoll, das diese Namensauflösung im Hintergrund durchführt, wenn Benutzer eine Website aufrufen möchten.\n\nDie anderen Optionen haben folgende Funktionen:\n- **DHCP** (Dynamic Host Configuration Protocol): Automatische Zuweisung von IP-Adressen an Geräte\n- **HTTP** (Hypertext Transfer Protocol): Übertragung von Webseiteninhalten\n- **SSH** (Secure Shell): Sicherer Fernzugriff auf Systeme"
+    },
+    {
+        "question": "Routingprotokolle wie OSPF und BGP haben welche primäre Funktion?",
+        "options": [
+            "Sicherung der Datenintegrität",
+            "Automatische Erkennung von Netzwerkdiensten",
+            "Austausch von Routinginformationen zur Pfadbestimmung",
+            "Regelung der Interaktion zwischen Client und Server"
+        ],
+        "correct": 2,
+        "explain": "**Routingprotokolle** wie OSPF (Open Shortest Path First) und BGP (Border Gateway Protocol) sind speziell dafür konzipiert, **Routinginformationen zwischen Routern auszutauschen** und Pfadinformationen zu vergleichen. Dies ermöglicht es Routern, den optimalen Pfad zum Zielnetzwerk zu bestimmen.\n\nDiese Protokolle sind entscheidend für das effiziente Funktionieren großer Netzwerke, da sie dynamisch auf Änderungen in der Netzwerktopologie reagieren können, wie z.B. ausgefallene Verbindungen oder neue Wege. Sie bilden die Grundlage für das intelligente Routing von Datenpaketen durch komplexe Netzwerkstrukturen."
+    },
+    {
+        "question": "Wenn ein Benutzer eine Webseite aufruft, welches Protokoll regelt die Interaktion zwischen dem Webclient und dem Webserver?",
+        "options": [
+            "IP",
+            "TCP",
+            "HTTP",
+            "Ethernet"
+        ],
+        "correct": 2,
+        "explain": "Das **Hypertext Transfer Protocol (HTTP)** regelt die Interaktion zwischen einem Webclient (Browser) und einem Webserver. HTTP definiert:\n\n- Das Format der Anfragen (Requests), die vom Client an den Server gesendet werden\n- Das Format der Antworten (Responses), die vom Server zurück an den Client gesendet werden\n- Die Regeln für diesen Austausch\n\nWenn ein Benutzer eine Webseite aufruft, sendet der Browser eine HTTP-Anfrage an den Server, der dann mit dem angeforderten Inhalt antwortet. HTTP ist ein Anwendungsprotokoll, das auf anderen Protokollen wie TCP/IP aufbaut, die für den eigentlichen Transport der Daten zuständig sind."
+    },
+    {
+        "question": "Bei der Netzwerkkommunikation ist die Funktion der Sequenzierung essenziell für die zuverlässige Übertragung von Daten.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Die Sequenzierung ist eine wichtige Funktion bei der Netzwerkkommunikation, die dafür sorgt, dass Daten korrekt zusammengesetzt werden können, auch wenn sie in unterschiedlicher Reihenfolge ankommen.\n\nWenn Daten über ein Netzwerk übertragen werden, werden sie in kleinere Segmente aufgeteilt. Diese Segmente können unterschiedliche Wege nehmen und in unterschiedlicher Reihenfolge oder mit Verzögerungen am Ziel ankommen. Die Sequenzierung:\n\n- Kennzeichnet jedes übertragene Datensegment eindeutig mit einer Nummer\n- Ermöglicht dem empfangenden Gerät, die Segmente in der richtigen Reihenfolge zusammenzusetzen\n- Ist besonders nützlich, wenn Datensegmente verloren gehen, verzögert werden oder in falscher Reihenfolge ankommen\n\nDas TCP-Protokoll bietet diese Sequenzierungsdienste als Teil seiner zuverlässigen Übertragungsmechanismen."
+    },
+    {
+        "question": "DHCP ist ein Protokoll zur Diensterkennung, das hauptsächlich für die Verschlüsselung von Datenübertragungen verwendet wird.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Das Dynamic Host Configuration Protocol (DHCP) ist zwar ein Diensterkennungsprotokoll, aber seine Hauptfunktion ist **nicht** die Verschlüsselung von Datenübertragungen.\n\nDHCP wird für die **automatische Zuweisung von IP-Adressen** an Geräte in einem Netzwerk verwendet. Wenn ein Gerät mit einem Netzwerk verbunden wird, kommuniziert es mit dem DHCP-Server, um automatisch eine IP-Adresse, Subnetzmaske, Standard-Gateway und andere Netzwerkkonfigurationsparameter zu erhalten.\n\nFür die Verschlüsselung von Datenübertragungen werden hingegen Netzwerksicherheitsprotokolle wie SSL (Secure Sockets Layer), TLS (Transport Layer Security) oder SSH (Secure Shell) verwendet."
+    },
+    {
+        "question": "Welche Protokollfunktion ist entscheidend, um festzustellen, ob Daten während der Übertragung beschädigt wurden?",
+        "options": [
+            "Adressierung",
+            "Flusskontrolle",
+            "Fehlererkennung",
+            "Anwendungsschnittstelle"
+        ],
+        "correct": 2,
+        "explain": "Die **Fehlererkennung** ist die Protokollfunktion, die entscheidend ist, um festzustellen, ob Daten während der Übertragung beschädigt wurden.\n\nVerschiedene Protokolle wie Ethernet, IPv4, IPv6 und TCP implementieren Fehlererkennung durch verschiedene Methoden wie Prüfsummen oder CRC (Cyclic Redundancy Check). Diese Mechanismen:\n\n- Berechnen einen mathematischen Wert basierend auf den zu übertragenden Daten\n- Senden diesen Wert zusammen mit den Daten\n- Beim Empfang wird die Berechnung wiederholt und die Ergebnisse verglichen\n- Bei Abweichungen wird erkannt, dass die Daten beschädigt wurden\n\nDie Fehlererkennung ist ein kritischer Bestandteil zuverlässiger Netzwerkkommunikation, da sie sicherstellt, dass die empfangenen Daten mit den gesendeten Daten übereinstimmen."
+    },
+    {
+        "question": "Ein Systemadministrator muss ein Protokoll implementieren, das die Kommunikation zwischen Routern regelt, um den optimalen Weg zu einem Zielnetzwerk zu bestimmen. Welcher Protokolltyp ist am besten geeignet?",
+        "options": [
+            "Netzwerksicherheitsprotokoll",
+            "Diensterkennungsprotokoll",
+            "Netzwerkkommunikationsprotokoll",
+            "Routingprotokoll"
+        ],
+        "correct": 3,
+        "explain": "Für die beschriebene Aufgabe ist ein **Routingprotokoll** am besten geeignet. Routingprotokolle sind speziell dafür konzipiert, die Kommunikation zwischen Routern zu ermöglichen und den optimalen Pfad zu einem Zielnetzwerk zu bestimmen.\n\nBeispiele für Routingprotokolle sind:\n\n- **OSPF** (Open Shortest Path First): Ein Link-State-Routingprotokoll für größere Netzwerke innerhalb der gleichen Organisation\n- **BGP** (Border Gateway Protocol): Das Standardprotokoll für das Routing zwischen verschiedenen autonomen Systemen im Internet\n- **RIP** (Routing Information Protocol): Ein einfacheres Distance-Vector-Protokoll für kleinere Netzwerke\n\nDiese Protokolle ermöglichen es Routern, Informationen über die Netzwerktopologie auszutauschen, Pfadkosten zu berechnen und die besten Routen zu ermitteln, was für effizientes Routing in komplexen Netzwerken unerlässlich ist."
+    },
+    {
+        "question": "Bei der Übertragung einer Webseite, welches Protokoll ist für die Zustellung von Nachrichten zwischen verschiedenen Netzwerken verantwortlich?",
+        "options": [
+            "Ethernet",
+            "TCP",
+            "IP",
+            "HTTP"
+        ],
+        "correct": 2,
+        "explain": "Das **Internet Protocol (IP)** ist für die Zustellung von Nachrichten zwischen verschiedenen Netzwerken verantwortlich. Es übernimmt folgende Aufgaben:\n\n- Adressierung der Pakete mit Quell- und Ziel-IP-Adressen\n- Weiterleitung (Routing) der Pakete durch verschiedene Netzwerke\n- Fragmentierung und Reassemblierung von Paketen, wenn nötig\n\nRouter verwenden das IP-Protokoll, um Entscheidungen zu treffen, wie Datenpakete weitergeleitet werden sollen, damit sie ihr Ziel erreichen, auch wenn dieses in einem anderen Netzwerk liegt. IP arbeitet auf der Netzwerkschicht und ist unabhängig von der darunter liegenden Technologie (wie Ethernet) und den darüber liegenden Protokollen (wie TCP und HTTP)."
+    },
+     {
+    "question": "Was ist die Hauptfunktion von Protokollen in einer Protokollfamilie? 🌐",
+    "options": [
+      "Sie arbeiten nahtlos zusammen, um eine vollständige Netzwerkkommunikation zu ermöglichen",
+      "Sie konkurrieren miteinander, um die beste Leistung zu erzielen",
+      "Sie funktionieren unabhängig voneinander ohne Interaktion",
+      "Sie ersetzen einander je nach Nutzerpräferenz"
+    ],
+    "correct": 0,
+    "explain": "Protokollfamilien sind **Gruppen zusammenhängender Protokolle**, die bewusst so konzipiert sind, dass sie nahtlos miteinander arbeiten. Jedes Protokoll übernimmt spezifische Aufgaben im Kommunikationsprozess, wobei sie gemeinsam alle erforderlichen Funktionen für eine vollständige Netzwerkkommunikation bereitstellen. Die Protokolle einer Familie ergänzen sich gegenseitig und arbeiten in verschiedenen Schichten des Kommunikationsstapels."
+  },
+  {
+    "question": "Warum werden Protokolle in einem Stapel (Stack) organisiert? 📚",
+    "options": [
+      "Um den Speicherverbrauch zu minimieren",
+      "Weil höhere Protokollebenen von der Funktionalität niedrigerer Ebenen abhängen",
+      "Weil es historisch so gewachsen ist, ohne funktionalen Grund",
+      "Um die Installationsreihenfolge auf Computern festzulegen"
+    ],
+    "correct": 1,
+    "explain": "Protokolle werden in einem **Stapel (Stack)** organisiert, weil jeder Dienst einer höheren Ebene von der Funktionalität abhängt, die durch die Protokolle der niedrigeren Ebenen definiert ist. Diese Schichtenarchitektur ermöglicht eine klare Aufteilung der Verantwortlichkeiten: Die unteren Ebenen des Stapels kümmern sich um die grundlegende Datenübertragung über das Netzwerk und stellen Dienste für die höheren Ebenen bereit, die sich auf den Inhalt der zu übertragenden Nachrichten konzentrieren. Diese Struktur fördert Modularität und vereinfacht die Entwicklung und Wartung komplexer Netzwerksysteme."
+  },
+  {
+    "question": "Welche Protokollfamilie dominiert heute die moderne Netzwerkkommunikation und das Internet? 🌍",
+    "options": [
+      "AppleTalk",
+      "OSI Protokolle",
+      "TCP/IP",
+      "Novell NetWare"
+    ],
+    "correct": 2,
+    "explain": "Die **TCP/IP-Protokollfamilie** dominiert heute die moderne Netzwerkkommunikation und das Internet. Sie hat sich gegenüber konkurrierenden Protokollfamilien wie OSI, AppleTalk und Novell NetWare durchgesetzt. TCP/IP ist eine offene Standardprotokollfamilie, die von der Internet Engineering Task Force (IETF) verwaltet wird. Ihre offene Natur und die breite Unterstützung durch die Industrie haben zu ihrer dominanten Position beigetragen. Selbst Firmen wie Apple und Novell, die ursprünglich ihre eigenen proprietären Protokolle entwickelt hatten, haben diese in den 1990er Jahren zugunsten von TCP/IP aufgegeben."
+  },
+  {
+    "question": "Ein System, das Pakete über WLAN sendet, nutzt welches Protokoll auf der Netzwerkzugriffsschicht? 📡",
+    "options": [
+      "TCP",
+      "IP",
+      "HTTP",
+      "WLAN"
+    ],
+    "correct": 3,
+    "explain": "Ein System, das Pakete über WLAN (Wireless LAN) sendet, nutzt das **WLAN-Protokoll** auf der Netzwerkzugriffsschicht. Die Netzwerkzugriffsschicht ist für die physische Übertragung von Daten verantwortlich und definiert, wie Signale über das physische Medium (in diesem Fall Funkwellen) übertragen werden. WLAN-Protokolle regeln speziell die drahtlose Signalisierung über die 2,4-GHz- und 5-GHz-Funkfrequenzen. Im Gegensatz dazu sind TCP (Transportschicht), IP (Internetschicht) und HTTP (Anwendungsschicht) Protokolle auf höheren Ebenen des TCP/IP-Stacks, die unabhängig vom verwendeten physischen Medium funktionieren."
+  },
+  {
+    "question": "Was versteht man unter einer Protokollfamilie mit \"offenem Standard\"? 🔓",
+    "options": [
+      "Sie ist auf bestimmte Anwendungsfälle beschränkt",
+      "Sie ist der Öffentlichkeit frei zugänglich und kann von jedem Anbieter genutzt werden",
+      "Sie erlaubt nur die Kommunikation mit bestimmten Herstellern",
+      "Sie ist kostenlos, aber lizenzpflichtig für kommerzielle Anwendungen"
+    ],
+    "correct": 1,
+    "explain": "Eine Protokollfamilie mit **offenem Standard** bedeutet, dass die Spezifikationen der Protokollfamilie der Öffentlichkeit frei zugänglich sind und von jedem Anbieter auf ihrer Hardware oder in ihrer Software verwendet werden können. Dies fördert Interoperabilität und Innovation, da verschiedene Hersteller kompatible Produkte entwickeln können, ohne proprietäre Technologien lizenzieren zu müssen. TCP/IP ist ein Beispiel für eine solche offene Standardprotokollfamilie, was ein wesentlicher Faktor für ihren Erfolg und ihre weite Verbreitung war. Im Gegensatz dazu stehen proprietäre Protokollfamilien wie das ursprüngliche AppleTalk oder Novell NetWare, bei denen die Standards nicht offen waren."
+  },
+  {
+    "question": "Bei welchem Protokoll handelt es sich um ein Adressauflösungsprotokoll auf der Netzwerkzugriffsschicht? 🔍",
+    "options": [
+      "HTTP",
+      "ARP",
+      "TCP",
+      "IP"
+    ],
+    "correct": 1,
+    "explain": "**ARP (Address Resolution Protocol)** ist ein Adressauflösungsprotokoll auf der Netzwerkzugriffsschicht. ARP bietet eine dynamische Adresszuordnung zwischen einer logischen IP-Adresse und einer physischen Hardware-Adresse (MAC-Adresse). Diese Zuordnung ist notwendig, damit IP-Pakete auf der physischen Netzwerkebene an das richtige Gerät zugestellt werden können. Im Gegensatz dazu sind HTTP (Hypertext Transfer Protocol) ein Protokoll der Anwendungsschicht, TCP (Transmission Control Protocol) ein Protokoll der Transportschicht und IP (Internet Protocol) ein Protokoll der Internetschicht."
+  },
+  {
+    "question": "Das OSI-Referenzmodell ist heute vor allem für seine Protokolle bekannt, während die eigentlichen Protokolle kaum noch relevant sind. 🧐",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Das OSI-Referenzmodell ist heute vor allem für sein geschichtetes (7-Schichten) Modell bekannt, nicht für seine Protokolle. Die OSI-Protokolle selbst wurden weitestgehend durch TCP/IP-Protokolle ersetzt und spielen in modernen Netzwerken kaum noch eine Rolle. Das OSI-Modell dient jedoch weiterhin als wichtiges konzeptionelles und didaktisches Werkzeug, um die Funktionsweise von Netzwerkprotokollen und deren Schichtung zu verstehen, auch wenn das TCP/IP-Modell in der Praxis dominiert."
+  },
+  {
+    "question": "TCP/IP-Protokolle sind in allen vier Schichten des TCP/IP-Modells vertreten. 🔄",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. TCP/IP-Protokolle sind spezifisch für die Anwendungsschicht, Transportschicht und Internetschicht. Es gibt keine eigentlichen TCP/IP-Protokolle in der Netzwerkzugriffsschicht. Für die Netzwerkzugriffsschicht werden stattdessen andere Protokolle wie Ethernet oder WLAN (Wireless LAN) verwendet. Diese Protokolle sind für die physische Zustellung des IP-Pakets über das jeweilige Medium (Kabel, Funk etc.) verantwortlich, gehören aber nicht zur TCP/IP-Protokollfamilie im engeren Sinne."
+  },
+  {
+    "question": "Welches Ereignis führte dazu, dass proprietäre Protokollfamilien wie AppleTalk und Novell NetWare an Bedeutung verloren? 📉",
+    "options": [
+      "Die Entwicklung neuer, leistungsfähigerer proprietärer Protokolle",
+      "Der Zusammenschluss verschiedener Hersteller zu einem gemeinsamen Protokollstandard",
+      "Die Übernahme von TCP/IP durch die Hersteller als Ersatz für ihre eigenen Protokolle",
+      "Das Aufkommen des OSI-Referenzmodells als dominanter Standard"
+    ],
+    "correct": 2,
+    "explain": "Proprietäre Protokollfamilien wie AppleTalk und Novell NetWare verloren an Bedeutung, als die jeweiligen Hersteller **TCP/IP übernahmen** und es als Ersatz für ihre eigenen Protokolle einsetzten. Konkret hat Apple 1995 TCP/IP übernommen, um AppleTalk zu ersetzen, und im gleichen Jahr hat Novell TCP/IP übernommen, um IPX zu ersetzen. Diese Entscheidungen waren Teil eines breiteren Trends in der Branche hin zu offenen Standards und Interoperabilität. TCP/IP bot als offener Standard Vorteile wie breitere Kompatibilität mit dem wachsenden Internet und anderen Netzwerkgeräten, was letztendlich zur Konsolidierung auf TCP/IP als dominante Protokollfamilie führte."
+  },
+  {
+    "question": "Was geschieht in der Phase der Kapselung beim TCP/IP-Kommunikationsprozess? 📦",
+    "options": [
+      "Daten werden komprimiert, um Bandbreite zu sparen",
+      "Höhere Protokollschichten fügen Headerdaten zu den ursprünglichen Daten hinzu",
+      "Daten werden verschlüsselt, um Sicherheit zu gewährleisten",
+      "Empfangene Pakete werden auf Fehler überprüft"
+    ],
+    "correct": 1,
+    "explain": "Bei der **Kapselung** im TCP/IP-Kommunikationsprozess fügen höhere Protokollschichten Headerdaten zu den ursprünglichen Daten hinzu, bevor diese an die nächstniedrigere Schicht weitergegeben werden. Dieser Prozess beginnt in der Anwendungsschicht und setzt sich fort, wobei jede Schicht ihre eigenen Header-Informationen hinzufügt. So werden beispielsweise zu HTTP-Daten TCP-Header hinzugefügt, dann IP-Header und schließlich Ethernet-Header und -Trailer. Durch diese Kapselung erhält jede Schicht die für ihre Funktionalität notwendigen Informationen, ohne den eigentlichen Datenteil zu verändern. Beim Empfänger läuft der Prozess umgekehrt ab (Entkapselung), wobei jede Schicht ihren Header entfernt und die verbleibenden Daten an die nächsthöhere Schicht weiterleitet."
+  }
+
     ]        
 }

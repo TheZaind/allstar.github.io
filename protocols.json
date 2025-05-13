@@ -1,0 +1,80 @@
+{
+  "questions": [
+    {
+      "question": "DNS",
+      "answer": "<strong>1. Bedeutung:</strong> Domain Name System\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Übersetzt Domänennamen wie cisco.com in IP-Adressen"
+    },    {
+      "question": "DHCP",
+      "answer": "<strong>1. Bedeutung:</strong> Dynamic Host Configuration Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Weist Geräten automatisch IP-Adressen und Netzwerkkonfigurationen zu"
+    },    {
+      "question": "SLAAC",
+      "answer": "<strong>1. Bedeutung:</strong> Stateless Address Autoconfiguration\n<strong>2. OSI-Schicht:</strong> Netzwerkschicht (Layer 3)\n<strong>3. Funktion:</strong> Eine Methode, mit der ein Gerät seine IPv6-Adressinformationen erhalten kann, ohne einen DHCPv6-Server zu verwenden"
+    },    {
+      "question": "SMTP",
+      "answer": "<strong>1. Bedeutung:</strong> Simple Mail Transfer Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Ermöglicht Clients das Senden von E-Mails an einen Mail-Server und den Servern das Senden von E-Mails an andere Server"
+    },
+    {
+      "question": "POP3",
+      "answer": "<strong>1. Bedeutung:</strong> Post Office Protocol Version 3\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Ermöglicht Clients, E-Mails von einem Mail-Server abzurufen und die E-Mail in die lokale Mail-Anwendung des Clients herunterzuladen"
+    },
+    {
+      "question": "IMAP",
+      "answer": "<strong>1. Bedeutung:</strong> Internet Message Access Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Ermöglicht Clients den Zugriff auf E-Mails, die auf einem Mail-Server gespeichert sind"
+    },
+    {
+      "question": "FTP",
+      "answer": "<strong>1. Bedeutung:</strong> File Transfer Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Legt Regeln fest, mit denen ein Benutzer über ein Netzwerk auf Dateien auf einem anderen Host zugreifen und die Dateien übertragen kann"
+    },
+    {
+      "question": "SFTP",
+      "answer": "<strong>1. Bedeutung:</strong> SSH File Transfer Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Kann verwendet werden, um eine sichere Dateiübertragungssitzung einzurichten, wobei die Dateiübertragung verschlüsselt ist"
+    },
+    {
+      "question": "TFTP",
+      "answer": "<strong>1. Bedeutung:</strong> Trivial File Transfer Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Ein einfaches, verbindungsloses, Best-Effort-Dateiübertragungsprotokoll ohne bestätigte Dateizustellung"
+    },
+    {
+      "question": "HTTP",
+      "answer": "<strong>1. Bedeutung:</strong> Hypertext Transfer Protocol\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Eine Reihe von Regeln für den Austausch von Text-, Grafik-, Ton-, Video- und anderen Multimedia-Dateien im World Wide Web"
+    },
+    {
+      "question": "HTTPS",
+      "answer": "<strong>1. Bedeutung:</strong> HTTP Secure\n<strong>2. OSI-Schicht:</strong> Anwendungsschicht (Layer 7)\n<strong>3. Funktion:</strong> Eine sichere Form von HTTP, die die Daten verschlüsselt, die über das World Wide Web ausgetauscht werden"
+    },    {
+      "question": "TCP",
+      "answer": "<strong>1. Bedeutung:</strong> Transmission Control Protocol\n<strong>2. OSI-Schicht:</strong> Transportschicht (Layer 4)\n<strong>3. Funktion:</strong> Ermöglicht eine zuverlässige Kommunikation zwischen Prozessen und bietet bestätigte Übertragungen"
+    },
+    {
+      "question": "UDP",
+      "answer": "<strong>1. Bedeutung:</strong> User Datagram Protocol\n<strong>2. OSI-Schicht:</strong> Transportschicht (Layer 4)\n<strong>3. Funktion:</strong> Ermöglicht es Prozessen, Pakete zu senden, ohne Bestätigungsnachrichten über die erfolgreiche Übertragung"
+    },
+    {
+      "question": "IPv4",
+      "answer": "<strong>1. Bedeutung:</strong> Internet Protocol Version 4\n<strong>2. OSI-Schicht:</strong> Internetschicht/Netzwerkschicht (Layer 3)\n<strong>3. Funktion:</strong> Empfängt Nachrichtensegmente, packt sie in Pakete und adressiert sie für die End-to-End-Zustellung mit 32-Bit-Adressen"
+    },
+    {
+      "question": "IPv6",
+      "answer": "<strong>1. Bedeutung:</strong> Internet Protocol Version 6\n<strong>2. OSI-Schicht:</strong> Internetschicht/Netzwerkschicht (Layer 3)\n<strong>3. Funktion:</strong> Ähnlich wie IPv4, verwendet aber eine 128-Bit-Adresse für erweiterte Adressierungsmöglichkeiten"
+    },
+    {
+      "question": "NAT",
+      "answer": "<strong>1. Bedeutung:</strong> Network Address Translation\n<strong>2. OSI-Schicht:</strong> Netzwerkschicht (Layer 3)\n<strong>3. Funktion:</strong> Übersetzt IP-Adressen aus einem privaten Netzwerk in global eindeutige, öffentliche IP-Adressen"
+    },
+    {
+      "question": "OSPF",
+      "answer": "<strong>1. Bedeutung:</strong> Open Shortest Path First\n<strong>2. OSI-Schicht:</strong> Netzwerkschicht (Layer 3)\n<strong>3. Funktion:</strong> Link-State-Routingprotokoll, das ein hierarchisches Konzept basierend auf Netzwerkbereichen verwendet"
+    },
+    {
+      "question": "ARP",
+      "answer": "<strong>1. Bedeutung:</strong> Address Resolution Protocol\n<strong>2. OSI-Schicht:</strong> Sicherungsschicht/Netzwerkschicht (Layer 2-3)\n<strong>3. Funktion:</strong> Bietet eine dynamische Adresszuordnung zwischen einer IP-Adresse und einer Hardware-Adresse (MAC)"
+    },
+    {
+      "question": "Ethernet",
+      "answer": "<strong>1. Bedeutung:</strong> IEEE 802.3 Standard\n<strong>2. OSI-Schicht:</strong> Sicherungsschicht und physische Schicht (Layer 1-2)\n<strong>3. Funktion:</strong> Definiert die Regeln für Verkabelungs- und die Signalisierungsstandards auf der Netzwerkzugriffsschicht"
+    },
+    {
+      "question": "WLAN",
+      "answer": "<strong>1. Bedeutung:</strong> Wireless Local Area Network (IEEE 802.11)\n<strong>2. OSI-Schicht:</strong> Sicherungsschicht und physische Schicht (Layer 1-2)\n<strong>3. Funktion:</strong> Definiert die Regeln für die drahtlose Signalisierung über die 2,4-GHz- und 5-GHz-Funkfrequenzen"
+    }
+  ]
+}
