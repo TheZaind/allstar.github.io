@@ -2469,6 +2469,13 @@
             file: 'Netzwerk_Grundlagen.json'
         },
         {
+            id: 'netzwerk2',
+            name: 'Netzwerk Stufe 2 Quiz',
+            description: 'Erweitere dein Wissen Ethernet, Osi Schichten Frames und mehr',
+            icon: '🌐',
+            file: 'Netzwerk_Stufe_2.json'
+        },
+        {
             id: 'pm',
             name: 'Projektmanagement Quiz',
             description: 'Teste dein Wissen über klassisches Projektmanagement',
@@ -2772,6 +2779,9 @@
                 case 'netzwerk':
                     fileName = 'Netzwerk_Grundlagen.json';
                     break;
+                case 'netzwerk2':
+                    fileName = 'Netzwerk_Stufe_2.json';
+                    break;
                 case 'pm':
                     fileName = 'klassisches_projectmanagment.json';
                     break;                case 'flashcards':
@@ -2785,7 +2795,7 @@
                     break;
                 case 'mix':                    // Mische Fragen aus allen Kategorien
                     const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json', 'Netzwerk_Grundlagen.json', 'protocols.json']) {
+                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json', 'Netzwerk_Grundlagen.json', 'Netzwerk_Stufe_2.json', 'protocols.json']) {
                         try {
                             const response = await fetch(file);
                             if (response.ok) {

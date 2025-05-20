@@ -952,7 +952,644 @@
     ],
     "correct": 3,
     "explain": "IPv4-Multicast-Adressen liegen im Bereich von **224.0.0.0 bis 239.255.255.255**. Diese Adressen werden verwendet, um Datenpakete an mehrere Empfänger gleichzeitig zu senden, die alle Mitglieder der gleichen Multicast-Gruppe sind. Im Gegensatz dazu sind die anderen aufgeführten Adressbereiche für private IPv4-Adressen reserviert: 10.0.0.0 bis 10.255.255.255 (ein Class-A-Netz), 172.16.0.0 bis 172.31.255.255 (16 Class-B-Netze) und 192.168.0.0 bis 192.168.255.255 (256 Class-C-Netze)."
-  }
+  },
+  {
+    "question": "Welches Kriterium nutzt ein Layer-2-Ethernet-Switch für seine Weiterleitungsentscheidungen?",
+    "options": [
+      "IP-Adressen",
+      "MAC-Adressen",
+      "Portnummern",
+      "Protokolltypen"
+    ],
+    "correct": 1,
+    "explain": "Ein **Layer-2-Ethernet-Switch** trifft seine Weiterleitungsentscheidungen ausschließlich auf Basis der **MAC-Adressen**. Dies ist ein fundamentales Prinzip von Switches auf der Sicherungsschicht (Layer 2) des OSI-Modells. Der Switch arbeitet unabhängig vom transportierten Protokoll im Datenteil des Frames (wie IPv4, IPv6 oder ARP). Die Weiterleitungsentscheidung basiert allein auf den Layer-2-Ethernet-MAC-Adressen und nicht auf IP-Adressen (Layer 3), Portnummern (Layer 4) oder Protokolltypen."
+  },
+  {
+    "question": "Was geschieht, wenn ein Ethernet-Switch einen Frame erhält, dessen Ziel-MAC-Adresse nicht in seiner MAC-Adresstabelle enthalten ist?",
+    "options": [
+      "Der Frame wird verworfen",
+      "Der Frame wird an das Default Gateway gesendet",
+      "Der Frame wird an alle Ports außer dem eingehenden Port weitergeleitet (Flooding)",
+      "Der Switch sendet eine Anfrage, um die MAC-Adresse zu ermitteln"
+    ],
+    "correct": 2,
+    "explain": "Wenn ein Ethernet-Switch einen Frame erhält und die Ziel-MAC-Adresse **nicht** in seiner MAC-Adresstabelle enthalten ist, führt er einen Vorgang namens **Flooding** durch. Dabei leitet der Switch den Frame an **alle Ports** außer dem Port weiter, an dem der Frame eingegangen ist. Diese Methode stellt sicher, dass der Frame sein Ziel erreicht, auch wenn der Switch die zugehörige Port-Zuordnung noch nicht kennt. Sobald das Zielgerät antwortet, lernt der Switch die MAC-Adresse und den zugehörigen Port und kann zukünftige Frames gezielt weiterleiten."
+  },
+  {
+    "question": "Wie lange speichert ein Ethernet-Switch standardmäßig einen Eintrag in seiner MAC-Adresstabelle?",
+    "options": [
+      "1 Minute",
+      "5 Minuten",
+      "15 Minuten",
+      "30 Minuten"
+    ],
+    "correct": 1,
+    "explain": "Die meisten Ethernet-Switches behalten einen Eintrag in ihrer MAC-Adresstabelle standardmäßig für **5 Minuten**. Dieser Timer wird zurückgesetzt, wenn der Switch weitere Frames von derselben MAC-Adresse empfängt. Der Zeitwert ist ein Kompromiss zwischen Speichereffizienz und Netzwerkstabilität: Lange genug, um häufige Neueinträge zu vermeiden, aber kurz genug, um auf Netzwerkänderungen (wie umgesteckte Geräte) reagieren zu können."
+  },
+  {
+    "question": "Was passiert, wenn ein Switch eine MAC-Adresse in seiner Tabelle hat, die jetzt aber über einen anderen Port kommuniziert?",
+    "options": [
+      "Der Switch ignoriert den Frame, da ein Konflikt vorliegt",
+      "Der Switch behält beide Einträge für die gleiche MAC-Adresse",
+      "Der Switch aktualisiert den Eintrag mit dem neuen Port",
+      "Der Switch sendet eine Warnung an den Netzwerkadministrator"
+    ],
+    "correct": 2,
+    "explain": "Wenn ein Switch eine Quell-MAC-Adresse in einem Frame erkennt, die bereits in seiner MAC-Adresstabelle vorhanden ist, aber von einem anderen Port stammt als zuvor registriert, **aktualisiert** der Switch den Eintrag mit dem **neuen Port**. Dies ermöglicht die korrekte Anpassung an Änderungen in der Netzwerktopologie, beispielsweise wenn ein Gerät physisch an einen anderen Port angeschlossen wird. Der Switch behandelt dies als neuen Eintrag und ersetzt den alten mit der aktualisierten Port-Nummer."
+  },
+  {
+    "question": "Die MAC-Adresstabelle eines Switches wird auch als CAM-Tabelle bezeichnet.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 0,
+    "explain": "Diese Aussage ist **wahr**. Die MAC-Adresstabelle eines Switches wird auch als **CAM-Tabelle** bezeichnet, wobei CAM für **Content Addressable Memory** steht. Dieser spezialisierte Speichertyp ermöglicht sehr schnelle Suchvorgänge nach MAC-Adressen, was für die effiziente Weiterleitung von Frames entscheidend ist. Beide Begriffe werden in der Netzwerktechnik synonym verwendet, obwohl sie technisch gesehen leicht unterschiedliche Aspekte betonen: MAC-Adresstabelle bezieht sich auf die Funktion, während CAM-Tabelle die technische Implementierung beschreibt."
+  },
+  {
+    "question": "Welcher grundlegende Unterschied besteht zwischen einem Ethernet-Hub und einem Ethernet-Switch bezüglich der Weiterleitung von Daten?",
+    "options": [
+      "Hubs arbeiten auf Layer 3, Switches auf Layer 2",
+      "Hubs leiten Daten nur an bestimmte Ports weiter, Switches an alle",
+      "Hubs wiederholen Bits an allen Ports außer dem eingehenden, Switches treffen gezielte Weiterleitungsentscheidungen",
+      "Hubs können mehr Ports haben als Switches"
+    ],
+    "correct": 2,
+    "explain": "Der grundlegende Unterschied zwischen einem Ethernet-Hub und einem Ethernet-Switch liegt in ihrer Weiterleitungsmethode:\n\n- **Hubs** sind einfache Layer-1-Geräte, die **alle empfangenen Bits an allen Ports außer dem eingehenden Port wiederholen** (Repeating). Sie haben keine Intelligenz zur gezielten Weiterleitung und erzeugen eine einzige Kollisionsdomäne.\n\n- **Switches** sind Layer-2-Geräte, die ihre **MAC-Adresstabelle nutzen, um gezielte Weiterleitungsentscheidungen** zu treffen. Sie leiten Frames nur an den Port weiter, an dem sich das Zielgerät befindet, was die Netzwerkeffizienz erheblich steigert und mehrere Kollisionsdomänen schafft."
+  },
+  {
+    "question": "Wie lernt ein Ethernet-Switch, welche MAC-Adresse mit welchem Port verbunden ist?",
+    "options": [
+      "Durch manuelle Konfiguration durch den Netzwerkadministrator",
+      "Durch Prüfung der Ziel-MAC-Adresse eingehender Frames",
+      "Durch Prüfung der Quell-MAC-Adresse eingehender Frames",
+      "Durch regelmäßiges Versenden von Discovery-Paketen"
+    ],
+    "correct": 2,
+    "explain": "Ein Ethernet-Switch lernt die Zuordnung von MAC-Adressen zu Ports, indem er die **Quell-MAC-Adresse jedes eingehenden Frames** analysiert. Wenn ein Frame bei einem Port eingeht, extrahiert der Switch die Quell-MAC-Adresse und ordnet sie dem Port zu, über den der Frame empfangen wurde. Dieser Lernprozess ist dynamisch und automatisch, ohne dass manuelle Konfiguration erforderlich ist. Die Ziel-MAC-Adresse wird hingegen für die Weiterleitungsentscheidung verwendet, nicht für den Lernprozess."
+  },
+  {
+    "question": "Ein Switch kann mehrere MAC-Adressen einem einzigen Port zuordnen.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 0,
+    "explain": "Diese Aussage ist **wahr**. Ein Switch kann durchaus mehrere MAC-Adressen mit einem einzigen Port verknüpfen. Dies ist besonders häufig in folgenden Szenarien:\n\n1. Wenn ein Port mit einem anderen Switch verbunden ist, da über diesen Port dann Frames von mehreren Endgeräten mit unterschiedlichen MAC-Adressen empfangen werden.\n\n2. Wenn ein Computer mehrere virtuelle Maschinen betreibt, die jeweils eigene MAC-Adressen haben.\n\n3. Wenn ein Gerät mit mehreren Netzwerkschnittstellen (und damit MAC-Adressen) über einen Port angeschlossen ist.\n\nDer Switch erstellt für jede eindeutige Quell-MAC-Adresse einen separaten Eintrag in seiner MAC-Adresstabelle, auch wenn alle über denselben Port kommunizieren."
+  },
+  {
+    "question": "Wann wird ein Ethernet-Frame an die MAC-Adresse des Default Gateways gesendet?",
+    "options": [
+      "Wenn die Ziel-MAC-Adresse unbekannt ist",
+      "Wenn sich die Ziel-IP-Adresse in einem Remote-Netzwerk befindet",
+      "Wenn der Switch überlastet ist",
+      "Wenn ein Broadcast-Paket gesendet werden soll"
+    ],
+    "correct": 1,
+    "explain": "Ein Ethernet-Frame wird an die MAC-Adresse des Default Gateways (Router) gesendet, wenn sich die **Ziel-IP-Adresse in einem Remote-Netzwerk** befindet, also nicht im lokalen Subnetz des sendenden Geräts. Dies geschieht, weil:\n\n- Geräte im selben Subnetz direkt miteinander kommunizieren können (Layer 2)\n- Für die Kommunikation mit Geräten in anderen Netzen wird ein Router benötigt (Layer 3)\n- Das sendende Gerät verpackt das IP-Paket mit der Remote-Zieladresse in einen Ethernet-Frame\n- Als Ziel-MAC-Adresse wird die MAC-Adresse des Default Gateways verwendet\n\nDer Router empfängt diesen Frame, entpackt das IP-Paket und leitet es zum entsprechenden Remote-Netzwerk weiter."
+  },
+  {
+    "question": "Welche Eigenschaften der MAC-Adresstabelle bestimmen die Weiterleitungsentscheidung eines Switches für einen eingehenden Frame?",
+    "options": [
+      "Die Quell-MAC-Adresse und die Port-Nummer",
+      "Die Ziel-MAC-Adresse und die Quell-MAC-Adresse",
+      "Die Ziel-MAC-Adresse und der zugeordnete Port",
+      "Die IP-Adresse und die MAC-Adresse"
+    ],
+    "correct": 2,
+    "explain": "Für die **Weiterleitungsentscheidung** eines Switches sind die **Ziel-MAC-Adresse des eingehenden Frames** und der dieser MAC-Adresse **zugeordnete Port** in der MAC-Adresstabelle entscheidend. Der Switch extrahiert die Ziel-MAC-Adresse aus dem Frame und sucht in seiner Tabelle nach einem passenden Eintrag. Findet er einen Treffer, wird der Frame gezielt an den entsprechenden Port weitergeleitet. Die Quell-MAC-Adresse wird zwar für den Lernprozess verwendet, spielt aber für die eigentliche Weiterleitungsentscheidung keine Rolle."
+  },
+  {
+    "question": "Welche Auswirkung hat es, wenn ein Switch jeden empfangenen Frame an alle Ports weiterleiten würde?",
+    "options": [
+      "Das Netzwerk würde schneller werden",
+      "Die Sicherheit würde erhöht werden",
+      "Das Netzwerk würde überlastet werden und zum Erliegen kommen",
+      "Es würde keinen Unterschied zu normalem Switch-Verhalten geben"
+    ],
+    "correct": 2,
+    "explain": "Wenn ein Switch jeden empfangenen Frame an alle Ports weiterleiten würde, **würde das Netzwerk überlastet werden und wahrscheinlich zum Erliegen kommen**. Dies entspräche dem Verhalten eines Hubs und würde folgende negative Auswirkungen haben:\n\n- **Bandbreitenverschwendung**: Jeder Frame würde unnötigerweise an Geräte gesendet, für die er nicht bestimmt ist\n- **Erhöhtes Kollisionsrisiko** in Half-Duplex-Umgebungen\n- **Gesteigerte Latenz** durch Überlastung der Netzwerkverbindungen\n- **Sicherheitsrisiken**, da jedes Gerät alle Frames mitlesen könnte\n\nGerade der intelligente, gezielte Weiterleitungsmechanismus unterscheidet Switches von Hubs und ermöglicht effiziente, skalierbare Netzwerke."
+  },
+  {
+    "question": "Wenn ein Gerät eine IP-Adresse kontaktieren möchte, die sich im selben Subnetz befindet, sendet es den Ethernet-Frame direkt an die MAC-Adresse dieses Geräts.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 0,
+    "explain": "Diese Aussage ist **wahr**. Wenn ein Gerät mit einem anderen Gerät im selben Subnetz kommunizieren möchte, sendet es den Ethernet-Frame direkt an die MAC-Adresse des Zielgeräts, ohne den Umweg über ein Default Gateway (Router).\n\nDer Ablauf ist wie folgt:\n1. Das sendende Gerät vergleicht seine eigene IP-Adresse und Subnetzmaske mit der Ziel-IP-Adresse\n2. Befindet sich das Ziel im selben Subnetz, ermittelt das Gerät die MAC-Adresse des Ziels (falls nicht bekannt) mittels ARP (Address Resolution Protocol)\n3. Der Ethernet-Frame wird mit der Ziel-MAC-Adresse des tatsächlichen Empfängers erstellt\n4. Der Switch leitet den Frame direkt an das Zielgerät weiter\n\nDer Einsatz eines Default Gateways ist nur für die Kommunikation mit Geräten in anderen Netzwerken erforderlich."
+  },
+  {
+    "question": "Welche Informationen enthält ein typischer Eintrag in der MAC-Adresstabelle eines Switches?",
+    "options": [
+      "MAC-Adresse, IP-Adresse und Status",
+      "MAC-Adresse, Port-Nummer und Aktualisierungstimer",
+      "IP-Adresse, Port-Nummer und Gerätename",
+      "MAC-Adresse, Protokolltyp und Priorität"
+    ],
+    "correct": 1,
+    "explain": "Ein typischer Eintrag in der MAC-Adresstabelle eines Switches enthält folgende Informationen:\n\n- **MAC-Adresse**: Die eindeutige Hardware-Adresse des Geräts\n- **Port-Nummer**: Der physische Switch-Port, an dem das Gerät angeschlossen ist oder über den es erreichbar ist\n- **Aktualisierungstimer**: Ein Zeitwert, der angibt, wie lange der Eintrag noch gültig ist (standardmäßig 5 Minuten)\n\nDiese drei Informationen sind ausreichend für die grundlegende Switching-Funktion. IP-Adressen werden nicht in der MAC-Adresstabelle gespeichert, da ein Layer-2-Switch seine Weiterleitungsentscheidungen ausschließlich auf Basis von MAC-Adressen trifft, unabhängig vom höherschichtigen Protokoll wie IPv4 oder IPv6."
+  },
+  {
+    "question": "Bei der Kommunikation mit einem Remote-Host bleibt die Ziel-MAC-Adresse im Ethernet-Frame immer gleich, auch wenn das Paket mehrere Router passiert.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Bei der Kommunikation mit einem Remote-Host ändert sich die Ziel-MAC-Adresse im Ethernet-Frame bei jedem Hop (Router-Übergang).\n\nWenn ein Paket zwischen verschiedenen Netzwerken transportiert wird:\n\n1. Das sendende Gerät erstellt einen Frame mit:\n   - Ziel-MAC-Adresse des lokalen Default Gateways (Router)\n   - Ziel-IP-Adresse des entfernten Hosts\n\n2. Der Router empfängt den Frame, entpackt das IP-Paket und entscheidet anhand seiner Routing-Tabelle, wohin es weitergesendet werden soll\n\n3. Er erstellt einen neuen Ethernet-Frame mit:\n   - Ziel-MAC-Adresse des nächsten Hops (nächster Router oder Zielhost)\n   - Gleicher Ziel-IP-Adresse wie zuvor\n\nDieser Prozess wiederholt sich an jedem Router auf dem Weg zum Ziel. Die MAC-Adressen sind nur für die Kommunikation auf dem jeweiligen Netzsegment relevant, während die IP-Adressen die Ende-zu-Ende-Kommunikation beschreiben."
+  },
+      {
+        "question": "Welche Frame-Weiterleitungsmethode berechnet den CRC-Wert eines Frames, bevor dieser weitergeleitet wird?",
+        "options": [
+            "Store-and-Forward-Switching",
+            "Cut-Through-Switching",
+            "Fast-Forward-Switching",
+            "Fragment-Free-Switching"
+        ],
+        "correct": 0,
+        "explain": "**Store-and-Forward-Switching** ist die einzige Methode, die den gesamten Frame empfängt und vor der Weiterleitung eine vollständige CRC-Prüfung durchführt. Dadurch wird sichergestellt, dass fehlerhafte Frames erkannt und verworfen werden, bevor sie unnötige Bandbreite im Netzwerk verbrauchen. Diese Methode ist besonders vorteilhaft in Netzwerken, die QoS-Analysen (Quality of Service) benötigen, da sie die Klassifizierung von Frames für Netzwerkpriorisierung ermöglicht."
+    },
+    {
+        "question": "Ein Vorteil des Cut-Through-Switchings gegenüber dem Store-and-Forward-Switching ist:",
+        "options": [
+            "Erhöhte Fehlerkorrekturmöglichkeiten",
+            "Bessere QoS-Unterstützung",
+            "Geringere Latenzzeit",
+            "Verbesserte Sicherheit"
+        ],
+        "correct": 2,
+        "explain": "Der Hauptvorteil des **Cut-Through-Switchings** ist die **geringere Latenzzeit** (Verzögerung). Cut-Through-Switches beginnen mit der Weiterleitung, sobald sie genügend Daten gelesen haben, um die Zieladresse zu bestimmen. Sie warten nicht auf den kompletten Frame. Diese Methode kommt insbesondere in Anwendungen zum Einsatz, in denen minimale Verzögerungen wichtig sind. Allerdings fehlt diesem Verfahren die Möglichkeit, beschädigte Frames vor der Weiterleitung zu erkennen, was bei Store-and-Forward-Switching standardmäßig geschieht."
+    },
+    {
+        "question": "Fast-Forward-Switching leitet Frames weiter, nachdem welcher Teil des Frames gelesen wurde?",
+        "options": [
+            "Nach den ersten 64 Byte des Frames",
+            "Nach der Ziel-MAC-Adresse",
+            "Nach der Präambel und dem Startdelimiter",
+            "Nach der vollständigen CRC-Prüfung"
+        ],
+        "correct": 1,
+        "explain": "**Fast-Forward-Switching** leitet einen Frame sofort weiter, nachdem die **Ziel-MAC-Adresse** erkannt wurde. Die Ziel-MAC-Adresse befindet sich in den ersten 6 Byte des Frames nach der Präambel. Diese Methode bietet die geringste Latenzzeit unter allen Switching-Arten, da der Switch nicht wartet, bis der gesamte Frame empfangen wurde. Der Nachteil ist, dass möglicherweise fehlerhafte Frames weitergeleitet werden, da keine Fehlerprüfung stattfindet."
+    },
+    {
+        "question": "Fragment-Free-Switching speichert einen bestimmten Teil des Frames vor der Weiterleitung. Wie viele Bytes sind das?",
+        "options": [
+            "32 Byte",
+            "48 Byte",
+            "64 Byte",
+            "128 Byte"
+        ],
+        "correct": 2,
+        "explain": "**Fragment-Free-Switching** speichert die ersten **64 Byte** des Frames, bevor es mit der Weiterleitung beginnt. Diese Methode stellt einen Kompromiss zwischen Store-and-Forward-Switching und Fast-Forward-Switching dar. Der Grund für die Speicherung der ersten 64 Byte liegt darin, dass die meisten Netzwerkfehler und Kollisionen in diesem Bereich auftreten. Diese Prüfung hilft dabei, die Weiterleitung kollidierter Frames zu vermeiden, bietet aber dennoch eine geringere Latenzzeit als Store-and-Forward-Switching."
+    },
+    {
+        "question": "Welche Methode der Speicherpufferung teilt jedem Port einen festgelegten Speicherblock zu?",
+        "options": [
+            "Gemeinsame Speicherpufferung",
+            "Portbasierte Speicherpufferung",
+            "Dynamic Memory Allocation",
+            "Frame-Buffering"
+        ],
+        "correct": 1,
+        "explain": "Die **portbasierte Speicherpufferung** teilt jedem Port einen festgelegten Speicherblock zu. Bei dieser Methode kann ein Port seinen zugewiesenen Pufferspeicher nicht mit anderen Ports teilen, selbst wenn diese ihren Speicher nicht nutzen. Diese Art der Speicherpufferung kann zu Einschränkungen führen, wenn ein Port mehr Puffer benötigt als ihm zugewiesen wurde, während andere Ports ungenutzte Kapazitäten haben."
+    },
+    {
+        "question": "Gemeinsame Speicherpufferung ist besonders vorteilhaft bei:",
+        "options": [
+            "Symmetrischem Switching mit einheitlichen Datenraten",
+            "Asymmetrischem Switching mit unterschiedlichen Datenraten",
+            "Nur Cut-Through-Switching",
+            "Nur Fast-Forward-Switching"
+        ],
+        "correct": 1,
+        "explain": "**Gemeinsame Speicherpufferung** ist besonders vorteilhaft bei **asymmetrischem Switching mit unterschiedlichen Datenraten**. Diese Methode teilt den gesamten Speicher zwischen allen Ports auf und verwaltet ihn dynamisch je nach Bedarf. Dies ist wichtig, wenn verschiedene Ports mit unterschiedlichen Geschwindigkeiten arbeiten, beispielsweise wenn ein Server an einen 10-Gbit/s-Port und PCs an 1-Gbit/s-Ports angeschlossen sind. Die gemeinsame Pufferung ermöglicht es, größere Frames zu speichern, ohne dass weitere Frames verloren gehen."
+    },
+    {
+        "question": "Bei einem Duplexfehler ist ein Port im Vollduplex-Modus und der andere im Halbduplex-Modus. Welches Problem tritt dabei hauptsächlich auf?",
+        "options": [
+            "Excessive timeouts",
+            "Frame corruption",
+            "Häufige Kollisionen",
+            "Authentifizierungsfehler"
+        ],
+        "correct": 2,
+        "explain": "Bei einem **Duplexfehler** treten vor allem **häufige Kollisionen** auf. Wenn ein Port im Vollduplex-Modus arbeitet, sendet er Daten, wann immer er möchte, da er davon ausgeht, dass gleichzeitiges Senden und Empfangen möglich ist. Der Port im Halbduplex-Modus dagegen kann nur entweder senden oder empfangen und prüft vor dem Senden, ob die Leitung frei ist. Da der Vollduplex-Port jederzeit sendet, kommt es zu häufigen Kollisionen beim Halbduplex-Port, was die Netzwerkleistung erheblich beeinträchtigt."
+    },
+    {
+        "question": "GigabitEthernet-Ports können nur in welchem Duplexmodus arbeiten?",
+        "options": [
+            "Nur Halbduplex",
+            "Nur Vollduplex",
+            "Entweder Halb- oder Vollduplex",
+            "Weder Halb- noch Vollduplex, sondern in einem speziellen GigabitEthernet-Modus"
+        ],
+        "correct": 1,
+        "explain": "**GigabitEthernet-Ports** können ausschließlich im **Vollduplex-Modus** arbeiten. Dies ist eine fundamentale Eigenschaft von GigabitEthernet und höheren Standards. Der Vollduplex-Modus ermöglicht gleichzeitiges Senden und Empfangen von Daten, was für die hohen Bandbreiten dieser Verbindungen essentiell ist. Halbduplex-Betrieb ist bei GigabitEthernet nicht vorgesehen oder spezifiziert."
+    },
+    {
+        "question": "Autonegotiation bei Ethernet-Verbindungen ermöglicht es Geräten, automatisch welche Parameter auszuhandeln?",
+        "options": [
+            "Nur Duplex-Modus",
+            "Nur Geschwindigkeit",
+            "Sowohl Duplex-Modus als auch Geschwindigkeit",
+            "Weder Duplex-Modus noch Geschwindigkeit, sondern nur Fehlerkorrekturraten"
+        ],
+        "correct": 2,
+        "explain": "**Autonegotiation** ermöglicht es Ethernet-Geräten, automatisch **sowohl den Duplex-Modus als auch die Geschwindigkeit** auszuhandeln. Diese optionale Funktion wird von den meisten modernen Ethernet-Switches und Netzwerkkarten unterstützt. Bei aktivierter Autonegotiation auf beiden Geräten wird die höchste gemeinsame Datenübertragungsrate und der optimale Duplex-Modus ausgewählt. Wenn beide Geräte Vollduplex bei einer bestimmten Geschwindigkeit unterstützen, wird dieser Modus gewählt."
+    },
+    {
+        "question": "Duplexfehler sind eine der häufigsten Ursachen für Leistungsprobleme bei Ethernet-Verbindungen. Bei welchen Geschwindigkeiten treten diese Probleme typischerweise auf?",
+        "options": [
+            "Nur bei 1 Gbit/s Verbindungen",
+            "Nur bei 10 Gbit/s Verbindungen",
+            "Bei 10/100 Mbit/s Verbindungen",
+            "Ausschließlich bei 40 Gbit/s Verbindungen"
+        ],
+        "correct": 2,
+        "explain": "**Duplexfehler** treten typischerweise bei **10/100 Mbit/s Ethernet-Verbindungen** auf. Sie gehören zu den häufigsten Ursachen für Leistungsprobleme bei diesen Geschwindigkeiten. Bei GigabitEthernet und schnelleren Verbindungen ist dieses Problem weniger relevant, da diese Standards nur im Vollduplex-Modus arbeiten können. Duplexfehler entstehen, wenn ein Port im Vollduplex- und der andere im Halbduplex-Modus arbeitet, was zu Kollisionen und erheblichen Leistungseinbußen führt."
+    },
+    {
+        "question": "Welcher Typ von Ethernet-Kabel wird üblicherweise verwendet, um zwei Switches miteinander zu verbinden?",
+        "options": [
+            "Straight-Through-Kabel",
+            "Crossover-Kabel",
+            "Rollover-Kabel",
+            "Koaxialkabel"
+        ],
+        "correct": 1,
+        "explain": "Für die Verbindung zwischen **zwei Switches** wird traditionell ein **Crossover-Kabel** verwendet. Dies liegt daran, dass bei der Verbindung gleichartiger Geräte (Switch zu Switch, Router zu Router oder Host zu Host) die Sende- und Empfangsleitungen gekreuzt werden müssen. Durch die Kreuzung werden die Sendepins eines Geräts mit den Empfangspins des anderen Geräts verbunden und umgekehrt. Bei moderneren Geräten mit Auto-MDIX-Funktionalität kann allerdings auch ein Straight-Through-Kabel verwendet werden."
+    },
+    {
+        "question": "Die Auto-MDIX-Funktion bei Switches ermöglicht:",
+        "options": [
+            "Automatische Konfiguration von IP-Adressen",
+            "Automatische Erkennung und Konfiguration des angeschlossenen Kabeltyps",
+            "Automatisches Update der Switch-Firmware",
+            "Automatische Optimierung der MAC-Adresstabelle"
+        ],
+        "correct": 1,
+        "explain": "Die **Auto-MDIX-Funktion** (Automatic Medium-Dependent Interface Crossover) ermöglicht die **automatische Erkennung und Konfiguration des angeschlossenen Kabeltyps**. Wenn diese Funktion aktiviert ist, erkennt der Switch automatisch, ob ein Crossover- oder Straight-Through-Kabel angeschlossen ist, und konfiguriert die Schnittstelle entsprechend. Dies bedeutet, dass unabhängig vom Gerät am anderen Ende der Verbindung sowohl Crossover- als auch Straight-Through-Kabel verwendet werden können."
+    },
+    {
+        "question": "Ab welcher Cisco IOS Release-Version ist Auto-MDIX standardmäßig aktiviert?",
+        "options": [
+            "10.2 oder höher",
+            "11.5 oder höher",
+            "12.2(18) SE oder höher",
+            "15.0 oder höher"
+        ],
+        "correct": 2,
+        "explain": "Die **Auto-MDIX-Funktion** ist ab **Cisco IOS Release 12.2(18) SE oder höher** standardmäßig aktiviert. Bei älteren Versionen muss diese Funktion manuell konfiguriert werden. Die Funktion kann jedoch auch deaktiviert sein, weshalb es nach wie vor eine gute Praxis ist, den richtigen Kabeltyp für die jeweilige Verbindung zu verwenden. Auto-MDIX kann bei Bedarf mit dem Befehl `mdix auto` im Schnittstellenkonfigurationsmodus wieder aktiviert werden."
+    },
+    {
+        "question": "Welche Weiterleitungsmethode stellt einen Kompromiss zwischen Store-and-Forward-Switching und Fast-Forward-Switching dar?",
+        "options": [
+            "Cut-Through-Switching",
+            "Fragment-Free-Switching",
+            "Express Forwarding",
+            "Adaptive Switching"
+        ],
+        "correct": 1,
+        "explain": "**Fragment-Free-Switching** stellt einen Kompromiss zwischen Store-and-Forward-Switching und Fast-Forward-Switching dar. Diese Methode speichert die ersten 64 Byte eines Frames, bevor er weitergeleitet wird. Der Grund für diese spezifische Bytezahl liegt darin, dass die meisten Netzwerkfehler und Kollisionen in den ersten 64 Byte auftreten. Fragment-Free-Switching versucht, Fast-Forward-Switching zu optimieren, indem es eine begrenzte Fehleranalyse durchführt, ohne die vollständige Verzögerung des Store-and-Forward-Verfahrens zu verursachen."
+    },
+    {
+        "question": "Beim Store-and-Forward-Switching wird die Integrität eines Frames vor der Weiterleitung überprüft. Welche Technologie wird dafür verwendet?",
+        "options": [
+            "Checksum",
+            "CRC (Cyclic Redundancy Check)",
+            "Parity Bit",
+            "Hash-Funktion"
+        ],
+        "correct": 1,
+        "explain": "Beim **Store-and-Forward-Switching** wird die Integrität eines Frames mithilfe des **CRC (Cyclic Redundancy Check)** überprüft. Der CRC basiert auf einer mathematischen Formel, die die Anzahl der Bits im Frame berücksichtigt und einen Prüfwert berechnet. Der Switch empfängt den gesamten Frame, berechnet den CRC-Wert neu und vergleicht ihn mit dem im Frame enthaltenen Wert. Stimmen die Werte nicht überein, wird der Frame als fehlerhaft erkannt und verworfen, was die Bandbreitennutzung durch fehlerhafte Daten reduziert."
+    },
+    {
+        "question": "Eine direkte Verbindung zwischen einem Router und einem Host erfordert welchen Kabeltyp?",
+        "options": [
+            "Straight-Through-Kabel",
+            "Crossover-Kabel",
+            "Rollover-Kabel",
+            "Konsolenkabel"
+        ],
+        "correct": 1,
+        "explain": "Eine **direkte Verbindung zwischen einem Router und einem Host** erfordert ein **Crossover-Kabel**. Dies mag zunächst überraschend sein, da Router und Hosts unterschiedliche Gerätetypen sind. Der Grund liegt jedoch in der Netzwerkschnittstellen-Klassifikation: Die Ethernet-Ports von Routern werden als DTE (Data Terminal Equipment) klassifiziert, ebenso wie die NICs in Hosts. Bei der Verbindung von zwei DTE-Geräten muss ein Crossover-Kabel verwendet werden, um die Sende- und Empfangsleitungen korrekt zu verbinden."
+    },
+    {
+        "question": "Wenn ein Switch zwischen Store-and-Forward-Switching und Cut-Through-Switching wechselt, basiert diese Entscheidung auf:",
+        "options": [
+            "Der aktuellen Netzwerkauslastung",
+            "Dem Typ des angeschlossenen Geräts",
+            "Einer benutzerdefinierten Fehlerrate",
+            "Der Größe der zu übertragenden Frames"
+        ],
+        "correct": 2,
+        "explain": "Die Entscheidung eines Switches, zwischen **Store-and-Forward-Switching und Cut-Through-Switching** zu wechseln, basiert typischerweise auf einer **benutzerdefinierten Fehlerrate**. Einige Switches können so konfiguriert werden, dass sie Cut-Through-Switching auf einzelnen Ports verwenden, bis ein benutzerdefinierter Fehlergrenzwert erreicht wird. Sobald dieser Grenzwert überschritten wird, wechselt der Switch automatisch zu Store-and-Forward-Switching, um Fehler zu reduzieren. Wenn die Fehlerrate wieder unter den Grenzwert sinkt, kann der Port automatisch zum Cut-Through-Switching zurückkehren."
+    },
+    {
+        "question": "Store-and-Forward-Switching ist besonders wichtig für QoS-Analysen in konvergenten Netzwerken. Was ist ein Beispiel für einen Datenverkehr, der typischerweise priorisiert wird?",
+        "options": [
+            "E-Mail-Datenverkehr",
+            "File Transfer Protocol (FTP)",
+            "Voice over IP (VoIP)",
+            "HTTP Web-Browsing"
+        ],
+        "correct": 2,
+        "explain": "In konvergenten Netzwerken, die **Store-and-Forward-Switching** für QoS-Analysen nutzen, wird typischerweise **Voice over IP (VoIP)**-Datenverkehr priorisiert. VoIP-Anwendungen sind zeitkritisch und empfindlich gegenüber Verzögerungen und Jitter. Selbst kurze Unterbrechungen können die Sprachqualität erheblich beeinträchtigen. Store-and-Forward-Switching ermöglicht die vollständige Prüfung und Klassifizierung von Frames, was die Implementierung von QoS-Richtlinien erlaubt, die dem VoIP-Verkehr Vorrang vor weniger zeitkritischem Datenverkehr wie Web-Browsing oder E-Mail geben."
+    },
+    {
+        "question": "Ein Duplexfehler tritt auf, wenn:",
+        "options": [
+            "Beide Ports im Halbduplex-Modus arbeiten",
+            "Beide Ports im Vollduplex-Modus arbeiten",
+            "Ein Port im Vollduplex-Modus und der andere im Halbduplex-Modus arbeitet",
+            "Beide Ports unterschiedliche Geschwindigkeiten haben, aber denselben Duplex-Modus"
+        ],
+        "correct": 2,
+        "explain": "Ein **Duplexfehler** tritt auf, wenn **ein Port im Vollduplex-Modus und der andere im Halbduplex-Modus arbeitet**. Diese Nichtübereinstimmung führt zu Kommunikationsproblemen, da der Port im Vollduplex-Modus davon ausgeht, dass er jederzeit senden kann, während der Port im Halbduplex-Modus nur sendet, wenn er die Leitung als frei erkennt. Dies führt zu zahlreichen Kollisionen am Halbduplex-Port, da der Vollduplex-Port weiterhin sendet, ohne auf eine freie Leitung zu achten."
+    },
+    {
+    "question": "Welche grundlegenden Kommunikationsprotokolle sind auf der Vermittlungsschicht (OSI-Schicht 3) angesiedelt?",
+    "options": [
+      "TCP und UDP",
+      "IPv4 und IPv6",
+      "HTTP und FTP",
+      "Ethernet und Token Ring"
+    ],
+    "correct": 1,
+    "explain": "Die **Vermittlungsschicht (OSI-Schicht 3)** verwendet **IPv4 und IPv6** als grundlegende Kommunikationsprotokolle. Diese Protokolle sind für die Adressierung und Paketweiterleitung zwischen verschiedenen Netzwerken verantwortlich. Auf dieser Schicht befinden sich auch Routing-Protokolle wie OSPF und Benachrichtigungsprotokolle wie ICMP. TCP und UDP sind hingegen Protokolle der Transportschicht (Schicht 4), während HTTP und FTP Anwendungsprotokolle (Schicht 7) sind. Ethernet und Token Ring gehören zur Sicherungsschicht (Schicht 2)."
+  },
+  {
+    "question": "Die Vermittlungsschicht ist für die Kommunikation zwischen verschiedenen Anwendungen auf einem Host verantwortlich.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Die Kommunikation zwischen verschiedenen Anwendungen auf einem Host ist Aufgabe der **Transportschicht (OSI-Schicht 4)**, nicht der Vermittlungsschicht. Die Vermittlungsschicht (OSI-Schicht 3) ermöglicht die Ende-zu-Ende-Kommunikation zwischen verschiedenen Hosts in unterschiedlichen Netzwerken und ist für Adressierung, Kapselung, Routing und Entkapselung von Paketen zuständig. Sie berücksichtigt nicht die spezifischen Anwendungen oder Dienste, die auf den Hosts laufen."
+  },
+  {
+    "question": "Welche der folgenden Vorgänge gehört NICHT zu den grundlegenden Funktionen der Vermittlungsschicht?",
+    "options": [
+      "Adressierung der Endgeräte",
+      "Kapselung von Daten",
+      "Routing von Paketen",
+      "Fehlererkennung und -korrektur"
+    ],
+    "correct": 3,
+    "explain": "**Fehlererkennung und -korrektur** gehören nicht zu den grundlegenden Funktionen der Vermittlungsschicht. Diese Aufgaben werden typischerweise von höheren Schichten wie der Transportschicht (insbesondere TCP) übernommen. Die Vermittlungsschicht führt vier grundlegende Vorgänge aus:\n\n1. **Adressierung der Endgeräte** - Zuweisung eindeutiger IP-Adressen\n2. **Kapselung** - Umschließen der Transportschicht-PDU mit IP-Header\n3. **Routing** - Bestimmung des besten Pfades zur Weiterleitung von Paketen\n4. **Entkapselung** - Entfernen des IP-Headers am Ziel\n\nDas IP-Protokoll ist grundsätzlich unzuverlässig und bietet keine integrierten Mechanismen zur Fehlererkennung oder -korrektur für Datenpakete."
+  },
+  {
+    "question": "Was versteht man unter einem 'Hop' im Kontext des Routings?",
+    "options": [
+      "Die maximale Anzahl von Paketen, die ein Router verarbeiten kann",
+      "Ein Protokoll zur Überwachung des Paketflusses",
+      "Ein Router, den ein Paket auf dem Weg zum Ziel durchläuft",
+      "Die Geschwindigkeit, mit der ein Paket weitergeleitet wird"
+    ],
+    "correct": 2,
+    "explain": "Ein **Hop** bezeichnet im Routing-Kontext einen **Router, den ein Paket auf dem Weg zum Ziel durchläuft**. Wenn ein Paket von einem Quell-Host zu einem Ziel-Host über mehrere Netzwerke geleitet wird, muss es typischerweise mehrere Router passieren. Jeder dieser Router stellt einen Hop dar. Der gesamte Pfad vom Quell- zum Ziel-Host kann also mehrere Hops umfassen. Router bestimmen dabei den optimalen Pfad und leiten die Pakete entsprechend weiter, wobei jeder Hop eine Entscheidung über den nächsten Weiterleitungsschritt trifft."
+  },
+  {
+    "question": "Bei der Kapselung von Daten auf der Vermittlungsschicht wird...",
+    "options": [
+      "ein Frame-Header hinzugefügt",
+      "ein IP-Header hinzugefügt",
+      "ein TCP-Header hinzugefügt",
+      "ein Anwendungs-Header hinzugefügt"
+    ],
+    "correct": 1,
+    "explain": "Bei der **Kapselung auf der Vermittlungsschicht** wird ein **IP-Header** zu den Daten (der PDU) der Transportschicht hinzugefügt. Dieser Vorgang wandelt das Segment (Transportschicht-PDU) in ein IP-Paket (Vermittlungsschicht-PDU) um. Der IP-Header enthält wichtige Informationen wie die Quell- und Ziel-IP-Adresse, die für die Übertragung durch das Netzwerk erforderlich sind. Frame-Header werden erst auf der Sicherungsschicht (Schicht 2) hinzugefügt, TCP-Header gehören zur Transportschicht (Schicht 4), und Anwendungs-Header stammen aus der Anwendungsschicht (Schicht 7)."
+  },
+  {
+    "question": "Die IP-Adressierungsinformationen eines Pakets bleiben vom Quell-Host bis zum Ziel-Host immer unverändert.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Obwohl IP-Adressierungsinformationen eines Pakets in den meisten Fällen vom Quell-Host bis zum Ziel-Host unverändert bleiben, gibt es eine wichtige Ausnahme: Network Address Translation (NAT) für IPv4. Bei NAT werden die Quell- oder Ziel-IP-Adressen geändert, typischerweise um private IP-Adressen aus internen Netzwerken in öffentliche IP-Adressen für das Internet zu übersetzen. Dies ist eine häufige Praxis in privaten Netzwerken und ermöglicht es mehreren Geräten, eine gemeinsame öffentliche IP-Adresse zu nutzen."
+  },
+  {
+    "question": "Welche der folgenden Eigenschaften trifft NICHT auf das IP-Protokoll zu?",
+    "options": [
+      "Verbindungslos",
+      "Unzuverlässig (Best-Effort)",
+      "Medienunabhängig",
+      "Garantierte Paketübertragung"
+    ],
+    "correct": 3,
+    "explain": "**Garantierte Paketübertragung** trifft nicht auf das IP-Protokoll zu. IP wurde als Protokoll mit geringem Overhead konzipiert und bietet nur die grundlegenden Funktionen zur Paketübertragung. Es hat folgende Haupteigenschaften:\n\n1. **Verbindungslos** - Es wird keine explizite Verbindung mit dem Ziel aufgebaut, bevor Daten gesendet werden\n2. **Unzuverlässig (Best-Effort)** - Die Paketübertragung wird nicht garantiert, Pakete können verloren gehen\n3. **Medienunabhängig** - IP funktioniert unabhängig vom physischen Medium (Kupfer, Glasfaser, Wireless)\n\nDie Garantie der Paketübertragung, einschließlich Funktionen wie Nachverfolgung von Paketen und Sicherstellung der Zustellung, wird in höheren Schichten implementiert, insbesondere durch TCP auf der Transportschicht."
+  },
+  {
+    "question": "Wie unterscheidet sich die verbindungslose Kommunikation von der verbindungsorientierten Kommunikation?",
+    "options": [
+      "Verbindungslos bedeutet, dass keine physische Verbindung existiert",
+      "Verbindungslos erfordert mehr Overhead als verbindungsorientiert",
+      "Bei verbindungsloser Kommunikation wird keine dedizierte Ende-zu-Ende-Verbindung vor der Datenübertragung hergestellt",
+      "Verbindungslose Kommunikation kann nur in lokalen Netzwerken verwendet werden"
+    ],
+    "correct": 2,
+    "explain": "Bei **verbindungsloser Kommunikation** wird **keine dedizierte Ende-zu-Ende-Verbindung vor der Datenübertragung hergestellt**. Das bedeutet, dass Pakete ohne vorherigen Handshake oder Verbindungsaufbau gesendet werden. IP als verbindungsloses Protokoll sendet Pakete einfach an das Ziel, ähnlich wie beim Versenden eines Briefes ohne vorherige Benachrichtigung des Empfängers. \n\nIm Gegensatz dazu wird bei verbindungsorientierter Kommunikation (wie TCP) zuerst eine Verbindung aufgebaut, bevor Daten übertragen werden. Verbindungslose Kommunikation verursacht weniger Overhead (nicht mehr), ist nicht auf lokale Netzwerke beschränkt und bezieht sich auf das logische Verbindungskonzept, nicht auf physische Verbindungen."
+  },
+  {
+    "question": "Welcher Vorgang wird durchgeführt, wenn ein Router ein Paket für ein Medium mit kleinerer MTU (Maximum Transmission Unit) vorbereiten muss?",
+    "options": [
+      "Paketfragmentierung",
+      "Paketkonsolidierung",
+      "Header-Kompression",
+      "Protokollkonvertierung"
+    ],
+    "correct": 0,
+    "explain": "Wenn ein Router ein Paket für ein Medium mit kleinerer MTU (Maximum Transmission Unit) vorbereiten muss, führt er eine **Paketfragmentierung** durch. Bei diesem Vorgang wird das ursprüngliche IP-Paket in kleinere Pakete aufgeteilt, die der MTU des Zielmediums entsprechen. Jedes dieser Fragmente erhält einen eigenen IP-Header mit Informationen, die später die Rekonstruktion des ursprünglichen Pakets ermöglichen. \n\nDie Fragmente werden dann unabhängig voneinander weitergeleitet und erst am endgültigen Ziel wieder zusammengesetzt. Die Paketfragmentierung verursacht jedoch zusätzliche Latenz und Overhead, weshalb moderne Netzwerke versuchen, sie zu vermeiden. Bei IPv6 dürfen Router keine Fragmentation mehr durchführen."
+  },
+  {
+    "question": "Der Prozess der Entkapselung auf der Vermittlungsschicht wird durchgeführt von:",
+    "options": [
+      "Dem Quell-Host des IP-Pakets",
+      "Jedem Router auf dem Weg zum Ziel",
+      "Dem Ziel-Host des IP-Pakets",
+      "Dem Gateway zwischen verschiedenen Netzwerken"
+    ],
+    "correct": 2,
+    "explain": "Der Prozess der **Entkapselung** auf der Vermittlungsschicht wird vom **Ziel-Host des IP-Pakets** durchgeführt. Wenn ein IP-Paket sein Ziel erreicht, prüft der Ziel-Host den IP-Header des Pakets. Falls die im Header enthaltene Ziel-IP-Adresse mit der eigenen IP-Adresse übereinstimmt, entfernt der Host den IP-Header vom Paket (Entkapselung). \n\nDie verbleibende PDU der Schicht 4 (typischerweise ein TCP- oder UDP-Segment) wird dann an die entsprechenden Dienste auf der Transportschicht übergeben. Router und Gateways auf dem Weg lesen zwar den IP-Header zur Weiterleitungsentscheidung, führen aber keine vollständige Entkapselung durch, da sie nur die Weiterleitungsinformationen benötigen."
+  },
+  {
+    "question": "Die MTU (Maximum Transmission Unit) wird definiert durch:",
+    "options": [
+      "Die Transportschicht (Schicht 4)",
+      "Die Vermittlungsschicht (Schicht 3)",
+      "Die Sicherungsschicht (Schicht 2)",
+      "Die Anwendungsschicht (Schicht 7)"
+    ],
+    "correct": 2,
+    "explain": "Die **MTU (Maximum Transmission Unit)** wird durch die **Sicherungsschicht (OSI-Schicht 2)** definiert. Die MTU gibt die maximale Größe einer Protokolldateneinheit (PDU) an, die ein Medium transportieren kann. Diese Information wird von der Sicherungsschicht nach oben an die Vermittlungsschicht weitergegeben, damit diese entscheiden kann, wie groß IP-Pakete sein dürfen. \n\nWenn ein Paket größer ist als die MTU des Zielmediums, muss es fragmentiert werden. Die MTU ist ein Merkmal des spezifischen Übertragungsmediums und variiert je nach Technologie (z.B. Ethernet, WLAN, PPP). Die Sicherungsschicht bereitet die IP-Pakete für die Übertragung über das jeweilige Kommunikationsmedium vor und muss daher dessen Kapazitätsgrenzen kennen und berücksichtigen."
+  },
+  {
+    "question": "Bei IPv6 können Router Pakete fragmentieren, wenn sie für das Zielmedium zu groß sind.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Bei IPv6 dürfen Router Pakete **nicht** fragmentieren. Dies ist ein wesentlicher Unterschied zu IPv4. Bei IPv6 muss die Fragmentierung, falls erforderlich, durch den sendenden Host erfolgen, nicht durch Router auf dem Übertragungsweg. Dieses Design wurde gewählt, um die Verarbeitungszeit in Routern zu reduzieren und die Effizienz des Routings zu verbessern. \n\nIPv6 verwendet Verfahren wie Path MTU Discovery, um die kleinste MTU auf dem Pfad zum Ziel zu ermitteln, damit der Sender bereits Pakete in der passenden Größe erzeugen kann. Dies reduziert den Overhead und die Latenz im Netzwerk, da die rechenintensive Fragmentierung vermieden wird."
+  },
+  {
+    "question": "Welches der folgenden Protokolle ist KEIN Protokoll der Vermittlungsschicht?",
+    "options": [
+      "IPv4",
+      "IPv6",
+      "OSPF",
+      "TCP"
+    ],
+    "correct": 3,
+    "explain": "**TCP (Transmission Control Protocol)** ist kein Protokoll der Vermittlungsschicht, sondern gehört zur **Transportschicht (OSI-Schicht 4)**. Die Transportschicht ist für die Ende-zu-Ende-Kommunikation zwischen Anwendungen auf verschiedenen Hosts zuständig und bietet Dienste wie Verbindungsaufbau, Flusskontrolle und Zuverlässigkeit.\n\nDie anderen genannten Protokolle gehören zur Vermittlungsschicht (OSI-Schicht 3):\n- **IPv4 und IPv6** sind die grundlegenden Internetprotokolle für die Adressierung und Paketweiterleitung\n- **OSPF (Open Shortest Path First)** ist ein Routing-Protokoll zur Bestimmung optimaler Pfade zwischen Netzwerken\n\nDie Vermittlungsschicht konzentriert sich auf die Weiterleitung von Paketen zwischen verschiedenen Netzwerken, während die Transportschicht sich um die Kommunikation zwischen Anwendungen kümmert."
+  },
+  {
+    "question": "Was geschieht mit dem Datenteil eines IP-Pakets während des Routings?",
+    "options": [
+      "Er wird komprimiert, um die Übertragung zu beschleunigen",
+      "Er wird verschlüsselt, um die Sicherheit zu erhöhen",
+      "Er wird verändert, um Routing-Informationen hinzuzufügen",
+      "Er bleibt unverändert während der Vorgänge in der Vermittlungsschicht"
+    ],
+    "correct": 3,
+    "explain": "Der **Datenteil eines IP-Pakets bleibt unverändert während der Vorgänge in der Vermittlungsschicht**. Beim Routing werden nur die Adressinformationen im IP-Header des Pakets untersucht, um Weiterleitungsentscheidungen zu treffen. Der Datenteil, der die gekapselte Transportschicht-PDU enthält, wird nicht geändert, gelesen oder verarbeitet.\n\nDies ist ein wichtiges Prinzip der Schichtenarchitektur: Jede Schicht interagiert nur mit den für sie relevanten Informationen. Router als Vermittlungsschichtgeräte kümmern sich nur um die Vermittlungsschichtinformationen (den IP-Header) und ignorieren den Inhalt des Pakets. Kompression, Verschlüsselung oder Modifikation des Datenteils würden in anderen Schichten erfolgen, nicht während des Routings."
+  },
+  {
+    "question": "Welcher Prozess findet statt, wenn ein Paket bei einem Ziel-Host ankommt und die Ziel-IP-Adresse im Header mit der IP-Adresse des Hosts übereinstimmt?",
+    "options": [
+      "Kapselung",
+      "Fragmentierung",
+      "Entkapselung",
+      "Konsolidierung"
+    ],
+    "correct": 2,
+    "explain": "Wenn ein Paket bei einem Ziel-Host ankommt und die Ziel-IP-Adresse im Header mit der IP-Adresse des Hosts übereinstimmt, findet der Prozess der **Entkapselung** statt. Der Ziel-Host prüft zunächst den IP-Header und vergleicht die Ziel-IP-Adresse mit seiner eigenen Adresse. Bei Übereinstimmung entfernt der Host den IP-Header vom Paket (Entkapselung).\n\nDie verbleibende PDU der Schicht 4 (typischerweise ein TCP- oder UDP-Segment) wird dann an den entsprechenden Dienst auf der Transportschicht weitergeleitet. Dieser Prozess ist das Gegenstück zur Kapselung, die am Absender stattfindet. Durch die Entkapselung werden die Daten für die Verarbeitung durch höhere Schichten vorbereitet."
+  },
+  {
+    "question": "Warum gilt IP als ein Protokoll mit 'geringem Overhead'?",
+    "options": [
+      "Weil es starke Datenkompression verwendet",
+      "Weil es nur die grundlegenden Funktionen zur Paketübertragung bietet und keine Verwaltung des Paketflusses übernimmt",
+      "Weil es nur in lokalen Netzwerken eingesetzt wird",
+      "Weil es ausschließlich kleine Pakete überträgt"
+    ],
+    "correct": 1,
+    "explain": "IP gilt als Protokoll mit **geringem Overhead**, weil es **nur die grundlegenden Funktionen zur Paketübertragung bietet und keine Verwaltung des Paketflusses übernimmt**. Es wurde bewusst minimalistisch konzipiert, um effizient zu arbeiten und nur die notwendigen Funktionen bereitzustellen, die für die Übertragung eines Pakets von einer Quelle zu einem Ziel über verbundene Netzwerke erforderlich sind.\n\nIP enthält keine zusätzlichen Felder im Header für Funktionen wie:\n- Verbindungsaufbau und -management\n- Nachverfolgung von Paketen\n- Fehlerkorrektur\n- Flusskontrolle\n\nDiese Funktionen werden stattdessen von höheren Schichten wie TCP (Transportschicht) übernommen. Durch diese Aufteilung der Verantwortlichkeiten kann IP sehr schlank und effizient bleiben."
+  },
+  {
+    "question": "Was passiert, wenn ein IP-Paket während der Übertragung verloren geht oder beschädigt wird?",
+    "options": [
+      "IP kümmert sich automatisch um die erneute Übertragung des Pakets",
+      "Der nächste Router auf dem Pfad sendet eine Fehlermeldung zurück an den Absender",
+      "IP hat keine eingebauten Mechanismen zur Behandlung solcher Fehler; höhere Protokollschichten müssen sich darum kümmern",
+      "Das Paket wird automatisch in kleinere Teile fragmentiert und erneut gesendet"
+    ],
+    "correct": 2,
+    "explain": "Wenn ein IP-Paket während der Übertragung verloren geht oder beschädigt wird, hat **IP keine eingebauten Mechanismen zur Behandlung solcher Fehler; höhere Protokollschichten müssen sich darum kümmern**. Als unzuverlässiges (Best-Effort) Protokoll garantiert IP nicht, dass alle Pakete korrekt und vollständig übertragen werden.\n\nIP-Pakete enthalten zwar Informationen über den Zustellort, aber keine Mechanismen, um den Absender über eine erfolgreiche Zustellung zu informieren oder Pakete erneut zu übertragen. Folgende Probleme können auftreten:\n- Pakete können verloren gehen\n- Pakete können beschädigt werden\n- Pakete können in der falschen Reihenfolge ankommen\n\nDie Behebung dieser Probleme wird typischerweise von höheren Schichten übernommen, insbesondere von TCP auf der Transportschicht, das Mechanismen wie Sequenznummern, Bestätigungen und erneute Übertragungen implementiert."
+  },
+  {
+    "question": "Die Medienunabhängigkeit des IP-Protokolls bedeutet, dass:",
+    "options": [
+      "IP-Pakete nur über ein bestimmtes Medium übertragen werden können",
+      "IP nur mit bestimmten Protokollen der Sicherungsschicht zusammenarbeiten kann",
+      "IP-Pakete über verschiedene physische Medien wie Kupfer, Glasfaser oder drahtlos übertragen werden können",
+      "IP keine Vermittlungsschichtprotokolle benötigt"
+    ],
+    "correct": 2,
+    "explain": "Die **Medienunabhängigkeit** des IP-Protokolls bedeutet, dass **IP-Pakete über verschiedene physische Medien wie Kupfer, Glasfaser oder drahtlos übertragen werden können**. Der Betrieb des IP ist unabhängig vom zugrundeliegenden physischen Medium, das die Daten transportiert.\n\nIP-Pakete können übertragen werden als:\n- Elektrische Signale über Kupferkabel (z.B. Ethernet, serielle Verbindungen)\n- Optische Signale über Glasfaserkabel\n- Funksignale bei drahtlosen Übertragungen (z.B. WLAN, Mobilfunk)\n\nDie Sicherungsschicht (OSI-Schicht 2) übernimmt die Aufgabe, das IP-Paket für die Übertragung über das jeweilige Medium vorzubereiten. Diese Abstraktion vom physischen Medium ist ein wichtiges Design-Prinzip des Internet und ermöglicht es, IP über praktisch jede Art von Netzwerkinfrastruktur zu nutzen."
+  },
+  {
+    "question": "Was unterscheidet das Routing auf der Vermittlungsschicht vom Switching auf der Sicherungsschicht?",
+    "options": [
+      "Routing ist schneller als Switching",
+      "Routing betrachtet Quell- und Ziel-MAC-Adressen, Switching betrachtet IP-Adressen",
+      "Routing nutzt IP-Adressen und ermöglicht die Kommunikation zwischen verschiedenen Netzwerken, Switching nutzt MAC-Adressen und funktioniert innerhalb eines Netzwerks",
+      "Routing ist auf lokale Netzwerke beschränkt, Switching funktioniert über Netzwerkgrenzen hinweg"
+    ],
+    "correct": 2,
+    "explain": "**Routing auf der Vermittlungsschicht** und **Switching auf der Sicherungsschicht** unterscheiden sich grundlegend in ihren Adressierungsmethoden und Einsatzbereichen:\n\n**Routing (Vermittlungsschicht/Schicht 3):**\n- Nutzt logische IP-Adressen (z.B. 192.168.1.1)\n- Ermöglicht die Kommunikation zwischen verschiedenen Netzwerken\n- Trifft Weiterleitungsentscheidungen basierend auf Netzwerkadressen\n- Kann komplexe Pfadbestimmungen über mehrere Hops hinweg durchführen\n- Wird von Routern implementiert\n\n**Switching (Sicherungsschicht/Schicht 2):**\n- Nutzt physische MAC-Adressen (z.B. 00:1A:2B:3C:4D:5E)\n- Funktioniert nur innerhalb eines einzelnen Netzwerks\n- Trifft Weiterleitungsentscheidungen basierend auf Hardware-Adressen\n- Kann keine Pakete zwischen verschiedenen Netzwerken weiterleiten\n- Wird von Switches implementiert\n\nDie Kombination beider Technologien ermöglicht die effiziente Kommunikation sowohl innerhalb als auch zwischen Netzwerken."
+  },
+  {
+        "question": "Welches Feld im IPv4-Paket-Header identifiziert das Protokoll der darüber liegenden Schicht?",
+        "options": [
+            "TTL",
+            "Header Checksum",
+            "Protocol",
+            "Version"
+        ],
+        "correct": 2,
+        "explain": "Das **Protocol-Feld** im IPv4-Header identifiziert das Protokoll der darüber liegenden Schicht. Es enthält einen 8-Bit-Binärwert, der den Payload-Typ der Paketdaten angibt, damit die Vermittlungsschicht die Daten an das entsprechende Protokoll der höheren Schicht übergeben kann. Häufige Werte sind beispielsweise:\n\n- ICMP: 1\n- TCP: 6\n- UDP: 17\n\nDiese Kennung ist essentiell für die korrekte Verarbeitung der Daten nach dem Routing."
+    },
+    {
+        "question": "Welcher Binärwert ist im Versionsfeld eines IPv4-Paket-Headers enthalten?",
+        "options": [
+            "0100",
+            "0110",
+            "0010",
+            "1000"
+        ],
+        "correct": 0,
+        "explain": "Im Versionsfeld eines IPv4-Paket-Headers ist der 4-Bit-Binärwert **0100** enthalten. Diese Binärzahl entspricht dezimal der Zahl 4 und identifiziert das Paket eindeutig als IP-Paket der Version 4. Diese Information ist grundlegend für die korrekte Interpretation des gesamten Headers durch alle beteiligten Netzwerkgeräte, da verschiedene IP-Versionen unterschiedliche Header-Strukturen aufweisen können."
+    },
+    {
+        "question": "Das TTL-Feld in einem IPv4-Paket wird an jedem Router, den das Paket passiert, um eins erhöht.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Das Time-to-Live (TTL)-Feld in einem IPv4-Paket wird bei jedem Router, den das Paket passiert, um eins **verringert** (dekrementiert), nicht erhöht. \n\nDer anfängliche TTL-Wert wird vom absendenden Gerät festgelegt. Dieser Mechanismus dient dazu, Endlosschleifen im Netzwerk zu verhindern. Wenn der TTL-Wert auf Null sinkt, verwirft der Router das Paket und sendet eine Internet Control Message Protocol (ICMP)-Zeitüberschreitungsnachricht an die Quell-IP-Adresse zurück. Da der Router den TTL-Wert ändert, muss er auch die Header-Prüfsumme neu berechnen."
+    },
+    {
+        "question": "Welche der folgenden Felder werden spezifisch für die Handhabung von fragmentierten Paketen verwendet?",
+        "options": [
+            "Version, Protocol, TTL",
+            "Identification, Flags, Fragment Offset",
+            "DSCP, ECN, Total Length",
+            "Header Checksum, Source IP, Destination IP"
+        ],
+        "correct": 1,
+        "explain": "Die Felder **Identification, Flags und Fragment Offset** werden spezifisch für die Handhabung von fragmentierten Paketen verwendet. \n\n- **Identification**: Identifiziert eindeutig das ursprüngliche Paket, sodass alle Fragmente desselben Pakets denselben Identifikationswert haben\n- **Flags**: Enthalten Bits, die angeben, ob das Paket fragmentiert werden darf und ob weitere Fragmente folgen\n- **Fragment Offset**: Gibt die Position des Fragments innerhalb des ursprünglichen IP-Pakets an\n\nFragmentierung kann notwendig sein, wenn ein Router ein Paket von einem Medium zu einem anderen mit kleinerer MTU (Maximum Transmission Unit) weiterleiten muss."
+    },
+    {
+        "question": "Die Quell-IPv4-Adresse in einem IPv4-Paket-Header kann welche Art(en) von Adressen enthalten?",
+        "options": [
+            "Nur Unicast-Adressen",
+            "Unicast- oder Multicast-Adressen",
+            "Unicast-, Multicast- oder Broadcast-Adressen",
+            "Nur Multicast-Adressen"
+        ],
+        "correct": 0,
+        "explain": "Die Quell-IPv4-Adresse in einem IPv4-Paket-Header kann **nur Unicast-Adressen** enthalten. \n\nEine Unicast-Adresse identifiziert eindeutig ein einzelnes Netzwerkgerät. Dies ist logisch, da ein Paket immer von genau einem Gerät stammen muss. \n\nIm Gegensatz dazu kann die Ziel-IPv4-Adresse eine Unicast-, Multicast- oder Broadcast-Adresse sein, da ein Paket an ein einzelnes Gerät, eine Gruppe von Geräten oder alle Geräte in einem Netzwerksegment gesendet werden kann."
+    },
+    {
+        "question": "Ein Router muss die Header-Prüfsumme eines IPv4-Pakets neu berechnen, wenn er dieses weiterleitet. Warum?",
+        "options": [
+            "Weil der Router immer die Ziel-IP-Adresse ändert",
+            "Weil der Header durch die Änderung des TTL-Feldes modifiziert wird",
+            "Weil die DSCP-Bits bei jeder Weiterleitung angepasst werden",
+            "Weil fragmentierte Pakete neu zusammengesetzt werden müssen"
+        ],
+        "correct": 1,
+        "explain": "Ein Router muss die Header-Prüfsumme eines IPv4-Pakets neu berechnen, **weil der Header durch die Änderung des TTL-Feldes modifiziert wird**. \n\nBei jedem Hop (Weiterleitung durch einen Router) wird der TTL-Wert um eins verringert. Da sich dadurch der Inhalt des Headers ändert, stimmt die ursprüngliche Prüfsumme nicht mehr. Die Header-Prüfsumme dient zur Erkennung von beschädigten Headers und muss daher nach jeder Headeränderung neu berechnet werden, um die Integrität des Headers weiterhin überprüfen zu können."
+    },
+    {
+        "question": "Das DiffServ-Feld (DS-Feld) im IPv4-Header dient primär welchem Zweck?",
+        "options": [
+            "Es enthält die Versionsnummer des IP-Protokolls",
+            "Es bestimmt die Priorität des Pakets",
+            "Es identifiziert das Protokoll der höheren Schicht",
+            "Es gibt die Länge des Headers an"
+        ],
+        "correct": 1,
+        "explain": "Das DiffServ-Feld (DS-Feld) im IPv4-Header dient primär dazu, **die Priorität des Pakets zu bestimmen**. \n\nDieses 8-Bit-Feld wurde früher als Type of Service (ToS)-Feld bezeichnet und ist in zwei Teile unterteilt:\n- Die sechs höchstwertigen Bits bilden den Differentiated Services Code Point (DSCP)\n- Die letzten zwei Bits sind die Explicit Congestion Notification (ECN)-Bits\n\nDurch die Angabe der Priorität können Netzwerkgeräte bestimmte Pakete bevorzugt behandeln, was für zeitkritische Anwendungen wie VoIP oder Videostreaming wichtig ist."
+    },
+    {
+        "question": "Die beiden Felder im IPv4-Header, die normalerweise während der gesamten Übertragung unverändert bleiben, sind die Quell- und Ziel-IP-Adresse.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Die Quell- und Ziel-IP-Adressen im IPv4-Header bleiben normalerweise während der gesamten Übertragung unverändert. \n\nDiese Felder geben an, woher das Paket stammt (Quell-IP) und wohin es übertragen werden soll (Ziel-IP). Im Gegensatz zu anderen Feldern wie dem TTL-Wert, der bei jedem Hop dekrementiert wird, oder möglicherweise den Flags bei Fragmentierung, ändern sich diese Adressfelder während des normalen Routings nicht. \n\nAusnahmen können bei speziellen Techniken wie Network Address Translation (NAT) auftreten, die jedoch nicht Teil des standardmäßigen IP-Routings sind."
+    },
+    {
+        "question": "Welches Feld im IPv4-Header hat eine Länge von 8 Bit und bestimmt die maximale Anzahl von Routern, die ein Paket passieren kann?",
+        "options": [
+            "Version",
+            "Protocol",
+            "Time-to-Live (TTL)",
+            "Fragment Offset"
+        ],
+        "correct": 2,
+        "explain": "Das **Time-to-Live (TTL)-Feld** im IPv4-Header hat eine Länge von 8 Bit und bestimmt die maximale Anzahl von Routern (Hops), die ein Paket passieren kann. \n\nDer anfängliche TTL-Wert wird vom absendenden Gerät festgelegt und bei jedem Router um eins verringert. Erreicht der Wert Null, wird das Paket verworfen und eine ICMP-Zeitüberschreitungsnachricht an den Absender zurückgeschickt. Dies verhindert, dass Pakete endlos im Netzwerk kreisen können, wenn beispielsweise durch fehlerhafte Routing-Tabellen eine Schleife entsteht."
+    },
+    {
+        "question": "Was geschieht, wenn ein Router ein IPv4-Paket mit TTL-Wert 1 empfängt?",
+        "options": [
+            "Er leitet das Paket normal weiter",
+            "Er erhöht den TTL-Wert auf 2",
+            "Er verwirft das Paket und sendet eine ICMP-Nachricht",
+            "Er fragmentiert das Paket in kleinere Einheiten"
+        ],
+        "correct": 2,
+        "explain": "Wenn ein Router ein IPv4-Paket mit TTL-Wert 1 empfängt, **verringert er den Wert auf 0, verwirft das Paket und sendet eine ICMP-Zeitüberschreitungsnachricht** an die Quell-IP-Adresse zurück. \n\nDer Time-to-Live (TTL)-Wert wird bei jeder Verarbeitung durch einen Router um eins verringert. Wenn der Router den TTL-Wert auf Null dekrementiert, darf das Paket nicht mehr weitergeleitet werden. Dies ist ein wichtiger Mechanismus, um Routing-Schleifen zu verhindern, die sonst zu einer Überlastung des Netzwerks führen könnten. Die ICMP-Nachricht (Typ 11 - Time Exceeded) informiert den Absender darüber, dass das Paket sein Ziel nicht erreicht hat, weil sein TTL-Wert abgelaufen ist."
+    }
 ]
 ]
 }
