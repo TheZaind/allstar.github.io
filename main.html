@@ -2054,7 +2054,8 @@
         
         /* Menu and content transitions */
         .quiz-selection-menu,
-        .quiz-content {
+        .quiz-content,
+        .lernfeld-view { /* Added .lernfeld-view here */
             transition: all 0.3s ease;
             background-color: var(--background-color, #fff);
             transform-origin: center;
@@ -2063,15 +2064,152 @@
         }
         
         body[data-theme="dark"] .quiz-selection-menu,
-        body[data-theme="dark"] .quiz-content {
+        body[data-theme="dark"] .quiz-content,
+        body[data-theme="dark"] .lernfeld-view { /* Added .lernfeld-view here */
             background-color: var(--background-color-dark, #1a1a1a);
         }
 
         .quiz-selection-menu.hidden,
-        .quiz-content.hidden {
+        .quiz-content.hidden,
+        .lernfeld-view.hidden { /* Added .lernfeld-view.hidden */
             opacity: 0;
             transform: scale(0.98);
             pointer-events: none;
+        }
+
+        /* Styles for Lernfeld View */
+        .lernfeld-view {
+            padding: 20px;
+            text-align: center;
+            /* background-color, transition, transform-origin, will-change, backface-visibility
+               are inherited from .quiz-selection-menu, .quiz-content if we add .lernfeld-view
+               to the rule at line 2056. Let's do that for consistency. */
+        }
+        
+        /* Add .lernfeld-view to the common transition/background style rule */
+        /* This change will be made to the rule starting around line 2056 */
+
+        .lernfeld-view h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        /* Style for Lernfeld items on the main menu */
+        .lernfeld-item {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px auto; /* Centering items */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            max-width: 600px; /* Consistent width with other category items */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        body[data-theme="dark"] .lernfeld-item {
+            background-color: var(--container-bg-dark);
+            border-color: var(--border-color-dark);
+        }
+
+        .lernfeld-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .lernfeld-item h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            color: var(--primary-color);
+            display: flex; /* Align icon and text */
+            align-items: center;
+        }
+        
+        .lernfeld-item .lernfeld-icon { /* Specific class for Lernfeld icon */
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .lernfeld-item p {
+            font-size: 0.95em;
+            color: var(--text-color-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Styles for items within Lernfeld View */
+        .lernfeld-quiz-options { /* Container for quiz buttons in Lernfeld view */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .lernfeld-view .quiz-category-button, /* For individual quizzes in Lernfeld view */
+        .lernfeld-view .lernfeld-mixed-quiz-button {
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px 20px; /* Slightly smaller padding than main menu items */
+            margin: 0 auto; /* Centered by flex container */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            width: 100%; /* Take full width of the flex container */
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex; /* To align icon and text */
+            align-items: center;
+        }
+
+        body[data-theme="dark"] .lernfeld-view .quiz-category-button,
+        body[data-theme="dark"] .lernfeld-view .lernfeld-mixed-quiz-button {
+            background-color: var(--container-bg-dark);
+            border-color: var(--border-color-dark);
+        }
+
+        .lernfeld-view .quiz-category-button:hover,
+        .lernfeld-view .lernfeld-mixed-quiz-button:hover {
+            transform: translateY(-3px); /* Slightly less hover effect */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .lernfeld-view .quiz-category-button .quiz-icon, /* Icon for individual quiz */
+        .lernfeld-view .lernfeld-mixed-quiz-button .quiz-icon { /* Icon for mixed quiz */
+            font-size: 1.3em;
+            margin-right: 12px;
+        }
+
+        .lernfeld-view .quiz-category-button .quiz-name,
+        .lernfeld-view .lernfeld-mixed-quiz-button .quiz-name {
+            font-size: 1.2em;
+            color: var(--text-color);
+            flex-grow: 1; /* Allow text to take remaining space */
+        }
+        
+        body[data-theme="dark"] .lernfeld-view .quiz-category-button .quiz-name,
+        body[data-theme="dark"] .lernfeld-view .lernfeld-mixed-quiz-button .quiz-name {
+            color: var(--text-color-dark);
+        }
+        
+        .lernfeld-view .back-to-main-menu-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .lernfeld-view .back-to-main-menu-button:hover {
+            background-color: var(--secondary-color-dark);
+            transform: translateY(-2px);
         }
         
         /* Timer and Streak animations */
@@ -2162,6 +2300,24 @@
         </div>
     </div>
 
+    <div id="lernfeld-view" class="lernfeld-view hidden">
+        <!-- Content will be dynamically populated by JavaScript -->
+        <!-- Example structure:
+        <h2>Lernfeld Title</h2>
+        <div class="lernfeld-quiz-options">
+            <div class="quiz-category-button" onclick="startQuizCategory('quizId1')">
+                <span class="quiz-icon">ICON</span>
+                <span class="quiz-name">Quiz 1 Name</span>
+            </div>
+            <div class="lernfeld-mixed-quiz-button" onclick="startQuizCategory('lfX-mix')">
+                <span class="quiz-icon">🔄</span>
+                <span class="quiz-name">Lernfeld X Gemischtes Quiz</span>
+            </div>
+        </div>
+        <button onclick="backToMenu()" class="back-to-main-menu-button">↩️ Zurück zum Hauptmenü</button>
+        -->
+    </div>
+ 
     <div id="quiz-content" class="quiz-content">
         <div class="controls">
             <button onclick="backToMenu()" class="back-button">
@@ -2419,95 +2575,58 @@
             earnedBadgesElement.textContent = `${earnedCount}/4`;
         }
     }
-
-    // Initialize theme on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-        loadSavedData();
-    });
-    
+ 
     // Verfügbare Quiz-Kategorien und globale Variablen
     let questions = []; // Global questions array
     let currentQuestionIndex = 0;
     let answeredQuestions = new Set();
-    
-    // Quiz-Kategorien
-    const quizCategories = [
+
+    // Lernfelder Definition
+    const lernfelder = [
         {
-            id: 'cpu',
-            name: 'CPU Quiz',
-            description: 'Teste dein Wissen über Prozessoren und CPU-Architektur',
-            icon: '💻',
-            file: 'cpu.json'
-        },
-        {
-            id: 'mb',
-            name: 'MainBoard Quiz',
-            description: 'Teste dein Wissen über Hauptplatinen, Komponenten und ihre Funktionen',
-            icon: '🔌',
-            file: 'mainboard.json'
-        },
-        {
-            id: 'ram',
-            name: 'RAM Quiz',
-            description: 'Teste dein Wissen über Arbeitsspeicher und Speichertechnologien',
-            icon: '💾',
-            file: 'RAM.json'
-        },
-        {
-            id: 'gw',
-            name: 'Elektrogrundlagen Quiz',
-            description: 'Grundlegendes Wissen über elektrische Konzepte und Komponenten',
-            icon: '⚡',
-            file: 'grundwissen.json'
-        },
-        {
-            id: 'netzwerk',
-            name: 'Netzwerk Grundlagen Quiz',
-            description: 'Teste dein Wissen über Netzwerktechnologien und -protokolle',
-            icon: '🌐',
-            file: 'Netzwerk_Grundlagen.json'
-        },
-        {
-            id: 'netzwerk2',
-            name: 'Netzwerk Stufe 2 Quiz',
-            description: 'Erweitere dein Wissen Ethernet, Osi Schichten Frames und mehr',
-            icon: '🌐',
-            file: 'Netzwerk_Stufe_2.json'
-        },
-        {
-            id: 'pm',
-            name: 'Projektmanagement Quiz',
-            description: 'Teste dein Wissen über klassisches Projektmanagement',
+            id: 'lf1',
+            name: 'Lernfeld 1: Projektmanagement',
             icon: '📊',
-            file: 'klassisches_projectmanagment.json'
-        },        {
-            id: 'flashcards',
-            name: 'Karteikarten Quiz',
-            description: 'Lerne mit Karteikarten wichtige Hardware-Komponenten zu erkennen',
-            icon: '📚',
-            file: 'flashcards.json'
+            files: ['klassisches_projectmanagment.json'],
+            quizzes: [
+                {id: 'pm', name: 'Projektmanagement Quiz', file: 'klassisches_projectmanagment.json', icon: '📊'}
+            ]
         },
         {
-            id: 'protokolle',
-            name: 'Netzwerkprotokolle',
-            description: 'Lerne die wichtigsten Netzwerkprotokolle und ihre Funktionen',
-            icon: '🌍',
-            file: 'protocols.json'
+            id: 'lf2',
+            name: 'Lernfeld 2: Hardware & Basics',
+            icon: '🛠️',
+            files: ['cpu.json', 'grundwissen.json', 'mainboard.json', 'flashcards.json', 'RAM.json'],
+            quizzes: [
+                {id: 'cpu', name: 'CPU Quiz', file: 'cpu.json', icon: '💻'},
+                {id: 'gw', name: 'Elektrogrundlagen Quiz', file: 'grundwissen.json', icon: '⚡'},
+                {id: 'mb', name: 'MainBoard Quiz', file: 'mainboard.json', icon: '🔌'},
+                {id: 'flashcards', name: 'Karteikarten Quiz', file: 'flashcards.json', icon: '📚'},
+                {id: 'ram', name: 'RAM Quiz', file: 'RAM.json', icon: '💾'}
+            ]
         },
         {
-            id: 'vorbereitung1',
-            name: 'Vorbereitung 1 Quiz',
-            description: 'Teste dein Wissen aus der PDF-Vorbereitung',
-            icon: '📄',
-            file: 'vorbereitung1.json'
-        },
+            id: 'lf3',
+            name: 'Lernfeld 3: Netzwerk',
+            icon: '🌐',
+            files: ['Netzwerk_Grundlagen.json', 'Netzwerk_Stufe_2.json', 'protocols.json'],
+            quizzes: [
+                {id: 'netzwerk', name: 'Netzwerk Grundlagen Quiz', file: 'Netzwerk_Grundlagen.json', icon: '🌐'},
+                {id: 'netzwerk2', name: 'Netzwerk Stufe 2 Quiz', file: 'Netzwerk_Stufe_2.json', icon: '🔗'},
+                {id: 'protokolle', name: 'Netzwerkprotokolle', file: 'protocols.json', icon: '🌍'}
+            ]
+        }
+    ];
+    
+    // Quiz-Kategorien (vereinfacht, nur noch für das Haupt-Mix-Quiz)
+    // Individuelle Quizze werden jetzt über die 'lernfelder' Struktur verwaltet.
+    const quizCategories = [
         {
             id: 'mix',
             name: 'Gemischtes Quiz',
             description: 'Eine herausfordernde Mischung aus allen Kategorien für echte Profis',
             icon: '🔄',
-            file: null // Spezialfall für gemischtes Quiz
+            file: null // Wird von loadQuestions speziell behandelt, um alle Dateien aus lernfelder zu laden
         }
     ];
 
@@ -2516,25 +2635,20 @@
         // Set initial theme
         document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
         
-        // Initialize quiz categories first
-        await initializeQuizCategories();
-        
-        // Then show menu with transitions
-        const menuElement = document.getElementById('quiz-selection-menu');
-        const contentElement = document.getElementById('quiz-content');
-        
-        if (menuElement && contentElement) {
-            contentElement.classList.add('hidden');
-            menuElement.classList.remove('hidden');
-        }
+        // Load saved data first (includes theme)
+        loadSavedData(); // Ensures theme is applied from save if exists
+
+        // Initialize main menu
+        await initializeMainMenu(); // Changed from initializeQuizCategories
         
         // Show quiz selection menu
-        await showQuizMenu();
+        await showQuizMenu(); // This handles the initial display logic
     });
 
     // Category transition handler
     async function startQuizCategory(categoryId) {
         const menuElement = document.getElementById('quiz-selection-menu');
+        const lernfeldViewElement = document.getElementById('lernfeld-view');
         const contentElement = document.getElementById('quiz-content');
         const loadingIndicator = document.createElement('div');
         loadingIndicator.className = 'loading-indicator';
@@ -2548,73 +2662,171 @@
             }
             
             if (currentCategory !== categoryId) {
-                // Animate streak reset if needed
                 const streakElement = document.querySelector('.status-item:nth-child(2)');
                 if (streakElement && currentStreak > 0) {
                     streakElement.style.animation = 'fadeOutUp 0.5s ease';
                     await new Promise(r => setTimeout(r, 500));
                     currentStreak = 0;
                     showFeedback('Streak zurückgesetzt wegen Kategoriewechsel', false);
+                    updateStreak(false);
                 }
             }
             
-            // Update current category with transition
             currentCategory = categoryId;
             
-            if (menuElement && contentElement) {
-                // Add hidden class to menu
+            if (menuElement && lernfeldViewElement && contentElement) {
+                // Hide both menu and lernfeld view
                 menuElement.classList.add('hidden');
+                lernfeldViewElement.classList.add('hidden');
+                
                 await new Promise(r => setTimeout(r, 300));
                 menuElement.style.display = 'none';
+                lernfeldViewElement.style.display = 'none';
                 
-                // Prepare content for transition
                 contentElement.style.display = 'block';
                 contentElement.classList.add('hidden');
                 contentElement.appendChild(loadingIndicator);
                 
-                // Small delay for smooth transition
                 await new Promise(r => setTimeout(r, 50));
                 contentElement.classList.remove('hidden');
                 
-                // Update category display with animation
                 const categoryDisplay = document.getElementById('current-category');
                 if (categoryDisplay) {
-                    const category = quizCategories.find(cat => cat.id === categoryId);
+                    let displayName = 'Unbekannt';
+                    if (categoryId.endsWith('-mix')) {
+                        const lfId = categoryId.replace('-mix', '');
+                        const lf = lernfelder.find(l => l.id === lfId);
+                        displayName = lf ? `Gemischt: ${lf.name}` : 'Gemischtes Lernfeld Quiz';
+                    } else {
+                        const categoryInfo = quizCategories.find(cat => cat.id === categoryId);
+                        if (categoryInfo) {
+                            displayName = categoryInfo.name;
+                        } else {
+                            const lernfeldQuiz = lernfelder.flatMap(lf => lf.quizzes).find(q => q.id === categoryId);
+                            displayName = lernfeldQuiz ? lernfeldQuiz.name : categoryId;
+                        }
+                    }
                     categoryDisplay.style.animation = 'fadeInDown 0.5s ease';
-                    categoryDisplay.textContent = category ? category.name : 'Unbekannt';
+                    categoryDisplay.textContent = displayName;
                 }
                 
-                // Load questions
                 await loadQuestions(categoryId);
                 
-                // Remove loading indicator and show content
                 loadingIndicator.remove();
                 contentElement.style.opacity = '1';
-                contentElement.style.animation = 'fadeIn 0.5s ease';
-                
-                // Save current state
+
                 saveGameData();
             }
         } catch (error) {
             console.error('Fehler beim Laden der Kategorie:', error);
             showFeedback('Fehler beim Laden der Fragen', false);
-            
-            // Clean up and return to menu
-            loadingIndicator.remove();
+            if(loadingIndicator.parentNode) loadingIndicator.remove();
             backToMenu();
         }
     }
 
-    // Quiz-Kategorien initialisieren
-    async function initializeQuizCategories() {
+    // Main Menu initialisieren (früher initializeQuizCategories)
+    async function initializeMainMenu() {
         const categoriesContainer = document.getElementById('quiz-categories');
-        categoriesContainer.innerHTML = quizCategories.map(category => `
-            <div class="quiz-category" onclick="startQuizCategory('${category.id}')">
-                <h3><span class="quiz-category-icon">${category.icon}</span> ${category.name}</h3>
-                <p>${category.description}</p>
-                <div class="category-progress"></div>
+        if (!categoriesContainer) return;
+
+        let menuHTML = '';
+
+        // Lernfelder hinzufügen
+        lernfelder.forEach(lf => {
+            menuHTML += `
+                <div class="lernfeld-item" onclick="showLernfeldView('${lf.id}')" role="button" tabindex="0" aria-label="Lernfeld ${lf.name} öffnen">
+                    <h3><span class="lernfeld-icon">${lf.icon || '📚'}</span> ${lf.name}</h3>
+                    <p>Enthält ${lf.quizzes.length} Quizze und ${lf.files.length} Themenbereiche.</p>
+                </div>
+            `;
+        });
+
+        // Haupt-Gemischtes Quiz hinzufügen
+        const mainMixedQuiz = quizCategories.find(cat => cat.id === 'mix');
+        if (mainMixedQuiz) {
+            menuHTML += `
+                <div class="quiz-category" onclick="startQuizCategory('${mainMixedQuiz.id}')" role="button" tabindex="0" aria-label="${mainMixedQuiz.name} starten">
+                    <h3><span class="quiz-category-icon">${mainMixedQuiz.icon}</span> ${mainMixedQuiz.name}</h3>
+                    <p>${mainMixedQuiz.description}</p>
+                    <div class="category-progress"></div>
+                </div>
+            `;
+        }
+        categoriesContainer.innerHTML = menuHTML;
+
+        // Add keydown event listeners for accessibility (Enter/Space to activate)
+        document.querySelectorAll('.lernfeld-item, .quiz-category').forEach(item => {
+            item.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    item.click();
+                }
+            });
+        });
+    }
+
+    // Lernfeld Ansicht anzeigen
+    async function showLernfeldView(lernfeldId) {
+        const menuElement = document.getElementById('quiz-selection-menu');
+        const lernfeldViewElement = document.getElementById('lernfeld-view');
+        const quizContentElement = document.getElementById('quiz-content'); // Ensure quiz content is also managed
+
+        if (!menuElement || !lernfeldViewElement || !quizContentElement) return;
+
+        const selectedLernfeld = lernfelder.find(lf => lf.id === lernfeldId);
+        if (!selectedLernfeld) {
+            console.error(`Lernfeld with ID ${lernfeldId} not found.`);
+            return;
+        }
+
+        let lernfeldViewHTML = `<h2>${selectedLernfeld.name}</h2>`;
+        lernfeldViewHTML += `<div class="lernfeld-quiz-options">`;
+
+        // Individuelle Quizze des Lernfelds
+        selectedLernfeld.quizzes.forEach(quiz => {
+            lernfeldViewHTML += `
+                <div class="quiz-category-button" onclick="startQuizCategory('${quiz.id}')" role="button" tabindex="0" aria-label="Quiz ${quiz.name} starten">
+                    <span class="quiz-icon">${quiz.icon || '❓'}</span>
+                    <span class="quiz-name">${quiz.name}</span>
+                </div>
+            `;
+        });
+
+        // Gemischtes Quiz des Lernfelds
+        lernfeldViewHTML += `
+            <div class="lernfeld-mixed-quiz-button" onclick="startQuizCategory('${selectedLernfeld.id}-mix')" role="button" tabindex="0" aria-label="Gemischtes Quiz für ${selectedLernfeld.name} starten">
+                <span class="quiz-icon">🔄</span>
+                <span class="quiz-name">Gemischtes Quiz für ${selectedLernfeld.name}</span>
             </div>
-        `).join('');
+        `;
+        lernfeldViewHTML += `</div>`; // Close lernfeld-quiz-options
+
+        // Zurück-Button
+        lernfeldViewHTML += `<button onclick="backToMenu()" class="back-to-main-menu-button" aria-label="Zurück zum Hauptmenü">↩️ Zurück zum Hauptmenü</button>`;
+        
+        lernfeldViewElement.innerHTML = lernfeldViewHTML;
+
+        // Add keydown event listeners for accessibility (Enter/Space to activate)
+        lernfeldViewElement.querySelectorAll('.quiz-category-button, .lernfeld-mixed-quiz-button, .back-to-main-menu-button').forEach(item => {
+            item.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    item.click();
+                }
+            });
+        });
+        
+        menuElement.classList.add('hidden');
+        quizContentElement.classList.add('hidden');
+        
+        await new Promise(r => setTimeout(r, 50));
+        menuElement.style.display = 'none';
+        quizContentElement.style.display = 'none';
+
+        lernfeldViewElement.style.display = 'block';
+        await new Promise(r => setTimeout(r, 50));
+        lernfeldViewElement.classList.remove('hidden');
     }
 
     function createQuiz() {
@@ -2762,70 +2974,102 @@
 
     async function loadQuestions(categoryId) {
         try {
-            let fileName;
-            switch(categoryId) {
-                case 'cpu':
-                    fileName = 'cpu.json';
-                    break;
-                case 'mb':
-                    fileName = 'mainboard.json';
-                    break;
-                case 'ram':
-                    fileName = 'RAM.json';
-                    break;
-                case 'gw':
-                    fileName = 'grundwissen.json';
-                    break;
-                case 'netzwerk':
-                    fileName = 'Netzwerk_Grundlagen.json';
-                    break;
-                case 'netzwerk2':
-                    fileName = 'Netzwerk_Stufe_2.json';
-                    break;
-                case 'pm':
-                    fileName = 'klassisches_projectmanagment.json';
-                    break;                case 'flashcards':
-                    fileName = 'flashcards.json';
-                    break;
-                case 'protokolle':
-                    fileName = 'protocols.json';
-                    break;
-                case 'vorbereitung1':
-                    fileName = 'vorbereitung1.json';
-                    break;
-                case 'mix':                    // Mische Fragen aus allen Kategorien
-                    const allQuestions = [];
-                    for (const file of ['cpu.json', 'mainboard.json', 'RAM.json', 'grundwissen.json', 'flashcards.json', 'klassisches_projectmanagment.json', 'Netzwerk_Grundlagen.json', 'Netzwerk_Stufe_2.json', 'protocols.json']) {
-                        try {
-                            const response = await fetch(file);
-                            if (response.ok) {
-                                const data = await response.json();
-                                allQuestions.push(...data.questions);
-                            }
-                        } catch (e) {
-                            console.warn(`Konnte ${file} nicht laden:`, e);
-                        }
-                    }
-                    questions = allQuestions;
+            let filesToLoad = [];
+            let isMixedQuiz = false;
+            let finalQuestions = [];
+    
+            if (categoryId.endsWith('-mix')) { // Lernfeld-specific mixed quiz
+                isMixedQuiz = true;
+                const lernfeldId = categoryId.replace('-mix', '');
+                const lernfeld = lernfelder.find(lf => lf.id === lernfeldId);
+                if (lernfeld && lernfeld.files) {
+                    filesToLoad = lernfeld.files;
+                } else {
+                    console.error(`Lernfeld with ID ${lernfeldId} not found or has no files.`);
+                    questions = [];
                     createQuiz();
                     return;
-                default:
-                    fileName = 'cpu.json';
+                }
+            } else if (categoryId === 'mix') { // Main mixed quiz
+                isMixedQuiz = true;
+                lernfelder.forEach(lf => {
+                    if (lf.files) {
+                        filesToLoad.push(...lf.files);
+                    }
+                });
+                filesToLoad = [...new Set(filesToLoad)]; // Remove duplicates
             }
-            
-            const response = await fetch(fileName);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+    
+            if (isMixedQuiz) {
+                for (const file of filesToLoad) {
+                    try {
+                        const response = await fetch(file);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.questions && Array.isArray(data.questions)) {
+                                finalQuestions.push(...data.questions);
+                            } else {
+                               console.warn(`File ${file} does not contain a valid "questions" array.`);
+                            }
+                        } else {
+                            console.warn(`Could not load ${file} for mixed quiz: ${response.status}`);
+                        }
+                    } catch (e) {
+                        console.warn(`Error fetching or parsing ${file} for mixed quiz:`, e);
+                    }
+                }
+            } else {
+                // Logic for single, non-mixed quiz files
+                let fileName;
+                const categoryInfo = quizCategories.find(cat => cat.id === categoryId);
+    
+                if (categoryInfo && categoryInfo.file) {
+                    fileName = categoryInfo.file;
+                } else {
+                    // Fallback: if not in quizCategories, check the new lernfelder.quizzes structure
+                    let foundQuiz = null;
+                    for (const lf of lernfelder) {
+                        if (lf.quizzes) { // Ensure quizzes array exists
+                            foundQuiz = lf.quizzes.find(q => q.id === categoryId);
+                            if (foundQuiz && foundQuiz.file) {
+                                fileName = foundQuiz.file;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (!fileName) {
+                    console.error(`Cannot find file for single quiz categoryId: ${categoryId}`);
+                    questions = [];
+                    createQuiz();
+                    return;
+                }
+    
+                const response = await fetch(fileName);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status} for file ${fileName}`);
+                }
+                const data = await response.json();
+                if (data.questions && Array.isArray(data.questions)) {
+                    finalQuestions = data.questions;
+                } else {
+                    console.warn(`File ${fileName} does not contain a valid "questions" array.`);
+                    finalQuestions = [];
+                }
             }
-            const data = await response.json();
-            questions = data.questions;
+    
+            questions = finalQuestions;
             createQuiz();
+    
         } catch (error) {
             console.error('Fehler beim Laden der Fragen:', error);
             const container = document.getElementById('current-question');
             if (container) {
                 container.innerHTML = '<div class="error-message">Fehler beim Laden der Fragen. Bitte versuche es später erneut.</div>';
             }
+            questions = [];
+            createQuiz();
         }
     }
 
@@ -3230,15 +3474,7 @@
         saveGameData();
         updateGameStatus();
     }
-
-    // Entferne doppelte Event Listener
-    document.addEventListener('DOMContentLoaded', async function() {
-        document.body.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-        loadSavedData();
-        await initializeQuizCategories();
-        showQuizMenu();
-    });
-
+ 
     // Update UI
     function updateGameStatus() {
         // Update Level und XP-Anzeige
@@ -3262,15 +3498,13 @@
             else currentBadgeElement.textContent = '';
         }
     }
-
+ 
     async function backToMenu() {
-        // Reset quiz state
         currentQuestions = [];
         currentQuestionIndex = 0;
         answeredQuestions.clear();
         score = 0;
         
-        // Clear timer if active
         if (timerInterval) {
             clearInterval(timerInterval);
             timerInterval = null;
@@ -3280,36 +3514,31 @@
         const timerToggle = document.getElementById('timer-toggle');
         if (timerContainer) timerContainer.style.display = 'none';
         if (timerToggle) timerToggle.style.backgroundColor = 'var(--primary-color)';
-        
-        // Reset timer state
         timerActive = false;
         
-        // Animated transition back to menu
         const contentElement = document.getElementById('quiz-content');
         const menuElement = document.getElementById('quiz-selection-menu');
+        const lernfeldViewElement = document.getElementById('lernfeld-view');
         
-        if (contentElement && menuElement) {
-            // Add hidden class to quiz content
+        if (contentElement && menuElement && lernfeldViewElement) {
             contentElement.classList.add('hidden');
+            lernfeldViewElement.classList.add('hidden');
             
-            // Update menu stats before showing
-            updateMainMenuStats();
+            updateMainMenuStats(); // Update stats before showing menu
             
-            // Prepare menu for transition
             menuElement.style.display = 'block';
             menuElement.classList.add('hidden');
             
             await new Promise(r => setTimeout(r, 300));
             contentElement.style.display = 'none';
+            lernfeldViewElement.style.display = 'none';
             
-            // Small delay to ensure proper transition
             await new Promise(r => setTimeout(r, 50));
             menuElement.classList.remove('hidden');
         }
         
-        // Save and sync game state
         saveGameData();
-        loadSavedData(); // This ensures all stats are in sync
+        // loadSavedData(); // Not strictly necessary here if saveGameData is comprehensive and UI updates are handled by showQuizMenu/initializeMainMenu
     }
 
     function updateMainMenuStats() {
@@ -3400,7 +3629,7 @@
             const progress = Math.round((score / (currentQuestions.length || 1)) * 100);
             progressBar.style.width = `${progress}%`;
         }
-        updateMainMenuStats();
+        // updateMainMenuStats(); // Removed: Not necessary to update main menu stats here
     }
 
     // Achievement popup queue system
@@ -3484,133 +3713,7 @@
             }, 900);
         }
     }
-
-    function updateLevel() {
-        const oldLevel = level;
-        level = Math.floor(totalXP / 100) + 1;
-        
-        // Prevent level from exceeding maximum
-        level = Math.min(Math.max(1, level), 100);
-        
-        const levelElement = document.getElementById('level');
-        const menuLevelElement = document.getElementById('menu-level');
-        
-        if (levelElement) levelElement.textContent = level;
-        if (menuLevelElement) menuLevelElement.textContent = level;
-        
-        // Show achievement for level up
-        if (level > oldLevel) {
-            showAchievement('Level Up! 🎯', `Du hast Level ${level} erreicht!`);
-        }
-    }
-
-    function updateStreak(isCorrect) {
-        const currentTime = new Date().getTime();
-        const streakText = document.getElementById('streak-text');
-        const streakItem = document.querySelector('.status-item:nth-child(2)');
-        
-        // Check for streak timeout (5 minutes)
-        const streakTimeout = 5 * 60 * 1000; // 5 minutes in milliseconds
-        if (lastAnswerTime && (currentTime - lastAnswerTime) > streakTimeout) {
-            currentStreak = 0;
-            showFeedback('Streak zurückgesetzt wegen Inaktivität!', false);
-        }
-        
-        if (isCorrect) {
-            currentStreak++;
-            if (currentStreak > bestStreak) {
-                bestStreak = currentStreak;
-                
-                // Show streak achievements
-                if (bestStreak === 5) {
-                    showAchievement('Streak Master! 🔥', '5er Streak erreicht!');
-                } else if (bestStreak === 10) {
-                    showAchievement('Streak Champion! 🏆', '10er Streak erreicht!');
-                } else if (bestStreak === 25) {
-                    showAchievement('Streak Legend! 👑', '25er Streak erreicht!');
-                }
-            }
-        } else {
-            if (currentStreak >= 3) {
-                showFeedback(`Streak von ${currentStreak} beendet!`, false);
-            }
-            currentStreak = 0;
-        }
-        
-        // Update last answer time
-        lastAnswerTime = currentTime;
-        
-        if (streakText) {
-            streakText.textContent = currentStreak;
-        }
-        
-        // Visual feedback for active streak
-        if (streakItem) {
-            if (currentStreak > 0) {
-                streakItem.classList.add('active-streak');
-                
-                // Add pulsing effect for high streaks
-                if (currentStreak >= 5) {
-                    streakItem.style.animation = 'streakPulse 1s infinite';
-                }
-            } else {
-                streakItem.classList.remove('active-streak');
-                streakItem.style.animation = 'none';
-            }
-        }
-        
-        saveGameData();
-        updateGameStatus();
-    }
-
-    function updateMainMenuStats() {
-        // Update total quizzes
-        const totalQuizzesElement = document.getElementById('total-quizzes');
-        if (totalQuizzesElement) {
-            totalQuizzesElement.textContent = totalQuizzes;
-        }
-        
-        // Update correct answers
-        const totalCorrectElement = document.getElementById('total-correct');
-        if (totalCorrectElement) {
-            totalCorrectElement.textContent = totalCorrect;
-        }
-        
-        // Update average score
-        const averageScoreElement = document.getElementById('average-score');
-        if (averageScoreElement) {
-            const averageScore = Math.round((totalCorrect / (totalQuestions || 1)) * 100);
-            averageScoreElement.textContent = `${averageScore}%`;
-        }
-        
-        // Update best streak
-        const bestStreakElement = document.getElementById('best-streak');
-        if (bestStreakElement) {
-            bestStreakElement.textContent = bestStreak;
-        }
-        
-        // Update earned badges
-        const earnedBadgesElement = document.getElementById('earned-badges');
-        if (earnedBadgesElement) {
-            let earnedCount = 0;
-            if (totalXP >= 100) earnedCount++;
-            if (totalXP >= 350) earnedCount++;
-            if (totalXP >= 750) earnedCount++;
-            if (totalXP >= 1500) earnedCount++;
-            earnedBadgesElement.textContent = `${earnedCount}/4`;
-        }
-        
-        // Update current badge in menu
-        const menuCurrentBadge = document.getElementById('menu-current-badge');
-        if (menuCurrentBadge) {
-            if (totalXP >= 1500) menuCurrentBadge.textContent = '👑';
-            else if (totalXP >= 750) menuCurrentBadge.textContent = '🥇';
-            else if (totalXP >= 350) menuCurrentBadge.textContent = '🥈';
-            else if (totalXP >= 100) menuCurrentBadge.textContent = '🥉';
-            else menuCurrentBadge.textContent = '';
-        }
-    }
-
+ 
     // Hinzufügen der fehlenden updateProgressPath Funktion
     // Explanation popup functionality
     function showExplanation() {
@@ -3787,19 +3890,6 @@
         if (progressBar) {
             progressBar.style.width = `${progressPercent}%`;
         }
-    }
-
-    function newQuiz() {
-        currentQuestions = selectRandomQuestions();
-        currentQuestionIndex = 0;
-        answeredQuestions.clear();
-        score = 0;
-        document.getElementById('score').textContent = 'Punktzahl: 0 Punkte 📊';
-        updateProgressBar();
-        displayCurrentQuestion();
-        
-        // Update total questions display
-        document.getElementById('total-questions').textContent = currentQuestions.length;
     }
 
     // Flashcard-spezifische Funktionen
