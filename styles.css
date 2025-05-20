@@ -25,6 +25,14 @@
     --surface-color: #1e1e1e;
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
+    --border-color: #424242; /* Darker grey border for dark mode, consistent with main.html's intent */
+    /* Note: main.html uses --border-color-dark. To keep things simple and use the cascade,
+       we'll redefine --border-color here. If main.html specifically needs --border-color-dark,
+       we can add that too, but this approach is cleaner if possible.
+       For now, I'll assume main.html's dark mode border rules will be updated or can use this.
+       Let's add --border-color-dark as well for direct compatibility with main.html's current usage. */
+    --border-color-dark: #424242;
+    --container-bg-dark: var(--surface-color); /* Alias for dark surface color */
     --primary-light: #5c955e;
 }
 
