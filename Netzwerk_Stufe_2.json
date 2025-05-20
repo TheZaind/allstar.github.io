@@ -1589,7 +1589,400 @@
         ],
         "correct": 2,
         "explain": "Wenn ein Router ein IPv4-Paket mit TTL-Wert 1 empfängt, **verringert er den Wert auf 0, verwirft das Paket und sendet eine ICMP-Zeitüberschreitungsnachricht** an die Quell-IP-Adresse zurück. \n\nDer Time-to-Live (TTL)-Wert wird bei jeder Verarbeitung durch einen Router um eins verringert. Wenn der Router den TTL-Wert auf Null dekrementiert, darf das Paket nicht mehr weitergeleitet werden. Dies ist ein wichtiger Mechanismus, um Routing-Schleifen zu verhindern, die sonst zu einer Überlastung des Netzwerks führen könnten. Die ICMP-Nachricht (Typ 11 - Time Exceeded) informiert den Absender darüber, dass das Paket sein Ziel nicht erreicht hat, weil sein TTL-Wert abgelaufen ist."
-    }
+    },
+    {
+    "question": "Wie viele Bits umfasst eine IPv6-Adresse?",
+    "options": [
+      "64 Bits",
+      "96 Bits",
+      "128 Bits",
+      "256 Bits"
+    ],
+    "correct": 2,
+    "explain": "Eine IPv6-Adresse umfasst **128 Bits**. Im Vergleich dazu hat eine IPv4-Adresse nur 32 Bits. Diese deutliche Vergrößerung des Adressraums ist eines der wichtigsten Merkmale von IPv6 und ermöglicht die Bereitstellung einer nahezu unbegrenzten Anzahl eindeutiger IP-Adressen (etwa 340 Sextillionen), was eines der Hauptprobleme von IPv4 - den Mangel an verfügbaren Adressen - löst."
+  },
+  {
+    "question": "NAT (Network Address Translation) wird mit IPv6 vollständig überflüssig.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 0,
+    "explain": "Diese Aussage ist **wahr**. Einer der Hauptvorteile von IPv6 ist, dass aufgrund des enormen Adressraums von IPv6 die Notwendigkeit für NAT entfällt. In IPv4-Netzwerken wird NAT hauptsächlich eingesetzt, um mehreren Geräten die Nutzung einer einzigen öffentlichen IPv4-Adresse zu ermöglichen. Mit IPv6 steht eine so große Anzahl öffentlicher Adressen zur Verfügung, dass jedes Gerät seine eigene öffentliche IPv6-Adresse haben kann. Dies vermeidet die durch NAT verursachten Probleme bei Anwendungen, die eine Ende-zu-Ende-Netzwerkverbindung benötigen."
+  },
+  {
+    "question": "Welches der folgenden Felder ist im IPv6-Header neu hinzugekommen und war nicht Teil des IPv4-Headers?",
+    "options": [
+      "Traffic Class",
+      "Flow Label",
+      "Hop Limit",
+      "Payload Length"
+    ],
+    "correct": 1,
+    "explain": "Das **Flow Label** ist ein neues Feld, das im IPv6-Header eingeführt wurde und nicht im IPv4-Header vorhanden war. Dieses 20-Bit-Feld lässt darauf schließen, dass alle Pakete mit demselben Flow Label auf die gleiche Weise vom Router verarbeitet werden sollten. Es wurde entwickelt, um Echtzeitverkehr wie Streaming-Medien und Sprachkommunikation zu unterstützen.\n\nDie anderen Optionen sind entweder umbenannte oder modifizierte Felder aus dem IPv4-Header:\n- Traffic Class entspricht dem IPv4-Feld 'Differentiated Services'\n- Hop Limit ersetzt das IPv4-Feld 'TTL' (Time to Live)\n- Payload Length entspricht dem IPv4-Feld 'Gesamtlänge', bezieht sich aber nur auf die Nutzlast ohne den Header"
+  },
+  {
+    "question": "Wie viele Byte umfasst ein IPv6-Header?",
+    "options": [
+      "20 Byte",
+      "40 Byte",
+      "60 Byte",
+      "128 Byte"
+    ],
+    "correct": 1,
+    "explain": "Ein IPv6-Header hat eine **feste Länge von 40 Byte**. Im Gegensatz dazu hat ein IPv4-Header eine Grundlänge von 20 Byte, kann aber mit Optionen auf bis zu 60 Byte erweitert werden. Der IPv6-Header ist hauptsächlich aufgrund der längeren Quell- und Zieladressen (jeweils 16 Byte bei IPv6 im Vergleich zu 4 Byte bei IPv4) größer. Trotz des größeren Headers wurde die Struktur des IPv6-Headers vereinfacht, indem einige IPv4-Felder entfernt wurden, was eine effizientere Paketverarbeitung ermöglicht."
+  },
+  {
+    "question": "Eines der Hauptprobleme von IPv4 ist die Beeinträchtigung der Ende-zu-Ende-Konnektivität durch die Verwendung von NAT.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 0,
+    "explain": "Diese Aussage ist **wahr**. Die Verwendung von NAT (Network Address Translation) in IPv4-Netzwerken beeinträchtigt tatsächlich die Ende-zu-Ende-Konnektivität. NAT ermöglicht es mehreren Geräten, eine einzige öffentliche IPv4-Adresse zu teilen, indem es als Mittler zwischen den internen Netzwerkgeräten und dem Internet fungiert. Dies verbirgt jedoch die tatsächlichen IPv4-Adressen der internen Hosts und erschwert Anwendungen und Diensten, die eine direkte Ende-zu-Ende-Verbindung benötigen, die Kommunikation. Protokolle und Anwendungen müssen oft spezielle Mechanismen implementieren, um NAT-Traversal zu ermöglichen."
+  },
+  {
+    "question": "Welche dieser Aussagen trifft auf den Vergleich zwischen IPv4- und IPv6-Headern zu?",
+    "options": [
+      "Der IPv6-Header enthält mehr Felder als der IPv4-Header",
+      "Der IPv6-Header hat eine variable Länge, während der IPv4-Header eine feste Länge hat",
+      "Der IPv6-Header enthält keine Prüfsumme, während der IPv4-Header eine Header-Prüfsumme enthält",
+      "Der IPv6-Header behält alle Felder des IPv4-Headers bei und fügt nur neue hinzu"
+    ],
+    "correct": 2,
+    "explain": "Der IPv6-Header enthält **keine Prüfsumme**, während der IPv4-Header eine Header-Prüfsumme enthält. Diese Veränderung wurde vorgenommen, weil die Prüffunktion bereits auf der darunterliegenden und darüberliegenden Schicht ausgeführt wird. Durch den Wegfall der Prüfsumme muss diese nicht von jedem Router neu berechnet werden, wenn er das Feld 'Hop Limit' dekrementiert, was die Leistungsfähigkeit des Netzwerks verbessert. \n\nDie anderen Aussagen sind nicht korrekt:\n- Der IPv6-Header ist mit 40 Byte zwar größer als der IPv4-Basis-Header (20 Byte), enthält aber tatsächlich weniger Felder, da einige IPv4-Felder entfernt wurden\n- Der IPv6-Header hat eine feste Länge von 40 Byte, während der IPv4-Header eine variable Länge von 20-60 Byte haben kann\n- Der IPv6-Header behält einige Felder bei, ändert andere und entfernt auch einige IPv4-Felder komplett"
+  },
+  {
+    "question": "Wie viele eindeutige IPv4-Adressen gibt es theoretisch?",
+    "options": [
+      "Etwa 4,3 Millionen",
+      "Etwa 4,3 Milliarden",
+      "Etwa 4,3 Billionen",
+      "Etwa 4,3 Biljarden"
+    ],
+    "correct": 1,
+    "explain": "Es gibt theoretisch **etwa 4,3 Milliarden** (genauer 4.294.967.296) mögliche IPv4-Adressen. Diese Zahl ergibt sich aus der Berechnung von 2^32, da IPv4-Adressen 32 Bit umfassen. Diese begrenzte Anzahl an verfügbaren Adressen ist eines der Hauptprobleme von IPv4, da die Anzahl der internetfähigen Geräte weltweit diesen Wert längst überschritten hat. Dies ist einer der Hauptgründe für die Entwicklung und Einführung von IPv6."
+  },
+  {
+    "question": "Welches Feld im IPv6-Header entspricht dem 'Protocol'-Feld im IPv4-Header?",
+    "options": [
+      "Payload Length",
+      "Next Header",
+      "Flow Label",
+      "Traffic Class"
+    ],
+    "correct": 1,
+    "explain": "Das **Next Header**-Feld im IPv6-Header entspricht dem 'Protocol'-Feld im IPv4-Header. Dieses 8-Bit-Feld gibt den Typ der Daten an, die das Paket transportiert, sodass die Vermittlungsschicht die Daten an das entsprechende Protokoll der höheren Schicht übergeben kann. Es identifiziert beispielsweise, ob die Nutzdaten TCP, UDP oder ein anderes Protokoll verwenden."
+  },
+  {
+    "question": "IPv6 wurde entwickelt, um alle Protokolle zu ersetzen, die zur Erweiterung der Lebensdauer von IPv4 entwickelt wurden.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Während IPv6 entwickelt wurde, um die grundlegenden Einschränkungen von IPv4 zu überwinden (insbesondere den begrenzten Adressraum und die durch NAT verursachten Probleme), war es nie dazu gedacht, alle Protokolle zu ersetzen, die zur Erweiterung der Lebensdauer von IPv4 entwickelt wurden. Viele Protokolle und Techniken, die mit IPv4 verwendet werden, haben ihre eigenen spezifischen Funktionen und Anwendungsfälle, die über die bloße Adressierung hinausgehen. Zudem gibt es für IPv6 eigene Erweiterungsprotokolle und -mechanismen, und in vielen Fällen wurden ähnliche Protokolle für IPv6 adaptiert oder neu entwickelt."
+  },
+  {
+    "question": "Was bedeutet es, wenn in IPv6 das 'Hop Limit' eines Pakets auf 0 reduziert wird?",
+    "options": [
+      "Das Paket wird priorisiert und schneller weitergeleitet",
+      "Das Paket wird verworfen und eine ICMPv6-Nachricht wird zurückgesendet",
+      "Das Paket wird an den nächsten Router ohne Änderung weitergeleitet",
+      "Das Paket wird fragmentiert, um die Übertragung zu optimieren"
+    ],
+    "correct": 1,
+    "explain": "Wenn das **'Hop Limit'** eines IPv6-Pakets auf 0 reduziert wird, wird das Paket **verworfen**, und eine **ICMPv6 Time Exceeded** Nachricht wird an den sendenden Host zurückgeschickt. Diese Nachricht informiert den Absender darüber, dass das Paket sein Ziel nicht erreicht hat, weil das Hop-Limit überschritten wurde. Das Hop-Limit-Feld in IPv6 entspricht dem TTL-Feld (Time To Live) in IPv4 und verhindert, dass Pakete endlos im Netzwerk kreisen können, falls Routing-Schleifen auftreten."
+  },
+  {
+    "question": "In welcher Wissenschaftlichen Notation wird der IPv6-Adressraum dargestellt?",
+    "options": [
+      "10^18",
+      "10^24",
+      "10^30",
+      "10^36"
+    ],
+    "correct": 3,
+    "explain": "Der IPv6-Adressraum wird in der wissenschaftlichen Notation **10^36** dargestellt, was 1 Sextillion entspricht. Genauer gesagt beträgt die Gesamtzahl der IPv6-Adressen 2^128 oder etwa 340.282.366.920.938.463.463.374.607.431.768.211.456, was ungefähr 340 Sextillionen entspricht. Diese enorme Menge wird oft mit der Anzahl der Sandkörner auf der Erde verglichen, um die Größenordnung zu veranschaulichen. Im Vergleich dazu hat IPv4 mit seinem 32-Bit-Adressraum nur 2^32 oder etwa 4,3 Milliarden Adressen."
+  },
+  {
+    "question": "Router fragmentieren IPv6-Pakete auf dem Weg zum Ziel, wenn sie zu groß für ein Netzwerksegment sind.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Im Gegensatz zu IPv4 fragmentieren Router keine gerouteten IPv6-Pakete. Bei IPv6 muss die Fragmentierung, falls erforderlich, vom Absender selbst durchgeführt werden. Dies geschieht durch einen Mechanismus namens Path MTU Discovery (PMTUD), der die größtmögliche Paketgröße für den gesamten Pfad zum Ziel ermittelt. Diese Änderung wurde eingeführt, um die Effizienz der Router zu verbessern und die Wahrscheinlichkeit von Fragmentierungsangriffen zu verringern."
+  },
+  {
+    "question": "Welches dieser Felder ist im IPv6-Header NICHT enthalten, war aber Teil des IPv4-Headers?",
+    "options": [
+      "Version",
+      "Header-Prüfsumme",
+      "Quelladresse",
+      "Zieladresse"
+    ],
+    "correct": 1,
+    "explain": "Die **Header-Prüfsumme** ist im IPv6-Header nicht enthalten, war aber Teil des IPv4-Headers. In IPv6 wurde diese Prüfsumme weggelassen, da die Prüffunktion bereits auf der darunterliegenden Schicht (z.B. Ethernet) und auf der darüberliegenden Schicht (z.B. TCP, UDP) ausgeführt wird. Dies verbessert die Leistung, da Router die Prüfsumme nicht neu berechnen müssen, wenn sie das Hop-Limit-Feld dekrementieren. \n\nDie anderen genannten Felder sind sowohl in IPv4 als auch in IPv6 vorhanden:\n- Das Versionsfeld identifiziert die IP-Version (4 für IPv4, 6 für IPv6)\n- Quell- und Zieladressen sind in beiden Protokollversionen enthalten, obwohl sie in IPv6 aufgrund der größeren Adresslänge (128 Bit vs. 32 Bit) mehr Platz einnehmen"
+  },
+  {
+    "question": "Welche Funktion hat das 'Flow Label'-Feld im IPv6-Header?",
+    "options": [
+      "Es gibt die Gesamtlänge des IPv6-Pakets an",
+      "Es identifiziert den nächsten Header nach dem IPv6-Header",
+      "Es legt fest, dass Pakete mit demselben Label auf die gleiche Weise verarbeitet werden",
+      "Es begrenzt die maximale Anzahl von Hops, die ein Paket durchlaufen kann"
+    ],
+    "correct": 2,
+    "explain": "Das **Flow Label**-Feld im IPv6-Header hat die Funktion, dass es festlegt, dass **Pakete mit demselben Label auf die gleiche Weise verarbeitet werden** sollen. Dieses 20-Bit-Feld wurde eingeführt, um die Verarbeitung von Echtzeit-Datenströmen zu verbessern, indem es Routern ermöglicht, zusammengehörige Pakete zu identifizieren und ähnlich zu behandeln, ohne den tieferen Inhalt der Pakete inspizieren zu müssen. Dies kann besonders für Anwendungen wie VoIP oder Videostreaming nützlich sein, die eine konsistente Behandlung von Paketen erfordern."
+  },
+  {
+    "question": "Welche Aussage zur Länge des IPv6-Headers im Vergleich zum IPv4-Header ist korrekt?",
+    "options": [
+      "Der IPv6-Header ist kürzer als der IPv4-Header",
+      "Der IPv6-Header hat die gleiche Länge wie der IPv4-Header",
+      "Der IPv6-Header ist länger als der IPv4-Header, aber enthält weniger Felder",
+      "Der IPv6-Header ist länger als der IPv4-Header und enthält mehr Felder"
+    ],
+    "correct": 2,
+    "explain": "Der IPv6-Header ist **länger als der IPv4-Header, aber enthält weniger Felder**. Der IPv6-Header hat eine feste Länge von 40 Byte, während der IPv4-Header eine Grundlänge von 20 Byte hat (mit Optionen bis zu 60 Byte). Trotz der größeren Länge wurde der IPv6-Header vereinfacht und enthält weniger Felder als der IPv4-Header. Der Hauptgrund für die größere Länge sind die IPv6-Adressen (Quell- und Zieladresse), die jeweils 16 Byte (128 Bit) umfassen, im Vergleich zu 4 Byte (32 Bit) bei IPv4. Die Reduzierung der Feldanzahl führt zu einer effizienteren Paketverarbeitung durch Router."
+  },
+  {
+    "question": "Wie reduziert IPv6 die Komplexität der Netzwerkkonfiguration im Vergleich zu IPv4?",
+    "options": [
+      "Durch die Einführung von mehr Header-Feldern",
+      "Durch die Reduzierung der Notwendigkeit von NAT",
+      "Durch die Implementierung komplexerer Routing-Algorithmen",
+      "Durch die Verringerung der Adresslänge"
+    ],
+    "correct": 1,
+    "explain": "IPv6 reduziert die Netzwerkkomplexität hauptsächlich **durch die Reduzierung der Notwendigkeit von NAT** (Network Address Translation). NAT wurde in IPv4-Netzwerken weit verbreitet eingesetzt, um mit dem Mangel an öffentlichen IPv4-Adressen umzugehen, indem mehrere Geräte eine einzige öffentliche IP-Adresse teilen können. Dies fügt jedoch Komplexität hinzu, erhöht die Latenz und erschwert die Fehlerbehebung. \n\nDurch den riesigen Adressraum von IPv6 wird NAT weitgehend überflüssig, da genügend eindeutige öffentliche IPv6-Adressen für praktisch jedes Gerät zur Verfügung stehen. Dies vereinfacht die Netzwerkkonfiguration und ermöglicht eine bessere Ende-zu-Ende-Konnektivität. Außerdem unterstützt IPv6 Funktionen wie Stateless Address Autoconfiguration (SLAAC), die die Netzwerkkonfiguration weiter vereinfachen."
+  },
+  {
+    "question": "Wofür werden Erweiterungs-Header (EH) in IPv6 verwendet?",
+    "options": [
+      "Um den IPv6-Header zu verkürzen und die Effizienz zu steigern",
+      "Um Kompatibilität mit IPv4-Headern herzustellen",
+      "Um optionale Netzwerkschichtinformationen wie Fragmentierung oder Sicherheit bereitzustellen",
+      "Um beschädigte IPv6-Header zu reparieren"
+    ],
+    "correct": 2,
+    "explain": "Erweiterungs-Header (EH) in IPv6 werden verwendet, um **optionale Netzwerkschichtinformationen wie Fragmentierung oder Sicherheit bereitzustellen**. Diese Header sind optional und werden zwischen dem IPv6-Header und der Payload angeordnet. Sie bieten zusätzliche Funktionen, ohne den Basis-IPv6-Header zu verkomplizieren. Zu den häufig verwendeten Erweiterungs-Headern gehören:\n\n- Fragment-Header (für die Fragmentierung von Paketen)\n- Authentication Header (AH) und Encapsulating Security Payload (ESP) für IPsec-Sicherheit\n- Hop-by-Hop Options Header\n- Destination Options Header\n- Routing Header (für spezielle Routing-Anforderungen)\n- Mobility Header (für Mobile IPv6)\n\nDies ermöglicht eine modulare Erweiterung der IPv6-Funktionalität, ohne den Basis-Header zu ändern oder zu verkomplizieren."
+  },
+  {
+    "question": "Das Hop-Limit-Feld im IPv6-Header entspricht welchem Feld im IPv4-Header?",
+    "options": [
+      "Time-to-Live (TTL)",
+      "Header Length",
+      "Fragment Offset",
+      "Flags"
+    ],
+    "correct": 0,
+    "explain": "Das **Hop-Limit**-Feld im IPv6-Header entspricht dem **Time-to-Live (TTL)**-Feld im IPv4-Header. Beide Felder haben die gleiche Funktion: Sie begrenzen die Lebensdauer eines Pakets im Netzwerk, indem sie einen Zähler enthalten, der von jedem Router, der das Paket weiterleitet, um eins dekrementiert wird. Wenn der Wert 0 erreicht, wird das Paket verworfen. \n\nDieser Mechanismus verhindert, dass Pakete bei Routing-Schleifen endlos im Netzwerk zirkulieren können. Der Hauptunterschied liegt in der Bezeichnung: Während 'Time-to-Live' eine zeitliche Komponente suggeriert, verdeutlicht 'Hop-Limit' besser, dass es sich um die Anzahl der Router-Hops handelt, die ein Paket maximal durchlaufen kann."
+  },
+  {
+    "question": "Welche Aussage zum Umgang mit Optionen im IPv6-Header im Vergleich zum IPv4-Header ist korrekt?",
+    "options": [
+      "IPv6 hat keine Optionen, da alle notwendigen Funktionen im Basis-Header enthalten sind",
+      "IPv6 und IPv4 behandeln Optionen auf identische Weise",
+      "IPv6 platziert Optionen in separaten Erweiterungs-Headern statt im Basis-Header",
+      "IPv6 verwendet dasselbe Options-Feld wie IPv4, aber mit mehr verfügbaren Bits"
+    ],
+    "correct": 2,
+    "explain": "IPv6 **platziert Optionen in separaten Erweiterungs-Headern statt im Basis-Header**. Dies ist ein wesentlicher Unterschied zum IPv4-Design, wo Optionen Teil des Basis-Headers sind und diesen auf bis zu 60 Byte verlängern können. \n\nDiese Änderung in IPv6 bietet mehrere Vorteile:\n1. Der Basis-IPv6-Header hat eine feste Länge von 40 Byte, was die Verarbeitung durch Router vereinfacht und beschleunigt\n2. Erweiterungs-Header müssen nur von Routern oder dem Zielhost verarbeitet werden, die an der jeweiligen Option interessiert sind\n3. Neue Erweiterungs-Header können definiert werden, ohne das Basis-Protokoll zu ändern\n4. Die Reihenfolge der Erweiterungs-Header ist definiert, was die Verarbeitung effizienter macht\n\nDies ist ein Beispiel für die Modernisierung und Optimierung des Protokolldesigns in IPv6 im Vergleich zu IPv4."
+  },
+  {
+    "question": "Was passiert, wenn ein Router ein Paket erhält und die Ziel-IPv4-Adresse ausliest?",
+    "options": [
+      "Er sendet es automatisch an seinen Standard-Gateway",
+      "Er sucht in seiner Routing-Tabelle nach der besten Übereinstimmung",
+      "Er kapselt es immer direkt in einen neuen Layer 2-Header",
+      "Er leitet es immer an das Netzwerk mit der größten Bandbreite weiter"
+    ],
+    "correct": 1,
+    "explain": "Wenn ein Paket an einer Router-Schnittstelle ankommt, liest der Router die Ziel-IPv4-Adresse aus und durchsucht seine eigene Routing-Tabelle, um die beste Übereinstimmung (longest match) zu finden. Anhand dieser Information entscheidet der Router, wohin das Paket weitergeleitet werden soll. Die Routing-Tabelle enthält alle bekannten Netzwerkadressen (Präfixe) und gibt an, an welche Schnittstelle oder zu welchem nächsten Router (Next Hop) ein Paket weitergeleitet werden soll."
+  },
+  {
+    "question": "Welche Arten von Routeneinträgen werden in der Routing-Tabelle eines Routers gespeichert?",
+    "options": [
+      "Nur Standard-Routen und automatische Routen",
+      "Lokale Routen, direkt verbundene Routen und Standard-Routen",
+      "Direkt verbundene Netzwerke, Remote-Netzwerke und Standardroute",
+      "Switch-Routen, Host-Routen und Default-Routen"
+    ],
+    "correct": 2,
+    "explain": "In der Routing-Tabelle eines Routers werden drei Arten von Routeneinträgen gespeichert:\n\n1. **Direkt verbundene Netzwerke**: Diese stammen von den aktiven Schnittstellen des Routers und werden automatisch hinzugefügt, wenn eine Schnittstelle mit einer IP-Adresse konfiguriert und aktiviert wird.\n\n2. **Remote-Netzwerke**: Diese beziehen sich auf Netzwerke, die mit anderen Routern verbunden sind. Sie werden entweder manuell konfiguriert oder durch dynamische Routing-Protokolle gelernt.\n\n3. **Standardroute**: Ähnlich wie bei Hosts dient die Standardroute als letztmögliches Gateway, wenn keine spezifischere Route für ein Ziel gefunden wird."
+  },
+  {
+    "question": "Wie werden in der Routing-Tabelle direkt verbundene Netzwerke gekennzeichnet?",
+    "options": [
+      "Mit dem Code 'D'",
+      "Mit dem Code 'C'",
+      "Mit dem Code 'S'",
+      "Mit dem Code 'R'"
+    ],
+    "correct": 1,
+    "explain": "In der Routing-Tabelle werden direkt verbundene Netzwerke mit dem Code 'C' gekennzeichnet, wobei 'C' für 'Connected' (verbunden) steht. Diese Einträge werden automatisch erstellt, sobald eine Schnittstelle mit einer IP-Adresse konfiguriert und aktiviert wird. Zusätzlich zum 'C'-Eintrag für das Netzwerk wird auch ein 'L'-Eintrag (Local) für die spezifische IP-Adresse der Schnittstelle hinzugefügt."
+  },
+  {
+    "question": "Was ist der Unterschied zwischen statischem und dynamischem Routing?",
+    "options": [
+      "Statisches Routing erfolgt automatisch, dynamisches Routing erfordert manuelle Konfiguration",
+      "Statisches Routing betrifft nur lokale Netzwerke, dynamisches Routing nur Remote-Netzwerke",
+      "Statisches Routing verwendet feste IP-Adressen, dynamisches Routing verwendet DHCP",
+      "Statisches Routing erfordert manuelle Konfiguration, dynamisches Routing passt sich automatisch an Änderungen an"
+    ],
+    "correct": 3,
+    "explain": "Der fundamentale Unterschied zwischen statischem und dynamischem Routing liegt in der Anpassungsfähigkeit und Konfigurationsweise:\n\n**Statisches Routing**:\n- Erfordert manuelle Konfiguration durch den Administrator\n- Passt sich nicht automatisch an Topologieänderungen an\n- Bei Änderungen der Netzwerktopologie müssen neue statische Routen manuell konfiguriert werden\n- Eignet sich für kleine Netzwerke mit wenigen redundanten Verbindungen\n\n**Dynamisches Routing**:\n- Router tauschen automatisch Routing-Informationen aus\n- Passt sich automatisch an Topologieänderungen an\n- Erkennt neue Pfade, wenn die bestehenden nicht mehr verfügbar sind\n- Erfordert nur die grundlegende Konfiguration des Routing-Protokolls und die Freigabe der direkt angeschlossenen Netzwerke"
+  },
+  {
+    "question": "Wofür steht das 'L' in der Routing-Tabelle eines Cisco-Routers?",
+    "options": [
+      "Link state - Verbindungsstatus",
+      "LAN - Local Area Network",
+      "Loop - Schleifenfreie Route",
+      "Local - Die IP-Adresse der lokalen Schnittstelle"
+    ],
+    "correct": 3,
+    "explain": "In der Routing-Tabelle eines Cisco-Routers steht der Code 'L' für 'Local' und bezeichnet die IP-Adresse einer direkt verbundenen, lokalen Schnittstelle. Für jede aktive Schnittstelle mit einer konfigurierten IP-Adresse werden automatisch zwei Einträge erstellt: ein 'C'-Eintrag (Connected) für das gesamte verbundene Netzwerk und ein 'L'-Eintrag (Local) speziell für die IP-Adresse der Schnittstelle selbst. Der 'L'-Eintrag hat typischerweise eine /32-Maske (für IPv4), was einer einzelnen Hostadresse entspricht."
+  },
+  {
+    "question": "Ein Router fügt seinem IPv4-Routing-Table einen Routeneintrag für ein Remote-Netzwerk mit dem Code 'O' hinzu. Wie wurde diese Route gelernt?",
+    "options": [
+      "Über das Enhanced Interior Gateway Routing Protocol (EIGRP)",
+      "Über eine statisch konfigurierte Route",
+      "Über das Open Shortest Path First Protocol (OSPF)",
+      "Über das Routing Information Protocol (RIP)"
+    ],
+    "correct": 2,
+    "explain": "Ein Routeneintrag mit dem Code 'O' in der IPv4-Routing-Tabelle zeigt an, dass diese Route über das **Open Shortest Path First (OSPF)** Protokoll gelernt wurde. OSPF ist ein weit verbreitetes Link-State-Routing-Protokoll für IP-Netzwerke, das zum dynamischen Austausch von Routing-Informationen zwischen Routern verwendet wird. Andere häufige Codes sind:\n- 'D' für EIGRP (Enhanced Interior Gateway Routing Protocol)\n- 'S' für statisch konfigurierte Routen\n- 'R' für RIP (Routing Information Protocol)"
+  },
+  {
+    "question": "Welche Aussage zum Prinzip des 'longest match' bei Routing-Entscheidungen ist korrekt?",
+    "options": [
+      "Es priorisiert die Route mit der längsten Übertragungsdistanz",
+      "Es priorisiert die Standardroute über spezifischere Routen",
+      "Es priorisiert die Route mit der längsten Präfix-Übereinstimmung (spezifischste Route)",
+      "Es priorisiert die zuletzt konfigurierte Route im Router"
+    ],
+    "correct": 2,
+    "explain": "Das Prinzip des 'longest match' (längste Übereinstimmung) bedeutet, dass der Router bei der Paketweiterleitung die Route auswählt, die die spezifischste oder präziseste Übereinstimmung mit der Ziel-IP-Adresse aufweist. Je länger das übereinstimmende Präfix (Netzmaske), desto spezifischer ist die Route.\n\nBeispiel: Wenn in der Routing-Tabelle Routen für 10.0.0.0/8 und 10.1.1.0/24 existieren und ein Paket an 10.1.1.10 gesendet werden soll, wird die Route für 10.1.1.0/24 verwendet, da sie eine längere und spezifischere Übereinstimmung darstellt. Die Standardroute (0.0.0.0/0) hat die kürzeste Präfixlänge und wird nur verwendet, wenn keine spezifischere Route gefunden wird."
+  },
+  {
+    "question": "Bei einer Netzwerktopologieänderung passt sich eine statische Route automatisch an den neuen besten Pfad an.",
+    "options": ["Wahr", "Falsch"],
+    "correct": 1,
+    "explain": "Diese Aussage ist **falsch**. Eine statische Route passt sich nicht automatisch an Topologieänderungen an. Wenn sich die Netzwerktopologie ändert und der in der statischen Route definierte Pfad nicht mehr verfügbar ist, muss der Netzwerkadministrator die Route manuell neu konfigurieren, um einen alternativen Pfad zu definieren. Dies ist einer der Hauptnachteile statischer Routen im Vergleich zu dynamischen Routing-Protokollen, die sich automatisch anpassen können, wenn sich die Netzwerktopologie ändert. Dynamische Routing-Protokolle tauschen kontinuierlich Routing-Informationen aus und können automatisch neue beste Pfade bestimmen, wenn der aktuelle Pfad ausfällt."
+  },
+  {
+    "question": "Welche Informationen enthält ein Router-Routeneintrag für ein Remote-Netzwerk typischerweise?",
+    "options": [
+      "Nur die Ziel-MAC-Adresse",
+      "Die Remote-Netzwerkadresse und ein time-to-live Wert",
+      "Die Remote-Netzwerkadresse und die IP-Adresse des Next-Hop-Routers",
+      "Nur die IP-Adresse des Client-Hosts im Remote-Netzwerk"
+    ],
+    "correct": 2,
+    "explain": "Ein Router-Routeneintrag für ein Remote-Netzwerk enthält typischerweise die Remote-Netzwerkadresse (das Zielnetzwerk) und die IP-Adresse des Next-Hop-Routers (über welchen Router das Paket weitergeleitet werden soll). Bei statischen Routen wird dies explizit konfiguriert, z.B. mit dem Befehl `ip route [Ziel-Netzwerk] [Netzmaske] [Next-Hop-IP-Adresse]`. Bei dynamisch gelernten Routen werden diese Informationen über Routing-Protokolle ausgetauscht. Diese Informationen sind essentiell, damit der Router weiß, wohin er Pakete weiterleiten muss, die für Netzwerke bestimmt sind, die nicht direkt mit ihm verbunden sind."
+  },
+  {
+    "question": "Was passiert, wenn ein Router ein Paket erhält und keine spezifische Route für das Ziel in seiner Routing-Tabelle hat?",
+    "options": [
+      "Das Paket wird verworfen und eine ICMP-Nachricht wird zurückgesendet",
+      "Es leitet das Paket an die Standardroute (Gateway of last resort) weiter",
+      "Es führt eine ARP-Anfrage durch, um die MAC-Adresse des Ziels zu finden",
+      "Es sendet eine Broadcast-Nachricht an alle verbundenen Netzwerke"
+    ],
+    "correct": 1,
+    "explain": "Wenn ein Router ein Paket erhält und keine spezifische Route für das Ziel in seiner Routing-Tabelle hat, wird das Paket an die Standardroute weitergeleitet, die auch als 'Gateway of last resort' bezeichnet wird. Die Standardroute hat das Präfix 0.0.0.0/0 und wird in der Routing-Tabelle häufig mit 'S*' gekennzeichnet, wenn sie statisch konfiguriert wurde. Sie fungiert als letzte Möglichkeit für Pakete, deren Ziel nicht durch andere spezifischere Routen abgedeckt wird. Wenn keine Standardroute konfiguriert ist, wird das Paket verworfen und in der Regel eine ICMP 'Destination Unreachable'-Nachricht zurückgesendet."
+  },
+  {
+    "question": "Was ist ein Vorteil von dynamischen Routing-Protokollen gegenüber statischen Routen?",
+    "options": [
+      "Sie benötigen weniger Ressourcen auf dem Router",
+      "Sie sind einfacher zu konfigurieren und zu verwalten",
+      "Sie passen sich automatisch an Topologieänderungen an",
+      "Sie bieten immer kürzere Pfade zu den Zielnetzwerken"
+    ],
+    "correct": 2,
+    "explain": "Ein wesentlicher Vorteil von dynamischen Routing-Protokollen gegenüber statischen Routen ist, dass sie sich automatisch an Topologieänderungen anpassen können. Wenn ein Link ausfällt oder neue Netzwerke hinzukommen, tauschen Router, die dynamische Routing-Protokolle verwenden, diese Informationen automatisch aus und aktualisieren ihre Routing-Tabellen entsprechend, ohne dass ein Administrator eingreifen muss. Dies erhöht die Netzwerkresillienz und reduziert den Verwaltungsaufwand in größeren oder komplexeren Netzwerken. Allerdings benötigen dynamische Routing-Protokolle in der Regel mehr Ressourcen (CPU, Speicher, Bandbreite) als statische Routen und können in der initialen Konfiguration komplexer sein."
+  },
+  {
+    "question": "Wenn ein Router eine Schnittstelle mit einer IP-Adresse konfiguriert und aktiviert, welche Arten von Routen werden automatisch zur Routing-Tabelle hinzugefügt?",
+    "options": [
+      "Nur eine Remote-Route",
+      "Eine direkt verbundene Route (C) und eine lokale Route (L)",
+      "Eine OSPF-Route und eine EIGRP-Route",
+      "Nur eine Standardroute"
+    ],
+    "correct": 1,
+    "explain": "Wenn ein Router eine Schnittstelle mit einer IP-Adresse konfiguriert und aktiviert, werden automatisch zwei Arten von Routen zur Routing-Tabelle hinzugefügt:\n\n1. Eine **direkt verbundene Route** (gekennzeichnet mit dem Code 'C' für Connected), die das gesamte Netzwerksegment repräsentiert, an das die Schnittstelle angeschlossen ist.\n\n2. Eine **lokale Route** (gekennzeichnet mit dem Code 'L' für Local), die speziell die IP-Adresse der Schnittstelle selbst repräsentiert, typischerweise mit einer /32-Maske für IPv4.\n\nDiese Routen werden ohne zusätzliche Konfiguration automatisch erstellt und ermöglichen die grundlegende Konnektivität zu direkt verbundenen Netzwerken."
+  },
+  {
+    "question": "In welchem Fall ist die Verwendung von statischen Routen besonders sinnvoll?",
+    "options": [
+      "In sehr großen Netzwerken mit vielen Routern",
+      "In Netzwerken mit häufigen Topologieänderungen",
+      "In kleinen Netzwerken mit wenigen redundanten Verbindungen",
+      "In Netzwerken mit hoher Bandbreitenanforderung"
+    ],
+    "correct": 2,
+    "explain": "Die Verwendung von statischen Routen ist besonders sinnvoll in kleinen Netzwerken mit wenigen redundanten Verbindungen. In solchen Umgebungen ist die manuelle Konfiguration überschaubar, und die Wahrscheinlichkeit häufiger Topologieänderungen ist gering. Statische Routen bieten in diesen Szenarien mehrere Vorteile:\n\n- Sie verbrauchen weniger Router-Ressourcen (CPU, Speicher)\n- Sie erzeugen keinen Routing-Protokoll-Verkehr\n- Sie bieten mehr Kontrolle über den exakten Pfad der Pakete\n- Sie sind sicherer, da keine Routing-Informationen ausgetauscht werden\n\nIn großen Netzwerken oder solchen mit häufigen Änderungen würde der administrative Aufwand für die manuelle Aktualisierung statischer Routen jedoch schnell unpraktisch werden."
+  },
+  {
+    "question": "Was ist der Zweck einer Standardroute in der Routing-Tabelle eines Routers?",
+    "options": [
+      "Sie dient als Backup, wenn die primäre Route ausfällt",
+      "Sie ist das letztmögliche Gateway für Pakete ohne spezifische Route",
+      "Sie wird nur für direkt verbundene Netzwerke verwendet",
+      "Sie bestimmt den Pfad mit der höchsten Bandbreite im Netzwerk"
+    ],
+    "correct": 1,
+    "explain": "Eine Standardroute (auch als Default Route bekannt) dient als letztmögliches Gateway für Pakete, für die keine spezifische Route in der Routing-Tabelle existiert. Sie wird verwendet, wenn keine längere Präfix-Übereinstimmung (longest match) gefunden wird. Die Standardroute hat die Netzwerkadresse 0.0.0.0 mit der Netzmaske 0.0.0.0 (oder /0), was bedeutet, dass sie zu jeder IP-Adresse passt, aber mit der kürzestmöglichen Präfixlänge. In der Routing-Tabelle wird sie oft als 'S*' gekennzeichnet, wenn sie statisch konfiguriert wurde, und als 'Gateway of last resort' bezeichnet. In vielen Netzwerkkonfigurationen werden Standardrouten verwendet, um den Verkehr zu externen Netzwerken (z.B. dem Internet) zu leiten."
+  },
+  {
+    "question": "Welche der folgenden Aktionen führt ein dynamisches Routingprotokoll automatisch aus?",
+    "options": [
+      "Manuelle Konfiguration der Schnittstellen mit IP-Adressen",
+      "Bestimmung des besten Pfads und Anpassung bei Topologieänderungen",
+      "Deaktivierung nicht benötigter Schnittstellen zur Energieeinsparung",
+      "Automatische Zuweisung von IP-Adressen an Clients im Netzwerk"
+    ],
+    "correct": 1,
+    "explain": "Ein dynamisches Routingprotokoll führt automatisch folgende Schritte aus:\n\n1. Erkennung von Remote-Netzwerken durch Austausch von Routing-Informationen\n2. Pflege aktueller Routing-Informationen\n3. Auswahl des besten Pfads zu Zielnetzwerken basierend auf Metriken\n4. Bestimmung eines neuen besten Pfads, wenn der aktuelle Pfad nicht mehr verfügbar ist\n\nDiese Automatisierung macht dynamische Routing-Protokolle besonders wertvoll in größeren Netzwerken oder solchen mit häufigen Topologieänderungen. Der Netzwerkadministrator muss lediglich die Basiskonfiguration des dynamischen Routing-Protokolls vornehmen und die direkt angeschlossenen Netzwerke freigeben. Die Zuweisung von IP-Adressen an Clients wird hingegen von DHCP-Servern übernommen, nicht von Routing-Protokollen."
+  },
+  {
+    "question": "Ein Router hat in seiner Routing-Tabelle Einträge für die Netzwerke 10.0.0.0/8 und 10.1.1.0/24. Welche Route wird für ein Paket mit der Zieladresse 10.1.1.10 verwendet?",
+    "options": [
+      "10.0.0.0/8, weil es ein größeres Netzwerk ist",
+      "10.1.1.0/24, weil es die längste Präfix-Übereinstimmung hat",
+      "Beide Routen werden verwendet (Load Balancing)",
+      "Die Standardroute (0.0.0.0/0)"
+    ],
+    "correct": 1,
+    "explain": "Für ein Paket mit der Zieladresse 10.1.1.10 wird die Route für das Netzwerk 10.1.1.0/24 verwendet, weil sie die längste Präfix-Übereinstimmung (longest match) hat. Bei Routing-Entscheidungen sucht der Router nach der spezifischsten Route, die mit der Zieladresse übereinstimmt. Je länger das übereinstimmende Präfix (je größer die Zahl nach dem /), desto spezifischer ist die Route.\n\nIn diesem Fall:\n- 10.0.0.0/8 deckt alle Adressen von 10.0.0.0 bis 10.255.255.255 ab (weniger spezifisch)\n- 10.1.1.0/24 deckt nur Adressen von 10.1.1.0 bis 10.1.1.255 ab (spezifischer)\n\nDa 10.1.1.10 in beiden Bereichen liegt, aber 10.1.1.0/24 spezifischer ist, wird diese Route verwendet."
+  },
+  {
+    "question": "Wodurch unterscheidet sich die Paketweiterleitungsentscheidung eines Hosts von der eines Routers?",
+    "options": [
+      "Hosts verwenden keine Routing-Tabellen",
+      "Router prüfen nie die MAC-Adresse, nur die IP-Adresse",
+      "Hosts senden Pakete nur an das Standard-Gateway, wenn das Ziel im Remote-Netzwerk liegt",
+      "Router haben keine Standardroute wie Hosts"
+    ],
+    "correct": 2,
+    "explain": "Der wesentliche Unterschied in der Paketweiterleitungsentscheidung zwischen einem Host und einem Router besteht darin, dass ein Host Pakete nur dann an sein Standard-Gateway (meist ein Router) weiterleitet, wenn das Ziel in einem Remote-Netzwerk liegt. Ein Host prüft zunächst, ob die Ziel-IP in seinem lokalen Subnetz liegt. Wenn ja, kommuniziert er direkt; wenn nicht, sendet er das Paket an sein Standard-Gateway.\n\nEin Router hingegen ist darauf spezialisiert, Pakete zwischen verschiedenen Netzwerken weiterzuleiten. Er durchsucht seine komplexere Routing-Tabelle nach der besten Übereinstimmung für die Ziel-IP-Adresse und leitet das Paket entsprechend weiter. Router haben in der Regel viel detailliertere Routing-Tabellen mit Einträgen für verschiedene Netzwerke, während Host-Routing-Tabellen typischerweise einfacher sind."
+  },
+  {
+    "question": "Wenn ein Paket an der Schnittstelle eines Routers ankommt, welcher Schritt erfolgt als erstes?",
+    "options": [
+      "Der Router sucht nach dem besten Pfad in der Routing-Tabelle",
+      "Der Router entkapselt den Layer 2-Header und -Trailer",
+      "Der Router kapselt das Paket in einen neuen Layer 2-Header ein",
+      "Der Router sendet eine ARP-Anfrage, um die MAC-Adresse des Next Hop zu ermitteln"
+    ],
+    "correct": 1,
+    "explain": "Wenn ein Paket an der Schnittstelle eines Routers ankommt, ist der erste Schritt, dass der Router den Layer 2-Header (Ethernet-Header) und -Trailer entkapselt. Diese Layer 2-Informationen werden nur für die Kommunikation auf dem lokalen Netzwerksegment benötigt und sind nicht mehr relevant, sobald das Paket den Router erreicht hat. Nach dem Entkapseln kann der Router auf die Layer 3-Informationen (IP-Header) zugreifen, die Ziel-IP-Adresse auslesen und in seiner Routing-Tabelle nach der besten Übereinstimmung suchen. Erst nachdem der Router entschieden hat, wohin das Paket weitergeleitet werden soll, wird es in einen neuen Layer 2-Header und -Trailer eingekapselt, der für das nächste Netzwerksegment geeignet ist."
+  },
+  {
+    "question": "Die Standardroute in einer Router-Routing-Tabelle hat welche Netzwerkadresse und Netzmaske?",
+    "options": [
+      "255.255.255.255/32",
+      "127.0.0.1/8",
+      "0.0.0.0/0",
+      "10.0.0.0/8"
+    ],
+    "correct": 2,
+    "explain": "Die Standardroute in einer Router-Routing-Tabelle hat die Netzwerkadresse 0.0.0.0 und die Netzmaske 0.0.0.0 (oder in CIDR-Notation: 0.0.0.0/0). Diese Kombination repräsentiert jedes mögliche Ziel, da eine Netzmaske von 0.0.0.0 bedeutet, dass keine Bits der Zieladresse berücksichtigt werden müssen, um eine Übereinstimmung zu finden. Die Standardroute wird als letzte Möglichkeit verwendet, wenn keine spezifischere Route gefunden wird, und wird häufig als 'Gateway of last resort' bezeichnet. In der Routing-Tabelle wird die Standardroute oft mit einem Sternchen (*) gekennzeichnet, wenn sie aktiv ist."
+  }
 ]
 ]
 }
