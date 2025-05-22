@@ -750,6 +750,291 @@
         "options": ["Wahr", "Falsch"],
         "correct": 1,
         "explain": "Diese Aussage ist **falsch**. Alle genannten Bezeichnungen gehören zur selben Technologiefamilie.\n\n- **Gemeinsame Basis:** Alle Begriffe beschreiben Entwicklungsstufen oder Aspekte derselben **parallelen Schnittstelle für Massenspeicher**.\n- **Begriffsevolution:**\n  - **IDE (1984):** Integrated Disc Electronic - Ursprungsbezeichnung für Controller-Integration auf dem Laufwerk\n  - **ATA (1989):** Advanced Technology Attachment - Standardisierung von IDE als ATA-1\n  - **EIDE (1994):** Enhanced IDE - Marketing-Begriff für ATA-2 mit synchroner Arbeitsweise\n  - **ATAPI (1997):** ATA Packet Interface - Erweiterung für optische Laufwerke\n- **Kompatibilität:** Alle Varianten verwenden denselben **39-poligen Stecker** und ähnliche Kabelkonfigurationen.\n- **Rückwärtskompatibilität:** Neuere Standards können ältere Geräte ansprechen (mit entsprechend reduzierten Geschwindigkeiten).\n- **Praktische Bedeutung:** Ein moderner ATA/ATAPI-Controller kann problemlos ältere IDE-Laufwerke betreiben.\n- **Synonyme Verwendung:** In der Praxis werden diese Begriffe oft synonym verwendet."
+    },
+    {
+        "question": "Ein Techniker muss eine CNC-Fräse an einen älteren Computer anschließen, um Fertigungsanweisungen zu übertragen. Welche serielle Schnittstelle eignet sich am besten für diese industrielle Anwendung? 🔧",
+        "options": [
+            "EIA-232 (RS-232)",
+            "USB 2.0",
+            "PS/2",
+            "Apple Desktop Bus"
+        ],
+        "correct": 0,
+        "explain": "**EIA-232 (RS-232)** ist die optimale Wahl für die Verbindung zwischen Computer und CNC-Maschinen.\n\n- **Industrietauglichkeit:** RS-232 ist robust und bewährt sich seit Jahrzehnten in industriellen Umgebungen\n- **Spezielle Anwendung:** Diese Schnittstelle wurde explizit für die Übertragung von Dateien mit Fertigungsanweisungen an CNC-Maschinen entwickelt und eingesetzt\n- **Zuverlässigkeit:** Serielle Datenübertragung mit einfacher, aber zuverlässiger Protokollstruktur\n- **Kompatibilität:** Viele CNC-Maschinen verwenden standardmäßig RS-232-Anschlüsse\n- **Andere Optionen:** USB ist moderner, aber nicht bei allen älteren CNC-Maschinen verfügbar; PS/2 und ADB sind für Eingabegeräte konzipiert, nicht für Datenübertragung an Maschinen"
+    },
+    {
+        "question": "Bei der Einrichtung eines Netzwerks stellt ein Administrator fest, dass sowohl Computer als auch Switches denselben 8-poligen Steckertyp verwenden. Wie heißt dieser Standard?",
+        "options": [
+            "D-Sub 9",
+            "Mini-DIN",
+            "RJ-45",
+            "Centronics"
+        ],
+        "correct": 2,
+        "explain": "**RJ-45 (Registered Jack Nr. 45)** ist der Standard-Netzwerkstecker mit 8 Polen.\n\n- **Universelle Netzwerkschnittstelle:** RJ-45 wird sowohl an Computer-Netzwerkkarten als auch an Netzwerkhardware wie Switches, Hubs und Routern verwendet\n- **8-polige Konfiguration:** Der Stecker verfügt über 8 Kontakte, die für Ethernet-Verbindungen optimiert sind\n- **Vielseitige Anwendung:** Ermöglicht Verbindungen zwischen Computern untereinander sowie zwischen Computern und Netzwerkgeräten wie Netzwerkdruckern oder Netzwerkspeichern\n- **Serielle Datenübertragung:** Trotz der 8 Pole erfolgt die Datenübertragung seriell über strukturierte Verkabelung\n- **Unterscheidung:** D-Sub 9 wird für RS-232 verwendet, Mini-DIN für PS/2 oder ADB, Centronics für parallele Druckerschnittstellen"
+    },
+    {
+        "question": "Ein Audioengineer möchte ein hochwertiges digitales Audiosignal von seinem Computer an eine professionelle Mischpult-Anlage übertragen. Welche Schnittstelle bietet die beste digitale Übertragungsqualität?",
+        "options": [
+            "3,5 mm-Klinke Stereo",
+            "S/PDIF",
+            "Mini-DIN 6-polig",
+            "D-Sub 25"
+        ],
+        "correct": 1,
+        "explain": "**S/PDIF (Sony-/Philips-Digital Interface)** ist die optimale Wahl für hochwertige digitale Audioübertragung.\n\n- **Digitale Übertragung:** S/PDIF überträgt Audiosignale vollständig digital, wodurch Qualitätsverluste durch analog-digital Wandlungen vermieden werden\n- **Zwei Varianten verfügbar:**\n  - **Optisch (TOSLINK):** Lichtwellenleiter-basiert, immun gegen elektromagnetische Störungen\n  - **Koaxial (Cinch):** Elektrische Übertragung über Koaxialkabel\n- **Professioneller Standard:** Weit verbreitet in der Audiotechnik und Hi-Fi-Bereich\n- **Verlustfreie Qualität:** Erhält die ursprüngliche digitale Audioqualität ohne Kompression oder Interferenzen\n- **Vergleich:** 3,5 mm-Klinke überträgt nur analog; Mini-DIN 6 ist für Eingabegeräte; D-Sub 25 für parallele Datenübertragung"
+    },
+    {
+        "question": "USB hat die parallele IEEE 1284-Schnittstelle vollständig ersetzt, da USB grundsätzlich schneller ist als parallele Übertragung.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die Ablösung erfolgte nicht primär wegen der Geschwindigkeit.\n\n- **Komplexere Gründe:** USB ersetzte IEEE 1284 aus verschiedenen Gründen, nicht nur wegen der Geschwindigkeit\n- **Praktische Vorteile von USB:**\n  - **Plug & Play:** Automatische Erkennung und Konfiguration\n  - **Hot-Plugging:** Geräte können im laufenden Betrieb angeschlossen werden\n  - **Stromversorgung:** USB kann Geräte mit Strom versorgen\n  - **Kleinere Stecker:** Kompaktere Bauform\n- **IEEE 1284 Eigenschaften:** Parallele Übertragung war bei frühen Versionen teilweise sogar schneller als USB 1.0/1.1\n- **Evolutionärer Prozess:** Die Ablösung war ein gradueller Prozess basierend auf Benutzerfreundlichkeit und Vielseitigkeit\n- **Historischer Kontext:** IEEE 1284 wurde hauptsächlich für Drucker verwendet (LPT/PRN-Anschlüsse), während USB universeller einsetzbar war"
+    },
+    {
+        "question": "Bei der Restaurierung eines vintage Apple-Computers aus den 1990ern muss ein Sammler eine Maus und Tastatur anschließen. Welche spezielle serielle Schnittstelle benötigt er dafür? 🖱️",
+        "options": [
+            "PS/2",
+            "Apple Desktop Bus (ADB)",
+            "EIA-232",
+            "IEEE 1284"
+        ],
+        "correct": 1,
+        "explain": "**Apple Desktop Bus (ADB)** ist die spezifische Schnittstelle für vintage Apple-Computer.\n\n- **Apple-spezifisch:** ADB wurde exklusiv von Apple für ihre Computer entwickelt und verwendet\n- **Eingabegeräte-Spezialist:** Konzipiert für periphere Eingabegeräte wie Mäuse, Tastaturen, Joysticks, Grafiktabletts und Trackballs\n- **Serielle Übertragung:** Nutzt serielle Datenübertragung über Mini-DIN 4-polige Stecker\n- **Zeitraum:** Hauptsächlich in den 1980er und 1990er Jahren bei Apple-Computern verwendet\n- **Besonderheit:** Ermöglichte auch den Anschluss von Software-Dongles (Kopierschutz-Hardware)\n- **Unterscheidung:** PS/2 war IBM/PC-Standard; EIA-232 für serielle Kommunikation zwischen Computern; IEEE 1284 für parallele Druckerverbindungen\n- **Steckertyp:** Mini-DIN mit 4 Polen, sowohl male als auch female Varianten verfügbar"
+    },
+    {
+        "question": "Ein IT-Spezialist konfiguriert einen Netzwerk-Switch und benötigt direkten Zugang zur Konsole für die Ersteinrichtung. Welche bewährte Schnittstelle wird typischerweise für diesen Zweck verwendet?",
+        "options": [
+            "RJ-45 Ethernet",
+            "USB-C",
+            "EIA-232 Console",
+            "IEEE 1284"
+        ],
+        "correct": 2,
+        "explain": "**EIA-232 Console** ist die Standardschnittstelle für die direkte Konfiguration von Netzwerkgeräten.\n\n- **Konsolen-Zugang:** EIA-232 wird spezifisch als 'Console'-Schnittstelle an Netzwerk-Switches bezeichnet\n- **Out-of-Band-Management:** Ermöglicht Zugriff auch wenn das Netzwerk nicht funktioniert oder noch nicht konfiguriert ist\n- **Direkte Verbindung:** Computer kann direkt über serielles Kabel mit dem Switch verbunden werden\n- **Zuverlässige Konfiguration:** Bewährte Methode für Ersteinrichtung und Troubleshooting\n- **Terminal-Emulation:** Verwendet Terminal-Software zur Darstellung der Switch-Benutzeroberfläche\n- **Industriestandard:** Fast alle professionellen Netzwerkgeräte verfügen über eine RS-232-Konsole\n- **Warum nicht RJ-45:** Ethernet-Port funktioniert erst nach der Grundkonfiguration; USB-C ist moderner, aber nicht universal bei älteren Geräten verfügbar"
+    },
+    {
+        "question": "Welcher Steckertyp wird sowohl bei der 9-poligen als auch bei der 25-poligen Variante der EIA-232-Schnittstelle verwendet?",
+        "options": [
+            "Mini-DIN",
+            "D-Sub",
+            "RJ-45",
+            "Centronics"
+        ],
+        "correct": 1,
+        "explain": "**D-Sub (D-Subminiature)** ist der Steckertyp für beide EIA-232-Varianten.\n\n- **Einheitliches Design:** Sowohl 9-polige als auch 25-polige EIA-232-Stecker verwenden die D-Sub-Bauform\n- **Varianten:**\n  - **D-Sub 9:** Moderne, kompakte Variante (9-polig, male)\n  - **D-Sub 25:** Ältere Variante (25-polig, aber nur 9 davon tatsächlich belegt, male)\n- **Charakteristische Form:** D-förmige Bauweise verhindert falsches Einstecken und sorgt für sichere Verbindung\n- **Gender-Spezifikation:** Bei EIA-232 typischerweise male (Stecker) am Kabel, female (Buchse) am Gerät\n- **Praktischer Vorteil:** D-Sub-Stecker haben oft zusätzliche Befestigungsschrauben für sichere mechanische Verbindung\n- **Abgrenzung:** Mini-DIN wird für PS/2 und ADB verwendet; RJ-45 für Netzwerk; Centronics für parallele Druckerschnittstellen"
+    },
+    {
+        "question": "Die IEEE 1284-Schnittstelle ermöglicht bidirektionale Kommunikation zwischen Computer und Drucker, im Gegensatz zu älteren parallelen Schnittstellen, die nur unidirektional arbeiten konnten.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. IEEE 1284 brachte wichtige Verbesserungen gegenüber älteren parallelen Schnittstellen.\n\n- **Bidirektionale Kommunikation:** IEEE 1284 ermöglicht Datenfluss in beide Richtungen zwischen Computer und Peripheriegerät\n- **Erweiterte Funktionen:**\n  - **Status-Rückmeldung:** Drucker kann Informationen über Papierstatus, Tintenfüllstand, Fehler an Computer senden\n  - **Erweiterte Steuerung:** Computer kann detaillierte Befehle senden und Bestätigungen empfangen\n- **Verschiedene Modi:** IEEE 1284 definiert mehrere Betriebsmodi (Compatibility, Nibble, Byte, EPP, ECP)\n- **Verbesserte Geschwindigkeit:** Höhere Datenübertragungsraten als bei älteren Parallel-Ports\n- **Anwendungen:** Nicht nur Drucker, sondern auch Scanner, Fax-Geräte und externe Laufwerke profitierten von dieser Technologie\n- **Bezeichnungen:** Auch bekannt als LPT (LineprInter) oder PRN (Printer) Port\n- **Steckertypen:** Typ A (D-Sub 25, Computer-seitig) und Typ B (Centronics 36-polig, Drucker-seitig)"
+    },
+    {
+        "question": "In einem Tonstudio soll ein 7.1-Surround-Sound-System an einen Computer angeschlossen werden. Wie viele separate analoge Audio-Ausgänge werden mindestens benötigt? 🎵",
+        "options": [
+            "2 Ausgänge",
+            "3 Ausgänge",
+            "4 Ausgänge",
+            "6 Ausgänge"
+        ],
+        "correct": 2,
+        "explain": "Für ein **7.1-Surround-System werden mindestens 4 separate Ausgänge** benötigt.\n\n- **7.1-Konfiguration bedeutet:**\n  - **7 Hauptlautsprecher:** Front Links/Rechts, Center, Rear Links/Rechts, Side Links/Rechts\n  - **1 Subwoofer (.1):** Für tiefe Frequenzen\n- **Audio-Ausgang-Zuordnung:**\n  - **Line out Speaker:** Front Links/Rechts (Stereo)\n  - **Line out Center/Subwoofer:** Center-Lautsprecher und Subwoofer\n  - **Line out Rear:** Hintere Lautsprecher Links/Rechts\n  - **Line out Side:** Seitliche Lautsprecher Links/Rechts\n- **Technische Umsetzung:** Jeder 3,5mm-Klinkenanschluss kann 2 Kanäle (Stereo) übertragen\n- **Praktische Anordnung:** Moderne Soundkarten haben farbkodierte Anschlüsse für verschiedene Lautsprecher-Positionen\n- **Alternative:** Digitale Ausgabe (S/PDIF) kann alle Kanäle über ein Kabel übertragen, benötigt aber entsprechenden Decoder"
+    },
+    {
+        "question": "Ein Museumstechniker arbeitet mit einem historischen IBM Personal System/2 Computer und muss Eingabegeräte anschließen. Welche charakteristische Eigenschaft hat die PS/2-Schnittstelle?",
+        "options": [
+            "Parallele Datenübertragung mit 25 Polen",
+            "Serielle Datenübertragung mit 6-poligem Mini-DIN",
+            "Digitale Audioübertragung",
+            "Netzwerk-Konnektivität mit 8 Polen"
+        ],
+        "correct": 1,
+        "explain": "**PS/2 verwendet serielle Datenübertragung mit 6-poligem Mini-DIN-Stecker**.\n\n- **Namensherkunft:** Benannt nach IBM's Personal System/2 (PS/2) Computer-Serie\n- **Technische Spezifikation:**\n  - **Seriell:** Daten werden nacheinander übertragen, nicht parallel\n  - **6-polig:** Mini-DIN-Stecker mit 6 Kontakten für Stromversorgung, Daten und Taktsignale\n- **Eingabegeräte:** Speziell für Mäuse, Tastaturen, Joysticks, Grafiktabletts und Trackballs entwickelt\n- **Farbkodierung:** Oft grün für Maus und violett für Tastatur (bei Adaptern auf USB)\n- **Stecker-Varianten:** Sowohl male (Kabel) als auch female (Gerät) Versionen verfügbar\n- **Nicht kompatibel:** Hot-Plugging war nicht möglich - Geräte mussten bei ausgeschaltetem Computer angeschlossen werden\n- **Unterscheidung:** Nicht zu verwechseln mit parallelen (25-polig), Audio- oder Netzwerk-Schnittstellen"
+    },
+    {
+        "question": "Alle modernen Audio-Klinkenanschlüsse verwenden 3-polige Stecker für Stereo-Wiedergabe, da 2-polige Stecker grundsätzlich veraltet sind.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Sowohl 2-polige als auch 3-polige Klinkenanschlüsse haben heute noch ihre Berechtigung.\n\n- **2-polige Klinke (Mono):**\n  - **Weiterhin relevant:** Für Mono-Anwendungen, professionelle Audiogeräte, Instrumentenanschlüsse\n  - **Spezielle Anwendungen:** Mikrofone, Gitarren, Keyboards, DJ-Equipment\n  - **Kontakte:** Spitze (Tip) und Schaft (Sleeve)\n- **3-polige Klinke (Stereo):**\n  - **Standard für Stereo:** Links, Rechts und Masse\n  - **Kontakte:** Spitze (Tip), Ring, Schaft (Sleeve) - daher auch TRS genannt\n- **Moderne Realität:**\n  - **Koexistenz:** Beide Varianten werden parallel verwendet, je nach Anwendung\n  - **Kompatibilität:** 2-polige Stecker funktionieren in 3-poligen Buchsen (nur Mono)\n  - **Professioneller Bereich:** 2-polige Verbindungen für Mono-Signale weiterhin Standard\n- **Zusätzlich:** Gibt es auch 4-polige Varianten (TRRS) für Headsets mit Mikrofon"
+    },
+    {
+        "question": "Ein Systemadministrator muss zwei Server direkt miteinander verbinden, ohne Netzwerk-Switch. Welche klassische Verbindungsmethode über serielle Schnittstelle ermöglicht dies? 🔗",
+        "options": [
+            "Standard EIA-232-Kabel",
+            "Null-Modem-Kabel",
+            "USB-zu-Seriell-Adapter",
+            "Crossover-Ethernet-Kabel"
+        ],
+        "correct": 1,
+        "explain": "**Null-Modem-Kabel** ist die klassische Lösung für direkte serielle Verbindungen zwischen zwei Computern.\n\n- **Funktionsprinzip:** Null-Modem-Kabel vertauscht Sende- und Empfangsleitungen, sodass zwei DTE-Geräte (Data Terminal Equipment) direkt kommunizieren können\n- **Leitungsvertauschung:**\n  - **TX (Transmit) ↔ RX (Receive):** Sendeausgang des einen Computers geht an Empfangseingang des anderen\n  - **Handshake-Signale:** RTS/CTS und DTR/DSR werden ebenfalls gekreuzt\n- **Anwendungsbereiche:**\n  - **Dateitransfer:** Zwischen zwei Computern ohne Netzwerk\n  - **Terminal-Emulation:** Ein Computer als Terminal für den anderen\n  - **Backup-Verbindung:** Alternative zu Netzwerkverbindungen\n- **Warum \"Null-Modem\":** Eliminiert die Notwendigkeit eines Modems zwischen den Geräten\n- **Nicht geeignet:** Standard EIA-232-Kabel funktioniert nicht für Computer-zu-Computer; USB-Adapter löst nicht das Routing-Problem; Crossover-Ethernet ist die moderne Alternative"
+    },
+    {
+        "question": "Bei der Wartung älterer Netzwerkgeräte findet ein Techniker sowohl 8-polige RJ-45- als auch 25-polige D-Sub-Anschlüsse. Was ist der hauptsächliche funktionale Unterschied zwischen diesen beiden Schnittstellen?",
+        "options": [
+            "RJ-45 ist für Netzwerkkommunikation, D-Sub für serielle Gerätekonfiguration",
+            "Beide dienen der Netzwerkkommunikation, unterscheiden sich nur in der Geschwindigkeit",
+            "D-Sub ist für Audioübertragung, RJ-45 für Datenübertragung",
+            "RJ-45 ist veraltet, D-Sub ist der moderne Standard"
+        ],
+        "correct": 0,
+        "explain": "**RJ-45 dient der Netzwerkkommunikation, D-Sub der seriellen Gerätekonfiguration** - sie haben völlig unterschiedliche Funktionen.\n\n- **RJ-45 (8-polig):**\n  - **Netzwerkkommunikation:** Ethernet-Verbindungen zwischen Computern und Netzwerkgeräten\n  - **Hohe Geschwindigkeit:** Moderne Datenraten (Fast Ethernet, Gigabit Ethernet)\n  - **Strukturierte Verkabelung:** Teil der Netzwerk-Infrastruktur\n- **D-Sub 25 (bei Netzwerkgeräten):**\n  - **Console/Management:** Direkte serielle Verbindung für Konfiguration und Wartung\n  - **Out-of-Band-Zugang:** Funktioniert auch wenn Netzwerk nicht verfügbar ist\n  - **Terminal-basiert:** Textbasierte Kommandozeilen-Schnittstelle\n- **Komplementäre Nutzung:**\n  - **RJ-45:** Für den Normalbetrieb und Datenverkehr\n  - **D-Sub:** Für Ersteinrichtung, Troubleshooting und Notfallzugang\n- **Praktischer Vorteil:** Administrator kann über serielle Konsole konfigurieren, auch wenn Netzwerk-Ports noch nicht funktionieren"
+    },
+    {
+        "question": "Software-Dongles konnten sowohl über PS/2- als auch über Apple Desktop Bus-Schnittstellen angeschlossen werden, da beide Schnittstellen denselben elektrischen Standard verwenden.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. PS/2 und ADB sind völlig unterschiedliche, inkompatible Standards.\n\n- **Verschiedene Standards:**\n  - **PS/2:** IBM-Standard mit 6-poligem Mini-DIN\n  - **ADB:** Apple-proprietärer Standard mit 4-poligem Mini-DIN\n- **Elektrische Unterschiede:**\n  - **Verschiedene Spannungen:** Unterschiedliche Betriebsspannungen und Signalpegel\n  - **Inkompatible Protokolle:** Völlig verschiedene Kommunikationsprotokolle\n  - **Verschiedene Pinbelegungen:** Trotz ähnlicher Steckerform unterschiedliche Kontaktfunktionen\n- **Software-Dongles spezifisch:**\n  - **ADB-Dongles:** Speziell für Apple-Computer entwickelt\n  - **PS/2-Dongles:** Für IBM-kompatible PCs konzipiert\n  - **Keine Kreuzkompatibilität:** Ein PS/2-Dongle funktioniert nicht an ADB und umgekehrt\n- **Praktische Konsequenz:** Softwarehersteller mussten separate Dongle-Versionen für verschiedene Computersysteme entwickeln\n- **Physische Ähnlichkeit:** Beide verwenden Mini-DIN-Stecker, aber mit unterschiedlichen Polzahlen und Funktionen"
+    },
+    {
+        "question": "Ein Audio-Techniker möchte die beste Verbindung zwischen einem digitalen Audiorecorder und einem Computer herstellen, wobei elektromagnetische Störungen in der Studioumgebung ein Problem darstellen. Welche S/PDIF-Variante sollte gewählt werden? ✨",
+        "options": [
+            "S/PDIF koaxial (Cinch)",
+            "S/PDIF optisch (TOSLINK)",
+            "3,5 mm Stereo-Klinke",
+            "XLR-Anschluss"
+        ],
+        "correct": 1,
+        "explain": "**S/PDIF optisch (TOSLINK)** ist die ideale Wahl für störungsanfällige Studioumgebungen.\n\n- **Elektromagnetische Immunität:** Lichtwellenleiter sind vollständig immun gegen elektromagnetische Interferenzen (EMI)\n- **Störungsfreie Übertragung:**\n  - **Keine elektrischen Signale:** Datenübertragung erfolgt über Lichtimpulse\n  - **Galvanische Trennung:** Verhindert Erdschleifen und Brummstörungen\n  - **Cleaner Sound:** Eliminiert Störungen von Netzteilen, Motoren, Dimmern\n- **Digitale Qualität:** Verlustfreie Übertragung des digitalen Audiostroms\n- **Professioneller Standard:** TOSLINK ist in Tonstudios weit verbreitet und akzeptiert\n- **Vergleich zu Alternativen:**\n  - **Koaxial S/PDIF:** Elektrisch, anfällig für EMI\n  - **3,5 mm Klinke:** Analoger Ausgang, keine digitale Übertragung\n  - **XLR:** Nicht für digitale S/PDIF-Übertragung standardisiert\n- **Praktischer Vorteil:** Einfache Installation ohne Erdungsprobleme oder Störungsanalyse"
+    },
+    {
+        "question": "Ein Kollege möchte zwei Monitore an seinem Computer betreiben, hat aber nur eine Grafikkarte mit einem speziellen 59-poligen Anschluss. Welche Lösung ermöglicht ihm den Dual-Monitor-Betrieb? 🖥️",
+        "options": [
+            "DMS-59 mit Y-Adapter auf 2x DVI-I",
+            "VGA-Splitter mit D-Sub-Anschluss",
+            "Mini-DVI auf HDMI-Konverter",
+            "Thunderbolt-Hub mit DisplayPort"
+        ],
+        "correct": 0,
+        "explain": "**DMS-59 (Dual Monitor Solution)** ist eine spezielle 59-polige Schnittstelle, die genau für diesen Zweck entwickelt wurde.\n\n- **Funktion:** Der DMS-59-Anschluss entspricht funktional zwei DVI-I-Schnittstellen und kann mit einem Y-Adapter auf 2x DVI-I aufgeteilt werden\n- **Flexibilität:** Da DVI-I sowohl digitale als auch analoge Signale übertragen kann, lassen sich auch zwei VGA-Monitore anschließen\n- **Platzersparnis:** Die Lösung spart Platz auf der Grafikkarte, da nur ein Anschluss statt zwei benötigt wird\n- **Alternative Lösungen:** VGA-Splitter würden nur das gleiche Bild auf beiden Monitoren zeigen, während die anderen Optionen nicht die spezielle 59-polige Schnittstelle nutzen können"
+    },
+    {
+        "question": "Welche Schnittstelle wurde primär für die Übertragung analoger Videosignale entwickelt und ist nach einem IBM-Standard mit 640x480 Pixeln benannt? 📺",
+        "options": [
+            "Digital Visual Interface",
+            "DisplayPort",
+            "Video Graphics Array",
+            "High Definition Multimedia Interface"
+        ],
+        "correct": 2,
+        "explain": "**VGA (Video Graphics Array)** ist die gesuchte Schnittstelle.\n\n- **Namensgeber:** VGA ist nach dem gleichnamigen IBM-Videostandard benannt, der eine Standardauflösung von 640x480 Pixeln definierte\n- **Signaltyp:** VGA überträgt ausschließlich analoge Videosignale über einen 15-poligen D-Sub-Anschluss\n- **Verwendung:** Hauptsächlich zum Anschluss von Monitoren, Beamern oder TV-Geräten an Computer-Grafikkarten\n- **Abgrenzung:** Im Gegensatz dazu übertragen DVI, DisplayPort und HDMI primär digitale Signale (DVI kann auch analog), wobei HDMI und DisplayPort zusätzlich Audio übertragen können"
+    },
+    {
+        "question": "Sie müssen eine Videokamera an einen Computer anschließen und benötigen eine Schnittstelle, die sowohl von Apple als 'FireWire' als auch von Sony als 'iLINK' bezeichnet wird. Wie lautet die offizielle IEEE-Bezeichnung? 🎥",
+        "options": [
+            "IEEE 802.11",
+            "IEEE 1284",
+            "IEEE 1394",
+            "IEEE 1901"
+        ],
+        "correct": 2,
+        "explain": "**IEEE 1394** ist die offizielle Bezeichnung für diese Schnittstelle.\n\n- **Verschiedene Namen:** Apple nennt sie 'FireWire', Sony 'iLINK', aber der offizielle Standard heißt IEEE 1394\n- **Varianten:** IEEE 1394a (FireWire 400, 6-polig und 4-polig) und IEEE 1394b (FireWire 800, 9-polig)\n- **Anwendung:** Ideal für Videokameras, Digitalkameras, Musikanlagen und Massenspeicher durch hohe Datenübertragungsraten\n- **Andere IEEE-Standards:** IEEE 802.11 (WLAN), IEEE 1284 (parallele Schnittstelle), IEEE 1901 (Powerline Communication) haben andere Anwendungsbereiche"
+    },
+    {
+        "question": "Ein Techniker stellt fest, dass eine Schnittstelle sowohl Video- als auch Audiosignale digital übertragen kann und in verschiedenen Größen verfügbar ist: Standard (Typ A), Mini (Typ C) und Micro (Typ D). Welche Schnittstelle beschreibt dies? 🔊",
+        "options": [
+            "DisplayPort mit Mini-DP",
+            "DVI in verschiedenen Varianten",
+            "HDMI in verschiedenen Formfaktoren",
+            "USB 3.0 mit verschiedenen Steckern"
+        ],
+        "correct": 2,
+        "explain": "**HDMI (High Definition Multimedia Interface)** ist die beschriebene Schnittstelle.\n\n- **Formfaktoren:** HDMI gibt es als Typ A (Standard, 19-polig), Typ C (Mini-HDMI) und Typ D (Micro-HDMI)\n- **Übertragung:** HDMI überträgt sowohl digitale Video- als auch Audiosignale in einem Kabel\n- **Anwendungen:** Verbindung zwischen Computern, Grafikkarten und Ausgabegeräten wie Monitoren, Beamern, TV-Geräten oder Musikanlagen\n- **Abgrenzung:** DisplayPort hat nur Standard- und Mini-Varianten, DVI überträgt primär nur Video (außer in speziellen Varianten), USB ist primär für Datenübertragung konzipiert"
+    },
+    {
+        "question": "Thunderbolt-Anschlüsse sind physisch identisch mit Mini-DisplayPort-Anschlüssen und nur durch ein Blitz-Symbol unterscheidbar.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**.\n\n- **Physische Identität:** Thunderbolt-Buchsen und -Stecker sind tatsächlich baugleich mit Mini-DisplayPort (beide 20-polig)\n- **Unterscheidungsmerkmal:** Der einzige äußerlich erkennbare Unterschied ist das charakteristische Blitz-Symbol (⚡) bei Thunderbolt-Anschlüssen\n- **Funktionalität:** Während Mini-DP nur Video- und Audiosignale überträgt, kann Thunderbolt zusätzlich allgemeine Daten übertragen\n- **Kompatibilität:** Diese physische Kompatibilität ermöglicht es, DisplayPort-Geräte an Thunderbolt-Ports anzuschließen (aber nicht umgekehrt für alle Funktionen)\n- **Anwendungen:** Thunderbolt kann Monitore, Beamer, TV-Geräte, Musikanlagen und Massenspeicher anschließen"
+    },
+    {
+        "question": "Bei der Konfiguration eines Multimedia-Systems soll gleichzeitig Video und Audio über eine einzige Schnittstelle übertragen werden. Welche beiden Schnittstellen erfüllen diese Anforderung am besten? 📽️",
+        "options": [
+            "VGA und DVI-D",
+            "HDMI und DisplayPort",
+            "IEEE 1394 und USB 2.0",
+            "Mini-VGA und Micro-DVI"
+        ],
+        "correct": 1,
+        "explain": "**HDMI und DisplayPort** sind die beiden Schnittstellen, die sowohl Video als auch Audio digital übertragen können.\n\n- **HDMI:** Speziell für Multimedia-Anwendungen entwickelt, überträgt HD-Video und Mehrkanal-Audio in einem Kabel\n- **DisplayPort:** Moderne Schnittstelle, die ebenfalls Video und Audio gleichzeitig übertragen kann, oft in professionellen Umgebungen eingesetzt\n- **Vorteile:** Beide reduzieren die Kabelanzahl und vereinfachen die Installation von Multimedia-Systemen\n- **Andere Optionen:** VGA und DVI-D übertragen nur Video, IEEE 1394 und USB sind primär Datenübertragungsschnittstellen, Mini-VGA und Micro-DVI sind nur Video-Schnittstellen"
+    },
+    {
+        "question": "USB 3.0 Typ A Anschlüsse haben dieselbe Polzahl wie USB 2.0 Typ A Anschlüsse.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**.\n\n- **USB 2.0 Typ A:** Hat 4 Pole für die Datenübertragung und Stromversorgung\n- **USB 3.0 Typ A:** Hat 9 Pole - die ursprünglichen 4 Pole für Rückwärtskompatibilität plus 5 zusätzliche Pole für die höhere Geschwindigkeit\n- **Physische Kompatibilität:** Trotz unterschiedlicher Polzahl sind USB 3.0 Typ A Anschlüsse rückwärtskompatibel zu USB 2.0\n- **Erkennungsmerkmale:** USB 3.0 Anschlüsse sind oft blau gefärbt und haben zusätzliche Kontakte im hinteren Bereich\n- **Leistung:** Die zusätzlichen Pole ermöglichen die deutlich höheren Datenübertragungsraten von USB 3.0"
+    },
+    {
+        "question": "Ein IT-Administrator muss verschiedene Peripheriegeräte anschließen: Maus, Tastatur, Drucker, Scanner, Massenspeicher und Smartphone. Welche Schnittstelle bietet die universellste Lösung für alle diese Geräte? 🖱️",
+        "options": [
+            "IEEE 1394 (FireWire)",
+            "Universal Serial Bus (USB)",
+            "Digital Visual Interface (DVI)",
+            "Video Graphics Array (VGA)"
+        ],
+        "correct": 1,
+        "explain": "**USB (Universal Serial Bus)** ist die universellste Lösung für diese Anforderungen.\n\n- **Universalität:** USB wurde explizit als universelle serielle Schnittstelle für eine Vielzahl von Peripheriegeräten entwickelt\n- **Geräteunterstützung:** Alle genannten Geräte (Maus, Tastatur, Drucker, Scanner, Massenspeicher, Smartphone) haben standardmäßig USB-Anschlüsse\n- **Varianten:** USB 2.0 und 3.0 in verschiedenen Steckerformen (Typ A, B, Mini-B, Micro-B) decken unterschiedliche Geräteanforderungen ab\n- **Andere Optionen:** IEEE 1394 ist primär für Multimedia-Geräte, DVI und VGA sind reine Video-Schnittstellen und daher für die meisten der genannten Geräte ungeeignet"
+    },
+    {
+        "question": "Welche DVI-Variante unterstützt sowohl analoge als auch digitale Signalübertragung und ermöglicht dadurch auch VGA-Kompatibilität? 🔌",
+        "options": [
+            "DVI-D (Digital only)",
+            "DVI-I (Integrated)",
+            "DVI-A (Analog only)",
+            "Mini-DVI (kompakt)"
+        ],
+        "correct": 1,
+        "explain": "**DVI-I (Integrated)** ist die Variante, die beide Signaltypen unterstützt.\n\n- **Dual-Funktionalität:** DVI-I kann sowohl digitale als auch analoge Videosignale übertragen\n- **VGA-Kompatibilität:** Durch die analoge Signalunterstützung kann DVI-I mit entsprechenden Adaptern auch VGA-Geräte ansteuern\n- **Steckerarten:** Verfügbar als Single Link (24+5 Pole) und Dual Link (24+5 Pole mit höherer Bandbreite)\n- **Abgrenzung:** DVI-D überträgt nur digital, DVI-A nur analog (seltener), Mini-DVI ist ein kompakter Formfaktor aber nicht per se dual-funktional\n- **Praktischer Nutzen:** DVI-I bietet maximale Flexibilität bei der Gerätekompatibilität"
+    },
+    {
+        "question": "FireWire 800 verwendet einen 6-poligen Anschluss, während FireWire 400 einen 9-poligen Anschluss verwendet.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch** - die Polzahlen sind vertauscht.\n\n- **FireWire 400 (IEEE 1394a):** Verwendet 6-polige und 4-polige Anschlüsse\n- **FireWire 800 (IEEE 1394b):** Verwendet 9-polige Anschlüsse\n- **Logische Entwicklung:** Die höhere Geschwindigkeit von FireWire 800 erfordert mehr Pole für die zusätzlichen Datenleitungen\n- **iLINK-Variante:** Sony's iLINK verwendet die 4-polige Variante von FireWire 400\n- **Kompatibilität:** Durch entsprechende Kabel und Adapter können die verschiedenen Varianten miteinander verbunden werden, wobei die Geschwindigkeit durch das langsamste Element begrenzt wird"
+    },
+    {
+        "question": "Ein Multimedia-Produzent arbeitet mit verschiedenen Geräten und benötigt eine Schnittstelle, die Video, Audio UND allgemeine Daten gleichzeitig übertragen kann. Welche moderne Lösung erfüllt alle drei Anforderungen? ⚡",
+        "options": [
+            "HDMI mit Ethernet-Kanal",
+            "DisplayPort mit USB-Hub",
+            "Thunderbolt",
+            "DVI-I mit separatem Audio"
+        ],
+        "correct": 2,
+        "explain": "**Thunderbolt** ist die einzige Schnittstelle, die alle drei Anforderungen in einer Verbindung erfüllt.\n\n- **Dreifach-Funktion:** Thunderbolt kann gleichzeitig digitale Video- und Audiosignale sowie allgemeine Daten übertragen\n- **Universalität:** Anschluss von Monitoren, Beamern, TV-Geräten, Musikanlagen UND Massenspeichern über einen Port\n- **Hohe Bandbreite:** Die Thunderbolt-Technologie bietet ausreichend Bandbreite für alle drei Datentypen parallel\n- **Andere Optionen:** HDMI überträgt nur Video+Audio, DisplayPort primär Video+Audio, DVI-I benötigt separate Audio-Verbindung und kann keine allgemeinen Daten übertragen\n- **Praktischer Vorteil:** Reduziert die Anzahl benötigter Kabel und Anschlüsse erheblich"
+    },
+    {
+        "question": "Micro-USB und Mini-USB Anschlüsse bei USB 2.0 haben beide 5 Pole.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**.\n\n- **Einheitliche Polzahl:** Sowohl USB 2.0 Micro-B als auch Mini-B Anschlüsse haben 5 Pole\n- **Funktionalität:** Die 5 Pole ermöglichen Datenübertragung, Stromversorgung und zusätzliche Funktionen wie OTG (On-The-Go)\n- **Größenunterschiede:** Obwohl beide 5-polig sind, unterscheiden sich die Stecker in Größe und Form\n- **Anwendungen:** Mini-B wird oft bei Digitalkameras und älteren Geräten verwendet, Micro-B bei Smartphones und modernen mobilen Geräten\n- **Standard-Unterschied:** Im Vergleich dazu haben USB 2.0 Typ A und B Anschlüsse nur 4 Pole, da sie für stationäre Geräte ohne erweiterte Funktionen konzipiert sind"
+    },
+    {
+        "question": "Bei der Einrichtung eines Konferenzraums muss ein Laptop sowohl an einen Projektor als auch an das Soundsystem angeschlossen werden. Der Laptop hat nur einen einzigen modernen digitalen Videoausgang. Welche Schnittstellen-Kombination löst das Problem am elegantesten? 🎯",
+        "options": [
+            "VGA für Video + separates Audiokabel",
+            "DVI-D für Video + separates Audiokabel",
+            "DisplayPort oder HDMI für Video und Audio",
+            "IEEE 1394 für alle Signale"
+        ],
+        "correct": 2,
+        "explain": "**DisplayPort oder HDMI** lösen das Problem am elegantesten durch ihre Audio-Video-Integration.\n\n- **Ein-Kabel-Lösung:** Beide Schnittstellen übertragen Video und Audio digital in einem einzigen Kabel\n- **Moderne Projektoren:** Die meisten aktuellen Projektoren haben HDMI- oder DisplayPort-Eingänge mit integrierter Audio-Weiterleitung\n- **Qualitätsvorteil:** Digitale Übertragung vermeidet Qualitätsverluste bei Analog-Digital-Wandlungen\n- **Praktische Vorteile:** Weniger Kabel, einfachere Installation, geringere Fehleranfälligkeit\n- **Andere Optionen:** VGA und DVI-D erfordern separate Audio-Verkabelung, IEEE 1394 ist nicht für Projektoren geeignet\n- **Zukunftssicherheit:** DisplayPort und HDMI sind aktuelle Standards mit hoher Bandbreite für moderne Auflösungen"
+    },
+    {
+        "question": "USB 3.0 Typ B Anschlüsse sind vollständig rückwärtskompatibel zu USB 2.0 Typ B Steckern.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**.\n\n- **Physische Inkompatibilität:** USB 3.0 Typ B Stecker sind größer und haben eine andere Form als USB 2.0 Typ B Stecker\n- **Erweiterte Polzahl:** USB 3.0 Typ B hat 9 Pole (im Gegensatz zu 4 Polen bei USB 2.0), was eine andere Steckergeometrie erfordert\n- **Einseitige Kompatibilität:** USB 2.0 Typ B Stecker können in USB 3.0 Typ B Buchsen gesteckt werden, aber nicht umgekehrt\n- **Typ A Unterschied:** Anders als bei Typ A Anschlüssen, wo USB 3.0 rückwärtskompatibel zu USB 2.0 ist\n- **Praktische Konsequenz:** Geräte mit USB 3.0 Typ B Anschlüssen (oft externe Festplatten, Drucker) benötigen spezielle USB 3.0 Typ B Kabel für volle Geschwindigkeit"
+    },
+    {
+        "question": "Ein Systemintegrator plant ein Setup mit mehreren hochauflösenden Displays für einen Trading-Arbeitsplatz. Er hat eine Grafikkarte mit einem 59-poligen Anschluss zur Verfügung. Wie viele Monitore kann er maximal direkt anschließen und welche Anschlusstypen sind möglich? 📈",
+        "options": [
+            "1 Monitor über VGA",
+            "2 Monitore über DVI-I oder VGA",
+            "3 Monitore über DisplayPort",
+            "4 Monitore über HDMI"
+        ],
+        "correct": 1,
+        "explain": "Mit einem **DMS-59 Anschluss** können **2 Monitore über DVI-I oder VGA** angeschlossen werden.\n\n- **DMS-59 Funktionalität:** Der 59-polige DMS-Anschluss (Dual Monitor Solution) entspricht funktional zwei DVI-I-Schnittstellen\n- **Y-Adapter erforderlich:** Mit einem speziellen Y-Adapter wird der DMS-59 auf 2x DVI-I aufgeteilt\n- **Flexibilität:** Da DVI-I sowohl digitale als auch analoge Signale unterstützt, können wahlweise 2x DVI, 2x VGA oder eine Kombination angeschlossen werden\n- **Trading-Anwendung:** Ideal für Trading-Arbeitsplätze, da zwei hochauflösende Monitore für Marktdaten und Charts genutzt werden können\n- **Limitierung:** Maximal 2 Monitore pro DMS-59 Anschluss, für mehr Displays wären zusätzliche Grafikkarten oder andere Lösungen nötig"
     }
     ]
 }
