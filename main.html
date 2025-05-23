@@ -1663,6 +1663,79 @@
         }
     </style>
     <style>
+        /* Audio section styles */
+        .lernfeld-audio-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color, #ddd);
+        }
+
+        .lernfeld-audio-section h4 {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .lernfeld-audio-item {
+            background-color: var(--container-bg, #fff);
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: var(--border-radius, 8px);
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        body[data-theme="dark"] .lernfeld-audio-item {
+            background-color: var(--container-bg-dark, #1e1e1e);
+            border-color: var(--border-color-dark, #424242);
+        }
+
+        .lernfeld-audio-item .audio-name {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .lernfeld-audio-item .audio-description {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .lernfeld-audio-player {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        /* Mobile-specific styles for audio section */
+        @media (max-width: 768px) {
+            .lernfeld-audio-section {
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+            
+            .lernfeld-audio-item {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .lernfeld-audio-item .audio-name {
+                font-size: 1.1em;
+            }
+            
+            .lernfeld-audio-item .audio-description {
+                font-size: 0.9em;
+                margin-bottom: 12px;
+            }
+            
+            /* Optimize audio controls for touch */
+            .lernfeld-audio-player {
+                margin-top: 8px;
+                height: 40px; /* Larger touch target */
+            }
+        }
         /* Screen reader only class */
         .sr-only {
             position: absolute;
@@ -2630,6 +2703,15 @@
             mixedQuizDescription: 'Kombiniertes Quiz zu Netzwerk Grundlagen, Stufe 2 und Protokollen.',
             icon: '🌐',
             files: ['Netzwerk_Grundlagen.json', 'Netzwerk_Stufe_2.json', 'protocols.json'],
+            audios: [
+                {
+                    id: 'lf3_audio_sicherungsschicht',
+                    name: 'Netzwerk-Grundlagen: Sicherungsschicht, Vermittlungsschicht und Zahlensysteme',
+                    description: 'Dieser Inhalt erklärt die Sicherungsschicht (Layer 2) für lokale Kommunikation und Medienzugriff sowie die Vermittlungsschicht (Layer 3) für Ende-zu-Ende-Datenübertragung über Netzwerke mit IPv4/IPv6 und Routing. Zusätzlich werden notwendige Zahlensysteme (binär, dezimal, hexadezimal) für das Verständnis von Netzwerkadressen vorgestellt.',
+                    file: 'Die Sicherungsschicht und Medienzugriff.wav',
+                    type: 'audio/wav'
+                }
+            ],
             quizzes: [
                 {id: 'netzwerk', name: 'Netzwerk Grundlagen Quiz', description: 'Basiswissen zu Netzwerken.', file: 'Netzwerk_Grundlagen.json', icon: '🌐'},
                 {id: 'netzwerk2', name: 'Netzwerk Stufe 2 Quiz', description: 'Erweitere dein Wissen Ethernet, Osi Schichten Frames und mehr', file: 'Netzwerk_Stufe_2.json', icon: '🔗'},
@@ -2828,6 +2910,26 @@
             </div>
         `;
         lernfeldViewHTML += `</div>`; // Close lernfeld-quiz-options
+
+        // Add audio section if there are audio files
+        if (selectedLernfeld.audios && selectedLernfeld.audios.length > 0) {
+            lernfeldViewHTML += `<div class="lernfeld-audio-section"><h4>Audio-Inhalte:</h4>`;
+            selectedLernfeld.audios.forEach(audio => {
+                // Ensure the file path is URL-encoded if it contains spaces or special characters
+                const audioFileSrc = encodeURIComponent(audio.file);
+                lernfeldViewHTML += `
+                    <div class="lernfeld-audio-item" id="audio-item-${audio.id}">
+                        <h5 class="audio-name">${audio.name}</h5>
+                        <p class="audio-description">${audio.description}</p>
+                        <audio controls preload="metadata" class="lernfeld-audio-player">
+                            <source src="${audioFileSrc}" type="${audio.type}">
+                            Dein Browser unterstützt das Audio-Element nicht.
+                        </audio>
+                    </div>
+                `;
+            });
+            lernfeldViewHTML += `</div>`;
+        }
 
         // Zurück-Button
         lernfeldViewHTML += `<button onclick="backToMenu()" class="back-to-main-menu-button" aria-label="Zurück zum Hauptmenü">↩️ Zurück zum Hauptmenü</button>`;
