@@ -1982,7 +1982,253 @@
     ],
     "correct": 2,
     "explain": "Die Standardroute in einer Router-Routing-Tabelle hat die Netzwerkadresse 0.0.0.0 und die Netzmaske 0.0.0.0 (oder in CIDR-Notation: 0.0.0.0/0). Diese Kombination repräsentiert jedes mögliche Ziel, da eine Netzmaske von 0.0.0.0 bedeutet, dass keine Bits der Zieladresse berücksichtigt werden müssen, um eine Übereinstimmung zu finden. Die Standardroute wird als letzte Möglichkeit verwendet, wenn keine spezifischere Route gefunden wird, und wird häufig als 'Gateway of last resort' bezeichnet. In der Routing-Tabelle wird die Standardroute oft mit einem Sternchen (*) gekennzeichnet, wenn sie aktiv ist."
-  }
+  },
+  {
+        "question": "Welche Hauptfunktion erfüllt die Sicherungsschicht beim Übergang von der physischen zur netzwerkunabhängigen Ebene? 🔗",
+        "options": [
+            "Sie wandelt elektrische Signale in digitale Daten um",
+            "Sie assembliert Bits zu strukturierten Frames und gewährleistet fehlerfreie Übertragung",
+            "Sie routet Pakete zwischen verschiedenen Netzwerken",
+            "Sie komprimiert Daten für eine effizientere Übertragung"
+        ],
+        "correct": 1,
+        "explain": "Die **Sicherungsschicht (Data Link Layer)** fungiert als kritische Schnittstelle zwischen der Hardware und den hardwareunabhängigen Schichten.\n\n- **Frame-Assembly:** Sie nimmt die rohen Bits aus Schicht 1 und strukturiert sie zu **Frames** - logischen Dateneinheiten mit definierten Start- und Endmarkierungen.\n- **Fehlerbehandlung:** Implementiert Mechanismen zur **Fehlererkennung und -korrektur**, um eine zuverlässige Punkt-zu-Punkt-Verbindung zu gewährleisten.\n- **Hardware-Abstraktion:** Schafft eine **einheitliche Schnittstelle** für höhere Schichten, unabhängig vom verwendeten physischen Medium (Ethernet, WLAN, etc.).\n- **Zugriffskontrolle:** Regelt den Zugriff auf das gemeinsam genutzte Übertragungsmedium."
+    },
+    {
+        "question": "Ein Netzwerkadministrator bemerkt, dass in seinem WLAN-Netzwerk häufig Kollisionen auftreten, wenn mehrere Geräte gleichzeitig senden. Welcher Mechanismus sollte hier greifen? 📡",
+        "options": [
+            "CSMA/CD (Collision Detection)",
+            "CSMA/CA (Collision Avoidance)",
+            "Token Ring Protocol",
+            "Time Division Multiple Access"
+        ],
+        "correct": 1,
+        "explain": "In **WLAN-Umgebungen** ist **CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)** der Standard-Zugriffsmechanismus.\n\n- **Problem bei WLAN:** In drahtlosen Netzwerken können Kollisionen oft nicht erkannt werden (Hidden Node Problem), daher ist Vermeidung wichtiger als Erkennung.\n- **CSMA/CA Funktionsweise:**\n  - **Listen before Talk:** Prüfung, ob das Medium frei ist\n  - **Random Backoff:** Zufällige Wartezeit vor dem Senden\n  - **ACK-Mechanismus:** Bestätigung des Empfangs\n- **CSMA/CD** wird hauptsächlich in **kabelgebundenen Ethernet-Netzwerken** verwendet, wo Kollisionen elektronisch detektiert werden können.\n- **Praktische Bedeutung:** Moderne WLAN-Standards implementieren zusätzliche Techniken wie RTS/CTS für bessere Kollisionsvermeidung."
+    },
+    {
+        "question": "MAC-Adressen werden ausschließlich vom Gerätehersteller fest vergeben und können niemals geändert werden.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Obwohl MAC-Adressen traditionell als 'physische Adressen' bezeichnet werden, sind sie nicht unveränderlich.\n\n- **Hardware-Vergabe:** Hersteller vergeben tatsächlich **eindeutige MAC-Adressen** bei der Produktion (mit OUI-Präfix).\n- **Software-Änderung möglich:** Moderne Geräte, insbesondere **Smartphones, Tablets und viele Netzwerkkarten**, erlauben **MAC-Spoofing** oder **MAC-Randomisierung**.\n- **Praktische Anwendungen:**\n  - **Datenschutz:** Zufällige MAC-Adressen verhindern Tracking\n  - **Netzwerk-Troubleshooting:** Temporäre Adressänderung für Tests\n  - **Umgehung von MAC-Filtern:** (kontrovers, aber technisch möglich)\n- **Sicherheitsaspekt:** Diese Flexibilität macht MAC-basierte Sicherheitsmaßnahmen weniger zuverlässig als oft angenommen."
+    },
+    {
+        "question": "Welche Größe hat eine Standard-MAC-Adresse und wie ist sie strukturiert? 🔢",
+        "options": [
+            "4 Byte: 2 Byte Hersteller + 2 Byte Gerätespezifisch",
+            "8 Byte: 4 Byte Hersteller + 4 Byte Gerätespezifisch", 
+            "6 Byte: 3 Byte OUI (Hersteller) + 3 Byte Gerätespezifisch",
+            "12 Byte: 6 Byte Hersteller + 6 Byte Gerätespezifisch"
+        ],
+        "correct": 2,
+        "explain": "Eine **MAC-Adresse** hat eine Gesamtgröße von **6 Byte (48 Bit)** und folgt einer standardisierten Struktur.\n\n- **OUI (Organizationally Unique Identifier):** Die ersten **3 Byte** identifizieren den Hersteller eindeutig und werden von der IEEE verwaltet.\n- **Gerätespezifischer Teil:** Die letzten **3 Byte** werden vom jeweiligen Hersteller fortlaufend vergeben.\n- **Darstellung:** Meist in Hexadezimalnotation mit Trennzeichen: `00:1A:2B:3C:4D:5E` oder `00-1A-2B-3C-4D-5E`\n- **Beispiel-Struktur:**\n  - `00:1A:2B` = OUI (z.B. für einen bestimmten Hersteller)\n  - `3C:4D:5E` = Vom Hersteller vergebene eindeutige Nummer\n- **Theoretische Kapazität:** 16,7 Millionen verschiedene Geräte pro Hersteller-OUI."
+    },
+    {
+        "question": "Ein IT-Techniker installiert einen neuen Switch in einem Büronetzwerk. Nach dem ersten Frame-Empfang ist die MAC-Tabelle leer. Was passiert, wenn ein Frame mit unbekannter Ziel-MAC-Adresse empfangen wird? 🔄",
+        "options": [
+            "Der Frame wird verworfen und eine Fehlermeldung gesendet",
+            "Der Frame wird nur an Port 1 weitergeleitet",
+            "Der Frame wird an alle Ports außer dem Eingangsport weitergeleitet (Flooding)",
+            "Der Switch sendet eine ARP-Anfrage zur Adressauflösung"
+        ],
+        "correct": 2,
+        "explain": "Wenn die **Ziel-MAC-Adresse unbekannt** ist, wendet der Switch das **Flooding-Verfahren** an.\n\n- **Flooding-Prozess:**\n  - Frame wird an **alle aktiven Ports** weitergeleitet\n  - **Ausnahme:** Nicht an den Eingangsport (Loop Prevention)\n  - Zielgerät antwortet, wodurch der Switch dessen Position lernt\n- **Learning-Mechanismus:**\n  - **Absender-MAC** wird zusammen mit Eingangsport in der MAC-Tabelle gespeichert\n  - Bei zukünftigen Frames an diese Adresse: **gezielte Weiterleitung**\n- **Praktische Bedeutung:**\n  - **Selbstkonfiguration:** Switches lernen das Netzwerk automatisch\n  - **Plug-and-Play:** Keine manuelle Konfiguration erforderlich\n  - **Effizienz:** Nach Lernphase deutlich weniger Broadcast-Traffic\n- **Sicherheitsaspekt:** Flooding kann für MAC-Flooding-Angriffe missbraucht werden."
+    },
+    {
+        "question": "Die LLC-Teilschicht ist primär für die Adressierung mittels MAC-Adressen zuständig.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die Aufgaben sind zwischen den Teilschichten anders verteilt.\n\n- **LLC (Logical Link Control):**\n  - **Protokoll-Identifikation:** Angabe von Quell- und Zielprotokoll\n  - **Datenflusssteuerung:** Regulierung der Übertragungsgeschwindigkeit\n  - **Fehlererkennung:** Erkennung von Übertragungsfehlern\n  - **Verbindungsmanagement:** Aufbau und Abbau logischer Verbindungen\n- **MAC (Media Access Control):**\n  - **Adressierung:** Verwaltung der MAC-Adressen\n  - **Mediumzugriff:** Regelung des Zugriffs auf das physische Medium\n  - **Framing:** Strukturierung der Daten in Frames\n- **Praktische Trennung:** Diese Aufteilung ermöglicht es, dass verschiedene LLC-Protokolle über dieselbe MAC-Technologie laufen können (z.B. IP und IPX über Ethernet)."
+    },
+    {
+        "question": "Ein Systemadministrator überwacht den Netzwerkverkehr und sieht eine MAC-Adresse '01-00-5E-7F-A3-B1'. Um welchen Adresstyp handelt es sich? 📊",
+        "options": [
+            "Unicast-Adresse für ein spezifisches Gerät",
+            "IPv4-Multicast-Adresse für Gruppenübertragungen",
+            "IPv6-Multicast-Adresse",
+            "Broadcast-Adresse für alle Geräte im Netzwerk"
+        ],
+        "correct": 1,
+        "explain": "Die Adresse `01-00-5E-7F-A3-B1` ist eine **IPv4-Multicast-MAC-Adresse**.\n\n- **Erkennungsmuster:** Alle IPv4-Multicast-MAC-Adressen beginnen mit **`01-00-5E`**\n- **Mapping-Mechanismus:**\n  - IPv4-Multicast-Bereich: `224.0.0.0/4` bis `239.255.255.255`\n  - Die unteren 23 Bit der IPv4-Adresse werden auf die MAC-Adresse abgebildet\n  - Das 24. Bit geht verloren, daher können 32 IPv4-Adressen auf eine MAC-Adresse abgebildet werden\n- **Praktische Verwendung:**\n  - **Streaming-Protokolle:** Video/Audio-Multicast\n  - **Routing-Protokolle:** OSPF, RIP Updates\n  - **Service Discovery:** mDNS, SSDP\n- **Andere Multicast-Typen:**\n  - **IPv6-Multicast:** Beginnt mit `33-33`\n  - **Broadcast:** `FF-FF-FF-FF-FF-FF`"
+    },
+    {
+        "question": "Welche maximale Übertragungseinheit (MTU) ergibt sich für IPv4-Pakete bei der Verwendung von Standard-Ethernet? 📦",
+        "options": [
+            "1024 Byte",
+            "1500 Byte", 
+            "1518 Byte",
+            "64 Byte"
+        ],
+        "correct": 1,
+        "explain": "Die **MTU (Maximum Transmission Unit)** für IPv4-Pakete über Standard-Ethernet beträgt **1500 Byte**.\n\n- **Ethernet-Frame-Struktur:**\n  - **Gesamt-Frame-Größe:** 64 bis 1518 Byte\n  - **Header-Overhead:** 18 Byte (Präambel, Header, FCS)\n  - **Verfügbare Payload:** 1500 Byte für höhere Schichten\n- **Praktische Bedeutung:**\n  - **Fragmentierung:** Größere IP-Pakete müssen aufgeteilt werden\n  - **Performance:** Größere Pakete = weniger Overhead pro Byte\n  - **Jumbo Frames:** Spezielle Ethernet-Implementierungen unterstützen bis zu 9000 Byte MTU\n- **Path MTU Discovery:** Automatische Ermittlung der kleinsten MTU entlang eines Netzwerkpfads\n- **Andere Werte:**\n  - **1518 Byte:** Gesamte Ethernet-Frame-Größe\n  - **64 Byte:** Minimale Ethernet-Frame-Größe"
+    },
+    {
+        "question": "Store-and-Forward-Switching bietet im Vergleich zu Cut-Through-Switching eine höhere Übertragungsgeschwindigkeit, aber weniger Fehlererkennung.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. Die Charakteristika sind genau umgekehrt.\n\n- **Store-and-Forward:**\n  - **Vollständiger Empfang:** Gesamter Frame wird empfangen und gepuffert\n  - **CRC-Prüfung:** Vollständige Fehlerprüfung durch Cyclic Redundancy Check\n  - **Langsamere Übertragung:** Höhere Latenz durch vollständige Verarbeitung\n  - **Höhere Zuverlässigkeit:** Fehlerhafte Frames werden verworfen\n- **Cut-Through:**\n  - **Sofortige Weiterleitung:** Frame wird weitergeleitet, sobald die Zieladresse gelesen wurde\n  - **Geringere Latenz:** Deutlich schnellere Übertragung\n  - **Begrenzte Fehlerprüfung:** Keine vollständige CRC-Validierung\n  - **Varianten:**\n    - **Fast-Forward:** Nur Zieladresse wird gelesen\n    - **Fragment-Free:** Erste 64 Byte werden auf Kollisionsfragmente geprüft\n- **Trade-off:** Geschwindigkeit vs. Zuverlässigkeit je nach Netzwerkanforderungen."
+    },
+    {
+        "question": "Ein Netzwerkingenieur plant die Segmentierung eines großen Büronetzwerks. Welches Gerät arbeitet primär auf Layer 2 und kann Kollisionsdomänen trennen? 🏢",
+        "options": [
+            "Hub",
+            "Router",
+            "Switch",
+            "Repeater"
+        ],
+        "correct": 2,
+        "explain": "Ein **Switch** ist das primäre Layer-2-Gerät für die Netzwerksegmentierung und Kollisionsdomänen-Trennung.\n\n- **Switch-Funktionalität:**\n  - **Kollisionsdomänen:** Jeder Port bildet eine separate Kollisionsdomäne\n  - **MAC-Learning:** Automatisches Lernen und Speichern von MAC-Adressen\n  - **Selective Forwarding:** Gezielte Weiterleitung basierend auf MAC-Tabelle\n  - **Full-Duplex:** Gleichzeitiges Senden und Empfangen\n- **Vergleich mit anderen Geräten:**\n  - **Hub:** Arbeitet auf Layer 1, **eine** große Kollisionsdomäne\n  - **Router:** Arbeitet auf Layer 3, trennt **Broadcast-Domänen**\n  - **Repeater:** Layer 1, verstärkt nur Signale\n- **Praktischer Nutzen:**\n  - **Performance:** Deutlich höhere Bandbreite pro Port\n  - **Skalierbarkeit:** Einfache Erweiterung des Netzwerks\n  - **Sicherheit:** Traffic-Isolation zwischen Ports"
+    },
+    {
+        "question": "Welche Speicher-Buffering-Methode verwendet einen gemeinsamen Speicherpool für alle Switch-Ports? 🔄",
+        "options": [
+            "Port-basiertes Buffering",
+            "Shared Memory Buffering",
+            "Cut-Through Buffering", 
+            "Store-and-Forward Buffering"
+        ],
+        "correct": 1,
+        "explain": "**Shared Memory Buffering** verwendet einen gemeinsamen Speicherpool für alle Switch-Ports.\n\n- **Shared Memory Charakteristika:**\n  - **Gemeinsamer Pool:** Ein zentraler Speicherbereich für alle Ports\n  - **Dynamische Zuteilung:** Speicher wird je nach Bedarf auf Ports verteilt\n  - **Flexible Warteschlangen:** Ports mit hohem Traffic können mehr Speicher nutzen\n  - **Effizienz:** Bessere Speicherausnutzung bei unterschiedlicher Port-Belastung\n- **Port-basiertes Buffering:**\n  - **Separate Speicher:** Jeder Port hat seinen eigenen dedizierten Puffer\n  - **Feste Zuteilung:** Speichergröße pro Port ist festgelegt\n  - **Potentielle Verschwendung:** Ungenutzte Puffer bei inaktiven Ports\n- **Praktische Vorteile von Shared Memory:**\n  - **Burst-Traffic:** Bessere Behandlung von Traffic-Spitzen\n  - **Kosteneinsparung:** Effizienter Speichereinsatz\n  - **Flexible Performance:** Anpassung an wechselnde Verkehrsmuster"
+    },
+    {
+        "question": "Die Broadcast-MAC-Adresse FF-FF-FF-FF-FF-FF wird typischerweise für ARP-Requests und DHCP-Discover-Nachrichten verwendet.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Die Broadcast-Adresse `FF-FF-FF-FF-FF-FF` wird für verschiedene Netzwerk-Discovery-Protokolle verwendet.\n\n- **ARP-Request (Address Resolution Protocol):**\n  - **Zweck:** Auflösung von IP-Adressen zu MAC-Adressen\n  - **Broadcast notwendig:** Da die Ziel-MAC-Adresse unbekannt ist\n  - **Beispiel:** \"Wer hat IP 192.168.1.100?\" wird an alle Geräte gesendet\n- **DHCP-Discover:**\n  - **Zweck:** Client sucht nach verfügbaren DHCP-Servern\n  - **Broadcast erforderlich:** Client kennt noch keine Server-Adressen\n  - **Prozess:** Client → Broadcast → Server antwortet mit Offer\n- **Weitere Verwendungszwecke:**\n  - **NetBIOS Name Resolution**\n  - **Wake-on-LAN Magic Packets**\n  - **Verschiedene Auto-Discovery-Protokolle**\n- **Netzwerk-Impact:** Broadcasts müssen von allen Geräten im selben Broadcast-Bereich verarbeitet werden, daher sparsam verwenden."
+    },
+    {
+        "question": "Ein Netzwerkadministrator beobachtet, dass ein Switch bei hohem Traffic-Aufkommen Frames verwirft. Bei welcher Buffering-Methode ist dies wahrscheinlicher? ⚠️",
+        "options": [
+            "Shared Memory Buffering",
+            "Port-basiertes Buffering",
+            "Cut-Through Buffering",
+            "Adaptive Buffering"
+        ],
+        "correct": 1,
+        "explain": "**Port-basiertes Buffering** führt eher zu Frame-Verlusten bei ungleichmäßiger Traffic-Verteilung.\n\n- **Problem bei Port-basiertem Buffering:**\n  - **Feste Puffergröße:** Jeder Port hat einen begrenzten, dedizierten Speicher\n  - **Starre Zuteilung:** Kann nicht von weniger belasteten Ports 'borgen'\n  - **Warteschlangen-Overflow:** Bei Traffic-Spitzen wird die Warteschlange voll\n  - **Frame-Drop:** Neue Frames müssen verworfen werden wenn Puffer voll ist\n- **Shared Memory Vorteile:**\n  - **Dynamische Zuteilung:** Ports können je nach Bedarf mehr Speicher erhalten\n  - **Bessere Pufferausnutzung:** Gesamtkapazität flexibel verfügbar\n  - **Geringere Drop-Rate:** Bei gleichem Gesamt-Speicher weniger Verluste\n- **Praktische Konsequenzen:**\n  - **Performance-Probleme:** Verlorene Frames müssen retransmittiert werden\n  - **Latenz-Spitzen:** TCP-Backoff-Algorithmen verlangsamen Übertragung\n  - **Lösung:** Upgrade auf Switches mit Shared Memory oder größeren Puffern"
+    },
+    {
+        "question": "Welche Information lernt ein Switch NICHT automatisch durch das Beobachten des Netzwerkverkehrs? 🤔",
+        "options": [
+            "MAC-Adressen der sendenden Geräte",
+            "Port-Zuordnung der MAC-Adressen", 
+            "IP-Adressen der angeschlossenen Geräte",
+            "Eingangsport der empfangenen Frames"
+        ],
+        "correct": 2,
+        "explain": "Switches arbeiten auf **Layer 2** und lernen **keine IP-Adressen** automatisch durch normale Switching-Operationen.\n\n- **Was Switches automatisch lernen:**\n  - **MAC-Adressen:** Aus dem Source-MAC-Feld jedes empfangenen Frames\n  - **Port-Zuordnung:** Welche MAC-Adresse an welchem Port erreichbar ist\n  - **Timing-Information:** Wann eine MAC-Adresse zuletzt gesehen wurde\n- **Warum keine IP-Adressen:**\n  - **Layer-2-Operation:** Switches betrachten nur Ethernet-Header\n  - **Payload-Ignoranz:** Der Inhalt der Frames (Layer-3-Daten) wird nicht analysiert\n  - **Protocol-Agnostic:** Können IP, IPX, AppleTalk etc. gleichermaßen switchen\n- **Managed Switches:** Können über SNMP/Web-Interface IP-Informationen sammeln, aber das ist eine separate Management-Funktion\n- **Praktische Bedeutung:** Diese Trennung ermöglicht einfache, schnelle Hardware-basierte Switching-Entscheidungen."
+    },
+    {
+        "question": "In einer Netzwerk-Troubleshooting-Situation verwendet ein Techniker Wireshark und sieht MAC-Adressen mit dem Präfix '33-33'. Was bedeutet dies? 🔍",
+        "options": [
+            "Defekte Netzwerkkarten mit ungültigen Adressen",
+            "IPv6-Multicast-Verkehr im Netzwerk",
+            "Verschlüsselte Frame-Übertragungen",
+            "Link-Local Broadcast-Nachrichten"
+        ],
+        "correct": 1,
+        "explain": "MAC-Adressen mit dem Präfix **'33-33'** kennzeichnen **IPv6-Multicast-Verkehr**.\n\n- **IPv6-Multicast-Mapping:**\n  - **Präfix:** Alle IPv6-Multicast-MAC-Adressen beginnen mit `33-33`\n  - **Mapping-Regel:** Die letzten 32 Bit der IPv6-Multicast-Adresse werden direkt auf die MAC-Adresse abgebildet\n  - **IPv6-Bereich:** FF00::/8 bis FFFF::/8\n- **Typische IPv6-Multicast-Anwendungen:**\n  - **Neighbor Discovery:** IPv6-Pendant zu ARP\n  - **Router Solicitation/Advertisement:** Automatische Netzwerkkonfiguration\n  - **Multicast Listener Discovery:** IPv6-Multicast-Gruppenverwaltung\n  - **DHCPv6:** IPv6-Adressvergabe\n- **Troubleshooting-Relevanz:**\n  - **Normal:** IPv6-Multicast ist in modernen Netzwerken standard\n  - **Performance:** Viel Multicast-Traffic kann auf Konfigurations probleme hinweisen\n  - **Sicherheit:** Unerwarteter Multicast-Traffic sollte analysiert werden"
+    },
+    {
+        "question": "Fragment-Free Switching prüft die ersten 64 Byte eines Frames, bevor es weitergeleitet wird.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Fragment-Free Switching ist eine Hybrid-Methode zwischen Cut-Through und Store-and-Forward.\n\n- **Fragment-Free Charakteristika:**\n  - **64-Byte-Prüfung:** Die ersten 64 Byte werden vollständig empfangen und analysiert\n  - **Kollisions-Detection:** Erkennung von Kollisionsfragmenten (kleiner als 64 Byte)\n  - **Fehlerhafte Frames:** Frames unter 64 Byte werden als fehlerhaft verworfen\n  - **Kompromiss:** Bessere Fehlerbehandlung als Fast-Forward, schneller als Store-and-Forward\n- **Warum 64 Byte:**\n  - **Minimum Frame Size:** Kleinste gültige Ethernet-Frame-Größe\n  - **Collision Detection:** Kollisionen führen meist zu Fragmenten < 64 Byte\n  - **Jamming Signals:** Kollisions-Erkennungssignale sind typischerweise 32-64 Byte\n- **Praktischer Nutzen:**\n  - **Netzwerk-Qualität:** Filtert häufigste Arten von korrupten Frames\n  - **Performance:** Deutlich weniger Latenz als vollständige CRC-Prüfung\n  - **Hybrid-Ansatz:** Guter Kompromiss für mittlere Anforderungen"
+    },
+    {
+        "question": "Ein Unternehmen implementiert eine Zero-Trust-Netzwerkarchitektur und möchte MAC-basierte Authentifizierung verwenden. Welches Sicherheitsproblem ist am kritischsten? 🔒",
+        "options": [
+            "MAC-Adressen werden unverschlüsselt übertragen",
+            "MAC-Adressen können durch Software geändert werden (MAC-Spoofing)",
+            "MAC-Adressen haben nur 6 Byte und sind zu kurz",
+            "MAC-Adressen funktionieren nicht über Router-Grenzen hinweg"
+        ],
+        "correct": 1,
+        "explain": "**MAC-Spoofing** ist das kritischste Sicherheitsproblem bei MAC-basierter Authentifizierung.\n\n- **MAC-Spoofing-Risiken:**\n  - **Einfache Durchführung:** Softwaretool oder Betriebssystem-Befehle reichen aus\n  - **Identitätsdiebstahl:** Angreifer können sich als autorisierte Geräte ausgeben\n  - **Bypassing Security:** MAC-Filter und Access Control Lists werden umgangen\n  - **Keine Authentifizierung:** Nur Identifikation, aber keine Verifikation\n- **Zero-Trust-Kontext:**\n  - **'Never Trust, Always Verify':** MAC-Adressen bieten keine echte Verifikation\n  - **Multi-Factor-Authentication:** MAC sollte nur als zusätzlicher Faktor dienen\n  - **Dynamic Security:** Moderne Geräte randomisieren MAC-Adressen für Privacy\n- **Bessere Alternativen:**\n  - **802.1X:** Port-basierte Netzwerk-Authentifizierung\n  - **Certificate-based Auth:** Kryptographische Identitätsverifikation\n  - **Device Fingerprinting:** Mehrere Geräte-Charakteristika kombinieren\n- **Praktische Empfehlung:** MAC-Filter nur als Teil einer mehrschichtigen Sicherheitsstrategie verwenden."
+    },
+    {
+        "question": "Welche Aussage über die Teilung der Sicherungsschicht in LLC und MAC ist korrekt? 🔧",
+        "options": [
+            "LLC behandelt hardware-spezifische Funktionen, MAC die protokoll-übergreifenden",
+            "MAC behandelt physischen Mediumzugriff, LLC die logische Verbindungssteuerung",
+            "Beide Teilschichten arbeiten nur bei Ethernet-Netzwerken",
+            "LLC ist nur für drahtlose, MAC nur für drahtgebundene Netzwerke zuständig"
+        ],
+        "correct": 1,
+        "explain": "Die Aufteilung in **MAC (Media Access Control)** und **LLC (Logical Link Control)** folgt einer klaren funktionalen Trennung.\n\n- **MAC (Media Access Control):**\n  - **Hardware-nah:** Direkter Bezug zum physischen Übertragungsmedium\n  - **Mediumzugriff:** Regelung, wann und wie Geräte senden dürfen\n  - **Adressierung:** Verwaltung der MAC-Adressen\n  - **Frame-Format:** Medium-spezifische Frame-Strukturierung\n- **LLC (Logical Link Control):**\n  - **Hardware-unabhängig:** Abstrahiert von der konkreten Übertragungstechnologie\n  - **Protokoll-Multiplexing:** Identifikation verschiedener Netzwerkprotokolle\n  - **Flow Control:** Datenflusssteuerung zwischen Endpunkten\n  - **Error Recovery:** Logische Fehlerbehandlung und Retransmission\n- **IEEE 802-Standard:**\n  - **Universell:** Beide Schichten arbeiten über verschiedene Medien (Ethernet, WLAN, Token Ring)\n  - **Interoperabilität:** Ermöglicht verschiedene LLC-Protokolle über dieselbe MAC-Technologie\n- **Praktischer Nutzen:** Diese Trennung ermöglicht modularen Netzwerkaufbau und Protokoll-Flexibilität"
+    },
+    {
+        "question": "Ein Netzwerkanalyst überwacht die Performance eines Switches und stellt fest, dass die MAC-Tabelle ständig überfüllt wird. Was ist die wahrscheinlichste Ursache und Lösung? 📈",
+        "options": [
+            "Zu viele gleichzeitige Verbindungen - Lösung: Mehr Bandbreite",
+            "MAC-Flooding-Angriff - Lösung: Port Security implementieren",
+            "Defekte Netzwerkkarten - Lösung: Hardware austauschen",
+            "Zu hohe Broadcast-Rate - Lösung: VLANs einrichten"
+        ],
+        "correct": 1,
+        "explain": "Eine konstant überfüllte MAC-Tabelle deutet stark auf einen **MAC-Flooding-Angriff** hin.\n\n- **MAC-Flooding-Angriff:**\n  - **Funktionsweise:** Angreifer sendet Frames mit zufälligen Absender-MAC-Adressen\n  - **Ziel:** MAC-Tabelle des Switches zum Überlaufen bringen\n  - **Konsequenz:** Switch fällt in 'Hub-Modus' und leitet alle Frames an alle Ports weiter\n  - **Sicherheitsrisiko:** Angreifer kann dann passiv alle Netzwerkkommunikation mitlesen\n- **Port Security als Lösung:**\n  - **MAC-Limit:** Begrenzung der erlaubten MAC-Adressen pro Port\n  - **Sticky MAC:** Dynamisch gelernte Adressen werden dauerhaft gespeichert\n  - **Violation Actions:** Port-Shutdown, Trap-Nachrichten oder Traffic-Drop bei Verstößen\n  - **Aging-Timer:** Automatisches Entfernen alter MAC-Einträge\n- **Zusätzliche Maßnahmen:**\n  - **802.1X:** Port-basierte Authentifizierung\n  - **DHCP Snooping:** Schutz vor DHCP-basierten Angriffen\n  - **Network Monitoring:** Überwachung anomaler MAC-Aktivitäten"
+    },
+    {
+        "question": "Welche Aussage über die maximale Ethernet-Frame-Größe ist korrekt? 📏",
+        "options": [
+            "Standard-Frames: 1500 Byte, Jumbo-Frames: bis zu 9000 Byte",
+            "Standard-Frames: 1518 Byte, Jumbo-Frames: bis zu 9000 Byte", 
+            "Standard-Frames: 64 Byte, Maximum: 1518 Byte",
+            "Alle Frames müssen exakt 1500 Byte groß sein"
+        ],
+        "correct": 1,
+        "explain": "**Standard-Ethernet-Frames** haben eine maximale Größe von **1518 Byte**, während **Jumbo-Frames** bis zu **9000 Byte** erreichen können.\n\n- **Standard-Ethernet-Frame (IEEE 802.3):**\n  - **Minimum:** 64 Byte (einschließlich Header und FCS)\n  - **Maximum:** 1518 Byte (einschließlich Header und FCS)\n  - **Payload:** 46-1500 Byte für höhere Protokoll-Schichten\n  - **Header-Overhead:** 18 Byte (Destination MAC, Source MAC, Length/Type, FCS)\n- **Jumbo-Frames:**\n  - **Größe:** Bis zu 9000 Byte (teilweise auch 9216 Byte)\n  - **Nicht standardisiert:** Vendor-spezifische Implementierungen\n  - **Performance-Vorteil:** Weniger Header-Overhead pro übertragenes Byte\n  - **Kompatibilität:** Alle Netzwerkgeräte im Pfad müssen Jumbo-Frames unterstützen\n- **Praktische Anwendung:**\n  - **Server-to-Server:** Hochperformante Datenübertragung in Rechenzentren\n  - **Storage Networks:** iSCSI, NFS, Backup-Systeme\n  - **Vorsicht:** Kann zu Fragmentierung führen wenn nicht durchgängig unterstützt"
+    },
+    {
+        "question": "Fast-Forward-Switching leitet Frames weiter, sobald nur die Zieladresse gelesen wurde, ohne weitere Prüfungen.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr**. Fast-Forward-Switching ist die aggressivste Form des Cut-Through-Switching.\n\n- **Fast-Forward-Charakteristika:**\n  - **Minimale Latenz:** Frame wird weitergeleitet sobald die Destination-MAC-Adresse (erste 6 Byte) gelesen wurde\n  - **Keine Fehlerprüfung:** Weder CRC noch Kollisions-Detection\n  - **Höchste Geschwindigkeit:** Geringste mögliche Switching-Latenz\n  - **Risiko:** Fehlerhafte oder kollidierende Frames werden weitergeleitet\n- **Vergleich der Switching-Methoden:**\n  - **Fast-Forward:** Nur Destination-MAC lesen (~6 Byte)\n  - **Fragment-Free:** Erste 64 Byte prüfen (Kollisions-Detection)\n  - **Store-and-Forward:** Kompletter Frame + CRC-Prüfung\n- **Anwendungsbereiche:**\n  - **Hochfrequenz-Trading:** Jede Mikrosekunde zählt\n  - **Real-Time-Systeme:** Deterministische, minimale Latenz erforderlich\n  - **Voraussetzung:** Sehr zuverlässige Netzwerk-Infrastruktur\n- **Trade-off:** Maximale Geschwindigkeit vs. Fehlerbehandlung - für spezielle Anwendungen geeignet"
+    },
+    {
+        "question": "Ein Netzwerkadministrator plant die Verkabelung für ein neues Bürogebäude. Für die Verbindung zwischen zwei Gebäuden in 150m Entfernung soll eine stabile 10 Gbit/s Verbindung realisiert werden. Welche Lösung ist hier am besten geeignet? 🏢",
+        "options": [
+            "Cat 6 UTP-Kabel mit Signalverstärkung",
+            "Koaxialkabel mit spezieller Abschirmung", 
+            "Glasfaserkabel (Multimode)",
+            "Mehrere parallele Cat 5e Kabel bündeln"
+        ],
+        "correct": 2,
+        "explain": "**Glasfaserkabel (Multimode)** ist die optimale Lösung für diese Anforderung.\n\n**Problemanalyse:**\n- Entfernung: 150m (überschreitet die 100m-Grenze von Twisted Pair)\n- Geschwindigkeitsanforderung: 10 Gbit/s\n- Stabilität über größere Distanz erforderlich\n\n**Warum Glasfaser die beste Wahl ist:**\n- **Reichweite:** Multimode-Glasfaser unterstützt 2km+ (weit über die benötigten 150m)\n- **Geschwindigkeit:** Problemlos 10 Gbit/s und mehr möglich\n- **Störungsresistenz:** Unempfindlich gegen elektromagnetische Interferenzen\n- **Zukunftssicherheit:** Skalierbar für höhere Bandbreiten\n\n**Warum andere Optionen nicht funktionieren:**\n- **Cat 6 UTP:** Maximale Länge 100m, darüber hinaus keine Garantie für 10 Gbit/s\n- **Koaxialkabel:** Typischerweise nur bis 10 Mbit/s, nicht für moderne Hochgeschwindigkeits-Ethernet geeignet\n- **Mehrere Cat 5e parallel:** Technisch nicht umsetzbar für eine einheitliche 10 Gbit/s Verbindung"
+    },
+    {
+        "question": "Bei der Datenübertragung im Physical Layer werden die Bits als reine elektrische, optische oder elektromagnetische Signale übertragen, ohne dass eine Interpretation der Daten stattfindet.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 0,
+        "explain": "Diese Aussage ist **wahr** und beschreibt eine Kernfunktion des Physical Layers.\n\n**Charakteristika des Physical Layers:**\n- **Reine Signalübertragung:** Bits werden als physikalische Signale (elektrische Spannungen, Lichtimpulse, Funkwellen) transportiert\n- **Keine Dateninterpretation:** Der Physical Layer 'versteht' nicht, was die übertragenen Bits bedeuten - er kennt nur 0 und 1\n- **Medium-spezifische Umsetzung:** Je nach Übertragungsmedium werden verschiedene Signalformen verwendet\n\n**Praktische Bedeutung:**\n- **Elektrisch (Kupferkabel):** Verschiedene Spannungspegel repräsentieren 0 und 1\n- **Optisch (Glasfaser):** Lichtimpulse unterschiedlicher Intensität oder Wellenlänge\n- **Elektromagnetisch (Funk):** Verschiedene Frequenzen oder Modulationsarten\n\n**Abgrenzung zu höheren Layern:**\nErst ab Layer 2 (Data Link) beginnt die Interpretation der Bitfolgen als Frames, Pakete etc. Der Physical Layer ist ausschließlich für die zuverlässige Übertragung der rohen Bitströme zuständig."
+    },
+    {
+        "question": "Welche Übertragungsart ermöglicht es zwei Netzwerkgeräten, gleichzeitig Daten zu senden und zu empfangen, ohne dass es zu Kollisionen kommt? 📡",
+        "options": [
+            "Simplex",
+            "Halbduplex", 
+            "Vollduplex",
+            "Multiplex"
+        ],
+        "correct": 2,
+        "explain": "**Vollduplex** (Full-Duplex) ermöglicht die gleichzeitige bidirektionale Datenübertragung ohne Kollisionen.\n\n**Übertragungsarten im Detail:**\n\n**Vollduplex (Full-Duplex):**\n- **Funktion:** Simultanes Senden und Empfangen in beide Richtungen\n- **Implementierung:** Getrennte Übertragungswege (z.B. verschiedene Adernpaare bei Twisted Pair)\n- **Vorteil:** Maximale Bandbreitenausnutzung, keine Wartezeiten\n- **Beispiel:** Moderne Switch-Verbindungen, Glasfaserverbindungen\n\n**Vergleich zu anderen Arten:**\n- **Simplex:** Nur eine Richtung (z.B. Rundfunk, alte Modems)\n- **Halbduplex (Half-Duplex):** Abwechselnd in beide Richtungen, aber nie gleichzeitig (z.B. Walkie-Talkies, alte Hub-basierte Netzwerke)\n- **Multiplex:** Ist ein Verfahren zur Bündelung mehrerer Signale, nicht eine Übertragungsart\n\n**Praktische Bedeutung:**\nVollduplex ist Standard in modernen Ethernet-Netzwerken und ermöglicht die theoretische Verdopplung des Durchsatzes, da Upload und Download parallel ablaufen können."
+    },
+    {
+        "question": "Ein IT-Techniker muss eine Verbindung zwischen dem Hauptgebäude und einem 300m entfernten Serverraum herstellen. Die vorhandene Infrastruktur nutzt bereits 2,4 GHz WLAN, und es gibt starke elektromagnetische Störungen durch Industrieanlagen. Welche Lösung minimiert Interferenzen am besten? ⚡",
+        "options": [
+            "5 GHz WLAN mit höherer Sendeleistung",
+            "Bluetooth-Mesh-Netzwerk über mehrere Zwischenstationen",
+            "Singlemode-Glasfaserkabel",
+            "Geschirmtes STP-Kabel mit zusätzlicher Erdung"
+        ],
+        "correct": 2,
+        "explain": "**Singlemode-Glasfaserkabel** ist die optimale Lösung für diese herausfordernde Umgebung.\n\n**Problemanalyse:**\n- **Entfernung:** 300m (über Twisted Pair-Grenze von 100m)\n- **Störungsumgebung:** Starke elektromagnetische Interferenzen\n- **Existierende 2,4 GHz Nutzung:** Zusätzliche Funkfrequenz-Belegung\n- **Kritische Anwendung:** Serverraum-Verbindung (hohe Verfügbarkeit erforderlich)\n\n**Warum Singlemode-Glasfaser optimal ist:**\n- **Völlige EMI-Immunität:** Lichtwellen sind unempfindlich gegen elektromagnetische Störungen\n- **Reichweite:** Singlemode unterstützt 100km+ (300m problemlos)\n- **Hohe Bandbreite:** 100+ Gbit/s möglich, zukunftssicher\n- **Keine Funkfrequenz-Interferenzen:** Arbeitet völlig unabhängig vom WLAN-Spektrum\n\n**Warum andere Optionen problematisch sind:**\n- **5 GHz WLAN:** Immer noch funkbasiert, anfällig für EMI und begrenzte Reichweite\n- **Bluetooth-Mesh:** Zu langsam und unzuverlässig für Serverraum-Verbindungen\n- **STP-Kabel:** 300m Entfernung nicht ohne Verstärker möglich, EMI-Schutz bei starken Industriestörungen oft unzureichend"
+    },
+    {
+        "question": "NFC (Near Field Communication) und RFID arbeiten beide im gleichen Frequenzbereich, aber NFC hat eine deutlich größere Reichweite als RFID-Systeme.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch** - die Reichweitenverhältnisse sind umgekehrt.\n\n**Tatsächliche Unterschiede zwischen NFC und RFID:**\n\n**Frequenzbereiche:**\n- **NFC:** Arbeitet bei 13,56 MHz (High Frequency)\n- **RFID:** Arbeitet in verschiedenen Bereichen - 125 kHz (Low Frequency), 13,56 MHz (High Frequency) und 860-960 MHz (Ultra High Frequency)\n- **Gemeinsamkeit:** Beide können bei 13,56 MHz arbeiten\n\n**Reichweiten-Vergleich:**\n- **NFC:** Sehr kurze Reichweite (typisch 4cm, maximal 10cm)\n- **RFID:** Je nach Frequenz und System 10cm bis mehrere Meter\n  - LF-RFID (125 kHz): bis ~50cm\n  - HF-RFID (13,56 MHz): bis ~1m\n  - UHF-RFID (860-960 MHz): bis ~10m und mehr\n\n**Warum NFC bewusst kurze Reichweite hat:**\n- **Sicherheit:** Reduziert das Risiko von ungewollten Datenübertragungen\n- **Benutzerfreundlichkeit:** Bewusste 'Touch'-Interaktion erforderlich\n- **Energieeffizienz:** Geringerer Stromverbrauch in mobilen Geräten\n\n**Anwendungsunterschiede:**\n- **NFC:** Kontaktlose Zahlung, Geräte-Pairing, Zutrittskarten (kurze Distanz gewünscht)\n- **RFID:** Lagerverwaltung, Tierverfolgung, Mautsysteme (größere Reichweite oft erforderlich)"
+    }
 ]
 ]
 }
