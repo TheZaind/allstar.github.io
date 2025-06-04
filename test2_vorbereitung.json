@@ -2295,8 +2295,208 @@
         "options": ["Wahr", "Falsch"],
         "correct": 1,
         "explain": "Diese Aussage ist **falsch** - die Reichweitenverhältnisse sind umgekehrt.\n\n**Tatsächliche Unterschiede zwischen NFC und RFID:**\n\n**Frequenzbereiche:**\n- **NFC:** Arbeitet bei 13,56 MHz (High Frequency)\n- **RFID:** Arbeitet in verschiedenen Bereichen - 125 kHz (Low Frequency), 13,56 MHz (High Frequency) und 860-960 MHz (Ultra High Frequency)\n- **Gemeinsamkeit:** Beide können bei 13,56 MHz arbeiten\n\n**Reichweiten-Vergleich:**\n- **NFC:** Sehr kurze Reichweite (typisch 4cm, maximal 10cm)\n- **RFID:** Je nach Frequenz und System 10cm bis mehrere Meter\n  - LF-RFID (125 kHz): bis ~50cm\n  - HF-RFID (13,56 MHz): bis ~1m\n  - UHF-RFID (860-960 MHz): bis ~10m und mehr\n\n**Warum NFC bewusst kurze Reichweite hat:**\n- **Sicherheit:** Reduziert das Risiko von ungewollten Datenübertragungen\n- **Benutzerfreundlichkeit:** Bewusste 'Touch'-Interaktion erforderlich\n- **Energieeffizienz:** Geringerer Stromverbrauch in mobilen Geräten\n\n**Anwendungsunterschiede:**\n- **NFC:** Kontaktlose Zahlung, Geräte-Pairing, Zutrittskarten (kurze Distanz gewünscht)\n- **RFID:** Lagerverwaltung, Tierverfolgung, Mautsysteme (größere Reichweite oft erforderlich)"
+    },
+    {
+        "question": "Ein Systemadministrator bemerkt, dass Pakete in seinem IPv4-Netzwerk nach genau 64 Hops verworfen werden, obwohl das Ziel erreichbar wäre. Welches Header-Feld ist dafür verantwortlich? 🚦",
+        "options": [
+            "Header Checksum",
+            "Fragment Offset", 
+            "Time to Live (TTL)",
+            "Total Length"
+        ],
+        "correct": 2,
+        "explain": "Das **Time to Live (TTL)** Feld ist für diese Begrenzung verantwortlich.\n\n- **Zweck:** TTL verhindert endlose Schleifen von Paketen im Netzwerk, indem es die maximale Anzahl von Hops (Router-Durchgängen) begrenzt.\n- **Funktionsweise:** Jeder Router, der das Paket weiterleitet, verringert den TTL-Wert um 1. Erreicht TTL den Wert 0, wird das Paket verworfen und eine ICMP \"Time Exceeded\" Nachricht an den Absender gesendet.\n- **Typische Werte:** Standard-TTL-Werte liegen oft bei 64, 128 oder 255, je nach Betriebssystem.\n- **Praktische Relevanz:** TTL hilft auch bei der Netzwerkdiagnose mit Tools wie `traceroute`, die bewusst TTL-Werte erhöhen, um den Pfad durch das Netzwerk zu verfolgen.\n- **IPv6-Equivalent:** In IPv6 heißt dieses Feld \"Hop Limit\" und erfüllt dieselbe Funktion."
+    },
+    {
+        "question": "In welcher Routing-Tabelle eines Cisco-Routers würden Sie einen Eintrag mit dem Code 'O' erwarten zu finden? 📊",
+        "options": [
+            "Bei statisch konfigurierten Routen",
+            "Bei direkt verbundenen Netzwerken",
+            "Bei über OSPF erlernten Routen", 
+            "Bei lokalen Interface-Adressen"
+        ],
+        "correct": 2,
+        "explain": "Der Code **'O'** kennzeichnet **über OSPF erlernte Routen**.\n\n- **OSPF (Open Shortest Path First):** Ein dynamisches Link-State-Routingprotokoll, das automatisch Netzwerktopologien lernt und optimale Pfade berechnet.\n- **Routing-Table-Codes:** Verschiedene Codes zeigen die Herkunft der Route:\n  - **L:** Lokale Interface-Adresse\n  - **C:** Direkt verbundenes Netzwerk\n  - **S:** Statische Route (manuell konfiguriert)\n  - **O:** OSPF-Route\n  - **D:** EIGRP-Route\n- **Praktischer Nutzen:** Diese Codes helfen Administratoren sofort zu erkennen, woher eine bestimmte Route stammt und wie zuverlässig/prioritär sie ist.\n- **Dynamisches vs. Statisches Routing:** OSPF-Routen passen sich automatisch an Netzwerkänderungen an, während statische Routen manuell gepflegt werden müssen."
+    },
+    {
+        "question": "IPv6 verwendet grundsätzlich dieselbe Fragmentierungsstrategie wie IPv4, bei der sowohl Sender als auch Router Pakete fragmentieren können.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. IPv6 hat eine grundlegend andere Fragmentierungsstrategie.\n\n- **IPv4-Fragmentierung:** Router und Sender können Pakete fragmentieren, wenn sie größer als die Maximum Transmission Unit (MTU) des nächsten Netzwerksegments sind.\n- **IPv6-Ansatz:** **Nur der Sender** darf fragmentieren. Router fragmentieren grundsätzlich nicht.\n- **Path MTU Discovery:** IPv6 nutzt verstärkt Path MTU Discovery, um die kleinste MTU entlang des gesamten Pfades zu ermitteln und Pakete entsprechend zu dimensionieren.\n- **Vorteile:** Dies reduziert die Verarbeitungslast auf Routern und macht das Routing effizienter.\n- **Praktische Konsequenz:** Wenn ein IPv6-Router ein zu großes Paket erhält, sendet er eine ICMPv6 \"Packet Too Big\" Nachricht zurück, statt selbst zu fragmentieren.\n- **Extension Headers:** Fragmentierung in IPv6 erfolgt über spezielle Extension Headers, nicht im Basis-Header."
+    },
+    {
+        "question": "Sie konfigurieren ein neues Unternehmensnetzwerk und müssen entscheiden, welcher Adressbereich für interne Server verwendet werden soll. Welcher der folgenden Bereiche ist für private Netzwerke reserviert? 🏢",
+        "options": [
+            "169.254.0.0/16",
+            "224.0.0.0/4",
+            "172.16.0.0/12",
+            "240.0.0.0/4"
+        ],
+        "correct": 2,
+        "explain": "Der Adressbereich **172.16.0.0/12** ist einer der drei privaten IPv4-Adressbereiche nach RFC 1918.\n\n- **Private IPv4-Adressbereiche:**\n  - **10.0.0.0/8** (Class A): 10.0.0.0 - 10.255.255.255\n  - **172.16.0.0/12** (Class B): 172.16.0.0 - 172.31.255.255\n  - **192.168.0.0/16** (Class C): 192.168.0.0 - 192.168.255.255\n- **Andere Optionen erklärt:**\n  - **169.254.0.0/16:** APIPA (Automatic Private IP Addressing) - automatische IP-Zuweisung bei DHCP-Ausfall\n  - **224.0.0.0/4:** Multicast-Adressbereich\n  - **240.0.0.0/4:** Experimenteller Bereich, reserviert für zukünftige Nutzung\n- **Praktische Anwendung:** Private Adressen sind nicht im Internet geroutet und benötigen NAT für Internetkommunikation. Der 172.16.x.x-Bereich ist besonders beliebt für größere Unternehmensnetzwerke."
+    },
+    {
+        "question": "Ein Netzwerktechniker führt eine Paketanalyse durch und stellt fest, dass IPv6-Pakete keinen Header Checksum enthalten. Warum wurde diese Designentscheidung getroffen? 🔍",
+        "options": [
+            "IPv6 ist grundsätzlich unsicherer als IPv4",
+            "Die Prüfsummenberechnung verlangsamt Router unnötig",
+            "IPv6 verwendet ausschließlich Hardware-basierte Fehlerkorrektur",
+            "IPv6-Adressen sind selbst-validierend"
+        ],
+        "correct": 1,
+        "explain": "Die **Prüfsummenberechnung verlangsamt Router unnötig** - dies ist der Hauptgrund für das Weglassen der Header Checksum in IPv6.\n\n- **Performance-Optimierung:** Router müssen bei IPv4 bei jedem Hop die Header Checksum neu berechnen (da sich TTL ändert). Dies kostet Rechenzeit und verlangsamt das Routing.\n- **Redundanz:** Moderne Netzwerktechnologien (Ethernet, Wi-Fi, etc.) haben bereits eigene Fehlererkennungsmechanismen auf Layer 2.\n- **Ende-zu-Ende-Prinzip:** Fehlerkorrektur wird besser von höheren Schichten (TCP, UDP) oder den Endgeräten selbst gehandhabt.\n- **IPv6-Design-Philosophie:** Fokus auf Effizienz und Einfachheit im Router-Processing. Der 40-Byte-Header ist absichtlich schlank gehalten.\n- **Praktischer Effekt:** Router können IPv6-Pakete schneller verarbeiten, was bei hohen Datenraten einen spürbaren Performance-Vorteil bringt.\n- **Sicherheitsaspekt:** Dies macht IPv6 nicht unsicherer, da Sicherheit durch andere Mechanismen (IPSec, TLS) gewährleistet wird."
+    },
+    {
+        "question": "Welche IPv6-Adresse entspricht funktional der IPv4-Loopback-Adresse 127.0.0.1? 🔄",
+        "options": [
+            "fe80::1",
+            "::1",
+            "::",
+            "::ffff:127.0.0.1"
+        ],
+        "correct": 1,
+        "explain": "Die IPv6-Loopback-Adresse ist **::1** (ausgeschrieben: 0000:0000:0000:0000:0000:0000:0000:0001).\n\n- **Funktionalität:** Wie 127.0.0.1 in IPv4 zeigt ::1 auf den lokalen Host selbst - \"localhost\".\n- **Verwendung:** Ideal für lokale Tests, Dienste die nur auf dem lokalen System verfügbar sein sollen, und Debugging.\n- **Andere Optionen erklärt:**\n  - **:: (Unspecified Address):** Entspricht 0.0.0.0 in IPv4 - \"keine Adresse zugewiesen\"\n  - **fe80::1:** Link-local Adresse, nur im lokalen Netzwerksegment gültig\n  - **::ffff:127.0.0.1:** IPv4-mapped IPv6 Adresse für Übergangstechniken\n- **Praktische Anwendung:** `ping ::1` oder Verbindungen zu `http://[::1]:8080` funktionieren genauso wie mit 127.0.0.1.\n- **Notation:** Die Doppelpunkt-Notation (::) komprimiert aufeinanderfolgende Null-Gruppen in IPv6-Adressen."
+    },
+    {
+        "question": "Das Internet Protocol (IP) garantiert die zuverlässige Zustellung aller gesendeten Pakete an ihr Ziel.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. IP arbeitet nach dem \"Best Effort\" Prinzip und bietet **keine Garantie** für die Paketzustellung.\n\n- **Best Effort Service:** IP versucht sein Bestes, Pakete zuzustellen, aber garantiert weder Ankunft, Reihenfolge noch Unversehrtheit.\n- **Verbindungslos:** IP baut keine dedizierte Ende-zu-Ende-Verbindung auf. Jedes Paket wird unabhängig behandelt.\n- **Mögliche Probleme:**\n  - Pakete können verloren gehen (Netzwerküberlastung, defekte Hardware)\n  - Pakete können in falscher Reihenfolge ankommen\n  - Pakete können dupliziert werden\n  - Pakete können durch TTL-Ablauf verworfen werden\n- **Zuverlässigkeit durch höhere Schichten:** TCP (Layer 4) übernimmt die Aufgabe der zuverlässigen Übertragung mit Bestätigungen, Neuübertragungen und Reihenfolge-Kontrolle.\n- **Praktischer Vorteil:** Diese Einfachheit macht IP schnell und effizient - Komplexität wird nur dort hinzugefügt, wo sie benötigt wird."
+    },
+    {
+        "question": "Sie troubleshooten ein Verbindungsproblem zwischen zwei Standorten. Der Befehl 'show ip route' auf einem Cisco-Router zeigt eine Route mit dem Code 'S*'. Was bedeutet diese Kennzeichnung? 🛠️",
+        "options": [
+            "Eine OSPF-Route mit höchster Priorität",
+            "Eine statische Standard-/Default-Route",
+            "Eine dynamisch erlernte, gesicherte Route",
+            "Eine suspendierte, inaktive Route"
+        ],
+        "correct": 1,
+        "explain": "**'S*'** kennzeichnet eine **statische Standard-/Default-Route**.\n\n- **Code-Bedeutung:**\n  - **'S':** Statische Route (manuell vom Administrator konfiguriert)\n  - **'*':** Default Route (Standard-Route mit Ziel 0.0.0.0/0)\n- **Default Route Funktion:** Fängt alle Pakete ab, für die keine spezifischere Route existiert - der \"Weg ins Internet\" oder zu einem übergeordneten Router.\n- **Typische Konfiguration:** `ip route 0.0.0.0 0.0.0.0 [Next-Hop-IP oder Interface]`\n- **Praktische Anwendung:** In Branch-Offices oder kleineren Netzwerken, wo der gesamte \"unbekannte\" Traffic über einen zentralen Router geroutet werden soll.\n- **Troubleshooting-Relevanz:** Wenn diese Route fehlt oder falsch konfiguriert ist, können Pakete zu externen Zielen nicht geroutet werden.\n- **Priorität:** Default Routes haben die niedrigste Priorität (längste Präfix-Übereinstimmung) und werden nur verwendet, wenn keine spezifischere Route existiert."
+    },
+    {
+        "question": "Bei der Implementierung einer IPv6-Infrastruktur entscheiden Sie sich für den Adressbereich fc00::/7. Welche Art von IPv6-Adressen verwenden Sie damit? 🌐",
+        "options": [
+            "Global Unicast Adressen für Internet-Routing",
+            "Link-Local Adressen für lokale Kommunikation",
+            "Unique Local Addresses für private Netzwerke",
+            "Multicast-Adressen für Gruppenkommunikation"
+        ],
+        "correct": 2,
+        "explain": "**fc00::/7** definiert **Unique Local Addresses (ULA)** - das IPv6-Äquivalent zu privaten IPv4-Adressen.\n\n- **ULA-Eigenschaften:**\n  - **Präfix:** fc00::/7 (fc00:: bis fdff::)\n  - **Privater Charakter:** Nicht im globalen Internet geroutet\n  - **Eindeutigkeit:** Statistisch eindeutig durch 40-Bit Global ID\n  - **Stabilität:** Bleiben auch bei Provider-Wechsel unverändert\n- **Praktische Verwendung:**\n  - Interne Unternehmensnetzwerke\n  - Site-to-Site-VPNs\n  - Interne Server und Services\n- **Andere IPv6-Adresstypen:**\n  - **2000::/3:** Global Unicast (Internet-routbar)\n  - **fe80::/10:** Link-Local (nur lokales Segment)\n  - **ff00::/8:** Multicast\n- **Vorteil gegenüber IPv4:** Keine NAT erforderlich, da genügend Adressen verfügbar sind. ULA ermöglicht echte Ende-zu-Ende-Kommunikation innerhalb der Organisation.\n- **Best Practice:** ULA für interne Kommunikation, Global Unicast für Internet-Services."
+    },
+    {
+        "question": "Ein Host möchte ein Paket an das Ziel 192.168.50.100 senden. Die eigene IP des Hosts ist 192.168.10.50/24. Welche Aktion wird der Host ausführen? 📡",
+        "options": [
+            "Das Paket direkt an die Ziel-IP senden",
+            "Das Paket an das Default Gateway weiterleiten",
+            "Eine ARP-Anfrage für die Ziel-IP senden",
+            "Das Paket verwerfen wegen ungültiger Adresse"
+        ],
+        "correct": 1,
+        "explain": "Der Host wird **das Paket an das Default Gateway weiterleiten**.\n\n- **Routing-Entscheidung:** Der Host vergleicht seine eigene IP (192.168.10.50) mit Subnetzmaske (/24 = 255.255.255.0) gegen das Ziel (192.168.50.100).\n- **Netzwerk-Berechnung:**\n  - **Eigenes Netzwerk:** 192.168.10.0/24\n  - **Ziel-Netzwerk:** 192.168.50.0 (nicht im lokalen Subnetz)\n- **Logik:** Da sich das Ziel in einem anderen Netzwerk befindet, kann der Host es nicht direkt erreichen.\n- **Default Gateway:** Router, der als \"Ausgang\" zu anderen Netzwerken fungiert. Der Host sendet das Paket an die MAC-Adresse des Default Gateways, aber mit der ursprünglichen Ziel-IP im IP-Header.\n- **Warum nicht direkt senden:** Hosts können nur mit Geräten im selben Subnetz direkt kommunizieren (Layer 2).\n- **Praktisches Beispiel:** Wie beim Versenden eines Briefes - wenn der Empfänger nicht in derselben Stadt wohnt, geht der Brief zur Post (Default Gateway), nicht direkt zum Empfänger."
+    },
+    {
+        "question": "Ein Unternehmen plant die Migration von IPv4 zu IPv6. Welcher Hauptvorteil von IPv6 macht Network Address Translation (NAT) überflüssig? 🌐",
+        "options": [
+            "Vereinfachter Header-Aufbau",
+            "Erweiterte Sicherheitsfeatures",
+            "Deutlich größerer Adressraum",
+            "Bessere Quality of Service"
+        ],
+        "correct": 2,
+        "explain": "Der **deutlich größere Adressraum** von IPv6 macht NAT überflüssig.\n\n- **IPv4:** Mit nur 32 Bit stehen etwa 4,3 Milliarden Adressen zur Verfügung, was bei der weltweiten Internetnutzung zu Adressknappheit führte.\n- **IPv6:** Mit 128 Bit bietet einen praktisch unerschöpflichen Adressraum (2^128 Adressen).\n- **NAT-Überflüssigkeit:** Da genügend öffentliche Adressen verfügbar sind, kann jedes Gerät eine eigene, weltweit eindeutige Adresse erhalten.\n- **Weitere Vorteile:** Zwar bietet IPv6 auch einen vereinfachten Header und erweiterte Features, aber der Hauptgrund für die NAT-Überflüssigkeit ist definitiv der massive Adressraum."
+    },
+    {
+        "question": "Welche Aussage über das Routing-Verhalten von IP-Paketen ist korrekt?",
+        "options": [
+            "IP-Adressen ändern sich während des Transports zur Optimierung der Route",
+            "Jeder Router garantiert die Ankunft der weitergeleiteten Pakete",
+            "IP-Adressen bleiben während des gesamten Transports unverändert",
+            "Pakete einer Verbindung nehmen immer denselben Pfad"
+        ],
+        "correct": 2,
+        "explain": "**IP-Adressen bleiben während des gesamten Transports unverändert** - dies ist ein Grundprinzip der IP-Kommunikation.\n\n- **Eindeutige Identifikation:** Absender- und Empfänger-IP-Adressen dienen zur global eindeutigen Identifikation und ändern sich nicht während des Transports.\n- **Router-Funktion:** Router leiten Pakete anhand der Ziel-IP-Adresse weiter, ohne diese zu ändern.\n- **Falsche Aussagen:**\n  - IP arbeitet verbindungslos und bietet keine Garantien (Best Effort)\n  - Pakete können verschiedene Pfade nehmen\n  - Nur bei NAT werden Adressen geändert, aber das passiert an den Netzwerkgrenzen, nicht während des Transports im Kern-Internet"
+    },
+    {
+        "question": "Sie konfigurieren ein Netzwerk und verwenden die Adresse 192.168.1.100. In welchem Szenario würde ein Paket mit dieser Zieladresse das lokale Netzwerk verlassen? 🔧",
+        "options": [
+            "Niemals, da es sich um eine Privatadresse handelt",
+            "Nur wenn NAT konfiguriert ist",
+            "Wenn das Ziel nicht im lokalen Subnetz liegt",
+            "Automatisch bei jeder Kommunikation"
+        ],
+        "correct": 2,
+        "explain": "Ein Paket würde das lokale Netzwerk verlassen, **wenn das Ziel nicht im lokalen Subnetz liegt**.\n\n- **Routing-Entscheidung:** Der Host prüft anhand seiner Subnetzmaske, ob die Zieladresse im lokalen Netz liegt.\n- **Lokales Subnetz:** Ist das Ziel im gleichen Subnetz (z.B. 192.168.1.0/24), wird direkt zugestellt.\n- **Anderes Netzwerk:** Liegt das Ziel außerhalb des Subnetzes, wird das Paket an das Default Gateway (Router) weitergeleitet.\n- **Privatadresse:** Dass 192.168.1.100 eine Privatadresse ist, verhindert nicht das Verlassen des lokalen Netzes - der Router entscheidet dann über weitere Behandlung (NAT, Verwerfen, etc.).\n- **Praktisches Beispiel:** Bei einem /24-Netz würde ein Paket an 192.168.2.1 das lokale Netz verlassen."
+    },
+    {
+        "question": "ICMP ist ein reines Fehlerberichterstattungsprotokoll ohne weitere Funktionalitäten.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. ICMP hat deutlich mehr Funktionen als nur Fehlerberichte.\n\n- **Fehlerberichte:** Ja, ICMP meldet Fehler wie 'Time Exceeded', 'Destination Unreachable' oder 'Redirect'.\n- **Weitere Funktionen:**\n  - **Ping:** Echo Request/Reply für Konnektivitätstests\n  - **Traceroute:** Pfadverfolgung durch Time-to-Live-Manipulation\n  - **Path MTU Discovery:** Ermittlung der maximalen Übertragungseinheit\n  - **Router Advertisement/Solicitation:** Für IPv6-Autoconfiguration\n- **Netzwerkdiagnose:** ICMP ist ein essentielles Tool für Netzwerkadministratoren zur Diagnose und Fehlerbehebung.\n- **Sicherheitsaspekt:** Viele Firewalls blockieren ICMP teilweise, da es auch für Reconnaissance genutzt werden kann."
+    },
+    {
+        "question": "Ein Systemadministrator troubleshootet Konnektivitätsprobleme. Welche IPv4-Adresse würde automatisch zugewiesen, wenn der DHCP-Server ausfällt? 💻",
+        "options": [
+            "127.0.0.1",
+            "0.0.0.0",
+            "Eine Adresse aus 169.254.0.0/16",
+            "255.255.255.255"
+        ],
+        "correct": 2,
+        "explain": "Bei DHCP-Ausfall wird automatisch **eine Adresse aus 169.254.0.0/16** zugewiesen.\n\n- **APIPA (Automatic Private IP Addressing):** Windows-Feature für Link-Local-Adressen bei DHCP-Ausfall.\n- **Adressbereich:** 169.254.1.0 bis 169.254.254.255 (169.254.0.0 und 169.254.255.255 sind reserviert).\n- **Automatische Konfiguration:** Das System wählt zufällig eine Adresse und prüft per ARP, ob sie bereits verwendet wird.\n- **Andere Adressen:**\n  - **127.0.0.1:** Loopback-Adresse für lokale Tests\n  - **0.0.0.0:** Unspecified Address, z.B. für Default-Routes\n  - **255.255.255.255:** Broadcast-Adresse\n- **Praktischer Nutzen:** Ermöglicht lokale Kommunikation ohne funktionierenden DHCP-Server, aber kein Internet-Zugang."
+    },
+    {
+        "question": "Welches Routing-Protokoll würden Sie für ein großes Unternehmensnetzwerk mit mehreren Standorten und komplexen Routing-Anforderungen bevorzugen?",
+        "options": [
+            "RIP aufgrund seiner Einfachheit",
+            "OSPF wegen seiner Skalierbarkeit und schnellen Konvergenz",
+            "BGP für interne Verbindungen",
+            "Statische Routen für maximale Kontrolle"
+        ],
+        "correct": 1,
+        "explain": "**OSPF** ist die beste Wahl für große Unternehmensnetzwerke mit komplexen Anforderungen.\n\n- **OSPF-Vorteile:**\n  - **Skalierbarkeit:** Hierarchische Struktur mit Areas reduziert Routing-Overhead\n  - **Schnelle Konvergenz:** Link-State-Protokoll reagiert schnell auf Topologie-Änderungen\n  - **Load Balancing:** Unterstützt gleichzeitige Nutzung mehrerer Pfade gleicher Kosten\n  - **Flexible Metriken:** Berücksichtigt Bandbreite, Delay und andere Faktoren\n- **Warum nicht die anderen:**\n  - **RIP:** Begrenzt auf 15 Hops, langsame Konvergenz, veraltet\n  - **BGP:** Designed für Inter-AS-Routing (zwischen Internet-Providern), nicht für interne Netze\n  - **Statische Routen:** Unpraktisch bei komplexen, sich ändernden Topologien"
+    },
+    {
+        "question": "IPv6 verwendet Broadcasts für die Kommunikation zwischen Geräten im lokalen Netzwerk.",
+        "options": ["Wahr", "Falsch"],
+        "correct": 1,
+        "explain": "Diese Aussage ist **falsch**. IPv6 verwendet **keine Broadcasts**.\n\n- **Multicast statt Broadcast:** IPv6 ersetzt Broadcasts durch effizientere Multicast-Kommunikation.\n- **Praktische Umsetzung:**\n  - **Neighbor Discovery:** Verwendet Multicast (z.B. ff02::1 für alle Knoten)\n  - **Router Solicitation/Advertisement:** Ebenfalls über Multicast\n  - **DHCP:** DHCPv6 nutzt Multicast-Adressen\n- **Vorteile:**\n  - **Effizienz:** Nur interessierte Geräte verarbeiten die Nachrichten\n  - **Netzwerklast:** Reduziert unnötigen Traffic\n  - **Skalierbarkeit:** Bessere Performance in großen Netzwerken\n- **Multicast-Bereiche:** ff00::/8 für verschiedene Multicast-Gruppen (Link-local, Site-local, etc.)"
+    },
+    {
+        "question": "Ein Netzwerkingenieur analysiert Pakete und stellt fest, dass diese fragmentiert wurden. Auf welcher OSI-Schicht erfolgt diese Fragmentierung? 🔍",
+        "options": [
+            "Layer 2 (Data Link)",
+            "Layer 3 (Network)",
+            "Layer 4 (Transport)",
+            "Layer 5 (Session)"
+        ],
+        "correct": 1,
+        "explain": "Fragmentierung erfolgt auf **Layer 3 (Network)** - der Vermittlungsschicht.\n\n- **Grund der Fragmentierung:** Wenn ein IP-Paket größer ist als die Maximum Transmission Unit (MTU) des nächsten Netzwerksegments.\n- **IP-Funktion:** Der IP-Header enthält spezielle Felder für Fragmentierung:\n  - **Identification:** Eindeutige ID für zusammengehörige Fragmente\n  - **Flags:** Don't Fragment (DF) und More Fragments (MF)\n  - **Fragment Offset:** Position des Fragments im ursprünglichen Paket\n- **Praktisches Beispiel:** Ein 1500-Byte-Paket muss über ein Netzwerk mit 1000-Byte-MTU - wird in kleinere Fragmente aufgeteilt.\n- **Reassemblierung:** Erfolgt am Zielhost, nicht an Zwischenroutern.\n- **IPv6-Besonderheit:** Router fragmentieren nicht - nur der Absender, Path MTU Discovery hilft dabei."
+    },
+    {
+        "question": "Welche Aussage über die Medienunabhängigkeit von IP ist korrekt?",
+        "options": [
+            "IP funktioniert nur über Ethernet-Verbindungen",
+            "IP benötigt spezielle Treiber für jedes Übertragungsmedium",
+            "IP kann über verschiedene Übertragungsmedien transportiert werden",
+            "IP ist nur für drahtlose Übertragungen geeignet"
+        ],
+        "correct": 2,
+        "explain": "**IP kann über verschiedene Übertragungsmedien transportiert werden** - das ist der Kern der Medienunabhängigkeit.\n\n- **Medienunabhängigkeit:** IP abstrahiert von der darunter liegenden Übertragungstechnologie.\n- **Beispiele verschiedener Medien:**\n  - **Ethernet:** Kabel (Kupfer, Glasfaser)\n  - **WLAN:** Drahtlose Funkübertragung\n  - **PPP:** Dial-up, DSL, Seriell\n  - **Frame Relay, ATM:** WAN-Technologien\n  - **Cellular:** 3G, 4G, 5G\n- **Schichtenmodell:** Layer 3 (IP) arbeitet unabhängig von Layer 1 (Physical) und Layer 2 (Data Link).\n- **Praktischer Nutzen:** Ein IP-Paket kann auf seinem Weg verschiedene Medien durchlaufen (z.B. WLAN → Ethernet → Glasfaser).\n- **Einheitliche Adressierung:** Trotz verschiedener Medien bleibt die IP-Adressierung konsistent."
+    },
+    {
+        "question": "Sie konfigurieren ein Testlabor und möchten sicherstellen, dass ein Service nur lokal auf dem Host erreichbar ist. Welche IP-Adresse verwenden Sie für IPv4?",
+        "options": [
+            "0.0.0.0",
+            "127.0.0.1",
+            "255.255.255.255",
+            "169.254.1.1"
+        ],
+        "correct": 1,
+        "explain": "Für lokale Services verwenden Sie **127.0.0.1** - die Loopback-Adresse.\n\n- **Loopback-Interface:** Virtuelle Netzwerkschnittstelle, die nur auf dem lokalen Host existiert.\n- **Adressbereich:** 127.0.0.0/8 (gesamter 127.x.x.x-Bereich), aber 127.0.0.1 ist der Standard.\n- **Praktische Anwendung:**\n  - **Entwicklung:** Webserver nur für lokale Tests\n  - **Debugging:** Lokale Datenbankverbindungen\n  - **Sicherheit:** Services sind nicht über das Netzwerk erreichbar\n- **Andere Adressen:**\n  - **0.0.0.0:** Unspecified Address, oft für 'alle Interfaces'\n  - **255.255.255.255:** Broadcast-Adresse\n  - **169.254.1.1:** APIPA-Adresse für Link-Local-Kommunikation\n- **IPv6-Äquivalent:** ::1 (komprimierte Form von 0000:0000:0000:0000:0000:0000:0000:0001)"
     }
-]
 
-    ]
+  ]
+]
 }
