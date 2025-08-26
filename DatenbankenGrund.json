@@ -1,0 +1,264 @@
+{
+    "questions": [
+        {
+            "question": "🌳 Ein XML-Dokument muss immer eine Baumstruktur haben. Was ist das charakteristische Merkmal dieser Struktur?",
+            "options": [
+                "Alle Elemente müssen auf derselben Hierarchieebene stehen",
+                "Es gibt genau ein Wurzel-Element, das alle anderen Elemente umschließt",
+                "Jedes Element kann beliebig viele übergeordnete Elemente haben",
+                "Die Struktur muss mindestens 3 Ebenen tief sein"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🌳 Die XML-Baumstruktur basiert auf einem einzigen Wurzel-Element (Root-Element), das alle anderen Elemente hierarchisch umschließt. Dies ist ein fundamentales Prinzip von XML - nach der XML-Deklaration folgt immer genau ein Wurzel-Element, in dem alle weiteren Elemente verschachtelt sind.\n\n**Warum andere Optionen falsch sind:**\n- Option A: Elemente stehen in verschiedenen Hierarchieebenen (Parent-Child-Beziehungen)\n- Option C: Jedes Element hat maximal ein übergeordnetes Element (eindeutige Hierarchie)\n- Option D: Die Tiefe ist nicht vorgeschrieben - auch flache Strukturen sind gültig 📊",
+            "difficulty": "einsteiger",
+            "category": "XML-Grundlagen"
+        },
+        {
+            "question": "📝 Bei der Erstellung von XML-Dateien für einen internationalen Datenaustausch müssen Dateinamen-Richtlinien beachtet werden. Welcher Dateiname entspricht den Best Practices?",
+            "options": [
+                "Müller&Söhne_Produktkatalog_2025.xml",
+                "produktkatalog_müller_söhne_2025.xml",
+                "PRODUKTKATALOG_mueller_soehne_2025.xml",
+                "produktkatalog_mueller_soehne_2025.xml"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** 📝 Option D befolgt alle wichtigen Richtlinien für XML-Dateinamen:\n- ✅ Keine Umlaute (müller → mueller, söhne → soehne)\n- ✅ Keine Sonderzeichen (&-Zeichen vermieden)\n- ✅ Konsistente Kleinschreibung\n- ✅ Underscore als Trennzeichen\n\n**Probleme der anderen Optionen:**\n- Option A: Sonderzeichen (&) und Umlaute (ö)\n- Option B: Umlaute (ü, ö) können Kompatibilitätsprobleme verursachen\n- Option C: Inkonsistente Groß-/Kleinschreibung (PRODUKTKATALOG vs. mueller) 🚫\n\n**Praxisrelevanz:** Diese Regeln gewährleisten Kompatibilität zwischen verschiedenen Betriebssystemen und Servern! 🌐",
+            "difficulty": "einsteiger",
+            "category": "XML-Best-Practices"
+        },
+        {
+            "question": "🔍 Analysieren Sie diese DTD-Zeile: <!ELEMENT song (title, year, duration?)>. Was bedeutet diese Definition für die XML-Struktur?",
+            "options": [
+                "Ein song-Element muss title und year enthalten, duration ist optional",
+                "Ein song-Element kann beliebig viele title, year und duration Elemente haben",
+                "Ein song-Element muss entweder title, year oder duration enthalten",
+                "Ein song-Element kann title und year mehrfach enthalten, duration nur einmal"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** 🔍 Die DTD-Syntax verwendet spezielle Zeichen für Häufigkeitsangaben:\n- **title, year** (ohne Zeichen): Genau einmal erforderlich ✅\n- **duration?** (Fragezeichen): Optional - kann 0 oder 1 mal vorkommen ❓\n\n**DTD-Syntax-Reminder:**\n- `+` = Ein- oder mehrmals\n- `*` = Kein-, ein- oder mehrmals  \n- `?` = Kein- oder einmal (optional)\n- `|` = Oder-Verknüpfung\n- `()` = Gruppierung\n\n**Praktische Anwendung:** Diese Definition ist typisch für Musikdatenbanken, wo Titel und Jahr Pflichtfelder sind, die Spieldauer aber optional erfasst wird 🎵",
+            "difficulty": "fortgeschritten",
+            "category": "DTD-Validierung"
+        },
+        {
+            "question": "⚖️ Was ist der Unterschied zwischen 'wohlgeformtem' und 'validem' XML?",
+            "options": [
+                "Wohlgeformt bedeutet korrekte Syntax, valid bedeutet zusätzlich DTD/Schema-Konformität",
+                "Wohlgeformt und valid sind synonyme Begriffe",
+                "Valid bedeutet korrekte Syntax, wohlgeformt bedeutet zusätzlich DTD-Konformität",
+                "Wohlgeformt gilt nur für HTML, valid nur für XML"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** ⚖️ Dies sind zwei verschiedene Qualitätsstufen in XML:\n\n**Wohlgeformt (Well-formed):** 📐\n- Korrekte XML-Syntax (öffnende/schließende Tags stimmen überein)\n- Ein Wurzel-Element vorhanden\n- Korrekte Verschachtelung der Elemente\n- Attribute in Anführungszeichen\n\n**Valid (Gültig):** ✅\n- Wohlgeformt UND zusätzlich konform zu DTD oder XML-Schema\n- Strukturregeln werden eingehalten\n- Erlaubte Elemente und Attribute werden verwendet\n\n**Hierarchie:** Jedes valide XML ist wohlgeformt, aber nicht jedes wohlgeformte XML ist valid! Ein XML kann syntaktisch korrekt sein, aber gegen die definierten Geschäftsregeln verstoßen 🎯",
+            "difficulty": "fortgeschritten",
+            "category": "XML-Validierung"
+        },
+        {
+            "question": "🏗️ Ein E-Commerce-System soll Produktdaten zwischen verschiedenen Abteilungen austauschen. Welche XML-Struktur ist für skalierbare Produktkataloge am besten geeignet?",
+            "options": [
+                "<products><product><name>Laptop</name><price>999</price></product></products>",
+                "<catalog><category id='electronics'><product sku='LAP001'><name>Laptop</name><price currency='EUR'>999</price><stock>50</stock></product></category></catalog>",
+                "<data><item>Laptop|999|EUR</item></data>",
+                "<root><laptop>999</laptop></root>"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🏗️ Option B bietet die beste Struktur für Enterprise-Anwendungen:\n\n**Vorteile der gewählten Struktur:**\n- 🏷️ **Eindeutige Identifikation:** SKU-Attribute für Produktreferenzen\n- 💰 **Währungsunterstützung:** Currency-Attribut für internationale Märkte\n- 📦 **Lagerbestand:** Stock-Element für Verfügbarkeitsprüfung\n- 📂 **Kategorisierung:** Category-Container für Produktgruppierung\n- 🔍 **Erweiterbarkeit:** Klare Struktur für zusätzliche Attribute\n\n**Probleme anderer Optionen:**\n- Option A: Zu simpel, keine Währung/Kategorien\n- Option C: Pipe-separated Values in XML = Anti-Pattern\n- Option D: Produktspezifische Tags = nicht skalierbar 🚫",
+            "difficulty": "fortgeschritten",
+            "category": "XML-Anwendungsdesign"
+        },
+        {
+            "question": "💾 Relationale Datenbanken speichern Daten in Tabellen. Was ist das Hauptmerkmal des relationalen Modells?",
+            "options": [
+                "Alle Daten werden in einer einzigen großen Tabelle gespeichert",
+                "Tabellen sind über Fremdschlüssel miteinander verbunden",
+                "Jede Tabelle kann nur maximal 255 Zeilen enthalten",
+                "Die Reihenfolge der Datensätze ist fest vorgegeben"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 💾 Das relationale Datenbankmodell basiert auf der Verbindung (Relation) zwischen Tabellen:\n\n**Kernprinzipien relationaler Datenbanken:**\n- 🔗 **Fremdschlüssel-Beziehungen:** Verknüpfung zwischen Tabellen über gemeinsame Werte\n- 📊 **Normalisierung:** Daten werden auf mehrere Tabellen aufgeteilt, um Redundanzen zu vermeiden\n- 🔍 **SQL-Abfragen:** JOIN-Operationen verbinden Daten aus verschiedenen Tabellen\n\n**Beispiel E-Commerce:**\n- Tabelle 'Kunden' (ID, Name, E-Mail)\n- Tabelle 'Bestellungen' (ID, Kunden_ID, Datum)\n- Verknüpfung über Kunden_ID 🛒\n\n**Warum andere Optionen falsch sind:**\n- A: Eine Tabelle = nicht relational\n- C: Zeilenlimit ist implementierungsabhängig\n- D: SQL erlaubt flexible Sortierung",
+            "difficulty": "einsteiger",
+            "category": "Relationale-Datenbanken"
+        },
+        {
+            "question": "🔧 Bei der Entwicklung eines datenbankbasierten Webshops müssen verschiedene Tabellen entworfen werden. Welche Normalisierungsregel sollte beachtet werden?",
+            "options": [
+                "Alle Produktinformationen in einer Tabelle speichern für bessere Performance",
+                "Redundante Daten vermeiden durch Aufteilung in logisch getrennte Tabellen",
+                "Jede Tabelle sollte mindestens 10 Spalten haben",
+                "Fremdschlüssel nur in der Haupttabelle verwenden"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🔧 Die Normalisierung ist ein Kernprinzip relationaler Datenbankdesigns:\n\n**Vorteile der Normalisierung:**\n- 🚫 **Redundanz-Vermeidung:** Jede Information wird nur einmal gespeichert\n- 🔄 **Update-Anomalien vermeiden:** Änderungen müssen nur an einer Stelle erfolgen\n- 💾 **Speicherplatz-Effizienz:** Weniger doppelte Daten\n- 🛡️ **Datenintegrität:** Konsistenz durch zentrale Datenhaltung\n\n**Beispiel Webshop-Design:**\n- Tabelle 'Hersteller' (ID, Name, Land)\n- Tabelle 'Produkte' (ID, Name, Hersteller_ID, Preis)\n- Statt: Herstellername in jeder Produktzeile zu wiederholen\n\n**Warum andere Optionen problematisch sind:**\n- A: Eine Mega-Tabelle führt zu Redundanzen und Update-Problemen\n- C: Spaltenanzahl ist nicht relevant für Design-Qualität\n- D: Fremdschlüssel werden in abhängigen Tabellen benötigt 🎯",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "📊 Welches Datenaustauschformat ist für die Übertragung hierarchischer Produktkatalog-Daten zwischen verschiedenen E-Commerce-Systemen am besten geeignet?",
+            "options": [
+                "CSV, weil es einfacher zu parsen ist",
+                "XML, wegen der hierarchischen Struktur und Validierungsmöglichkeiten",
+                "JSON, weil es weniger Speicherplatz benötigt",
+                "Plain Text, wegen der universellen Kompatibilität"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📊 XML ist ideal für hierarchische E-Commerce-Daten:\n\n**Vorteile von XML für Produktkataloge:**\n- 🌳 **Hierarchische Struktur:** Kategorien → Unterkategorien → Produkte → Varianten\n- ✅ **Schema-Validierung:** DTD/XSD gewährleisten Datenqualität\n- 🏷️ **Metadaten-Support:** Attribute für IDs, Währungen, Sprachen\n- 🔍 **XPath-Abfragen:** Gezielte Datenextraktion möglich\n- 🌐 **Standard-Compliance:** Viele E-Commerce-Standards basieren auf XML\n\n**Limitierungen anderer Formate:**\n- **CSV:** Flache Struktur, keine Hierarchien, keine Validierung 📈\n- **JSON:** Weniger Validierungsoptionen, keine standardisierten Schemas für E-Commerce\n- **Plain Text:** Keine Struktur, keine Typisierung, fehleranfällig 📝\n\n**Praxis-Beispiel:** Amazon MWS, eBay API, viele PIM-Systeme nutzen XML-basierte Produktdatenformate! 🛒",
+            "difficulty": "fortgeschritten",
+            "category": "Datenaustausch-Strategien"
+        },
+        {
+            "question": "🎯 Ein XML-Parser meldet einen Fehler bei diesem Code: <song><title>Rock & Roll</title></song>. Was ist das Problem?",
+            "options": [
+                "Das Attribut 'nr' fehlt im song-Element",
+                "Der Text 'Rock & Roll' enthält ein nicht-erlaubtes Sonderzeichen",
+                "Die XML-Deklaration fehlt am Anfang",
+                "Das schließende Tag ist falsch geschrieben"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🎯 Das Ampersand-Zeichen (&) ist ein reserviertes Zeichen in XML:\n\n**XML-Reservierte Zeichen:** ⚠️\n- `&` → `&amp;` (Ampersand)\n- `<` → `&lt;` (Kleiner als)\n- `>` → `&gt;` (Größer als)\n- `\"` → `&quot;` (Anführungszeichen)\n- `'` → `&apos;` (Apostroph)\n\n**Korrekte Version:**\n```xml\n<song><title>Rock &amp; Roll</title></song>\n```\n\n**Warum das passiert:** 🤖\n- XML-Parser interpretieren & als Beginn einer Entity-Referenz\n- Ohne nachfolgende gültige Entity (amp, lt, gt, etc.) entsteht ein Parse-Fehler\n- Dies ist ein häufiger Fehler bei Musikdatenbanken und Firmennames!\n\n**Andere Optionen sind falsch:**\n- A: Attribute sind optional (je nach DTD)\n- C: XML-Deklaration ist optional für wohlgeformtes XML\n- D: Tags sind korrekt geschrieben 🎵",
+            "difficulty": "fortgeschritten",
+            "category": "XML-Parsing-Fehler"
+        },
+        {
+            "question": "🗂️ In einer DTD ist definiert: <!ELEMENT playlist (song+)>. Was bedeutet das für eine gültige XML-Datei?",
+            "options": [
+                "Ein playlist-Element kann beliebig viele oder keine song-Elemente enthalten",
+                "Ein playlist-Element muss mindestens ein song-Element enthalten",
+                "Ein playlist-Element kann maximal ein song-Element enthalten",
+                "Ein playlist-Element muss genau drei song-Elemente enthalten"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🗂️ Das Plus-Zeichen (+) in DTD bedeutet \"ein oder mehrmals\":\n\n**DTD-Häufigkeitsoperatoren:** 📋\n- **Ohne Zeichen:** Genau einmal (z.B. `song`)\n- **?** Ein- oder keinmal / Optional (z.B. `song?`)\n- **+** Ein- oder mehrmals / Mindestens eines (z.B. `song+`) ✅\n- **\\*** Kein-, ein- oder mehrmals / Beliebig oft (z.B. `song*`)\n\n**Praktische Bedeutung:**\n- Eine leere Playlist wäre NICHT valid (mindestens 1 Song erforderlich)\n- Eine Playlist mit 1, 5, 100 Songs ist valid\n- Dies macht Sinn: Eine Playlist ohne Songs ist logisch fragwürdig! 🎵\n\n**Anwendungsbeispiel:**\n```xml\n<playlist>\n    <song>...</song>\n    <song>...</song>\n    <!-- Weitere Songs optional -->\n</playlist>\n```",
+            "difficulty": "einsteiger",
+            "category": "DTD-Syntax"
+        },
+        {
+            "question": "🔄 Ein Webshop-System soll Produktdaten sowohl aus XML-Dateien als auch aus einer SQL-Datenbank verarbeiten. Welcher Ansatz ist für die Datenintegration optimal?",
+            "options": [
+                "XML-Daten direkt in HTML konvertieren ohne Zwischenspeicherung",
+                "Alle XML-Daten in relationale Tabellen importieren und einheitlich mit SQL verarbeiten",
+                "Zwei separate Systeme ohne Datenintegration betreiben",
+                "Alle SQL-Daten nach XML exportieren und nur XML verwenden"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🔄 Die Konsolidierung in relationalen Tabellen bietet die beste Lösung:\n\n**Vorteile der SQL-zentrierten Integration:**\n- 🎯 **Einheitliche Abfragen:** Eine Query-Sprache für alle Daten\n- ⚡ **Performance:** Indexierte Datenbankabfragen sind schneller als XML-Parsing\n- 🔍 **Suchfunktionen:** Volltext-Suche, Filter, Sortierung über alle Produkte\n- 🛡️ **Transaktionssicherheit:** ACID-Eigenschaften für konsistente Datenoperationen\n- 📊 **Reporting:** Business Intelligence Tools können direkt auf SQL-Daten zugreifen\n\n**ETL-Prozess (Extract, Transform, Load):**\n1. XML-Dateien parsen 📄\n2. Daten transformieren und normalisieren 🔄\n3. In relationale Tabellen laden 💾\n4. Einheitliche SQL-Abfragen für Frontend 🖥️\n\n**Warum andere Ansätze suboptimal sind:**\n- A: Keine Persistierung, keine Suchfunktionen\n- C: Datensilos führen zu inkonsistenten Informationen\n- D: Verlust der SQL-Vorteile bei komplexen Abfragen 🎛️",
+            "difficulty": "experte",
+            "category": "Systemarchitektur"
+        },
+        {
+            "question": "📁 Betrachten Sie diese XML-Struktur: <catalog><category name='electronics'><product/></category></catalog>. Was macht diese Struktur problematisch für den Datenaustausch?",
+            "options": [
+                "Das category-Element sollte ein id-Attribut statt name haben",
+                "Das product-Element ist leer und enthält keine Daten",
+                "Die Verschachtelung ist zu tief für XML-Parser",
+                "Das catalog-Element sollte Attribute haben"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📁 Ein leeres `<product/>` Element ist strukturell problematisch:\n\n**Probleme leerer Elemente:**\n- 🚫 **Keine Nutzdaten:** Produkt ohne Name, Preis, ID ist wertlos\n- 🔍 **Parsing-Ineffizienz:** Parser verarbeitet strukturlose Elemente\n- 📊 **Import-Probleme:** Datenbank-Import kann nicht zwischen echten und leeren Produkten unterscheiden\n- 🎯 **Business-Logik:** Leere Produkte können Fehler in der Anwendungslogik verursachen\n\n**Bessere Struktur:**\n```xml\n<catalog>\n    <category name='electronics'>\n        <product id='LAP001'>\n            <name>Gaming Laptop</name>\n            <price currency='EUR'>1299.99</price>\n        </product>\n    </category>\n</catalog>\n```\n\n**Andere Optionen sind weniger kritisch:**\n- A: name-Attribut ist akzeptabel (ID wäre besser, aber nicht falsch)\n- C: 3 Ebenen sind normale Verschachtelung\n- D: Catalog-Attribute sind optional 💻",
+            "difficulty": "fortgeschritten",
+            "category": "XML-Datenqualität"
+        },
+        {
+            "question": "⚡ Ein XML-basiertes Content Management System verarbeitet täglich 10.000 Produktaktualisierungen. Welcher Ansatz optimiert die Performance?",
+            "options": [
+                "Alle XML-Dateien einzeln parsen und validieren",
+                "XML-Streaming-Parser verwenden und inkrementelle Updates in die Datenbank schreiben",
+                "XML in JSON konvertieren und dann verarbeiten",
+                "Alle XML-Daten im Arbeitsspeicher laden und dort verarbeiten"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** ⚡ Bei High-Volume-Datenverarbeitung ist Streaming-basierte Architektur optimal:\n\n**Vorteile von XML-Streaming + Inkrementelle Updates:**\n- 🌊 **Memory-Effizienz:** SAX/StAX Parser laden nicht die gesamte XML-Datei in den RAM\n- 🚀 **Skalierbarkeit:** Konstanter Speicherverbrauch unabhängig von Dateigröße\n- ⚡ **Performance:** Parallel processing möglich während des Parsens\n- 🔄 **Inkrementelle Updates:** Nur geänderte Datensätze werden in der DB aktualisiert\n- 💾 **Transaktions-Batching:** Mehrere Updates in einer Transaktion = weniger DB-Overhead\n\n**Probleme anderer Ansätze:**\n- A: **DOM-Parser:** 10.000 × komplettes Parsen = exponentieller Zeitaufwand 📈\n- C: **Format-Konvertierung:** Zusätzlicher Overhead ohne Nutzen 🔄\n- D: **RAM-Limiting:** Bei großen XML-Dateien kann der Arbeitsspeicher überlasten 💥\n\n**Praxis-Implementierung:** Apache Camel, Spring Batch oder ähnliche ETL-Frameworks nutzen genau diesen Ansatz! 🛠️",
+            "difficulty": "experte",
+            "category": "Performance-Optimierung"
+        },
+        {
+            "question": "🔗 Eine relationale Datenbank für einen Webshop enthält die Tabellen 'Kunden', 'Bestellungen' und 'Produkte'. Welche SQL-Operation verbindet Daten aus mehreren Tabellen?",
+            "options": [
+                "SELECT mit WHERE-Klausel",
+                "INSERT mit UNION",
+                "JOIN mit ON-Bedingung",
+                "UPDATE mit SET"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🔗 JOIN-Operationen sind das Herzstück relationaler Datenbanken:\n\n**JOIN-Typen für Webshop-Szenarien:**\n- 🔗 **INNER JOIN:** Nur Datensätze mit Übereinstimmungen (Bestellungen mit gültigen Kunden)\n- 📋 **LEFT JOIN:** Alle Datensätze der linken Tabelle (alle Kunden, auch ohne Bestellungen)\n- 📊 **RIGHT JOIN:** Alle Datensätze der rechten Tabelle\n- 🔄 **FULL OUTER JOIN:** Alle Datensätze aus beiden Tabellen\n\n**Beispiel-Query:**\n```sql\nSELECT k.name, b.datum, p.produktname\nFROM Kunden k\nJOIN Bestellungen b ON k.kunden_id = b.kunden_id\nJOIN Produkte p ON b.produkt_id = p.produkt_id\n```\n\n**Warum andere Operationen nicht passen:**\n- A: WHERE filtert, verbindet aber keine Tabellen\n- B: UNION kombiniert Ergebnismengen vertikal, nicht horizontal\n- D: UPDATE ändert Daten, liest aber nicht aus mehreren Tabellen 🎯",
+            "difficulty": "einsteiger",
+            "category": "SQL-Grundlagen"
+        },
+        {
+            "question": "🛠️ Sie müssen ein XML-Schema (XSD) erstellen, das sicherstellt, dass Produktpreise nur positive Dezimalzahlen mit maximal 2 Nachkommastellen sind. Welche XSD-Definition ist korrekt?",
+            "options": [
+                "<xs:element name='price' type='xs:string'/>",
+                "<xs:element name='price' type='xs:decimal' minInclusive='0.01' fractionDigits='2'/>",
+                "<xs:element name='price' type='xs:integer'/>",
+                "<xs:element name='price' type='xs:float' pattern='[0-9]+\\.[0-9]{2}'/>"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🛠️ XSD bietet präzise Datentyp-Validierung für Business-Logik:\n\n**Optimale XSD-Definition für Preise:**\n```xml\n<xs:element name='price' type='xs:decimal'>\n    <xs:restriction base='xs:decimal'>\n        <xs:minInclusive value='0.01'/>\n        <xs:fractionDigits value='2'/>\n    </xs:restriction>\n</xs:element>\n```\n\n**Warum diese Definition optimal ist:**\n- 💰 **xs:decimal:** Exakte Dezimalzahlen ohne Rundungsfehler (im Gegensatz zu float)\n- ✅ **minInclusive='0.01':** Verhindert Null- oder Negativpreise\n- 🎯 **fractionDigits='2':** Exakt 2 Nachkommastellen (Cent-Genauigkeit)\n- 🛡️ **Business-Rule-Compliance:** Entspricht realen Preisanforderungen\n\n**Probleme anderer Optionen:**\n- A: String = keine numerische Validierung\n- C: Integer = keine Nachkommastellen möglich\n- D: Float = Rundungsfehler + Pattern ist komplexer als nötig 💸",
+            "difficulty": "experte",
+            "category": "XML-Schema-Design"
+        },
+        {
+            "question": "📊 Wahr oder Falsch: CSV ist besser geeignet als XML für die Übertragung relationaler Tabellendaten zwischen Datenbanksystemen.",
+            "options": [
+                "Wahr - CSV ist einfacher und effizienter",
+                "Falsch - XML bietet mehr Flexibilität und Validierung",
+                "Wahr - CSV hat weniger Overhead",
+                "Falsch - CSV kann keine Beziehungen zwischen Tabellen darstellen"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** 📊 Die Aussage ist **FALSCH** - CSV hat fundamentale Limitierungen für relationale Daten:\n\n**CSV-Limitierungen bei relationalen Daten:** ⚠️\n- 🚫 **Keine Fremdschlüssel-Beziehungen:** Referentielle Integrität nicht darstellbar\n- 📋 **Flache Struktur:** Nur eine Tabelle pro Datei\n- 🔗 **Keine JOIN-Information:** Beziehungen zwischen Tabellen gehen verloren\n- 💾 **Datentyp-Verlust:** Alles wird als Text interpretiert\n- ❌ **Keine Constraints:** Keine Validierung von Geschäftsregeln\n\n**XML-Vorteile für relationale Daten:**\n- 🌳 **Hierarchische Darstellung:** Parent-Child-Beziehungen möglich\n- 🔍 **Schema-Validierung:** XSD gewährleistet Datenintegrität\n- 🏷️ **Metadaten:** Fremdschlüssel als Attribute darstellbar\n- 🎯 **Referentielle Integrität:** ID/IDREF-Mechanismen verfügbar\n\n**Fazit:** Für einfache, flache Tabellen ist CSV effizienter. Für relationale Datenstrukturen mit Beziehungen ist XML die bessere Wahl! 🎛️",
+            "difficulty": "fortgeschritten",
+            "category": "Format-Vergleich"
+        },
+        {
+            "question": "🎵 Analysieren Sie dieses XML-Fragment: <album><song nr='1'/><song nr='1'/></album>. Welches Problem könnte in einer Musik-Datenbank auftreten?",
+            "options": [
+                "Die XML-Syntax ist fehlerhaft",
+                "Doppelte Track-Nummern verletzen die Eindeutigkeit der Songpositionen",
+                "Das album-Element benötigt ein Attribut",
+                "Die song-Elemente sind leer und daher ungültig"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🎵 Doppelte Track-Nummern sind ein Business-Logic-Problem:\n\n**Warum doppelte Track-Nummern problematisch sind:**\n- 🎯 **Eindeutigkeit:** Track-Nummer sollte Position im Album identifizieren\n- 🔍 **Sortierprobleme:** Welcher Song ist wirklich \"Track 1\"?\n- 💾 **Datenbank-Constraints:** Unique-Constraints würden verletzt\n- 🎧 **User Experience:** Playlist-Generierung wird mehrdeutig\n- 📊 **Reporting:** Verkaufsstatistiken pro Track werden verfälscht\n\n**Bessere Lösung:**\n```xml\n<album id='ALB001'>\n    <song nr='1' id='S001'><title>Opening Song</title></song>\n    <song nr='2' id='S002'><title>Second Track</title></song>\n</album>\n```\n\n**XML-Schema-Validierung:**\n```xml\n<xs:unique name='unique-track-nr'>\n    <xs:selector xpath='song'/>\n    <xs:field xpath='@nr'/>\n</xs:unique>\n```\n\n**Andere Optionen sind falsch:**\n- A: Syntax ist korrekt (wohlgeformt)\n- C: Album-Attribute sind optional\n- D: Leere Elemente sind syntaktisch gültig 🎼",
+            "difficulty": "fortgeschritten",
+            "category": "Datenintegrität"
+        },
+        {
+            "question": "⚙️ Ein Content Management System importiert täglich XML-Feeds von 50 verschiedenen Lieferanten. Jeder Lieferant verwendet ein anderes XML-Schema. Welche Architektur-Strategie ist optimal?",
+            "options": [
+                "Für jeden Lieferanten einen eigenen XML-Parser entwickeln",
+                "XSLT-Transformationen verwenden, um alle Formate in ein einheitliches Schema zu konvertieren",
+                "Alle Lieferanten zwingen, dasselbe XML-Format zu verwenden",
+                "Die XML-Daten direkt ohne Transformation in die Datenbank importieren"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** ⚙️ XSLT (eXtensible Stylesheet Language Transformations) ist die Standard-Lösung für XML-Format-Integration:\n\n**Vorteile der XSLT-basierten Architektur:**\n- 🔄 **Format-Normalisierung:** Alle Eingabeformate → Ein einheitliches Zielschema\n- 🛠️ **Wartbarkeit:** Neue Lieferanten = Neue XSLT-Stylesheet hinzufügen\n- ⚡ **Performance:** XSLT-Prozessoren sind hochoptimiert\n- 🎯 **Skalierbarkeit:** Parallel processing verschiedener Transformationen\n- 📋 **Standardkonformität:** W3C-Standard mit breiter Tool-Unterstützung\n\n**Typische ETL-Pipeline:**\n1. **Extract:** XML-Feeds von Lieferanten laden 📥\n2. **Transform:** Lieferanten-spezifische XSLT anwenden 🔄\n3. **Load:** Einheitliche XML-Struktur in Datenbank importieren 💾\n\n**Warum andere Ansätze problematisch sind:**\n- A: 50 Parser = 50× Entwicklungs-/Wartungsaufwand\n- C: Lieferanten-Lock-in, verhandlungstechnisch unrealistisch\n- D: Schema-Chaos in der Datenbank, keine Datenqualität 🎛️\n\n**Tool-Beispiele:** Saxon, Xalan, oder integrierte XSLT-Engines in Java/.NET 🔧",
+            "difficulty": "experte",
+            "category": "Enterprise-Integration"
+        },
+        {
+            "question": "🔐 Eine XML-Datei enthält sensible Kundendaten und soll validiert werden. Welche Kombination gewährleistet sowohl Datenintegrität als auch Sicherheit?",
+            "options": [
+                "DTD-Validierung mit Klartextspeicherung",
+                "XSD-Validierung mit XML-Verschlüsselung nach W3C XML Encryption Standard",
+                "Keine Validierung, aber starke Verschlüsselung",
+                "CSV-Export mit Passwort-Schutz"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🔐 Moderne XML-Security erfordert sowohl Struktur-Validierung als auch Datenschutz:\n\n**Warum XSD + XML Encryption optimal ist:**\n- ✅ **XSD-Validierung:** Strukturelle Integrität und Business-Rule-Compliance\n- 🛡️ **W3C XML Encryption:** Industriestandard für selektive Verschlüsselung\n- 🎯 **Selektive Verschlüsselung:** Nur sensible Elemente verschlüsselt, Metadaten bleiben suchbar\n- 🔍 **Validierung vor Verschlüsselung:** Schema-Check auf Plaintext, dann Verschlüsselung\n- 🔗 **Tool-Integration:** Enterprise-XML-Tools unterstützen beide Standards nativ\n\n**XML Encryption Beispiel:**\n```xml\n<customer id='C001'>\n    <name>John Doe</name>\n    <EncryptedData xmlns='http://www.w3.org/2001/04/xmlenc#'>\n        <!-- Verschlüsselte Kreditkartendaten -->\n    </EncryptedData>\n</customer>\n```\n\n**Probleme anderer Ansätze:**\n- A: DTD ist weniger mächtig als XSD, keine Verschlüsselung\n- C: Struktur-Chaos ohne Validierung\n- D: CSV verliert XML-Vorteile, Passwort-Schutz ist schwächer 🔒",
+            "difficulty": "experte",
+            "category": "XML-Security"
+        },
+        {
+            "question": "🚀 Ein E-Commerce-API soll sowohl XML- als auch JSON-Responses unterstützen. Die Datenbank verwendet relationale Tabellen. Welche Middleware-Architektur ist optimal?",
+            "options": [
+                "Separate APIs für XML und JSON mit redundanter Geschäftslogik",
+                "Einheitliche Geschäftslogik mit Content-Negotiation und Format-spezifischen Serializers",
+                "Nur XML-API implementieren und client-seitig nach JSON konvertieren",
+                "Alle Daten als XML in der Datenbank speichern"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🚀 Content-Negotiation mit einheitlicher Geschäftslogik folgt REST-Best-Practices:\n\n**Optimale API-Architektur:**\n```\n[Client] → [API Gateway] → [Business Logic] → [Database]\n    ↓            ↓               ↑\n[Accept: application/xml] → [XML Serializer]\n[Accept: application/json] → [JSON Serializer]\n```\n\n**Architektur-Vorteile:**\n- 🎯 **DRY-Prinzip:** Eine Geschäftslogik für beide Formate\n- 🔄 **Content Negotiation:** HTTP Accept-Header bestimmt Response-Format\n- ⚡ **Performance:** Datenbank-Queries nur einmal ausführen\n- 🛠️ **Wartbarkeit:** Neue Formate (YAML, etc.) leicht hinzufügbar\n- 📊 **Consistent Data:** Identische Geschäftsregeln für alle Clients\n\n**HTTP Content-Negotiation:**\n```http\nGET /api/products/123\nAccept: application/xml → XML Response\nAccept: application/json → JSON Response\n```\n\n**Warum andere Ansätze problematisch:**\n- A: Code-Duplikation, Inkonsistenz-Risiko\n- C: Client-Overhead, Netzwerk-Ineffizienz\n- D: SQL-Performance-Probleme, JSON ist für relationale Daten oft effizienter 🎛️",
+            "difficulty": "experte",
+            "category": "API-Design"
+        }
+    ]
+}
