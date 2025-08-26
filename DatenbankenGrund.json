@@ -259,6 +259,522 @@
             "explain": "**Begründung:** 🚀 Content-Negotiation mit einheitlicher Geschäftslogik folgt REST-Best-Practices:\n\n**Optimale API-Architektur:**\n```\n[Client] → [API Gateway] → [Business Logic] → [Database]\n    ↓            ↓               ↑\n[Accept: application/xml] → [XML Serializer]\n[Accept: application/json] → [JSON Serializer]\n```\n\n**Architektur-Vorteile:**\n- 🎯 **DRY-Prinzip:** Eine Geschäftslogik für beide Formate\n- 🔄 **Content Negotiation:** HTTP Accept-Header bestimmt Response-Format\n- ⚡ **Performance:** Datenbank-Queries nur einmal ausführen\n- 🛠️ **Wartbarkeit:** Neue Formate (YAML, etc.) leicht hinzufügbar\n- 📊 **Consistent Data:** Identische Geschäftsregeln für alle Clients\n\n**HTTP Content-Negotiation:**\n```http\nGET /api/products/123\nAccept: application/xml → XML Response\nAccept: application/json → JSON Response\n```\n\n**Warum andere Ansätze problematisch:**\n- A: Code-Duplikation, Inkonsistenz-Risiko\n- C: Client-Overhead, Netzwerk-Ineffizienz\n- D: SQL-Performance-Probleme, JSON ist für relationale Daten oft effizienter 🎛️",
             "difficulty": "experte",
             "category": "API-Design"
+        },
+        {
+            "question": "🏪 In einem E-Commerce-System haben Sie eine Tabelle 'Kunden' mit 50.000 Datensätzen und eine Tabelle 'Bestellungen' mit 200.000 Datensätzen. Welche Beziehung liegt zwischen diesen Tabellen vor und wie wird sie technisch umgesetzt?",
+            "options": [
+                "1:1 Beziehung über zwei Primary Keys",
+                "1:n Beziehung mit Kundennummer als Foreign Key in der Bestellungen-Tabelle",
+                "n:m Beziehung über eine Zwischentabelle",
+                "Keine direkte Beziehung, da unterschiedliche Datensatzanzahl"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🔗 Dies ist eine klassische 1:n Beziehung, da ein Kunde mehrere Bestellungen haben kann, aber jede Bestellung zu genau einem Kunden gehört.\n\n📋 **Technische Umsetzung:**\n- Primary Key der Kunden-Tabelle (z.B. KundenID) wird als Foreign Key in die Bestellungen-Tabelle eingefügt\n- Dadurch kann jede Bestellung einem Kunden zugeordnet werden\n- Die unterschiedlichen Datensatzanzahlen bestätigen die 1:n Beziehung (ein Kunde → mehrere Bestellungen)\n\n❌ **Warum andere Optionen falsch sind:**\n- Option A: 1:1 würde bedeuten, dass jeder Kunde nur eine Bestellung haben kann\n- Option C: n:m wäre nur nötig, wenn eine Bestellung mehrere Kunden haben könnte\n- Option D: Unterschiedliche Datensatzanzahl ist bei 1:n normal und erwünscht",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "💾 Berechnen Sie den Speicherplatzbedarf: Eine Tabelle hat 100.000 Datensätze mit folgenden Spalten: INTEGER (4 Bytes), VARCHAR(50) (durchschnittlich 25 Zeichen), DATETIME (8 Bytes), FLOAT (4 Bytes). Wie viel Speicher benötigt die reine Datenmenge?",
+            "options": [
+                "Etwa 4,1 MB",
+                "Etwa 8,2 MB", 
+                "Etwa 16,4 MB",
+                "Etwa 2,05 MB"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** 🧮 **Berechnung pro Datensatz:**\n- INTEGER: 4 Bytes\n- VARCHAR(50): 25 Zeichen = 25 Bytes (bei ASCII)\n- DATETIME: 8 Bytes\n- FLOAT: 4 Bytes\n- **Summe pro Datensatz:** 4 + 25 + 8 + 4 = 41 Bytes\n\n📊 **Gesamtberechnung:**\n- 100.000 Datensätze × 41 Bytes = 4.100.000 Bytes\n- 4.100.000 Bytes ÷ 1.024 ÷ 1.024 ≈ 3,91 MB ≈ 4,1 MB\n\n⚠️ **Wichtiger Hinweis:** Dies ist nur die reine Datenmenge ohne Indexe, Metadaten oder Datenbank-Overhead, der in der Praxis deutlich höher ausfällt!",
+            "difficulty": "fortgeschritten", 
+            "category": "Datenbankoptimierung"
+        },
+        {
+            "question": "🔐 Was passiert bei einem Versuch, einen Kunden zu löschen, zu dem noch aktive Bestellungen existieren, wenn referenzielle Integrität aktiviert ist?",
+            "options": [
+                "Der Kunde wird gelöscht und alle zugehörigen Bestellungen werden automatisch mitgelöscht",
+                "Der Löschvorgang wird verhindert und eine Fehlermeldung ausgegeben",
+                "Der Kunde wird gelöscht, die Bestellungen bleiben mit NULL-Werten bestehen",
+                "Nur der Primary Key wird gelöscht, andere Daten bleiben erhalten"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🛡️ **Referenzielle Integrität schützt vor Dateninkonsistenz:**\n\nWenn referenzielle Integrität aktiviert ist, verhindert das DBMS den Löschvorgang und gibt eine Constraint-Violation-Fehlermeldung aus. Dies schützt vor 'verwaisten' Datensätzen.\n\n🔄 **Lösungsstrategien in der Praxis:**\n- **CASCADE DELETE:** Alle abhängigen Datensätze werden mitgelöscht (gefährlich!)\n- **SET NULL:** Foreign Key-Werte werden auf NULL gesetzt (wenn erlaubt)\n- **RESTRICT:** Löschung wird verhindert (Standard-Verhalten)\n\n💡 **Best Practice:** Erst abhängige Datensätze prüfen/archivieren, dann Hauptdatensatz löschen oder Soft-Delete verwenden (Status-Flag statt physische Löschung)",
+            "difficulty": "fortgeschritten",
+            "category": "Datenintegrität"
+        },
+        {
+            "question": "🗂️ Welcher Datentyp ist für die Speicherung von Produktpreisen in einem Shop-System am besten geeignet?",
+            "options": [
+                "FLOAT für maximale Flexibilität",
+                "DECIMAL/NUMERIC für exakte Geldbeträge",
+                "INTEGER für beste Performance",
+                "VARCHAR für einfache Formatierung"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 💰 **DECIMAL/NUMERIC ist die einzig korrekte Wahl für Geldbeträge!**\n\n🎯 **Warum DECIMAL optimal ist:**\n- Exakte Dezimaldarstellung ohne Rundungsfehler\n- Festgelegte Präzision (z.B. DECIMAL(10,2) für 99999999.99)\n- Standards-konforme Geldbeträge-Speicherung\n\n❌ **Probleme anderer Datentypen:**\n- **FLOAT:** Rundungsfehler bei Berechnungen (0.1 + 0.2 ≠ 0.3)\n- **INTEGER:** Nur ganze Zahlen, keine Cent-Beträge möglich\n- **VARCHAR:** Keine mathematischen Operationen, keine Sortierung\n\n⚡ **Praxis-Tipp:** Manche Systeme speichern Centbeträge als INTEGER (1299 = 12,99€) für maximale Genauigkeit",
+            "difficulty": "einsteiger",
+            "category": "Datentypen"
+        },
+        {
+            "question": "🔄 Sie haben eine n:m Beziehung zwischen 'Studenten' und 'Kurse'. Wie lösen Sie diese korrekt auf?",
+            "options": [
+                "Zwei separate 1:1 Beziehungen erstellen",
+                "Eine Zwischentabelle mit beiden Primary Keys als Foreign Keys",
+                "Den Primary Key der einen Tabelle in die andere als Array speichern",
+                "Eine JSON-Spalte für die Zuordnungen verwenden"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🎓 **Zwischentabelle ist die Standard-Lösung für n:m Beziehungen:**\n\n📋 **Aufbau der Zwischentabelle 'Student_Kurs':**\n- StudentID (Foreign Key zu Studenten-Tabelle)\n- KursID (Foreign Key zu Kurse-Tabelle)\n- Optional: Zusatzattribute (Anmeldedatum, Note)\n- Kombinierter Primary Key aus beiden Foreign Keys\n\n🔗 **Dadurch entstehen zwei 1:n Beziehungen:**\n- Ein Student → viele Einträge in Student_Kurs (verschiedene Kurse)\n- Ein Kurs → viele Einträge in Student_Kurs (verschiedene Studenten)\n\n✅ **Vorteile:** Redundanzfrei, erweiterbar, SQL-Standard-konform\n❌ **Warum andere falsch:** Arrays/JSON verletzen erste Normalform, 1:1 löst n:m nicht auf",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "⚡ In welcher Reihenfolge sollten Sie vorgehen, um die Datenkonsistenz beim Einfügen eines neuen Datensatzes mit Foreign Key-Referenzen zu gewährleisten?",
+            "options": [
+                "Foreign Key-Datensätze zuerst, dann Primary Key-Datensatz",
+                "Primary Key-Datensatz zuerst, dann Foreign Key-Datensätze", 
+                "Beide gleichzeitig in einer Transaktion",
+                "Reihenfolge ist irrelevant bei aktivierten Constraints"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🎯 **Primary Key-Datensatz muss immer zuerst existieren!**\n\n📝 **Logische Reihenfolge:**\n1. **Erst:** Datensatz in Tabelle mit Primary Key einfügen\n2. **Dann:** Datensätze mit Foreign Key-Referenzen auf diesen PK\n\n🔒 **Warum diese Reihenfolge zwingend:**\n- Foreign Key kann nur auf existierenden Primary Key verweisen\n- Referenzielle Integrität verhindert 'tote Verweise'\n- DBMS prüft FK-Constraints beim INSERT\n\n💡 **Praxis-Beispiel Shop:**\n1. Kunde anlegen (erhält KundenID)\n2. Bestellung mit dieser KundenID als FK anlegen\n\n⚠️ **Bei umgekehrter Reihenfolge:** Constraint-Violation-Error, da FK auf nicht-existenten PK zeigt",
+            "difficulty": "fortgeschritten",
+            "category": "Datenintegrität"
+        },
+        {
+            "question": "🏗️ Warum ist Redundanzfreiheit in relationalen Datenbanken so wichtig?",
+            "options": [
+                "Nur um Speicherplatz zu sparen",
+                "Um Anomalien bei Änderungs-, Einfüge- und Löschoperationen zu vermeiden",
+                "Zur Verbesserung der Abfrage-Performance",
+                "Wegen gesetzlicher Datenschutz-Bestimmungen"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🚨 **Redundanz führt zu gefährlichen Anomalien:**\n\n⚠️ **Update-Anomalie:** Daten an mehreren Stellen ändern → Inkonsistenz möglich\n- Beispiel: Kundenadresse in 5 Tabellen → vergisst man eine, entstehen Widersprüche\n\n🔄 **Insert-Anomalie:** Daten können nur mit irrelevanten anderen Daten gespeichert werden\n- Beispiel: Neue Abteilung nur mit Mitarbeiter anlegbar\n\n🗑️ **Delete-Anomalie:** Wichtige Daten gehen ungewollt verloren\n- Beispiel: Letzter Mitarbeiter gelöscht → Abteilungsinfo weg\n\n💾 **Speicherplatz ist Nebeneffekt**, nicht Hauptgrund!\n🏃‍♂️ **Performance:** Redundanzfreiheit kann sogar langsamer sein (mehr JOINs)\n📋 Normalisierung löst diese Probleme durch Aufteilung in verknüpfte Tabellen",
+            "difficulty": "einsteiger",
+            "category": "Datenbanktheorie"
+        },
+        {
+            "question": "🔍 Sie haben eine Tabelle 'Mitarbeiter' mit 10.000 Datensätzen. Der Primary Key ist die Personalnummer (INTEGER). Welche Eigenschaften muss dieser PK erfüllen?",
+            "options": [
+                "Eindeutig, nicht NULL, unveränderlich, möglichst klein",
+                "Eindeutig, kann NULL sein, veränderbar, aussagekräftig", 
+                "Eindeutig, nicht NULL, aber veränderbar und lang",
+                "Nur eindeutig und numerisch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** 🎯 **Primary Key Eigenschaften (ACID-konform):**\n\n✅ **Eindeutig (UNIQUE):** Keine Duplikate erlaubt\n- Jeder Mitarbeiter braucht einzigartige Personalnummer\n\n🚫 **Nicht NULL:** Primary Key darf nie leer sein\n- Sonst keine eindeutige Identifikation möglich\n\n🔒 **Unveränderlich:** PK sollte sich nie ändern\n- Foreign Key-Referenzen würden sonst ungültig\n- Historische Datenintegrität gewährleistet\n\n⚡ **Möglichst klein:** Bessere Performance bei Indexierung und JOINs\n- INTEGER (4 Bytes) besser als VARCHAR(50)\n\n❌ **Warum andere falsch:**\n- NULL-Werte im PK verletzen relationale Regeln\n- Veränderbare PKs gefährden Datenintegrität\n- Aussagekraft ist bei PKs nicht erforderlich (Surrogate Keys)",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "📊 Wahr oder Falsch: 'In einer normalisierten Datenbank sollten alle Tabellen mindestens zwei Spalten haben.'",
+            "options": [
+                "Wahr - Mindestens PK und ein Attribut sind erforderlich",
+                "Falsch - Eine Spalte (nur PK) kann in speziellen Fällen sinnvoll sein",
+                "Wahr - Sonst wäre es keine relationale Tabelle",
+                "Falsch - Tabellen können auch ganz ohne Spalten existieren"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** ❌ **FALSCH** - Ein-Spalten-Tabellen sind in speziellen Fällen durchaus sinnvoll!\n\n🎯 **Legitime Ein-Spalten-Tabellen:**\n- **Lookup-Tabellen:** Status-Werte, Kategorien, Länder-Codes\n- **Domain-Tabellen:** Gültige Werte definieren (z.B. Prioritäten: 'Hoch', 'Mittel', 'Niedrig')\n- **Referenz-Tabellen:** Master-Daten ohne zusätzliche Attribute\n\n📋 **Beispiel Tabelle 'Abteilungen':**\n```sql\nCREATE TABLE Abteilungen (\n    AbteilungsName VARCHAR(50) PRIMARY KEY\n);\n```\n\n✅ **Vorteile:** Referenzielle Integrität, normalisiert, wartbar\n🔗 **Verwendung:** Als FK-Ziel in anderen Tabellen\n\n💡 **Fazit:** Anzahl Spalten richtet sich nach fachlichen Anforderungen, nicht nach formalen Regeln",
+            "difficulty": "experte",
+            "category": "Datenbanktheorie"
+        },
+        {
+            "question": "🔧 Ein Entwickler beschwert sich über langsame Abfragen in einer Tabelle mit 1 Million Datensätzen. Die WHERE-Klausel filtert nach einer Spalte ohne Index. Was schlagen Sie vor?",
+            "options": [
+                "Mehr RAM einbauen",
+                "Einen Index auf die gefilterte Spalte erstellen",
+                "Die Tabelle in kleinere Tabellen aufteilen",
+                "Einen schnelleren Prozessor verwenden"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🚀 **Index ist die effektivste Lösung!**\n\n⚡ **Warum Index hilft:**\n- **Ohne Index:** Full Table Scan durch 1 Million Zeilen (O(n))\n- **Mit Index:** Logarithmische Suche (O(log n))\n- **Performance-Gewinn:** Von Sekunden auf Millisekunden\n\n📊 **Zahlenbeispiel:**\n- 1.000.000 Zeilen ohne Index: ~1.000.000 Lesevorgänge\n- Mit B-Tree Index: ~20 Lesevorgänge (log₂ 1.000.000)\n\n🎯 **Index-Erstellung:**\n```sql\nCREATE INDEX idx_spaltenname ON tabelle(spaltenname);\n```\n\n❌ **Warum andere Optionen nicht helfen:**\n- RAM/CPU: Beschleunigen Full Scan nur minimal\n- Tabellen-Aufteilung: Komplexere Architektur ohne echten Nutzen\n\n⚠️ **Achtung:** Indexe verlangsamen INSERT/UPDATE/DELETE-Operationen leicht",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankoptimierung"
+        },
+        {
+            "question": "🌐 Vergleichen Sie die Datentypen TIMESTAMP und DATETIME für die Speicherung von Bestellzeiten in einem globalen E-Commerce-System:",
+            "options": [
+                "DATETIME ist besser, da es Zeitzone-unabhängig ist",
+                "TIMESTAMP ist besser, da es automatisch UTC speichert und Zeitzonen-konvertierung unterstützt",
+                "Beide sind identisch in ihrer Funktionalität",
+                "VARCHAR ist für globale Systeme am besten geeignet"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🌍 **TIMESTAMP ist für globale Systeme optimal:**\n\n🕐 **TIMESTAMP Vorteile:**\n- Automatische UTC-Speicherung (Zeitzone-neutral)\n- Session-Zeitzone wird bei Ausgabe berücksichtigt\n- Kleinerer Speicherbedarf (4 vs. 8 Bytes bei MySQL)\n- Automatische Updates bei Änderungen möglich\n\n📅 **DATETIME Nachteile in globalen Systemen:**\n- Keine automatische Zeitzone-Behandlung\n- Speichert 'lokale' Zeit ohne Zeitzone-Info\n- Probleme bei Kunden in verschiedenen Zeitzonen\n\n🌏 **Praxis-Beispiel:**\n- Kunde aus Tokyo bestellt um 15:00 JST\n- TIMESTAMP: Speichert als 06:00 UTC\n- DATETIME: Speichert als 15:00 (ohne Zeitzone-Info)\n\n💡 **Best Practice:** TIMESTAMP + Zeitzone-Spalte für maximale Flexibilität",
+            "difficulty": "experte",
+            "category": "Datentypen"
+        },
+        {
+            "question": "🔄 In einem CRM-System haben Sie: Tabelle 'Personen' (50.000), 'Unternehmen' (5.000), 'Kontakte' (200.000). Eine Person kann zu mehreren Unternehmen gehören. Wie modellieren Sie diese Beziehung optimal?",
+            "options": [
+                "Direkte n:m Beziehung zwischen Personen und Unternehmen",
+                "Zwischentabelle 'Person_Unternehmen' mit zusätzlichen Attributen (Position, Startdatum)",
+                "UnternehmensID als Array in der Personen-Tabelle",
+                "Separate Tabelle für jede Person-Unternehmen-Kombination"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 💼 **Zwischentabelle mit Zusatzattributen ist die professionelle Lösung:**\n\n🏗️ **Tabelle 'Person_Unternehmen' Struktur:**\n- PersonID (FK zu Personen)\n- UnternehmensID (FK zu Unternehmen)\n- Position (VARCHAR) - z.B. 'Consultant', 'Manager'\n- Startdatum (DATE)\n- Enddatum (DATE, nullable)\n- Kombinierter PK aus PersonID + UnternehmensID\n\n✅ **Vorteile dieser Lösung:**\n- Relationale Integrität gewährleistet\n- Erweiterbar um Geschäfts-relevante Attribute\n- Historische Daten möglich (Zeiträume)\n- Standard SQL-Abfragen\n\n📊 **Skalierung:** 200.000 Kontakte deutet auf komplexe Geschäftsbeziehungen hin\n❌ **Arrays verletzen** erste Normalform und sind schwer abfragbar\n🎯 **Realitätsnah:** Personen haben unterschiedliche Rollen in verschiedenen Unternehmen",
+            "difficulty": "experte",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "🛠️ Welche SQL-Aussage über die Behandlung von NULL-Werten ist korrekt?",
+            "options": [
+                "NULL = NULL ergibt immer TRUE",
+                "NULL ist dasselbe wie eine leere Zeichenkette ('')",
+                "NULL bedeutet 'unbekannt' und verhält sich bei Vergleichen speziell",
+                "NULL-Werte werden bei COUNT(*) nicht mitgezählt"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** ❓ **NULL repräsentiert 'unbekannt/nicht vorhanden' und folgt 3-wertiger Logik:**\n\n🧮 **NULL-Verhalten bei Vergleichen:**\n- `NULL = NULL` → UNKNOWN (nicht TRUE!)\n- `5 > NULL` → UNKNOWN\n- `NULL + 10` → NULL\n- Nur `IS NULL` und `IS NOT NULL` funktionieren\n\n📊 **COUNT-Verhalten:**\n- `COUNT(*)` zählt alle Zeilen (inkl. NULL)\n- `COUNT(spalte)` ignoriert NULL-Werte\n\n❌ **Häufige Missverständnisse:**\n- NULL ≠ 0 (Zahl)\n- NULL ≠ '' (leere Zeichenkette) \n- NULL ≠ FALSE (Boolean)\n\n💡 **Praxis-Tipp:** WHERE-Klauseln mit NULL erfordern explizite IS NULL/IS NOT NULL Behandlung\n\n🎯 **3-wertige Logik:** TRUE, FALSE, UNKNOWN (NULL-Vergleiche)",
+            "difficulty": "fortgeschritten",
+            "category": "SQL-Grundlagen"
+        },
+        {
+            "question": "📈 Sie analysieren die Performance einer JOIN-Operation zwischen zwei großen Tabellen (je 500.000 Datensätze). Was ist der wichtigste Faktor für optimale Performance?",
+            "options": [
+                "Die Größe des verfügbaren RAMs",
+                "Indexe auf den JOIN-Spalten beider Tabellen",
+                "Die Reihenfolge der Tabellen in der FROM-Klausel",
+                "Die Verwendung von INNER statt LEFT JOIN"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🎯 **Indexe auf JOIN-Spalten sind Performance-kritisch!**\n\n⚡ **Warum Indexe entscheidend sind:**\n- **Ohne Indexe:** Nested Loop Join = 500.000 × 500.000 = 250 Milliarden Vergleiche\n- **Mit Indexen:** Hash/Merge Join = deutlich weniger Operationen\n- **Performance-Faktor:** 1000x oder mehr Beschleunigung möglich\n\n🔍 **JOIN-Algorithmen nutzen Indexe:**\n- **Nested Loop:** Index auf innerer Tabelle\n- **Hash Join:** Index hilft bei Erstellung der Hash-Tabelle\n- **Merge Join:** Sortierte Indexe ermöglichen effizienten Merge\n\n📊 **Andere Faktoren sind sekundär:**\n- RAM: Hilft beim Caching, löst aber nicht das Grundproblem\n- Tabellen-Reihenfolge: Query Optimizer entscheidet meist optimal\n- JOIN-Typ: Performance-Unterschied minimal bei gleichen Indexen\n\n💡 **Best Practice:** Composite Index auf häufig verknüpfte Spalten",
+            "difficulty": "experte",
+            "category": "Datenbankoptimierung"
+        },
+        {
+            "question": "🏪 In einem Warenwirtschaftssystem soll verhindert werden, dass der Lagerbestand negativ wird. Welcher Ansatz ist am robustesten?",
+            "options": [
+                "Check Constraint auf der Lagerbestand-Spalte",
+                "Trigger, der vor Updates den Bestand prüft",
+                "Anwendungslogik prüft vor jeder Buchung",
+                "Stored Procedure für alle Lagerbewegungen"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** 🛡️ **Check Constraint ist die sicherste Lösung auf Datenschicht:**\n\n✅ **Vorteile von Check Constraints:**\n- **Unvermeidlich:** Wird IMMER geprüft, egal welche Anwendung zugreift\n- **Performance:** Sehr schnell, da in DB-Engine integriert\n- **Deklarativ:** Regel ist in Schema dokumentiert\n- **Transaktions-sicher:** Rollback bei Verletzung\n\n```sql\nALTER TABLE Lager \nADD CONSTRAINT chk_bestand_positiv \nCHECK (bestand >= 0);\n```\n\n❌ **Probleme anderer Ansätze:**\n- **Trigger:** Können deaktiviert werden, komplexer zu debuggen\n- **Anwendungslogik:** Kann umgangen werden, Race Conditions möglich\n- **Stored Procedures:** Können umgangen werden, nicht automatisch\n\n🎯 **Defense in Depth:** Check Constraint + Anwendungslogik für beste UX\n⚠️ **Achtung:** Constraint-Verletzung führt zu Fehlern - UI sollte das abfangen",
+            "difficulty": "fortgeschritten",
+            "category": "Datenintegrität"
+        },
+        {
+            "question": "🔧 Analysieren Sie dieses Szenario: Eine Tabelle 'Aufträge' hat sowohl 'erstellt_am' als auch 'bearbeitet_am' Spalten. Wie sollten diese für optimale Wartbarkeit typisiert sein?",
+            "options": [
+                "Beide als VARCHAR für flexible Formatierung",
+                "erstellt_am als TIMESTAMP (automatisch), bearbeitet_am als DATETIME (manuell)",
+                "Beide als TIMESTAMP mit DEFAULT-Werten",
+                "erstellt_am als DATE, bearbeitet_am als TIME"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** ⏰ **Unterschiedliche Datentypen für unterschiedliche Zwecke:**\n\n🎯 **Optimale Typisierung:**\n- **erstellt_am:** `TIMESTAMP DEFAULT CURRENT_TIMESTAMP`\n  - Automatisch beim INSERT gesetzt\n  - UTC-Zeitzone für globale Systeme\n  - Unveränderlich nach Erstellung\n\n- **bearbeitet_am:** `DATETIME NULL`\n  - Explizit durch Anwendung gesetzt\n  - Kann NULL sein (noch nicht bearbeitet)\n  - Flexibilität bei manueller Zeitangabe\n\n💡 **Wartbarkeits-Vorteile:**\n```sql\nCREATE TABLE Auftraege (\n    id INT PRIMARY KEY,\n    erstellt_am TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n    bearbeitet_am DATETIME NULL\n);\n```\n\n❌ **Warum andere falsch:**\n- VARCHAR: Keine Sortierung, Formatierungs-Chaos\n- Beide TIMESTAMP: Zu restriktiv für manuelle Bearbeitung\n- DATE/TIME: Verlust der Tageszeit bzw. Datum-Kontext",
+            "difficulty": "experte",
+            "category": "Datentypen"
+        },
+        {
+            "question": "🔍 Was bedeutet es, wenn eine Datenbank in der 3. Normalform (3NF) ist?",
+            "options": [
+                "Alle Tabellen haben maximal 3 Spalten",
+                "Keine transitiven Abhängigkeiten von Nicht-Schlüssel-Attributen",
+                "Maximal 3 Fremdschlüssel pro Tabelle",
+                "Die Datenbank hat höchstens 3 Tabellen"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📐 **3NF eliminiert transitive Abhängigkeiten:**\n\n🎯 **Definition 3. Normalform:**\n- Erfüllt 1NF (atomare Werte) und 2NF (keine partiellen Abhängigkeiten)\n- **Zusätzlich:** Keine transitiven Abhängigkeiten von Nicht-Schlüssel-Attributen\n\n🔄 **Transitive Abhängigkeit Beispiel:**\n**Schlecht:** Tabelle Mitarbeiter (ID, Name, AbteilungsID, AbteilungsLeiter)\n- Name abhängig von ID ✅\n- AbteilungsID abhängig von ID ✅\n- AbteilungsLeiter abhängig von AbteilungsID ❌ (transitive Abhängigkeit!)\n\n✅ **3NF-Lösung:** Separate Tabelle Abteilungen (AbteilungsID, AbteilungsLeiter)\n💡 **Vorteil:** Keine Redundanz, konsistente Daten, wartbarer Code",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbanktheorie"
+        },
+        {
+            "question": "⚙️ Ein System protokolliert Benutzer-Aktivitäten. Bei 100.000 Benutzern und durchschnittlich 50 Aktionen pro Tag entsteht eine Log-Tabelle mit 5 Millionen Einträgen täglich. Welche Strategie ist für langfristige Performance am besten?",
+            "options": [
+                "Alle Daten in einer großen Tabelle mit Indexen",
+                "Partitionierung nach Datum mit automatischer Archivierung",
+                "Separate Tabelle für jeden Benutzer",
+                "NoSQL-Datenbank für Log-Daten verwenden"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📅 **Partitionierung nach Datum ist optimal für Log-Daten:**\n\n🎯 **Warum Datum-Partitionierung ideal ist:**\n- **Performance:** Nur relevante Partitionen werden abgefragt\n- **Wartung:** Alte Partitionen können automatisch gelöscht werden\n- **Speicher:** Alte Daten auf langsamere/günstigere Medien\n- **Backup:** Partition-weise Sicherung möglich\n\n📊 **Zahlen-Beispiel:**\n- 5 Mio. Einträge/Tag × 365 Tage = 1.8 Mrd. Einträge/Jahr\n- Mit Partitionierung: Aktuelle Abfragen nur auf wenige Partitionen\n- Ohne: Full Table Scan durch Milliarden von Einträgen\n\n🗓️ **Implementierung:**\n```sql\nCREATE TABLE logs (id, user_id, action, timestamp)\nPARTITION BY RANGE (timestamp);\n```\n\n❌ **Andere Optionen:** Skalieren nicht, NoSQL verliert relationale Vorteile",
+            "difficulty": "experte",
+            "category": "Datenbankoptimierung"
+        },
+        {
+            "question": "🔐 Welche Aussage über Composite Primary Keys (zusammengesetzte Primärschlüssel) ist richtig?",
+            "options": [
+                "Sie bestehen immer aus genau zwei Spalten",
+                "Sie sind langsamer als einfache Primary Keys und sollten vermieden werden",
+                "Sie sind sinnvoll bei Zwischentabellen für n:m Beziehungen",
+                "Sie können NULL-Werte in einer der Spalten enthalten"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🔗 **Composite Primary Keys sind bei Zwischentabellen Standard:**\n\n✅ **Perfekter Use Case - Student_Kurs Tabelle:**\n```sql\nCREATE TABLE Student_Kurs (\n    StudentID INT,\n    KursID INT,\n    Anmeldedatum DATE,\n    PRIMARY KEY (StudentID, KursID)\n);\n```\n\n🎯 **Vorteile bei n:m Auflösung:**\n- Natürliche Eindeutigkeit (Student X in Kurs Y nur einmal)\n- Keine künstliche ID nötig\n- Beide FKs sind gleichzeitig PK\n- Fachlich logisch und verständlich\n\n❌ **Häufige Missverständnisse:**\n- Können 2, 3 oder mehr Spalten umfassen (nicht nur 2)\n- Performance ist meist vernachlässigbar schlechter\n- KEINE NULL-Werte erlaubt (PK-Regel)\n\n⚡ **Best Practice:** Composite PK für natürliche Geschäftsschlüssel, Surrogate Key für technische IDs",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "📝 Sie müssen in einer Tabelle sowohl die Original-Reihenfolge der Dateneingabe als auch die alphabetische Sortierung nach Name unterstützen. Wie lösen Sie das elegant?",
+            "options": [
+                "Zwei separate Tabellen mit identischen Daten",
+                "Eine zusätzliche Spalte 'reihenfolge' mit AUTO_INCREMENT", 
+                "TIMESTAMP-Spalte für die Eingabezeit verwenden",
+                "Die Sortierung nur in der Anwendungsschicht verwalten"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🔢 **AUTO_INCREMENT Spalte ist die eleganteste Lösung:**\n\n✅ **Optimale Implementierung:**\n```sql\nCREATE TABLE eintraege (\n    id INT AUTO_INCREMENT PRIMARY KEY,\n    reihenfolge INT AUTO_INCREMENT,\n    name VARCHAR(100),\n    weitere_daten...,\n    UNIQUE KEY uk_reihenfolge (reihenfolge)\n);\n```\n\n🎯 **Vorteile dieser Lösung:**\n- **Original-Reihenfolge:** `ORDER BY reihenfolge`\n- **Alphabetisch:** `ORDER BY name`\n- **Eindeutig:** Jeder Datensatz hat einzigartige Reihenfolge\n- **Performance:** Beide Sortierungen über Index möglich\n\n⏰ **Warum nicht TIMESTAMP:**\n- Mehrere Einträge zur gleichen Millisekunde möglich\n- Datum/Zeit nicht immer relevant\n- Größerer Speicherbedarf\n\n💡 **Praxis-Tipp:** Bei nachträglichen Änderungen der Reihenfolge UPDATE mit neuen reihenfolge-Werten",
+            "difficulty": "fortgeschritten",
+            "category": "Datenbankdesign"
+        },
+        {
+            "question": "Ein Musiker 🎸, der noch keine Alben veröffentlicht hat, möchte sich in die Datenbank eintragen lassen. Basierend auf der unnormalisierten Tabelle aus dem Handout, welche der drei Anomalien hindert ihn daran, seine Daten hinzuzufügen?",
+            "options": [
+                "Änderungsanomalie (Update Anomaly)",
+                "Löschanomalie (Deletion Anomaly)",
+                "Einfügeanomalie (Insertion Anomaly)",
+                "Redundanzanomalie (Redundancy Anomaly)"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die Einfügeanomalie tritt auf, wenn man eine Entität (z. B. eine Band) nicht hinzufügen kann, ohne gleichzeitig Daten zu einer anderen, abhängigen Entität (z. B. einem Album) anzugeben. 📝 Die unnormalisierte Tabelle erfordert für jeden Datensatz einen Albumtitel und Track. Da der Musiker noch keine Alben hat, kann er nicht ohne weiteres eingefügt werden. Die Löschanomalie betrifft das unbeabsichtigte Löschen von Daten, die Änderungsanomalie das Problem inkonsistenter Daten bei Änderungen. Die Redundanzanomalie ist keine der drei Hauptanomalien, sondern der Grund, warum Anomalien überhaupt auftreten.",
+            "difficulty": "einsteiger",
+            "category": "Datenbank-Anomalien"
+        },
+        {
+            "question": "Sie möchten in der `Künstler`-Tabelle den Interpreten 'Pink Floyd' löschen. Obwohl es in der `CD`-Tabelle noch CDs dieser Band gibt, schlägt die Löschung fehl. Was ist die wahrscheinlichste Ursache dafür und wie können Sie das Problem lösen, ohne Daten zu verlieren? 🚫",
+            "options": [
+                "Das liegt an einem Syntaxfehler im `DELETE`-Befehl.",
+                "Die Datenbank erzwingt die referenzielle Integrität, um 'verwaiste' Fremdschlüssel in der `CD`-Tabelle zu verhindern. Sie müssen zuerst die zugehörigen CDs löschen oder ihre `Interpret_ID` auf NULL setzen.",
+                "Der Primärschlüssel in der `Künstler`-Tabelle ist nicht eindeutig.",
+                "Die Tabellen sind nicht korrekt in einer 1:n-Beziehung verknüpft."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🛡️ Die referenzielle Integrität ist ein Mechanismus, der sicherstellt, dass Fremdschlüssel auf existierende Primärschlüssel verweisen. Laut Handout kann ein Datensatz in der 'Eins'-Tabelle (`Künstler`) nicht gelöscht werden, solange es noch zugehörige Datensätze in der 'Viele'-Tabelle (`CD`) gibt. Die Datenbank blockiert den Löschvorgang, um eine inkonsistente Datenlage zu verhindern. Die korrekte Vorgehensweise ist, entweder zuerst die abhängigen Datensätze zu entfernen oder die Fremdschlüssel zu aktualisieren (z. B. auf NULL setzen), bevor der Datensatz in der Elterntabelle gelöscht wird.",
+            "difficulty": "fortgeschritten",
+            "category": "Referenzielle Integrität"
+        },
+        {
+            "question": "Nehmen Sie an, die ursprüngliche unnormalisierte Tabelle hat 5000 Einträge, wovon 200 Einträge für den `Interpret` einzigartig sind. Durch Normalisierung in 3NF wird die Tabelle in eine `Künstler`-Tabelle (mit 200 Einträgen) und eine `CD`-Tabelle (mit 5000 Einträgen) aufgeteilt. Jede `Künstler`-Zeile hat eine durchschnittliche Datenmenge von 50 Bytes, die in der unnormalisierten Tabelle redundant wäre. Wie viel Speicherplatz wird durch die Normalisierung ungefähr eingespart? 💾",
+            "options": [
+                "200 MB",
+                "240 KB",
+                "150 KB",
+                "200 KB"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** In der unnormalisierten Tabelle würde die redundante Interpreten-Information bei jedem der 5000 Einträge gespeichert werden. 🗃️ Da es nur 200 einzigartige Interpreten gibt, wird diese Information (50 Bytes pro Interpret) 5000 Mal statt nur 200 Mal gespeichert. Der zusätzliche, redundante Speicherverbrauch wäre: $(5000 - 200) \times 50 \text{ Bytes} = 4800 \times 50 \text{ Bytes} = 240.000 \text{ Bytes}$. Das entspricht $240 \text{ KB}$. Durch die Normalisierung wird dieser redundante Speicherbedarf eliminiert. Die 50 Bytes pro Interpret werden in der neuen `Künstler`-Tabelle nur einmal pro Interpret gespeichert. 🔄 Die Einsparung ist also 240.000 Bytes oder 240 KB.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungen"
+        },
+        {
+            "question": "Wahr oder Falsch? 🧐 Ein Foreign Key Constraint mit `ON DELETE CASCADE` in der `CREATE TABLE`-Anweisung ermöglicht es, einen Künstler aus der `Künstler`-Tabelle zu löschen, ohne dessen zugehörige CDs zu entfernen, da der Fremdschlüssel dann automatisch auf NULL gesetzt wird.",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** ❌ Falsch. `ON DELETE CASCADE` bewirkt genau das Gegenteil: Wenn ein Datensatz in der Parent-Tabelle (`Künstler`) gelöscht wird, werden alle abhängigen Datensätze in der Child-Tabelle (`CD`) ebenfalls automatisch gelöscht. Dies stellt sicher, dass keine verwaisten Datensätze zurückbleiben. 👻 Um den Fremdschlüssel auf NULL zu setzen, müsste der Constraint `ON DELETE SET NULL` verwendet werden. Das Handout erwähnt diesen wichtigen Unterschied.",
+            "difficulty": "fortgeschritten",
+            "category": "SQL und Integrität"
+        },
+        {
+            "question": "Ein Datenbankentwickler analysiert eine bestehende Tabelle und stellt fest, dass das Attribut 'Albumtitel' funktional vom zusammengesetzten Primärschlüssel (`Interpret`, `Albumtitel`) abhängig ist, jedoch nicht von `Interpret` allein. Welcher Normalisierungsgrad ist hier mindestens nicht erreicht? 🤔",
+            "options": [
+                "1. Normalform (1NF)",
+                "2. Normalform (2NF)",
+                "3. Normalform (3NF)",
+                "4. Normalform (4NF)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📚 Die 2. Normalform (2NF) verlangt, dass alle Nicht-Schlüssel-Attribute vollständig von der Primärschlüsselkandidat abhängen. Wenn der Primärschlüssel zusammengesetzt ist (aus mehreren Spalten besteht), bedeutet dies, dass es keine partielle Abhängigkeit geben darf – also kein Attribut darf nur von einem Teil des Schlüssels abhängen. 🔑 Das beschriebene Szenario ist eine klassische partielle Abhängigkeit, die eine Tabelle daran hindert, die 2NF zu erreichen.",
+            "difficulty": "fortgeschritten",
+            "category": "Normalisierung"
+        },
+        {
+            "question": "Eine Datenbank für ein Videospiel soll Spieler und ihre Errungenschaften speichern. Ein Spieler kann viele Errungenschaften haben, aber jede Errungenschaft gehört nur zu einem Spieler. Wie sollte diese 1:n-Beziehung im Krähenfuß-Modell (`Crow's Foot Notation`) korrekt dargestellt werden? 🕹️",
+            "options": [
+                "Spieler —||— Errungenschaft",
+                "Spieler —o<— Errungenschaft",
+                "Spieler —o<|— Errungenschaft",
+                "Spieler —||<— Errungenschaft"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🐦 Die Krähenfuß-Notation ist ein Standard für die Darstellung von Kardinalitäten. Der Krähenfuß (`<`) steht für 'viele', der senkrechte Strich (`|`) für 'eins'. Die Beziehung wird immer aus der Sicht der `many`-Tabelle gelesen. Da eine Errungenschaft zu genau einem Spieler gehören muss, ist die Beziehung von 'Errungenschaft' zu 'Spieler' 'exactly one', dargestellt durch `|`. Da ein Spieler beliebig viele Errungenschaften haben kann, ist die Beziehung von 'Spieler' zu 'Errungenschaft' 'one or many', dargestellt durch `|<`. Die Kombination ist also `--<`. Die richtige Option spiegelt diese Beziehung wider.",
+            "difficulty": "einsteiger",
+            "category": "Datenbankmodellierung"
+        },
+        {
+            "question": "Welche der folgenden Maßnahmen hilft, die Änderungsanomalie in einer Datenbank zu verhindern? 🔄",
+            "options": [
+                "Einführung von `NULL`-Werten in Schlüsselfeldern.",
+                "Entfernung von Primärschlüsseln, um Redundanz zu schaffen.",
+                "Normalisierung der Datenbank, um redundante Daten zu minimieren.",
+                "Verwendung von Transaktionen ohne `COMMIT`."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 💡 Die Änderungsanomalie (Update Anomaly) entsteht durch Datenredundanz. Wenn dieselben Informationen an mehreren Stellen gespeichert sind, muss eine Änderung an allen Stellen durchgeführt werden, um Inkonsistenzen zu vermeiden. Normalisierung eliminiert diese Redundanz, indem Daten nur an einer einzigen Stelle gespeichert werden. Dies stellt sicher, dass eine Änderung nur einmal vorgenommen werden muss und die Datenintegrität gewahrt bleibt. Die anderen Optionen würden das Problem verschlimmern oder sind nicht relevant.",
+            "difficulty": "einsteiger",
+            "category": "Datenbank-Anomalien"
+        },
+        {
+            "question": "Ein Entwickler möchte eine SQL-Anweisung schreiben, um einen neuen Fremdschlüssel-Constraint zur `CD`-Tabelle hinzuzufügen, der auf die `Künstler`-Tabelle verweist. Der Constraint soll die referenzielle Integrität sicherstellen, indem er verbietet, CDs hinzuzufügen, wenn der Interpret nicht existiert. Welcher SQL-Befehl ist am besten geeignet, um diesen Constraint nachträglich in die Tabelle einzufügen? 📝",
+            "options": [
+                "CREATE TABLE cd ADD CONSTRAINT fk_kue FOREIGN KEY (interpret_id) REFERENCES kuenstler(interpret_id);",
+                "UPDATE TABLE cd ADD CONSTRAINT fk_kue FOREIGN KEY (interpret_id) REFERENCES kuenstler(interpret_id);",
+                "ALTER TABLE cd ADD CONSTRAINT fk_kue FOREIGN KEY (interpret_id) REFERENCES kuenstler(interpret_id);",
+                "MODIFY TABLE cd ADD FOREIGN KEY (interpret_id) REFERENCES kuenstler(interpret_id);"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🛠️ Der `ALTER TABLE`-Befehl wird verwendet, um die Struktur einer bereits existierenden Tabelle zu ändern. In diesem Fall fügen wir einen neuen Constraint (den Fremdschlüssel) hinzu. Die Syntax ist `ALTER TABLE [Tabellenname] ADD CONSTRAINT [Constraint-Name] FOREIGN KEY (...) REFERENCES ...`. `CREATE TABLE` wird nur für die Erstellung einer neuen Tabelle verwendet. `UPDATE` dient der Änderung von Datensätzen und `MODIFY` wird oft für die Änderung von Spalteneigenschaften verwendet, nicht aber zum Hinzufügen von Constraints. 🧑‍💻",
+            "difficulty": "fortgeschritten",
+            "category": "SQL und Integrität"
+        },
+        {
+            "question": "Sie müssen eine Datenbank für eine große E-Commerce-Plattform entwerfen. Sie haben die Wahl zwischen einem vollständig normalisierten (3NF) und einem denormalisierten Schema. Analysieren Sie die Vor- und Nachteile beider Ansätze in diesem Kontext. 🛒",
+            "options": [
+                "3NF ist besser für Schreib-Operationen, da die Datenredundanz hoch ist, während Denormalisierung Lese-Operationen verlangsamt.",
+                "Denormalisierung ist optimal für Transaktionen, da es die Datenintegrität sicherstellt, während 3NF die Abfrageleistung verbessert.",
+                "Ein 3NF-Schema ist optimal für Transaktionssysteme (OLTP) mit vielen Schreibvorgängen, da es Datenintegrität und Konsistenz sicherstellt, kann aber komplexe Joins für Leseabfragen erfordern. Ein denormalisiertes Schema ist oft besser für analytische Systeme (OLAP), da es Abfragen beschleunigt, aber zu Datenredundanz und Anomalien führen kann.",
+                "Es gibt keinen signifikanten Unterschied zwischen beiden Ansätzen in puncto Leistung oder Integrität."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 📈 Die Normalisierung in 3NF minimiert Redundanz und ist somit ideal für OLTP-Systeme (Online Transaction Processing) wie E-Commerce-Datenbanken, die viele `INSERT`, `UPDATE` und `DELETE`-Operationen verarbeiten. Sie stellt die Datenkonsistenz und Integrität sicher. Allerdings erfordern komplexere Abfragen (z.B. für Berichte) oft das Zusammenfügen mehrerer Tabellen (`JOINs`), was die Leseleistung verlangsamen kann. Denormalisierung hingegen führt Redundanz bewusst ein, um die Anzahl der Joins zu reduzieren und die Abfrageleistung (Read-Performance) zu verbessern. Daher wird sie häufig in Data-Warehousing- und Business-Intelligence-Systemen (OLAP) eingesetzt, wo Lesezugriffe dominieren. ⚖️",
+            "difficulty": "experte",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Ein Datenbankadministrator stellt fest, dass die `Interpret_ID` im `CD`-Datensatz für 'Wish You Were Here' nicht mehr auf eine existierende `Interpret_ID` in der `Künstler`-Tabelle verweist. Was ist die wahrscheinlichste Ursache für dieses Problem? 🏚️",
+            "options": [
+                "Die Tabellen wurden falsch benannt.",
+                "Es wurde eine `DELETE`-Operation in der `Künstler`-Tabelle durchgeführt, ohne dass eine referenzielle Integrität erzwungen wurde.",
+                "Der `cd_id` Primärschlüssel ist nicht eindeutig.",
+                "Die Fremdschlüssel wurden mit `ON UPDATE CASCADE` definiert."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🕵️ Das Szenario beschreibt eine Verletzung der referenziellen Integrität. Laut Handout können solche 'verwaisten' Fremdschlüssel entstehen, wenn ein Datensatz in der 'Eins'-Tabelle (`Künstler`) gelöscht wird, ohne dass das Datenbanksystem die Einhaltung der Referenziellen Integrität überwacht. Eine solche Löschung würde in der `CD`-Tabelle einen Fremdschlüssel hinterlassen, der auf einen nicht mehr existierenden Primärschlüssel verweist. 👻 Eine korrekte Datenbank mit einem Foreign Key Constraint würde diesen Löschversuch blockieren, es sei denn, es ist `ON DELETE CASCADE` gesetzt.",
+            "difficulty": "fortgeschritten",
+            "category": "Referenzielle Integrität"
+        },
+        {
+            "question": "Was ist der Hauptunterschied zwischen der 1. Normalform (1NF) und der 2. Normalform (2NF)? ⚖️",
+            "options": [
+                "1NF verlangt, dass jede Spalte nur einen atomaren Wert enthält. 2NF verlangt zusätzlich, dass alle Nicht-Schlüssel-Attribute vollständig vom Primärschlüssel abhängen.",
+                "1NF verlangt, dass alle Spalten eindeutige Namen haben. 2NF verlangt zusätzlich, dass es keine transitiven Abhängigkeiten gibt.",
+                "1NF verlangt, dass jede Tabelle einen Primärschlüssel hat. 2NF verlangt zusätzlich, dass keine Datenredundanz existiert.",
+                "1NF erlaubt partielle Abhängigkeiten, während 2NF diese verbietet."
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** 🤝 Die 1. Normalform (1NF) ist die grundlegendste Regel und stellt sicher, dass jede Zelle einen einzigen (atomaren) Wert enthält. Die 2. Normalform (2NF) baut auf der 1NF auf und fügt eine weitere Anforderung hinzu: Alle Nicht-Schlüssel-Attribute müssen vom gesamten zusammengesetzten Primärschlüssel abhängen. 📚 Das bedeutet, es darf keine partielle Abhängigkeit geben, bei der ein Attribut nur von einem Teil des Schlüssels abhängt. Die Aussage in Option D ist teilweise richtig, aber Option A ist die präziseste und umfassendste Definition.",
+            "difficulty": "einsteiger",
+            "category": "Normalisierung"
+        },
+        {
+            "question": "Ein Entwickler hat zwei Tabellen, `Künstler` und `CD`, erstellt. Nun möchte er sicherstellen, dass das Löschen eines Künstlers in der `Künstler`-Tabelle automatisch alle zugehörigen CDs in der `CD`-Tabelle löscht. Wie muss der `FOREIGN KEY CONSTRAINT` in der `CREATE TABLE`-Anweisung der `CD`-Tabelle formuliert werden? 🔥",
+            "options": [
+                "REFERENCES kuenstler (interpret_id) ON DELETE RESTRICT",
+                "REFERENCES kuenstler (interpret_id) ON DELETE SET NULL",
+                "REFERENCES kuenstler (interpret_id) ON DELETE CASCADE",
+                "REFERENCES kuenstler (interpret_id) ON DELETE NO ACTION"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🧨 Das Schlüsselwort `ON DELETE CASCADE` ist die korrekte Option, um ein solches Verhalten zu implementieren. Es weist das Datenbanksystem an, eine Löschaktion in der Parent-Tabelle (`Künstler`) kaskadenartig fortzusetzen und alle abhängigen Datensätze in der Child-Tabelle (`CD`) ebenfalls zu löschen. `ON DELETE RESTRICT` (oder `NO ACTION`) würde die Löschung blockieren. `ON DELETE SET NULL` würde den Fremdschlüsselwert auf NULL setzen, aber nicht den gesamten Datensatz löschen. 💥",
+            "difficulty": "fortgeschritten",
+            "category": "SQL und Integrität"
+        },
+        {
+            "question": "Wahr oder Falsch? 📝 Eine Löschanomalie tritt nur auf, wenn eine Tabelle einen Primärschlüssel hat, der aus mehreren Attributen besteht.",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🙅‍♂️ Falsch. Eine Löschanomalie (Deletion Anomaly) ist eine direkte Folge von Datenredundanz, nicht der Art des Primärschlüssels. Sie tritt auf, wenn das Löschen eines Datensatzes unbeabsichtigt andere, nicht redundante Informationen mitlöscht. 🗑️ Im Handout-Beispiel löscht das Entfernen eines Albums auch die Bandinformation, obwohl die Bandinformation keine Teilmenge des Primärschlüssels ist. Diese Anomalie kann in jeder unnormalisierten Tabelle auftreten, unabhängig davon, wie der Primärschlüssel definiert ist.",
+            "difficulty": "einsteiger",
+            "category": "Datenbank-Anomalien"
+        },
+        {
+            "question": "Angenommen, Sie haben eine nicht-normalisierte Tabelle mit den Spalten `(CD_ID, Albumtitel, Interpret, Gründungsjahr)`. Sie möchten diese in die 3. Normalform (3NF) bringen. Welche der folgenden Tabellenstrukturen ist die korrekte Repräsentation in 3NF? 📊",
+            "options": [
+                "Tabelle A: `(CD_ID, Albumtitel, Interpret)` und Tabelle B: `(Interpret, Gründungsjahr)`",
+                "Tabelle A: `(CD_ID, Albumtitel)` und Tabelle B: `(Albumtitel, Interpret, Gründungsjahr)`",
+                "Tabelle A: `(CD_ID, Albumtitel, Interpret_ID)` und Tabelle B: `(Interpret_ID, Interpret, Gründungsjahr)`",
+                "Tabelle A: `(CD_ID, Albumtitel)` und Tabelle B: `(Interpret, Gründungsjahr)`"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🧑‍🔬 Die 3. Normalform (3NF) verlangt, dass es keine transitiven Abhängigkeiten gibt. In der ursprünglichen Tabelle hängt `Gründungsjahr` von `Interpret` ab, nicht direkt von der `CD_ID`. Indem Sie `Interpret` und `Gründungsjahr` in eine separate `Künstler`-Tabelle verschieben und die beiden Tabellen mit einem Fremdschlüssel (`Interpret_ID`) verknüpfen, eliminieren Sie die transitive Abhängigkeit. So wird die Redundanz (z. B. 'Pink Floyd' und '1965') entfernt und die 3NF erreicht. Die `CD_ID` bleibt der Primärschlüssel der `CD`-Tabelle und der `Interpret_ID` ist der Fremdschlüssel, der auf den Primärschlüssel der `Künstler`-Tabelle verweist. 🔗",
+            "difficulty": "experte",
+            "category": "Normalisierung"
+        },
+        {
+            "question": "In einem komplexen Datenbankschema verwendet eine Tabelle einen zusammengesetzten Primärschlüssel, z.B. aus den Spalten `(Kunden-ID, Bestell-ID)`. Erklären Sie, wie sich die Verwendung dieses Schlüssels auf die Normalisierung auswirkt und welche Art von Abhängigkeit dabei besonders beachtet werden muss, um die 2. Normalform zu erreichen. 🧩",
+            "options": [
+                "Die Normalisierung wird durch zusammengesetzte Schlüssel nicht beeinflusst. Die 2. Normalform ist immer gewährleistet.",
+                "Zusammengesetzte Schlüssel können die Normalisierung erschweren, da sie das Risiko von partiellen Abhängigkeiten erhöhen, die es zu identifizieren und zu beseitigen gilt.",
+                "Zusammengesetzte Schlüssel sind in 2NF und 3NF nicht erlaubt.",
+                "Ein zusammengesetzter Schlüssel macht die 2. Normalform irrelevant, da diese nur für einfache Primärschlüssel gilt."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 🧠 Zusammengesetzte Schlüssel sind entscheidend für die Normalisierung und erfordern eine genaue Betrachtung. Die 2. Normalform (2NF) befasst sich explizit mit partiellen Abhängigkeiten, die nur bei zusammengesetzten Schlüsseln auftreten können. ❗ Eine partielle Abhängigkeit liegt vor, wenn ein Nicht-Schlüssel-Attribut nur von einem Teil des zusammengesetzten Primärschlüssels abhängt. Ein Beispiel wäre, wenn das `Bestelldatum` nur von der `Bestell-ID` und nicht von der `Kunden-ID` abhängt. Um 2NF zu erreichen, müssen solche Abhängigkeiten in separate Tabellen überführt werden. So wird die Datenintegrität sichergestellt und Redundanz vermieden.",
+            "difficulty": "experte",
+            "category": "Logische Rätsel"
+        },
+        {
+            "question": "Was ist der Hauptzweck der referenziellen Integrität in einem relationalen Datenbanksystem? 🎯",
+            "options": [
+                "Um sicherzustellen, dass jede Tabelle einen Primärschlüssel hat.",
+                "Um Datenredundanz zu eliminieren.",
+                "Um zu verhindern, dass Fremdschlüssel auf nicht-existierende Primärschlüssel verweisen.",
+                "Um sicherzustellen, dass alle Datensätze eindeutig sind."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 👮 Referenzielle Integrität ist ein grundlegendes Konzept relationaler Datenbanken, das die Konsistenz der Beziehungen zwischen Tabellen gewährleistet. Sie stellt sicher, dass jeder Wert in einem Fremdschlüssel-Feld auch in der referenzierten Primärschlüssel-Tabelle existiert. 🔑 Dies verhindert 'verwaiste' Datensätze und schützt die logische Verknüpfung der Daten. Die anderen Optionen beschreiben entweder Merkmale von Primärschlüsseln oder sind das Ergebnis von Normalisierungsregeln, nicht aber der primäre Zweck der referenziellen Integrität.",
+            "difficulty": "einsteiger",
+            "category": "Referenzielle Integrität"
+        },
+        {
+            "question": "Ein Datenbank-Design-Team diskutiert, ob es für die `CD`-Tabelle `ON DELETE CASCADE` oder `ON DELETE SET NULL` verwenden soll. Wann wäre `ON DELETE SET NULL` die bessere Wahl im Vergleich zu `ON DELETE CASCADE`? 💭",
+            "options": [
+                "Wenn Sie möchten, dass das Löschen eines Künstlers auch dessen CDs löscht.",
+                "Wenn Sie sicherstellen wollen, dass keine leeren Fremdschlüssel-Felder (`NULL`) in der `CD`-Tabelle vorhanden sind.",
+                "Wenn Sie einen Künstler aus der Datenbank entfernen möchten, seine CDs aber weiterhin mit einer unbestimmten `Interpret_ID` (NULL) behalten wollen.",
+                "Wenn die `Künstler`-Tabelle keine Primärschlüssel hat."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** 🤔 `ON DELETE SET NULL` ist die bevorzugte Option, wenn die abhängigen Daten (z. B. die CDs) auch nach dem Löschen der Parent-Entität (z. B. des Künstlers) logisch noch relevant sind und nicht mitgelöscht werden sollen. 🗑️ Im Gegensatz zu `ON DELETE CASCADE`, das die CDs unwiderruflich löschen würde, setzt `SET NULL` den Fremdschlüsselwert auf NULL. Dies signalisiert, dass die CD existiert, aber nicht mehr einem bekannten Künstler zugeordnet ist. Dies wäre z.B. sinnvoll, wenn eine Compilation-CD nach dem Löschen eines Künstlers weiterhin in der Datenbank verbleiben soll. Beachten Sie, dass das Fremdschlüsselfeld in diesem Fall NULL-Werte zulassen muss.",
+            "difficulty": "experte",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Stellen Sie sich vor, in der unnormalisierten Tabelle soll der Albumtitel 'Not That Kind' von 'Not That Kind (mit der CD_ID)' auf 'Not That Kind (Anastacia)' geändert werden. Welche der drei Anomalien würde dies am ehesten betreffen, und warum ist eine vollständige und konsistente Änderung so herausfordernd? 🤯",
+            "options": [
+                "Änderungsanomalie: Da der Albumtitel redundant gespeichert ist, müssten potenziell mehrere Datensätze aktualisiert werden. Ein Fehler bei der Aktualisierung könnte zu Inkonsistenzen führen.",
+                "Einfügeanomalie: Das Hinzufügen des neuen Titels wäre schwierig, da der Datensatz bereits existiert.",
+                "Löschanomalie: Der alte Albumtitel würde gelöscht, wodurch die Daten inkonsistent werden.",
+                "Redundanzanomalie: Die Datenredundanz macht eine Änderung unmöglich."
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** ✍️ Dies ist ein klassisches Beispiel für eine Änderungsanomalie (Update Anomaly). Da der Albumtitel 'Not That Kind' in der unnormalisierten Tabelle an mehreren Stellen auftaucht, müsste jede einzelne Instanz des Datensatzes manuell geändert werden. Vergisst man einen Datensatz oder macht einen Tippfehler, enthält die Datenbank anschließend widersprüchliche oder inkonsistente Informationen. 🤯 Normalisierung löst dieses Problem, indem der Albumtitel nur an einer einzigen Stelle gespeichert wird.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basierte Fragen"
+        },
+        {
+            "question": "Nehmen Sie an, Sie haben eine unnormalisierte Tabelle `(KundenID, Name, Straße, PLZ, Ort)`. Ein Ort kann mehrere Postleitzahlen haben. Wie würde sich eine `UPDATE`-Operation auf `PLZ` auswirken, um eine `Änderungsanomalie` zu vermeiden, wenn ein Kunde in eine neue Straße mit einer anderen `PLZ` umzieht? 🚚",
+            "options": [
+                "Die `PLZ` muss nur einmal geändert werden, da die `Straße` nicht redundant ist.",
+                "Da `PLZ` und `Ort` redundant sind, müssten nur diese beiden Felder in allen Datensätzen des Kunden geändert werden.",
+                "Da die `PLZ` nur in der Tabelle des Kunden geändert werden muss, gibt es keine `Änderungsanomalie`.",
+                "Die `PLZ` müsste für alle Kunden, die am gleichen Ort wohnen, geändert werden, auch wenn sie nicht umziehen."
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** 🌍 In diesem Szenario ist die `PLZ` transitiv vom `KundenID` über den `Ort` abhängig. Wenn ein Kunde umzieht und die `PLZ` geändert werden muss, betrifft dies nicht nur diesen einen Kunden, sondern alle Kunden am gleichen `Ort`, da die `PLZ` ein Attribut des `Orts` ist und nicht des `Kunden`. 🏘️ Um die Datenintegrität zu wahren, müsste die `PLZ` für alle Kunden des betreffenden Ortes geändert werden. Dies ist eine `Änderungsanomalie`. Die Lösung wäre, eine separate Tabelle für `Orte` zu erstellen.",
+            "difficulty": "experte",
+            "category": "Logische Rätsel"
+        },
+        {
+            "question": "Sie leiten eine Datenbank-Migration. Die alte Datenbank hat eine unnormalisierte Tabelle, die das `Erscheinungsjahr` für jedes Album einzeln speichert, auch wenn ein Album mehrmals in der Tabelle vorkommt. Das `Erscheinungsjahr` wird nun in der neuen Datenbank nur einmal pro Album gespeichert. Schätzen Sie, wie viel Datenspeicher durch diese Normalisierung eingespart wird, wenn die alte Tabelle 10.000 Einträge hat, aber nur 2.000 einzigartige Alben, und das `Erscheinungsjahr` 4 Bytes belegt. 🗄️",
+            "options": [
+                "40 KB",
+                "32 KB",
+                "80 KB",
+                "20 KB"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** 📉 In der unnormalisierten Tabelle wird das `Erscheinungsjahr` 10.000 Mal gespeichert. Nach der Normalisierung nur noch 2.000 Mal. Die Redundanz betrifft $(10.000 - 2.000) = 8.000$ Einträge. Jedes `Erscheinungsjahr` belegt 4 Bytes. Die Einsparung beträgt also $8.000 \times 4 \text{ Bytes} = 32.000 \text{ Bytes}$, was $32 \text{ KB}$ entspricht. 💡 Die Berechnung zeigt den konkreten Nutzen der Normalisierung.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungen"
         }
     ]
 }

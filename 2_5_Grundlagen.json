@@ -1,0 +1,453 @@
+{
+    "questions": [
+        {
+            "question": "Ein Junior-Administrator soll ein Verzeichnis aller `.log`-Dateien auf Laufwerk `D:` erstellen und in der Datei `audit.txt` speichern. Er führt den Befehl `dir d:\\*.log > audit.txt` aus. Am nächsten Tag soll er die neuen Log-Dateien an die bestehende `audit.txt` anhängen. Welchen Befehl muss er verwenden, um die alten Einträge nicht zu überschreiben? 📜",
+            "options": [
+                "dir d:\\*.log > audit.txt",
+                "dir d:\\*.log | audit.txt",
+                "dir d:\\*.log >> audit.txt",
+                "dir d:\\*.log + audit.txt"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Operator `>>` wird als Anhängesymbol verwendet. Er leitet die Ausgabe eines Befehls in eine Datei um und fügt sie am Ende der Datei an, ohne den vorhandenen Inhalt zu löschen. \n- **`>` (Umleitungssymbol):** Würde die `audit.txt` komplett überschreiben. ❌\n- **`|` (Pipe):** Verkettet Befehle, indem es die Ausgabe des ersten Befehls als Eingabe für den zweiten verwendet, was hier nicht zielführend ist. ❌\n- **`+` (Zusammenführungssymbol):** Wird primär beim `copy`-Befehl verwendet, um Dateien zu kombinieren, nicht zur Umleitung von Befehlsausgaben. ❌\n💡 Dieses Wissen ist entscheidend für das Logging und die Protokollierung in Skripten.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Sie möchten einen neuen 64 GB USB-Stick für die Windows-Installation vorbereiten. Der Stick muss eine einzelne, aktive primäre Partition enthalten, die mit NTFS formatiert ist. Welche `diskpart`-Befehlssequenz ist korrekt und vollständig? 🛠️",
+            "options": [
+                "select disk 1, create partition primary, active, format fs=ntfs, assign",
+                "list disk, select disk 1, clean, create partition primary, active, format fs=ntfs quick, assign",
+                "list disk, select disk 1, clean, create partition, format, assign letter=e",
+                "select disk 1, format fs=ntfs quick, active, assign"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die korrekte Reihenfolge ist entscheidend. Zuerst muss der Datenträger mit `list disk` identifiziert und mit `select disk X` ausgewählt werden. `clean` entfernt alle vorhandenen Partitionierungsinformationen. Danach wird mit `create partition primary` eine primäre Partition erstellt, mit `active` als bootfähig markiert, mit `format fs=ntfs quick` schnell formatiert und schließlich mit `assign` ein Laufwerksbuchstabe zugewiesen. \n- **Option A:** Vergisst `list disk` und `clean`, was zu Fehlern führen kann, wenn der Stick nicht leer ist. ❌\n- **Option C:** Ist zu unpräzise (`create partition` ohne 'primary', `format` ohne Dateisystem). ❌\n- **Option D:** Versucht zu formatieren, bevor eine Partition erstellt wurde. ❌",
+            "difficulty": "experte",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Ein Server soll wöchentlich einen Integritätscheck der Systemfestplatte (C:) durchführen und eventuelle Fehler automatisch beheben. Der Report soll nicht am Bildschirm angezeigt, sondern in eine Log-Datei geschrieben werden. Welcher Befehl ist dafür am besten geeignet? ⚙️",
+            "options": [
+                "chkdsk c: /f > nul",
+                "chkdsk c: /r",
+                "format c: /q",
+                "diskpart detail disk > log.txt"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Der Befehl `chkdsk c: /f` prüft das Laufwerk C: auf Fehler und behebt (`/f`) diese. Die Umleitung `> nul` unterdrückt die Ausgabe auf der Konsole, was für automatisierte Skripts ideal ist, um den Bildschirm sauber zu halten. \n- **`/r`:** Sucht zusätzlich nach fehlerhaften Sektoren und stellt lesbare Informationen wieder her, was deutlich länger dauert und für einen schnellen Check oft nicht nötig ist. ❌\n- **`format c:`:** Würde die Systemfestplatte formatieren und das Betriebssystem löschen.  катастрофа! ❌\n- **`diskpart detail disk`:** Liefert nur Informationen über den Datenträger, führt aber keine Fehlerprüfung oder -korrektur durch. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Wahr oder Falsch: Der Befehl `clean` in `diskpart` ist eine sichere Methode, um sensible Daten unwiederbringlich zu löschen, da er alle Sektoren der Festplatte überschreibt. 🔒",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Falsch. Der `clean`-Befehl löscht lediglich die MBR- oder GPT-Partitionierungsinformationen vom Datenträger. Die eigentlichen Daten bleiben physisch auf der Festplatte erhalten und können mit Datenrettungstools oft wiederhergestellt werden. Nur der Befehl `clean all` überschreibt jeden Sektor mit Nullen und sorgt für ein sicheres Löschen („Secure Erase“). 💡 Dies ist ein kritischer Unterschied im Kontext der Datensicherheit.",
+            "difficulty": "experte",
+            "category": "Wahr/Falsch mit Begründung"
+        },
+        {
+            "question": "Vergleichen Sie die Befehle `del` und `rd`. Welches Szenario beschreibt den korrekten Einsatz der beiden Befehle? 🗑️",
+            "options": [
+                "`del` löscht Verzeichnisse und `rd` löscht Dateien.",
+                "Beide können Dateien und leere Verzeichnisse löschen.",
+                "`del` löscht eine oder mehrere Dateien, während `rd` ein leeres Verzeichnis löscht.",
+                "`rd` löscht ein Verzeichnis inklusive aller Unterverzeichnisse und Dateien, `del` nur einzelne Dateien."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die Trennung ist klar definiert: `del` (delete) ist für das Löschen von Dateien zuständig. `rd` (remove directory) ist für das Entfernen von Verzeichnissen zuständig. Standardmäßig kann `rd` nur leere Verzeichnisse löschen. Um ein Verzeichnis samt Inhalt zu löschen, benötigt man den Schalter `/s` (z.B. `rd /s meinverzeichnis`).\n- **Option A:** Ist genau umgekehrt. ❌\n- **Option B:** `del` kann keine Verzeichnisse löschen. ❌\n- **Option D:** `rd` löscht ohne den Schalter `/s` eben nicht den Inhalt mit. ❌",
+            "difficulty": "einsteiger",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Sie haben einen Ordner mit hunderten von Bilddateien (JPG) und Textdokumenten (TXT). Sie möchten alle JPG-Dateien in einen Unterordner namens `Bilder` verschieben. Welcher Befehl ist am effizientesten? 📂",
+            "options": [
+                "copy *.jpg Bilder\\",
+                "move *.jpg Bilder",
+                "xcopy *.jpg Bilder\\ /s",
+                "ren *.jpg *.bak"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `move`-Befehl ist für das Verschieben von Dateien und Verzeichnissen konzipiert. Er ist effizienter als `copy` gefolgt von `del`, da die Dateidaten nicht physisch kopiert, sondern nur der Verzeichniseintrag im Dateisystem geändert wird (solange es auf demselben Volume geschieht).\n- **`copy`:** Würde die Dateien nur kopieren, die Originale blieben erhalten. ❌\n- **`xcopy`:** Ist für das Kopieren von Verzeichnisstrukturen gedacht und hier unnötig komplex. ❌\n- **`ren`:** Würde die Dateien nur umbenennen, nicht verschieben. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Ein Skript soll die Ausgabe eines langen Befehls erzeugen, aber der Benutzer soll diese Ausgabe nicht auf dem Bildschirm sehen, um die Konsole übersichtlich zu halten. Welcher Befehlsteil erreicht dies? 🙈",
+            "options": [
+                "| more",
+                "> nul",
+                "/p",
+                "| clip"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die Umleitung `> nul` sendet die Standardausgabe (STDOUT) eines Befehls an das `nul`-Gerät, welches ein virtuelles Gerät ist, das alle empfangenen Daten verwirft. Dadurch wird die Ausgabe effektiv unterdrückt. \n- **`| more`:** Hält die Ausgabe seitenweise an, zeigt sie aber an. ❌\n- **`/p`:** Ist ein Schalter vieler Befehle (wie `dir`), um die Ausgabe zu pausieren, zeigt sie aber ebenfalls an. ❌\n- **`| clip`:** Leitet die Ausgabe in die Zwischenablage um, nicht ins Nichts. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "Welchen entscheidenden Vorteil bietet `PowerShell` gegenüber der klassischen `CMD.EXE`, der in den Unterlagen angedeutet wird? 🚀",
+            "options": [
+                "PowerShell ist abwärtskompatibler zu MS-DOS.",
+                "PowerShell-Befehle sind immer kürzer und einfacher zu merken.",
+                "PowerShell arbeitet mit Objekten statt mit reinem Text, was eine mächtigere Verarbeitung und Skripterstellung ermöglicht.",
+                "CMD.EXE kann keine Netzwerkoperationen durchführen, PowerShell schon."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der fundamentale Unterschied und größte Vorteil von PowerShell ist die objektorientierte Pipeline. Während CMD Textzeilen von einem Befehl zum nächsten weitergibt, reicht PowerShell strukturierte .NET-Objekte weiter. Dies erlaubt eine wesentlich komplexere und zuverlässigere Verarbeitung von Daten in Skripten. CMD kann durchaus Netzwerkbefehle wie `ping` oder `ipconfig` ausführen. PowerShell ist eine modernere, aber nicht zwangsläufig abwärtskompatiblere oder immer kürzere Alternative.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Sie befinden sich im Verzeichnis `C:\\Users\\Admin\\Documents`. Welcher einzelne Befehl bringt Sie direkt zum Wurzelverzeichnis von Laufwerk C:? 🌳",
+            "options": [
+                "cd ..",
+                "cd /",
+                "cd \\",
+                "cd c:"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Befehl `cd \\` (change directory mit Backslash) wechselt immer in das Wurzelverzeichnis des aktuellen Laufwerks. \n- **`cd ..`:** Wechselt nur eine Ebene nach oben (zu `C:\\Users\\Admin`). ❌\n- **`cd /`:** Der Slash `/` wird in CMD primär für Schalter/Optionen verwendet, nicht für die Pfadnavigation wie in Linux. ❌\n- **`cd c:`:** Zeigt nur den aktuellen Pfad auf Laufwerk C: an, wechselt aber nicht das Verzeichnis, wenn man sich bereits auf C: befindet. ❌",
+            "difficulty": "einsteiger",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "Ein Kollege hat mit `diskpart` eine Partition gelöscht, aber der Speicherplatz wurde nicht wie erwartet dem benachbarten Volume hinzugefügt. Welcher `diskpart`-Befehl ist notwendig, um den freien Speicherplatz einer vorhandenen Partition zuzuweisen? ➕",
+            "options": [
+                "assign",
+                "create",
+                "merge",
+                "extend"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** Der `extend`-Befehl wird in `diskpart` verwendet, um ein Volume oder eine Partition in den nächsten zusammenhängenden, nicht zugeordneten Speicherplatz auf demselben Datenträger zu erweitern. Man muss zuerst das Volume auswählen (`select volume X`) und kann es dann mit `extend` vergrößern. \n- **`assign`:** Weist nur einen Laufwerksbuchstaben zu. ❌\n- **`create`:** Erstellt eine neue Partition im freien Speicher. ❌\n- **`merge`:** Führt untergeordnete virtuelle Datenträger zusammen, was hier nicht relevant ist. ❌",
+            "difficulty": "experte",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Welche Funktion haben die Platzhalter `*` und `?` in der CMD? Wählen Sie die präziseste Definition. 🧩",
+            "options": [
+                "`*` steht für ein beliebiges Zeichen, `?` für eine beliebige Zeichenkette.",
+                "`*` steht für eine beliebige Zeichenkette (auch keine), `?` steht für genau ein beliebiges Zeichen.",
+                "`*` steht für Zahlen, `?` für Buchstaben.",
+                "Beide stehen für eine beliebige Anzahl von beliebigen Zeichen."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Dies ist eine fundamentale Regel der Wildcard-Nutzung. Der Stern (`*`) ist der 'gierige' Platzhalter für null oder mehr beliebige Zeichen. Das Fragezeichen (`?`) ist der präzise Platzhalter für exakt ein beliebiges Zeichen. Ein Beispiel: `datei?.txt` findet `datei1.txt` und `dateiA.txt`, aber nicht `datei10.txt` oder `datei.txt`. `datei*.txt` würde sie alle finden.",
+            "difficulty": "einsteiger",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Sie möchten eine Textdatei namens `setup.txt` direkt in der Kommandozeile erstellen und den Text 'Installation_Start' hineinschreiben. Welcher Befehl und welche Aktion beenden den Schreibvorgang korrekt? ✍️",
+            "options": [
+                "type > setup.txt, dann 'Installation_Start' tippen und mit ESC beenden.",
+                "md setup.txt, dann 'Installation_Start' tippen und mit Enter beenden.",
+                "copy con setup.txt, dann 'Installation_Start' tippen und mit Strg+Z gefolgt von Enter beenden.",
+                "edit setup.txt, dann 'Installation_Start' tippen und mit F3 speichern."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Befehl `copy con` (copy from console) leitet die Konsoleneingabe in eine Datei um. Nach der Eingabe des Textes wird der Vorgang durch das Senden des 'End-of-File'-Zeichens (EOF) abgeschlossen, was in Windows durch die Tastenkombination `Strg+Z` und anschließendes Drücken von `Enter` geschieht. \n- **Option A, B, D:** Sind syntaktisch falsche oder unpassende Befehle für diesen Zweck. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "Sie geben den Befehl `help | more` ein. Was ist die genaue Funktion des Pipe-Symbols `|` in diesem Kontext? ⛓️",
+            "options": [
+                "Es leitet die Hilfe-Ausgabe in eine Datei namens 'more' um.",
+                "Es startet den 'more'-Befehl parallel zum 'help'-Befehl.",
+                "Es sorgt dafür, dass die sehr lange Ausgabe des 'help'-Befehls seitenweise durch den 'more'-Befehl angezeigt wird.",
+                "Es fügt den Inhalt der Datei 'more' an die Hilfe-Ausgabe an."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Das Pipe-Symbol `|` ist ein Verkettungssymbol. Es nimmt die Standardausgabe (STDOUT) des Befehls links von der Pipe und verwendet sie als Standardeingabe (STDIN) für den Befehl rechts von der Pipe. Hier wird die komplette Liste aller Befehle von `help` an `more` weitergeleitet, welcher die Eingabe dann seitenweise anzeigt und auf eine Benutzereingabe wartet, um zur nächsten Seite zu blättern.",
+            "difficulty": "fortgeschritten",
+            "category": "Befehlssyntax"
+        },
+        {
+            "question": "Ein Techniker möchte die Volumebezeichnung eines USB-Sticks (Laufwerk E:) von 'TRANSCEND' auf 'BACKUP' ändern. Welcher Befehl ist dafür direkt und ohne weitere Umwege vorgesehen? 🏷️",
+            "options": [
+                "ren e: BACKUP",
+                "label e: BACKUP",
+                "vol e: BACKUP",
+                "attrib e: +L BACKUP"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `label`-Befehl ist speziell dafür vorgesehen, die Datenträgerbezeichnung (das Volume Label) eines Laufwerks zu erstellen, zu ändern oder zu löschen. \n- **`ren`:** Dient zum Umbenennen von Dateien und Verzeichnissen, nicht von Laufwerken. ❌\n- **`vol`:** Zeigt nur die aktuelle Bezeichnung an, kann sie aber nicht ändern. ❌\n- **`attrib`:** Modifiziert Dateiattribute (wie schreibgeschützt, versteckt etc.), nicht die Volumebezeichnung. ❌",
+            "difficulty": "einsteiger",
+            "category": "Datenträger-Befehle"
+        },
+        {
+            "question": "Wahr oder Falsch: Der Befehl `cd Ordner1\\Ordner2` ist ein Beispiel für die Verwendung eines relativen Pfades. 🛤️",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Wahr. Ein relativer Pfad geht vom aktuellen Verzeichnis aus. Wenn Sie sich z.B. in `C:\\Daten` befinden, würde `cd Ordner1\\Ordner2` versuchen, in das Verzeichnis `C:\\Daten\\Ordner1\\Ordner2` zu wechseln. Ein absoluter Pfad hingegen beginnt immer mit einem Laufwerksbuchstaben oder einem `\\` vom Wurzelverzeichnis aus (z.B. `cd C:\\Windows\\System32`). Dieses Verständnis ist fundamental für die Navigation und Skripterstellung.",
+            "difficulty": "fortgeschritten",
+            "category": "Wahr/Falsch mit Begründung"
+        },
+        {
+            "question": "Sie müssen in `diskpart` eine 500 MB große primäre Partition auf einem leeren Datenträger erstellen. Welcher Befehl ist dafür korrekt? 📏",
+            "options": [
+                "create partition primary size=500",
+                "create primary partition 500mb",
+                "create partition size=500mb primary",
+                "create partition primary 500"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die korrekte Syntax für das Erstellen einer Partition mit einer bestimmten Größe in `diskpart` lautet `create partition [typ] size=[größe_in_mb]`. Der Parameter `size` erwartet die Größe in Megabyte (MB). \n- **Option B, C, D:** Verwenden eine falsche Syntax oder Reihenfolge der Parameter. Die Angabe 'mb' ist nicht Teil des Werts. ❌",
+            "difficulty": "experte",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "Was ist der historische und funktionale Hauptunterschied zwischen `CMD.EXE` und dem älteren `COMMAND.COM`? 🏛️",
+            "options": [
+                "`COMMAND.COM` war 32-Bit, `CMD.EXE` ist 16-Bit.",
+                "`CMD.EXE` wurde mit Windows NT eingeführt und ist ein nativer 32/64-Bit-Prozess, während `COMMAND.COM` ein 16-Bit-Interpreter aus der MS-DOS-Ära ist.",
+                "`COMMAND.COM` unterstützte Batch-Skripte, `CMD.EXE` nicht.",
+                "Es gibt keinen funktionalen Unterschied, nur der Name wurde geändert."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Dies ist ein wichtiger historischer Kontext. `COMMAND.COM` war der Kommandozeileninterpreter für MS-DOS und ältere Windows-Versionen (9x/Me). Es war eine 16-Bit-Anwendung mit vielen Einschränkungen. `CMD.EXE` wurde als nativer 32-Bit-Interpreter (heute auch 64-Bit) für die Windows-NT-Linie (NT, 2000, XP, etc.) entwickelt und bot eine erweiterte Befehlssyntax und bessere Integration in das Betriebssystem. Beide unterstützen Batch-Skripte, aber `CMD.EXE` mit mehr Funktionen.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Sie vermuten, dass eine wichtige Systemdatei versteckt und schreibgeschützt ist. Welcher Befehl zeigt die Attribute der Datei `kernel32.dll` im System32-Ordner an? 👁️",
+            "options": [
+                "dir C:\\Windows\\System32\\kernel32.dll",
+                "type C:\\Windows\\System32\\kernel32.dll",
+                "attrib C:\\Windows\\System32\\kernel32.dll",
+                "find \"kernel32.dll\" C:\\Windows\\System32"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der `attrib`-Befehl ist speziell dafür da, die Attribute von Dateien oder Verzeichnissen anzuzeigen oder zu ändern. Dazu gehören A (Archiv), S (System), H (Hidden/Versteckt) und R (Read-only/Schreibgeschützt). \n- **`dir`:** Zeigt die Datei an, aber nicht immer alle Attribute auf einen Blick. ❌\n- **`type`:** Würde versuchen, den binären Inhalt der DLL-Datei als Text auszugeben, was zu unsinniger Ausgabe führt. ❌\n- **`find`:** Durchsucht den Inhalt von Dateien, nicht deren Attribute. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "Um die gesamte Befehlshistorie der aktuellen CMD-Sitzung anzuzeigen, kann man `doskey /history` verwenden. Welcher Tastaturbefehl bietet eine ähnliche, aber interaktivere Funktionalität? ⌨️",
+            "options": [
+                "F7",
+                "F3",
+                "Pfeiltaste Oben (↑)",
+                "Tab-Taste"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die `F7`-Taste öffnet in der CMD ein kleines Fenster, das eine nummerierte Liste der zuletzt eingegebenen Befehle anzeigt. Man kann dann mit den Pfeiltasten einen Befehl auswählen und mit `Enter` direkt ausführen. \n- **`F3`:** Wiederholt den letzten Befehl. ❌\n- **`Pfeiltaste Oben`:** Blättert einzeln durch die vorherigen Befehle. ❌\n- **`Tab-Taste`:** Wird zur automatischen Vervollständigung von Date- und Verzeichnisnamen verwendet. ❌",
+            "difficulty": "experte",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "Ein Skript muss den vollständigen Pfad zu allen ausführbaren Programmen (`.exe`) im Windows-Verzeichnis und allen seinen Unterverzeichnissen auflisten. Welcher `dir`-Befehl ist dafür am besten geeignet? 🗺️",
+            "options": [
+                "dir C:\\Windows\\*.exe",
+                "dir C:\\Windows\\*.exe /s /b",
+                "tree C:\\Windows /f",
+                "find \".exe\" C:\\Windows"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Befehl `dir C:\\Windows\\*.exe /s /b` ist hier perfekt. `*.exe` filtert nach der Dateiendung. Der Schalter `/s` (subdirectories) durchsucht rekursiv alle Unterverzeichnisse. Der Schalter `/b` (bare format) gibt nur den reinen Pfad und Dateinamen aus, ohne Kopf- und Fußzeilen, was ideal für die Weiterverarbeitung in Skripten ist. \n- **Option A:** Durchsucht nur das `C:\\Windows`-Verzeichnis selbst, nicht die Unterordner. ❌\n- **Option C:** `tree` zeigt die Verzeichnisstruktur an, was hier zu viel Information wäre. ❌\n- **Option D:** `find` durchsucht den *Inhalt* von Dateien, nicht die Dateinamen. ❌",
+            "difficulty": "experte",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Sie müssen eine große Anzahl von Dateien (ca. 150 GB) samt Unterverzeichnissen und NTFS-Berechtigungen auf einen neuen Server kopieren. Welcher Befehl ist dafür robuster und besser geeignet als `copy` oder `xcopy`? 🚚",
+            "options": [
+                "move",
+                "diskpart",
+                "robocopy",
+                "format"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `robocopy` (Robust File Copy) ist das Mittel der Wahl für große und komplexe Kopiervorgänge. Es wurde speziell für solche Szenarien entwickelt und bietet Features wie das Kopieren von NTFS-Berechtigungen, Wiederaufnahme bei Netzwerkunterbrechungen, Spiegelungsmodi und umfangreiches Logging. `xcopy` ist zwar mächtiger als `copy`, aber `robocopy` ist der moderne Standard für administrative Aufgaben. Der Befehl wird im Material als Alternative zu `xcopy` erwähnt und gehört zum Wissen eines Fachinformatikers.",
+            "difficulty": "experte",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Welcher `diskpart`-Befehl wird verwendet, um einen Datenträger, der als 'offline' markiert ist, wieder für das System verfügbar zu machen? 🔌",
+            "options": [
+                "active",
+                "online",
+                "rescan",
+                "assign"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Wenn ein Datenträger oder ein Volume in `diskpart` (oder der Datenträgerverwaltung) als 'offline' angezeigt wird, kann das System nicht darauf zugreifen. Der Befehl `online` (nachdem das Objekt mit `select` ausgewählt wurde) schaltet es wieder in den Online-Zustand und macht es für das Betriebssystem sichtbar und nutzbar. \n- **`active`:** Markiert eine Partition als bootfähig. ❌\n- **`rescan`:** Sucht nach neuen, an den Computer angeschlossenen Datenträgern. ❌\n- **`assign`:** Weist einen Laufwerksbuchstaben zu, was aber erst möglich ist, wenn das Volume online ist. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Datenträgerverwaltung (diskpart)"
+        },
+        {
+            "question": "Was ist das Ergebnis des Befehls `prompt $T$G`? 🕒",
+            "options": [
+                "Der Pfad gefolgt von einem '>'-Zeichen.",
+                "Datum und Uhrzeit.",
+                "Die aktuelle Uhrzeit gefolgt von einem '>'-Zeichen.",
+                "Der Text '$T$G' wird als neuer Prompt gesetzt."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der `prompt`-Befehl ändert die Eingabeaufforderung. Dabei werden spezielle Metacodes verwendet. `$T` steht für die aktuelle Uhrzeit (Time) und `$G` steht für das 'größer als'-Zeichen (`>`). Der Befehl setzt den Prompt also z.B. auf `14:30:55,12>`. Dies kann nützlich sein, um Befehle in Skripten mit einem Zeitstempel zu versehen. `$P$G` ist der Standard-Prompt, der den Pfad anzeigt.",
+            "difficulty": "experte",
+            "category": "Allgemeine Befehle"
+        },
+        {
+            "question": "Sie haben ein Verzeichnis `C:\\Logs` mit tausenden von Dateien. Sie möchten schnell herausfinden, ob es eine Datei mit dem exakten Namen `error_2025-08-26.log` gibt. Welcher Befehl ist am schnellsten und ressourcenschonendsten? 💨",
+            "options": [
+                "dir C:\\Logs /s",
+                "find \"error_2025-08-26.log\" C:\\Logs\\*",
+                "dir C:\\Logs\\error_2025-08-26.log",
+                "tree C:\\Logs"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der direkteste Weg ist, `dir` mit dem vollständigen Dateinamen aufzurufen. Wenn die Datei existiert, wird sie sofort aufgelistet. Wenn nicht, meldet `dir` 'Datei nicht gefunden'. Dies ist wesentlich schneller als andere Methoden. \n- **`dir /s`:** Würde alle Unterverzeichnisse durchsuchen, was unnötig ist. ❌\n- **`find`:** Durchsucht den *Inhalt* der Dateien nach dem String, nicht die Dateinamen. Das würde extrem lange dauern und nicht das gewünschte Ergebnis liefern. ❌\n- **`tree`:** Zeigt die gesamte Verzeichnisstruktur an, was bei tausenden Dateien sehr unübersichtlich und langsam ist. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "Wahr oder Falsch: Die Eingabe von `help > befehle.txt` und `help /?` führt zum exakt gleichen Ergebnis. 🤔",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Falsch. `help > befehle.txt` leitet die *Ausgabe* des `help`-Befehls (also die Liste aller verfügbaren Befehle) in die Datei `befehle.txt` um. Der Befehl `help /?` hingegen zeigt die *Hilfe zum `help`-Befehl selbst* an, also eine Beschreibung, wie der `help`-Befehl funktioniert. Das sind zwei völlig unterschiedliche Aktionen.",
+            "difficulty": "fortgeschritten",
+            "category": "Wahr/Falsch mit Begründung"
+        },
+        {
+            "question": "In der Befehlssyntax-Hilfe (z.B. bei `dir /?`) sind einige Parameter in eckigen Klammern `[ ]` aufgeführt. Was bedeutet diese Konvention? 📖",
+            "options": [
+                "Diese Parameter sind veraltet und sollten nicht mehr verwendet werden.",
+                "Diese Parameter sind obligatorisch und müssen immer angegeben werden.",
+                "Diese Parameter sind optional und können weggelassen werden.",
+                "Diese Parameter funktionieren nur im Administratormodus."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die eckigen Klammern `[ ]` sind eine Standardkonvention in der Dokumentation von Kommandozeilenprogrammen, um optionale Parameter, Schalter oder Argumente zu kennzeichnen. Elemente ohne Klammern sind in der Regel erforderlich. Dieses Wissen ist entscheidend, um die Hilfe-Texte der CMD korrekt interpretieren zu können.",
+            "difficulty": "einsteiger",
+            "category": "Befehlssyntax"
+        },
+        {
+            "question": "Ein USB-Stick wurde fälschlicherweise mit `diskpart` und dem `clean`-Befehl bereinigt. Der Benutzer möchte nun versuchen, die Daten wiederherzustellen. Was ist der wichtigste erste Schritt, den er unternehmen sollte, um die Chancen auf eine erfolgreiche Wiederherstellung zu maximieren? 🚑",
+            "options": [
+                "Sofort eine neue Partition erstellen und formatieren, um wieder auf den Stick zugreifen zu können.",
+                "Den `chkdsk /r`-Befehl ausführen, um die Dateistruktur zu reparieren.",
+                "Den Stick sofort vom Computer trennen und keine weiteren Schreibvorgänge durchführen.",
+                "Den Befehl `diskpart convert mbr` ausführen."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Nach einem `clean`-Befehl sind die Daten physisch noch vorhanden, aber der 'Wegweiser' (die Partitionstabelle) zu ihnen wurde gelöscht. Jeder weitere Schreibvorgang (wie das Erstellen einer neuen Partition, Formatieren, `chkdsk`) birgt die Gefahr, die alten Daten physisch zu überschreiben und sie damit endgültig zu zerstören. Der wichtigste Schritt ist daher, alle Schreibzugriffe zu verhindern und spezialisierte Datenrettungssoftware zu verwenden, die den Datenträger Sektor für Sektor scannen kann.",
+            "difficulty": "experte",
+            "category": "Szenario-basiert"
+        },
+        {
+            "question": "Welcher Befehl erstellt ein neues Verzeichnis namens `Test Data` im aktuellen Ordner? 🗂️",
+            "options": [
+                "md Test Data",
+                "md \"Test Data\"",
+                "create Test Data",
+                "dir \"Test Data\""
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Da der Verzeichnisname ein Leerzeichen enthält, muss er in Anführungszeichen `\" \"` eingeschlossen werden. Ohne Anführungszeichen würde der `md` (make directory)-Befehl versuchen, zwei separate Verzeichnisse namens `Test` und `Data` zu erstellen. \n- **Option A:** Würde zwei Ordner erstellen. ❌\n- **Option C:** Der Befehl `create` existiert in diesem Kontext in der CMD nicht. ❌\n- **Option D:** `dir` zeigt den Inhalt an, erstellt aber nichts. ❌",
+            "difficulty": "einsteiger",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "Sie möchten alle Textdateien (`.txt`) im aktuellen Verzeichnis umbenennen, sodass sie stattdessen die Endung `.bak` haben. Welcher Befehl erledigt das für alle Dateien auf einmal? 🔄",
+            "options": [
+                "move *.txt *.bak",
+                "copy *.txt *.bak",
+                "ren *.txt *.bak",
+                "attrib *.txt -r"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Befehl `ren` (rename) ist für das Umbenennen von Dateien zuständig. Er unterstützt die Verwendung von Wildcards (`*` und `?`), um Operationen auf mehrere Dateien gleichzeitig anzuwenden. Der Befehl `ren *.txt *.bak` findet alle Dateien, die auf `.txt` enden, und ersetzt die Endung durch `.bak`, während der Dateiname erhalten bleibt.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "Vergleichen Sie die Befehle `date` und `time`. Was ist eine Gemeinsamkeit in ihrer Standardfunktionalität in der CMD? 🕰️",
+            "options": [
+                "Beide zeigen nur Informationen an und erlauben keine Änderungen.",
+                "Beide erfordern Administratorrechte, um ausgeführt zu werden.",
+                "Beide zeigen den aktuellen Wert an und bieten direkt im Anschluss die Möglichkeit, einen neuen Wert einzugeben.",
+                "Beide können ihre Ausgabe nur im `YYYY-MM-DD` bzw. `HH:MM:SS` Format darstellen."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Wenn `date` oder `time` ohne Parameter aufgerufen wird, zeigen sie zunächst den aktuellen Systemwert an. Direkt in der nächsten Zeile erscheint eine Eingabeaufforderung, in der der Benutzer ein neues Datum bzw. eine neue Uhrzeit eingeben kann. Drückt man einfach `Enter`, wird keine Änderung vorgenommen. Diese interaktive Funktionalität ist eine charakteristische Gemeinsamkeit der beiden Befehle.",
+            "difficulty": "einsteiger",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "Sie führen den Befehl `tree /f` in einem Ordner aus. Was unterscheidet die Ausgabe von einem einfachen `tree`-Befehl? 🌲",
+            "options": [
+                "Die Ausgabe wird in eine Datei namens 'f' geschrieben.",
+                "Es werden nur die Verzeichnisse des ersten Levels angezeigt.",
+                "Die Ausgabe wird alphabetisch sortiert.",
+                "Zusätzlich zur Verzeichnisstruktur werden auch die Dateien in jedem Verzeichnis aufgelistet."
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** Der `tree`-Befehl zeigt die Ordnerstruktur eines Pfades grafisch an. Der Schalter `/f` (files) erweitert diese Funktionalität und sorgt dafür, dass nicht nur die Verzeichnisse, sondern auch alle darin enthaltenen Dateien aufgelistet werden, was einen vollständigen Überblick über die Hierarchie gibt.",
+            "difficulty": "fortgeschritten",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "Ein Benutzer möchte ein Skript erstellen, das automatisch ein Backup-Verzeichnis erstellt. Das Verzeichnis soll nach dem aktuellen Datum benannt werden, z.B. 'Backup_2025-08-26'. Welche CMD-Funktion ist unerlässlich, um dies zu erreichen? 🗓️",
+            "options": [
+                "Die `date`-Variable, zugänglich über `%DATE%`.",
+                "Der `format`-Befehl mit einem Datumsparameter.",
+                "Der `set`-Befehl allein.",
+                "Der `doskey`-Befehl zur Makroerstellung."
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die CMD stellt Umgebungsvariablen bereit, die dynamische Systeminformationen enthalten. `%DATE%` ist eine solche Variable, die das aktuelle Systemdatum enthält. In einem Skript könnte man also einen Befehl wie `md Backup_%DATE%` verwenden, um einen Ordner mit dem tagesaktuellen Datum im Namen zu erstellen. Dies ist eine grundlegende, aber extrem mächtige Technik für die Automatisierung.",
+            "difficulty": "experte",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "Welcher `diskpart`-Befehl liefert detaillierte Informationen über das aktuell ausgewählte Objekt, z.B. den Typ, die Größe und den Status einer Partition? ℹ️",
+            "options": [
+                "list",
+                "help",
+                "detail",
+                "attributes"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Nachdem ein Objekt mit `select` in den Fokus genommen wurde (z.B. `select partition 1`), liefert der Befehl `detail` spezifische Informationen genau zu diesem Objekt. `detail disk` zeigt z.B. Festplattendetails, `detail partition` Partitionsdetails und `detail volume` Volumedetails. \n- **`list`:** Zeigt eine Übersicht aller Objekte eines Typs, aber keine Details zu einem einzelnen. ❌\n- **`help`:** Zeigt Hilfe zu Befehlen an. ❌\n- **`attributes`:** Dient zum Anzeigen und Ändern von Attributen, nicht zur allgemeinen Detailansicht. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Datenträgerverwaltung (diskpart)"
+        },
+        {
+            "question": "Wie kann man in der CMD schnell den Bildschirm von allen vorherigen Befehlen und Ausgaben bereinigen? 🧼",
+            "options": [
+                "clear",
+                "clean",
+                "cls",
+                "exit"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Befehl `cls` (clear screen) ist der Standardbefehl in der Windows-Kommandozeile, um den gesamten Inhalt des Konsolenfensters zu löschen und den Cursor in die obere linke Ecke zu setzen. \n- **`clear`:** Ist der entsprechende Befehl in Linux/Unix-Shells, funktioniert in CMD aber nicht. ❌\n- **`clean`:** Ist ein `diskpart`-Befehl mit einer völlig anderen (und gefährlichen) Funktion. ❌\n- **`exit`:** Schließt das CMD-Fenster. ❌",
+            "difficulty": "einsteiger",
+            "category": "Allgemeine Befehle"
+        },
+        {
+            "question": "Sie müssen eine Partition in `diskpart` als 'inaktiv' markieren. Welcher Befehl wird nach der Auswahl der Partition dafür verwendet? ⛔",
+            "options": [
+                "deactivate",
+                "inactive",
+                "remove active",
+                "setid inactive"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Befehl `inactive` ist das direkte Gegenstück zum `active`-Befehl. Nachdem eine Partition ausgewählt wurde (z.B. `select partition 1`), markiert der Befehl `inactive` diese als nicht mehr bootfähig. Dies ist eine wichtige Funktion bei der Verwaltung von Multi-Boot-Systemen.",
+            "difficulty": "fortgeschritten",
+            "category": "Datenträgerverwaltung (diskpart)"
+        }
+    ]
+}

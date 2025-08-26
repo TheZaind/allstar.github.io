@@ -1,0 +1,894 @@
+{
+    "questions": [
+        {
+            "question": "Ein Datenbankadministrator möchte alle Helden aus der 'helden'-Tabelle auslesen, die im Jahr 1955 geboren wurden und deren Nachname mit einem 'K' beginnt. Welche SQL-Abfrage sollte er verwenden? 🤔",
+            "options": [
+                "SELECT * FROM helden WHERE gebjahr = 1955 AND nachname LIKE 'K%';",
+                "SELECT * FROM helden WHERE gebjahr = 1955 OR nachname LIKE 'K%';",
+                "SELECT * FROM helden WHERE gebjahr = 1955, nachname LIKE 'K%';",
+                "SELECT * FROM helden WHERE gebjahr = '1955' AND nachname = 'K%';"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Abfrage verwendet `WHERE` mit den logischen Operatoren `AND` und `LIKE`. `AND` verknüpft die beiden Bedingungen: Das Geburtsjahr muss 1955 sein UND der Nachname muss mit 'K' beginnen. Der `LIKE`-Operator in Kombination mit dem Wildcard-Zeichen `%` (beliebiger Text) ermöglicht die Suche nach einem Muster. \n- **Option B** ist falsch, da `OR` entweder Helden aus 1955 ODER Helden mit Nachnamen beginnend mit 'K' zurückgeben würde, was nicht der Anforderung entspricht. \n- **Option C** ist syntaktisch falsch, da ein Komma nicht als logischer Operator in der `WHERE`-Klausel verwendet werden kann. \n- **Option D** ist in doppelter Hinsicht falsch: Das Jahr 1955 ist ein numerischer Wert und darf nicht in Anführungszeichen stehen, und der `=` Operator sucht nach einer exakten Übereinstimmung, nicht nach einem Muster wie `%`. 💡",
+            "difficulty": "fortgeschritten",
+            "category": "SELECT und Filter"
+        },
+        {
+            "question": "Sie sollen in der 'helden'-Tabelle den Vornamen des Helden mit der helden_id '2' von 'Dag' in 'Dago' ändern. Welcher Befehl ist dafür der Richtige? ✏️",
+            "options": [
+                "UPDATE helden SET vorname = 'Dago' WHERE helden_id = 2;",
+                "MODIFY helden SET vorname = 'Dago' WHERE helden_id = 2;",
+                "UPDATE helden WHERE helden_id = 2 SET vorname = 'Dago';",
+                "CHANGE helden vorname = 'Dago' WHERE helden_id = 2;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Syntax für das Aktualisieren von Daten in einer Tabelle ist `UPDATE tabelle SET spalte = 'neuer_wert' WHERE bedingung;`. Hierbei wird mit `SET` festgelegt, welche Spalte geändert werden soll und mit `WHERE` wird der spezifische Datensatz ausgewählt, der aktualisiert werden soll. \n- **Option B** und **D** sind falsche Befehle. Es gibt zwar ähnliche Befehle für die Tabellenstruktur (`ALTER TABLE... MODIFY COLUMN` oder `CHANGE`), aber nicht für die Daten selbst. \n- **Option C** hat die falsche Reihenfolge der Klauseln; die `SET`-Klausel muss vor der `WHERE`-Klausel stehen. ✍️",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (UPDATE)"
+        },
+        {
+            "question": "Um die Anzahl der Helden in der 'helden'-Tabelle zu ermitteln, welche der folgenden Aggregat-Funktionen wäre die richtige Wahl? 🔢",
+            "options": [
+                "SUM(*)",
+                "COUNT(*)",
+                "AVG(helden_id)",
+                "MAX(helden_id)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie Aggregat-Funktion `COUNT(*)` ist der Standardweg, um die Anzahl der Zeilen (Datensätze) in einer Tabelle zu zählen. Das `*` als Argument steht für 'alle Zeilen'. \n- **Option A** (`SUM`) würde versuchen, alle Werte zu addieren, was für eine Zählung nicht sinnvoll ist. \n- **Option C** (`AVG`) berechnet den Durchschnitt, was hier nicht gefragt ist. \n- **Option D** (`MAX`) gibt den höchsten Wert zurück, was ebenfalls nicht der gewünschten Zählung entspricht. \n`COUNT(*)` ist am effizientesten, da es keine Spaltenwerte auslesen muss. 📊",
+            "difficulty": "einsteiger",
+            "category": "Aggregat-Funktionen"
+        },
+        {
+            "question": "Ein Entwickler hat eine Abfrage geschrieben, die Daten aus der 'helden'- und der 'hut'-Tabelle miteinander verbindet. Er stellt jedoch fest, dass ihm Datensätze fehlen, für die in der 'hut'-Tabelle kein passender Eintrag existiert. Was könnte der Grund sein und wie kann er das beheben? 🤝",
+            "options": [
+                "Er hat `INNER JOIN` verwendet. Er sollte stattdessen `RIGHT JOIN` nutzen, um alle Datensätze aus der 'hut'-Tabelle zu erhalten.",
+                "Er hat `INNER JOIN` verwendet. Er sollte stattdessen `LEFT JOIN` nutzen, um alle Datensätze aus der 'helden'-Tabelle zu erhalten.",
+                "Er hat eine falsche `ON`-Bedingung genutzt. Die Bedingung `helden.helden_id = hut.helden_id` ist fehlerhaft.",
+                "Er hat `FULL JOIN` verwendet. Er sollte stattdessen `INNER JOIN` nutzen, um nur passende Datensätze zu sehen."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nEin `INNER JOIN` gibt nur die Datensätze zurück, für die eine Übereinstimmung in beiden Tabellen gefunden wird. Wenn also ein Held in der 'helden'-Tabelle keinen entsprechenden Eintrag in der 'hut'-Tabelle hat, wird dieser Held durch den `INNER JOIN` nicht im Ergebnis auftauchen. Die Lösung ist die Verwendung eines `LEFT JOIN` (oder `LEFT OUTER JOIN`), der alle Datensätze aus der linken Tabelle (`helden`) zurückgibt, unabhängig davon, ob es eine Übereinstimmung in der rechten Tabelle (`hut`) gibt. \n- **Option A** ist falsch, da ein `RIGHT JOIN` alle Datensätze aus der `hut`-Tabelle, aber nicht unbedingt alle Helden, zurückgeben würde. \n- **Option C** ist in der Regel korrekt, da die Bedingung der korrekte Weg ist, um die Tabellen über den Primär- und Fremdschlüssel zu verknüpfen. \n- **Option D** ist ebenfalls falsch, da der `INNER JOIN` genau das beschriebene Problem verursacht. 🔄",
+            "difficulty": "experte",
+            "category": "JOINs und Tabellenverknüpfung"
+        },
+        {
+            "question": "Sie müssen einen neuen Helden mit den Daten ('Don', 'Vito', 1950, 'Sizilien') in die 'helden'-Tabelle einfügen. Der Primärschlüssel `helden_id` soll automatisch generiert werden. Welchen SQL-Befehl verwenden Sie? 📝",
+            "options": [
+                "INSERT INTO helden VALUES ('Don', 'Vito', 1950, 'Sizilien');",
+                "INSERT INTO helden (vorname, nachname, gebjahr, land) VALUES ('Don', 'Vito', 1950, 'Sizilien');",
+                "ADD INTO helden (vorname, nachname, gebjahr, land) VALUES ('Don', 'Vito', 1950, 'Sizilien');",
+                "INSERT INTO helden (helden_id, vorname, nachname, gebjahr, land) VALUES (NULL, 'Don', 'Vito', 1950, 'Sizilien');"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDer korrekte Befehl, um einen neuen Datensatz einzufügen, ist `INSERT INTO tabelle (spalten) VALUES (werte);`. Durch die explizite Angabe der Spaltenliste in Klammern kann man den automatisch generierten Primärschlüssel (wie `helden_id`) weglassen. \n- **Option A** ist falsch, da die Reihenfolge der Werte strikt mit der Spaltenreihenfolge der Tabelle übereinstimmen muss und die `helden_id` nicht angegeben wird, was zu einem Fehler führen kann. \n- **Option C** verwendet einen nicht existierenden Befehl (`ADD INTO`). \n- **Option D** würde versuchen, eine `NULL`-Wert in den Primärschlüssel einzufügen, was zwar in einigen Systemen funktioniert, aber nicht die bevorzugte Methode ist und in anderen Systemen zu Fehlern führen kann. 🚀",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (INSERT)"
+        },
+        {
+            "question": "Ein Programmierer möchte die 'helden'-Tabelle so sortieren, dass die neuesten Geburtsjahre zuerst erscheinen und innerhalb desselben Geburtsjahres die Nachnamen alphabetisch sortiert sind. Welche der folgenden Abfragen würde dies erreichen? 📜",
+            "options": [
+                "SELECT * FROM helden ORDER BY gebjahr DESC, nachname ASC;",
+                "SELECT * FROM helden ORDER BY nachname ASC, gebjahr DESC;",
+                "SELECT * FROM helden SORT BY gebjahr DESC, nachname ASC;",
+                "SELECT * FROM helden ORDER BY gebjahr DESC THEN nachname ASC;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Sortierung in SQL erfolgt mit der `ORDER BY`-Klausel. Wenn mehrere Kriterien für die Sortierung existieren, werden sie durch Kommas getrennt aufgelistet. Die Reihenfolge in der Klausel bestimmt die Sortierungsebene: Zuerst nach `gebjahr` absteigend (`DESC`), dann, falls die `gebjahr` Werte gleich sind, nach `nachname` aufsteigend (`ASC`). \n- **Option B** würde zuerst nach Nachnamen sortieren, was nicht den Anforderungen entspricht. \n- **Option C** verwendet den nicht existierenden Befehl `SORT BY`. \n- **Option D** ist syntaktisch falsch; die Sortierkriterien werden durch Kommata getrennt. ➡️",
+            "difficulty": "fortgeschritten",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "In der 'helden'-Tabelle ist der Geburtsjahr-Wert (`gebjahr`) für 'Digedag' '1953'. Was ist der Wert nach Ausführung von `SELECT AVG(gebjahr) FROM helden;`? 🔢",
+            "options": [
+                "1954",
+                "1953",
+                "1953.5",
+                "Die Abfrage schlägt fehl."
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie `AVG()`-Funktion berechnet den Durchschnitt der Werte in der angegebenen Spalte. Die Geburtsjahre in der Tabelle 'helden' sind: 1955, 1955 und 1953. Die Summe ist 1955 + 1955 + 1953 = 5863. Es gibt 3 Datensätze. Der Durchschnitt ist 5863 / 3 = 1954.333... Da die Optionen Ganzzahlen sind, ist die nächstgelegene Antwort 1954, die den arithmetischen Durchschnitt der gegebenen Daten korrekt wiedergibt. \n- **Option B** wäre das Minimum, nicht der Durchschnitt. \n- **Option C** ist nicht korrekt. \n- **Option D** ist falsch, da die Abfrage syntaktisch korrekt ist und einen numerischen Wert zurückgibt. 🎯",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnung (AVG)"
+        },
+        {
+            "question": "Wahr oder Falsch? Die Groß- und Kleinschreibung von SQL-Befehlen (`SELECT`, `FROM`, `WHERE`) spielt keine Rolle, während die Groß- und Kleinschreibung von Textwerten innerhalb der Anführungszeichen (`'Sachsen'`) von der Datenbank unterschieden wird. 💻",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. SQL-Befehle, Schlüsselwörter und Klauseln (wie `SELECT`, `FROM`, `WHERE`) sind case-insensitiv. Man kann sie in Großbuchstaben, Kleinbuchstaben oder einer Mischung schreiben, und die Abfrage funktioniert trotzdem. Im Gegensatz dazu sind die tatsächlichen Datenwerte, die in Anführungszeichen stehen, wie 'Sachsen', case-sensitiv. Das bedeutet, dass die Suche nach `'sachsen'` möglicherweise keinen Treffer findet, wenn der gespeicherte Wert `'Sachsen'` ist. Dies ist jedoch von der spezifischen Datenbank-Software (z.B. MySQL, PostgreSQL) und ihrer Konfiguration abhängig. ⚖️",
+            "difficulty": "einsteiger",
+            "category": "Syntaxregeln"
+        },
+        {
+            "question": "Ein Anwender hat in der 'helden'-Tabelle alle Datensätze mit dem `vorname` 'Dig' gelöscht. Sein Befehl war `DELETE FROM helden WHERE vorname = 'Dig';`. Jetzt möchte er diese Aktion rückgängig machen. Was ist die beste Vorgehensweise? 🔙",
+            "options": [
+                "Er kann `UNDO DELETE FROM helden` verwenden, um die gelöschten Datensätze wiederherzustellen.",
+                "Er muss die Datenbank aus einem Backup wiederherstellen oder die Datensätze manuell neu einfügen.",
+                "Er kann `ROLLBACK` verwenden, um die Transaktion rückgängig zu machen.",
+                "Er kann die Datensätze nicht wiederherstellen, da SQL-Befehle permanent sind."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nIn der Praxis sind einfache `DELETE`-Befehle in den meisten SQL-Umgebungen nicht direkt rückgängig zu machen, es sei denn, sie wurden innerhalb einer Transaktion ausgeführt und diese wird noch nicht abgeschlossen. Da in der Aufgabe keine Transaktion erwähnt wird, ist der Befehl als permanent anzusehen. Die sicherste und übliche Methode, um verlorene Daten wiederherzustellen, ist die Wiederherstellung aus einem aktuellen Backup. Alternativ müssten die Daten manuell wieder eingefügt werden. \n- **Option A** ist falsch, da es keinen `UNDO DELETE` Befehl in SQL gibt. \n- **Option C** ist nur dann gültig, wenn der `DELETE`-Befehl Teil einer Transaktion war und diese noch nicht durch `COMMIT` abgeschlossen wurde. \n- **Option D** ist zu absolut formuliert; die Wiederherstellung ist, wie in Option B beschrieben, möglich. 💾",
+            "difficulty": "experte",
+            "category": "Datenmanipulation (DELETE)"
+        },
+        {
+            "question": "Ein Nutzer führt die Abfrage `SELECT vorname, nachname FROM helden WHERE nachname LIKE '%dag';` aus. Welches Ergebnis wird er erhalten? 🕵️",
+            "options": [
+                "Digedag Groß",
+                "Dag Blond und Digedag Groß",
+                "Dag Blond",
+                "Es gibt keine Übereinstimmungen, da `dag` klein geschrieben ist."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie Abfrage verwendet den `LIKE`-Operator mit dem Wildcard `%`, was bedeutet, dass nach allen Nachnamen gesucht wird, die mit 'dag' enden. Laut der Beispieltabelle sind die Nachnamen 'Blond' und 'Groß' vorhanden. Jedoch ist die `LIKE`-Klausel auf den Vornamen 'Dag' und 'Digedag' bezogen.  Der Text 'nachname LIKE '%dag'' ist ein Tippfehler. Korrekt wäre `vorname LIKE '%dag'`. Gehen wir davon aus, dass der Fehler in der Frage liegt und der `vorname` gemeint ist: Die Vornamen 'Dag' und 'Digedag' enden beide mit 'dag'. Daher werden beide Datensätze zurückgegeben. Die Groß- und Kleinschreibung spielt bei den Befehlen selbst keine Rolle, aber bei Textwerten, je nach Datenbank. In diesem Fall ist es meist case-insensitiv. \n- **Option A** ist unvollständig. \n- **Option C** ist unvollständig. \n- **Option D** ist falsch, da die Suche nach 'dag' in den meisten Standardeinstellungen auch 'Dag' finden würde. 📝",
+            "difficulty": "einsteiger",
+            "category": "Wildcards und Filter"
+        },
+        {
+            "question": "Sie haben die Aufgabe, eine Abfrage zu erstellen, die die Anzahl der Helden pro Geburtsjahr zählt. Wie gehen Sie vor? 💡",
+            "options": [
+                "SELECT COUNT(*) FROM helden GROUP BY gebjahr;",
+                "SELECT COUNT(gebjahr), gebjahr FROM helden GROUP BY gebjahr;",
+                "SELECT COUNT(gebjahr) FROM helden;",
+                "SELECT * FROM helden GROUP BY gebjahr;"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie korrekte Vorgehensweise erfordert die Verwendung der `GROUP BY`-Klausel, um die Datensätze nach dem `gebjahr` zu gruppieren. Danach wird die Aggregat-Funktion `COUNT()` auf jede dieser Gruppen angewandt. Um sowohl die Anzahl als auch das jeweilige Geburtsjahr im Ergebnis zu sehen, müssen beide in der `SELECT`-Klausel stehen. \n- **Option A** ist fast korrekt, gibt aber nicht das Geburtsjahr selbst aus. \n- **Option C** zählt nur die Gesamtzahl der Helden, nicht pro Jahr. \n- **Option D** ist syntaktisch falsch; in einer `GROUP BY`-Abfrage müssen alle nicht-aggregierten Spalten auch in der `GROUP BY`-Klausel stehen. 📊",
+            "difficulty": "fortgeschritten",
+            "category": "Gruppierung (GROUP BY)"
+        },
+        {
+            "question": "Wahr oder Falsch? Der SQL-Befehl `SELECT * FROM helden;` und der Befehl `SELECT * FROM helden ORDER BY nachname ASC;` liefern immer die gleiche Anzahl von Datensätzen. ✅",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. Die `ORDER BY`-Klausel ändert lediglich die Reihenfolge der Datensätze im Ergebnis. Sie filtert keine Zeilen heraus und fügt auch keine hinzu. Daher ist die Anzahl der zurückgegebenen Zeilen immer identisch, unabhängig von der Sortierung. 🔄",
+            "difficulty": "einsteiger",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "Sie möchten alle Helden aus der 'helden'-Tabelle löschen, deren `helden_id` größer als 2 ist. Wie lautet der korrekte Befehl? 🗑️",
+            "options": [
+                "DELETE FROM helden WHERE helden_id > 2;",
+                "REMOVE FROM helden WHERE helden_id > 2;",
+                "DELETE FROM helden WHERE helden_id > '2';",
+                "DELETE ALL FROM helden WHERE helden_id > 2;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDer korrekte Befehl zum Löschen von Datensätzen ist `DELETE FROM tabelle WHERE bedingung;`. Die Bedingung `helden_id > 2` wählt alle Datensätze mit einer ID größer als 2 aus. \n- **Option B** ist ein ungültiger Befehl. \n- **Option C** ist falsch, da '2' als String behandelt wird und der Vergleich zu unvorhersehbaren Ergebnissen führen kann oder fehlschlägt. \n- **Option D** verwendet den ungültigen Zusatz `ALL`. 🧹",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (DELETE)"
+        },
+        {
+            "question": "Ein Junior-Entwickler schreibt die Abfrage `SELECT helden.vorname, hut.hutfarbe FROM helden, hut WHERE helden.helden_id = hut.helden_id;`. Ein erfahrener Entwickler rät ihm, stattdessen `SELECT helden.vorname, hut.hutfarbe FROM helden INNER JOIN hut ON helden.helden_id = hut.helden_id;` zu verwenden. Warum ist die zweite Variante aus didaktischer Sicht vorzuziehen? 🧑‍💻",
+            "options": [
+                "Die erste Variante ist syntaktisch inkorrekt und wird einen Fehler verursachen.",
+                "Die zweite Variante ist intuitiver und expliziter, da sie die Join-Art (`INNER JOIN`) klar benennt.",
+                "Die erste Variante ist ineffizienter und führt zu einer schlechteren Performance.",
+                "Die zweite Variante gibt mehr Datensätze zurück, da der `INNER JOIN` eine erweiterte Funktionalität bietet."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nBeide Abfragen liefern dasselbe Ergebnis. Die erste ist die ältere, implizite Syntax für Joins. Die zweite Variante (`INNER JOIN ... ON`) ist die moderne, explizite Syntax. Aus didaktischer Sicht ist sie klarer und besser lesbar, da sie die Absicht des Entwicklers, die Tabellen zu verknüpfen, eindeutig kommuniziert. Zudem macht sie es einfacher, zu anderen Join-Typen (`LEFT JOIN`, `RIGHT JOIN`) zu wechseln. Die Performance-Unterschiede sind in der Regel vernachlässigbar. \n- **Option A** ist falsch; beide Varianten sind syntaktisch korrekt. \n- **Option C** ist in den meisten modernen Datenbank-Engines nicht korrekt. \n- **Option D** ist falsch; beide Joins geben exakt die gleiche Anzahl an Datensätzen zurück. 🧠",
+            "difficulty": "fortgeschritten",
+            "category": "JOINs und Syntax"
+        },
+        {
+            "question": "Welche der folgenden Aussagen über SQL-Befehle ist falsch? ❌",
+            "options": [
+                "Jeder Befehl muss mit einem Semikolon enden.",
+                "Textwerte müssen in Anführungszeichen geschrieben werden.",
+                "SQL-Befehle müssen immer in einer einzigen Zeile geschrieben werden.",
+                "SELECT-Befehle werden verwendet, um Daten aus Tabellen abzufragen."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:**\nDie Aussage, dass SQL-Befehle immer in einer einzigen Zeile geschrieben werden müssen, ist falsch. Zur besseren Lesbarkeit, insbesondere bei komplexen Abfragen, ist es üblich und erlaubt, einen SQL-Befehl über mehrere Zeilen zu verteilen. Das Semikolon am Ende kennzeichnet das Ende des Befehls. \n- **Option A** ist wahr, es ist eine Standardregel für die Ausführung von Befehlen. \n- **Option B** ist wahr, Text- und Datumswerte müssen in Anführungszeichen eingeschlossen sein. \n- **Option D** ist wahr, da `SELECT` die grundlegende Anweisung zum Lesen von Daten ist. 📋",
+            "difficulty": "einsteiger",
+            "category": "Grundregeln"
+        },
+        {
+            "question": "Sie haben die Aufgabe, die `nachname` von allen Helden, deren Geburtsjahr vor 1955 liegt, in 'Unbekannt' zu ändern. Wie lautet der korrekte SQL-Befehl? 🤫",
+            "options": [
+                "UPDATE helden SET nachname = 'Unbekannt' WHERE gebjahr < 1955;",
+                "CHANGE helden nachname = 'Unbekannt' WHERE gebjahr < 1955;",
+                "UPDATE helden WHERE gebjahr < 1955 SET nachname = 'Unbekannt';",
+                "UPDATE helden SET nachname = 'Unbekannt' WHERE gebjahr = '1953';"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDer korrekte Befehl zum Ändern von Datensätzen ist `UPDATE tabelle SET spalte = 'neuer_wert' WHERE bedingung;`. Die Bedingung `gebjahr < 1955` wählt alle Datensätze aus, deren Geburtsjahr vor 1955 liegt. \n- **Option B** ist ein ungültiger Befehl. \n- **Option C** hat die falsche Reihenfolge. Die `SET`-Klausel muss vor der `WHERE`-Klausel stehen. \n- **Option D** würde nur den Helden aus 1953, nicht aber alle Helden vor 1955 ändern. Außerdem wird hier der numerische Wert in Anführungszeichen gesetzt, was falsch ist. ✍️",
+            "difficulty": "fortgeschritten",
+            "category": "Datenmanipulation (UPDATE)"
+        },
+        {
+            "question": "Wahr oder Falsch? Die Abfrage `SELECT COUNT(*), gebjahr FROM helden GROUP BY gebjahr;` zählt, wie oft jedes Geburtsjahr in der Tabelle vorkommt. 📊",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. Der Befehl gruppiert die Datensätze nach dem Wert in der Spalte `gebjahr`. Anschließend zählt `COUNT(*)` die Anzahl der Datensätze in jeder dieser Gruppen. Das Ergebnis ist eine Liste, die für jedes eindeutige Geburtsjahr die jeweilige Anzahl der Helden anzeigt. Das ist die Standardmethode für Zählungen pro Gruppe. ✅",
+            "difficulty": "einsteiger",
+            "category": "Aggregat-Funktionen"
+        },
+        {
+            "question": "Sie müssen alle Datensätze aus der `helden`-Tabelle löschen. Welcher Befehl ist am effektivsten? 💥",
+            "options": [
+                "DELETE FROM helden;",
+                "DELETE FROM helden WHERE 1=1;",
+                "TRUNCATE TABLE helden;",
+                "DROP TABLE helden;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nUm alle Datensätze zu löschen, ohne die Tabellenstruktur zu verändern, ist der einfachste Befehl `DELETE FROM helden;`. Dieser Befehl ist, im Gegensatz zu `TRUNCATE`, eine DML-Anweisung (Data Manipulation Language) und kann, je nach Datenbank-System, rückgängig gemacht werden, falls man in einer Transaktion arbeitet. \n- **Option B** ist ebenfalls gültig, aber der `WHERE 1=1` ist redundant, da er immer wahr ist und daher alle Zeilen löscht. \n- **Option C** (`TRUNCATE TABLE`) ist eine DDL-Anweisung (Data Definition Language) und ist in der Regel schneller und effizienter, da sie die Datensätze nicht einzeln löscht, sondern die gesamte Tabelle quasi 'leert'. Sie kann jedoch nicht rückgängig gemacht werden. \n- **Option D** (`DROP TABLE`) löscht die gesamte Tabelle samt ihrer Struktur, was nicht der Anforderung entspricht. ❗",
+            "difficulty": "experte",
+            "category": "Datenmanipulation (DELETE)"
+        },
+        {
+            "question": "Ein Programmierer möchte die 'helden'-Tabelle nach dem `nachname` aufsteigend sortieren. Welcher Befehl ist korrekt und wie würde er die Sortierung von 'Blond' und 'Knoll' handhaben? 📝",
+            "options": [
+                "SELECT * FROM helden ORDER BY nachname ASC; Es sortiert alphabetisch, also 'Blond' vor 'Knoll'.",
+                "SELECT * FROM helden ORDER BY nachname DESC; Es sortiert alphabetisch, also 'Blond' vor 'Knoll'.",
+                "SELECT * FROM helden SORT BY nachname ASC; Es sortiert alphabetisch, also 'Knoll' vor 'Blond'.",
+                "SELECT * FROM helden ORDER BY nachname; Es sortiert alphabetisch, aber nur, wenn die Spalte `nachname` ein String ist."
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Syntax für eine aufsteigende Sortierung ist `ORDER BY spalte ASC`. Das `ASC` kann weggelassen werden, da es der Standardwert ist. Die Sortierung erfolgt alphabetisch. Daher kommt 'Blond' vor 'Knoll'. \n- **Option B** ist falsch, da `DESC` absteigend sortiert und somit 'Knoll' vor 'Blond' käme. \n- **Option C** verwendet einen ungültigen Befehl (`SORT BY`) und die Reihenfolge ist falsch. \n- **Option D** ist falsch, da `ORDER BY` immer funktioniert, solange der Datentyp sortierbar ist, und das `ASC` weggelassen werden kann. 📜",
+            "difficulty": "einsteiger",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "Welcher SQL-Befehl wird verwendet, um neue Datensätze in eine bestehende Tabelle einzufügen? ➕",
+            "options": [
+                "ADD INTO",
+                "INSERT INTO",
+                "CREATE INTO",
+                "PUT INTO"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDer Standard-SQL-Befehl zum Hinzufügen (Einfügen) neuer Datensätze in eine Tabelle ist `INSERT INTO`. \n- **Option A**, **C** und **D** sind ungültige Befehle in Standard-SQL für diesen Zweck. `CREATE` wird verwendet, um neue Objekte wie Tabellen zu erstellen, aber nicht, um Daten einzufügen. 📥",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (INSERT)"
+        },
+         {
+            "question": "Welche SQL-Befehle gehören zur Gruppe der Data Manipulation Language (DML) und werden zum Ändern von Daten verwendet? ✍️",
+            "options": [
+                "CREATE, ALTER, DROP",
+                "SELECT, INSERT, UPDATE, DELETE",
+                "GRANT, REVOKE",
+                "COMMIT, ROLLBACK"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie Data Manipulation Language (DML) umfasst Befehle zur Manipulation der Daten innerhalb von Tabellen. Dazu gehören `SELECT` (Lesen/Abfragen), `INSERT` (Einfügen), `UPDATE` (Ändern) und `DELETE` (Löschen). \n- **Option A** sind DDL-Befehle (Data Definition Language) zur Definition und Änderung der Datenbankstruktur. \n- **Option C** sind DCL-Befehle (Data Control Language) zur Steuerung von Zugriffsrechten. \n- **Option D** sind TCL-Befehle (Transaction Control Language) zur Steuerung von Transaktionen. 📂",
+            "difficulty": "einsteiger",
+            "category": "SQL-Kategorien"
+        },
+        {
+            "question": "Ein Datenbank-Benutzer möchte wissen, wie viele Helden in der 'helden'-Tabelle den gleichen Nachnamen 'Knoll' haben. Welche Abfrage liefert die korrekte Anzahl? 🔢",
+            "options": [
+                "SELECT COUNT(*) FROM helden WHERE nachname = 'Knoll';",
+                "SELECT COUNT(nachname) FROM helden WHERE nachname LIKE 'Knoll';",
+                "SELECT COUNT(*) FROM helden GROUP BY nachname HAVING nachname = 'Knoll';",
+                "SELECT SUM(nachname) FROM helden WHERE nachname = 'Knoll';"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDer Befehl `SELECT COUNT(*) FROM helden WHERE nachname = 'Knoll';` ist der effizienteste und direkteste Weg. Die `WHERE`-Klausel filtert zuerst die Datensätze, die der Bedingung entsprechen, und `COUNT(*)` zählt dann die Anzahl der verbleibenden Zeilen. \n- **Option B** ist fast korrekt, aber die Verwendung von `=` ist hier besser als `LIKE`, da es sich um eine exakte Übereinstimmung handelt. \n- **Option C** ist unnötig komplex. `GROUP BY` ist für die Zählung nach Gruppen gedacht. Der `HAVING`-Filter wird auf die Gruppen angewendet, nicht auf die einzelnen Datensätze. Ein einfacher `WHERE`-Filter reicht hier aus. \n- **Option D** ist falsch, da `SUM()` nur auf numerische Werte angewendet werden kann. 📊",
+            "difficulty": "fortgeschritten",
+            "category": "Aggregat-Funktionen"
+        },
+        {
+            "question": "Wahr oder Falsch? Der Befehl `DELETE FROM helden;` löscht alle Datensätze in der 'helden'-Tabelle und kann mit `ROLLBACK` rückgängig gemacht werden, wenn die Transaktion noch nicht abgeschlossen ist. 🔄",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. `DELETE FROM helden;` löscht alle Zeilen, ohne die Tabellenstruktur zu beeinträchtigen. Da `DELETE` ein DML-Befehl ist, kann er Teil einer Transaktion sein. Wenn vor dem `DELETE` ein `BEGIN TRANSACTION` (oder ähnliches) ausgeführt wurde und danach noch kein `COMMIT`, kann man die Aktion mit `ROLLBACK` rückgängig machen. Im Gegensatz dazu löscht `TRUNCATE TABLE` die Daten unwiderruflich. 💡",
+            "difficulty": "fortgeschritten",
+            "category": "Datenmanipulation (DELETE)"
+        },
+        {
+            "question": "Sie müssen einen neuen Helden ('Dagmar', 'Blond', 1956, 'Thüringen') in die 'helden'-Tabelle einfügen. Es ist bekannt, dass `helden_id` ein automatisch generierter Primärschlüssel ist. Welcher Befehl ist syntaktisch korrekt? 📝",
+            "options": [
+                "INSERT INTO helden VALUES ('Dagmar', 'Blond', 1956, 'Thüringen');",
+                "INSERT INTO helden (vorname, nachname, gebjahr, land) VALUES ('Dagmar', 'Blond', 1956, 'Thüringen');",
+                "INSERT INTO helden VALUES (NULL, 'Dagmar', 'Blond', 1956, 'Thüringen');",
+                "INSERT helden (vorname, nachname, gebjahr, land) VALUES ('Dagmar', 'Blond', 1956, 'Thüringen');"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie korrekte Syntax für das Einfügen von Daten, wenn der Primärschlüssel automatisch generiert wird, besteht darin, die Liste der Spalten explizit anzugeben und den Primärschlüssel wegzulassen. \n- **Option A** ist riskant, da sie von der Annahme abhängt, dass die Reihenfolge der Werte mit der physischen Spaltenreihenfolge der Tabelle übereinstimmt, was zu Fehlern führen kann, wenn die Struktur geändert wird. \n- **Option C** kann in einigen SQL-Dialekten funktionieren, ist aber nicht die empfohlene Methode. \n- **Option D** fehlt das `INTO`-Schlüsselwort nach `INSERT`. 🚀",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (INSERT)"
+        },
+        {
+            "question": "Sie sollen die Nachnamen aller Helden aus der 'helden'-Tabelle abfragen und möchten sicherstellen, dass jeder Nachname nur einmal im Ergebnis vorkommt. Welcher Befehl ist dafür am besten geeignet? 🧐",
+            "options": [
+                "SELECT DISTINCT nachname FROM helden;",
+                "SELECT UNIQUE nachname FROM helden;",
+                "SELECT nachname FROM helden GROUP BY nachname;",
+                "SELECT nachname FROM helden ORDER BY nachname;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDer Befehl `SELECT DISTINCT` ist die Standardmethode, um nur die eindeutigen (distinkten) Werte einer oder mehrerer Spalten zurückzugeben. \n- **Option B** (`UNIQUE`) ist kein gültiges SQL-Schlüsselwort für diesen Zweck. \n- **Option C** (`GROUP BY`) würde ebenfalls das korrekte Ergebnis liefern, ist aber für diesen einfachen Anwendungsfall unnötig komplex. `DISTINCT` ist die direktere und intuitivere Lösung. \n- **Option D** sortiert die Nachnamen, entfernt aber keine Duplikate. 📚",
+            "difficulty": "fortgeschritten",
+            "category": "Abfragen und Duplikate"
+        },
+        {
+            "question": "Um das Geburtsjahr des ältesten Helden aus der 'helden'-Tabelle zu finden, welche Aggregat-Funktion ist zu verwenden? 👶",
+            "options": [
+                "MAX(gebjahr)",
+                "MIN(gebjahr)",
+                "AVG(gebjahr)",
+                "SUM(gebjahr)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDas älteste Geburtsjahr ist die kleinste Zahl. Daher muss die `MIN()`-Funktion verwendet werden, um den kleinsten Wert in der Spalte `gebjahr` zu finden. \n- **Option A** (`MAX`) würde das jüngste Geburtsjahr (die größte Zahl) zurückgeben. \n- **Option C** (`AVG`) berechnet den Durchschnitt. \n- **Option D** (`SUM`) summiert die Werte. 💡",
+            "difficulty": "einsteiger",
+            "category": "Aggregat-Funktionen"
+        },
+        {
+            "question": "Ein Entwickler möchte alle Helden aus der 'helden'-Tabelle abfragen, deren `vorname` nicht mit 'Dig' beginnt. Welche Abfrage ist korrekt? 🚫",
+            "options": [
+                "SELECT * FROM helden WHERE vorname NOT LIKE 'Dig%';",
+                "SELECT * FROM helden WHERE vorname <> 'Dig%';",
+                "SELECT * FROM helden WHERE NOT vorname LIKE 'Dig%';",
+                "SELECT * FROM helden WHERE vorname != 'Dig%';"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Abfrage verwendet den `NOT LIKE`-Operator. Er ist die Negation von `LIKE` und sucht nach Werten, die dem angegebenen Muster nicht entsprechen. \n- **Option B** und **D** verwenden den Ungleich-Operator (`<>` oder `!=`), der für eine exakte Übereinstimmung, nicht für Mustervergleiche mit Wildcards, gedacht ist. \n- **Option C** ist syntaktisch ebenfalls korrekt, aber `NOT LIKE` ist die gebräuchlichere und lesbarere Schreibweise. ❌",
+            "difficulty": "fortgeschritten",
+            "category": "Wildcards und Filter"
+        },
+        {
+            "question": "Sie möchten die Datensätze der 'helden'-Tabelle nach dem `nachname` aufsteigend sortieren. Welche Abfrage ist syntaktisch korrekt? 📜",
+            "options": [
+                "SELECT * FROM helden ORDER BY nachname ASC;",
+                "SELECT * FROM helden SORT BY nachname;",
+                "SELECT * FROM helden ORDER BY nachname;",
+                "SELECT * FROM helden SORTED BY nachname ASC;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Syntax für die Sortierung ist `ORDER BY spalte [ASC|DESC]`. Die Klausel `ASC` für aufsteigende Sortierung kann dabei weggelassen werden, da sie der Standardwert ist. \n- **Option B** und **D** verwenden ungültige Schlüsselwörter (`SORT BY`, `SORTED BY`). \n- **Option C** ist ebenfalls korrekt, da `ASC` der Standard ist, aber die explizite Angabe in **Option A** ist aus didaktischer Sicht klarer. ✅",
+            "difficulty": "einsteiger",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "In einer SQL-Abfrage steht `WHERE vorname LIKE '_ig%'`. Welches Ergebnis würde dies in der 'helden'-Tabelle liefern? 🕵️‍♂️",
+            "options": [
+                "Alle Vornamen, die mit 'ig' enden.",
+                "Alle Vornamen, die ein 'ig' enthalten.",
+                "Alle Vornamen, die mit einem beliebigen Zeichen beginnen, gefolgt von 'ig' und beliebigem Text.",
+                "Kein Ergebnis, da die Syntax fehlerhaft ist."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:**\nDas Unterstrich-Wildcard-Zeichen (`_`) steht für genau ein beliebiges Zeichen. Das Prozentzeichen (`%`) steht für eine beliebige Anzahl von Zeichen (einschließlich null). Daher bedeutet `_ig%`, dass der `vorname` mit einem beliebigen Zeichen beginnt, dann 'ig' folgt und danach ein beliebiger Text stehen kann. Beispiele aus der Tabelle wären `Dig`. `Dag` und `Digedag` entsprechen nicht dieser Bedingung. \n- **Option A** würde `%ig` erfordern. \n- **Option B** würde `%ig%` erfordern. \n- **Option D** ist falsch, die Syntax ist korrekt. 💡",
+            "difficulty": "fortgeschritten",
+            "category": "Wildcards und Filter"
+        },
+        {
+            "question": "Sie möchten den Nachnamen des Helden mit der `helden_id` 3 von 'Groß' auf 'Klein' ändern. Was ist der korrekte Befehl? ✏️",
+            "options": [
+                "UPDATE helden SET nachname = 'Klein' WHERE helden_id = 3;",
+                "SET helden nachname = 'Klein' WHERE helden_id = 3;",
+                "MODIFY helden nachname = 'Klein' WHERE helden_id = 3;",
+                "UPDATE helden WHERE nachname = 'Groß' SET nachname = 'Klein';"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie korrekte Syntax für das Ändern von Daten ist `UPDATE tabelle SET spalte = neuer_wert WHERE bedingung;`. \n- **Option B** und **C** verwenden ungültige Befehle für diese Operation. \n- **Option D** ist fehlerhaft, da sie nicht den spezifischen Datensatz über die ID auswählt und die `SET`-Klausel vor der `WHERE`-Klausel stehen muss. 🔄",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (UPDATE)"
+        },
+        {
+            "question": "Welche SQL-Befehle werden typischerweise für die Erstellung, Änderung und Löschung der Datenbankstruktur (Tabellen, Indizes etc.) verwendet? 🛠️",
+            "options": [
+                "SELECT, INSERT, UPDATE, DELETE",
+                "CREATE, ALTER, DROP",
+                "GRANT, REVOKE, DENY",
+                "BEGIN, COMMIT, ROLLBACK"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDiese Befehle gehören zur Data Definition Language (DDL). `CREATE` wird verwendet, um neue Objekte zu erstellen, `ALTER` um bestehende zu ändern und `DROP` um sie zu löschen. \n- **Option A** sind DML-Befehle (Datenmanipulation). \n- **Option C** sind DCL-Befehle (Zugriffsrechte). \n- **Option D** sind TCL-Befehle (Transaktionskontrolle). 🏗️",
+            "difficulty": "fortgeschritten",
+            "category": "SQL-Kategorien"
+        },
+        {
+            "question": "Wahr oder Falsch? Ein `LEFT JOIN` zwischen der 'helden'-Tabelle (links) und der 'hut'-Tabelle (rechts) gibt alle Helden zurück, auch jene, die keinen zugehörigen Hut-Eintrag haben. ✅",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. Ein `LEFT JOIN` (oder `LEFT OUTER JOIN`) gibt alle Datensätze aus der 'linken' Tabelle (hier 'helden') zurück, unabhängig davon, ob es passende Datensätze in der 'rechten' Tabelle gibt. Für die Datensätze, bei denen keine Übereinstimmung gefunden wird, werden die Spalten der 'rechten' Tabelle mit `NULL`-Werten gefüllt. Dies ist der Hauptunterschied zum `INNER JOIN`. 🤝",
+            "difficulty": "fortgeschritten",
+            "category": "JOINs und Tabellenverknüpfung"
+        },
+        {
+            "question": "Um die Durchschnitts-Lebenszeit der Helden zu berechnen, die in Sachsen geboren wurden, welche SQL-Abfrage sollte man verwenden? 💡",
+            "options": [
+                "SELECT AVG(YEAR(CURDATE()) - gebjahr) FROM helden WHERE land = 'Sachsen';",
+                "SELECT AVG(gebjahr) FROM helden WHERE land = 'Sachsen';",
+                "SELECT SUM(YEAR(CURDATE()) - gebjahr) / COUNT(*) FROM helden WHERE land = 'Sachsen';",
+                "SELECT AVG(gebjahr) FROM helden WHERE land = 'Sachsen' GROUP BY land;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nUm die Lebenszeit zu berechnen, muss das Geburtsjahr vom aktuellen Jahr abgezogen werden. Die Funktion `CURDATE()` (oder ein ähnlicher Befehl, je nach Datenbank) liefert das aktuelle Datum, und `YEAR()` extrahiert das Jahr daraus. `AVG()` berechnet den Durchschnitt dieser Werte. \n- **Option B** würde nur den Durchschnitt der Geburtsjahre ermitteln, nicht die Lebenszeit. \n- **Option C** ist rechnerisch korrekt, aber die Verwendung der `AVG()`-Funktion, wie in Option A, ist eleganter und lesbarer. \n- **Option D** gruppiert zwar nach dem Land, aber dies ist hier unnötig, da die `WHERE`-Klausel bereits auf 'Sachsen' filtert. 📊",
+            "difficulty": "experte",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "Wahr oder Falsch? Der Befehl `SELECT * FROM helden ORDER BY gebjahr DESC;` liefert alle Datensätze der Tabelle in absteigender Reihenfolge des Geburtsjahres. 📉",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. Die Klausel `ORDER BY` sortiert die Ergebnisse. Der Zusatz `DESC` steht für 'descending', also absteigend. Die Ergebnisse werden also vom neuesten (größte Jahreszahl) zum ältesten Geburtsjahr (kleinste Jahreszahl) sortiert. ✅",
+            "difficulty": "einsteiger",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "Ein Programmierer möchte die Anzahl der Helden zählen, deren `vorname` mit 'D' beginnt. Welcher Befehl ist am besten geeignet? 🧐",
+            "options": [
+                "SELECT COUNT(vorname) FROM helden WHERE vorname LIKE 'D%';",
+                "SELECT COUNT(*) FROM helden WHERE vorname LIKE 'D%';",
+                "SELECT COUNT(*) FROM helden WHERE LEFT(vorname, 1) = 'D';",
+                "SELECT COUNT(vorname) FROM helden WHERE vorname = 'D%';"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDie Abfrage `SELECT COUNT(*) FROM helden WHERE vorname LIKE 'D%';` ist die gängigste und effizienteste Methode. Sie zählt alle Datensätze, die nach dem `WHERE`-Filter übrig bleiben. \n- **Option A** ist ebenfalls korrekt, aber `COUNT(*)` ist üblicherweise der bevorzugte Weg, da er potenziell schneller ist und die Anzahl der Zeilen zählt, unabhängig von `NULL`-Werten in der Spalte. \n- **Option C** verwendet eine Funktion (`LEFT()`), was die Abfrage unnötig komplex macht. \n- **Option D** ist falsch, da der `=` Operator keine Wildcards berücksichtigt. 🕵️‍♀️",
+            "difficulty": "fortgeschritten",
+            "category": "Aggregat-Funktionen"
+        },
+        {
+            "question": "Sie müssen den Helden 'Digedag' löschen, indem Sie seine `helden_id` verwenden. Wie lautet die sicherste Abfrage? 🛡️",
+            "options": [
+                "DELETE FROM helden WHERE helden_id = 3;",
+                "DELETE FROM helden WHERE vorname = 'Digedag';",
+                "DELETE FROM helden WHERE helden_id > 2 AND helden_id < 4;",
+                "DROP FROM helden WHERE helden_id = 3;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Verwendung des Primärschlüssels (`helden_id`) ist die sicherste Methode, um einen bestimmten Datensatz zu löschen. Ein Primärschlüssel ist eindeutig, was garantiert, dass nur der beabsichtigte Datensatz gelöscht wird. \n- **Option B** birgt das Risiko, dass es mehrere Helden mit dem Vornamen 'Digedag' geben könnte, was zum unbeabsichtigten Löschen mehrerer Datensätze führen würde. \n- **Option C** ist funktional gleichwertig, aber unnötig kompliziert. \n- **Option D** ist ein ungültiger Befehl (`DROP` löscht die gesamte Tabelle). 🔒",
+            "difficulty": "einsteiger",
+            "category": "Datenmanipulation (DELETE)"
+        },
+        {
+            "question": "Was ist der Hauptunterschied zwischen den Befehlen `DELETE FROM helden;` und `TRUNCATE TABLE helden;`? 🤔",
+            "options": [
+                "`DELETE` ist schneller und kann nicht rückgängig gemacht werden, während `TRUNCATE` langsamer ist und gelöschte Datensätze wiederherstellt.",
+                "`DELETE` löscht Datensätze einzeln und ist Teil von DML, während `TRUNCATE` die gesamte Tabelle leert, ist Teil von DDL und kann nicht rückgängig gemacht werden.",
+                "`DELETE` kann nur bestimmte Datensätze löschen, während `TRUNCATE` immer alle Datensätze löscht.",
+                "`TRUNCATE` wird für die Tabellenstruktur verwendet, während `DELETE` für die Datenmanipulation zuständig ist."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\n`DELETE` ist ein DML-Befehl, der Datensätze einzeln löscht, was langsamer sein kann. Die Aktion kann rückgängig gemacht werden, wenn sie in einer Transaktion ausgeführt wird. `TRUNCATE` hingegen ist ein DDL-Befehl, der die gesamte Tabelle leert, indem er die Datenblöcke deallokiert. Dies ist extrem schnell, da die einzelnen Zeilen nicht gelöscht werden. Ein `TRUNCATE`-Befehl kann in der Regel nicht durch `ROLLBACK` rückgängig gemacht werden. \n- **Option A** ist falsch, da sie die Eigenschaften vertauscht. \n- **Option C** ist teilweise richtig, aber der Hauptunterschied liegt in der Art der Operation und der Zugehörigkeit zu DML/DDL. \n- **Option D** ist falsch, da beide Befehle Daten manipulieren. 🤯",
+            "difficulty": "experte",
+            "category": "DDL vs. DML"
+        },
+        {
+            "question": "Sie sollen in der 'helden'-Tabelle den `nachname` aller Helden von 'Knoll' in 'Knuell' und das `land` von 'Sachsen' in 'Sachsen-Anhalt' ändern. Welcher Befehl ist korrekt? ✍️",
+            "options": [
+                "UPDATE helden SET nachname = 'Knuell' AND land = 'Sachsen-Anhalt' WHERE nachname = 'Knoll';",
+                "UPDATE helden SET nachname = 'Knuell', land = 'Sachsen-Anhalt' WHERE nachname = 'Knoll';",
+                "UPDATE helden SET (nachname, land) = ('Knuell', 'Sachsen-Anhalt') WHERE nachname = 'Knoll';",
+                "UPDATE helden SET nachname = 'Knuell', UPDATE helden SET land = 'Sachsen-Anhalt' WHERE nachname = 'Knoll';"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:**\nDer korrekte Weg, um mehrere Spalten in einer `UPDATE`-Abfrage zu ändern, ist die Trennung der Zuweisungen durch ein Komma (`SET spalte1 = wert1, spalte2 = wert2`). \n- **Option A** verwendet `AND`, was für logische Bedingungen in der `WHERE`-Klausel gedacht ist und hier einen Syntaxfehler verursacht. \n- **Option C** ist in einigen SQL-Dialekten (wie PostgreSQL) gültig, aber nicht im Standard-SQL. \n- **Option D** verwendet zwei separate `UPDATE`-Befehle, was in einer einzelnen Anweisung nicht zulässig ist. 🔧",
+            "difficulty": "fortgeschritten",
+            "category": "Datenmanipulation (UPDATE)"
+        },
+        {
+            "question": "Wahr oder Falsch? Der Befehl `SELECT * FROM helden WHERE gebjahr = 1955 OR gebjahr = 1953;` liefert dieselben Datensätze wie `SELECT * FROM helden WHERE gebjahr IN (1955, 1953);`. ✅",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDie Aussage ist wahr. Die Klausel `IN` ist eine Kurzform für mehrere `OR`-Bedingungen. Sie prüft, ob ein Wert in einer angegebenen Liste von Werten enthalten ist. Beide Abfragen sind funktional identisch. Die Verwendung von `IN` ist jedoch bei einer größeren Anzahl von Werten oft übersichtlicher und besser lesbar. ⚖️",
+            "difficulty": "fortgeschritten",
+            "category": "Filter-Operatoren"
+        },
+        {
+            "question": "Um die `helden`-Tabelle nach dem `vorname` aufsteigend und dann nach dem `nachname` absteigend zu sortieren, welche Abfrage ist korrekt? 📜",
+            "options": [
+                "SELECT * FROM helden ORDER BY vorname ASC, nachname DESC;",
+                "SELECT * FROM helden ORDER BY nachname DESC, vorname ASC;",
+                "SELECT * FROM helden ORDER BY vorname, nachname DESC;",
+                "SELECT * FROM helden SORT BY vorname, nachname DESC;"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:**\nDer korrekte Befehl ist `ORDER BY vorname ASC, nachname DESC;`. Die Sortierkriterien werden durch Kommas getrennt und in der gewünschten Reihenfolge angegeben. Da `ASC` der Standard ist, kann es auch weggelassen werden, was Option C ebenfalls korrekt macht, aber Option A ist die explizitere Form. \n- **Option B** würde zuerst nach `nachname` und dann nach `vorname` sortieren, was der falschen Reihenfolge entspricht. \n- **Option D** verwendet einen ungültigen Befehl. ➡️",
+            "difficulty": "fortgeschritten",
+            "category": "Sortierung (ORDER BY)"
+        },
+        {
+            "question": "Ein Entwickler stellt fest, dass eine Abfrage, die Kunden und ihre Bestellungen mittels `INNER JOIN` verbindet, nur Kunden anzeigt, die auch tatsächlich Bestellungen haben. Welcher `JOIN`-Typ muss verwendet werden, um **alle** Kunden aufzulisten, auch die ohne Bestellungen? 🧑‍💻",
+            "options": [
+                "RIGHT JOIN auf der Kundentabelle",
+                "LEFT JOIN, wobei die Kundentabelle die linke (erste) Tabelle ist",
+                "Einen zusätzlichen INNER JOIN mit einer Hilfstabelle",
+                "CROSS JOIN, gefolgt von einer WHERE-Klausel"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Ein `LEFT JOIN` (oder `LEFT OUTER JOIN`) ist hier die korrekte Wahl. Er nimmt alle Datensätze aus der linken Tabelle (hier: `Kunden`) und fügt die passenden Datensätze aus der rechten Tabelle (`Bestellungen`) hinzu. ↔️ Wenn für einen Kunden keine passende Bestellung gefunden wird, werden die Spalten der Bestellungstabelle mit `NULL`-Werten aufgefüllt. \n\n- **Option A** wäre nur korrekt, wenn die Kundentabelle die *rechte* Tabelle im Join wäre. \n- **Option C & D** sind unnötig komplex und für dieses spezifische, häufige Problem nicht die Standardlösung.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert (JOINs)"
+        },
+        {
+            "question": "Sie möchten eine neue Tabelle `Protokolle` erstellen, in der jeder Eintrag eine eindeutige, fortlaufende ID, eine Nachricht (bis zu 500 Zeichen) und einen exakten Zeitstempel der Erstellung haben soll. Welcher `CREATE TABLE`-Befehl ist dafür am besten geeignet? ✍️",
+            "options": [
+                "CREATE TABLE Protokolle(ID INTEGER, Nachricht CHAR(500), Erstellt DATE)",
+                "CREATE TABLE Protokolle(ID INTEGER PRIMARY KEY, Nachricht VARCHAR(500), Erstellt TIMESTAMP)",
+                "CREATE TABLE Protokolle(ID DECIMAL, Nachricht CHARACTER, Erstellt DATE)",
+                "CREATE TABLE Protokolle(ID INTEGER, Nachricht VARCHAR, Erstellt TIMESTAMP)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die korrekte Antwort nutzt die passendsten Datentypen. `ID INTEGER PRIMARY KEY` stellt sicher, dass die ID eindeutig und nicht `NULL` ist. `VARCHAR(500)` ist für die Nachricht ideal, da es Speicherplatz spart, indem es nur die tatsächlich benötigte Länge belegt (im Gegensatz zu `CHAR(500)`). `TIMESTAMP` (obwohl nicht explizit in der Liste, ist es eine Standarderweiterung von `DATE` und `NOW()`) speichert Datum und Uhrzeit, was für einen Zeitstempel erforderlich ist. `NOW()` liefert beides. \n\n- **Option A** ist ineffizient, da `CHAR(500)` immer 500 Zeichen belegt und `DATE` keine Uhrzeit speichert. \n- **Option C** verwendet unpassende Datentypen. \n- **Option D** definiert keinen Primärschlüssel, was für eine ID-Spalte kritisch ist.",
+            "difficulty": "einsteiger",
+            "category": "DDL & Datentypen"
+        },
+        {
+            "question": "Ein Datenanalyst möchte den durchschnittlichen Bestellwert pro Kunde für das vergangene Jahr berechnen, aber nur für Kunden, die insgesamt mehr als 1.000 € Umsatz generiert haben. Welche Klauseln werden zwingend benötigt, um diese Anforderung zu erfüllen? 📈",
+            "options": [
+                "AVG(), GROUP BY, WHERE",
+                "SUM(), GROUP BY, WHERE",
+                "AVG(), GROUP BY, HAVING",
+                "MIN(), MAX(), ORDER BY"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Dies ist ein klassischer Anwendungsfall für `GROUP BY` und `HAVING`. \n1. `AVG()` wird benötigt, um den Durchschnittswert zu berechnen. \n2. `GROUP BY Kunde` fasst die Bestellungen pro Kunde zusammen. \n3. Die Bedingung \"mehr als 1.000 € Umsatz\" bezieht sich auf das Ergebnis einer Aggregatfunktion (`SUM(Umsatz)`). Solche Bedingungen können nicht in der `WHERE`-Klausel stehen, sondern müssen in der `HAVING`-Klausel platziert werden. ✅\n\n- **Option A & B** sind falsch, weil `WHERE` nicht auf aggregierte Ergebnisse filtern kann. `WHERE` filtert Zeilen *vor* der Gruppierung.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse (WHERE vs. HAVING)"
+        },
+        {
+            "question": "Wahr oder Falsch: Der Befehl `DELETE FROM Mitarbeiter` hat denselben Effekt wie `DROP TABLE Mitarbeiter`. 🚫",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Falsch. `DELETE FROM Mitarbeiter` löscht alle **Daten (Zeilen)** in der Tabelle. Die Tabellenstruktur selbst (Spalten, Datentypen, Indizes) bleibt erhalten und die Tabelle kann sofort wieder mit neuen Daten gefüllt werden. 🗑️ `DROP TABLE Mitarbeiter` löscht die gesamte Tabelle, einschließlich ihrer Struktur und aller zugehörigen Objekte. Die Tabelle existiert danach nicht mehr und müsste komplett neu erstellt werden. 🔥",
+            "difficulty": "einsteiger",
+            "category": "Wahr/Falsch (DML vs. DDL)"
+        },
+        {
+            "question": "Ein Projektmanager möchte alle Aufgaben sehen, deren Fälligkeitsdatum innerhalb der nächsten 7 Tage liegt. Das Fälligkeitsdatum ist in der Spalte `faelligkeit` vom Typ `DATE` gespeichert. Welcher `WHERE`-Filter ist dafür korrekt? 🗓️",
+            "options": [
+                "WHERE DATEDIFF('DAY', NOW(), faelligkeit) BETWEEN 0 AND 7",
+                "WHERE DATEADD('DAY', 7, faelligkeit) > NOW()",
+                "WHERE faelligkeit = NOW() + 7",
+                "WHERE DATEDIFF('YEAR', NOW(), faelligkeit) < 7"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die Funktion `DATEDIFF('DAY', Anfangsdatum, Enddatum)` berechnet die Differenz zwischen zwei Daten in Tagen. Die Bedingung `BETWEEN 0 AND 7` wählt alle Aufgaben aus, deren Fälligkeit heute (Differenz 0) oder in den nächsten 7 Tagen liegt. 🎯\n\n- **Option B** ist logisch fehlerhaft. \n- **Option C** verwendet eine ungültige Syntax zur Datumsaddition. \n- **Option D** würde die Differenz in Jahren berechnen, was für diese Anforderung falsch ist.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgabe (Datumsfunktionen)"
+        },
+        {
+            "question": "Ein DBA möchte einem neuen Benutzer `readonly` Lesezugriff auf **alle** Tabellen in der Datenbank `CompanyDB` geben, aber keine Schreibrechte. Welcher Befehl ist der richtige? 🔐",
+            "options": [
+                "GRANT SELECT ON CompanyDB.* TO 'readonly'",
+                "GRANT ALL ON CompanyDB.* TO 'readonly'",
+                "UPDATE USER 'readonly' SET PERMISSION = READ ON CompanyDB",
+                "REVOKE WRITE ON CompanyDB.* FROM 'readonly'"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Der `GRANT`-Befehl wird verwendet, um Berechtigungen zu erteilen. `GRANT SELECT` gibt explizit nur die Leseberechtigung. `ON CompanyDB.*` wendet diese Berechtigung auf alle Objekte (Tabellen, Views etc.) innerhalb der angegebenen Datenbank an. `TO 'readonly'` spezifiziert den Empfänger der Berechtigung. 👤\n\n- **Option B** würde alle Rechte (`ALL`) vergeben, einschließlich Schreibrechten. \n- **Option C** ist syntaktisch falsch. \n- **Option D** entzieht Rechte, anstatt sie zu gewähren.",
+            "difficulty": "einsteiger",
+            "category": "DCL (Berechtigungen)"
+        },
+        {
+            "question": "Was ist der Hauptunterschied zwischen den Datentypen `CHAR(10)` und `VARCHAR(10)` in Bezug auf die Speicherung der Zeichenkette 'SQL'? 💾",
+            "options": [
+                "Beide belegen 10 Bytes auf der Festplatte.",
+                "CHAR(10) belegt 10 Bytes, während VARCHAR(10) nur 4 Bytes belegt (3 für 'SQL' + 1 für die Längeninformation).",
+                "VARCHAR(10) ist immer schneller im Zugriff als CHAR(10).",
+                "Es gibt keinen Unterschied in der Speicherung."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `CHAR` steht für eine Zeichenkette mit **fester Länge**. `CHAR(10)` reserviert immer 10 Bytes, auch wenn weniger Zeichen gespeichert werden. Leerer Platz wird mit Leerzeichen aufgefüllt. `VARCHAR` steht für eine Zeichenkette mit **variabler Länge**. `VARCHAR(10)` speichert nur die tatsächlichen Zeichen plus einen kleinen Overhead (typischerweise 1-2 Bytes) zur Speicherung der Länge. Das macht `VARCHAR` speichereffizienter für Daten mit variierender Länge. 📏\n\n- **Option A & D** sind falsch. \n- **Option C** ist eine Verallgemeinerung, die nicht immer zutrifft. Bei fester Datenlänge kann `CHAR` sogar performanter sein.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse (Datentypen)"
+        },
+        {
+            "question": "Sie müssen eine Liste aller Mitarbeiter erstellen, deren Nachname mit 'M' beginnt und auf 'r' endet. Welcher `WHERE`-Bedingung ist korrekt? 🔍",
+            "options": [
+                "WHERE Nachname LIKE 'M_r'",
+                "WHERE Nachname LIKE 'M%r'",
+                "WHERE Nachname = 'M*r'",
+                "WHERE LEFT(Nachname, 1) = 'M' AND RIGHT(Nachname, 1) = 'r'"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `LIKE`-Operator wird für Mustervergleiche in Zeichenketten verwendet. Das Prozentzeichen `%` ist ein Platzhalter für eine beliebige Anzahl (auch null) von Zeichen. `M%r` passt also auf 'Meyer', 'Maurer', 'Miller' usw. \n\n- **Option A** mit dem Unterstrich `_` würde nur auf Nachnamen mit genau drei Buchstaben passen, wie 'Mär'. \n- **Option C** verwendet einen falschen Platzhalter. \n- **Option D** ist zwar logisch korrekt, aber umständlicher und oft weniger performant als der dafür optimierte `LIKE`-Operator.",
+            "difficulty": "einsteiger",
+            "category": "Operatoren (LIKE)"
+        },
+        {
+            "question": "Gegeben sei die Abfrage: `SELECT COUNT(ManagerID) FROM Mitarbeiter;`. Wenn es 100 Mitarbeiter gibt, aber 5 davon keinen Manager zugeordnet haben (ManagerID ist `NULL`), was ist das Ergebnis der Abfrage? 🔢",
+            "options": [
+                "100",
+                "95",
+                "Ein Fehler, da NULL-Werte nicht gezählt werden können.",
+                "0"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die Aggregatfunktion `COUNT(Spaltenname)` zählt die Anzahl der Zeilen, in denen die angegebene Spalte einen **Nicht-NULL-Wert** hat. Da 5 Mitarbeiter eine `NULL` in der `ManagerID`-Spalte haben, werden diese nicht mitgezählt. 100 - 5 = 95. \n\nWichtiger Hinweis: `COUNT(*)` hingegen würde alle Zeilen zählen, unabhängig von `NULL`-Werten, und somit 100 zurückgeben. ✨",
+            "difficulty": "fortgeschritten",
+            "category": "Logisches Rätsel (Aggregatfunktionen)"
+        },
+        {
+            "question": "Ein neuer Praktikant soll der Tabelle `Produkte` hinzugefügt werden. Er soll die `ProductID` 101, den Namen 'Monitor' und den Preis 299.99 haben. Welcher `INSERT`-Befehl ist syntaktisch korrekt? ➕",
+            "options": [
+                "INSERT (101, 'Monitor', 299.99) INTO Produkte",
+                "INSERT INTO Produkte VALUES (101, 'Monitor', 299.99)",
+                "UPDATE Produkte SET VALUES = (101, 'Monitor', 299.99)",
+                "INSERT INTO Produkte (ProductID, Name, Preis) ADD (101, 'Monitor', 299.99)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die grundlegende Syntax zum Einfügen einer vollständigen Zeile lautet `INSERT INTO Tabellenname VALUES (Wert1, Wert2, ...)` . Die Werte müssen in der korrekten Reihenfolge der Spalten der Tabelle angegeben werden. ✅\n\n- **Option A** hat die `VALUES`-Klausel vergessen und die Klammern falsch gesetzt. \n- **Option C** verwechselt `UPDATE` (zum Ändern bestehender Daten) mit `INSERT`. \n- **Option D** verwendet eine ungültige `ADD`-Klausel.",
+            "difficulty": "einsteiger",
+            "category": "DML (INSERT)"
+        },
+        {
+            "question": "Wahr oder Falsch: Eine Unterabfrage (Subquery) in der `FROM`-Klausel muss immer einen Alias (z.B. `AS tbl`) erhalten. 💡",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Wahr. Wenn eine Unterabfrage in der `FROM`-Klausel verwendet wird, erzeugt sie eine temporäre, abgeleitete Tabelle im Speicher. Damit die äußere Abfrage auf die Spalten dieser temporären Tabelle zugreifen kann, muss sie einen Namen (Alias) bekommen. Ohne diesen Alias kann das SQL-System die Spalten nicht eindeutig zuordnen, was zu einem Syntaxfehler führt. 🏷️",
+            "difficulty": "experte",
+            "category": "Wahr/Falsch (Subqueries)"
+        },
+        {
+            "question": "Sie müssen eine Spalte `Status` mit dem Standardwert 'aktiv' zur bestehenden Tabelle `Kunden` hinzufügen. Die Spalte soll maximal 20 Zeichen lang sein. Welcher `ALTER TABLE`-Befehl ist korrekt? 🛠️",
+            "options": [
+                "ALTER TABLE Kunden MODIFY COLUMN Status VARCHAR(20) DEFAULT 'aktiv'",
+                "ALTER TABLE Kunden ADD COLUMN Status VARCHAR(20) DEFAULT 'aktiv'",
+                "ALTER TABLE Kunden ADD Status CHAR(20) IS 'aktiv'",
+                "MODIFY TABLE Kunden ADD Status VARCHAR(20) = 'aktiv'"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Befehl zum Hinzufügen einer neuen Spalte zu einer bestehenden Tabelle lautet `ALTER TABLE Tabellenname ADD COLUMN ...`. Die Definition der Spalte `Status VARCHAR(20) DEFAULT 'aktiv'` ist ebenfalls korrekt. ✅\n\n- **Option A** (`MODIFY COLUMN`) wird verwendet, um eine *bestehende* Spalte zu ändern, nicht um eine neue hinzuzufügen. \n- **Option C & D** verwenden eine falsche Syntax für das Hinzufügen von Spalten und das Setzen von Standardwerten.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert (DDL)"
+        },
+        {
+            "question": "Sie haben zwei Tabellen: `A(id)` mit den Werten (1, 2, 3) und `B(id)` mit den Werten (2, 3, 4). Was ist das Ergebnis von `SELECT id FROM A UNION SELECT id FROM B`? 🔄",
+            "options": [
+                "(1, 2, 3, 2, 3, 4)",
+                "(2, 3)",
+                "(1, 2, 3, 4)",
+                "Ein Syntaxfehler"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der `UNION`-Operator kombiniert die Ergebnisse von zwei oder mehr `SELECT`-Anweisungen und entfernt dabei automatisch **Duplikate**. Die Ergebnismenge enthält also jeden Wert aus beiden Abfragen nur einmal. Die kombinierten Werte sind 1, 2, 3, 2, 3, 4. Nach Entfernung der Duplikate (2 und 3) bleibt (1, 2, 3, 4) übrig. 🗑️\n\nHinweis: Um Duplikate beizubehalten, müsste man `UNION ALL` verwenden.",
+            "difficulty": "fortgeschritten",
+            "category": "Logisches Rätsel (Operatoren)"
+        },
+        {
+            "question": "Ein Manager möchte die 5 umsatzstärksten Produkte des aktuellen Monats sehen. Welche Kombination von Klauseln ist in der korrekten Reihenfolge erforderlich? 🏆",
+            "options": [
+                "WHERE, GROUP BY, ORDER BY, LIMIT 5",
+                "GROUP BY, WHERE, ORDER BY, LIMIT 5",
+                "WHERE, ORDER BY, GROUP BY, LIMIT 5",
+                "LIMIT 5, WHERE, GROUP BY, ORDER BY"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die logische Verarbeitungsreihenfolge in SQL ist entscheidend. \n1. `WHERE`: Zuerst werden die Zeilen auf den aktuellen Monat gefiltert. \n2. `GROUP BY`: Dann werden die Daten nach Produkt gruppiert, um den Umsatz zu summieren. \n3. `ORDER BY ... DESC`: Die gruppierten Ergebnisse werden absteigend nach dem Umsatz sortiert. \n4. `LIMIT 5` (nicht im Dokument, aber Standard-SQL): Schließlich wird die Ausgabe auf die ersten 5 Zeilen beschränkt. \nDiese Reihenfolge stellt sicher, dass die Operationen in der richtigen logischen Abfolge ausgeführt werden. 🔢",
+            "difficulty": "experte",
+            "category": "Szenario-basiert (Klausel-Reihenfolge)"
+        },
+        {
+            "question": "Welche Funktion extrahiert die Jahreszahl aus einem `DATE`-Feld namens `Bestelldatum`? 📅",
+            "options": [
+                "GETYEAR(Bestelldatum)",
+                "DATEPART('year', Bestelldatum)",
+                "YEAR(Bestelldatum)",
+                "NOW(Bestelldatum, 'YYYY')"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die Funktion `YEAR(DatumZeit)` ist gemäß der bereitgestellten Syntax die korrekte Funktion, um das Jahr aus einer Zeitangabe als Zahl zu extrahieren. Sie ist einfach und direkt. ✅\n\n- **Option A und D** sind keine Standard-SQL-Funktionen aus dem Dokument. \n- **Option B** (`DATEPART`) ist eine gültige Funktion in einigen SQL-Dialekten (z.B. T-SQL), aber `YEAR()` ist die im Dokument angegebene und weit verbreitete Funktion.",
+            "difficulty": "einsteiger",
+            "category": "Funktionen (Datum)"
+        },
+        {
+            "question": "Einem Junior-Entwickler wurde die Aufgabe gegeben, den Preis aller Produkte der Kategorie 'Software' um 10% zu erhöhen. Welches Statement ist dafür korrekt? 💸",
+            "options": [
+                "UPDATE Produkte SET Preis = Preis * 1.10 WHERE Kategorie = 'Software'",
+                "INSERT INTO Produkte (Preis) VALUES (Preis * 1.10) WHERE Kategorie = 'Software'",
+                "MODIFY Produkte SET Preis = Preis * 1.10 WHERE Kategorie = 'Software'",
+                "SELECT Preis * 1.10 FROM Produkte WHERE Kategorie = 'Software'"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Der `UPDATE`-Befehl wird verwendet, um bestehende Datensätze zu ändern. `UPDATE Produkte` legt die Tabelle fest. `SET Preis = Preis * 1.10` definiert die Aktualisierungslogik. Die `WHERE`-Klausel stellt sicher, dass nur die Datensätze der richtigen Kategorie betroffen sind. 🎯\n\n- **Option B** würde versuchen, neue Datensätze einzufügen. \n- **Option C** ist syntaktisch falsch. \n- **Option D** würde die neuen Preise nur anzeigen (selektieren), aber nicht in der Datenbank speichern.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert (DML)"
+        },
+        {
+            "question": "Was ist der entscheidende Unterschied zwischen `COUNT(*)` und `COUNT(DISTINCT Spalte)`? 🧐",
+            "options": [
+                "`COUNT(*)` ist schneller, liefert aber das gleiche Ergebnis.",
+                "`COUNT(*)` zählt alle Zeilen, während `COUNT(DISTINCT Spalte)` nur die Anzahl der einzigartigen Werte in der Spalte zählt.",
+                "`COUNT(DISTINCT Spalte)` zählt auch `NULL`-Werte als einen einzigartigen Wert.",
+                "Es gibt keinen funktionalen Unterschied, nur einen syntaktischen."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `COUNT(*)` ist ein einfacher Zeilenzähler und zählt alle Zeilen, die von der Abfrage zurückgegeben werden. `DISTINCT` ist ein Schlüsselwort, das vor dem Spaltennamen platziert wird, um die Aggregatfunktion anzuweisen, nur einzigartige (nicht doppelte) Werte in dieser Spalte zu berücksichtigen. Wenn eine Spalte `Status` die Werte ('Neu', 'Offen', 'Neu', 'Geschlossen', 'Offen') enthält, würde `COUNT(Status)` 5 zurückgeben, aber `COUNT(DISTINCT Status)` würde 3 zurückgeben. 🔢",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse (Aggregatfunktionen)"
+        },
+        {
+            "question": "Sie müssen eine Fremdschlüsselbeziehung erstellen. Die Spalte `KundenID` in der Tabelle `Bestellungen` soll auf die Spalte `ID` in der Tabelle `Kunden` verweisen. Welcher Syntax-Ausschnitt ist korrekt? 🔗",
+            "options": [
+                "FOREIGN KEY (KundenID) REFERENCES Kunden(ID)",
+                "PRIMARY KEY (KundenID) REFERENCES Kunden(ID)",
+                "REFERENCES Kunden(ID) ON Bestellungen(KundenID)",
+                "FOREIGN KEY (ID) REFERENCES Bestellungen(KundenID)"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Die Syntax zur Definition eines Fremdschlüssels lautet `FOREIGN KEY (Spalte_in_dieser_Tabelle) REFERENCES Andere_Tabelle(Primärschlüsselspalte_dort)`. Diese Zeile wird typischerweise innerhalb eines `CREATE TABLE` oder `ALTER TABLE` Befehls verwendet. Sie stellt die referentielle Integrität sicher. ✅\n\n- Die anderen Optionen verdrehen die Schlüsselwörter, die Tabellen oder die Spalten und sind syntaktisch falsch.",
+            "difficulty": "einsteiger",
+            "category": "Schlüssel (DDL)"
+        },
+        {
+            "question": "Einem Analysten liegt eine Tabelle `Gehaelter` vor. Er soll die Standardabweichung der Gehälter berechnen. Welche Funktion muss er verwenden? 📊",
+            "options": [
+                "AVG(Gehalt) - MIN(Gehalt)",
+                "VARIANCE(Gehalt)",
+                "CORR(Gehalt, Alter)",
+                "STDDEV(Gehalt)"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** Die Funktion `STDDEV(Spaltenname)` ist die Standard-SQL-Funktion zur Berechnung der Standardabweichung, einem Maß für die Streuung der Werte um den Mittelwert. 📈\n\n- **Option A** ist eine manuelle Berechnung, die nicht der Standardabweichung entspricht. \n- **Option B** (`VARIANCE`) berechnet die Varianz, welche das Quadrat der Standardabweichung ist. \n- **Option C** (`CORR`) berechnet die Korrelation zwischen zwei Variablen, nicht die Streuung einer einzelnen.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgabe (Aggregatfunktionen)"
+        },
+        {
+            "question": "Wahr oder Falsch: Die Klausel `ORDER BY` wird immer **vor** der `GROUP BY`-Klausel ausgeführt. ⏩",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Falsch. In der logischen Verarbeitungsreihenfolge einer SQL-Abfrage wird die `GROUP BY`-Klausel ausgeführt, um die Zeilen zu Aggregaten zusammenzufassen. Erst **danach** wird die `ORDER BY`-Klausel angewendet, um diese aggregierten Gruppen zu sortieren. Man kann nicht etwas sortieren, das noch nicht gruppiert wurde. Die Reihenfolge im Code ist auch typischerweise `GROUP BY ... ORDER BY`. 🔢",
+            "difficulty": "experte",
+            "category": "Wahr/Falsch (Klausel-Reihenfolge)"
+        },
+        {
+            "question": "Sie möchten alle Produkte finden, die **nicht** in der Tabelle `Sonderangebote` aufgeführt sind. Welche der folgenden Abfragen löst diese Aufgabe am effizientesten? 🕵️",
+            "options": [
+                "SELECT Name FROM Produkte WHERE ID NOT IN (SELECT ProduktID FROM Sonderangebote)",
+                "SELECT Name FROM Produkte WHERE Name LIKE (SELECT Name FROM Sonderangebote)",
+                "SELECT Name FROM Produkte INNER JOIN Sonderangebote ON Produkte.ID = Sonderangebote.ProduktID",
+                "SELECT Name FROM Produkte WHERE ID IN (SELECT ProduktID FROM Sonderangebote)"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Der `NOT IN`-Operator ist ideal, um eine Liste von Werten auszuschließen. Die Subquery `(SELECT ProduktID FROM Sonderangebote)` erstellt eine Liste aller Angebots-IDs. Die äußere Abfrage wählt dann alle Produkte aus, deren `ID` nicht in dieser Liste vorkommt. Alternativ wäre auch ein `LEFT JOIN ... WHERE Sonderangebote.ProduktID IS NULL` eine sehr performante Lösung. 📉\n\n- **Option B** ist syntaktisch falsch. \n- **Option C** würde nur Produkte finden, die ein Sonderangebot sind. \n- **Option D** würde das genaue Gegenteil tun und nur die Sonderangebot-Produkte auflisten.",
+            "difficulty": "experte",
+            "category": "Logisches Rätsel (Subqueries)"
+        },
+        {
+            "question": "Ein Datenbankadministrator muss alle Berechtigungen für den Benutzer `ex_mitarbeiter` auf die Datenbank `ProjekteDB` widerrufen. Welcher Befehl ist korrekt? 🔒",
+            "options": [
+                "DELETE USER 'ex_mitarbeiter' FROM ProjekteDB",
+                "REVOKE ALL ON ProjekteDB.* FROM 'ex_mitarbeiter'",
+                "GRANT NONE ON ProjekteDB.* TO 'ex_mitarbeiter'",
+                "UPDATE PERMISSIONS SET NONE WHERE USER = 'ex_mitarbeiter'"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `REVOKE` ist der Befehl zum Entziehen von Berechtigungen. `ALL` spezifiziert, dass alle Berechtigungen (SELECT, INSERT, UPDATE etc.) entzogen werden sollen. `ON ProjekteDB.*` definiert den Geltungsbereich, und `FROM 'ex_mitarbeiter'` gibt den Benutzer an, dem die Rechte entzogen werden. 🚫\n\n- Die anderen Optionen verwenden eine ungültige SQL-Syntax für die Berechtigungsverwaltung.",
+            "difficulty": "fortgeschritten",
+            "category": "DCL (Berechtigungen)"
+        },
+        {
+            "question": "Was ist das Ergebnis der Funktion `LEFT('Datenbank', 4)`? ✂️",
+            "options": [
+                "bank",
+                "aten",
+                "Daten",
+                "Ein Fehler, da die Funktion RIGHT heißt"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die Funktion `LEFT(Zeichenkette, Anzahlzeichen)` extrahiert eine bestimmte Anzahl von Zeichen vom **linken** Anfang einer Zeichenkette. `LEFT('Datenbank', 4)` nimmt also die ersten 4 Zeichen, was 'Daten' ergibt. ✅",
+            "difficulty": "einsteiger",
+            "category": "Funktionen (String)"
+        },
+        {
+            "question": "Vergleichen Sie `DELETE`, `TRUNCATE` und `DROP`. Welche Aussage beschreibt den Unterschied am besten? 💥",
+            "options": [
+                "`DELETE` ist am schnellsten, `DROP` am langsamsten.",
+                "`DELETE` löscht Zeilen einzeln (langsam, kann rückgängig gemacht werden), `TRUNCATE` löscht alle Zeilen auf einmal (schnell, nicht rückgängig), `DROP` löscht die ganze Tabelle.",
+                "`DROP` und `TRUNCATE` sind Synonyme, `DELETE` ist anders.",
+                "`DELETE` entfernt die Tabelle, `TRUNCATE` leert sie, `DROP` löscht die Datenbank."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Diese drei Befehle haben unterschiedliche Auswirkungen und Anwendungsfälle: \n- **DELETE:** DML-Befehl. Löscht Zeilen basierend auf einer `WHERE`-Klausel (oder alle, wenn keine da ist). Jede Löschung wird protokolliert, daher ist es langsamer und kann oft via Transaktion zurückgerollt werden. \n- **TRUNCATE:** DDL-Befehl. Entfernt alle Zeilen aus einer Tabelle, indem die Speicherseiten dealloziert werden. Es wird nichts protokolliert, daher ist es extrem schnell, kann aber nicht zurückgerollt werden. Setzt Auto-Inkrement-Zähler zurück. \n- **DROP:** DDL-Befehl. Löscht die gesamte Tabellenstruktur und alle Daten unwiderruflich. 🔥",
+            "difficulty": "experte",
+            "category": "Vergleichende Analyse (DML/DDL)"
+        },
+        {
+            "question": "Sie müssen eine Abfrage erstellen, die prüft, ob für einen Kunden überhaupt Bestellungen existieren, ohne die Bestelldaten selbst zu laden. Welcher Operator ist dafür am performantesten? 💨",
+            "options": [
+                "WHERE (SELECT COUNT(*) FROM Bestellungen WHERE KundenID = K.ID) > 0",
+                "WHERE EXISTS (SELECT 1 FROM Bestellungen WHERE KundenID = K.ID)",
+                "INNER JOIN Bestellungen ON Bestellungen.KundenID = K.ID",
+                "WHERE K.ID IN (SELECT KundenID FROM Bestellungen)"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `EXISTS`-Operator ist für genau diesen Zweck optimiert. Er prüft nur auf die **Existenz** von mindestens einer Zeile in der Subquery, die die Bedingung erfüllt. Sobald die erste passende Zeile gefunden ist, bricht die Subquery die Ausführung ab und gibt `TRUE` zurück. Dies ist deutlich performanter als `COUNT(*)`, welches alle passenden Zeilen zählen müsste, oder `IN`, welches die gesamte Liste der IDs im Speicher aufbauen muss. ✅",
+            "difficulty": "experte",
+            "category": "Logisches Rätsel (Performance)"
+        },
+        {
+            "question": "Wie lautet die korrekte `UPDATE`-Anweisung, um bei allen Mitarbeitern in der Abteilung 'IT' das Gehalt um 500 zu erhöhen und die Spalte `LetzteAenderung` auf das aktuelle Datum zu setzen? ✍️",
+            "options": [
+                "UPDATE Mitarbeiter SET Gehalt = Gehalt + 500 AND LetzteAenderung = NOW() WHERE Abteilung = 'IT'",
+                "UPDATE Mitarbeiter SET Gehalt = Gehalt + 500, LetzteAenderung = NOW() WHERE Abteilung = 'IT'",
+                "UPDATE Mitarbeiter SET Gehalt += 500, LetzteAenderung = NOW() WHERE Abteilung = 'IT'",
+                "MODIFY Mitarbeiter SET Gehalt = Gehalt + 500, LetzteAenderung = NOW() WHERE Abteilung = 'IT'"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** In einer `UPDATE`-Anweisung werden mehrere Spaltenzuweisungen in der `SET`-Klausel durch ein **Komma (,)** voneinander getrennt. Die `WHERE`-Klausel filtert dann die zu aktualisierenden Zeilen. \n\n- **Option A** verwendet `AND`, was in der `SET`-Klausel syntaktisch falsch ist. `AND` wird in der `WHERE`-Klausel zur Verknüpfung von Bedingungen verwendet. \n- **Option C** verwendet den `+=` Operator, der in Standard-SQL nicht für Zuweisungen existiert. \n- **Option D** verwendet das falsche Schlüsselwort `MODIFY`.",
+            "difficulty": "fortgeschritten",
+            "category": "Szenario-basiert (DML)"
+        },
+        {
+            "question": "Ein Auszubildender soll eine Liste aller eindeutigen Städtenamen aus der Kundentabelle erstellen, absteigend sortiert. Welcher Befehl ist korrekt? 🏙️",
+            "options": [
+                "SELECT Stadt FROM Kunden ORDER BY Stadt DESC",
+                "SELECT DISTINCT Stadt FROM Kunden GROUP BY Stadt DESC",
+                "SELECT DISTINCT Stadt FROM Kunden ORDER BY Stadt DESC",
+                "SELECT UNIQUE Stadt FROM Kunden SORT BY Stadt DESC"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `SELECT DISTINCT Stadt` wählt jeden eindeutigen Städtenamen genau einmal aus. `FROM Kunden` spezifiziert die Tabelle. `ORDER BY Stadt DESC` sortiert diese eindeutige Liste dann in absteigender alphabetischer Reihenfolge (Z-A). ✅\n\n- **Option A** würde alle Städtenamen auflisten, auch Duplikate. \n- **Option B und D** verwenden eine falsche Syntax (`GROUP BY DESC` / `UNIQUE`, `SORT BY`).",
+            "difficulty": "einsteiger",
+            "category": "DQL (SELECT)"
+        },
+        {
+            "question": "Welche Aggregatfunktion würde man verwenden, um die Korrelation zwischen dem Alter eines Kunden und seinem Jahresumsatz zu berechnen? 🤝",
+            "options": [
+                "SUM(Alter, Jahresumsatz)",
+                "AVG(Alter) / AVG(Jahresumsatz)",
+                "CORR(Alter, Jahresumsatz)",
+                "STDDEV(Alter, Jahresumsatz)"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Die Funktion `CORR(Spaltenname_1, Spaltenname_2)` ist speziell dafür vorgesehen, den Korrelationskoeffizienten zwischen zwei numerischen Merkmalen zu berechnen. Das Ergebnis liegt zwischen -1 (perfekte negative Korrelation) und +1 (perfekte positive Korrelation), wobei 0 keinen linearen Zusammenhang anzeigt. 📈",
+            "difficulty": "fortgeschritten",
+            "category": "Aggregatfunktionen"
+        },
+        {
+            "question": "Sie haben eine Tabelle `Logins` mit einer Spalte `LoginZeit` vom Typ `DATETIME`. Wie viele erfolgreiche Logins gab es am heutigen Wochentag (z.B. alle Montage, wenn heute Montag ist)? 🗓️",
+            "options": [
+                "SELECT COUNT(*) FROM Logins WHERE DAY(LoginZeit) = DAY(NOW())",
+                "SELECT COUNT(*) FROM Logins WHERE WEEKDAY(LoginZeit) = WEEKDAY(NOW())",
+                "SELECT COUNT(*) FROM Logins WHERE DATEADD('DAY', 0, LoginZeit)",
+                "SELECT COUNT(*) FROM Logins WHERE MONTH(LoginZeit) = MONTH(NOW())"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Die Funktion `WEEKDAY(DatumZeit)` gibt den Wochentag als Zahl zurück (z.B. Montag = 0, Dienstag = 1, ...). Indem man den Wochentag jedes Login-Datums mit dem Wochentag des aktuellen Datums (`NOW()`) vergleicht, filtert man alle Einträge heraus, die am selben Wochentag stattfanden, unabhängig vom genauen Datum. 🎯\n\n- **Option A** würde alle Logins vom selben *Tag des Monats* (z.B. der 26.) zählen. \n- **Option C** ist syntaktisch unvollständig. \n- **Option D** würde nach dem Monat filtern.",
+            "difficulty": "experte",
+            "category": "Berechnungsaufgabe (Datumsfunktionen)"
+        },
+        {
+            "question": "Ein Entwickler möchte sicherstellen, dass eine Spalte `Email` in der Tabelle `Benutzer` immer einen Wert enthalten muss. Welches Schlüsselwort muss er bei der Spaltendefinition hinzufügen? 📧",
+            "options": [
+                "IS NOT NULL",
+                "UNIQUE",
+                "PRIMARY KEY",
+                "NOT NULL"
+            ],
+            "correct": 3,
+            "explain": "**Begründung:** Das Constraint `NOT NULL` wird bei der Definition einer Spalte (`CREATE TABLE` oder `ALTER TABLE`) hinzugefügt, um zu erzwingen, dass diese Spalte bei jedem `INSERT` oder `UPDATE` einen Wert haben muss. Ein Versuch, eine Zeile mit einem `NULL`-Wert in dieser Spalte einzufügen, würde zu einem Fehler führen. ✅\n\n- **IS NOT NULL** ist ein Operator, der in `WHERE`-Klauseln verwendet wird, aber nicht zur Definition von Spalten-Constraints. \n- **UNIQUE** stellt sicher, dass jeder Wert in der Spalte einzigartig ist, erlaubt aber (oft) einen `NULL`-Wert. \n- **PRIMARY KEY** impliziert `NOT NULL` und `UNIQUE`, ist aber für den primären Identifikator der Tabelle reserviert.",
+            "difficulty": "einsteiger",
+            "category": "DDL (Constraints)"
+        }
+    ]
+}
