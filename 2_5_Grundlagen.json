@@ -708,6 +708,516 @@
             "explain": "**Begründung:** `exit` beendet die aktuelle CMD-Session ordnungsgemäß und schließt das Eingabeaufforderungs-Fenster 🚪. In Batch-Scripts kann ein Exit-Code übergeben werden (z.B. `exit /b 0` für erfolgreiche Beendigung). Dies ist wichtig für saubere Script-Beendigung und Ressourcen-Freigabe. In automatisierten Umgebungen signalisiert der Exit-Code anderen Prozessen den Ausführungsstatus. Professionelle Scripts sollten immer mit entsprechenden Exit-Codes enden.",
             "difficulty": "einsteiger",
             "category": "Session-Management"
+        },{
+      "question": " Szenario: Ein Admin möchte den Ordner `C:\\Daten` inklusive aller Unterordner, auch der leeren, auf Laufwerk `G:` sichern. Welcher `xcopy`-Befehl ist dafür am besten geeignet? 📂",
+      "options": [
+        "xcopy C:\\Daten G:\\Daten /s",
+        "xcopy C:\\Daten G:\\Daten /e",
+        "copy C:\\Daten G:\\Daten /s",
+        "xcopy C:\\Daten\\*.* G:\\Daten /e"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der Schalter `/e` ist entscheidend, da er `xcopy` anweist, alle Unterverzeichnisse zu kopieren, **einschließlich der leeren**. Der Schalter `/s` kopiert nur Unterverzeichnisse, die nicht leer sind. Der `copy`-Befehl kann keine Verzeichnisstrukturen kopieren. Die Verwendung von `*.*` würde nur die Dateien im Stammverzeichnis von `Daten` als Quelle nehmen, nicht den Ordner selbst. ⚙️",
+      "difficulty": "einsteiger",
+      "category": "Kopierbefehle"
+    },
+    {
+      "question": "Szenario: Nach dem Ausführen von `xcopy F:\\projekt G:\\backup` stellt der Benutzer fest, dass auf `G:` zwar der *Inhalt* von `projekt` liegt, aber der Ordner `projekt` selbst fehlt. Was ist die korrekte Syntax, um die gesamte Struktur, einschließlich des `projekt`-Ordners, zu kopieren?  Strukturelles Problem! 🏗️",
+      "options": [
+        "xcopy F:\\projekt\\*.* G:\\backup\\projekt /s /e",
+        "xcopy F:\\projekt G:\\backup\\projekt\\ /s /e",
+        "xcopy F:\\projekt G:\\backup /s /e /root",
+        "xcopy F:\\projekt G:\\ /s /e"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** `xcopy` kopiert standardmäßig den *Inhalt* der Quelle ins Ziel. Um den Quellordner selbst im Ziel zu erstellen, muss er im Zielpfad explizit angegeben werden (`G:\\backup\\projekt`). Der abschließende Backslash (`\\`) signalisiert `xcopy` eindeutig, dass das Ziel ein Verzeichnis ist, und unterdrückt die Nachfrage 'Datei oder Verzeichnis?'. 💡",
+      "difficulty": "fortgeschritten",
+      "category": "Befehlssyntax"
+    },
+    {
+      "question": "Vergleichende Analyse: Was ist der primäre funktionale Unterschied zwischen dem `copy`- und dem `xcopy`-Befehl in der Windows-Kommandozeile? 🤔",
+      "options": [
+        "`xcopy` ist schneller, aber `copy` kann mehr Dateitypen verarbeiten.",
+        "`copy` kann nur einzelne Dateien kopieren, während `xcopy` ganze Verzeichnisbäume kopieren kann.",
+        "`xcopy` ist veraltet und wurde durch `copy /s` ersetzt.",
+        "`copy` kann über das Netzwerk kopieren, `xcopy` nicht."
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der Hauptunterschied liegt im Umfang. `copy` ist für das Kopieren von Dateien konzipiert. `xcopy` (Extended Copy) wurde entwickelt, um ganze Verzeichnisstrukturen rekursiv zu kopieren, was es zu einem mächtigen Werkzeug für Backups und das Duplizieren von Ordnern macht. 🌳",
+      "difficulty": "einsteiger",
+      "category": "Grundlagen der Kommandozeile"
+    },
+    {
+      "question": "Berechnungsaufgabe: Ein Verzeichnis `C:\\source` enthält 3 Dateien. Das Unterverzeichnis `C:\\source\\A` enthält 2 Dateien und das Unterverzeichnis `C:\\source\\B` ist leer. Wie viele Dateien werden mit dem Befehl `xcopy C:\\source D:\\dest /s` kopiert? 🧮",
+      "options": [
+        "0 Dateien",
+        "3 Dateien",
+        "5 Dateien",
+        "Alle Dateien und das leere Verzeichnis B."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der Befehl kopiert die 3 Dateien aus `C:\\source` und die 2 Dateien aus `C:\\source\\A`. Das Verzeichnis `C:\\source\\B` wird ignoriert, da der Schalter `/s` nur **nicht-leere** Verzeichnisse berücksichtigt. Insgesamt werden also 3 + 2 = 5 Dateien kopiert. 📄",
+      "difficulty": "fortgeschritten",
+      "category": "Befehlsparameter"
+    },
+    {
+      "question": "Logisches Rätsel: Ein Skript führt den Befehl `xcopy F:\\daten\\ G:\\backup\\daten /e` aus. Unmittelbar danach wird `rd G:\\backup\\daten /s /q` ausgeführt. Was ist der Zustand des Verzeichnisses `G:\\backup\\daten` nach beiden Befehlen? 🔄",
+      "options": [
+        "Es ist leer, aber vorhanden.",
+        "Es enthält die ursprüngliche Sicherung.",
+        "Es existiert nicht mehr.",
+        "Es enthält nur noch die leeren Unterverzeichnisse."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der erste Befehl (`xcopy`) erstellt eine vollständige Kopie. Der zweite Befehl, `rd` (Remove Directory) mit dem Schalter `/s`, löscht das angegebene Verzeichnis und **alle** darin enthaltenen Unterverzeichnisse und Dateien. Der Schalter `/q` (Quiet) unterdrückt die Bestätigungsabfrage. Das Verzeichnis wird also komplett und ohne Rückfrage entfernt. 💨",
+      "difficulty": "einsteiger",
+      "category": "Befehlsketten"
+    },
+    {
+      "question": "Wahr/Falsch: Der Befehl `robocopy` ist ein älterer und einfacherer Befehl als `xcopy` und wird daher für simple Aufgaben bevorzugt. 📜",
+      "options": [
+        "Wahr",
+        "Falsch"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Falsch. `robocopy` (Robust File Copy) ist der neuere und wesentlich leistungsfähigere Nachfolger von `xcopy`. Es bietet Features wie Spiegelung (`/mir`), Wiederholungslogik bei Netzwerkfehlern, Kopieren von Berechtigungen und eine deutlich bessere Performance bei großen Kopiervorgängen. `xcopy` ist für einfache Aufgaben ausreichend, aber `robocopy` ist das professionelle Werkzeug. 🚀",
+      "difficulty": "fortgeschritten",
+      "category": "Tool-Vergleich"
+    },
+    {
+      "question": "Szenario: Ein Admin muss ein Benutzerprofil von `C:\\Users\\Max` nach `D:\\Backup\\Max` kopieren. Es sollen alle Dateien, Unterordner (auch leere) sowie versteckte und Systemdateien mitgenommen werden. Welcher Befehl ist dafür am robustesten? 🕵️",
+      "options": [
+        "xcopy C:\\Users\\Max D:\\Backup\\Max /e /h /k",
+        "xcopy C:\\Users\\Max D:\\Backup\\Max /s /h",
+        "robocopy C:\\Users\\Max D:\\Backup\\Max /e /copyall",
+        "robocopy C:\\Users\\Max D:\\Backup\\Max /s"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `robocopy` ist hier die bessere Wahl. Der Schalter `/e` kopiert alle Unterordner (auch leere). Der entscheidende Schalter ist `/copyall`, der eine Abkürzung für `/copy:DATSOU` ist und **D**aten, **A**ttribute, **T**ime Stamps, **S**icherheit (NTFS ACLs), **O**wner-Infos und A**u**diting-Infos kopiert. `xcopy` mit `/h` kopiert zwar versteckte Dateien, aber nicht so umfassend wie `robocopy` mit `/copyall`. 🛡️",
+      "difficulty": "experte",
+      "category": "Datensicherung"
+    },
+    {
+      "question": "Vergleichende Analyse: Worin liegt der Hauptunterschied im Verhalten der Schalter `/s` und `/e` bei `xcopy`? ⚖️",
+      "options": [
+        "`/s` steht für 'silent', `/e` für 'error reporting'.",
+        "`/s` kopiert nur Systemdateien, `/e` alle Dateien.",
+        "`/s` kopiert Unterverzeichnisse, die nicht leer sind, `/e` kopiert alle Unterverzeichnisse.",
+        "`/s` ist für das Quellverzeichnis, `/e` für das Zielverzeichnis."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Dies ist ein zentraler Unterschied. `/s` (Subdirectories) ist nützlich, um eine Struktur zu kopieren, aber irrelevante, leere Ordner wegzulassen. `/e` (Empty) ist erforderlich, wenn eine exakte 1:1-Kopie der Verzeichnisstruktur erstellt werden soll, inklusive aller Platzhalter- oder Log-Ordner, die initial leer sein könnten. 🌿",
+      "difficulty": "fortgeschritten",
+      "category": "Befehlsparameter"
+    },
+    {
+      "question": "Berechnungsaufgabe: Was ist die minimale Anzahl an Schaltern, die `xcopy` benötigt, um eine Verzeichnisstruktur inklusive leerer Ordner zu kopieren? �",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der einzige zwingend erforderliche Schalter, um auch leere Verzeichnisse zu erfassen, ist `/e`. Obwohl oft mit `/s` kombiniert (was `/e` implizit erweitert), funktioniert `/e` auch allein und erfüllt die Anforderung. Ein Befehl wie `xcopy C:\\A D:\\B /e` ist also gültig. 💡",
+      "difficulty": "einsteiger",
+      "category": "Befehlssyntax"
+    },
+    {
+      "question": "Szenario: Ein Admin führt `xcopy C:\\daten G:\\backup /e` aus und wird gefragt: 'Gibt G:\\backup einen Dateinamen oder einen Verzeichnisnamen an (F = Datei, V = Verzeichnis)?'. Wie hätte der Befehl formuliert werden müssen, um diese Abfrage zu verhindern? 🤫",
+      "options": [
+        "xcopy C:\\daten G:\\backup /e /y",
+        "xcopy C:\\daten\\ G:\\backup /e",
+        "xcopy C:\\daten G:\\backup\\ /e",
+        "xcopy C:\\daten G:\\backup /e /q"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Die Abfrage erscheint, wenn das Zielverzeichnis nicht existiert und `xcopy` unsicher ist, ob der Zielname für eine Datei oder ein Verzeichnis steht. Durch Hinzufügen eines Backslash (`\\`) am Ende des Zielpfades (`G:\\backup\\`) wird dem Befehl eindeutig mitgeteilt, dass es sich um ein Verzeichnis handelt. Die Abfrage wird somit übersprungen. ✅",
+      "difficulty": "fortgeschritten",
+      "category": "Befehlssyntax"
+    },
+    {
+        "question": "Logisches Rätsel: Ein Befehl `xcopy C:\\quelle\\*.* D:\\ziel /s` wird ausgeführt. Was passiert mit leeren Unterverzeichnissen innerhalb von `C:\\quelle`? 🧩",
+        "options": [
+          "Sie werden kopiert, da `*.*` alle Inhalte meint.",
+          "Sie werden nicht kopiert.",
+          "Es kommt zu einer Fehlermeldung.",
+          "Nur die leeren Verzeichnisse werden kopiert."
+        ],
+        "correct": 1,
+        "explain": "**Begründung:** Der Schalter `/s` kopiert nur Verzeichnisse, die Dateien enthalten. Obwohl `*.*` auf alle Dateien abzielt, ändert dies nichts am Verhalten des `/s`-Schalters bezüglich der Verzeichnisse selbst. Leere Ordner werden ignoriert. Um sie zu kopieren, wäre der Schalter `/e` erforderlich. 🚫",
+        "difficulty": "fortgeschritten",
+        "category": "Logische Analyse"
+    },
+    {
+        "question": "Berechnungsaufgabe: Ein Skript soll das temporäre Verzeichnis `C:\\Temp` mit all seinen Inhalten ohne jegliche Benutzerinteraktion löschen. Welche Kombination von Schaltern für den `rd`-Befehl ist korrekt? 🗑️",
+        "options": [
+          "rd C:\\Temp /q",
+          "rd C:\\Temp /s",
+          "rd C:\\Temp /s /q",
+          "del C:\\Temp /s /q"
+        ],
+        "correct": 2,
+        "explain": "**Begründung:** `rd` (oder `rmdir`) ist der Befehl zum Löschen von Verzeichnissen. Der Schalter `/s` wird benötigt, um ein Verzeichnis mit Inhalt (Dateien und Unterverzeichnisse) zu löschen. Der Schalter `/q` (Quiet) unterdrückt die Bestätigungsaufforderung 'Sind Sie sicher?'. Die Kombination `/s /q` ist daher der Standard für die automatisierte, unbeaufsichtigte Löschung von Verzeichnissen. `del` löscht nur Dateien, keine Verzeichnisse. 🔥",
+        "difficulty": "fortgeschritten",
+        "category": "Dateisystem-Management"
+    },
+    {
+        "question": "Vergleichende Analyse: Warum wird `robocopy` gegenüber `xcopy` für kritische Kopiervorgänge über instabile Netzwerkverbindungen bevorzugt? 🌐",
+        "options": [
+          "`xcopy` hat eine eingebaute Datenkompression.",
+          "`robocopy` hat eine automatische Wiederholungslogik und eine einstellbare Wartezeit zwischen den Versuchen.",
+          "`xcopy` kann die Bandbreite besser ausnutzen.",
+          "`robocopy` ist nur auf Server-Betriebssystemen verfügbar."
+        ],
+        "correct": 2,
+        "explain": "**Begründung:** Die Robustheit von `robocopy` zeigt sich hier deutlich. Standardmäßig versucht es bei einem Fehler (z.B. kurzzeitiger Netzwerkausfall) 1 Million Mal im Abstand von 30 Sekunden, die Datei zu kopieren. Diese Werte (`/r:n` und `/w:n`) sind konfigurierbar. `xcopy` bricht bei einem Fehler einfach ab. Diese Ausfallsicherheit macht `robocopy` für professionelle Einsätze unverzichtbar. ⏳",
+        "difficulty": "experte",
+        "category": "Netzwerk-Operationen"
+    },
+    {
+        "question": "Szenario: Im Rahmen einer differentiellen Backup-Strategie sollen mit `xcopy` nur die Dateien kopiert werden, die seit dem letzten Backup (gekennzeichnet durch das Archiv-Attribut) geändert wurden. Welcher Schalter wird dafür verwendet? 💾",
+        "options": [
+          "xcopy ... /d",
+          "xcopy ... /u",
+          "xcopy ... /a",
+          "xcopy ... /m"
+        ],
+        "correct": 3,
+        "explain": "**Begründung:** Der Schalter `/a` kopiert nur Dateien, bei denen das Archiv-Attribut gesetzt ist, **ohne es zu ändern**. Der Schalter `/m` tut dasselbe, **setzt aber das Archiv-Attribut der Quelldatei zurück**. Für ein echtes differentielles/inkrementelles Backup-Schema ist `/m` oft die bessere Wahl, da so markiert wird, dass die Datei gesichert wurde. `/a` ist nützlich, um den Status zu prüfen, ohne ihn zu verändern. 📈",
+        "difficulty": "experte",
+        "category": "Backup-Strategien"
+    },
+    {
+        "question": "Logisches Rätsel: Ein Admin führt `xcopy C:\\A D:\\B /e` aus. Danach wird eine neue Datei in `C:\\A` hinzugefügt. Nun wird der Befehl `xcopy C:\\A D:\\B /d /e` ausgeführt (ohne Datum). Was passiert? 🕰️",
+        "options": [
+          "Alle Dateien werden erneut kopiert.",
+          "Nur die neue Datei wird kopiert.",
+          "Es wird ein Fehler angezeigt, da ein Datum fehlt.",
+          "Nichts wird kopiert."
+        ],
+        "correct": 1,
+        "explain": "**Begründung:** Der Schalter `/d` (ohne Angabe eines Datums) weist `xcopy` an, nur die Dateien zu kopieren, deren Quelldatum neuer ist als das Zieldatum. Da die bereits kopierten Dateien identische Zeitstempel haben, werden sie übersprungen. Nur die neu hinzugefügte Datei in `C:\\A` ist neuer als eine nicht vorhandene Datei in `D:\\B` und wird daher kopiert. Dies ist die Grundlage für einfache Synchronisierungsaufgaben. ✍️",
+        "difficulty": "experte",
+        "category": "Synchronisation"
+    },
+    {
+        "question": "Wahr/Falsch: Der Befehl `tree /f` zeigt nur die Verzeichnisstruktur an, aber keine der darin enthaltenen Dateien. 🌳",
+        "options": [
+          "Wahr",
+          "Falsch"
+        ],
+        "correct": 1,
+        "explain": "**Begründung:** Falsch. Der `tree`-Befehl allein zeigt nur die Ordnerstruktur. Der Schalter `/f` (Files) erweitert die Anzeige und listet zusätzlich die Dateien in jedem Verzeichnis auf. Dies ist sehr nützlich, um sich einen schnellen Überblick über den gesamten Inhalt einer Struktur zu verschaffen. 📄",
+        "difficulty": "einsteiger",
+        "category": "Grundlagen der Kommandozeile"
+    },
+    {
+        "question": "Szenario: Ein Skript soll ein Verzeichnis `logs` auf einem Server bereinigen. Der Befehl `del D:\\logs` wird verwendet, schlägt aber fehl. Warum? ❌",
+        "options": [
+          "Der `del`-Befehl benötigt den `/s`-Schalter.",
+          "Der `del`-Befehl kann keine Verzeichnisse löschen, nur Dateien.",
+          "Der Pfad muss in Anführungszeichen gesetzt werden.",
+          "Der Befehl `del` ist veraltet; `erase` muss verwendet werden."
+        ],
+        "correct": 2,
+        "explain": "**Begründung:** Der `del`-Befehl (oder `erase`) ist ausschließlich zum Löschen von **Dateien** vorgesehen. Um ein Verzeichnis zu löschen, muss der `rd`-Befehl (`rmdir`) verwendet werden. Wenn das Verzeichnis `logs` Dateien enthält, wäre der korrekte Befehl `rd D:\\logs /s /q`. ☝️",
+        "difficulty": "fortgeschritten",
+        "category": "Dateisystem-Management"
+    },
+    {
+        "question": "Vergleichende Analyse: `xcopy /d:27-08-2025` vs. `robocopy /maxage:20250827`. Was ist ein wesentlicher Unterschied in der Logik dieser beiden datumsbasierten Filter? 🗓️",
+        "options": [
+          "`xcopy` kopiert Dateien, die an oder nach dem Datum geändert wurden; `robocopy` kopiert Dateien, die älter sind als das Datum.",
+          "`robocopy` ist genauer, da es die Uhrzeit berücksichtigt.",
+          "`xcopy` kann nur amerikanische Datumsformate verarbeiten.",
+          "Es gibt keinen logischen Unterschied, nur die Syntax ist anders."
+        ],
+        "correct": 0,
+        "explain": "**Begründung:** Die Logik ist genau entgegengesetzt und entscheidend für den Anwendungsfall. `xcopy /d:[datum]` ist für Backups gedacht und kopiert alles, was **neu oder neuer** ist. `robocopy /maxage:[datum/tage]` ist für Aufräum- oder Archivierungsaufgaben gedacht und wählt Dateien aus, die **älter** sind als das angegebene Datum (oder die Anzahl der Tage), um sie z.B. zu verschieben oder zu löschen. 🧹",
+        "difficulty": "experte",
+        "category": "Backup-Strategien"
+    },
+    {
+        "question": "Szenario: Ein Admin möchte eine Ordnerstruktur von einem alten auf einen neuen Server spiegeln. Auf dem alten Server wurden auch Dateien gelöscht. Diese sollen auf dem neuen Server ebenfalls verschwinden. Welcher Befehl ist dafür ideal?  зеркало (Spiegel) 🪞",
+        "options": [
+          "xcopy \\\\alt\\share \\\\neu\\share /e /d",
+          "robocopy \\\\alt\\share \\\\neu\\share /e",
+          "robocopy \\\\alt\\share \\\\neu\\share /mir",
+          "xcopy \\\\alt\\share \\\\neu\\share /s /y"
+        ],
+        "correct": 2,
+        "explain": "**Begründung:** Der Schalter `/mir` (Mirror) von `robocopy` ist genau für diesen Zweck konzipiert. Er ist eine Kombination aus `/e` (alle Unterverzeichnisse kopieren) und `/purge` (Dateien/Verzeichnisse im Ziel löschen, die in der Quelle nicht mehr existieren). Dadurch wird das Ziel zu einem exakten Abbild der Quelle. `xcopy` hat keine vergleichbare Funktionalität zum Löschen von überzähligen Dateien im Ziel. ⚠️ **Achtung:** `/mir` kann bei falscher Anwendung Daten löschen! ⚠️",
+        "difficulty": "fortgeschritten",
+        "category": "Synchronisation"
+    },
+    {
+        "question": "Berechnungsaufgabe: Der Befehl `xcopy C:\\A D:\\B\\ /e` wird ausgeführt. Das Verzeichnis `C:\\A` ist komplett leer. Wie viele Verzeichnisse existieren nach dem Befehl auf Laufwerk D, die durch diesen Befehl erstellt wurden (vorausgesetzt D:\\ war leer)? 📁",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "Es tritt ein Fehler auf."
+        ],
+        "correct": 1,
+        "explain": "**Begründung:** Der Befehl weist `xcopy` an, den Inhalt von `C:\\A` in ein Verzeichnis namens `B` auf Laufwerk `D:` zu kopieren. Da `xcopy` das Zielverzeichnis erstellt, wenn es nicht existiert, wird genau **ein** Verzeichnis (`D:\\B`) angelegt. Da die Quelle `C:\\A` keine Unterverzeichnisse hat, werden auch keine weiteren Verzeichnisse innerhalb von `D:\\B` erstellt. 💡",
+        "difficulty": "fortgeschritten",
+        "category": "Befehlssyntax"
+    },{
+            "question": "🗓️ Ein Administrator führt sonntags ein Voll-Backup durch. Am Mittwoch und am Freitag läuft jeweils ein differenzielles Backup. Was ist der genaue Inhalt des Backups, das am Freitag erstellt wird?",
+            "options": [
+                "Nur die Änderungen, die zwischen Mittwoch und Freitag stattgefunden haben.",
+                "Alle Änderungen, die seit dem Voll-Backup am Sonntag stattgefunden haben.",
+                "Alle Daten des Systems, genau wie beim Voll-Backup.",
+                "Die Inhalte des Mittwoch-Backups plus die Änderungen bis Freitag."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Ein **differenzielles Backup** sichert immer alle Änderungen seit dem *letzten Voll-Backup*. 📂 Das bedeutet, das Backup vom Freitag enthält alle Änderungen von Sonntag bis Freitag. Das Backup vom Mittwoch ist darin vollständig enthalten. Dies beschleunigt die Wiederherstellung, da nur das Voll-Backup und das letzte differenzielle Backup benötigt werden, benötigt aber mit der Zeit mehr Speicherplatz als inkrementelle Backups. 💡",
+            "difficulty": "einsteiger",
+            "category": "Backup-Strategien"
+        },
+        {
+            "question": "🖥️ Sie müssen mit `xcopy` ein Verzeichnis `C:\\Daten` nach `E:\\Backup\\Daten-Backup` kopieren. Welcher Befehl stellt sicher, dass das Ziel als Verzeichnis behandelt wird und auch leere Unterverzeichnisse kopiert werden?",
+            "options": [
+                "xcopy C:\\Daten E:\\Backup\\Daten-Backup /e",
+                "xcopy C:\\Daten E:\\Backup\\Daten-Backup\\ /e",
+                "xcopy C:\\Daten E:\\Backup\\Daten-Backup /s",
+                "robocopy C:\\Daten E:\\Backup\\Daten-Backup /e"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Backslash `\\` am Ende des Zielpfades (`E:\\Backup\\Daten-Backup\\`) ist ein entscheidender Hinweis für `xcopy`, dass das Ziel ein Verzeichnis ist. Ohne diesen Backslash würde `xcopy` nachfragen, ob es sich um eine Datei oder ein Verzeichnis handelt. 📁 Der Schalter `/e` sorgt dafür, dass alle Unterverzeichnisse, auch leere, mitkopiert werden. `/s` würde leere Verzeichnisse ignorieren. Option D verwendet `robocopy`, was die Frage nach `xcopy` nicht beantwortet.",
+            "difficulty": "einsteiger",
+            "category": "xcopy-Befehl"
+        },
+        {
+            "question": "🔄 Was ist der primäre Vorteil einer **inkrementellen** Backup-Strategie gegenüber einer **differenziellen**?",
+            "options": [
+                "Die Wiederherstellung von Daten ist deutlich schneller.",
+                "Es wird insgesamt weniger Speicherplatz für die einzelnen Backups benötigt.",
+                "Es ist keine Voll-Backup-Basis notwendig.",
+                "Die einzelnen Backup-Vorgänge dauern länger, sind aber sicherer."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Hauptvorteil inkrementeller Backups ist der geringere Speicherbedarf. 💾 Jedes inkrementelle Backup sichert nur die Änderungen seit dem *letzten Backup* (egal ob voll oder inkrementell). Ein differenzielles Backup sichert immer alle Änderungen seit dem *letzten Voll-Backup*, wodurch die Backup-Dateien mit der Zeit anwachsen. Der Nachteil der inkrementellen Methode ist die langsamere und komplexere Wiederherstellung, da das Voll-Backup und *alle* nachfolgenden inkrementellen Backups in der richtigen Reihenfolge benötigt werden. ⛓️",
+            "difficulty": "fortgeschritten",
+            "category": "Backup-Strategien"
+        },
+        {
+            "question": "⚙️ Ein Admin möchte alle Dateien sichern, die in den letzten 2 Tagen geändert wurden. Welcher `robocopy`-Befehl ist dafür am besten geeignet und am flexibelsten für automatisierte Skripte?",
+            "options": [
+                "robocopy Quelle Ziel /d:08-01-2021",
+                "robocopy Quelle Ziel /maxage:2",
+                "xcopy Quelle Ziel /d:08-01-2021",
+                "robocopy Quelle Ziel /minage:2"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Befehl `robocopy` mit dem Parameter `/maxage:2` ist ideal für diese Aufgabe. `maxage` steht für 'maximales Alter' und kopiert alle Dateien, deren letztes Änderungsdatum nicht älter als 2 Tage ist. 🗓️ Dies ist flexibler als ein festes Datum (`/d:` bei `xcopy`), da das Skript jeden Tag ohne Anpassung des Datums laufen kann. `/minage:2` würde das Gegenteil tun und nur Dateien kopieren, die *älter* als 2 Tage sind.",
+            "difficulty": "fortgeschritten",
+            "category": "robocopy-Befehl"
+        },
+        {
+            "question": "📉 Ein Server hat 100 GB Daten. Am Sonntag wird ein Voll-Backup erstellt. Von Montag bis Freitag ändern sich täglich 5 GB an Daten. Wie viel Speicherplatz belegt das **differenzielle** Backup, das am Freitagabend erstellt wird?",
+            "options": [
+                "5 GB",
+                "10 GB",
+                "25 GB",
+                "125 GB"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Bei einem differenziellen Backup werden alle Änderungen seit dem letzten Voll-Backup gesichert. 📈\n- Montag: 5 GB geändert\n- Dienstag: +5 GB geändert (insgesamt 10 GB seit Sonntag)\n- Mittwoch: +5 GB geändert (insgesamt 15 GB seit Sonntag)\n- Donnerstag: +5 GB geändert (insgesamt 20 GB seit Sonntag)\n- Freitag: +5 GB geändert (insgesamt **25 GB** seit Sonntag)\nDas Backup vom Freitag enthält also alle Änderungen der gesamten Woche.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "📈 Nehmen wir das gleiche Szenario: 100 GB Daten, Voll-Backup am Sonntag, 5 GB tägliche Änderungen. Wie viel Speicherplatz belegt das **inkrementelle** Backup, das am Freitagabend erstellt wird?",
+            "options": [
+                "5 GB",
+                "15 GB",
+                "25 GB",
+                "20 GB"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Ein inkrementelles Backup sichert nur die Änderungen seit dem *letzten* Backup. ➡️ Da am Donnerstag bereits ein Backup lief (das die Änderungen vom Donnerstag sicherte), sichert das Backup am Freitag nur die Änderungen, die am Freitag selbst stattgefunden haben. Das sind genau **5 GB**.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "🔍 Ein `xcopy`-Befehl enthält den Schalter `/c`. Was ist die genaue Funktion dieses Schalters während des Kopiervorgangs?",
+            "options": [
+                "Er überprüft (`check`) jede kopierte Datei auf Korrektheit.",
+                "Er komprimiert (`compress`) die Dateien während der Übertragung.",
+                "Er setzt den Kopiervorgang fort, auch wenn Fehler auftreten (`continue`).",
+                "Er erstellt (`create`) das Zielverzeichnis, falls es nicht existiert."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Schalter `/c` steht für 'continue'. Er weist `xcopy` an, den Kopiervorgang auch dann fortzusetzen, wenn einzelne Dateien nicht gelesen oder geschrieben werden können (z.B. wegen fehlender Berechtigungen oder Lesefehlern). 🛡️ Dies ist in Backup-Skripten extrem wichtig, um sicherzustellen, dass der gesamte Prozess nicht wegen einer einzelnen fehlerhaften Datei abbricht. Die Überprüfung (`/v`) und das Erstellen von Verzeichnissen sind andere Funktionen.",
+            "difficulty": "einsteiger",
+            "category": "xcopy-Befehl"
+        },
+        {
+            "question": "🧩 Ein Systemcrash ereignet sich am Samstag. Sie haben ein Voll-Backup von Sonntag und **inkrementelle** Backups von Dienstag, Mittwoch und Freitag. In welcher Reihenfolge müssen Sie die Backups zur vollständigen Wiederherstellung einspielen?",
+            "options": [
+                "Voll-Backup -> Freitag -> Mittwoch -> Dienstag",
+                "Nur Voll-Backup und das Freitags-Backup",
+                "Voll-Backup -> Dienstag -> Mittwoch -> Freitag",
+                "Freitag -> Mittwoch -> Dienstag -> Voll-Backup"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Bei einer inkrementellen Sicherung baut jedes Backup auf dem vorherigen auf. 🔢 Für eine vollständige Wiederherstellung muss die Kette lückenlos und in chronologischer Reihenfolge wiederhergestellt werden. Zuerst wird die Basis (das **Voll-Backup** vom Sonntag) eingespielt, danach jedes einzelne inkrementelle Backup in der Reihenfolge seiner Erstellung (**Dienstag, dann Mittwoch, dann Freitag**). Das Auslassen eines Backups würde zu Datenverlust führen.",
+            "difficulty": "fortgeschritten",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "⚖️ Wahr oder Falsch: Der Befehl `xcopy Quelle Ziel /a` kopiert nur Dateien mit gesetztem Archiv-Attribut und setzt dieses Attribut nach dem Kopiervorgang zurück.",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Falsch. Der Schalter `/a` kopiert zwar nur Dateien, bei denen das Archiv-Attribut gesetzt ist, aber er **verändert dieses Attribut nicht**. 🕵️‍♂️ Der Schalter, der das Attribut nach dem Kopieren zurücksetzt (löscht), ist `/m`. Dieser feine Unterschied ist entscheidend für die Implementierung von Backup-Strategien. `/m` wird typischerweise für inkrementelle Backups verwendet, um zu markieren, dass eine Datei gesichert wurde, während `/a` für differenzielle Backups nützlich sein kann, ohne den Status zu verändern.",
+            "difficulty": "experte",
+            "category": "Wahr/Falsch mit komplexer Begründung"
+        },
+        {
+            "question": "🆚 Worin liegt der entscheidende Vorteil von `robocopy` gegenüber `xcopy`, wenn es um das Kopieren in ein nicht existentes Zielverzeichnis geht?",
+            "options": [
+                "robocopy ist schneller bei der Verzeichniserstellung.",
+                "xcopy kann keine neuen Verzeichnisse erstellen.",
+                "robocopy erstellt das Zielverzeichnis automatisch, ohne Nachfrage oder spezielle Schalter.",
+                "xcopy benötigt den /i-Schalter, den robocopy nicht hat."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `robocopy` ist explizit für das Kopieren von Verzeichnisstrukturen konzipiert. Es erkennt automatisch, dass das Ziel ein Verzeichnis ist und erstellt die gesamte notwendige Pfadstruktur ohne weitere Interaktion. ✅ `xcopy` hingegen würde nachfragen, ob das Ziel eine Datei oder ein Verzeichnis ist, es sei denn, man gibt dies explizit durch einen Backslash am Ende des Pfades an oder verwendet den `/i`-Schalter. Diese Automatik macht `robocopy` für Skripte deutlich robuster.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "💡 Ein automatisiertes Skript soll täglich alle Dateien sichern, die das Archiv-Attribut gesetzt haben. Welcher Befehl ist dafür am besten geeignet, um eine **echte inkrementelle Sicherung** zu realisieren?",
+            "options": [
+                "xcopy Quelle Ziel /a /e",
+                "robocopy Quelle Ziel /a /e",
+                "xcopy Quelle Ziel /m /e",
+                "robocopy Quelle Ziel /e"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Für eine echte inkrementelle Sicherung auf Basis des Archiv-Attributs ist `xcopy /m` (oder `robocopy /m`) die korrekte Wahl. Der Schalter `/m` kopiert nur Dateien mit gesetztem Archiv-Attribut und **löscht dieses Attribut nach dem erfolgreichen Kopiervorgang**. 🚩 Dadurch wird sichergestellt, dass die Datei beim nächsten Lauf des Skripts nicht erneut kopiert wird, es sei denn, sie wurde in der Zwischenzeit wieder verändert (wodurch das Betriebssystem das Attribut neu setzt). `/a` würde die Datei bei jedem Lauf erneut kopieren.",
+            "difficulty": "experte",
+            "category": "Datensicherungspraxis"
+        },
+        {
+            "question": "🗂️ Welchen gemeinsamen Zweck haben der Schalter `/e` bei `xcopy` und `robocopy`?",
+            "options": [
+                "Fehler zu ignorieren (Error handling).",
+                "Dateien zu exkludieren (Exclude).",
+                "Leere Verzeichnisse mitzukopieren (Empty directories).",
+                "Existierende Dateien zu überschreiben (Existing files)."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** In beiden Befehlen steht `/e` für 'empty' und erweitert die Funktionalität des Kopierens von Unterverzeichnissen. Es stellt sicher, dass **alle Unterverzeichnisse, einschließlich der leeren**, in die Zieldestination übernommen werden. 🌳 Dies ist wichtig, um eine exakte Kopie einer Verzeichnisstruktur zu erhalten, da oft auch leere Ordner eine funktionale Bedeutung haben.",
+            "difficulty": "einsteiger",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "🔥 Ein Admin stellt fest, dass sein differenzielles Backup vom Mittwoch beschädigt und unbrauchbar ist. Am Freitag läuft das nächste planmäßige differenzielle Backup. Kann er am Samstag eine vollständige Wiederherstellung durchführen?",
+            "options": [
+                "Nein, weil die Kette durch das defekte Backup unterbrochen ist.",
+                "Ja, weil nur das Voll-Backup und das letzte funktionierende differenzielle Backup benötigt werden.",
+                "Ja, aber nur die Daten bis Dienstag können wiederhergestellt werden.",
+                "Nein, es muss sofort ein neues Voll-Backup erstellt werden."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Ja, das ist einer der großen Vorteile der differenziellen Strategie. Jedes differenzielle Backup enthält *alle* Änderungen seit dem letzten Voll-Backup. ✅ Das bedeutet, das funktionierende Backup vom Freitag enthält auch alle Änderungen, die im defekten Mittwoch-Backup enthalten gewesen wären. Zur Wiederherstellung benötigt man also nur das **Voll-Backup vom Sonntag** und das **funktionierende differenzielle Backup vom Freitag**. Das defekte Backup vom Mittwoch ist irrelevant.",
+            "difficulty": "experte",
+            "category": "Logische Rätsel und Problemlösung"
+        },
+        {
+            "question": "⏳ Eine Datei wurde vor 5 Tagen erstellt und zuletzt vor 2 Tagen geändert. Ein `robocopy`-Skript mit dem Parameter `/maxage:3` wird heute ausgeführt. Wird die Datei kopiert?",
+            "options": [
+                "Nein, weil die Datei älter als 3 Tage ist.",
+                "Ja, weil das letzte Änderungsdatum innerhalb des 3-Tage-Fensters liegt.",
+                "Nein, weil /maxage sich auf das Erstellungsdatum bezieht.",
+                "Ja, aber nur, wenn auch der /a Schalter gesetzt ist."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Parameter `/maxage` von `robocopy` bezieht sich auf das Datum der **letzten Änderung**, nicht auf das Erstellungsdatum. ✍️ Da die Datei vor 2 Tagen zuletzt geändert wurde, ist sie 'jünger' als die im Befehl angegebene Grenze von 3 Tagen. Daher wird die Datei kopiert. Das ursprüngliche Erstellungsdatum ist für diesen Parameter irrelevant.",
+            "difficulty": "experte",
+            "category": "robocopy-Befehl"
+        },
+        {
+            "question": "⚠️ Laut dem Text bietet `robocopy` einen entscheidenden Vorteil für die Nachverfolgung von Backup-Vorgängen, insbesondere wenn diese unbeaufsichtigt (z.B. am Wochenende) laufen. Welcher Vorteil ist das?",
+            "options": [
+                "Es sendet automatisch eine E-Mail-Benachrichtigung.",
+                "Es ist von Natur aus fehlerfrei.",
+                "Es kann eine detaillierte Log-Datei erstellen.",
+                "Es überprüft die Datenintegrität mit Checksummen."
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Der Text hebt hervor, dass `robocopy` die Möglichkeit bietet, eine **Log-Datei** zu erstellen. 📝 Mit Schaltern wie `/log:datei.log` kann der gesamte Kopiervorgang, inklusive aller Erfolgsmeldungen, Fehler und einer Zusammenfassung, in eine Textdatei geschrieben werden. Dies ermöglicht es Administratoren, am Montagmorgen zu überprüfen, ob der Wochenend-Backup-Job erfolgreich war, ohne die gesamte Konsolenausgabe durchsuchen zu müssen.",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "🤔 Warum ist der Befehl `xcopy Quelle Ziel /d:mm-tt-jjjj /e /c /v` eine Implementierung einer **differenziellen** und nicht einer inkrementellen Sicherung?",
+            "options": [
+                "Weil der Schalter /v eine vollständige Überprüfung durchführt.",
+                "Weil das Datum fest ist und sich nicht auf das letzte Backup bezieht.",
+                "Weil der Schalter /c Fehler ignoriert, was typisch für differenzielle Backups ist.",
+                "Weil der Schalter /a fehlt."
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der entscheidende Punkt ist der Schalter `/d:mm-tt-jjjj`. Er weist `xcopy` an, alle Dateien zu kopieren, die an oder nach diesem **festen Datum** geändert wurden. 📌 Wenn dieses Datum das Datum des letzten Voll-Backups ist, werden bei jedem Lauf alle seitdem geänderten Dateien kopiert – die genaue Definition eines differenziellen Backups. Für ein inkrementelles Backup müsste der Zustand (z.B. über das Archiv-Attribut mit `/m`) nach jedem Lauf verändert werden, um nur die Änderungen seit dem *letzten* Lauf zu sichern.",
+            "difficulty": "experte",
+            "category": "Datensicherungspraxis"
+        },
+        {
+            "question": "💾 Ein Unternehmen sichert 1 TB an Daten. Ein Voll-Backup wird sonntags erstellt. Von Montag bis Freitag fallen täglich 20 GB an neuen/geänderten Daten an. Wie viel Speicherplatz wird **insgesamt** für die Sicherungen von Montag bis Freitag bei einer **inkrementellen** Strategie benötigt?",
+            "options": [
+                "20 GB",
+                "100 GB",
+                "300 GB",
+                "1.1 TB"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Bei einer inkrementellen Strategie wird jeden Tag nur der Zuwachs seit dem Vortag gesichert. ➕\n- Montag: 20 GB\n- Dienstag: 20 GB\n- Mittwoch: 20 GB\n- Donnerstag: 20 GB\n- Freitag: 20 GB\nDie Gesamtmenge des benötigten Speichers für die Wochentags-Backups ist die Summe der einzelnen Teile: 5 Tage * 20 GB/Tag = **100 GB**.",
+            "difficulty": "fortgeschritten",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "💽 Im selben Szenario (1 TB Daten, 20 GB tägliche Änderung), wie viel Speicherplatz wird **insgesamt** für die Sicherungen von Montag bis Freitag bei einer **differenziellen** Strategie benötigt?",
+            "options": [
+                "100 GB",
+                "200 GB",
+                "300 GB",
+                "400 GB"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Bei einer differenziellen Strategie wächst die Größe des täglichen Backups an. 📈\n- Montag: 20 GB\n- Dienstag: 40 GB (Änderungen von Mo+Di)\n- Mittwoch: 60 GB (Mo+Di+Mi)\n- Donnerstag: 80 GB (Mo-Do)\n- Freitag: 100 GB (Mo-Fr)\nDie Gesamtmenge des belegten Speichers ist die Summe dieser einzelnen Backups: 20 + 40 + 60 + 80 + 100 = **300 GB**.",
+            "difficulty": "experte",
+            "category": "Berechnungsaufgaben"
+        },
+        {
+            "question": "🚀 Welche Backup-Methode bietet typischerweise die **schnellsten einzelnen Backup-Vorgänge** während der Woche, aber die **langsamste und komplexeste Wiederherstellung**?",
+            "options": [
+                "Voll-Backup",
+                "Differenzielles Backup",
+                "Inkrementelles Backup",
+                "Spiegelung (Mirroring)"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** Das **inkrementelle Backup** ist während der Woche am schnellsten, da täglich nur die geringste Datenmenge (die Änderungen seit dem Vortag) gesichert werden muss. 💨 Die Wiederherstellung ist jedoch am langsamsten und fehleranfälligsten, da zuerst das Voll-Backup und dann jedes einzelne inkrementelle Backup in der korrekten Reihenfolge eingespielt werden muss. Ein Fehler in dieser Kette kompromittiert die gesamte Wiederherstellung. 🐢",
+            "difficulty": "fortgeschritten",
+            "category": "Vergleichende Analyse"
+        },
+        {
+            "question": "📜 Wahr oder Falsch: `robocopy` ist, genau wie `xcopy`, eine 32-Bit-Anwendung, die sich im Verzeichnis `C:\\Windows\\System32` befindet und direkt in der CMD aufgerufen werden kann.",
+            "options": [
+                "Wahr",
+                "Falsch"
+            ],
+            "correct": 0,
+            "explain": "**Begründung:** Wahr. Der Text erwähnt explizit, dass `robocopy.exe` sich, wie `xcopy.exe`, im System32-Verzeichnis befindet. ✅ Obwohl moderne Windows-Versionen 64-Bit sind, werden viele dieser klassischen Kommandozeilen-Tools aus Kompatibilitätsgründen weiterhin als 32-Bit- (oder inzwischen auch als 64-Bit-) Anwendungen ausgeliefert und sind über den System-PATH direkt in jeder Kommandozeile verfügbar.",
+            "difficulty": "einsteiger",
+            "category": "Wahr/Falsch mit komplexer Begründung"
         }
     ]
 }
