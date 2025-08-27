@@ -448,6 +448,266 @@
             "explain": "**Begründung:** Der Befehl `inactive` ist das direkte Gegenstück zum `active`-Befehl. Nachdem eine Partition ausgewählt wurde (z.B. `select partition 1`), markiert der Befehl `inactive` diese als nicht mehr bootfähig. Dies ist eine wichtige Funktion bei der Verwaltung von Multi-Boot-Systemen.",
             "difficulty": "fortgeschritten",
             "category": "Datenträgerverwaltung (diskpart)"
+        },
+        {
+            "question": "🆘 Ein Kollege ruft Sie an und fragt nach Hilfe zu einem CMD-Befehl, den er nicht kennt. Welcher Befehl zeigt ihm alle verfügbaren Befehle und deren Beschreibungen an?",
+            "options": [
+                "help",
+                "/?",
+                "commands",
+                "list"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Befehl `/?` ist der universelle Hilfebefehl in CMD 📋. Er kann sowohl alleine verwendet werden, um eine Liste aller Befehle zu erhalten, als auch hinter einem spezifischen Befehl (z.B. `dir /?`), um detaillierte Informationen zu diesem Befehl anzuzeigen. Dies ist besonders nützlich für IT-Support-Szenarien, da man schnell die richtige Syntax und Parameter eines Befehls nachschlagen kann. Die anderen Optionen sind keine gültigen CMD-Befehle in diesem Kontext.",
+            "difficulty": "einsteiger",
+            "category": "Grundlagen CMD"
+        },
+        {
+            "question": "⚡ Sie müssen in einem Batch-Script drei Befehle nacheinander ausführen, aber nur wenn der vorherige erfolgreich war. Welche Syntax verwenden Sie zwischen den Befehlen?",
+            "options": [
+                "&",
+                "&&",
+                "||",
+                "|"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der Operator `&&` führt den nachfolgenden Befehl nur aus, wenn der vorherige Befehl erfolgreich war (Exit-Code 0) ✅. Dies ist kritisch für Batch-Scripts in produktiven Umgebungen, da Fehler nicht propagiert werden. Der einfache `&` würde alle Befehle unabhängig vom Erfolg ausführen, `||` führt nur bei Fehlern aus, und `|` ist für Pipes gedacht. In der Praxis verhindert `&&` Folgeschäden durch fehlerhafte Befehle.",
+            "difficulty": "fortgeschritten",
+            "category": "Batch-Scripting"
+        },
+        {
+            "question": "🎨 Ein Benutzer mit Sehschwäche benötigt bessere Kontraste in der Eingabeaufforderung. Mit welchem Befehl können Sie die Farben des Textes und Hintergrunds anpassen?",
+            "options": [
+                "theme",
+                "color",
+                "display",
+                "contrast"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `color` Befehl ermöglicht es, sowohl Text- als auch Hintergrundfarben zu ändern 🌈. Die Syntax ist `color [Hintergrund][Text]` mit hexadezimalen Werten (0-F). Beispiel: `color 0A` setzt schwarzen Hintergrund mit grünem Text. Dies ist besonders wichtig für Barrierefreiheit und kann die Produktivität bei langen Terminal-Sessions erheblich steigern. Moderne IT-Umgebungen sollten Accessibility-Anforderungen berücksichtigen.",
+            "difficulty": "einsteiger",
+            "category": "Benutzerfreundlichkeit"
+        },
+        {
+            "question": "📋 Sie erstellen ein Monitoring-Script, das Systemdaten in eine Datei speichern soll, aber auch gleichzeitig in die Zwischenablage kopieren muss. Welcher Befehl hilft dabei?",
+            "options": [
+                "copy",
+                "clip",
+                "clipboard",
+                "paste"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** Der `clip` Befehl kopiert die Ausgabe eines beliebigen Befehls direkt in die Windows-Zwischenablage 📎. Beispiel: `systeminfo | clip` kopiert alle Systeminformationen in die Zwischenablage. Dies ist extrem nützlich für IT-Dokumentation, Support-Tickets oder beim Teilen von Systeminformationen. In Kombination mit Pipes (`|`) können komplexe Datenverarbeitungsketten erstellt werden, die sowohl in Dateien als auch in die Zwischenablage ausgeben.",
+            "difficulty": "fortgeschritten",
+            "category": "Datenverarbeitung"
+        },
+        {
+            "question": "📜 Bei der Fehleranalyse müssen Sie nachvollziehen, welche Befehle ein Kollege in der aktuellen CMD-Session verwendet hat. Welcher Befehl zeigt den Verlauf an?",
+            "options": [
+                "history",
+                "doskey /history", 
+                "cmdhistory",
+                "log"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `doskey /history` zeigt alle Befehle der aktuellen Session an 📚. Doskey ist ein mächtiges Tool für Befehlsverwaltung, das auch Makros und Aliase unterstützt. Dies ist essentiell für Debugging, Compliance-Audits und Nachverfolgung von Systemänderungen. In kritischen Umgebungen kann der Befehlsverlauf bei der Root-Cause-Analyse von Problemen entscheidend sein. Professionelle Administratoren nutzen dies zur Dokumentation ihrer Arbeitsschritte.",
+            "difficulty": "fortgeschritten",
+            "category": "System-Administration"
+        },
+        {
+            "question": "🔍 Ihr Server läuft langsam und Sie vermuten einen problematischen Prozess. Mit welchem Befehl erhalten Sie eine Übersicht aller laufenden Prozesse inklusive ihrer IDs?",
+            "options": [
+                "ps",
+                "processes",
+                "tasklist",
+                "jobs"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `tasklist` zeigt alle laufenden Anwendungen, Dienste und deren Prozess-IDs (PIDs) an 🖥️. Dies ist das Windows-Äquivalent zu `ps` unter Unix/Linux. Der Befehl unterstützt Filter wie `/fo table` für bessere Formatierung oder `/svc` für Service-Details. In produktiven Umgebungen ist dies essentiell für Performance-Monitoring, Ressourcen-Management und Identifikation problematischer Prozesse vor deren Beendigung.",
+            "difficulty": "einsteiger",
+            "category": "Prozess-Management"
+        },
+        {
+            "question": "⚔️ Sie haben einen hängenden Prozess mit der PID 1234 identifiziert, der 80% CPU verbraucht. Welcher Befehl beendet diesen Prozess sofort?",
+            "options": [
+                "kill 1234",
+                "end 1234",
+                "taskkill /PID 1234",
+                "stop 1234"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `taskkill /PID 1234` beendet den Prozess mit der angegebenen Prozess-ID 💀. Der Parameter `/F` kann hinzugefügt werden für forciertes Beenden. Dies ist kritisch bei hängenden Prozessen, die Systemressourcen blockieren. In produktiven Umgebungen sollte man vorsichtig sein, da das unsaubere Beenden von Prozessen Datenverlust verursachen kann. Alternative Syntax: `/IM prozessname.exe` für Beendigung nach Namen.",
+            "difficulty": "fortgeschritten",
+            "category": "Prozess-Management"
+        },
+        {
+            "question": "🗂️ Ein Benutzer kann keine .PDF-Dateien öffnen, da die Dateizuordnung beschädigt ist. Mit welchem Befehl können Sie die aktuellen Dateizuordnungen anzeigen und ändern?",
+            "options": [
+                "filetype",
+                "assoc",
+                "extension",
+                "ftype"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `assoc` zeigt und ändert die Zuordnung zwischen Dateierweiterungen und Dateitypen 📄. Beispiel: `assoc .pdf` zeigt die aktuelle Zuordnung für PDF-Dateien. Mit `assoc .pdf=AcroExch.Document` wird die Zuordnung geändert. Dies ist essentiell für IT-Support bei Problemen mit Standard-Anwendungen. In Unternehmensumgebungen ist die korrekte Dateizuordnung kritisch für Produktivität und Workflow-Integration.",
+            "difficulty": "fortgeschritten",
+            "category": "Dateisystem-Management"
+        },
+        {
+            "question": "🔧 Bei Hardware-Problemen müssen Sie überprüfen, ob alle Treiber korrekt installiert sind. Welcher Befehl listet alle installierten Treiber auf?",
+            "options": [
+                "drivers",
+                "driverquery",
+                "hwinfo",
+                "devinfo"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `driverquery` zeigt eine detaillierte Liste aller installierten Treiber mit Informationen wie Name, Typ, Datum und Version an 🚗. Parameter wie `/fo csv` ermöglichen Export in verschiedene Formate für weitere Analyse. Dies ist unverzichtbar bei Hardware-Troubleshooting, Compliance-Audits und Systemdokumentation. In kritischen Umgebungen hilft es bei der Identifikation veralteter oder problematischer Treiber vor System-Updates.",
+            "difficulty": "experte",
+            "category": "Hardware-Diagnose"
+        },
+        {
+            "question": "🌐 Ein Netzwerkadministrator benötigt die IP-Konfiguration aller Netzwerkadapter für die Dokumentation. Welcher Befehl liefert diese Informationen am vollständigsten?",
+            "options": [
+                "netconfig",
+                "ipinfo", 
+                "ipconfig",
+                "netinfo"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `ipconfig` zeigt detaillierte IP-Informationen für alle TCP/IP-Adapter an 🌍. Parameter: `/all` für vollständige Details, `/release` und `/renew` für DHCP-Verwaltung, `/flushdns` für DNS-Cache-Bereinigung. Dies ist das zentrale Tool für Netzwerk-Troubleshooting und -Dokumentation. In Unternehmensumgebungen essentiell für IP-Management, DHCP-Problembehebung und Netzwerk-Compliance.",
+            "difficulty": "einsteiger",
+            "category": "Netzwerk-Administration"
+        },
+        {
+            "question": "📡 Sie vermuten Verbindungsprobleme zu einem Server (192.168.1.100). Mit welchem Befehl testen Sie die Erreichbarkeit auf IP-Ebene?",
+            "options": [
+                "test 192.168.1.100",
+                "connect 192.168.1.100",
+                "ping 192.168.1.100",
+                "reach 192.168.1.100"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `ping 192.168.1.100` sendet ICMP Echo-Request-Pakete zum Testen der IP-Konnektivität 📶. Zeigt Antwortzeiten, Paketverluste und TTL-Werte. Parameter wie `-t` für kontinuierliches Pingen oder `-n 10` für bestimmte Anzahl. Dies ist der erste Schritt bei Netzwerk-Troubleshooting. Hilft bei der Unterscheidung zwischen Routing-, DNS- oder Anwendungsproblemen. Unverzichtbar für Netzwerk-Monitoring und Performance-Analyse.",
+            "difficulty": "einsteiger",
+            "category": "Netzwerk-Diagnose"
+        },
+        {
+            "question": "🔌 Bei verdächtiger Netzwerkaktivität müssen Sie alle aktiven Netzwerkverbindungen und lauschende Ports analysieren. Welcher Befehl liefert diese Informationen?",
+            "options": [
+                "connections",
+                "ports",
+                "netstat",
+                "sockstat"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `netstat` zeigt alle offenen Netzwerkverbindungen, lauschende Ports und Routing-Tabellen an 🔍. Parameter: `-a` für alle Verbindungen, `-n` für numerische Adressen, `-b` für Anwendungsnamen. Essentiell für Security-Audits, Malware-Erkennung und Performance-Analyse. In Sicherheitsumgebungen hilft es bei der Identifikation unautorisierten Netzwerktraffics und potentieller Backdoors.",
+            "difficulty": "experte",
+            "category": "Netzwerk-Security"
+        },
+        {
+            "question": "💻 Für ein Hardware-Audit benötigen Sie vollständige Systeminformationen inklusive Prozessor, RAM und Mainboard-Details. Welcher Befehl liefert diese umfassenden Daten?",
+            "options": [
+                "hwinfo",
+                "sysinfo",
+                "systeminfo",
+                "pcinfo"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `systeminfo` liefert umfassende Windows-Konfigurationsinformationen wie Hardware-Details, OS-Version, Patches, Netzwerk-Karten und Boot-Zeit 🖥️. Unterstützt auch Remote-Computer mit `/s computername`. Ideal für Asset-Management, Compliance-Berichte und Systemdokumentation. In Enterprise-Umgebungen unverzichtbar für Inventarisierung, Update-Planning und Hardware-Lifecycle-Management.",
+            "difficulty": "einsteiger",
+            "category": "System-Information"
+        },
+        {
+            "question": "🔋 Ein Laptop hat Akku-Probleme und Sie müssen die Energieeinstellungen analysieren und optimieren. Welcher CMD-Befehl ermöglicht erweiterte Energieverwaltung?",
+            "options": [
+                "battery",
+                "power",
+                "powercfg",
+                "energy"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `powercfg` ist das mächtigste Tool für Windows-Energieverwaltung ⚡. Parameter: `/batteryreport` für Akkuanalyse, `/energy` für Energieeffizienz-Bericht, `/hibernate on/off` für Ruhezustand. Kann Energieschemas erstellen und modifizieren. Kritisch für Laptop-Optimierung, Server-Effizienz und Green-IT-Initiativen. Hilft bei der Identifikation energiefressender Hardware und Software.",
+            "difficulty": "experte",
+            "category": "Energieverwaltung"
+        },
+        {
+            "question": "🛡️ Nach einem Systemabsturz vermuten Sie beschädigte Systemdateien. Welcher Befehl überprüft und repariert kritische Windows-Systemdateien?",
+            "options": [
+                "fixsystem",
+                "sfc",
+                "repair",
+                "checkfiles"
+            ],
+            "correct": 1,
+            "explain": "**Begründung:** `sfc` (System File Checker) überprüft die Integrität aller geschützten Systemdateien und repariert beschädigte Dateien 🔧. Syntax: `sfc /scannow` für vollständige Überprüfung. Verwendet Windows Resource Protection (WRP) und das Component Store. Essentiell nach Malware-Befall, Abstürzen oder fehlgeschlagenen Updates. Sollte im abgesicherten Modus oder mit Administrator-Rechten ausgeführt werden.",
+            "difficulty": "fortgeschritten",
+            "category": "System-Reparatur"
+        },
+        {
+            "question": "💽 Ein Server zeigt Speicherfehler und Sie müssen die Festplatte auf Bad Sectors und Dateisystemfehler überprüfen. Welcher Befehl führt diese Diagnose durch?",
+            "options": [
+                "diskcheck",
+                "scandisk",
+                "chkdsk",
+                "fsck"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `chkdsk` (Check Disk) erkennt und repariert Festplattenfehler, Bad Sectors und Dateisystem-Inkonsistenzen 💿. Parameter: `/f` für automatische Reparatur, `/r` für Bad-Sector-Recovery. Muss oft nach Neustart ausgeführt werden für Systemlaufwerke. Kritisch für Datenintegrität, Performance-Optimierung und Frühwarnung vor Festplattenausfall. In produktiven Umgebungen sollte es regelmäßig geplant werden.",
+            "difficulty": "fortgeschritten",
+            "category": "Speicher-Diagnose"
+        },
+        {
+            "question": "🗃️ Sie müssen Registry-Einstellungen für eine Anwendung manuell korrigieren, da der normale Installer versagt hat. Welcher Befehl öffnet den Registry-Editor?",
+            "options": [
+                "registry",
+                "regedt32",
+                "regedit",
+                "regmod"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `regedit` öffnet den Windows Registry-Editor für manuelle Bearbeitung der Systemregistrierung 📊. Extrem mächtig aber gefährlich - falsche Änderungen können Windows unbrauchbar machen. Sollte nur von erfahrenen Administratoren verwendet werden. Vor Änderungen immer Backup erstellen. Alternative: `reg` Befehl für Kommandozeilen-Registry-Operationen. In Unternehmensumgebungen oft durch Group Policies ersetzt.",
+            "difficulty": "experte",
+            "category": "Registry-Management"
+        },
+        {
+            "question": "⏰ Sie müssen ein automatisches Backup-Script erstellen, das jeden Tag um 2:00 Uhr läuft. Welcher Befehl ermöglicht die Verwaltung geplanter Aufgaben?",
+            "options": [
+                "schedule",
+                "cron",
+                "schtasks",
+                "taskman"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `schtasks` erstellt, löscht und verwaltet geplante Aufgaben in Windows ⏰. Beispiel: `schtasks /create /tn \"Backup\" /tr \"backup.bat\" /sc daily /st 02:00`. Ersetzt das veraltete `at` Kommando. Parameter für Trigger, Benutzerkontext und Bedingungen. Essentiell für Automatisierung, Wartungsaufgaben und Monitoring. In Serverumgebungen kritisch für regelmäßige Backups, Updates und Systemwartung.",
+            "difficulty": "experte",
+            "category": "Task-Automation"
+        },
+        {
+            "question": "🗑️ Der Computer läuft langsam und Sie vermuten, dass temporäre Dateien die Ursache sind. Welcher Befehl löscht alle temporären Dateien des aktuellen Benutzers?",
+            "options": [
+                "cleantmp",
+                "deltmp", 
+                "del /q /f /s %temp%\\*",
+                "remove temp"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `del /q /f /s %temp%\\*` löscht alle Dateien im temporären Verzeichnis des Benutzers 🧹. Parameter: `/q` für quiet (keine Bestätigung), `/f` für forcierte Löschung schreibgeschützter Dateien, `/s` für Unterverzeichnisse. %temp% ist eine Umgebungsvariable für das Temp-Verzeichnis. Wichtig für System-Optimierung, Speicherplatz-Freigabe und Privacy. Sollte regelmäßig in Wartungsroutinen eingesetzt werden.",
+            "difficulty": "fortgeschritten",
+            "category": "System-Wartung"
+        },
+        {
+            "question": "🚪 Nach Abschluss aller Wartungsarbeiten möchten Sie die CMD-Session sauber beenden und zur normalen Desktop-Arbeit zurückkehren. Welcher Befehl schließt die Eingabeaufforderung?",
+            "options": [
+                "quit",
+                "close",
+                "exit",
+                "end"
+            ],
+            "correct": 2,
+            "explain": "**Begründung:** `exit` beendet die aktuelle CMD-Session ordnungsgemäß und schließt das Eingabeaufforderungs-Fenster 🚪. In Batch-Scripts kann ein Exit-Code übergeben werden (z.B. `exit /b 0` für erfolgreiche Beendigung). Dies ist wichtig für saubere Script-Beendigung und Ressourcen-Freigabe. In automatisierten Umgebungen signalisiert der Exit-Code anderen Prozessen den Ausführungsstatus. Professionelle Scripts sollten immer mit entsprechenden Exit-Codes enden.",
+            "difficulty": "einsteiger",
+            "category": "Session-Management"
         }
     ]
 }
