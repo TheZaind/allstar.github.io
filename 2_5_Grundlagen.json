@@ -1218,6 +1218,909 @@
             "explain": "**Begründung:** Wahr. Der Text erwähnt explizit, dass `robocopy.exe` sich, wie `xcopy.exe`, im System32-Verzeichnis befindet. ✅ Obwohl moderne Windows-Versionen 64-Bit sind, werden viele dieser klassischen Kommandozeilen-Tools aus Kompatibilitätsgründen weiterhin als 32-Bit- (oder inzwischen auch als 64-Bit-) Anwendungen ausgeliefert und sind über den System-PATH direkt in jeder Kommandozeile verfügbar.",
             "difficulty": "einsteiger",
             "category": "Wahr/Falsch mit komplexer Begründung"
-        }
-    ]
+        },{
+            "question": "💻 Sie erhalten die Fehlermeldung 'Der Befehl \"dri\" ist entweder falsch geschrieben oder konnte nicht gefunden werden.' Was ist die wahrscheinlichste Ursache?",
+            "options": [
+                "Das System hat einen kritischen Fehler",
+                "Der Befehl wurde falsch geschrieben (sollte 'dir' heißen)",
+                "Die Festplatte ist defekt",
+                "Der Benutzer hat keine Berechtigung"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** Dies ist ein klassischer Syntax-Error - der Befehl 'dri' existiert nicht, gemeint war 'dir'. 🔍 Die Fehlermeldung deutet eindeutig auf einen Tippfehler hin. Windows CMD ist case-insensitive, aber der Befehlsname muss korrekt geschrieben werden. 📝 Andere Optionen würden andere Fehlermeldungen verursachen.",
+            "difficulty": "einsteiger",
+            "category": "Kommandozeileninterpreter"
+        },
+        {
+            "question": "🆘 Mit welchem Befehl können Sie sich Hilfe zum 'copy' Befehl anzeigen lassen?",
+            "options": [
+                "copy /?",
+                "help copy",
+                "copy -help",
+                "Sowohl A als auch B sind korrekt"
+            ],
+            "correct": [3],
+            "explain": "**Begründung:** Beide Varianten funktionieren! 💡 'copy /?' zeigt die Hilfe direkt an, 'help copy' macht dasselbe. Die Syntax 'copy -help' ist Unix-Style und funktioniert in Windows CMD nicht. 🚫 Windows verwendet den Forward-Slash (/) für Parameter, nicht den Bindestrich (-).",
+            "difficulty": "einsteiger",
+            "category": "Hilfe-System"
+        },
+        {
+            "question": "⚙️ Welche Zeichen haben in der Windows CMD eine besondere Bedeutung und müssen daher vorsichtig verwendet werden?",
+            "options": [
+                "> < | * ?",
+                "/ \\ : ; ,",
+                "> \\ * ? | und Leerzeichen",
+                "Nur > und <"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** Diese Zeichen sind Wildcards und Operatoren: 🔸 '>' (Umleitung), '\\' (Pfadtrenner), '*' (Wildcard für mehrere Zeichen), '?' (Wildcard für ein Zeichen), '|' (Pipe-Operator). 🚨 Leerzeichen trennen Parameter, daher müssen Pfade mit Leerzeichen in Anführungszeichen gesetzt werden.",
+            "difficulty": "fortgeschritten",
+            "category": "Sonderzeichen"
+        },
+        {
+            "question": "📁 Was zeigt der Prompt 'C:\\Windows\\System32>' an?",
+            "options": [
+                "Sie befinden sich im System32-Ordner auf Laufwerk C:",
+                "Sie befinden sich im Windows-Ordner",
+                "Das System ist gesperrt",
+                "Ein Fehler ist aufgetreten"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** Der Prompt zeigt immer das aktuelle Verzeichnis an. 📍 'C:' = Laufwerk, '\\Windows\\System32' = Pfad zum aktuellen Ordner. Der System32-Ordner enthält wichtige Systemdateien. 🛡️ Das '>' Zeichen markiert das Ende des Prompts und zeigt, dass das System bereit für Eingaben ist.",
+            "difficulty": "einsteiger",
+            "category": "Pfadangaben"
+        },
+        {
+            "question": "🔧 Was ist die Hauptfunktion der PATH-Umgebungsvariable?",
+            "options": [
+                "Sie zeigt das aktuelle Verzeichnis an",
+                "Sie definiert, in welchen Ordnern nach ausführbaren Dateien gesucht wird",
+                "Sie speichert alle Dateinamen",
+                "Sie kontrolliert die Bildschirmauflösung"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** PATH ist der Suchpfad! 🔍 Wenn Sie einen Befehl eingeben, sucht Windows in allen PATH-Verzeichnissen nach der entsprechenden .exe/.com/.bat Datei. 📂 Ohne PATH müssten Sie immer den vollständigen Pfad zu Programmen angeben. Mit 'echo %PATH%' können Sie den aktuellen Suchpfad anzeigen.",
+            "difficulty": "fortgeschritten",
+            "category": "Suchpfad"
+        },
+        {
+            "question": "📄 Wie ist ein Windows-Dateiname korrekt aufgebaut?",
+            "options": [
+                "Name.Erweiterung (z.B. dokument.txt)",
+                "Erweiterung.Name (z.B. txt.dokument)",
+                "Nur der Name ohne Punkt",
+                "Name_Erweiterung (z.B. dokument_txt)"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** Windows-Dateinamen bestehen aus Name + Punkt + Dateierweiterung. 📝 Die Erweiterung (z.B. .txt, .exe, .doc) zeigt Windows, welches Programm die Datei öffnen soll. 🎯 Der Punkt ist das Trennzeichen - ohne ihn erkennt Windows den Dateityp nicht korrekt.",
+            "difficulty": "einsteiger",
+            "category": "Dateinamen"
+        },
+        {
+            "question": "🕒 Welcher Befehl zeigt die aktuelle Systemzeit an?",
+            "options": [
+                "clock",
+                "time",
+                "gettime",
+                "datetime"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'time' zeigt die aktuelle Zeit an und ermöglicht auch deren Änderung. 🕐 Mit 'time /t' wird nur die Zeit angezeigt ohne Änderungsmöglichkeit. 📅 Entsprechend zeigt 'date' das aktuelle Datum an. Diese Befehle gehören zu den grundlegenden CMD-Utilities.",
+            "difficulty": "einsteiger",
+            "category": "Allgemeine Befehle"
+        },
+        {
+            "question": "🧹 Was bewirkt der Befehl 'cls'?",
+            "options": [
+                "Schließt das CMD-Fenster",
+                "Löscht alle Dateien",
+                "Löscht den Bildschirminhalt der Konsole",
+                "Startet das System neu"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** 'cls' steht für 'Clear Screen' und löscht den sichtbaren Inhalt der Konsole. 🧽 Der Befehlsverlauf bleibt erhalten (mit Pfeiltasten abrufbar), nur die Anzeige wird geleert. 📺 Praktisch für einen 'sauberen' Bildschirm beim Arbeiten.",
+            "difficulty": "einsteiger",
+            "category": "Allgemeine Befehle"
+        },
+        {
+            "question": "💿 Wie wechseln Sie von Laufwerk C: zu Laufwerk D:?",
+            "options": [
+                "cd D:",
+                "D:",
+                "change D:",
+                "goto D:"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** Einfach 'D:' eingeben wechselt zum Laufwerk D. 🔄 Der 'cd' Befehl wechselt nur Verzeichnisse, nicht Laufwerke. 💾 Nach dem Laufwerkswechsel sind Sie im zuletzt verwendeten Verzeichnis dieses Laufwerks (oder im Root-Verzeichnis).",
+            "difficulty": "einsteiger",
+            "category": "Datenträger-Befehle"
+        },
+        {
+            "question": "🏷️ Mit welchem Befehl können Sie ein Laufwerk umbenennen (Label setzen)?",
+            "options": [
+                "rename",
+                "label",
+                "name",
+                "title"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'label' setzt oder ändert die Bezeichnung (Label) eines Laufwerks. 🏷️ Beispiel: 'label C: MeinSystem' benennt Laufwerk C: zu 'MeinSystem'. Mit 'vol' können Sie das aktuelle Label anzeigen. 📋 Das Label ist nur kosmetisch und beeinflusst nicht die Funktion.",
+            "difficulty": "fortgeschritten",
+            "category": "Datenträger-Befehle"
+        },
+        {
+            "question": "🔍 Was kann das Tool 'diskpart' NICHT?",
+            "options": [
+                "Partitionen erstellen und löschen",
+                "Laufwerksbuchstaben zuweisen",
+                "Dateien kopieren und verschieben",
+                "Festplatten formatieren"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** diskpart ist ein mächtiges Partitionierungs-Tool für Datenträger-Management. 💪 Es kann Partitionen verwalten, formatieren, Laufwerksbuchstaben zuweisen - aber KEINE Dateiverwaltung! 📁 Für Dateien sind Befehle wie copy, move, del zuständig. diskpart arbeitet auf Partitionsebene, nicht auf Dateiebene.",
+            "difficulty": "fortgeschritten",
+            "category": "Datenträger-Befehle"
+        },
+        {
+            "question": "📂 Welcher Befehl erstellt ein neues Verzeichnis?",
+            "options": [
+                "cd",
+                "md",
+                "rd",
+                "dir"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'md' (Make Directory) oder 'mkdir' erstellt neue Verzeichnisse. 📁 Beispiel: 'md NeuerOrdner' erstellt den Ordner 'NeuerOrdner'. 'cd' wechselt Verzeichnisse, 'rd' löscht sie, 'dir' zeigt den Inhalt an. 🏗️ Mit 'md Pfad\\Unterordner' können auch Unterordner-Strukturen erstellt werden.",
+            "difficulty": "einsteiger",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "🗂️ Was zeigt der Befehl 'tree' an?",
+            "options": [
+                "Nur Dateien im aktuellen Ordner",
+                "Die Verzeichnisstruktur als Baumdarstellung",
+                "Nur versteckte Dateien",
+                "Den Inhalt der Zwischenablage"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'tree' zeigt die komplette Verzeichnisstruktur als Baum-Diagramm an. 🌳 Mit Linien und Ästen wird die Hierarchie visualisiert. Parameter: 'tree /f' zeigt auch Dateien, 'tree /a' verwendet ASCII-Zeichen statt Grafikzeichen. 📊 Sehr nützlich für einen Überblick über Ordnerstrukturen.",
+            "difficulty": "fortgeschritten",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "🔄 Was ist der Unterschied zwischen 'xcopy' und 'robocopy'?",
+            "options": [
+                "Kein Unterschied, beide sind identisch",
+                "xcopy ist für einzelne Dateien, robocopy für Ordner",
+                "robocopy ist robuster und bietet erweiterte Funktionen wie Wiederholung bei Fehlern",
+                "xcopy funktioniert nur bei kleinen Dateien"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** robocopy (Robust File Copy) ist der Nachfolger von xcopy mit deutlich mehr Funktionen! 🚀 robocopy kann unterbrochene Kopiervorgänge fortsetzen, hat bessere Fehlerbehandlung, Logging, Multithreading und viele Filteroptionen. 💪 xcopy ist einfacher, robocopy professioneller für größere Backup-Aufgaben.",
+            "difficulty": "experte",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "📄 Wie können Sie den Inhalt einer Textdatei in der Konsole anzeigen?",
+            "options": [
+                "read datei.txt",
+                "type datei.txt",
+                "show datei.txt",
+                "cat datei.txt"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'type' zeigt den Inhalt von Textdateien direkt in der Konsole an. 📖 Beispiel: 'type readme.txt'. Bei langen Dateien können Sie 'type datei.txt | more' verwenden für seitenweise Anzeige. 📜 'cat' ist ein Unix-Befehl und funktioniert in Windows CMD standardmäßig nicht.",
+            "difficulty": "einsteiger",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "✏️ Wie erstellen Sie eine neue Textdatei mit dem Inhalt 'Hallo Welt'?",
+            "options": [
+                "copy con test.txt (dann Inhalt eingeben und Strg+Z)",
+                "create test.txt Hallo Welt",
+                "new test.txt Hallo Welt",
+                "make test.txt Hallo Welt"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** 'copy con dateiname.txt' ist der klassische CMD-Weg zum Erstellen von Textdateien! ✍️ Nach der Eingabe tippen Sie den Text, drücken Enter für eine neue Zeile und beenden mit Strg+Z (oder F6). 💾 'con' steht für Console - Sie kopieren quasi von der Konsole in die Datei.",
+            "difficulty": "fortgeschritten",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "🏷️ Was bewirkt das Dateiattribut 'h' bei einer Datei?",
+            "options": [
+                "Die Datei wird schreibgeschützt",
+                "Die Datei wird versteckt (hidden)",
+                "Die Datei wird als Systemdatei markiert",
+                "Die Datei wird automatisch gesichert"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** Das 'h'-Attribut macht Dateien 'hidden' (versteckt). 👻 Versteckte Dateien werden im Explorer und bei 'dir' standardmäßig nicht angezeigt. Mit 'dir /a:h' oder 'attrib' können Sie sie sichtbar machen. 🔍 Andere Attribute: 'r'=readonly, 's'=system, 'a'=archive.",
+            "difficulty": "fortgeschritten",
+            "category": "Dateiattribute"
+        },
+        {
+            "question": "🔒 Eine Datei hat die Attribute 'r' und 'h'. Was bedeutet das?",
+            "options": [
+                "Die Datei ist nur lesbar und versteckt",
+                "Die Datei ist beschädigt",
+                "Die Datei ist verschlüsselt",
+                "Die Datei ist eine Systemdatei"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** 'r' = read-only (schreibgeschützt), 'h' = hidden (versteckt). 🔐 Die Datei kann gelesen aber nicht verändert werden und ist standardmäßig unsichtbar. Mit 'attrib -r -h datei.txt' können beide Attribute entfernt werden. 👁️ Kombination mehrerer Attribute ist normal für Systemdateien.",
+            "difficulty": "fortgeschritten",
+            "category": "Dateiattribute"
+        },
+        {
+            "question": "📝 Welcher Editor wird standardmäßig geöffnet, wenn Sie 'notepad datei.txt' eingeben?",
+            "options": [
+                "Microsoft Word",
+                "Windows Editor (Notepad)",
+                "CMD-eigener Editor",
+                "Internet Explorer"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'notepad' startet den Windows-Editor (Notepad.exe) zum Bearbeiten von Textdateien. 📝 Wenn die Datei nicht existiert, fragt Notepad, ob sie erstellt werden soll. ✨ Notepad ist ideal für einfache Textbearbeitung, Konfigurationsdateien und Scripting. Für größere Projekte sind spezialisierte Editoren besser geeignet.",
+            "difficulty": "einsteiger",
+            "category": "Text-Editoren"
+        },
+        {
+            "question": "⚠️ Sie geben 'format C:' ein. Was passiert?",
+            "options": [
+                "Das System wird optimiert",
+                "Alle Daten auf C: werden gelöscht und das Laufwerk neu formatiert",
+                "Die Festplatte wird defragmentiert",
+                "Temporäre Dateien werden gelöscht"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'format' löscht ALLE Daten und erstellt ein neues Dateisystem! 💀 EXTREM GEFÄHRLICH für das Systemlaufwerk C:. Windows wird normalerweise eine Warnung anzeigen oder den Befehl blockieren. ⚠️ Format sollte nur für leere Datenträger oder bewusste Neuinstallationen verwendet werden. Immer Daten sichern!",
+            "difficulty": "experte",
+            "category": "Gefährliche Befehle"
+        },
+        {
+            "question": "🔧 Was macht der Befehl 'chkdsk C: /f'?",
+            "options": [
+                "Formatiert das Laufwerk C:",
+                "Prüft das Laufwerk C: auf Fehler und repariert sie automatisch",
+                "Zeigt nur Informationen über das Laufwerk an",
+                "Löscht temporäre Dateien"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'chkdsk' (Check Disk) prüft Dateisystem-Fehler. 🔍 Der Parameter '/f' bedeutet 'fix' - gefundene Fehler werden automatisch repariert. ⚡ Auf dem Systemlaufwerk läuft chkdsk meist beim nächsten Neustart. '/r' würde zusätzlich defekte Sektoren suchen und reparieren. 🛠️ Wichtiges Wartungs-Tool!",
+            "difficulty": "fortgeschritten",
+            "category": "Systempflege"
+        },
+        {
+            "question": "📊 Welcher Parameter von 'dir' zeigt auch versteckte Dateien an?",
+            "options": [
+                "/h",
+                "/hidden",
+                "/a",
+                "/all"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** 'dir /a' zeigt ALLE Dateien inklusive versteckter an. 👁️ Spezifischer: '/a:h' nur versteckte, '/a:s' nur System-Dateien, '/a:d' nur Verzeichnisse. Der '/a'-Parameter steht für 'attributes' und ist sehr mächtig für gefilterte Anzeigen. 🎯 Ohne Parameter zeigt 'dir' nur normale, sichtbare Dateien.",
+            "difficulty": "fortgeschritten",
+            "category": "Datei-Anzeige"
+        },
+        {
+            "question": "🔄 Was bewirkt 'ren alt.txt neu.txt'?",
+            "options": [
+                "Kopiert alt.txt zu neu.txt",
+                "Benennt alt.txt in neu.txt um",
+                "Löscht beide Dateien",
+                "Vergleicht beide Dateien"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'ren' (oder 'rename') benennt Dateien oder Ordner um. 🔄 Die ursprüngliche Datei 'alt.txt' wird zu 'neu.txt', der Inhalt bleibt unverändert. Keine Kopie wird erstellt! 📁 Funktioniert auch für Verzeichnisse: 'ren AlterOrdner NeuerOrdner'. Der Befehl ist sehr effizient, da nur der Dateisystem-Eintrag geändert wird.",
+            "difficulty": "einsteiger",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "💨 Was ist der Unterschied zwischen 'copy' und 'move'?",
+            "options": [
+                "Kein Unterschied",
+                "copy erstellt eine Kopie, move verschiebt die Datei (Original wird gelöscht)",
+                "move ist schneller als copy",
+                "copy funktioniert nur bei kleinen Dateien"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** Wichtiger Unterschied! 📋 'copy' erstellt eine Kopie - Original bleibt erhalten. 'move' verschiebt die Datei - Original wird gelöscht. 🚚 'move' ist effizienter beim Verschieben auf demselben Laufwerk (nur Dateisystem-Eintrag ändert sich). Zwischen Laufwerken muss auch 'move' kopieren und dann löschen.",
+            "difficulty": "fortgeschritten",
+            "category": "Datei-Operationen"
+        },
+        {
+            "question": "🗑️ Welcher Befehl löscht die Datei 'test.txt' endgültig?",
+            "options": [
+                "remove test.txt",
+                "delete test.txt",
+                "del test.txt",
+                "erase test.txt"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** 'del' (oder 'erase') löscht Dateien dauerhaft! 🗑️ Die Dateien landen NICHT im Papierkorb, sondern sind sofort weg. ⚠️ 'del *.*' löscht alle Dateien im aktuellen Ordner. Parameter '/p' fragt vor jedem Löschen nach, '/q' löscht ohne Nachfrage. Vorsicht ist geboten!",
+            "difficulty": "einsteiger",
+            "category": "Datei-Befehle"
+        },
+        {
+            "question": "🔍 Sie wollen alle .txt-Dateien im aktuellen Ordner auflisten. Welcher Befehl ist korrekt?",
+            "options": [
+                "dir *.txt",
+                "dir .txt",
+                "dir txt",
+                "list *.txt"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** 'dir *.txt' nutzt Wildcards! ⭐ Der Stern (*) steht für beliebig viele Zeichen. Zeigt alle Dateien an, die auf .txt enden. 🎯 '?' steht für genau ein Zeichen. Beispiele: 'dir a*.doc' (alle .doc-Dateien die mit 'a' beginnen), 'dir ???.exe' (alle .exe-Dateien mit 3-stelligem Namen).",
+            "difficulty": "fortgeschritten",
+            "category": "Wildcards"
+        },
+        {
+            "question": "📁 Was passiert bei 'rd /s MeinOrdner'?",
+            "options": [
+                "Der Ordner wird nur umbenannt",
+                "Der Ordner und ALLE Inhalte werden gelöscht",
+                "Nur leere Unterordner werden gelöscht",
+                "Der Ordner wird versteckt"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** 'rd' (Remove Directory) mit '/s' löscht den Ordner UND alle Inhalte rekursiv! 💥 SEHR GEFÄHRLICH - alle Dateien und Unterordner sind unwiederbringlich weg. '/q' würde zusätzlich ohne Nachfrage löschen. ⚠️ Ohne '/s' funktioniert 'rd' nur bei leeren Ordnern. Immer vorher Backup erstellen!",
+            "difficulty": "experte",
+            "category": "Verzeichnis-Befehle"
+        },
+        {
+            "question": "⚡ Was bewirkt 'cd ..' ?",
+            "options": [
+                "Wechselt zum übergeordneten Verzeichnis",
+                "Zeigt versteckte Dateien an",
+                "Löscht das aktuelle Verzeichnis",
+                "Erstellt einen neuen Ordner"
+            ],
+            "correct": [0],
+            "explain": "**Begründung:** 'cd ..' wechselt eine Ebene nach oben in der Verzeichnishierarchie! ⬆️ '..' ist eine spezielle Referenz auf das übergeordnete Verzeichnis. '.' steht für das aktuelle Verzeichnis. 🏠 'cd \\' springt direkt zum Root-Verzeichnis des Laufwerks. Sehr praktisch für Navigation!",
+            "difficulty": "einsteiger",
+            "category": "Navigation"
+        },
+        {
+            "question": "🔧 Welche Aussage über CMD-Parameter ist FALSCH?",
+            "options": [
+                "Parameter beginnen meist mit '/' (z.B. /s, /p)",
+                "Parameter können kombiniert werden (z.B. /s /q)",
+                "Die Reihenfolge der Parameter ist immer wichtig",
+                "Manche Parameter erwarten zusätzliche Werte"
+            ],
+            "correct": [2],
+            "explain": "**Begründung:** Die Reihenfolge der Parameter ist meist NICHT wichtig! ✅ 'dir /s /p' funktioniert genauso wie 'dir /p /s'. Windows CMD ist hier flexibel. 🔄 Parameter starten mit '/', können kombiniert werden und manche brauchen Werte (z.B. '/t:w' für Zeitformat). Die meisten Befehle sind tolerant bei der Parameter-Reihenfolge.",
+            "difficulty": "fortgeschritten",
+            "category": "Parameter-Syntax"
+        },
+        {
+            "question": "🎯 Sie sind in C:\\Windows und geben 'cd System32' ein. Wo befinden Sie sich danach?",
+            "options": [
+                "C:\\System32",
+                "C:\\Windows\\System32",
+                "Fehlermeldung - Ordner existiert nicht",
+                "C:\\"
+            ],
+            "correct": [1],
+            "explain": "**Begründung:** Relative Pfadangabe! 📍 'cd System32' ohne Backslash am Anfang bedeutet: wechsle in den Unterordner 'System32' des aktuellen Verzeichnisses. Da Sie in C:\\Windows sind, landen Sie in C:\\Windows\\System32. 🎯 'cd \\System32' würde dagegen zu C:\\System32 führen (absoluter Pfad).",
+            "difficulty": "fortgeschritten",
+            "category": "Pfadnavigation"
+        },
+        {
+      "question": "📟 Ein Nutzer gibt in CMD den Befehl `copi file.txt` ein und erhält eine Fehlermeldung. Was ist passiert?",
+      "options": [
+        "Der Befehl existiert nicht, weil er falsch geschrieben wurde",
+        "Die Datei file.txt existiert nicht",
+        "Der Nutzer hat keine Berechtigungen",
+        "Die Datei-Endung ist fehlerhaft"
+      ],
+      "correct": [0],
+      "explain": "**Begründung:** CMD reagiert sehr strikt auf Syntax. Der richtige Befehl lautet `copy`, nicht `copi`. 👀\n- Andere Optionen sind möglich, würden aber andere Fehlermeldungen erzeugen (z. B. 'Datei nicht gefunden').",
+      "difficulty": "einsteiger",
+      "category": "CMD-Grundlagen"
+    },
+    {
+      "question": "🆘 Wie kann man sich in CMD die Hilfe zu einem bestimmten Befehl anzeigen lassen?",
+      "options": [
+        "Mit `hilfe Befehl`",
+        "Mit `Befehl /?` oder `help Befehl`",
+        "Mit `cmdhelp Befehl`",
+        "Mit `man Befehl`"
+      ],
+      "correct": [1],
+      "explain": "**Begründung:** In CMD funktioniert Hilfe über `Befehl /?` oder `help Befehl`. 📖\n- `hilfe` und `man` stammen aus anderen Umgebungen (Linux, PowerShell).",
+      "difficulty": "einsteiger",
+      "category": "CMD-Grundlagen"
+    },
+    {
+      "question": "🛠️ Szenario: Du gibst den Befehl `cd C:\\Programme\\` ein, erhältst aber 'Das System kann den angegebenen Pfad nicht finden'. Was ist die wahrscheinlichste Ursache?",
+      "options": [
+        "Der Pfad ist falsch, weil Leerzeichen in 'Programme' nicht beachtet wurden",
+        "Der Laufwerksbuchstabe ist falsch",
+        "Der Benutzer hat keine Berechtigungen",
+        "Das Programm-Verzeichnis existiert nicht"
+      ],
+      "correct": [0],
+      "explain": "**Begründung:** Bei Leerzeichen im Pfad müssen Anführungszeichen gesetzt werden: `cd \"C:\\Programme\"`. Ohne sie interpretiert CMD den Pfad falsch. ⚠️",
+      "difficulty": "fortgeschritten",
+      "category": "Pfadangaben"
+    },
+    {
+      "question": "📂 Welcher Befehl zeigt alle Dateien und Unterordner eines Verzeichnisses in Baumstruktur an?",
+      "options": [
+        "tree",
+        "dir /s",
+        "ls -R",
+        "foldermap"
+      ],
+      "correct": [0],
+      "explain": "**Begründung:** `tree` zeigt eine grafische Baumstruktur. 🌳\n- `dir /s` listet ebenfalls rekursiv auf, aber nicht als Baum.\n- `ls -R` gehört zu Linux.",
+      "difficulty": "einsteiger",
+      "category": "Verzeichnis-Befehle"
+    },
+    {
+      "question": "💾 Welche Funktion hat der Befehl `diskpart`?",
+      "options": [
+        "Dateien kopieren",
+        "Partitionen und Datenträger verwalten",
+        "Systemzeit ändern",
+        "Dateiattribute ändern"
+      ],
+      "correct": [1],
+      "explain": "**Begründung:** `diskpart` ist ein mächtiges Tool zur Partitionierung und Datenträgerverwaltung. 🔧\n- Alle anderen Befehle gehören zu anderen Kategorien.",
+      "difficulty": "fortgeschritten",
+      "category": "Datenträger-Befehle"
+    },
+    {
+      "question": "⚡ Szenario: Ein Anwender möchte alle Dateien von `C:\\Users\\Test` nach `D:\\Backup` kopieren, inklusive Unterordner und Attribute. Welcher Befehl ist am besten geeignet?",
+      "options": [
+        "copy C:\\Users\\Test D:\\Backup",
+        "xcopy C:\\Users\\Test D:\\Backup /E /H /K",
+        "robocopy C:\\Users\\Test D:\\Backup",
+        "move C:\\Users\\Test D:\\Backup"
+      ],
+      "correct": [2],
+      "explain": "**Begründung:** `robocopy` ist der robusteste Befehl für umfangreiche Kopieraktionen und erhält Attribute. 🚚\n- `xcopy` ist veraltet, aber mit Schaltern noch nutzbar.\n- `copy` ist für einfache Dateien.",
+      "difficulty": "fortgeschritten",
+      "category": "Verzeichnis-Befehle"
+    },
+    {
+      "question": "📄 Welche Dateiattribute gibt es in Windows CMD standardmäßig?",
+      "options": [
+        "a, s, h, r",
+        "x, y, z, k",
+        "bin, exe, dll",
+        "ro, hi, sy, ar"
+      ],
+      "correct": [0],
+      "explain": "**Begründung:** Attribute sind: Archiv (a), System (s), Hidden (h), Read-only (r). 🔒\n- Die anderen sind Fantasie oder Datei-Endungen.",
+      "difficulty": "einsteiger",
+      "category": "Datei-Befehle"
+    },
+    {
+      "question": "🧮 Berechnung: Ein Backup-Job mit `robocopy` überträgt 1,5 GB Daten. Wenn die Übertragungsrate bei 50 MB/s liegt, wie lange dauert die Übertragung ungefähr?",
+      "options": [
+        "30 Sekunden",
+        "60 Sekunden",
+        "90 Sekunden",
+        "120 Sekunden"
+      ],
+      "correct": [2],
+      "explain": "**Begründung:** 1,5 GB = 1500 MB. 1500 MB ÷ 50 MB/s = 30 s. 🚀\n- Achtung: In der Praxis können Attribute, kleine Dateien und IO-Overhead die Zeit verlängern. Daher ist 30 s nur der Idealwert.",
+      "difficulty": "fortgeschritten",
+      "category": "Berechnungen"
+    },
+    {
+      "question": "🤔 Wahr/Falsch: CMD unterscheidet streng zwischen Groß- und Kleinschreibung bei Befehlen.",
+      "options": [
+        "Wahr",
+        "Falsch"
+      ],
+      "correct": [1],
+      "explain": "**Begründung:** Befehle sind in CMD nicht case-sensitive. `DIR` = `dir`. 🔤\n- Bei Pfadangaben in bestimmten Tools kann es aber Unterschiede geben (z. B. in anderen Betriebssystemen).",
+      "difficulty": "einsteiger",
+      "category": "CMD-Mythen"
+    },
+    {
+      "question": "🔍 Szenario: Du willst herausfinden, welche Optionen der Befehl `xcopy` unterstützt. Was tust du?",
+      "options": [
+        "xcopy --help",
+        "xcopy help",
+        "xcopy /?",
+        "man xcopy"
+      ],
+      "correct": [2],
+      "explain": "**Begründung:** In CMD wird Hilfe mit `/ ?` abgerufen. ✅",
+      "difficulty": "einsteiger",
+      "category": "CMD-Grundlagen"
+    },
+     {
+      "question": "Welcher Befehl zeigt Ihnen die Syntax und die verfügbaren Optionen für den `xcopy`-Befehl an? 💻",
+      "options": [
+        "help xcopy",
+        "xcopy /?",
+        "info xcopy",
+        "man xcopy"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der Schalter `/?` ist der Standardweg in der Windows-Kommandozeile, um die Hilfe für einen bestimmten Befehl direkt aufzurufen. `help xcopy` funktioniert zwar auch, aber `xcopy /?` ist die direktere Methode. `info` und `man` sind Befehle aus der Linux/Unix-Welt. 💡",
+      "difficulty": "einsteiger",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Sie befinden sich im Verzeichnis `C:\\Users\\Admin\\Documents` und möchten eine Textdatei namens `notiz.txt` im selben Verzeichnis erstellen, ohne einen externen Editor zu öffnen. Welcher Befehl ist dafür korrekt? ✍️",
+      "options": [
+        "create file notiz.txt",
+        "echo . > notiz.txt",
+        "new-item notiz.txt",
+        "make text > notiz.txt"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der Befehl `echo . > notiz.txt` ist eine schnelle Methode, um eine leere Datei zu erstellen. `echo .` gibt einen Punkt aus, und die Umleitung `>` schreibt diese Ausgabe in die Datei `notiz.txt`. Wenn die Datei nicht existiert, wird sie erstellt. `create file` und `make text` sind keine validen CMD-Befehle. `new-item` ist ein PowerShell-Cmdlet. 📂",
+      "difficulty": "fortgeschritten",
+      "category": "Dateibefehle"
+    },
+    {
+      "question": "Was ist der Hauptunterschied zwischen den Befehlen `del` und `rd`? 🗑️",
+      "options": [
+        "`del` löscht Verzeichnisse, `rd` löscht Dateien.",
+        "`del` löscht nur leere Dateien, `rd` löscht Verzeichnisse.",
+        "`del` löscht Dateien, `rd` löscht leere Verzeichnisse.",
+        "Es gibt keinen Unterschied, `rd` ist nur eine Abkürzung für `del`."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `del` (delete) wird verwendet, um eine oder mehrere Dateien zu löschen. `rd` (remove directory) wird verwendet, um ein Verzeichnis zu entfernen. Standardmäßig kann `rd` nur leere Verzeichnisse löschen. Um ein Verzeichnis inklusive Inhalt zu löschen, bräuchte man den Schalter `/s` (`rd /s Verzeichnisname`). ❌",
+      "difficulty": "einsteiger",
+      "category": "Verzeichnis- & Dateibefehle"
+    },
+    {
+      "question": "Ein Benutzer führt den Befehl `format D: /q /fs:NTFS` aus. Was passiert? 💿",
+      "options": [
+        "Laufwerk D: wird langsam und gründlich mit dem FAT32-Dateisystem formatiert.",
+        "Eine Schnellformatierung von Laufwerk D: mit dem NTFS-Dateisystem wird durchgeführt.",
+        "Der Befehl schlägt fehl, da `/q` und `/fs` nicht kombiniert werden können.",
+        "Laufwerk D: wird auf Fehler überprüft und das Dateisystem zu NTFS konvertiert."
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der Befehl `format D:` initiiert die Formatierung von Laufwerk D. Der Schalter `/q` steht für 'quick format' (Schnellformatierung), bei der nur die Dateizuordnungstabelle gelöscht wird. `/fs:NTFS` spezifiziert das zu verwendende Dateisystem als NTFS. Die Kombination ist absolut valide und üblich. ⚙️",
+      "difficulty": "fortgeschritten",
+      "category": "Datenträgerbefehle"
+    },
+    {
+      "question": "Sie möchten alle `.log`-Dateien aus dem Verzeichnis `C:\\Logs` und all seinen Unterverzeichnissen in das Verzeichnis `D:\\Archiv` kopieren und dabei die Verzeichnisstruktur beibehalten. Welcher Befehl ist am besten geeignet? 🌳",
+      "options": [
+        "copy C:\\Logs\\*.log D:\\Archiv",
+        "move /s C:\\Logs\\*.log D:\\Archiv",
+        "xcopy C:\\Logs\\*.log D:\\Archiv /s",
+        "ren C:\\Logs\\*.log D:\\Archiv\\*.bak"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `xcopy` ist der erweiterte Kopierbefehl. Der Schalter `/s` sorgt dafür, dass alle Unterverzeichnisse (außer leere) durchsucht und die Verzeichnisstruktur im Ziel beibehalten wird. `copy` allein durchsucht keine Unterverzeichnisse. `move` würde die Dateien verschieben, nicht kopieren. `ren` benennt Dateien um. `robocopy` wäre eine noch robustere Alternative, aber `xcopy` ist hier die korrekte Antwort. 🚀",
+      "difficulty": "fortgeschritten",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Was bewirkt der Befehl `path` ohne zusätzliche Parameter? 🗺️",
+      "options": [
+        "Er setzt den Suchpfad auf die Standardwerte zurück.",
+        "Er zeigt den aktuellen Suchpfad für ausführbare Dateien an.",
+        "Er öffnet ein Fenster zur Bearbeitung der Umgebungsvariablen.",
+        "Er überprüft die Gültigkeit aller Pfade in der PATH-Variable."
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der `path`-Befehl, allein ausgeführt, zeigt die aktuelle Konfiguration der PATH-Umgebungsvariable an. Diese Variable teilt dem System mit, in welchen Verzeichnissen es nach ausführbaren Dateien suchen soll, wenn kein vollständiger Pfad angegeben wird. 🔍",
+      "difficulty": "einsteiger",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Ein Skript soll eine wichtige Konfigurationsdatei `config.sys` vor versehentlichem Löschen schützen. Welcher `attrib`-Befehl erreicht dies am effektivsten? 🛡️",
+      "options": [
+        "attrib +a config.sys",
+        "attrib +h config.sys",
+        "attrib +s config.sys",
+        "attrib +r config.sys"
+      ],
+      "correct": 3,
+      "explain": "**Begründung:** Der Befehl `attrib +r config.sys` setzt das 'Read-only' (Schreibschutz) Attribut für die Datei. Eine schreibgeschützte Datei kann nicht ohne Weiteres geändert oder gelöscht werden. `+a` ist das Archiv-Attribut, `+h` versteckt die Datei (hidden), und `+s` markiert sie als Systemdatei. Während `+h` und `+s` sie auch schützen, ist `+r` der direkteste Weg, den Schreibschutz zu aktivieren. 🔒",
+      "difficulty": "fortgeschritten",
+      "category": "Dateiattribute"
+    },
+    {
+      "question": "Sie sehen die Fehlermeldung: `'befehl' is not recognized as an internal or external command, operable program or batch file.` Was ist die wahrscheinlichste Ursache? 🤔",
+      "options": [
+        "Der Befehl wurde mit falschen Parametern aufgerufen.",
+        "Sie haben keine Administratorrechte, um den Befehl auszuführen.",
+        "Der Befehl hat einen internen Syntaxfehler.",
+        "Der Befehl existiert nicht oder sein Speicherort ist nicht im `PATH`."
+      ],
+      "correct": 3,
+      "explain": "**Begründung:** Diese klassische Fehlermeldung bedeutet, dass der Kommandozeileninterpreter `cmd.exe` den eingegebenen Befehl weder als internen Befehl (wie `dir` oder `cls`) noch als ausführbare Datei in den im `PATH` definierten Verzeichnissen finden kann. Ein Tippfehler im Befehlsnamen ist eine häufige Ursache. 🤷‍♂️",
+      "difficulty": "einsteiger",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Wahr oder Falsch: Der Befehl `cd C:\\Users\\..\\Public` führt Sie immer in das Verzeichnis `C:\\Public`. 🧐",
+      "options": [
+        "Wahr",
+        "Falsch"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Falsch. Der `..` Operator navigiert eine Ebene im Verzeichnisbaum nach oben. Ausgehend von `C:\\Users` würde `..` Sie nach `C:\\` bringen. Von dort aus würde der Befehl versuchen, in `C:\\Public` zu wechseln. Der korrekte Pfad wäre also `C:\\Users\\Public`. Der Befehl führt also nach `C:\\Public`, nicht `C:\\Users\\Public`. Die Aussage ist somit falsch, da der Zielpfad von `C:\\Users` aus `C:\\Public` wäre, was meist nicht existiert. Der Pfad von `C:\\Users\\Admin` aus wäre `C:\\Users\\Public`. Die Frage ist bewusst knifflig gestellt. 🧠",
+      "difficulty": "experte",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Welches Tool innerhalb der CMD wird verwendet, um Partitionen zu verwalten, Volumes zu erstellen und Festplatten zu konvertieren? 🛠️",
+      "options": [
+        "chkdsk",
+        "format",
+        "diskpart",
+        "label"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `diskpart` ist ein leistungsstarkes Kommandozeilenprogramm zur Verwaltung von Datenträgern, Partitionen und Volumes. Es bietet weit mehr Funktionen als `format` (formatiert), `chkdsk` (überprüft) oder `label` (setzt Volumebezeichnung). Mit `diskpart` kann man z.B. Festplatten von MBR zu GPT konvertieren oder komplexe RAID-Volumes erstellen. 🔩",
+      "difficulty": "fortgeschritten",
+      "category": "Datenträgerbefehle"
+    },
+    {
+      "question": "Sie möchten den Inhalt der Datei `liste.txt` anzeigen, aber der Inhalt ist sehr lang. Welcher Befehl zeigt den Inhalt seitenweise an? 📜",
+      "options": [
+        "type liste.txt | page",
+        "cat liste.txt",
+        "type liste.txt | more",
+        "read liste.txt"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der `type`-Befehl gibt den Inhalt einer Datei aus. Das Pipe-Symbol `|` leitet diese Ausgabe an den `more`-Befehl weiter. `more` ist ein Filter, der die Ausgabe anhält, sobald der Bildschirm voll ist, und auf einen Tastendruck wartet, um die nächste Seite anzuzeigen. `page` und `read` sind keine Standard-CMD-Befehle, `cat` ist aus der Linux-Welt. 📄",
+      "difficulty": "einsteiger",
+      "category": "Allgemeine Befehle"
+    },
+    {
+      "question": "Was ist der Hauptvorteil von `robocopy` gegenüber `xcopy`? 💪",
+      "options": [
+        "`robocopy` ist schneller bei kleinen Dateien.",
+        "`robocopy` kann Dateien umbenennen, während es kopiert.",
+        "`robocopy` bietet mehr Optionen, z.B. Spiegelung von Verzeichnissen und Wiederholungsversuche bei Fehlern.",
+        "`robocopy` ist der einzige Befehl, der versteckte Dateien kopieren kann."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `robocopy` (Robust File Copy) ist der moderne Nachfolger von `xcopy`. Es ist deutlich robuster und funktionsreicher. Zu den Vorteilen gehören die Fähigkeit, Verzeichnisse zu spiegeln (`/mir`), Kopiervorgänge bei Netzwerkunterbrechungen fortzusetzen, die Anzahl der Wiederholungsversuche (`/r`) und die Wartezeit (`/w`) festzulegen und vieles mehr. Es ist das bevorzugte Tool für komplexe Kopieraufgaben und Backups. 🏆",
+      "difficulty": "fortgeschritten",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Sie führen den Befehl `dir /a:h /b` in einem Verzeichnis aus. Was wird angezeigt? 🕵️",
+      "options": [
+        "Alle Dateien und Verzeichnisse mit Attributen und in Kurzform.",
+        "Nur die Namen der versteckten Dateien und Verzeichnisse.",
+        "Eine leere Ausgabe, da die Attribute sich widersprechen.",
+        "Alle Dateien, sortiert nach dem Attribut 'hidden'."
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der `dir`-Befehl listet Verzeichnisinhalte auf. Der Schalter `/a:h` filtert die Anzeige und zeigt nur Elemente mit dem Attribut 'hidden' (versteckt) an. Der Schalter `/b` (bare format) sorgt dafür, dass nur die reinen Namen ohne Kopfzeile, Größe oder Datum ausgegeben werden. Die Kombination zeigt also eine reine Liste der versteckten Dateinamen. 👻",
+      "difficulty": "experte",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Welches der folgenden Symbole wird verwendet, um die Ausgabe eines Befehls an einen anderen Befehl weiterzuleiten (Piping)? ⛓️",
+      "options": [
+        ">",
+        "<",
+        "|",
+        "&"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Das Pipe-Symbol `|` ist ein zentrales Konzept der Kommandozeile. Es nimmt den Standard-Output (STDOUT) des Befehls links vom Symbol und verwendet ihn als Standard-Input (STDIN) für den Befehl rechts vom Symbol. Beispiel: `dir | find \"txt\"` listet den Verzeichnisinhalt auf und filtert dann nach Zeilen, die \"txt\" enthalten. ➡️",
+      "difficulty": "einsteiger",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Sie möchten ein Verzeichnis namens 'Mein Projekt' erstellen. Welcher Befehl ist korrekt? 📂",
+      "options": [
+        "md Mein Projekt",
+        "md 'Mein Projekt'",
+        "md \"Mein Projekt\"",
+        "md Mein-Projekt"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Da der Verzeichnisname ein Leerzeichen enthält, muss er in Anführungszeichen (`\"`) eingeschlossen werden. Andernfalls würde der `md`-Befehl versuchen, zwei separate Verzeichnisse namens 'Mein' und 'Projekt' zu erstellen. Option 3 ist die syntaktisch korrekte. Option 4 würde funktionieren, entspricht aber nicht der Anforderung. Option 2 mit einfachen Anführungszeichen funktioniert in der CMD nicht für Pfade. ✅",
+      "difficulty": "einsteiger",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Was ist der Zweck des Befehls `vol`? 💾",
+      "options": [
+        "Er zeigt das verfügbare Volumen (Speicherplatz) eines Laufwerks an.",
+        "Er ändert die Volumebezeichnung (Label) eines Laufwerks.",
+        "Er zeigt die Volumebezeichnung und die Seriennummer eines Laufwerks an.",
+        "Er startet das Tool zur Volumenverwaltung."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der Befehl `vol` (volume) gibt zwei Informationen über ein angegebenes Laufwerk aus: die Volumebezeichnung (das 'Label', z.B. 'System') und die einmalige Volume-Seriennummer, die bei der Formatierung zugewiesen wird. Um das Label zu ändern, verwendet man den `label`-Befehl. 🏷️",
+      "difficulty": "einsteiger",
+      "category": "Datenträgerbefehle"
+    },
+    {
+      "question": "Sie möchten eine Datei `alt.txt` in `neu.txt` umbenennen. Welcher Befehl ist NICHT dafür geeignet? 🤔",
+      "options": [
+        "ren alt.txt neu.txt",
+        "rename alt.txt neu.txt",
+        "move alt.txt neu.txt",
+        "copy alt.txt neu.txt"
+      ],
+      "correct": 3,
+      "explain": "**Begründung:** `ren` und sein Alias `rename` sind die Standardbefehle zum Umbenennen. `move` kann ebenfalls zum Umbenennen verwendet werden, wenn Quelle und Ziel im selben Verzeichnis liegen. `copy` hingegen erstellt eine neue Datei (`neu.txt`) als Kopie der alten (`alt.txt`), aber die Originaldatei bleibt erhalten. Es ist also kein reiner Umbenennungsvorgang. 🔄",
+      "difficulty": "fortgeschritten",
+      "category": "Dateibefehle"
+    },
+    {
+      "question": "In einem Pfad wie `C:\\WINDOWS\\system32\\calc.exe`, was ist `system32`? 🧩",
+      "options": [
+        "Der Laufwerksbuchstabe",
+        "Ein Verzeichnis (Ordner)",
+        "Der Dateiname",
+        "Die Dateierweiterung"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Die Pfadstruktur ist hierarchisch: `C:` ist der Laufwerksbuchstabe. `WINDOWS` und `system32` sind Verzeichnisse, wobei `system32` ein Unterverzeichnis von `WINDOWS` ist. `calc` ist der Dateiname und `.exe` ist die Dateierweiterung. ιε",
+      "difficulty": "einsteiger",
+      "category": "Pfadangaben und Dateinamen"
+    },
+    {
+      "question": "Wahr oder Falsch: Bei Befehlen in der Windows CMD muss strikt auf Groß- und Kleinschreibung geachtet werden. 🅰️",
+      "options": [
+        "Wahr",
+        "Falsch"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Falsch. Die Windows-Kommandozeile (CMD.EXE) ist im Gegensatz zu Linux-Shells nicht 'case-sensitive'. Die Befehle `DIR`, `dir` und `DiR` werden alle identisch interpretiert und ausgeführt. Das Gleiche gilt für die meisten Dateinamen im Windows-Dateisystem. สบาย",
+      "difficulty": "einsteiger",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Welcher Befehl löscht das Verzeichnis `C:\\Temp` inklusive aller darin enthaltenen Dateien und Unterverzeichnisse, ohne bei jeder Löschung nachzufragen? 💣",
+      "options": [
+        "del C:\\Temp /s /q",
+        "rd C:\\Temp /s /q",
+        "erase C:\\Temp /all",
+        "rmdir C:\\Temp"
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** `rd` (oder `rmdir`) ist der Befehl zum Löschen von Verzeichnissen. Der Schalter `/s` (subdirectories) weist ihn an, auch alle Unterverzeichnisse und Dateien zu löschen. Der Schalter `/q` (quiet) unterdrückt die Bestätigungsabfrage 'Sind Sie sicher (J/N)?'. `del` löscht nur Dateien, nicht die Verzeichnisstruktur selbst. 🔥",
+      "difficulty": "fortgeschritten",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Sie erstellen eine einfache Textdatei mit `copy con test.txt`, geben Text ein und möchten die Eingabe beenden und die Datei speichern. Welche Tastenkombination verwenden Sie? ⌨️",
+      "options": [
+        "STRG + S",
+        "ESC",
+        "F6 oder STRG + Z",
+        "STRG + C"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der Befehl `copy con` kopiert die Eingabe von der Konsole (`con`) in eine Datei. Um dem System das Dateiende-Zeichen (EOF) zu signalisieren, drückt man entweder `F6` oder die Tastenkombination `STRG + Z` und anschließend Enter. `STRG + S` hat keine Funktion, `ESC` bricht die Zeile ab und `STRG + C` bricht den gesamten `copy`-Prozess ab. 💾",
+      "difficulty": "fortgeschritten",
+      "category": "Dateibefehle"
+    },
+    {
+      "question": "Der Befehl `chkdsk C: /f` wird ausgeführt. Was ist die Hauptaufgabe des Schalters `/f`? 🔧",
+      "options": [
+        "Er formatiert das Laufwerk, falls Fehler gefunden werden.",
+        "Er findet fehlerhafte Sektoren und versucht, Daten wiederherzustellen.",
+        "Er behebt gefundene Fehler auf dem Datenträger.",
+        "Er erzwingt die Überprüfung, auch wenn das Laufwerk als fehlerfrei markiert ist."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** `chkdsk` (Check Disk) überprüft ein Laufwerk auf Dateisystemfehler. Ohne Parameter läuft es im schreibgeschützten Modus und meldet nur Fehler. Der Schalter `/f` (fix) weist das Tool an, alle gefundenen Fehler aktiv zu beheben. Wenn das Laufwerk in Benutzung ist (z.B. das Systemlaufwerk), wird die Überprüfung für den nächsten Systemstart geplant. 🛠️",
+      "difficulty": "fortgeschritten",
+      "category": "Datenträgerbefehle"
+    },
+    {
+      "question": "Was zeigt der Befehl `tree /f` an? �",
+      "options": [
+        "Nur die Verzeichnisstruktur des aktuellen Laufwerks.",
+        "Die Verzeichnisstruktur und zusätzlich die Dateien in jedem Verzeichnis.",
+        "Die Verzeichnisstruktur im 'fast' Modus, ohne Details.",
+        "Die Verzeichnisstruktur und die Dateigrößen."
+      ],
+      "correct": 1,
+      "explain": "**Begründung:** Der `tree`-Befehl zeigt die Ordnerstruktur eines Pfades in einer grafischen Baumansicht an. Standardmäßig werden nur die Verzeichnisse aufgelistet. Der Schalter `/f` (files) erweitert die Anzeige und listet zusätzlich die Namen der Dateien innerhalb jedes Verzeichnisses auf. 🌿",
+      "difficulty": "einsteiger",
+      "category": "Verzeichnisbefehle"
+    },
+    {
+      "question": "Sie möchten alle Textdateien (`*.txt`) im aktuellen Verzeichnis finden, die das Wort 'Error' enthalten. Welcher Befehl ist dafür geeignet? 🧐",
+      "options": [
+        "find \"Error\" *.txt",
+        "search \"Error\" in *.txt",
+        "grep \"Error\" *.txt",
+        "type *.txt | find \"Error\""
+      ],
+      "correct": 0,
+      "explain": "**Begründung:** Der `find`-Befehl ist das Standard-Tool in CMD, um Zeichenfolgen in Dateien zu suchen. Die Syntax `find \"Suchtext\" Dateiname(n)` ist korrekt. `grep` ist das Äquivalent aus der Linux/Unix-Welt. Die Pipe-Variante in Option 3 würde funktionieren, ist aber umständlicher und weniger effizient als die direkte Verwendung von `find`. 🕵️‍♀️",
+      "difficulty": "fortgeschritten",
+      "category": "Dateibefehle"
+    },
+    {
+      "question": "Welches Attribut wird von Backup-Programmen häufig verwendet, um festzustellen, ob eine Datei seit dem letzten Backup geändert wurde? 📦",
+      "options": [
+        "r (Read-only)",
+        "h (Hidden)",
+        "s (System)",
+        "a (Archive)"
+      ],
+      "correct": 3,
+      "explain": "**Begründung:** Das Archiv-Attribut (`a`) wird vom Betriebssystem automatisch gesetzt, sobald eine Datei erstellt oder geändert wird. Backup-Software kann dieses Attribut nutzen: Sie sichert alle Dateien mit gesetztem `a`-Attribut und entfernt es danach. So werden beim nächsten inkrementellen Backup nur die neuen oder geänderten Dateien erfasst. 🗳️",
+      "difficulty": "experte",
+      "category": "Dateiattribute"
+    },
+    {
+      "question": "Sie möchten das aktuelle Datum auf den 31.10.2025 ändern. Welcher Befehl ist korrekt? 🗓️",
+      "options": [
+        "time 31-10-2025",
+        "date 31-10-25",
+        "date 31.10.2025",
+        "setdate 31/10/2025"
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Der `date`-Befehl wird verwendet, um das Systemdatum anzuzeigen und zu ändern. Das erwartete Datumsformat hängt von den Ländereinstellungen des Systems ab. In Deutschland ist das Format `TT.MM.JJJJ` üblich. Daher ist `date 31.10.2025` die wahrscheinlichste korrekte Eingabe. Die anderen Formate würden zu einem Syntaxfehler führen. 📅",
+      "difficulty": "einsteiger",
+      "category": "Allgemeine Befehle"
+    },
+    {
+      "question": "Der Befehl `move /y C:\\*.tmp D:\\Trash` wird ausgeführt. Was bewirkt der Schalter `/y`? 👉",
+      "options": [
+        "Er verschiebt nur Dateien, die jünger ('younger') als 24 Stunden sind.",
+        "Er fragt bei jeder Datei nach, ob sie wirklich verschoben werden soll.",
+        "Er unterdrückt die Abfrage zum Überschreiben von bereits existierenden Dateien im Ziel.",
+        "Er kopiert die Dateien nur, anstatt sie zu verschieben."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Wenn der `move`-Befehl Dateien in ein Ziel verschiebt, in dem bereits Dateien mit demselben Namen existieren, fragt er standardmäßig nach, ob diese überschrieben werden sollen. Der Schalter `/y` unterdrückt diese Nachfrage und überschreibt die Zieldateien automatisch. Das Gegenstück ist `/-y`, was die Nachfrage erzwingt. 🤫",
+      "difficulty": "fortgeschritten",
+      "category": "Dateibefehle"
+    },
+    {
+      "question": "Ein Admin möchte eine Liste aller laufenden Prozesse in die Datei `prozesse.txt` schreiben. Welcher Befehl ist dafür korrekt? 📈",
+      "options": [
+        "tasklist > prozesse.txt",
+        "proclist >> prozesse.txt",
+        "ps > prozesse.txt",
+        "tasklist | prozesse.txt"
+      ],
+      "correct": 0,
+      "explain": "**Begründung:** `tasklist` ist der Befehl, der die laufenden Prozesse anzeigt. Der Umleitungsoperator `>` nimmt die Ausgabe des Befehls und schreibt sie in die angegebene Datei. Wenn die Datei bereits existiert, wird sie überschrieben. `>>` würde die Ausgabe an die Datei anhängen. `ps` und `proclist` sind keine Standard-CMD-Befehle. 📝",
+      "difficulty": "fortgeschritten",
+      "category": "Allgemeine Befehle"
+    },
+    {
+      "question": "Sie möchten den Befehl `cls` ausführen, um den Bildschirm zu leeren. Wo befindet sich die Logik für diesen Befehl? 🏛️",
+      "options": [
+        "In einer Datei namens `cls.exe` im `system32`-Verzeichnis.",
+        "Er ist direkt in den Windows-Kernel integriert.",
+        "Er ist ein interner Befehl des Kommandozeileninterpreters `cmd.exe`.",
+        "In einer Dynamic Link Library (DLL), die von der CMD geladen wird."
+      ],
+      "correct": 2,
+      "explain": "**Begründung:** Es gibt einen wichtigen Unterschied zwischen internen und externen Befehlen. Externe Befehle sind eigenständige `.exe`- oder `.com`-Dateien (z.B. `format.com` oder `diskpart.exe`). Interne Befehle wie `dir`, `copy`, `ren`, `cls` oder `date` sind fest in `cmd.exe` einprogrammiert und benötigen keine separate Datei. Sie sind immer verfügbar, solange die CMD läuft. 🧠",
+      "difficulty": "experte",
+      "category": "CMD Grundlagen"
+    },
+    {
+      "question": "Welcher Befehl ändert die aktuelle Eingabeaufforderung (Prompt) so, dass sie den aktuellen Pfad gefolgt von einem `>` anzeigt? 👨‍💻",
+      "options": [
+        "prompt $p$g",
+        "prompt $cwd",
+        "set prompt=%path%",
+        "prompt $path$>"
+      ],
+      "correct": 0,
+      "explain": "**Begründung:** Der `prompt`-Befehl steuert das Aussehen der Eingabeaufforderung. Dabei werden spezielle Metacodes verwendet. `$p` steht für den aktuellen Pfad (path) und `$g` steht für das 'greater than'-Zeichen (`>`). Die Kombination `prompt $p$g` erzeugt den Standard-Prompt, z.B. `C:\\Users\\Admin>`. 🎨",
+      "difficulty": "experte",
+      "category": "Allgemeine Befehle"
+    }
+  ]
 }
